@@ -242,6 +242,351 @@
             
 
   
+    <article id="post-IDEA常用快捷键" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/03/01/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/">IDEA常用快捷键</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/03/01/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="archive-article-date">
+        <time datetime="2021-03-01T02:28:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-01</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>1.ctrl+h 打开继承类/接口的实现  </p>
+<p>2.ctrl+enter打开类/查看其引用位置？</p>
+<p>3.ctrl+n/ctrl+shift+a 全局搜索</p>
+<p>4.ctrl+alt+enter打开其实现类/实现方法 </p>
+<p>5.在类上面右键-&gt;diagram-&gt;show diagram 关系视图-&gt;在其上右键，show implements查看其接口。</p>
+<p>6.alt+enter=&gt;生成对应方法/变量/…</p>
+<p>7./+/+*+回车=&gt;创建字段对应的注释</p>
+<p>8.alt+7快速查看类的所有方法</p>
+<p>9.ctrl+alt+m 对选中代码块生成一个静态方法 </p>
+<p>10.setting=&gt;live template =&gt; 写自己的快捷方法  </p>
+<p>11.ctrl+alt+l =&gt; 自动调整代码格式</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">IDEA</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/03/01/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-docker常见命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/03/01/docker%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/">docker常见命令</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/03/01/docker%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/" class="archive-article-date">
+        <time datetime="2021-03-01T02:22:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-01</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>systemctl start docker.service 开启</p>
+<p>systemctl status docker.service 查看<br>service docker stop 关闭docker<br>systemctl stop docker 关闭docker<br>systemctl stop firewalld.service 关闭防火墙<br>systemctl disable firewalld.service 禁止开启启动防火墙</p>
+<hr>
+<p>容器相关<br>docker利用容器来运行应用：docker容器是由docker镜像创建的运行实例。docker容器类似虚拟机，可以执行包含启动，停止，删除等。</p>
+<p>docker rm $(docker ps -a -q) 删除所有容器</p>
+<p>docker ps -a查看所有容器，包括已经停止运行的。</p>
+<p>docker start b750bbbcfd88 启动一个已经停止的容器。</p>
+<p>docker stop &lt;容器 ID&gt;停止一个容器</p>
+<p>docker rm -f 1e560fca3906 删除一个容器</p>
+<p>docker stats -a 查看容器占用的内存 –no-stream只输出当前状态<br>ctrl+c 退出</p>
+<hr>
+<p>镜像相关<br>docker的镜像概念类似虚拟机的镜像。是一个只读的模板，一个独立的文件系统，包括运行容器所需的数据，可以用来创建新的容器。</p>
+<p>docker images 查看host中的镜像</p>
+<p>docker rmi  删除指定id的镜像 -f 强制</p>
+<p>docker rmi $(docker images -q)删除所有镜像</p>
+<p>free -m 查看内存</p>
+<hr>
+<p>docker容器错误<br>docker添加容器时，使用 -v 挂载时无法启动容器解决</p>
+<p>解决方法：</p>
+<p>添加selinux规则，将要挂载的目录添加到白名单</p>
+<p>chcon -Rt svirt_sandbox_file_t /mydata/mysql/log<br>chcon -Rt svirt_sandbox_file_t /mydata/mysql/data<br>chcon -Rt svirt_sandbox_file_t /mydata/mysql/conf</p>
+<p>添加完后，删除旧的容器，再重新添加一个，成功启动</p>
+<hr>
+<p>docker常用操作</p>
+<p>$docker logs [容器名/容器ID] docker 容器错误查看日志</p>
+<hr>
+<p>docker images错误<br>docker中某个images发生错误，导致其容器不断重启，然后需要卸载的话，镜像一定要卸载完全，也就是重新docker push XXX时需要下载，而不是原来就有！</p>
+<hr>
+<p>linux常用操作</p>
+<p>vi相关<br>●vi xxx.html 进入xxx文件<br>●按住shift zz 保存退出 zq 不保存退出，q表示放弃<br>之所以按住shift，其实是切换大小写<br>esc<br>●wq保存退出</p>
+<p>mv conf nginx/ 移动conf文件夹到nginx下面</p>
+<p>rm -rf /var/log/httpd/access 删除文件夹实例</p>
+<p>mkdir -p /mydata/elasticsearch/config 创建文件夹实例</p>
+<p>systemctl set-default graphical.target修改为图形界面</p>
+<p>systemctl set-default multi-user.target修改为命令界面</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/03/01/docker%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-mysql命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/03/01/mysql%E5%91%BD%E4%BB%A4/">mysql命令</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/03/01/mysql%E5%91%BD%E4%BB%A4/" class="archive-article-date">
+        <time datetime="2021-03-01T02:04:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-01</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>●启动mysql<br>net start XXX<br>net stop XXX</p>
+<p>什么是../../..?<br><img src="https://img-blog.csdnimg.cn/20200930145418712.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">mysql的启动和停止<br>net start XXX<br>net stop XXX<br>服务端<br>…<br><img src="https://img-blog.csdnimg.cn/2020093015010916.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">查询语句<br><img src="https://img-blog.csdnimg.cn/20200930150354741.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><strong>1.基础查询</strong><br>①查询字段：1.查询单个/2.查询多个/3.查询所有（全列出来/*）<br>②查询常量值<br><img src="https://img-blog.csdnimg.cn/20201002200949349.png#pic_center" alt="在这里插入图片描述"></p>
+<p>③查询表达式<br>④查询函数<br>SELECT VERSION();<br>SELECT XXX(参数列表)；<br>⑤起别名<br>SELECT 100%98 AS RESULT    使用as<br>SELECT 100%98 RESULT         使用空格<br>=&gt;好处：理解好/区分重名<br>⑥去重 SELECT DISTINCT<br>⑦+的使用<br>SELECT LAST_NAME+FIRST_NAME AS 姓名<br>FROM EMPLOYEE<br>是数值，加法<br>有字符，转化后加法,失败则取0继续加<br>有NULL就NULL<br>⑧concat的使用<br>字符连接<br>SELECT CONCAT (XX,XX)  AS XX FROM XXX<br>⑨SELECT IFNULL(可能为NULL的语句,为NULL时返回的结果)<br>⑩<img src="https://img-blog.csdnimg.cn/2020100220130627.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20200930152906892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20200930152945664.png#pic_center" alt="在这里插入图片描述"><br><strong>2.条件查询</strong><br>①条件运算符</p>
+<blockquote>
+<p>&lt; = !=  &lt;&gt;  &gt;= &lt;=<br>使用&lt;&gt;好于!=<br>②逻辑表达式<br>&amp;&amp; || ! AND OR NOT<br>③模糊查询<br>●like<br>%代表任意一个字符<br><em>代码任意单个字符<br>举例：<br>    like ‘%xxx%’    含有xxx的<br>    like ‘__a_c%’  第3个为a第5个为c的<br>    like ‘_\</em>%’    第2个为_<br>    like ‘<em>$</em>%’ ESCAPE ‘$’ 第2个为_<br>●between<br>where employee_id between 100 and 120<br>1.使用between and可以提高语句的简洁度<br>2.包含临界值<br>3.两个临界值不要调换<br>●in<br>in (‘XXX’,’XXX’,’XXX’)<br>1.使用in提高语句简洁度<br>2.in列表的值类型必须一致或兼容<br>3.不支持_或%<br>●is null<br>where xxxx is null<br>where xxxx is not null<br>=或&lt;&gt;不能用于判断null值，而is或is not可以用于判断null值<br>●&lt;=&gt; 安全等于<br>where xxx &lt;=&gt; null<br>where xxx &lt;=&gt; 12000<br>IS NULL:仅仅可以判断NULL值,可读性较高，建议使用<br>&lt;=&gt;       :既可以判断NULL值，又可以判断普通的数值，可读性较低<br><strong>3.排序查询</strong></p>
+</blockquote>
+<p>order by xxx asc|desc(默认asc）</p>
+<p>①默认<br>②添加筛选条件<br>③按表达式排序<br>④按别名排序<br>⑤按函数排序<br>order by length(XXX) desc<br>⑥先按xxx排序，再按yyy排序=&gt;按多个字段排序<br>order by xxx asc, yyy desc</p>
+<p>特点：<br>1.asc代表的是升序，desc代表的是降序，如果不写，默认是升序<br>2.order by 子句中可以支持单个字段、多个字段、表达式、函数、别名<br>3.order by 子句一般是放在查询语句的最后面，limit子句除外<br><strong>4.常见函数</strong><br>select 函数名(实参列表);<br>分类<br>1.单行函数  concat、length、ifnull<br>●字符函数<br>①length(xxx)<br>②concat(xx,yy)<br>③upper(xx)、lower(xx)<br>④substr(xxx,start)、substring             从1开始<br>⑤instr(父串,子串) 返回出现位置，找不到返回0<br>⑥trim(XXX)缩掉首尾的重复字符<br>⑦lpad(XXX,总len,填充字符） 用指定字符实现左填充到指定长度<br>⑧rpad(XXX,总len,填充字符）同理<br>⑨replace(父串,原子串，替换子串)<br>●数学函数<br>①round(xx)/round(xx,yy)四舍五入/保留小数点后yy位<br>②ceil(xx) 向上取整,返回大于等于xx的最小整数<br>③floor(xx)向下取整，返回小于等于xx的最大整数<br>④truncate(xx,yy) 截断,保留小数点后yy位<br>⑤mod(xx,yy) 返回xx%yy=&gt;mod的符号只和被除数有关 res = xx - xx / yy * yy<br>●日期函数<br>①now() 返回当前系统日期+时间<br>②curdate()           返回当前系统日期<br>③curtime()   返回当前时间<br>④year(now()) 可以获取指定的部分<br>⑤<br>str_to_date 将日期格式的字符转换成指定格式的日期<br>str_to_date(‘9-13-1999’,’%m-%d-%Y’)<br>⑥<br>date_format  将日期转换为字符<br>date_format(‘2018/6/6’,’%Y年%m月%d日’)<br>⑦DATEDIFF(expr1,expr2) returns expr1 − expr2<br>●其他函数<br>①version()  当前版本<br>②database()  当前数据库<br>③user()   当前用户<br>●流程控制函数<br>①<br>if(aa,bb,cc) 如果aa为true则执行bb，否则执行cc<br>②<br>case xxx<br>when 常量1 then 语句或值<br>when 常量2 then 语句或值<br>else 语句或值<br>end<br><strong>多重条件判断</strong>相当与if else if…else<br>case<br>when 条件1 then 值或语句<br>when 条件2 then 值或语句<br>else 值或语句<br>end<br>③<br>④<br>2.分组函数<br><img src="https://img-blog.csdnimg.cn/20201011211723760.png#pic_center" alt="在这里插入图片描述">●常见 sum、avg、max、min、count都是传单个参数<br><img src="https://img-blog.csdnimg.cn/20201011214837103.png#pic_center" alt="在这里插入图片描述"><br>1.sum和avg一般用于处理数值型 max、min、count可以处理任何类型<br>2.以上分组函数都忽略null值<br>3.可以和distinct搭配<br>4.count函数介绍</p>
+<p>count(<em>)/count(1) 统计行数<br>=&gt;count(</em>)效率最高<br>效率：<br>MYISAM存储引擎下,COUNT(<em>)的效率高<br>INNODB存储引擎下,COUNT(</em>)和COUNT(1)的效率差不多,比COUNT(字段)要高一些。<br>综上,使用count(*)统计行数<br>5.分组函数后面的字段只能是group by后的字段</p>
+<p><strong>5、分组查询</strong><br>语法：<br>select 分组函数,列（要求出现在group by 的后面）from 表 【where 筛选条件】 group by 分组的列表 【order by 子句】<br>注意：查询列表必须特殊，要求是分组函数和group by后出现的字段</p>
+<p>1简单的分组查询<br>select max(salary),job_id from employees group by job_id 查询每个工种的最高工资。</p>
+<p>2添加筛选条件</p>
+<p>select avg（salary）,department_id from employees where email like ‘%a%’ group by department_id 查询邮箱中包含a字符的，每个部门的平均工资。</p>
+<p>3.添加复杂筛选条件</p>
+<p>添加分组后的筛选<br>select count（<em>）,department_id from employees group by department_id having count(</em>) &gt; 2; 查询员工数大于2的部门</p>
+<p><img src="https://img-blog.csdnimg.cn/20201012105446459.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">2.group by子句支持单个字段分组、多个字段分组、表达式或函数（用的较少）<br>3.也可以添加排序，放在整个分组查询最后。<br>4.按函数来分组。<br>举例：无<br><img src="https://img-blog.csdnimg.cn/20201012115607160.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">5.按多个字段分组</p>
+<p><img src="https://img-blog.csdnimg.cn/2020101211580143.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">6.添加排序<br><img src="https://img-blog.csdnimg.cn/20201012115907575.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><strong>6、连接查询</strong></p>
+<p><img src="https://img-blog.csdnimg.cn/20201012202441353.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">1.等值连接<br><img src="https://img-blog.csdnimg.cn/20201012203000602.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">可以替换顺序、可以起别名、可以分组、可以三组<br><img src="https://img-blog.csdnimg.cn/20201012203753309.png#pic_center" alt="在这里插入图片描述"></p>
+<p>2.非等值连接=&gt;和等值差不多<br>3.自连接<br><img src="https://img-blog.csdnimg.cn/20201012204154161.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">sql99语法<br><img src="https://img-blog.csdnimg.cn/20201012205256423.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>内连接感觉就是之前的。<br>等值连接特点如下。<br><img src="https://img-blog.csdnimg.cn/20201012205642553.png#pic_center" alt="在这里插入图片描述">非等值连接：和上面差不多。<br>自连接：和上面差不多。</p>
+<p>外连接，特点<br><img src="https://img-blog.csdnimg.cn/20201012211430722.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">交叉连接，笛卡尔乘积。</p>
+<p><strong>7.子查询</strong></p>
+<p>分类<br><img src="https://img-blog.csdnimg.cn/2020101222413045.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>1.<br><img src="https://img-blog.csdnimg.cn/20201013103125225.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>举例：这里没写，具体自己不会再去看吧。<br>2.select后面</p>
+<p>3.from后面</p>
+<p>4.exist后面</p>
+<p><strong>8.分页查询</strong><br><img src="https://img-blog.csdnimg.cn/20201013105748748.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013105901157.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><strong>9.联合查询</strong><br><img src="https://img-blog.csdnimg.cn/20201013110512201.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>插入语句。<br>1.经典插入<br><img src="https://img-blog.csdnimg.cn/20201013111358396.png#pic_center" alt="在这里插入图片描述"><br>可以是什么情况：未写。<br>2.<br><img src="https://img-blog.csdnimg.cn/20201013111425940.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/202010131115432.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>修改语句</p>
+<p><img src="https://img-blog.csdnimg.cn/20201013111704869.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="1."><br><img src="https://img-blog.csdnimg.cn/20201013111727658.png#pic_center" alt="在这里插入图片描述"><br>删除语句。<br><img src="https://img-blog.csdnimg.cn/20201013111837326.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013111927384.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013111939349.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20201013112144104.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>DDL<br><img src="https://img-blog.csdnimg.cn/20201013112238921.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201013112333591.png#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201013112355281.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013112406957.png#pic_center" alt="在这里插入图片描述"><br>表的创建<br><img src="https://img-blog.csdnimg.cn/20201013112525870.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">表的修改<br><img src="https://img-blog.csdnimg.cn/20201013165118923.png#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013165425498.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>表的删除<br><img src="https://img-blog.csdnimg.cn/20201013165919279.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>表的复制<br><img src="https://img-blog.csdnimg.cn/20201013170130382.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/2020101317014654.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">常见的数据类型<br><img src="https://img-blog.csdnimg.cn/20201013170414603.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>1.整型<br><img src="https://img-blog.csdnimg.cn/20201013171249469.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">2.小数<br><img src="https://img-blog.csdnimg.cn/20201013171502327.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">字符型<br><img src="https://img-blog.csdnimg.cn/20201013171649739.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201013171720112.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201013171756362.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201013171812498.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013171858892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>日期型<br><img src="https://img-blog.csdnimg.cn/20201013171921927.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">约束<br><img src="https://img-blog.csdnimg.cn/20201013173559468.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013173638870.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013174022832.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>1.创建表时添加约束。<br>添加列级约束<br><img src="https://img-blog.csdnimg.cn/2020101317415921.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">添加表级约束<br><img src="https://img-blog.csdnimg.cn/20201013174358348.png#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2020101317451363.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">主键与唯一<br><img src="https://img-blog.csdnimg.cn/20201013174637805.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>外键特点<br><img src="https://img-blog.csdnimg.cn/2020101317480899.png#pic_center" alt="在这里插入图片描述"></p>
+<p>2.修改表时添加约束<br><img src="https://img-blog.csdnimg.cn/20201013175527339.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013175613237.png#pic_center" alt="在这里插入图片描述"><br>添加约束<br><img src="https://img-blog.csdnimg.cn/20201013175559219.png#pic_center" alt="在这里插入图片描述">删除约束<br><img src="https://img-blog.csdnimg.cn/20201013175658868.png#pic_center" alt="在这里插入图片描述"><br>标识列<br><img src="https://img-blog.csdnimg.cn/20201013180810577.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">事务<br><img src="https://img-blog.csdnimg.cn/20201013181100596.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>什么是存储引擎？<br><img src="https://img-blog.csdnimg.cn/20201013181900244.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013194129929.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>事务<br>显式事务：<br><img src="https://img-blog.csdnimg.cn/20201013200235946.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013200342565.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013202838437.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013203509387.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013211309485.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013211603146.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">设置保存点<br><img src="https://img-blog.csdnimg.cn/2020101321181221.png#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20201013211931989.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>视图</p>
+<p><img src="https://img-blog.csdnimg.cn/20201013214302942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013214343525.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201013214408463.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013214427958.png#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201013214446267.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201013214625742.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013214652209.png#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013214729288.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">delete和truncate的区别</p>
+<p><img src="https://img-blog.csdnimg.cn/20201013215418196.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">变量。</p>
+<p><img src="https://img-blog.csdnimg.cn/20201013215804322.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201014090126282.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p><img src="https://img-blog.csdnimg.cn/20201014090111928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">全局变量<br><img src="https://img-blog.csdnimg.cn/20201014090257852.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
+<p>会话变量<br><img src="https://img-blog.csdnimg.cn/20201014090353321.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201014090429419.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">自定义变量（这里写的不全）<br><img src="https://img-blog.csdnimg.cn/20201014090503761.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>用户变量<br><img src="https://img-blog.csdnimg.cn/20201014090554486.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>局部变量</p>
+<p><img src="https://img-blog.csdnimg.cn/20201014090655874.png#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201014090722757.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>存储过程和函数<br><img src="https://img-blog.csdnimg.cn/20201014090922373.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">创建语法<br><img src="https://img-blog.csdnimg.cn/20201014091054223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201014091213701.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/2020101409160045.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201014091615157.png#pic_center" alt="在这里插入图片描述"></p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/03/01/mysql%E5%91%BD%E4%BB%A4/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-hexo博客问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -272,7 +617,9 @@
   <div class="article-entry" itemprop="articleBody">
     
     <hr>
-<h3 id="hexo-d指令报错"><a href="#hexo-d指令报错" class="headerlink" title="hexo d指令报错"></a>hexo d指令报错</h3><p>当执行<code>hexo d</code>指令时,发生以下报错信息,并且无法将更新内容同步到github page上。<br><img src="/2021/03/01/hexo%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98/0.jpg" alt="0.jpg"></p>
+<h3 id="hexo-d指令报错-–-隔断时间会发生一次"><a href="#hexo-d指令报错-–-隔断时间会发生一次" class="headerlink" title="hexo d指令报错 – 隔断时间会发生一次"></a>hexo d指令报错 – 隔断时间会发生一次</h3><p>当执行<code>hexo d</code>指令时,发生以下报错信息,并且无法将更新内容同步到github page上。<br><img src="/2021/03/01/hexo%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98/0.jpg" alt="0.jpg"></p>
+<p>问题解决:</p>
+<p>1.暂时解决。<br>在确保ssh正常,hexo-deploy-git插件正常的情况下,删除目录下的<code>.deploy_git</code>文件,然后重新执行<code>hexo g</code>和<code>hexo d</code>即可。</p>
 
     
 
@@ -1069,348 +1416,6 @@
 
 
   
-    <article id="post-leetcode-双周赛第46场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/20/leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC46%E5%9C%BA/">leetcode-双周赛第46场</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/20/leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC46%E5%9C%BA/" class="archive-article-date">
-        <time datetime="2021-02-20T15:56:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-20</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string ans;</span><br><span class="line">    int maxlen;</span><br><span class="line">    bool check(string s, int l, int r)&#123;</span><br><span class="line">        int b1[200] &#x3D; &#123;0&#125;,b2[200] &#x3D; &#123;0&#125;;</span><br><span class="line">        for(int i &#x3D; l; i &lt;&#x3D; r; i ++)&#123;</span><br><span class="line">            if(s[i]&gt;&#x3D;&#39;a&#39;&amp;&amp;s[i]&lt;&#x3D;&#39;z&#39;) b1[s[i]]++;</span><br><span class="line">            else b2[s[i]-&#39;A&#39;+&#39;a&#39;]++;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i &#x3D; &#39;a&#39;; i &lt;&#x3D; &#39;z&#39;; i ++)&#123;</span><br><span class="line">            if(b1[i])&#123;</span><br><span class="line">                if(!b2[i]) return false;</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                if(b2[i]) return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    string longestNiceSubstring(string s) &#123;</span><br><span class="line">        int n &#x3D; s.size();</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">            for(int j &#x3D; i; j &lt; n; j ++)&#123;</span><br><span class="line">                if(check(s,i,j))&#123;</span><br><span class="line">                    int len &#x3D; j - i + 1;</span><br><span class="line">                    if(len &gt; maxlen)&#123;</span><br><span class="line">                        maxlen &#x3D; len;</span><br><span class="line">                        ans &#x3D; s.substr(i,len);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int tt;</span><br><span class="line">    bool check(vector&lt;int&gt; v1, vector&lt;int&gt; v2, int loc)&#123;</span><br><span class="line">        int len1 &#x3D; v1.size(), len2 &#x3D; v2.size() - loc;</span><br><span class="line">        if(len2&lt;len1) return false;</span><br><span class="line">        vector&lt;int&gt;v3;</span><br><span class="line">        for(int i &#x3D; 0; i &lt; len1; i ++)&#123;</span><br><span class="line">            v3.push_back(v2[i+loc]);</span><br><span class="line">        &#125;</span><br><span class="line">        sort(v1.begin(),v1.end());</span><br><span class="line">        sort(v3.begin(),v3.end());</span><br><span class="line">        for(int i &#x3D; 0; i &lt; len1; i ++)&#123;</span><br><span class="line">            if(v1[i]!&#x3D;v3[i]) return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    bool canChoose(vector&lt;vector&lt;int&gt;&gt;&amp; groups, vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int n &#x3D; groups.size(), len &#x3D; nums.size(), i;</span><br><span class="line">        for(i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">             int m &#x3D; groups[i].size();</span><br><span class="line">             bool flag &#x3D; false;</span><br><span class="line">             while(tt &lt; len)&#123;</span><br><span class="line">                 if(check(groups[i],nums,tt))&#123; tt +&#x3D; m; flag &#x3D; true; break;&#125;</span><br><span class="line">                 else tt ++;</span><br><span class="line">             &#125;</span><br><span class="line">             if(!flag) return false;</span><br><span class="line">             if(i &#x3D;&#x3D; n - 1) return true;</span><br><span class="line">         &#125;</span><br><span class="line">        &#x2F;&#x2F; int loc &#x3D; 1;</span><br><span class="line">        &#x2F;&#x2F; for(int i &#x3D; 0; i &lt; len; i ++)&#123;</span><br><span class="line">        &#x2F;&#x2F;     if(nums[i] &#x3D;&#x3D; q[loc]) &#123;</span><br><span class="line">        &#x2F;&#x2F;         loc++;</span><br><span class="line">        &#x2F;&#x2F;     &#125;</span><br><span class="line">        &#x2F;&#x2F;     if(loc &gt; tt) break;</span><br><span class="line">        &#x2F;&#x2F; &#125;</span><br><span class="line">        return i &#x3D;&#x3D; n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt;res;</span><br><span class="line">    int g[1010][1010];</span><br><span class="line">    bool st[1010][1010];</span><br><span class="line">    struct pts&#123;</span><br><span class="line">        int x,y,h;</span><br><span class="line">    &#125;;</span><br><span class="line">    int dx[4] &#x3D; &#123;-1,0,1,0&#125;, dy[4] &#x3D; &#123;0,1,0,-1&#125;;</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; highestPeak(vector&lt;vector&lt;int&gt;&gt;&amp; p) &#123;</span><br><span class="line">        int n &#x3D; p.size(), m &#x3D; p[0].size();</span><br><span class="line">        queue&lt;pts&gt;q;</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">            for(int j &#x3D; 0; j &lt; m; j ++)&#123;</span><br><span class="line">                if(p[i][j]&#x3D;&#x3D;1) q.push(&#123;i,j,0&#125;),st[i][j] &#x3D; true,g[i][j] &#x3D; 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        while(q.size())&#123;</span><br><span class="line">            struct pts t &#x3D; q.front(); q.pop();</span><br><span class="line">            int u &#x3D; t.x, v &#x3D; t.y, h &#x3D; t.h;</span><br><span class="line">            for(int i &#x3D; 0; i &lt; 4; i ++)&#123;</span><br><span class="line">                int x &#x3D; u + dx[i], y &#x3D; v + dy[i];</span><br><span class="line">                if(x&gt;&#x3D;0&amp;&amp;x&lt;n&amp;&amp;y&gt;&#x3D;0&amp;&amp;y&lt;m&amp;&amp;!st[x][y])&#123;</span><br><span class="line">                    st[x][y] &#x3D; true;</span><br><span class="line">                    g[x][y] &#x3D; h + 1;</span><br><span class="line">                    q.push(&#123;x,y,h+1&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">            vector&lt;int&gt;tmp;</span><br><span class="line">            for(int j &#x3D; 0; j &lt; m; j ++)&#123;</span><br><span class="line">                tmp.push_back(g[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">            res.push_back(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/20/leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC46%E5%9C%BA/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-一次模拟面试-四" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/19/%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%9B%9B/">一次模拟面试-四</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/19/%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%9B%9B/" class="archive-article-date">
-        <time datetime="2021-02-19T06:30:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-19</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <hr>
-<p>专业: 金融 自学计算机 acm集训 大三学工程 </p>
-<p>1.Object类的方法?clone方法的解释。wait和notify是否能用在除同步块外其他地方,为什么?HashMap的equals是比较什么相等?Object类中finalize是如何作用的?</p>
-<p><a target="_blank" rel="noopener" href="https://leokongwq.github.io/2017/02/24/java-why-wait-notify-called-in-synchronized-block.html">https://leokongwq.github.io/2017/02/24/java-why-wait-notify-called-in-synchronized-block.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42145871/article/details/81950949?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control">https://blog.csdn.net/qq_42145871/article/details/81950949?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control</a></p>
-<p>2.HTTP响应报文状态码。(了解)</p>
-<p>3.JAVA线程的生命周期。阻塞状态的细分(了解)</p>
-<p>4.redis为什么这么快?(了解)</p>
-<p>5.HTTP有哪些请求方法。(了解)GET和POST的区别(了解)GET的URL最大大小?</p>
-<p>6.如何保证数据库和Redis的数据一致性，先更新数据库再删除缓存。先删除缓存再更新数据库这两个方法分别存在什么问题？(了解) </p>
-<p>7.mysiam和innodb的区别?非聚簇索引,聚簇索引。</p>
-<p>8.线程的生命周期(了解)</p>
-<p>9.线程池7大核心参数，拒绝策略有哪些,线程池执行任务的过程。(了解)</p>
-<hr>
-<p>专业：软件工程    acm集训    算法能力     校三奖学金   校三acm  </p>
-<p>个人博客    图书管理系统</p>
-<p>==与equals：基本了解</p>
-<p>String和StringBuild、StringBuffer：基本了解</p>
-<p>throw和throws：基本了解</p>
-<p>位置不同</p>
-<ol>
-<li>throws 用在函数上，后面跟的是异常类，可以跟多个；而 throw 用在函数内，后面跟的<br>是异常对象。<br>功能不同：</li>
-<li>throws 用来声明异常，让调用者只知道该功能可能出现的问题，可以给出预先的处理方<br>式；throw 抛出具体的问题对象，执行到 throw，功能就已经结束了，跳转到调用者，并<br>将具体的问题对象抛给调用者。也就是说 throw 语句独立存在时，下面不要定义其他语<br>句，因为执行不到。</li>
-<li>throws 表示出现异常的一种可能性，并不一定会发生这些异常；throw 则是抛出了异常，<br>执行 throw 则一定抛出了某种异常对象。</li>
-<li>两者都是消极处理异常的方式，只是抛出或者可能抛出异常，但是不会由函数去处理异<br>常，真正的处理异常由函数的上层调用处理</li>
-</ol>
-<p>一致性hash：</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jajian/p/10896624.html">https://www.cnblogs.com/jajian/p/10896624.html</a></p>
-<p>拥塞控制：四种方法（基本了解）描述不太清楚</p>
-<p>虚拟内存：（基本了解）</p>
-<p>一条sql语句是如何执行的：不太了解</p>
-<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&amp;mid=2247485097&amp;idx=1&amp;sn=84c89da477b1338bdf3e9fcd65514ac1&amp;chksm=cea24962f9d5c074d8d3ff1ab04ee8f0d6486e3d015cfd783503685986485c11738ccb542ba7&amp;token=79317275&amp;lang=zh_CN#rd">https://mp.weixin.qq.com/s?__biz=Mzg2OTA0Njk0OA==&amp;mid=2247485097&amp;idx=1&amp;sn=84c89da477b1338bdf3e9fcd65514ac1&amp;chksm=cea24962f9d5c074d8d3ff1ab04ee8f0d6486e3d015cfd783503685986485c11738ccb542ba7&amp;token=79317275&amp;lang=zh_CN#rd</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38150538/article/details/88873328">https://blog.csdn.net/qq_38150538/article/details/88873328</a></p>
-<p>redis内存淘汰机制：不太了解<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43184769/article/details/90523923">https://blog.csdn.net/weixin_43184769/article/details/90523923</a></p>
-<p>做道题</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">int s1[100010],t1&#x3D;-1;</span><br><span class="line">int s2[100010],t2&#x3D;-1;</span><br><span class="line">    int calculate(string s) &#123;</span><br><span class="line">        int n &#x3D; s.size();</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">            if(s[i]&gt;&#x3D;&#39;0&#39;&amp;&amp;s[i]&lt;&#x3D;&#39;9&#39;)&#123;</span><br><span class="line">                int x &#x3D; s[i] - &#39;0&#39;;</span><br><span class="line">                int j &#x3D; i;</span><br><span class="line">                while(j+1&lt;n&amp;&amp;s[j+1]&gt;&#x3D;&#39;0&#39;&amp;&amp;s[j+1]&lt;&#x3D;&#39;9&#39;) x &#x3D; 10 * x + (s[j+1] - &#39;0&#39;),j++;</span><br><span class="line">                s1[++t1] &#x3D; x;</span><br><span class="line">                while(t2&gt;&#x3D;0&amp;&amp;(s2[t2]&#x3D;&#x3D;&#39;*&#39;||s2[t2]&#x3D;&#x3D;&#39;&#x2F;&#39;))&#123;</span><br><span class="line">                    int &amp;v1 &#x3D; s1[t1-1], &amp;v2 &#x3D; s1[t1];</span><br><span class="line">                    if(s2[t2]&#x3D;&#x3D;&#39;*&#39;) v1*&#x3D;v2;</span><br><span class="line">                    else v1&#x2F;&#x3D;v2;</span><br><span class="line">                    t1--;</span><br><span class="line">                    t2--;</span><br><span class="line">                &#125;</span><br><span class="line">                i &#x3D; j;</span><br><span class="line">            &#125;</span><br><span class="line">            else if(s[i] &#x3D;&#x3D; &#39; &#39;) continue;</span><br><span class="line">            else &#123;</span><br><span class="line">                s2[++t2] &#x3D; s[i];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; while(t2&gt;&#x3D;0)&#123;</span><br><span class="line">        &#x2F;&#x2F;     int &amp;v1 &#x3D; s1[t1-1], &amp;v2 &#x3D; s1[t1];</span><br><span class="line">        &#x2F;&#x2F;     if(s2[t2] &#x3D;&#x3D; &#39;+&#39;) v1 +&#x3D; v2;</span><br><span class="line">        &#x2F;&#x2F;     else v1 -&#x3D; v2;</span><br><span class="line">        &#x2F;&#x2F;     t1--;</span><br><span class="line">        &#x2F;&#x2F;     t2--;</span><br><span class="line">        &#x2F;&#x2F; &#125;</span><br><span class="line">        int ans &#x3D; 0, t3 &#x3D; 1;</span><br><span class="line">        for(int i &#x3D; 0; i &lt;&#x3D; t2; i ++)&#123;</span><br><span class="line">            if(s2[i] &#x3D;&#x3D; &#39;+&#39;) s1[0] +&#x3D; s1[t3], t3++;</span><br><span class="line">            else s1[0] -&#x3D; s1[t3], t3++; </span><br><span class="line">        &#125;</span><br><span class="line">        return s1[0];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/19/%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%9B%9B/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-一次模拟面试-三" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/17/%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%B8%89/">一次模拟面试-三</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/17/%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%B8%89/" class="archive-article-date">
-        <time datetime="2021-02-17T06:49:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-17</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <hr>
-<p>1.java的内存模型。虚拟机栈的内容。</p>
-<p>2.GCRoots有哪些?(不了解)</p>
-<p>3.手写一个线程安全的单例(不了解)</p>
-<p>4.访问url的过程是什么?域名解析的过程(DNS解析不太了解)</p>
-<p>5.介绍一下数据库索引?索引是什么?索引的好处?索引的坏处?索引优化的了解?（部分了解)</p>
-<p>6.TCP三次握手为什么不是二次握手?四次握手?(基本了解)</p>
-<p>7.Redis是用在什么场景?</p>
-<p>8.HTTP请求的内容是什么?(不太了解)</p>
-<p>9.进程线程区别?为什么进程切换开销大?</p>
-<p>10.进程之间通讯方式(基本了解)</p>
-<hr>
-<p>tcp可靠传输：重传、窗口控制。（基本了解）</p>
-<p>http无状态。使用cookie保证状态。</p>
-<p>cookie和session（基本了解）</p>
-<p>https与http的区别。 加密（基本了解）对称加密如何保证？</p>
-<p>整体过程：客户端和服务端在开始传输数据之前，会协商传输过程需要使用的加密算法。客<br>户端发送协商请求给服务端, 其中包含自己支持的非对成加密的密钥交换算法 ( 一般是<br>RSA), 数据签名摘要算法 ( 一般是SHA或者MD5) , 加密传输数据的对称加密算法 ( 一般是<br>DES),以及加密密钥的长度。 服务端接收到消息之后，选中安全性最高的算法，并将选中的<br>算法发送给客户端，完成协商。客户端生成随机的字符串，通过协商好的非对称加密算法，<br>使用服务端的公钥对该字符串进行加密，发送给服务端。 服务端接收到之后，使用自己的<br>私钥解密得到该字符串。在随后的数据传输当中，使用这个字符串作为密钥进行对称加密。</p>
-<p>共享内存（大致了解）</p>
-<p>最快的线程通信方式–共享内存。</p>
-<p>对比管道通信,没有数据拷贝的过程。</p>
-<p>块表、页表、多级页表。（基本了解）多级页表原理？</p>
-<p>如何解决单级页表的问题?</p>
-<p>问题一: 页表必须连续存放,因此当页表很大时,需要占用很多个连续的页框。</p>
-<p>问题二: 没有必要让整个页表常驻内存,因此进程在一段时间内可能只需要访问某几个特定的页面。</p>
-<p>思考: 我们是如何解决进程在内存中必须连续存储的问题的?</p>
-<p>将进程地址空间分页,并为其建立一张页表,记录各页面的存放位置。</p>
-<p>同样的思路也可用于解决”页表必须连续存放”的问题,把必须连续存放的页表再分页。</p>
-<p>可将长长的页表进行分组,使每个内存块刚好可以放入一个分组(比如上个例子中,页面大小4KB,每个页表项4B,每个页面可存放1K个页表项,因此每1K个连续的页表项为一组,每组刚好占一个内存块,再将各组离散地放到各个内存块中)</p>
-<p>另外,要为离散分配的页表再建立一张页表,称为页目录表,或称外层页表,或称顶层页表。</p>
-<p>间隙锁（基本了解）</p>
-<p>hash索引和b+索引。（基本了解）</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/shengguorui/p/10694286.html">https://www.cnblogs.com/shengguorui/p/10694286.html</a></p>
-<p>redis多线程？</p>
-<p>redis现在是多线程,因为IO操作太慢。<br><a target="_blank" rel="noopener" href="http://www.zyiz.net/tech/detail-128790.html">http://www.zyiz.net/tech/detail-128790.html</a></p>
-<p>redis删除策略。</p>
-<p>定时删除（基本了解）</p>
-<p>惰性删除（基本了解）</p>
-<p>默认混合策略。</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/17/%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%B8%89/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next</a>
@@ -1621,6 +1626,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">面试题</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
               </li>
             
             <div class="clearfix"></div>
