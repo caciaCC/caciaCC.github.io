@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://caciacc.top/2021/02/13/%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98/1.jpg">
 <meta property="og:image" content="https://pic2.zhimg.com/v2-287f87ad5328f2aa5cd7fbd48dadcd8f_r.jpg?source=1940ef5c">
 <meta property="article:published_time" content="2021-02-13T02:32:57.000Z">
-<meta property="article:modified_time" content="2021-03-02T06:15:02.448Z">
+<meta property="article:modified_time" content="2021-03-02T12:18:30.955Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="面试题">
 <meta name="twitter:card" content="summary">
@@ -274,7 +274,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">27.7k字</span>
+      <span class="post-count">30k字</span>
     </span>
   </span>
 
@@ -283,7 +283,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">107分</span>
+      <span class="post-count">115分</span>
     </span>
   </span>
 </div>
@@ -925,7 +925,64 @@ redo log 是循环写的，空间固定会用完；binlog 是可以追加写入�
 <p>syn实现。解锁前,把共享变量最新值刷新到主内存。加锁时,清空本地内存中共享变量的值,从而从主内存中读入共享变量最新值。<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xuwenjin/p/9044230.html">https://www.cnblogs.com/xuwenjin/p/9044230.html</a></p>
 <p>final实现。<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/mianlaoshu/articles/3648403.html">https://www.cnblogs.com/mianlaoshu/articles/3648403.html</a></p>
 <h2 id="说到线程，那么线程是属于哪块区域的"><a href="#说到线程，那么线程是属于哪块区域的" class="headerlink" title="说到线程，那么线程是属于哪块区域的"></a>说到线程，那么线程是属于哪块区域的</h2><h2 id="GC说一下（开始背书）"><a href="#GC说一下（开始背书）" class="headerlink" title="GC说一下（开始背书）"></a>GC说一下（开始背书）</h2><p>ZGC<br>JDK11 中加入的具有实验性质的<code>低延迟</code>垃圾收集器，目标是尽可能在不影响<code>吞吐量</code>的前提下，实现在任意堆内存大小都可以把停顿时间限制在 10ms 以内的低延迟。基于 Region 内存布局，<code>不设分代</code>，使用了<code>读屏障</code>、<code>染色指针</code>和<code>内存多重映射</code>等技术实现可并发的标记-整理，以低延迟为首要目标。ZGC 的 Region 具有动态性，是动态创建和销毁的，并且容量大小也是动态变化的。</p>
-<h2 id="有用过hashmap吗-实现-是线程安全的吗？想要线程安全怎么办？"><a href="#有用过hashmap吗-实现-是线程安全的吗？想要线程安全怎么办？" class="headerlink" title="有用过hashmap吗?实现?是线程安全的吗？想要线程安全怎么办？"></a>有用过hashmap吗?实现?是线程安全的吗？想要线程安全怎么办？</h2><h2 id="为什么使用红黑树"><a href="#为什么使用红黑树" class="headerlink" title="为什么使用红黑树?"></a>为什么使用红黑树?</h2>
+<h2 id="有用过hashmap吗-实现-是线程安全的吗？想要线程安全怎么办？"><a href="#有用过hashmap吗-实现-是线程安全的吗？想要线程安全怎么办？" class="headerlink" title="有用过hashmap吗?实现?是线程安全的吗？想要线程安全怎么办？"></a>有用过hashmap吗?实现?是线程安全的吗？想要线程安全怎么办？</h2><h2 id="为什么使用红黑树-红黑树特性"><a href="#为什么使用红黑树-红黑树特性" class="headerlink" title="为什么使用红黑树?红黑树特性?"></a>为什么使用红黑树?红黑树特性?</h2><p>为什么使用红黑树:<br>红黑树是一种平衡树，他复杂的定义和规则都是为了保证树的平衡性。如果树不保证他的平衡性就变成一个链表了。</p>
+<p>红黑树特性:<br>（1）每个节点或者是黑色，或者是红色。<br>（2）根节点是黑色。<br>（3）每个叶子节点（NIL）是黑色。 [注意：这里叶子节点，是指为空(NIL或NULL)的叶子节点！]<br>（4）如果一个节点是红色的，则它的子节点必须是黑色的。<br>（5）从一个节点到该节点的子孙节点的所有路径上包含相同数目的黑节点。[这里指到叶子节点的路径]<br>包含n个内部节点的红黑树的高度是 O(log(n)).  </p>
+<h2 id="和平衡搜索二叉树的区别"><a href="#和平衡搜索二叉树的区别" class="headerlink" title="和平衡搜索二叉树的区别"></a>和平衡搜索二叉树的区别</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010899985/article/details/80981053">https://blog.csdn.net/u010899985/article/details/80981053</a></p>
+<p>AVL树需要维护所有节点左右子树高度差绝对值不超过1,所以会多次旋转,而旋转十分<code>耗时</code>,所以适合<code>查询多而增删少</code>的情况。</p>
+<p>红黑树是一种弱平衡二叉树(因为在节点数相同时,AVL树高度低于红黑树),相对于<code>平衡搜索二叉树</code>,红黑树适用于<code>增删多,查询少</code>的情况。</p>
+<h2 id="在浏览器输入一个网址会发生什么"><a href="#在浏览器输入一个网址会发生什么" class="headerlink" title="在浏览器输入一个网址会发生什么?"></a>在浏览器输入一个网址会发生什么?</h2><h2 id="TCP-IP模型和OSI模型"><a href="#TCP-IP模型和OSI模型" class="headerlink" title="TCP/IP模型和OSI模型"></a>TCP/IP模型和OSI模型</h2><p>TCP/IP-&gt;先协议后模型-&gt;网络接口层-&gt;…</p>
+<p>OSI-&gt;先模型后协议-&gt;</p>
+<p>区别:</p>
+<p>1.OSI七层模型,TCP/IP四层模型</p>
+<p>2.OSI先有模型后有协议,TCP先有协议后有模型</p>
+<p>3.OSI用于理论研究学习,TCP/IP用于实际协议的研发</p>
+<p>4.OSI必须具备完整的数据封装(缺少一层都不行),TCP/IP支持跨层封装(OSPF),完整封装(DHCP、RIP)</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_43561410/article/details/89180039">https://blog.csdn.net/qq_43561410/article/details/89180039</a></p>
+<h2 id="用过索引吗-怎么样确定使用到了索引-索引类型"><a href="#用过索引吗-怎么样确定使用到了索引-索引类型" class="headerlink" title="用过索引吗,怎么样确定使用到了索引,索引类型"></a>用过索引吗,怎么样确定使用到了索引,索引类型</h2><p>通过explain指令。<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/the-fool/p/11113996.html">https://www.cnblogs.com/the-fool/p/11113996.html</a></p>
+<p>索引类型五种:<br>1.单列索引(主键索引、唯一索引、普通索引)<br>2.组合索引<br>3.全文索引-&gt;用于text解决’%like%’失效</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/gaotiedun1/article/details/88584362">https://blog.csdn.net/gaotiedun1/article/details/88584362</a></p>
+<h2 id="为什么用B-树、和B树有什么区别"><a href="#为什么用B-树、和B树有什么区别" class="headerlink" title="为什么用B+树、和B树有什么区别"></a>为什么用B+树、和B树有什么区别</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/xueqiuqiu/articles/8779029.html">https://www.cnblogs.com/xueqiuqiu/articles/8779029.html</a></p>
+<p>1.更加矮胖<br>2.查询效率稳定<br>3.适合范围查询</p>
+<p>区别:<br>1.双链<br>2.b树有m个儿子的非叶节点有m-1个关键码,而b+树有m个儿子的非叶节点有m个关键码。<br>3.同一个数字会在不同节点中重复出现,根节点的最大元素就是b+树的最大元素,而b树不会。</p>
+<h2 id="聚簇索引和非聚簇索引"><a href="#聚簇索引和非聚簇索引" class="headerlink" title="聚簇索引和非聚簇索引"></a>聚簇索引和非聚簇索引</h2><p>聚簇索引:自增主键的索引(没有会默认创建)。<br>非聚簇索引:自行添加的索引。<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/jiawen010/p/11805241.html">https://www.cnblogs.com/jiawen010/p/11805241.html</a></p>
+<h2 id="有用过锁吗-说一下lock和synchronized的区别。"><a href="#有用过锁吗-说一下lock和synchronized的区别。" class="headerlink" title="有用过锁吗?说一下lock和synchronized的区别。"></a>有用过锁吗?说一下lock和synchronized的区别。</h2><p>lock依赖JUC的AQS实现。<br>lock条件唤醒,syn不行。<br>lock是API层面,syn是操作系统层面。<br>lock可中断,syn不能。</p>
+<p>syn为什么不可中断?<a target="_blank" rel="noopener" href="https://cloud.tencent.com/developer/article/1622813">https://cloud.tencent.com/developer/article/1622813</a></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Lock VS Synchronized</span><br><span class="line">AbstractQueuedSynchronizer通过构造一个基于阻塞的CLH队列容纳所有的阻塞线程，而对该队列的操作均通过Lock-Free（CAS）操作，但对已经获得锁的线程而言，ReentrantLock实现了偏向锁的功能。</span><br><span class="line"></span><br><span class="line">synchronized的底层也是一个基于CAS操作的等待队列，但JVM实现的更精细，把等待队列分为ContentionList和EntryList，目的是为了降低线程的出列速度；当然也实现了偏向锁，从数据结构来说二者设计没有本质区别。但synchronized还实现了自旋锁，并针对不同的系统和硬件体系进行了优化，而Lock则完全依靠系统阻塞挂起等待线程。</span><br><span class="line"></span><br><span class="line">当然Lock比synchronized更适合在应用层扩展，可以继承AbstractQueuedSynchronizer定义各种实现，比如实现读写锁（ReadWriteLock），公平或不公平锁；同时，Lock对应的Condition也比wait&#x2F;notify要方便的多、灵活的多</span><br></pre></td></tr></table></figure>
+<h2 id="代码题：手写一个单例模式吧（默写）"><a href="#代码题：手写一个单例模式吧（默写）" class="headerlink" title="代码题：手写一个单例模式吧（默写）"></a>代码题：手写一个单例模式吧（默写）</h2><h2 id="看到有volatile关键字-说一下volatile吧"><a href="#看到有volatile关键字-说一下volatile吧" class="headerlink" title="看到有volatile关键字,说一下volatile吧"></a>看到有volatile关键字,说一下volatile吧</h2><p>内存屏障+Lock前缀的指令+缓存一致性协议</p>
+<h2 id="和synchronized的区别"><a href="#和synchronized的区别" class="headerlink" title="和synchronized的区别"></a>和synchronized的区别</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/kaleidoscope/p/9506018.html">https://www.cnblogs.com/kaleidoscope/p/9506018.html</a></p>
+<p>volatile和synchronized的区别</p>
+<pre><code>volatile本质是在告诉jvm当前变量在寄存器（工作内存）中的值是不确定的，需要从主存中读取； synchronized则是锁定当前变量，只有当前线程可以访问该变量，其他线程被阻塞住。
+volatile仅能使用在变量级别；synchronized则可以使用在变量、方法、和类级别的
+volatile仅能实现变量的修改可见性，不能保证原子性；而synchronized则可以保证变量的修改可见性和原子性
+volatile不会造成线程的阻塞；synchronized可能会造成线程的阻塞。
+volatile标记的变量不会被编译器优化；synchronized标记的变量可以被编译器优化</code></pre>
+<h2 id="乐观锁悲观锁"><a href="#乐观锁悲观锁" class="headerlink" title="乐观锁悲观锁"></a>乐观锁悲观锁</h2><p>悲观锁:共享锁、排它锁。<br>乐观锁: CAS版本号控制。<br><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/d2ac26ca6525">https://www.jianshu.com/p/d2ac26ca6525</a></p>
+<h2 id="你觉得自己相比一年前进步了多少"><a href="#你觉得自己相比一年前进步了多少" class="headerlink" title="你觉得自己相比一年前进步了多少"></a>你觉得自己相比一年前进步了多少</h2><h2 id="没有问项目，问为什么没有实习，自己学习是怎么样学习的，课程成绩"><a href="#没有问项目，问为什么没有实习，自己学习是怎么样学习的，课程成绩" class="headerlink" title="没有问项目，问为什么没有实习，自己学习是怎么样学习的，课程成绩"></a>没有问项目，问为什么没有实习，自己学习是怎么样学习的，课程成绩</h2><h2 id="你使用的是什么版本的jdk？然后开始问1-6和1-7-1-8的差别。"><a href="#你使用的是什么版本的jdk？然后开始问1-6和1-7-1-8的差别。" class="headerlink" title="你使用的是什么版本的jdk？然后开始问1.6和1.7 1.8的差别。"></a>你使用的是什么版本的jdk？然后开始问1.6和1.7 1.8的差别。</h2><p>HashMap1.7-&gt;HashMap1.8  </p>
+<p>ConcurrentHashMap1.7-&gt;1.8</p>
+<p>1.8-&gt;lambda表达式,流式编程。</p>
+<p>从JVM内存模型角度:<br><a href="http://caciacc.top/2021/01/12/jvm/">http://caciacc.top/2021/01/12/jvm/</a><br>永久代是1.7以及其之前的概念。方法区是一种抽象概念,和永久代(只有HotSpot才有)和元空间是对方法区的一种具体实现。<br>1.7将原本在永久代的字符串常量池和静态变量等移出到堆中。<br>1.8废除永久代的概念。方法区中包括元空间(元空间使用的也是本地内存)。<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/paddix/p/5309550.html">https://www.cnblogs.com/paddix/p/5309550.html</a></p>
+<p>为什么要做这个转换?</p>
+<p>1、字符串存在永久代中，容易出现性能问题和内存溢出。</p>
+<p>2、类及方法的信息等比较难确定其大小，因此对于永久代的大小指定比较困难，太小容易出现永久代溢出，太大则容易导致老年代溢出。</p>
+<p>3、永久代会为 GC 带来不必要的复杂度，并且回收效率偏低。</p>
+<p>4、Oracle 可能会将HotSpot 与 JRockit 合二为一。</p>
+<h2 id="HashMap和HashTable的区别是什么"><a href="#HashMap和HashTable的区别是什么" class="headerlink" title="HashMap和HashTable的区别是什么"></a>HashMap和HashTable的区别是什么</h2><p>Hashtable初始容量11。<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/heyonggang/p/9112731.html">https://www.cnblogs.com/heyonggang/p/9112731.html</a></p>
+<h2 id="那么HashMap有没有线程安全的版本"><a href="#那么HashMap有没有线程安全的版本" class="headerlink" title="那么HashMap有没有线程安全的版本"></a>那么HashMap有没有线程安全的版本</h2><p><a target="_blank" rel="noopener" href="https://www.imooc.com/wenda/detail/430987">https://www.imooc.com/wenda/detail/430987</a><br>Collections.SynHashMap/ConcurrentHashMap/</p>
+<h2 id="如何实现的？"><a href="#如何实现的？" class="headerlink" title="如何实现的？"></a>如何实现的？</h2><p>继承AbstactMap</p>
+<p>1.7实现。<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/dianzijinglin/article/details/80998555">https://blog.csdn.net/dianzijinglin/article/details/80998555</a></p>
+<p>1.8实现。<br><a href="http://caciacc.top/2021/01/12/Map%E7%9B%B8%E5%85%B3/">http://caciacc.top/2021/01/12/Map%E7%9B%B8%E5%85%B3/</a></p>
+<h2 id="说到使用到了mysql-问索引"><a href="#说到使用到了mysql-问索引" class="headerlink" title="说到使用到了mysql 问索引"></a>说到使用到了mysql 问索引</h2><h2 id="索引数据结构-为什么要用b-树-怎么去分配聚簇索引和非聚簇索引-为什么这么去分配"><a href="#索引数据结构-为什么要用b-树-怎么去分配聚簇索引和非聚簇索引-为什么这么去分配" class="headerlink" title="索引数据结构?为什么要用b+树?怎么去分配聚簇索引和非聚簇索引?为什么这么去分配"></a>索引数据结构?为什么要用b+树?怎么去分配聚簇索引和非聚簇索引?为什么这么去分配</h2><p>什么情况下用聚簇索引?什么情况下用非聚簇索引?<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/lanze/articles/4868262.html">https://www.cnblogs.com/lanze/articles/4868262.html</a><br>频繁更新修改的列不应建立聚簇索引,而应建立聚簇索引。</p>
+<p>覆盖索引是无需回表,如select key2 from covering_index_sample where key1 = ‘keytest’。</p>
+<h2 id="你的项目有很大量级吗，有做过数据库优化吗"><a href="#你的项目有很大量级吗，有做过数据库优化吗" class="headerlink" title="你的项目有很大量级吗，有做过数据库优化吗"></a>你的项目有很大量级吗，有做过数据库优化吗</h2><h2 id="然后问int存到数据库里面一般你都用什么类型来接-一开始说我自己项目里我全部是用varchar的，但是显然这样不是最优选择，可以看出来面试官有点迷惑（用varchar？！），最后说用int"><a href="#然后问int存到数据库里面一般你都用什么类型来接-一开始说我自己项目里我全部是用varchar的，但是显然这样不是最优选择，可以看出来面试官有点迷惑（用varchar？！），最后说用int" class="headerlink" title="然后问int存到数据库里面一般你都用什么类型来接 一开始说我自己项目里我全部是用varchar的，但是显然这样不是最优选择，可以看出来面试官有点迷惑（用varchar？！），最后说用int"></a>然后问int存到数据库里面一般你都用什么类型来接 一开始说我自己项目里我全部是用varchar的，但是显然这样不是最优选择，可以看出来面试官有点迷惑（用varchar？！），最后说用int</h2><p>数值类型:<br>tinyint 1<br>smallint 2<br>mediumint 3<br>int 4<br>bigint 8<br>float 4<br>double 8<br>decimal 不固定  </p>
+<p>日期:<br>date<br>time<br>year<br>datetime<br>timestamp</p>
+<p>字符:<br>CHAR  0-255<br>VARCHAR  0-65535<br>BINARY   0-<br>VARBINARY<br>BLOB  0-65535 二进制长文本<br>TEXT  0-65535<br>ENUM<br>SET</p>
+<p>int最多保存10数值(2147483647.0x7f7f7f7f)。</p>
+<h2 id="顺着问varchar（35）的含义-一开始说错了，思考了一下，正确说出来了"><a href="#顺着问varchar（35）的含义-一开始说错了，思考了一下，正确说出来了" class="headerlink" title="顺着问varchar（35）的含义 一开始说错了，思考了一下，正确说出来了"></a>顺着问varchar（35）的含义 一开始说错了，思考了一下，正确说出来了</h2><h2 id="又问了中文在varchar中占几个字符-回答了不同编码中中文所占字符应该不一样的，回答的2个，但实际是3个，后续面试官纠正的"><a href="#又问了中文在varchar中占几个字符-回答了不同编码中中文所占字符应该不一样的，回答的2个，但实际是3个，后续面试官纠正的" class="headerlink" title="又问了中文在varchar中占几个字符 回答了不同编码中中文所占字符应该不一样的，回答的2个，但实际是3个，后续面试官纠正的"></a>又问了中文在varchar中占几个字符 回答了不同编码中中文所占字符应该不一样的，回答的2个，但实际是3个，后续面试官纠正的</h2><p>varchar 跟你说得不是一回事.比如说你用GB2312一个汉字,就占2个字符,用UTF-8占3个字符.用varchar类型那,他就自动帮你截取,比如说你定义列varchar(10)写然后你得数据库字符级用UTF-8 你插入字符串 “我是中国人”但这时数据库只让你插入”我是中”其余的背截断了. </p>
+<p>占三个字符。</p>
+<h2 id="又问你在自己项目里有注意过这个编码问题吗"><a href="#又问你在自己项目里有注意过这个编码问题吗" class="headerlink" title="又问你在自己项目里有注意过这个编码问题吗"></a>又问你在自己项目里有注意过这个编码问题吗</h2><p>读取文件,写文件时需要注意。如GBK和UTF-8问题。<br><a target="_blank" rel="noopener" href="https://www.iteye.com/blog/yeak2001-1066329">https://www.iteye.com/blog/yeak2001-1066329</a></p>
+<h2 id="感觉你都是为了学一个技术去学啊，你有了解过linux吗"><a href="#感觉你都是为了学一个技术去学啊，你有了解过linux吗" class="headerlink" title="感觉你都是为了学一个技术去学啊，你有了解过linux吗"></a>感觉你都是为了学一个技术去学啊，你有了解过linux吗</h2><h2 id="为什么要去用redis呢"><a href="#为什么要去用redis呢" class="headerlink" title="为什么要去用redis呢"></a>为什么要去用redis呢</h2><h2 id="你说快，那有多快，相比mysql快很多倍，是多少倍，是多少量级的，你现在的电脑配置说一下，四核i5最多可以跑多少个连接"><a href="#你说快，那有多快，相比mysql快很多倍，是多少倍，是多少量级的，你现在的电脑配置说一下，四核i5最多可以跑多少个连接" class="headerlink" title="你说快，那有多快，相比mysql快很多倍，是多少倍，是多少量级的，你现在的电脑配置说一下，四核i5最多可以跑多少个连接"></a>你说快，那有多快，相比mysql快很多倍，是多少倍，是多少量级的，你现在的电脑配置说一下，四核i5最多可以跑多少个连接</h2><p>redis连接数默认是1w。<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_42402664/article/details/112046957">https://blog.csdn.net/weixin_42402664/article/details/112046957</a></p>
+<p>十几万，根据redis中的一些配置的不同会有上下的浮动</p>
+<h2 id="反问问之前没回答上的问题。"><a href="#反问问之前没回答上的问题。" class="headerlink" title="反问问之前没回答上的问题。"></a>反问问之前没回答上的问题。</h2><h2 id><a href="#" class="headerlink" title></a></h2>
     
 
     
