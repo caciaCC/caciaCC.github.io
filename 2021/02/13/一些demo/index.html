@@ -18,7 +18,7 @@
 <meta property="og:description" content="JUC相关异步处理 12345678910111213141516171819202122232425262728293031323334353637package demo.juc;import org.apache.commons.collections.list.SynchronizedList;import java.util.*;import java.util.concurrent.C">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-02-13T05:55:14.000Z">
-<meta property="article:modified_time" content="2021-03-01T12:16:28.539Z">
+<meta property="article:modified_time" content="2021-03-04T13:16:40.197Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
@@ -292,6 +292,7 @@
     
     <h2 id="JUC相关"><a href="#JUC相关" class="headerlink" title="JUC相关"></a>JUC相关</h2><p>异步处理</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo.juc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> org.apache.commons.collections.list.SynchronizedList;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.CompletableFuture;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ConcurrentHashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.ExecutionException;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.locks.AbstractQueuedSynchronizer;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CompletableFutureDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ExecutionException, InterruptedException </span>&#123;</span><br><span class="line">        CompletableFuture&lt;Void&gt; things1 = CompletableFuture.runAsync(() -&gt; &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">&quot;\t&quot;</span> + <span class="string">&quot;没返回&quot;</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;do some things&quot;</span>);</span><br><span class="line">        &#125;);</span><br><span class="line">        System.out.println(things1.get());</span><br><span class="line">        CompletableFuture&lt;Integer&gt; things2= CompletableFuture.supplyAsync(() -&gt; &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName() + <span class="string">&quot;\t&quot;</span> + <span class="string">&quot;有返回&quot;</span>);</span><br><span class="line">            System.out.println(<span class="string">&quot;do some things&quot;</span>);</span><br><span class="line">           <span class="keyword">int</span> age = <span class="number">10</span>/<span class="number">0</span>;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">1024</span>;</span><br><span class="line">        &#125;);</span><br><span class="line">        System.out.println(things2.whenComplete((x, y) -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;*****x&quot;</span> + x);</span><br><span class="line">            System.out.println(<span class="string">&quot;*****y&quot;</span> + y);</span><br><span class="line">        &#125;).exceptionally((f) -&gt; &#123;</span><br><span class="line">            System.out.println(<span class="string">&quot;*****&quot;</span> + f.getMessage());</span><br><span class="line">            <span class="keyword">return</span> <span class="number">4444</span>;</span><br><span class="line">        &#125;).get());</span><br><span class="line">        <span class="comment">//只能通过</span></span><br><span class="line"><span class="comment">//        List list = Collections.synchronizedList(new ArrayList());</span></span><br><span class="line"><span class="comment">//        Thread.State;</span></span><br><span class="line"><span class="comment">//        Thread</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>分之合并</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> demo.juc;</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> java.util.HashMap;</span><br><span class="line"><span class="keyword">import</span> java.util.concurrent.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * 分之合并框架</span></span><br><span class="line"><span class="comment"> * ForkJoinPool</span></span><br><span class="line"><span class="comment"> * ForkJoinTask</span></span><br><span class="line"><span class="comment"> * RecursiveTask</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyTask</span> <span class="keyword">extends</span> <span class="title">RecursiveTask</span>&lt;<span class="title">Integer</span>&gt;</span></span><br><span class="line"><span class="class"></span>&#123;</span><br><span class="line"> <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> Integer ADJUST_VALUE = <span class="number">10</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> begin;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> end;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> result;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="title">MyTask</span><span class="params">(<span class="keyword">int</span> begin, <span class="keyword">int</span> end)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.begin = begin;</span><br><span class="line">        <span class="keyword">this</span>.end = end;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">protected</span> Integer <span class="title">compute</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(end-begin&lt;=<span class="number">10</span>)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = begin; i &lt;= end; i ++) result +=i;</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            <span class="keyword">int</span> mid = end + begin &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            MyTask task01 = <span class="keyword">new</span> MyTask(begin,mid);</span><br><span class="line">            MyTask task02 = <span class="keyword">new</span> MyTask(mid+<span class="number">1</span>,end);</span><br><span class="line">            task01.fork();</span><br><span class="line">            task02.fork();</span><br><span class="line">            result = task01.join() + task02.join();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> result;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ForkJoinDemo</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> ExecutionException, InterruptedException </span>&#123;</span><br><span class="line">        MyTask task = <span class="keyword">new</span> MyTask(<span class="number">0</span>,<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line">        ForkJoinPool forkJoinPool = <span class="keyword">new</span> ForkJoinPool();</span><br><span class="line">        ForkJoinTask&lt;Integer&gt; submit = forkJoinPool.submit(task);</span><br><span class="line"></span><br><span class="line">        System.out.println(submit.get());</span><br><span class="line"></span><br><span class="line">        forkJoinPool.shutdown();</span><br><span class="line"><span class="comment">//        HashMap</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>LambdaExpress</p>
@@ -631,14 +632,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Collection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
               </li>
              
@@ -663,7 +656,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">NOSQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -691,10 +684,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
@@ -719,15 +708,31 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">collection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nosql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">map</a>
               </li>
             
             <div class="clearfix"></div>

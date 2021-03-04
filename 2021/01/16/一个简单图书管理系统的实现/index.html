@@ -10,16 +10,16 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="原因软件设计与体系结构课上让我们写过图书管理系统,但是当时写的很差。于是想着重新写一个。而且我觉得图书管理系统只是看起来简单,实际实现起来却是复杂的,而因为我自身水平很差,所以图书管理系统很适合我来学习。 图书管理系统的需求描述在图书馆的图书管理系统中，学生要想借阅图书，必须先在系统中注册一个账号，然后系统为其生成一个借阅证，借阅证可以提供学生的姓名，系别和借阅证号。持有借阅证的借阅者可以借阅图书">
+  <meta name="description" content="原因软件设计与体系结构课上让我们写过图书管理系统,但是当时写的很差。于是想着重新写一个。而且我觉得图书管理系统只是看起来简单,实际实现起来却是复杂的,而因为我自身水平很差,所以图书管理系统很适合我来学习。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="一个简单图书管理系统的实现(一)">
 <meta property="og:url" content="http://caciacc.top/2021/01/16/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9E%E7%8E%B0/index.html">
 <meta property="og:site_name" content="caciaCC的博客">
-<meta property="og:description" content="原因软件设计与体系结构课上让我们写过图书管理系统,但是当时写的很差。于是想着重新写一个。而且我觉得图书管理系统只是看起来简单,实际实现起来却是复杂的,而因为我自身水平很差,所以图书管理系统很适合我来学习。 图书管理系统的需求描述在图书馆的图书管理系统中，学生要想借阅图书，必须先在系统中注册一个账号，然后系统为其生成一个借阅证，借阅证可以提供学生的姓名，系别和借阅证号。持有借阅证的借阅者可以借阅图书">
+<meta property="og:description" content="原因软件设计与体系结构课上让我们写过图书管理系统,但是当时写的很差。于是想着重新写一个。而且我觉得图书管理系统只是看起来简单,实际实现起来却是复杂的,而因为我自身水平很差,所以图书管理系统很适合我来学习。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://caciacc.top/2021/01/16/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9E%E7%8E%B0/0.png">
 <meta property="article:published_time" content="2021-01-16T10:39:50.000Z">
-<meta property="article:modified_time" content="2021-01-16T11:13:56.750Z">
+<meta property="article:modified_time" content="2021-03-04T13:16:26.765Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="JAVA">
 <meta property="article:tag" content="项目">
@@ -294,6 +294,7 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h4 id="原因"><a href="#原因" class="headerlink" title="原因"></a>原因</h4><p>软件设计与体系结构课上让我们写过图书管理系统,但是当时写的很差。于是想着重新写一个。而且我觉得图书管理系统只是看起来简单,实际实现起来却是复杂的,而因为我自身水平很差,所以图书管理系统很适合我来学习。</p>
+<a id="more"></a>
 <h4 id="图书管理系统的需求描述"><a href="#图书管理系统的需求描述" class="headerlink" title="图书管理系统的需求描述"></a>图书管理系统的需求描述</h4><p>在图书馆的图书管理系统中，学生要想借阅图书，必须先在系统中注册一个账号，然后系统为其生成一个借阅证，借阅证可以提供学生的姓名，系别和借阅证号。持有借阅证的借阅者可以借阅图书，归还图书和查询借阅信息，但这些操作都是通过图书管理员代理与系统交互。在借阅图书时，学生进入图书馆内首先找到自己要借阅的图书，然后到借书处将借书证和图书交给图书管理员办理借阅手续。图书管理员进行借书操作时，首先需要输入学生的借书证号，系统验证借阅证是否有效（根据系统是否存在借阅证号所对应的账户），若有效，则系统还需要检验该账户中的借阅信息，以验证借书者借阅的图书是否超过了规定的数量，或者借阅者是否有超过规定借阅期限而未归还的图书；如果通过了系统的验证，则系统会显示借阅者的信息以提示图书管理员输入要借阅的图书信息，然后图书管理员输入要借阅的图书信息，系统记录一个借阅信息，并更新该学生账户完成借阅图书操作。<br>    学生还书时只需要将所借的图书交给图书管理员，由图书管理员负责输入图书信息，然后由系统验证该图书是否为本馆藏书，若是则系统删除相应的借阅信息，并更新相应的学生账户。在还书时也会检验该学生是否有超期未归还的图书，学生也可以查询自己的借阅信息。<br>为了系统能够正常运行和系统的安全性，系统还需要系统管理员进行系统的维护。<br>    通过对上述图书管理系统的分析，可以获得如下的功能性需求：<br>    1 学生持有借书证<br>    2 图书管理员作为借阅者的代理完成借阅图书，归还图书和查询借阅信息工作<br>    3 系统管理员完成对系统的维护，对系统的维护主要包括办理借阅证，删除借阅证，添加管理员，删除管理员，添加图书，删除图书，添加标题信息，删除标题信息<br>    4 图书馆服务的对象扩充到老师和学生，学生又分为博士生，研究生，本科生，专科生等，不同类型的对象可以借阅的图书数量和期限都是不同的。<br>    5 图书的种类扩充到中外文图书，中外文杂志，论文等。<br>    6 学生和老师可以通过网络进行预约，查询<br>    7 超期罚款，各种类型的借出物罚款规则不同（超期时间的规定和罚金都不同）<br>鉴于这个图书管理系统实现起来有点复杂,于是我只先实现最基础的功能,并且大部分依照图书管理系统用例图实现。<br>图书管理系统用例图如下:<br><img src="/2021/01/16/%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9E%E7%8E%B0/0.png" alt=".png"><br>当然,我也不是完全按照其进行实现,为了比较好的交互性和用户体验,我在这里淡化了图书管理员的作用,也就是说借书者查询图书和查询借书信息都不需要通过图书管理员进行操作,只有借书者在进行图书预订时需要图书管理员进行操作。<br>而某种意义上,这也是符合实际的,毕竟你去图书馆借书应该是去查图书馆的系统的搜索引擎而不是去问图书馆的前台,然后让前台帮你去查= =。<br>而这样说的话拿到了书貌似也是直接去扫码,而不是去找图书管理员。这样一来似乎不需要图书管理员了呢(bushi)。<br>但是如果我们把这个图书管理系统当成一个网上的图书管理系统呢。也就是说借书者-&gt;网上预约-&gt;到图书馆通过图书管理员取书-&gt;到图书馆还书。<br>这样的话,网上图书管理系统能够看到你个人书架里面借到了哪些书(借书时间和归还时间是多少),预约了哪些书(预约时间是多少)。这样感觉还是挺符合实际的呢= =、。</p>
 
     
@@ -547,14 +548,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Collection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
               </li>
              
@@ -579,7 +572,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">NOSQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -607,10 +600,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
@@ -635,15 +624,31 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">collection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nosql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">map</a>
               </li>
             
             <div class="clearfix"></div>

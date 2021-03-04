@@ -18,7 +18,7 @@
 <meta property="og:description" content="A 123456789101112131415161718192021222324252627282930313233343536373839404142#include&lt;algorithm&gt;#include&lt;cstring&gt;#include&lt;cstdio&gt;#include&lt;queue&gt;#include&lt;iostream&gt;#include">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-01-29T10:52:19.000Z">
-<meta property="article:modified_time" content="2021-01-29T10:53:55.786Z">
+<meta property="article:modified_time" content="2021-03-04T13:17:20.292Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="算法">
 <meta property="article:tag" content="codeforce">
@@ -293,7 +293,8 @@
     
     <p>A</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;map&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 2e5+10, M &#x3D; 1e5+10,INF &#x3D; 0x3f3f3f3f,inf &#x3D; 0x3f3f3f3f;</span><br><span class="line">typedef pair&lt;int,int&gt;PII;</span><br><span class="line">typedef pair&lt;int,int&gt;pii;</span><br><span class="line">typedef long long ll;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int n;</span><br><span class="line">int a[N];</span><br><span class="line"></span><br><span class="line">void init()&#123;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  for(int i &#x3D; 1; i &lt;&#x3D; n; i ++) cin &gt;&gt; a[i];</span><br><span class="line">&#125;</span><br><span class="line">void solve()&#123;</span><br><span class="line">  int ans &#x3D; 0, num &#x3D; 0, now &#x3D; 0;</span><br><span class="line">  for(int i &#x3D; 1; i &lt;&#x3D; n; i ++)&#123;</span><br><span class="line">     if(a[i] !&#x3D; now)&#123;</span><br><span class="line">        num &#x3D; 1;</span><br><span class="line">        now &#x3D; a[i];</span><br><span class="line">     &#125;else num++;</span><br><span class="line">     ans &#x3D; max(ans,num);</span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">         int t; scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">         while(t--)&#123;</span><br><span class="line">        init();</span><br><span class="line">        solve();</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>B  </p>
+<p>B </p>
+<a id="more"></a> 
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;map&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 2e5+10, M &#x3D; 1e5+10,INF &#x3D; 0x3f3f3f3f,inf &#x3D; 0x3f3f3f3f;</span><br><span class="line">typedef pair&lt;int,int&gt;PII;</span><br><span class="line">typedef pair&lt;int,int&gt;pii;</span><br><span class="line">typedef long long ll;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int q,d;</span><br><span class="line">int a[N];</span><br><span class="line">bool st[110];</span><br><span class="line"></span><br><span class="line">void init()&#123;</span><br><span class="line">  cin &gt;&gt; q &gt;&gt; d;</span><br><span class="line">  for(int i &#x3D; 1; i &lt;&#x3D; q; i ++) cin &gt;&gt; a[i];</span><br><span class="line">&#125;</span><br><span class="line">ll  getlen(ll x)&#123;</span><br><span class="line">    if(x&#x3D;&#x3D;1) return 1;</span><br><span class="line">    ll now &#x3D; 1;</span><br><span class="line">    while(now &lt; x) now *&#x3D; 10;</span><br><span class="line">    return now &#x2F; 10;</span><br><span class="line">&#125;</span><br><span class="line">void solve()&#123;</span><br><span class="line">  for(int i &#x3D; 1; i &lt;&#x3D; 99; i ++)&#123;</span><br><span class="line">      ll t &#x3D; getlen(i);</span><br><span class="line">      bool flag &#x3D; false;</span><br><span class="line">      for(int j &#x3D; i; j &gt; 0; j -&#x3D; t)&#123;</span><br><span class="line">        if(j % d &#x3D;&#x3D; 0)&#123;</span><br><span class="line">           flag &#x3D; true;</span><br><span class="line">           break;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     st[i] &#x3D; flag;</span><br><span class="line">  &#125;</span><br><span class="line">  for(int i &#x3D; 1; i &lt;&#x3D; q; i ++)&#123;</span><br><span class="line">     bool flag &#x3D; false;</span><br><span class="line">     while(a[i])&#123;</span><br><span class="line">       int num &#x3D; a[i] % 100;</span><br><span class="line">       if(st[num])&#123;flag &#x3D; true; break;&#125;</span><br><span class="line">       a[i] &#x2F;&#x3D; 10;</span><br><span class="line">     &#125;</span><br><span class="line">     if(flag) puts(&quot;YES&quot;);</span><br><span class="line">     else puts(&quot;NO&quot;);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">         int t; scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">         while(t--)&#123;</span><br><span class="line">        init();</span><br><span class="line">        solve();</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     
 
@@ -546,14 +547,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Collection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
               </li>
              
@@ -578,7 +571,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">NOSQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -606,10 +599,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
@@ -634,15 +623,31 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">collection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nosql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">map</a>
               </li>
             
             <div class="clearfix"></div>

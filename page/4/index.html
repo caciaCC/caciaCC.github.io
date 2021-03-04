@@ -242,6 +242,285 @@
             
 
   
+    <article id="post-leetcode-双周赛第44场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/01/24/leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC44%E5%9C%BA/">leetcode-双周赛第44场</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/01/24/leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC44%E5%9C%BA/" class="archive-article-date">
+        <time datetime="2021-01-24T05:08:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>第一题<br>相当于前缀和</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int largestAltitude(vector&lt;int&gt;&amp; gain) &#123;</span><br><span class="line">        int n &#x3D; gain.size();</span><br><span class="line">        int mx &#x3D; 0, now &#x3D; 0;</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">            now +&#x3D; gain[i];</span><br><span class="line">            mx &#x3D; max(mx,now);</span><br><span class="line">        &#125;</span><br><span class="line">        return mx;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/01/24/leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC44%E5%9C%BA/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/01/24/leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC44%E5%9C%BA/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-leetcode-周赛第225场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/01/24/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/">leetcode-周赛第225场</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/01/24/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/" class="archive-article-date">
+        <time datetime="2021-01-24T04:14:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>第一题<br>一个分类讨论= =。个人感觉写复杂了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string maximumTime(string ans) &#123;</span><br><span class="line">        if(ans[0]&#x3D;&#x3D;&#39;0&#39;)&#123;</span><br><span class="line">            if(ans[1]&#x3D;&#x3D;&#39;?&#39;) ans[1] &#x3D; &#39;9&#39;;</span><br><span class="line">        &#125;else if(ans[0] &#x3D;&#x3D; &#39;1&#39;)&#123;</span><br><span class="line">            if(ans[1]&#x3D;&#x3D;&#39;?&#39;) ans[1] &#x3D; &#39;9&#39;;</span><br><span class="line">        &#125;else if(ans[0] &#x3D;&#x3D; &#39;2&#39;)&#123;</span><br><span class="line">            if(ans[1]&#x3D;&#x3D;&#39;?&#39;) ans[1] &#x3D; &#39;3&#39;;</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            if(ans[1]&#x3D;&#x3D;&#39;?&#39;&amp;&amp;ans[0]&#x3D;&#x3D;&#39;?&#39;) ans[0] &#x3D; &#39;2&#39;,ans[1] &#x3D; &#39;3&#39;;</span><br><span class="line">            else if(ans[1] &gt; &#39;3&#39;) ans[0] &#x3D; &#39;1&#39;;</span><br><span class="line">            else ans[0] &#x3D; &#39;2&#39;;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">         if(ans[3]!&#x3D;&#39;?&#39;)&#123;</span><br><span class="line">             if(ans[4] &#x3D;&#x3D;&#39;?&#39;) ans[4] &#x3D; &#39;9&#39;;</span><br><span class="line">         &#125;else &#123;</span><br><span class="line">             if(ans[4]&#x3D;&#x3D;&#39;?&#39;) ans[3] &#x3D; &#39;5&#39;, ans[4] &#x3D; &#39;9&#39;;</span><br><span class="line">             else ans[3] &#x3D; &#39;5&#39;;</span><br><span class="line">         &#125;</span><br><span class="line">            </span><br><span class="line">       return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/01/24/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/01/24/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-5道算法题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/01/23/5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/">5道算法题</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/01/23/5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/" class="archive-article-date">
+        <time datetime="2021-01-23T08:58:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-23</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="原由"><a href="#原由" class="headerlink" title="原由"></a>原由</h4><p>今天很无聊,所以就做了几道算法题。  </p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1.给你一个字符串,中间包括三种括号。分别是大括号、中括号和小括号。让判断字符串的合法性。  </p>
+<p>其中小括号里面不能有大括号和中括号,中括号里面不能有大括号。   </p>
+<p>用栈模拟实现即可,比较简单。(只是判断逻辑写反了,debug了一会)</p>
+<p>2.给你一个数n(2^20内),然后是一个数组,n个正整数(int范围内),让找到最小的不在数组中的正整数。  </p>
+<p>这个也简单,建一个桶(2000010)即可。</p>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/01/23/5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/01/23/5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-codeforce-696-div2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -335,7 +614,7 @@
 
 
   
-    <article id="post-WSDL学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-wsdl学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -343,7 +622,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/01/17/WSDL%E5%AD%A6%E4%B9%A0/">WSDL学习</a>
+	  <a class="article-title" href="/2021/01/17/wsdl%E5%AD%A6%E4%B9%A0/">wsdl学习</a>
 	
     </h1>
   
@@ -351,7 +630,7 @@
 
   
   
-<a href="/2021/01/17/WSDL%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+<a href="/2021/01/17/wsdl%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
         <time datetime="2021-01-17T13:20:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-17</time>
 </a>
 
@@ -369,7 +648,7 @@
 <h3 id="WSDL文档结构"><a href="#WSDL文档结构" class="headerlink" title="WSDL文档结构"></a>WSDL文档结构</h3><p><code>&lt;portType&gt;</code> web service 执行的操作<br><code>&lt;message&gt;</code>  web service 使用的消息<br><code>&lt;types&gt;</code>    web service 使用的数据类型<br><code>&lt;binding&gt;</code>  web service 使用的通信协议  </p>
 <h3 id="WSDL端口"><a href="#WSDL端口" class="headerlink" title="WSDL端口"></a>WSDL端口</h3><p><code>&lt;portType&gt;</code> 描述可执行的合法操作。  </p>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/01/17/WSDL%E5%AD%A6%E4%B9%A0/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/01/17/wsdl%E5%AD%A6%E4%B9%A0/#more">more >></a>
     
     
 
@@ -396,7 +675,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/17/WSDL%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/01/17/wsdl%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
     </p>
     
 
@@ -612,103 +891,6 @@
 
 
   
-    <article id="post-JAVA集合类相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/01/12/JAVA%E9%9B%86%E5%90%88%E7%B1%BB%E7%9B%B8%E5%85%B3/">JAVACollection相关</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/01/12/JAVA%E9%9B%86%E5%90%88%E7%B1%BB%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><span style="background-color: #FFD700"><strong>Collection相关</strong></span></p>
-<p>●Collection和Collections的区别</p>
-<p>Collection是集合类的上级接口，继承它的接口主要有List、Set、Queue。</p>
-<p>Collections是集合类的一个帮助类，它提供一系列静态方法实现对各种集合的搜索、排序、<span style="background-color: #FFD700">线程安全化（synchronizedList（传入一个）、synchronizedMap（</span><span style="background-color: #FFD700">传入一个</span><span style="background-color: #FFD700">）、synchronizedSet（</span><span style="background-color: #FFD700">传入一个</span><span style="background-color: #FFD700">）-&gt;只能通过collection创建）</span>等优化操作。</p>
-<p>●List、Map、Set三个接口存取元素时，各有什么特点？</p>
-<p>List接口元素有序，存储的是值,并且元素可以重复。           =&gt;主要实现：ArrayList、LinkedList、Vector</p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/JAVA%E9%9B%86%E5%90%88%E7%B1%BB%E7%9B%B8%E5%85%B3/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Collection</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/JAVA%E9%9B%86%E5%90%88%E7%B1%BB%E7%9B%B8%E5%85%B3/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-nosql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -717,7 +899,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/01/12/nosql/">NOSQL相关知识</a>
+	  <a class="article-title" href="/2021/01/12/nosql/">nosql相关知识</a>
 	
     </h1>
   
@@ -763,11 +945,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">NOSQL</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nosql</a>
         		</li>
       		
 		</ul>
@@ -998,196 +1180,6 @@
 
 
   
-    <article id="post-参考文档" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/01/12/%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3/">各种参考文档</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/01/12/%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p> ●mysql</p>
-<p><a target="_blank" rel="noopener" href="https://www.mysqlzh.com/">mysql中文文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.6/en/">mysql英文文档</a></p>
-<p>●JAVA</p>
-<p><a target="_blank" rel="noopener" href="https://docs.oracle.com/en/java/javase/index.html">java英文文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35028064/article/details/83657378">java文档名翻译</a></p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-框架相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/01/12/%E6%A1%86%E6%9E%B6%E7%9B%B8%E5%85%B3/">JAVA框架知识</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/01/12/%E6%A1%86%E6%9E%B6%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><span style="background-color:      #FFD700"><strong>各种层。</strong></span></p>
-<span style="background-color:      #FFD700">
-
-</span>
-
-<p>●dao层是model层吗？</p>
-<p>不是。dao层(mapper层)是数据持久化层,负责数据库操作。model层(entity)则是负责数据实体模型(实体类)。</p>
-<p>service层。存放业务逻辑处理,但不与数据库直接打交道。</p>
-<p>controller层。控制器,导入service层, 因为service中的方法是我们使用到的,controller通过接收前端传过来的参数进行业务操作,再返回一个指定的路径或者数据表。</p>
-<p><strong>SPRING相关</strong></p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/%E6%A1%86%E6%9E%B6%E7%9B%B8%E5%85%B3/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">框架</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/%E6%A1%86%E6%9E%B6%E7%9B%B8%E5%85%B3/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
   
     <nav id="page-nav">
       <a class="extend prev" rel="prev" href="/page/3/">Prev</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/5/">Next</a>
@@ -1309,14 +1301,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Collection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
               </li>
              
@@ -1341,7 +1325,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">NOSQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1369,10 +1353,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
@@ -1397,15 +1377,31 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">collection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nosql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">map</a>
               </li>
             
             <div class="clearfix"></div>

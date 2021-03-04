@@ -18,7 +18,7 @@
 <meta property="og:description" content="systemctl start docker.service 开启 systemctl status docker.service 查看service docker stop 关闭dockersystemctl stop docker 关闭dockersystemctl stop firewalld.service 关闭防火墙systemctl disable firewalld.service">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-01T02:22:42.000Z">
-<meta property="article:modified_time" content="2021-03-01T02:24:04.183Z">
+<meta property="article:modified_time" content="2021-03-04T13:17:27.059Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="docker">
 <meta name="twitter:card" content="summary">
@@ -270,7 +270,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">557字</span>
+      <span class="post-count">565字</span>
     </span>
   </span>
 
@@ -290,41 +290,42 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p>systemctl start docker.service 开启</p>
-<p>systemctl status docker.service 查看<br>service docker stop 关闭docker<br>systemctl stop docker 关闭docker<br>systemctl stop firewalld.service 关闭防火墙<br>systemctl disable firewalld.service 禁止开启启动防火墙</p>
+    <p><code>systemctl start docker.service</code> 开启</p>
+<p><code>systemctl status docker.service</code> 查看<br><code>service docker stop</code> 关闭docker<br><code>systemctl stop docker</code> 关闭docker<br><code>systemctl stop firewalld.service</code> 关闭防火墙<br><code>systemctl disable firewalld.service</code> 禁止开启启动防火墙</p>
 <hr>
+<a id="more"></a>
 <p>容器相关<br>docker利用容器来运行应用：docker容器是由docker镜像创建的运行实例。docker容器类似虚拟机，可以执行包含启动，停止，删除等。</p>
-<p>docker rm $(docker ps -a -q) 删除所有容器</p>
-<p>docker ps -a查看所有容器，包括已经停止运行的。</p>
-<p>docker start b750bbbcfd88 启动一个已经停止的容器。</p>
-<p>docker stop &lt;容器 ID&gt;停止一个容器</p>
-<p>docker rm -f 1e560fca3906 删除一个容器</p>
-<p>docker stats -a 查看容器占用的内存 –no-stream只输出当前状态<br>ctrl+c 退出</p>
+<p><code>docker rm $(docker ps -a -q)</code> 删除所有容器</p>
+<p><code>docker ps -a</code>查看所有容器，包括已经停止运行的。</p>
+<p><code>docker start &lt;容器 ID&gt;</code> 启动一个已经停止的容器。</p>
+<p><code>docker stop &lt;容器 ID&gt;</code>停止一个容器</p>
+<p><code>docker rm -f &lt;容器 ID&gt;</code> 删除一个容器</p>
+<p><code>docker stats -a</code> 查看容器占用的内存 –no-stream只输出当前状态<br>ctrl+c 退出</p>
 <hr>
 <p>镜像相关<br>docker的镜像概念类似虚拟机的镜像。是一个只读的模板，一个独立的文件系统，包括运行容器所需的数据，可以用来创建新的容器。</p>
-<p>docker images 查看host中的镜像</p>
-<p>docker rmi  删除指定id的镜像 -f 强制</p>
-<p>docker rmi $(docker images -q)删除所有镜像</p>
-<p>free -m 查看内存</p>
+<p><code>docker images</code> 查看host中的镜像</p>
+<p><code>docker rmi</code>  删除指定id的镜像 -f 强制</p>
+<p><code>docker rmi $(docker images -q)</code>删除所有镜像</p>
+<p><code>free -m</code> 查看内存</p>
 <hr>
 <p>docker容器错误<br>docker添加容器时，使用 -v 挂载时无法启动容器解决</p>
 <p>解决方法：</p>
 <p>添加selinux规则，将要挂载的目录添加到白名单</p>
-<p>chcon -Rt svirt_sandbox_file_t /mydata/mysql/log<br>chcon -Rt svirt_sandbox_file_t /mydata/mysql/data<br>chcon -Rt svirt_sandbox_file_t /mydata/mysql/conf</p>
+<p><code>chcon -Rt svirt_sandbox_file_t /mydata/mysql/log</code><br><code>chcon -Rt svirt_sandbox_file_t /mydata/mysql/data</code><br><code>chcon -Rt svirt_sandbox_file_t /mydata/mysql/conf</code></p>
 <p>添加完后，删除旧的容器，再重新添加一个，成功启动</p>
 <hr>
 <p>docker常用操作</p>
-<p>$docker logs [容器名/容器ID] docker 容器错误查看日志</p>
+<p><code>$docker logs [容器名/容器ID] </code>docker 容器错误查看日志</p>
 <hr>
 <p>docker images错误<br>docker中某个images发生错误，导致其容器不断重启，然后需要卸载的话，镜像一定要卸载完全，也就是重新docker push XXX时需要下载，而不是原来就有！</p>
 <hr>
 <p>linux常用操作</p>
 <p>vi相关<br>●vi xxx.html 进入xxx文件<br>●按住shift zz 保存退出 zq 不保存退出，q表示放弃<br>之所以按住shift，其实是切换大小写<br>esc<br>●wq保存退出</p>
-<p>mv conf nginx/ 移动conf文件夹到nginx下面</p>
-<p>rm -rf /var/log/httpd/access 删除文件夹实例</p>
-<p>mkdir -p /mydata/elasticsearch/config 创建文件夹实例</p>
-<p>systemctl set-default graphical.target修改为图形界面</p>
-<p>systemctl set-default multi-user.target修改为命令界面</p>
+<p><code>mv conf nginx/</code> 移动conf文件夹到nginx下面</p>
+<p><code>rm -rf /var/log/httpd/access</code> 删除文件夹实例</p>
+<p><code>mkdir -p /mydata/elasticsearch/config</code> 创建文件夹实例</p>
+<p><code>systemctl set-default graphical.target</code>修改为图形界面</p>
+<p><code>systemctl set-default multi-user.target</code>修改为命令界面</p>
 
     
 
@@ -416,7 +417,7 @@
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          IDEA常用快捷键
+          idea常用快捷键
         
       </div>
     </a>
@@ -573,14 +574,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Collection</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
               </li>
              
@@ -605,7 +598,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">NOSQL</a>
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -633,10 +626,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Map</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">JVM</a>
               </li>
              
@@ -661,15 +650,31 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">IDEA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">docker</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">collection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nosql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">map</a>
               </li>
             
             <div class="clearfix"></div>
