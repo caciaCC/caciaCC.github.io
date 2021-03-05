@@ -242,96 +242,6 @@
             
 
   
-    <article id="post-两道算法题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/03/04/%E4%B8%A4%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/">两道算法题</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/03/04/%E4%B8%A4%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/" class="archive-article-date">
-        <time datetime="2021-03-04T13:08:22.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-04</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <hr>
-<p>输入：(*(+2 3) (-100 (+ 20 10)))</p>
-<p>输出：( * (+2 3) (-100 (+ 20 10))) =&gt; ( * 5 (-100 30)) =&gt; (* 5 (-100 30)) =&gt; (* 5 70)=&gt; 350</p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/03/04/%E4%B8%A4%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/03/04/%E4%B8%A4%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
     <article id="post-leetcode算法专题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -730,94 +640,9 @@
     <p>●启动mysql<br>net start XXX<br>net stop XXX</p>
 <h3 id="一些术语"><a href="#一些术语" class="headerlink" title="一些术语"></a>一些术语</h3><p>DB:数据库(database),存储数据的”仓库”,它保存了一系列有组织的数据。<br>DBMS:数据库管理系统(DatabaseManagementSystem)。数据库是通过DBNS创建和操作的容器。<br>SQL:结构化查询语言(StructureQueryLanguage),专门用来与数据库通信的语言。</p>
 <h3 id="mysql的启动和停止"><a href="#mysql的启动和停止" class="headerlink" title="mysql的启动和停止"></a>mysql的启动和停止</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net start XXX</span><br><span class="line">net stop XXX</span><br></pre></td></tr></table></figure>
-<h3 id="mysql常见命令"><a href="#mysql常见命令" class="headerlink" title="mysql常见命令"></a>mysql常见命令</h3><p>1.查看当前所有的数据库:show databases;  </p>
-<p>2.打开指定的库: use库名</p>
-<p>3.查看当前库的所有表 show tables;</p>
-<p>4.查看其它库的所有表 show tables from 库名;</p>
-<p>5.创建表 </p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">create table 表名(</span><br><span class="line">    列名 列类型,</span><br><span class="line">    列名 列类型,</span><br><span class="line">    ...</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
-<p>6.查询服务器的版本 </p>
-<p>方式一:登录到mysql服务器端<br>select version();<br>方式二:没有登录到mysql服务端<br>mysql –version或 mysql –V   </p>
-<h2 id="查询语句"><a href="#查询语句" class="headerlink" title="查询语句"></a>查询语句</h2><p>语法:select 查询列表 from 表名;</p>
-<p>特点:</p>
-<p>1.查询列表可以是:表中的字段、常量值、表达式、函数  </p>
-<p>2.查询的结果是一个虚拟的表格  </p>
-<h2 id="1-基础查询"><a href="#1-基础查询" class="headerlink" title="1.基础查询"></a>1.基础查询</h2><p>①查询字段：1.查询单个/2.查询多个/3.查询所有（全列出来/*）  </p>
-<p>②查询常量值<br>注意:字符型和日期型的常量值必须用单引号引起来,数值型不需要</p>
-<p>③查询表达式 </p>
-<p>④查询函数<br>SELECT VERSION();<br>SELECT XXX(参数列表)；</p>
-<p>⑤起别名<br>SELECT 100%98 AS RESULT    使用as<br>SELECT 100%98 RESULT         使用空格<br>=&gt;好处：理解好/区分重名</p>
-<p>⑥去重 SELECT DISTINCT  </p>
-<p>⑦+的使用<br>SELECT LAST_NAME+FIRST_NAME AS 姓名<br>FROM EMPLOYEE<br>是数值，加法<br>有字符，转化后加法,失败则取0继续加<br>有NULL就NULL<br>⑧concat的使用<br>字符连接<br>SELECT CONCAT (XX,XX)  AS XX FROM XXX<br>⑨SELECT IFNULL(可能为NULL的语句,为NULL时返回的结果)<br>⑩isnull函数<br>功能:判断某字段或表达式是否为null,如果是,则返回1,否则返回0</p>
-<h2 id="2-条件查询"><a href="#2-条件查询" class="headerlink" title="2.条件查询"></a>2.条件查询</h2><p>语法:<br>select 查询列表 from 表名 where 筛选条件;</p>
-<p>分类:<br>一、按条件表达式筛选</p>
-<p>条件运算符:&gt; &lt; = != &lt;&gt; &gt;= &lt;=</p>
-<p>二、按逻辑表达式筛选</p>
-<p>逻辑运算符:<br>&amp;&amp; || ! and or not</p>
-<p>三、模拟查询</p>
-<p>like between and in is null</p>
-<p>①条件运算符<br>    &gt; &lt; = !=  &lt;&gt;  &gt;= &lt;=<br>使用&lt;&gt;好于!=</p>
-<p>②逻辑表达式<br>&amp;&amp; || ! AND OR NOT</p>
-<p>③模糊查询</p>
-<p>●like<br>%代表任意一个字符<br><em>代码任意单个字符<br>举例：<br>    like ‘%xxx%’    含有xxx的<br>    like ‘__a_c%’  第3个为a第5个为c的<br>    like ‘_\</em>%’    第2个为_<br>    like ‘<em>$</em>%’ ESCAPE ‘$’ 第2个为_</p>
-<p>●between<br>where employee_id between 100 and 120<br>1.使用between and可以提高语句的简洁度<br>2.包含临界值<br>3.两个临界值不要调换  </p>
-<p>●in<br>in (‘XXX’,’XXX’,’XXX’)<br>1.使用in提高语句简洁度<br>2.in列表的值类型必须一致或兼容<br>3.不支持_或%    </p>
-<p>●is null<br>where xxxx is null<br>where xxxx is not null<br>=或&lt;&gt;不能用于判断null值，而is或is not可以用于判断null值 </p>
-<p>●&lt;=&gt; 安全等于<br>where xxx &lt;=&gt; null<br>where xxx &lt;=&gt; 12000<br>IS NULL:仅仅可以判断NULL值,可读性较高，建议使用<br>&lt;=&gt;       :既可以判断NULL值，又可以判断普通的数值，可读性较低  </p>
-<h2 id="3-排序查询"><a href="#3-排序查询" class="headerlink" title="3.排序查询"></a>3.排序查询</h2><p>order by xxx asc|desc(默认asc）</p>
-<p>①默认<br>②添加筛选条件<br>③按表达式排序<br>④按别名排序<br>⑤按函数排序<br>order by length(XXX) desc<br>⑥先按xxx排序，再按yyy排序=&gt;按多个字段排序<br>order by xxx asc, yyy desc</p>
-<p>特点：<br>1.asc代表的是升序，desc代表的是降序，如果不写，默认是升序<br>2.order by 子句中可以支持单个字段、多个字段、表达式、函数、别名<br>3.order by 子句一般是放在查询语句的最后面，limit子句除外</p>
-<h2 id="4-常见函数"><a href="#4-常见函数" class="headerlink" title="4.常见函数"></a>4.常见函数</h2><p>select 函数名(实参列表);<br>分类<br>1.单行函数  concat、length、ifnull<br>●字符函数<br>①length(xxx)<br>②concat(xx,yy)<br>③upper(xx)、lower(xx)<br>④substr(xxx,start)、substring             从1开始<br>⑤instr(父串,子串) 返回出现位置，找不到返回0<br>⑥trim(XXX)缩掉首尾的重复字符<br>⑦lpad(XXX,总len,填充字符） 用指定字符实现左填充到指定长度<br>⑧rpad(XXX,总len,填充字符）同理<br>⑨replace(父串,原子串，替换子串)<br>●数学函数<br>①round(xx)/round(xx,yy)四舍五入/保留小数点后yy位<br>②ceil(xx) 向上取整,返回大于等于xx的最小整数<br>③floor(xx)向下取整，返回小于等于xx的最大整数<br>④truncate(xx,yy) 截断,保留小数点后yy位<br>⑤mod(xx,yy) 返回xx%yy=&gt;mod的符号只和被除数有关 res = xx - xx / yy * yy<br>●日期函数<br>①now() 返回当前系统日期+时间<br>②curdate()           返回当前系统日期<br>③curtime()   返回当前时间<br>④year(now()) 可以获取指定的部分<br>⑤<br>str_to_date 将日期格式的字符转换成指定格式的日期<br>str_to_date(‘9-13-1999’,’%m-%d-%Y’)<br>⑥<br>date_format  将日期转换为字符<br>date_format(‘2018/6/6’,’%Y年%m月%d日’)<br>⑦DATEDIFF(expr1,expr2) returns expr1 − expr2<br>●其他函数<br>①version()  当前版本<br>②database()  当前数据库<br>③user()   当前用户<br>●流程控制函数<br>①<br>if(aa,bb,cc) 如果aa为true则执行bb，否则执行cc<br>②<br>case xxx<br>when 常量1 then 语句或值<br>when 常量2 then 语句或值<br>else 语句或值<br>end<br><code>多重条件判断</code>相当与if else if…else<br>case<br>when 条件1 then 值或语句<br>when 条件2 then 值或语句<br>else 值或语句<br>end<br>③<br>④<br>2.分组函数<br>●常见 sum、avg、max、min、count都是传单个参数</p>
-<p>特点:  </p>
-<p>1.sum和avg一般用于处理数值型 max、min、count可以处理任何类型<br>2.以上分组函数都忽略null值<br>3.可以和distinct搭配<br>4.count函数介绍</p>
-<p>count( * )/count(1) 统计行数<br>=&gt;count( * )效率最高<br>效率：<br>MYISAM存储引擎下,COUNT( * )的效率高<br>INNODB存储引擎下,COUNT( * )和COUNT(1)的效率差不多,比COUNT(字段)要高一些。<br>综上,使用count( * )统计行数</p>
-<p>5.分组函数后面的字段只能是group by后的字段</p>
-<h2 id="5、分组查询"><a href="#5、分组查询" class="headerlink" title="5、分组查询"></a>5、分组查询</h2><p>语法：<br>select 分组函数,列（要求出现在group by 的后面）from 表 【where 筛选条件】 group by 分组的列表 【order by 子句】</p>
-<p>注意：查询列表必须特殊，要求是分组函数和group by后出现的字段</p>
-<p>1简单的分组查询<br>select max(salary),job_id from employees group by job_id 查询每个工种的最高工资。</p>
-<p>2添加筛选条件</p>
-<p>select avg（salary）,department_id from employees where email like ‘%a%’ group by department_id 查询邮箱中包含a字符的，每个部门的平均工资。</p>
-<p>3.添加复杂筛选条件</p>
-<p>添加分组后的筛选<br>select count（ * ）,department_id from employees group by department_id having count( * ) &gt; 2; 查询员工数大于2的部门</p>
-<p>特点:<br>1.分组查询中的筛选条件分为两类<br><img src="https://img-blog.csdnimg.cn/20201012105446459.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>2.group by子句支持单个字段分组、多个字段分组、表达式或函数（用的较少）<br>3.也可以添加排序，放在整个分组查询最后。<br>4.按函数来分组。<br>举例：无<br><img src="https://img-blog.csdnimg.cn/20201012115607160.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>5.按多个字段分组</p>
-<p><img src="https://img-blog.csdnimg.cn/2020101211580143.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>6.添加排序<br><img src="https://img-blog.csdnimg.cn/20201012115907575.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h2 id="6、连接查询"><a href="#6、连接查询" class="headerlink" title="6、连接查询"></a>6、连接查询</h2><p>按年代分类:  </p>
-<p>sql192标准:仅仅支持内连接</p>
-<p>sql199标准:支持内连接+外连接(左外和右外)+交叉连接</p>
-<p>按功能分类:</p>
-<p>内连接:<br>        等值连接<br>        非等值连接<br>        自连接</p>
-<p>外连接:<br>        左外连接<br>        右外连接<br>        全外连接</p>
-<p>交叉连接<br><img src="https://img-blog.csdnimg.cn/20201012202441353.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>1.等值连接<br><img src="https://img-blog.csdnimg.cn/20201012203000602.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">可以替换顺序、可以起别名、可以分组、可以三组<br><img src="https://img-blog.csdnimg.cn/20201012203753309.png#pic_center" alt="在这里插入图片描述"></p>
-<p>2.非等值连接=&gt;和等值差不多</p>
-<p>3.自连接<br><img src="https://img-blog.csdnimg.cn/20201012204154161.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>sql99语法<br><img src="https://img-blog.csdnimg.cn/20201012205256423.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>内连接感觉就是之前的。<br>等值连接特点如下。<br><img src="https://img-blog.csdnimg.cn/20201012205642553.png#pic_center" alt="在这里插入图片描述">非等值连接：和上面差不多。<br>自连接：和上面差不多。</p>
-<p>外连接，特点<br><img src="https://img-blog.csdnimg.cn/20201012211430722.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">交叉连接，笛卡尔乘积。</p>
-<h2 id="7-子查询"><a href="#7-子查询" class="headerlink" title="7.子查询"></a>7.子查询</h2><p>分类<br><img src="https://img-blog.csdnimg.cn/2020101222413045.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>1.<br><img src="https://img-blog.csdnimg.cn/20201013103125225.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>举例：这里没写，具体自己不会再去看吧。<br>2.select后面</p>
-<p>3.from后面</p>
-<p>4.exist后面</p>
-<h2 id="8-分页查询"><a href="#8-分页查询" class="headerlink" title="8.分页查询"></a>8.分页查询</h2><p><img src="https://img-blog.csdnimg.cn/20201013105748748.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013105901157.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<h2 id="9-联合查询"><a href="#9-联合查询" class="headerlink" title="9.联合查询"></a>9.联合查询</h2><p><img src="https://img-blog.csdnimg.cn/20201013110512201.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>插入语句。<br>1.经典插入<br><img src="https://img-blog.csdnimg.cn/20201013111358396.png#pic_center" alt="在这里插入图片描述"><br>可以是什么情况：未写。<br>2.<br><img src="https://img-blog.csdnimg.cn/20201013111425940.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/202010131115432.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>修改语句</p>
-<p><img src="https://img-blog.csdnimg.cn/20201013111704869.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="1."><br><img src="https://img-blog.csdnimg.cn/20201013111727658.png#pic_center" alt="在这里插入图片描述"><br>删除语句。<br><img src="https://img-blog.csdnimg.cn/20201013111837326.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013111927384.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013111939349.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20201013112144104.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>DDL<br><img src="https://img-blog.csdnimg.cn/20201013112238921.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201013112333591.png#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201013112355281.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013112406957.png#pic_center" alt="在这里插入图片描述"><br>表的创建<br><img src="https://img-blog.csdnimg.cn/20201013112525870.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>表的修改<br><img src="https://img-blog.csdnimg.cn/20201013165118923.png#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013165425498.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>表的删除<br><img src="https://img-blog.csdnimg.cn/20201013165919279.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>表的复制<br><img src="https://img-blog.csdnimg.cn/20201013170130382.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/2020101317014654.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">常见的数据类型<br><img src="https://img-blog.csdnimg.cn/20201013170414603.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>1.整型<br><img src="https://img-blog.csdnimg.cn/20201013171249469.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">2.小数<br><img src="https://img-blog.csdnimg.cn/20201013171502327.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">字符型<br><img src="https://img-blog.csdnimg.cn/20201013171649739.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201013171720112.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201013171756362.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201013171812498.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013171858892.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>日期型<br><img src="https://img-blog.csdnimg.cn/20201013171921927.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">约束<br><img src="https://img-blog.csdnimg.cn/20201013173559468.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013173638870.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013174022832.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>1.创建表时添加约束。<br>添加列级约束<br><img src="https://img-blog.csdnimg.cn/2020101317415921.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">添加表级约束<br><img src="https://img-blog.csdnimg.cn/20201013174358348.png#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/2020101317451363.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">主键与唯一<br><img src="https://img-blog.csdnimg.cn/20201013174637805.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>外键特点<br><img src="https://img-blog.csdnimg.cn/2020101317480899.png#pic_center" alt="在这里插入图片描述"></p>
-<p>2.修改表时添加约束<br><img src="https://img-blog.csdnimg.cn/20201013175527339.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013175613237.png#pic_center" alt="在这里插入图片描述"><br>添加约束<br><img src="https://img-blog.csdnimg.cn/20201013175559219.png#pic_center" alt="在这里插入图片描述">删除约束<br><img src="https://img-blog.csdnimg.cn/20201013175658868.png#pic_center" alt="在这里插入图片描述"><br>标识列<br><img src="https://img-blog.csdnimg.cn/20201013180810577.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">事务<br><img src="https://img-blog.csdnimg.cn/20201013181100596.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>什么是存储引擎?</p>
-<p>1、概念:在mysql中的数据用各种不同的技术存储在文件(或内存)中。</p>
-<p>2、通过show engines;来查看mysql支持的存储引擎。</p>
-<p>3、在mysql中用的最多的存储引擎有:innodb,myisam,memory等。其中innodb支持事务,而myisam、memory等不支持事务</p>
-<p><img src="https://img-blog.csdnimg.cn/20201013194129929.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>事务<br>显式事务：<br><img src="https://img-blog.csdnimg.cn/20201013200235946.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013200342565.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013202838437.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013203509387.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013211309485.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013211603146.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">设置保存点<br><img src="https://img-blog.csdnimg.cn/2020101321181221.png#pic_center" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20201013211931989.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>视图</p>
-<p><img src="https://img-blog.csdnimg.cn/20201013214302942.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013214343525.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201013214408463.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013214427958.png#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201013214446267.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201013214625742.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013214652209.png#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201013214729288.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">delete和truncate的区别</p>
-<p><img src="https://img-blog.csdnimg.cn/20201013215418196.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">变量。</p>
-<p><img src="https://img-blog.csdnimg.cn/20201013215804322.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201014090126282.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p><img src="https://img-blog.csdnimg.cn/20201014090111928.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">全局变量<br><img src="https://img-blog.csdnimg.cn/20201014090257852.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"></p>
-<p>会话变量<br><img src="https://img-blog.csdnimg.cn/20201014090353321.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201014090429419.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">自定义变量（这里写的不全）<br><img src="https://img-blog.csdnimg.cn/20201014090503761.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>用户变量<br><img src="https://img-blog.csdnimg.cn/20201014090554486.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>局部变量</p>
-<p><img src="https://img-blog.csdnimg.cn/20201014090655874.png#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201014090722757.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br>存储过程和函数<br><img src="https://img-blog.csdnimg.cn/20201014090922373.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述">创建语法<br><img src="https://img-blog.csdnimg.cn/20201014091054223.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20201014091213701.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/2020101409160045.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQzMzg3MDg0,size_16,color_FFFFFF,t_70#pic_center" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/20201014091615157.png#pic_center" alt="在这里插入图片描述"></p>
-
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/03/01/mysql%E5%91%BD%E4%BB%A4/#more">more >></a>
+    
     
 
     
@@ -1220,6 +1045,96 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021/02/24/%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%85%AD/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-spring" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/02/23/spring/">spring</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/02/23/spring/" class="archive-article-date">
+        <time datetime="2021-02-23T14:47:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-23</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="02-spring-框架概述"><a href="#02-spring-框架概述" class="headerlink" title="02 spring 框架概述"></a>02 spring 框架概述</h2><p>1.Spring是轻量级的开源的JavaEE框架。</p>
+<p>2.Spring可以解决企业开发的复杂性</p>
+<p>3.Spring有两个核心部分:IOC和AOP<br> (1)IOC:控制反转,把创建对象过程交给Spring进行管理<br> (2)Aop:面向切面,不修改源代码进行功能增强</p>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/02/23/spring/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/02/23/spring/">展开全文 >></a>
     </p>
     
 
