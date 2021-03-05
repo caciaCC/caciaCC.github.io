@@ -75,18 +75,20 @@
 			
 				<li><a href="/" >主页</a></li>
 			
-				<li><a href="/tags/%E6%97%A5%E8%AE%B0" >日记本</a></li>
-			
-				<li><a href="/tags/JAVA" >JAVA</a></li>
+				<li><a href="/tags/java" >JAVA</a></li>
 			
 				<li><a href="/tags/%E7%AE%97%E6%B3%95" >算法</a></li>
+			
+				<li><a href="/tags/%E8%AE%B0%E5%BD%95" >记录</a></li>
+			
+				<li><a href="/archives/" >全部</a></li>
 			
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
 			
 				
-					<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+					<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章(tag)</a>
 				
 			
 				
@@ -96,6 +98,11 @@
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
+				
+					
+						<a class="leetcode" target="_blank" rel="noopener" href="https://leetcode-cn.com/u/cacia/" 
+												title="力扣" ><i class="icon-leetcode"></i></a>
+					
 				
 					
 						<a class="github" target="_blank" rel="noopener" href="https://github.com/caciaCC" 
@@ -125,11 +132,6 @@
 					
 						<a class="mail" target="_blank" rel="noopener" href="https://1732583038@qq.com" 
 												title="邮件联系" ><i class="icon-mail"></i></a>
-					
-				
-					
-						<a class="leetcode" target="_blank" rel="noopener" href="https://leetcode-cn.com/u/cacia/" 
-												title="力扣" ><i class="icon-leetcode"></i></a>
 					
 				
 			</div>
@@ -170,10 +172,17 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
 				<div class="social">
+					
+						
+						<a class="leetcode" target="_blank" 
+							href="https://leetcode-cn.com/u/cacia/" title="力扣"><i class="icon-leetcode"></i></a>
+						
 					
 						
 						<a class="github" target="_blank" 
@@ -205,11 +214,6 @@
 							href="https://1732583038@qq.com" title="邮件联系"><i class="icon-mail"></i></a>
 						
 					
-						
-						<a class="leetcode" target="_blank" 
-							href="https://leetcode-cn.com/u/cacia/" title="力扣"><i class="icon-leetcode"></i></a>
-						
-					
 				</div>
 			</nav>
 
@@ -217,13 +221,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 25%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/%E6%97%A5%E8%AE%B0">日记本</a></li>
+					<li style="width: 20%"><a href="/tags/java">JAVA</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/JAVA">JAVA</a></li>
+					<li style="width: 20%"><a href="/tags/%E7%AE%97%E6%B3%95">算法</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/%E7%AE%97%E6%B3%95">算法</a></li>
+					<li style="width: 20%"><a href="/tags/%E8%AE%B0%E5%BD%95">记录</a></li>
+		        
+					<li style="width: 20%"><a href="/archives/">全部</a></li>
 		        
 				</ul>
 			</nav>
@@ -242,7 +248,7 @@
             
 
   
-    <article id="post-leetcode算法专题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-算法-leetcode算法专题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -250,7 +256,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/03/04/leetcode%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/">leetcode算法专题</a>
+	  <a class="article-title" href="/2021/03/04/%E7%AE%97%E6%B3%95-leetcode%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/">算法-leetcode算法专题</a>
 	
     </h1>
   
@@ -258,7 +264,7 @@
 
   
   
-<a href="/2021/03/04/leetcode%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/" class="archive-article-date">
+<a href="/2021/03/04/%E7%AE%97%E6%B3%95-leetcode%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/" class="archive-article-date">
         <time datetime="2021-03-04T11:26:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-04</time>
 </a>
 
@@ -274,7 +280,7 @@
     <h2 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h2><h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>本质上是动态维护一个单调递增或单调递减的栈结构。</p>
 <h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>适用于解决求每个数左右距离最近的最大数(最小值)的值或下标,能做到O(n)的时间复杂度。</p>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/03/04/leetcode%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/03/04/%E7%AE%97%E6%B3%95-leetcode%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/#more">more >></a>
     
     
 
@@ -301,7 +307,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/03/04/leetcode%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/03/04/%E7%AE%97%E6%B3%95-leetcode%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/">展开全文 >></a>
     </p>
     
 
@@ -331,7 +337,7 @@
 
 
   
-    <article id="post-字节后端电商实习一、二、三面" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-面试-字节后端电商实习一、二、三面" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -339,7 +345,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/03/04/%E5%AD%97%E8%8A%82%E5%90%8E%E7%AB%AF%E7%94%B5%E5%95%86%E5%AE%9E%E4%B9%A0%E4%B8%80%E3%80%81%E4%BA%8C%E3%80%81%E4%B8%89%E9%9D%A2/">字节后端电商实习一、二、三面</a>
+	  <a class="article-title" href="/2021/03/04/%E9%9D%A2%E8%AF%95-%E5%AD%97%E8%8A%82%E5%90%8E%E7%AB%AF%E7%94%B5%E5%95%86%E5%AE%9E%E4%B9%A0%E4%B8%80%E3%80%81%E4%BA%8C%E3%80%81%E4%B8%89%E9%9D%A2/">面试-字节后端电商实习一、二、三面</a>
 	
     </h1>
   
@@ -347,7 +353,7 @@
 
   
   
-<a href="/2021/03/04/%E5%AD%97%E8%8A%82%E5%90%8E%E7%AB%AF%E7%94%B5%E5%95%86%E5%AE%9E%E4%B9%A0%E4%B8%80%E3%80%81%E4%BA%8C%E3%80%81%E4%B8%89%E9%9D%A2/" class="archive-article-date">
+<a href="/2021/03/04/%E9%9D%A2%E8%AF%95-%E5%AD%97%E8%8A%82%E5%90%8E%E7%AB%AF%E7%94%B5%E5%95%86%E5%AE%9E%E4%B9%A0%E4%B8%80%E3%80%81%E4%BA%8C%E3%80%81%E4%B8%89%E9%9D%A2/" class="archive-article-date">
         <time datetime="2021-03-04T03:34:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-04</time>
 </a>
 
@@ -363,7 +369,7 @@
     <h2 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h2><h3 id="1-JAVA值传递和引用传递是什么-浅拷贝是拷贝什么"><a href="#1-JAVA值传递和引用传递是什么-浅拷贝是拷贝什么" class="headerlink" title="1.JAVA值传递和引用传递是什么?浅拷贝是拷贝什么?"></a>1.JAVA值传递和引用传递是什么?浅拷贝是拷贝什么?</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/Norte_L/article/details/80250057/">https://blog.csdn.net/Norte_L/article/details/80250057/</a></p>
 <h3 id="2-JAVA堆和栈是什么"><a href="#2-JAVA堆和栈是什么" class="headerlink" title="2.JAVA堆和栈是什么?"></a>2.JAVA堆和栈是什么?</h3><h3 id="3-HashMap底层实现-扩容"><a href="#3-HashMap底层实现-扩容" class="headerlink" title="3.HashMap底层实现?扩容?"></a>3.HashMap底层实现?扩容?</h3><h3 id="4-线程和进程的区别。线程切换保存的是什么"><a href="#4-线程和进程的区别。线程切换保存的是什么" class="headerlink" title="4.线程和进程的区别。线程切换保存的是什么?"></a>4.线程和进程的区别。线程切换保存的是什么?</h3>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/03/04/%E5%AD%97%E8%8A%82%E5%90%8E%E7%AB%AF%E7%94%B5%E5%95%86%E5%AE%9E%E4%B9%A0%E4%B8%80%E3%80%81%E4%BA%8C%E3%80%81%E4%B8%89%E9%9D%A2/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/03/04/%E9%9D%A2%E8%AF%95-%E5%AD%97%E8%8A%82%E5%90%8E%E7%AB%AF%E7%94%B5%E5%95%86%E5%AE%9E%E4%B9%A0%E4%B8%80%E3%80%81%E4%BA%8C%E3%80%81%E4%B8%89%E9%9D%A2/#more">more >></a>
     
     
 
@@ -380,7 +386,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -394,7 +400,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/03/04/%E5%AD%97%E8%8A%82%E5%90%8E%E7%AB%AF%E7%94%B5%E5%95%86%E5%AE%9E%E4%B9%A0%E4%B8%80%E3%80%81%E4%BA%8C%E3%80%81%E4%B8%89%E9%9D%A2/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/03/04/%E9%9D%A2%E8%AF%95-%E5%AD%97%E8%8A%82%E5%90%8E%E7%AB%AF%E7%94%B5%E5%95%86%E5%AE%9E%E4%B9%A0%E4%B8%80%E3%80%81%E4%BA%8C%E3%80%81%E4%B8%89%E9%9D%A2/">展开全文 >></a>
     </p>
     
 
@@ -424,7 +430,7 @@
 
 
   
-    <article id="post-IDEA常用快捷键" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-mysql学习-mysql基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -432,7 +438,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/03/01/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/">idea常用快捷键</a>
+	  <a class="article-title" href="/2021/03/01/mysql%E5%AD%A6%E4%B9%A0-mysql%E5%9F%BA%E7%A1%80/">Mysql学习-Mysql基础</a>
 	
     </h1>
   
@@ -440,191 +446,7 @@
 
   
   
-<a href="/2021/03/01/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/" class="archive-article-date">
-        <time datetime="2021-03-01T02:28:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-01</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>1.ctrl+h 打开继承类/接口的实现  </p>
-<p>2.ctrl+enter打开类/查看其引用位置？</p>
-<p>3.ctrl+n/ctrl+shift+a 全局搜索</p>
-<p>4.ctrl+alt+enter打开其实现类/实现方法 </p>
-<p>5.在类上面右键-&gt;diagram-&gt;show diagram 关系视图-&gt;在其上右键，show implements查看其接口。</p>
-<p>6.alt+enter=&gt;生成对应方法/变量/…</p>
-<p>7./+/+*+回车=&gt;创建字段对应的注释</p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/03/01/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">idea</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/03/01/IDEA%E5%B8%B8%E7%94%A8%E5%BF%AB%E6%8D%B7%E9%94%AE/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-docker常见命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/03/01/docker%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/">docker常见命令</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/03/01/docker%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/" class="archive-article-date">
-        <time datetime="2021-03-01T02:22:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-01</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><code>systemctl start docker.service</code> 开启</p>
-<p><code>systemctl status docker.service</code> 查看<br><code>service docker stop</code> 关闭docker<br><code>systemctl stop docker</code> 关闭docker<br><code>systemctl stop firewalld.service</code> 关闭防火墙<br><code>systemctl disable firewalld.service</code> 禁止开启启动防火墙</p>
-<hr>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/03/01/docker%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">docker</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/03/01/docker%E5%B8%B8%E8%A7%81%E5%91%BD%E4%BB%A4/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-mysql命令" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/03/01/mysql%E5%91%BD%E4%BB%A4/">mysql命令</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/03/01/mysql%E5%91%BD%E4%BB%A4/" class="archive-article-date">
+<a href="/2021/03/01/mysql%E5%AD%A6%E4%B9%A0-mysql%E5%9F%BA%E7%A1%80/" class="archive-article-date">
         <time datetime="2021-03-01T02:04:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-01</time>
 </a>
 
@@ -641,7 +463,7 @@
 <h3 id="一些术语"><a href="#一些术语" class="headerlink" title="一些术语"></a>一些术语</h3><p>DB:数据库(database),存储数据的”仓库”,它保存了一系列有组织的数据。<br>DBMS:数据库管理系统(DatabaseManagementSystem)。数据库是通过DBNS创建和操作的容器。<br>SQL:结构化查询语言(StructureQueryLanguage),专门用来与数据库通信的语言。</p>
 <h3 id="mysql的启动和停止"><a href="#mysql的启动和停止" class="headerlink" title="mysql的启动和停止"></a>mysql的启动和停止</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">net start XXX</span><br><span class="line">net stop XXX</span><br></pre></td></tr></table></figure>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/03/01/mysql%E5%91%BD%E4%BB%A4/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/03/01/mysql%E5%AD%A6%E4%B9%A0-mysql%E5%9F%BA%E7%A1%80/#more">more >></a>
     
     
 
@@ -668,7 +490,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/03/01/mysql%E5%91%BD%E4%BB%A4/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/03/01/mysql%E5%AD%A6%E4%B9%A0-mysql%E5%9F%BA%E7%A1%80/">展开全文 >></a>
     </p>
     
 
@@ -698,7 +520,7 @@
 
 
   
-    <article id="post-hexo博客问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-面试-一次模拟面试-七" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -706,7 +528,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/03/01/hexo%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98/">hexo博客问题</a>
+	  <a class="article-title" href="/2021/02/28/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%B8%83/">面试-一次模拟面试-七</a>
 	
     </h1>
   
@@ -714,96 +536,7 @@
 
   
   
-<a href="/2021/03/01/hexo%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98/" class="archive-article-date">
-        <time datetime="2021-03-01T01:39:23.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-01</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <hr>
-<h3 id="hexo-d指令报错-–-隔断时间会发生一次"><a href="#hexo-d指令报错-–-隔断时间会发生一次" class="headerlink" title="hexo d指令报错 – 隔断时间会发生一次"></a>hexo d指令报错 – 隔断时间会发生一次</h3><p>当执行<code>hexo d</code>指令时,发生以下报错信息,并且无法将更新内容同步到github page上。<br><img src="/2021/03/01/hexo%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98/0.jpg" alt="0.jpg"></p>
-<p>问题解决:</p>
-<p>1.暂时解决。<br>在确保ssh正常,hexo-deploy-git插件正常的情况下,删除目录下的<code>.deploy_git</code>文件,然后重新执行<code>hexo g</code>和<code>hexo d</code>即可。</p>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/03/01/hexo%E5%8D%9A%E5%AE%A2%E9%97%AE%E9%A2%98/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-一次模拟面试-七" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/28/%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%B8%83/">一次模拟面试-七</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/28/%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%B8%83/" class="archive-article-date">
+<a href="/2021/02/28/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%B8%83/" class="archive-article-date">
         <time datetime="2021-02-28T05:13:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-28</time>
 </a>
 
@@ -822,7 +555,7 @@
 <p>2.http1.0/http1.1-增加了持久连接。不用等待下一个请求响应,就可以发送下一个请求。(了解)</p>
 <p>3http1.1/http2. 头部压缩,协议消除头部重复部分。 二进制格式,http2,效率更高。服务器推送,不等客户端请求,提前发送静态资源到客户端。(不太了解)</p>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/02/28/%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%B8%83/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/02/28/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%B8%83/#more">more >></a>
     
     
 
@@ -839,7 +572,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -853,7 +586,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/28/%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%B8%83/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/02/28/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%B8%83/">展开全文 >></a>
     </p>
     
 
@@ -883,7 +616,7 @@
 
 
   
-    <article id="post-leetcode-周赛第230场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-算法-leetcode-周赛第230场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -891,7 +624,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/02/28/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC230%E5%9C%BA/">leetcode-周赛第230场</a>
+	  <a class="article-title" href="/2021/02/28/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC230%E5%9C%BA/">算法-leetcode-周赛第230场</a>
 	
     </h1>
   
@@ -899,7 +632,7 @@
 
   
   
-<a href="/2021/02/28/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC230%E5%9C%BA/" class="archive-article-date">
+<a href="/2021/02/28/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC230%E5%9C%BA/" class="archive-article-date">
         <time datetime="2021-02-28T03:29:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-28</time>
 </a>
 
@@ -915,7 +648,7 @@
     <p>1.没什么好说的,模拟。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int countMatches(vector&lt;vector&lt;string&gt;&gt;&amp; items, string ruleKey, string ruleValue) &#123;</span><br><span class="line">        int cnt &#x3D; 0;</span><br><span class="line">        int n &#x3D; items.size();</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">            string ty &#x3D; items[i][0], co &#x3D; items[i][1], na &#x3D; items[i][2];</span><br><span class="line">            if(ruleKey&#x3D;&#x3D;&quot;type&quot;&amp;&amp;ruleValue&#x3D;&#x3D;ty) &#123;cnt++;continue;&#125;</span><br><span class="line">            if(ruleKey&#x3D;&#x3D;&quot;color&quot;&amp;&amp;ruleValue&#x3D;&#x3D;co)&#123;cnt++;continue;&#125;</span><br><span class="line">            if(ruleKey&#x3D;&#x3D;&quot;name&quot;&amp;&amp;ruleValue&#x3D;&#x3D;na)&#123;cnt++;continue;&#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return cnt;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/02/28/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC230%E5%9C%BA/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/02/28/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC230%E5%9C%BA/#more">more >></a>
     
     
 
@@ -946,7 +679,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/28/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC230%E5%9C%BA/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/02/28/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC230%E5%9C%BA/">展开全文 >></a>
     </p>
     
 
@@ -976,7 +709,7 @@
 
 
   
-    <article id="post-一次模拟面试-六" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-面试-一次模拟面试-六" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -984,7 +717,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/02/24/%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%85%AD/">一次模拟面试-六</a>
+	  <a class="article-title" href="/2021/02/24/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%85%AD/">面试-一次模拟面试-六</a>
 	
     </h1>
   
@@ -992,7 +725,7 @@
 
   
   
-<a href="/2021/02/24/%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%85%AD/" class="archive-article-date">
+<a href="/2021/02/24/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%85%AD/" class="archive-article-date">
         <time datetime="2021-02-24T05:07:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-24</time>
 </a>
 
@@ -1013,7 +746,7 @@
 <p>5.讲一下volatile的底层实现。(不太了解)禁止指令重排实现?可见性实现?volatile的应用?</p>
 <p>6.AQS是什么?哪些实现了AQS(CountDownLatch如何实现AQS)(基本了解)</p>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/02/24/%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%85%AD/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/02/24/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%85%AD/#more">more >></a>
     
     
 
@@ -1030,7 +763,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -1044,7 +777,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/24/%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%85%AD/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/02/24/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%85%AD/">展开全文 >></a>
     </p>
     
 
@@ -1074,7 +807,7 @@
 
 
   
-    <article id="post-spring" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-java学习-spring相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -1082,7 +815,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/02/23/spring/">spring</a>
+	  <a class="article-title" href="/2021/02/23/java%E5%AD%A6%E4%B9%A0-spring%E7%9B%B8%E5%85%B3/">Java学习-Spring相关</a>
 	
     </h1>
   
@@ -1090,7 +823,7 @@
 
   
   
-<a href="/2021/02/23/spring/" class="archive-article-date">
+<a href="/2021/02/23/java%E5%AD%A6%E4%B9%A0-spring%E7%9B%B8%E5%85%B3/" class="archive-article-date">
         <time datetime="2021-02-23T14:47:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-23</time>
 </a>
 
@@ -1107,7 +840,7 @@
 <p>2.Spring可以解决企业开发的复杂性</p>
 <p>3.Spring有两个核心部分:IOC和AOP<br> (1)IOC:控制反转,把创建对象过程交给Spring进行管理<br> (2)Aop:面向切面,不修改源代码进行功能增强</p>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/02/23/spring/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/02/23/java%E5%AD%A6%E4%B9%A0-spring%E7%9B%B8%E5%85%B3/#more">more >></a>
     
     
 
@@ -1134,7 +867,288 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/23/spring/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/02/23/java%E5%AD%A6%E4%B9%A0-spring%E7%9B%B8%E5%85%B3/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-面试-一次模拟面试-五" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/02/21/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%BA%94/">面试-一次模拟面试-五</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/02/21/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%BA%94/" class="archive-article-date">
+        <time datetime="2021-02-21T05:03:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-21</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <hr>
+<p>自我介绍</p>
+<p>1.数据库的事务是什么(不太了解)。事务的四大特性。</p>
+<p>2.事务是如何实现的?(不太了解)</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ffdsj/p/12266539.html">https://www.cnblogs.com/ffdsj/p/12266539.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://bbs.csdn.net/topics/350032671">https://bbs.csdn.net/topics/350032671</a></p>
+<p>3.OSI参考模型。(不太了解) OSI 和 TCP/IP 区别</p>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/02/21/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%BA%94/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/02/21/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%BA%94/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-算法-leetcode-周赛第229场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/02/21/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC229%E5%9C%BA/">算法-leetcode-周赛第229场</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/02/21/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC229%E5%9C%BA/" class="archive-article-date">
+        <time datetime="2021-02-21T02:12:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-21</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string mergeAlternately(string word1, string word2) &#123;</span><br><span class="line">        string ans;</span><br><span class="line">        int n &#x3D; word1.size(), m &#x3D; word2.size();</span><br><span class="line">        if(n &gt; m)&#123;</span><br><span class="line">            for(int i &#x3D; 0; i &lt; m; i ++)&#123;</span><br><span class="line">                ans +&#x3D; word1[i];</span><br><span class="line">                ans +&#x3D; word2[i];</span><br><span class="line">            &#125;</span><br><span class="line">            ans +&#x3D; word1.substr(m);</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">                ans +&#x3D; word1[i];</span><br><span class="line">                ans +&#x3D; word2[i];</span><br><span class="line">            &#125;</span><br><span class="line">            ans +&#x3D; word2.substr(n);</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/02/21/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC229%E5%9C%BA/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/02/21/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC229%E5%9C%BA/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-算法-leetcode-双周赛第46场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/02/20/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC46%E5%9C%BA/">算法-leetcode-双周赛第46场</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/02/20/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC46%E5%9C%BA/" class="archive-article-date">
+        <time datetime="2021-02-20T15:56:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-20</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string ans;</span><br><span class="line">    int maxlen;</span><br><span class="line">    bool check(string s, int l, int r)&#123;</span><br><span class="line">        int b1[200] &#x3D; &#123;0&#125;,b2[200] &#x3D; &#123;0&#125;;</span><br><span class="line">        for(int i &#x3D; l; i &lt;&#x3D; r; i ++)&#123;</span><br><span class="line">            if(s[i]&gt;&#x3D;&#39;a&#39;&amp;&amp;s[i]&lt;&#x3D;&#39;z&#39;) b1[s[i]]++;</span><br><span class="line">            else b2[s[i]-&#39;A&#39;+&#39;a&#39;]++;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i &#x3D; &#39;a&#39;; i &lt;&#x3D; &#39;z&#39;; i ++)&#123;</span><br><span class="line">            if(b1[i])&#123;</span><br><span class="line">                if(!b2[i]) return false;</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                if(b2[i]) return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    string longestNiceSubstring(string s) &#123;</span><br><span class="line">        int n &#x3D; s.size();</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">            for(int j &#x3D; i; j &lt; n; j ++)&#123;</span><br><span class="line">                if(check(s,i,j))&#123;</span><br><span class="line">                    int len &#x3D; j - i + 1;</span><br><span class="line">                    if(len &gt; maxlen)&#123;</span><br><span class="line">                        maxlen &#x3D; len;</span><br><span class="line">                        ans &#x3D; s.substr(i,len);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int tt;</span><br><span class="line">    bool check(vector&lt;int&gt; v1, vector&lt;int&gt; v2, int loc)&#123;</span><br><span class="line">        int len1 &#x3D; v1.size(), len2 &#x3D; v2.size() - loc;</span><br><span class="line">        if(len2&lt;len1) return false;</span><br><span class="line">        vector&lt;int&gt;v3;</span><br><span class="line">        for(int i &#x3D; 0; i &lt; len1; i ++)&#123;</span><br><span class="line">            v3.push_back(v2[i+loc]);</span><br><span class="line">        &#125;</span><br><span class="line">        sort(v1.begin(),v1.end());</span><br><span class="line">        sort(v3.begin(),v3.end());</span><br><span class="line">        for(int i &#x3D; 0; i &lt; len1; i ++)&#123;</span><br><span class="line">            if(v1[i]!&#x3D;v3[i]) return false;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    bool canChoose(vector&lt;vector&lt;int&gt;&gt;&amp; groups, vector&lt;int&gt;&amp; nums) &#123;</span><br><span class="line">        int n &#x3D; groups.size(), len &#x3D; nums.size(), i;</span><br><span class="line">        for(i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">             int m &#x3D; groups[i].size();</span><br><span class="line">             bool flag &#x3D; false;</span><br><span class="line">             while(tt &lt; len)&#123;</span><br><span class="line">                 if(check(groups[i],nums,tt))&#123; tt +&#x3D; m; flag &#x3D; true; break;&#125;</span><br><span class="line">                 else tt ++;</span><br><span class="line">             &#125;</span><br><span class="line">             if(!flag) return false;</span><br><span class="line">             if(i &#x3D;&#x3D; n - 1) return true;</span><br><span class="line">         &#125;</span><br><span class="line">        &#x2F;&#x2F; int loc &#x3D; 1;</span><br><span class="line">        &#x2F;&#x2F; for(int i &#x3D; 0; i &lt; len; i ++)&#123;</span><br><span class="line">        &#x2F;&#x2F;     if(nums[i] &#x3D;&#x3D; q[loc]) &#123;</span><br><span class="line">        &#x2F;&#x2F;         loc++;</span><br><span class="line">        &#x2F;&#x2F;     &#125;</span><br><span class="line">        &#x2F;&#x2F;     if(loc &gt; tt) break;</span><br><span class="line">        &#x2F;&#x2F; &#125;</span><br><span class="line">        return i &#x3D;&#x3D; n;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt;res;</span><br><span class="line">    int g[1010][1010];</span><br><span class="line">    bool st[1010][1010];</span><br><span class="line">    struct pts&#123;</span><br><span class="line">        int x,y,h;</span><br><span class="line">    &#125;;</span><br><span class="line">    int dx[4] &#x3D; &#123;-1,0,1,0&#125;, dy[4] &#x3D; &#123;0,1,0,-1&#125;;</span><br><span class="line">    vector&lt;vector&lt;int&gt;&gt; highestPeak(vector&lt;vector&lt;int&gt;&gt;&amp; p) &#123;</span><br><span class="line">        int n &#x3D; p.size(), m &#x3D; p[0].size();</span><br><span class="line">        queue&lt;pts&gt;q;</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">            for(int j &#x3D; 0; j &lt; m; j ++)&#123;</span><br><span class="line">                if(p[i][j]&#x3D;&#x3D;1) q.push(&#123;i,j,0&#125;),st[i][j] &#x3D; true,g[i][j] &#x3D; 0;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        while(q.size())&#123;</span><br><span class="line">            struct pts t &#x3D; q.front(); q.pop();</span><br><span class="line">            int u &#x3D; t.x, v &#x3D; t.y, h &#x3D; t.h;</span><br><span class="line">            for(int i &#x3D; 0; i &lt; 4; i ++)&#123;</span><br><span class="line">                int x &#x3D; u + dx[i], y &#x3D; v + dy[i];</span><br><span class="line">                if(x&gt;&#x3D;0&amp;&amp;x&lt;n&amp;&amp;y&gt;&#x3D;0&amp;&amp;y&lt;m&amp;&amp;!st[x][y])&#123;</span><br><span class="line">                    st[x][y] &#x3D; true;</span><br><span class="line">                    g[x][y] &#x3D; h + 1;</span><br><span class="line">                    q.push(&#123;x,y,h+1&#125;);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">            vector&lt;int&gt;tmp;</span><br><span class="line">            for(int j &#x3D; 0; j &lt; m; j ++)&#123;</span><br><span class="line">                tmp.push_back(g[i][j]);</span><br><span class="line">            &#125;</span><br><span class="line">            res.push_back(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/02/20/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC46%E5%9C%BA/">展开全文 >></a>
     </p>
     
 
@@ -1256,7 +1270,7 @@
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章(tag)</a></li>
       
         
       
@@ -1285,15 +1299,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">项目</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1325,10 +1331,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">框架</a>
               </li>
              
@@ -1337,15 +1339,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图论</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1354,10 +1348,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1386,6 +1376,26 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">map</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">记录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wsdl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
             
             <div class="clearfix"></div>

@@ -1,0 +1,1156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <link rel="dns-prefetch" href="http://caciacc.top">
+  <title>Java学习-线程相关知识 | caciaCC的博客</title>
+  <meta name="generator" content="hexo-theme-yilia-plus">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  
+  <meta name="description" content="volatile相关     ●volatile底层原理。 Lock前缀的指令+ 缓存一致性协议+内存屏障（Memory Barrier&#x3D;&gt;也是一个CPU指令） Lock前缀的指令：Lock前缀的指令在多核处理器下会发生两件事情：1）将当前处理器的缓存行的数据写回到系统内存。2）这个写回内存的操作会使其他CPU缓存了该内存的地址的数据无效。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java学习-线程相关知识">
+<meta property="og:url" content="http://caciacc.top/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/index.html">
+<meta property="og:site_name" content="caciaCC的博客">
+<meta property="og:description" content="volatile相关     ●volatile底层原理。 Lock前缀的指令+ 缓存一致性协议+内存屏障（Memory Barrier&#x3D;&gt;也是一个CPU指令） Lock前缀的指令：Lock前缀的指令在多核处理器下会发生两件事情：1）将当前处理器的缓存行的数据写回到系统内存。2）这个写回内存的操作会使其他CPU缓存了该内存的地址的数据无效。">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://caciacc.top/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/0.png">
+<meta property="og:image" content="http://caciacc.top/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/1.png">
+<meta property="og:image" content="http://caciacc.top/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/2.png">
+<meta property="og:image" content="http://caciacc.top/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/3.png">
+<meta property="og:image" content="http://caciacc.top/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/4.png">
+<meta property="og:image" content="http://caciacc.top/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/5.png">
+<meta property="og:image" content="http://caciacc.top/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/6.png">
+<meta property="og:image" content="http://caciacc.top/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/7.png">
+<meta property="og:image" content="http://caciacc.top/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/8.png">
+<meta property="og:image" content="http://caciacc.top/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/9.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/10.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/11.jpg">
+<meta property="article:published_time" content="2021-01-12T03:23:27.000Z">
+<meta property="article:modified_time" content="2021-03-05T06:18:54.450Z">
+<meta property="article:author" content="caciaCC">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="线程">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://caciacc.top/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/0.png">
+  
+    <link rel="alternative" href="/atom.xml" title="caciaCC的博客" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/assets/blogImg/touxiang.png">
+  
+  
+    <link rel="apple-touch-icon" href="/apple-touch-icon-180x180.png">
+  
+  <link rel="stylesheet" type="text/css" href="/./main.5a5b0a.css">
+  <style type="text/css">
+    
+    #container.show {
+      background: linear-gradient(200deg,#a0cfe4,#e8c37e);
+    }
+  </style>
+  
+
+  
+
+  
+    
+ 	  <script src="/lib/clickLove.js"></script>
+  
+  
+
+
+  
+
+</head>
+
+<body>
+  <div id="container" q-class="show:isCtnShow">
+    <canvas id="anm-canvas" class="anm-canvas"></canvas>
+    <div class="left-col" q-class="show:isShow">
+      
+
+
+<div class="overlay" style="background: #90EE90;"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			<img src="/assets/blogImg/touxiang.png" class="js-avatar">
+		</a>
+		<hgroup>
+			<h1 class="header-author"><a href="/">caciaCC</a></h1>
+		</hgroup>
+		
+		<p class="header-subtitle">just do it</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/" >主页</a></li>
+			
+				<li><a href="/tags/java" >JAVA</a></li>
+			
+				<li><a href="/tags/%E7%AE%97%E6%B3%95" >算法</a></li>
+			
+				<li><a href="/tags/%E8%AE%B0%E5%BD%95" >记录</a></li>
+			
+				<li><a href="/archives/" >全部</a></li>
+			
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+			
+				
+					<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章(tag)</a>
+				
+			
+				
+			
+				
+			
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					
+						<a class="leetcode" target="_blank" rel="noopener" href="https://leetcode-cn.com/u/cacia/" 
+												title="力扣" ><i class="icon-leetcode"></i></a>
+					
+				
+					
+						<a class="github" target="_blank" rel="noopener" href="https://github.com/caciaCC" 
+												title="GitHub" ><i class="icon-github"></i></a>
+					
+				
+					
+						<a class="gitee" target="_blank" rel="noopener" href="https://gitee.com/a1732583038" 
+												title="码云" ><i class="icon-gitee"></i></a>
+					
+				
+					
+						<a class="zhihu" target="_blank" rel="noopener" href="https://www.zhihu.com/people/ccccc-40-47" 
+												title="知乎" ><i class="icon-zhihu"></i></a>
+					
+				
+					
+						<a class="qq" target="_blank" rel="noopener" href="https://user.qzone.qq.com/1732583038?_t_=0.5998345024025399" 
+												title="QQ" ><i class="icon-qq"></i></a>
+					
+				
+					
+						<a class="bilibili" target="_blank" rel="noopener" href="https://space.bilibili.com/13539525" 
+												title="哔哩哔哩" ><i class="icon-bilibili"></i></a>
+					
+				
+					
+						<a class="mail" target="_blank" rel="noopener" href="https://1732583038@qq.com" 
+												title="邮件联系" ><i class="icon-mail"></i></a>
+					
+				
+			</div>
+		
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col" q-class="show:isShow,hide:isShow|isFalse">
+      
+      
+<nav id="mobile-nav">
+  	<div class="overlay js-overlay" style="background: #90EE90"></div>
+	<div class="btnctn js-mobile-btnctn">
+  		<div class="slider-trigger list" q-on="click: openSlider(e)"><i class="icon icon-sort"></i></div>
+	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				<a href="/">
+					<img src="/assets/blogImg/touxiang.png" class="js-avatar">
+				</a>
+			</div>
+			<hgroup>
+			  <h1 class="header-author js-header-author">caciaCC</h1>
+			</hgroup>
+			
+			<p class="header-subtitle"><i class="icon icon-quo-left"></i>just do it<i class="icon icon-quo-right"></i></p>
+			
+			
+			
+				
+			
+				
+			
+				
+			
+				
+			
+				
+			
+			
+			
+			<nav class="header-nav">
+				<div class="social">
+					
+						
+						<a class="leetcode" target="_blank" 
+							href="https://leetcode-cn.com/u/cacia/" title="力扣"><i class="icon-leetcode"></i></a>
+						
+					
+						
+						<a class="github" target="_blank" 
+							href="https://github.com/caciaCC" title="GitHub"><i class="icon-github"></i></a>
+						
+					
+						
+						<a class="gitee" target="_blank" 
+							href="https://gitee.com/a1732583038" title="码云"><i class="icon-gitee"></i></a>
+						
+					
+						
+						<a class="zhihu" target="_blank" 
+							href="https://www.zhihu.com/people/ccccc-40-47" title="知乎"><i class="icon-zhihu"></i></a>
+						
+					
+						
+						<a class="qq" target="_blank" 
+							href="https://user.qzone.qq.com/1732583038?_t_=0.5998345024025399" title="QQ"><i class="icon-qq"></i></a>
+						
+					
+						
+						<a class="bilibili" target="_blank" 
+							href="https://space.bilibili.com/13539525" title="哔哩哔哩"><i class="icon-bilibili"></i></a>
+						
+					
+						
+						<a class="mail" target="_blank" 
+							href="https://1732583038@qq.com" title="邮件联系"><i class="icon-mail"></i></a>
+						
+					
+				</div>
+			</nav>
+
+			<nav class="header-menu js-header-menu">
+				<ul style="width: 70%">
+				
+				
+					<li style="width: 20%"><a href="/">主页</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/java">JAVA</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/%E7%AE%97%E6%B3%95">算法</a></li>
+		        
+					<li style="width: 20%"><a href="/tags/%E8%AE%B0%E5%BD%95">记录</a></li>
+		        
+					<li style="width: 20%"><a href="/archives/">全部</a></li>
+		        
+				</ul>
+			</nav>
+		</header>				
+	</div>
+	<div class="mobile-mask" style="display:none" q-show="isShow"></div>
+</nav>
+
+      <div id="wrapper" class="body-wrap">
+        <div class="menu-l">
+          <div class="canvas-wrap">
+            <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1"
+              class="anm-canvas"></canvas>
+          </div>
+          <div id="js-content" class="content-ll">
+            <article id="post-java学习-线程相关知识" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 class="article-title" itemprop="name">
+      Java学习-线程相关知识
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">10.9k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">39分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><span style="background-color:      #FFD700"><strong>volatile相关</strong></span></p>
+<span style="background-color:      #FFD700">
+
+</span>
+
+<p>●volatile底层原理。</p>
+<p>Lock前缀的指令+ 缓存一致性协议+内存屏障（Memory Barrier=&gt;也是一个CPU指令）</p>
+<p><strong>Lock前缀的指令</strong>：<br>Lock前缀的指令在多核处理器下会发生两件事情：1）将当前处理器的缓存行的数据写回到系统内存。2）这个写回内存的操作会使其他CPU缓存了该内存的地址的数据无效。</p>
+<a id="more"></a>
+<p><strong>缓存一致性协议</strong>： 在多处理器下，为零保证各个处理器的缓存是一致的，每个处理器都会通过嗅探在总线上传播的数据来检查自己缓存的值是不是过期了。当处理器发现自己缓存行对应的地址被修改，就会将当前处理器的缓存行设置为无效状态。当处理器对这个数据进行读写的时候，会重新把数据从内存中读取到处理器缓存中。</p>
+<p><strong>内存屏障</strong><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/2ab5e3d7e510">(详细</a>):禁止在内存屏障前后的指令执行重排序优化,并强制刷出各种CPU的缓存数据。(storestore屏障-&gt;volatile写-&gt;storeload屏障、volatile读-&gt;loadload屏障-&gt;loadstore屏障  </p>
+<p>(了解):<br>LoadLoad屏障：对于这样的语句Load1; LoadLoad; Load2，在Load2及后续读取操作要读取的数据被访问前，保证Load1要读取的数据被读取完毕。<br>StoreStore屏障：对于这样的语句Store1; StoreStore; Store2，在Store2及后续写入操作执行前，保证Store1的写入操作对其它处理器可见。<br>LoadStore屏障：对于这样的语句Load1; LoadStore; Store2，在Store2及后续写入操作被刷出前，保证Load1要读取的数据被读取完毕。<br>StoreLoad屏障：对于这样的语句Store1; StoreLoad; Load2，在Load2及后续所有读取操作执行前，保证Store1的写入对所有处理器可见。<br>XY屏障：X要先于Y。<br>内存屏障还用于final,这里不再赘述。  </p>
+<p>易知，Lock前缀的指令+ 缓存一致性协议+内存屏障 保证了可见性。<br>Lock前缀的指令保证了禁止指令重排。</p>
+<p>●volatile可见性是怎么实现的？</p>
+<p>见上一题。</p>
+<p>可见性是通过内存屏障来实现读写语义的,遇到读内存屏障直接从主内存读取,遇到写内存屏障直接写入主存。</p>
+<p>●volatile原理和作用</p>
+<p>见volatile的底层原理。</p>
+<p>见举例说明volatile的作用。</p>
+<p>不保证原子性、禁止指令重排、可见性。</p>
+<p><strong>●举例说明volatile的作用？</strong></p>
+<p>作用是当一个线程更新volatile修饰的关键字的值时,会通知其他的线程其工作内存中该变量的值已经失效,将主内存中该变量的值强制刷回到其工作内存中。</p>
+<p>以进行线程间的轻量级同步。</p>
+<p>可见性-&gt;JMM模型，读写的时候获取主线程的最新拷贝，举例，CAS操作必须保证可见性才能完成,AQS中state也必须volatile修饰,等等。</p>
+<p>不保证原子性-&gt;</p>
+<p>禁止指令重排-&gt;当多线程执行代码时，指令重排可能会导致问题，举例，读写操作时，volatile的读写，写操作会在先设置storestore屏障，在后设置storeload屏障，读操作会在后设置loadload屏障和设置loadstore屏障。</p>
+<p>volatile的应用：并发单例模式DCL(双端检锁Double Check Lock)-&gt;使用volatile禁止指令重排保证安全-&gt;不安全原因:原因在于某一个线程在执行到第一次检测,读取到的instance不为null时,instance的引用对象<strong>可能没有完成初始化</strong>(因为初始化对象和将引用指向对象内存可以指令重排).</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">private static volatile SingletonDemo instance&#x3D;null;</span><br><span class="line"></span><br><span class="line">public static SingletonDemo getInstance()&#123;</span><br><span class="line">     if(instance&#x3D;&#x3D;null)&#123;</span><br><span class="line">        synchronized (SingletonDemo.class)&#123;</span><br><span class="line">            if(instance&#x3D;&#x3D;null)&#123;</span><br><span class="line">                instance&#x3D;new SingletonDemo();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">     &#125;</span><br><span class="line">  return instance;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<!--more-->
+<p><strong>CAS相关</strong></p>
+<p>●CAS是啥？CAS的原理是啥。</p>
+<p>CAS是compare and set,它是一条<strong>CPU并发原语</strong>,功能是判断内存某个位置的值是否为预期值,是则更新为新值,过程是原子的。</p>
+<p>CAS是通过UnSafe类的native实现的。UnSafe类的native方法则是调用底层CAS并发原语(原语不可中断,故不会造成数据一致性问题)。</p>
+<p>●哪些地方用到了CAS?</p>
+<p>CHM(concurrenthashmap)、原子类、AQS等。</p>
+<p>CHM1.8(在put一个没有元素的Node进行CAS尝试,直到成功)</p>
+<p>原子类(自增或自减操作时进行CAS尝试)</p>
+<p>AQS(state的修改使用CAS尝试)</p>
+<p>syn(偏向锁、轻量锁、自旋锁)</p>
+<p>●CAS如何进行syn锁优化的？</p>
+<p>CAS实现了偏向锁、轻量锁、自旋锁,在膨胀为重量锁之前,不需要底层的mutex lock来切换上下文。</p>
+<p>●CAS操作会有什么问题？如何解决？</p>
+<p>CAS操作会出现ABA问题。即某个线程更新把值从A更新为B,又把值从B更新为A,而之后的线程认为值不变,就直接继续操作。</p>
+<p>准确的说是原子类如AtomicInteger的ABA问题。</p>
+<p>可以通过设立时间戳(类似MVCC版本控制)的方式来解决。(即不使用AtomicReference或AtomicInteger而使用AtomicStampedReference)</p>
+<p><strong>锁相关</strong></p>
+<p>**</p>
+<p>**</p>
+<p>●锁有了解吗？说说syn和lock的区别</p>
+<p>1.原始构成。</p>
+<p>syn是关键字是JVM层面的，monitorenter（底层是通过monitor对象来完成，其实wait/notify等方法也依赖于monitor对象,只有在同步块或方法中才能调用wait/notify等方法,更底层是mutex lock）</p>
+<p>monitorexit，而lock是一个接口，是api层面的锁。</p>
+<p>2.使用方法。</p>
+<p>syn不需要用户手动释放锁，有正常退出和异常退出两种方式，所以不会产生死锁。lock需要用户手动释放锁，如果没有释放锁，就会导致死锁。</p>
+<p>3.等待是否可中断。（获取？）</p>
+<p>syn不可被中断，而lock可被中断。（1.设置超时方法tryLock（long timeout ，TimeUnit unit）2.lockInterruptibly（）放代码块中，调用interrupt（）方法可中断）</p>
+<p>4.加锁是否公平。</p>
+<p>syn是非公平锁，lock默认是非公平锁，可以设置为公平锁。</p>
+<p>5.绑定多个条件。</p>
+<p>syn不能精确唤醒（只能随机唤醒一个或者一次唤醒所有），而lock可以精确唤醒。</p>
+<p>●说说syn和reentrantlock的区别。</p>
+<p>大部分和上面一题一样。</p>
+<p>原始构成上,ReentrantLock继承了lock接口,是用AQS(state+等待队列)来实现的锁,也是属于API层面的锁。</p>
+<p>●java中有哪些锁？</p>
+<p>1.乐观锁 如CAS</p>
+<p>2.悲观锁 如syn、ReentrantLock</p>
+<p>3.自旋锁 如优化后的syn。</p>
+<p>●什么是乐观锁?什么是悲观锁？</p>
+<p>乐观锁,即足够乐观,认为并发写可能性低,故不加锁,而用版本号判断能否更新。如CAS。</p>
+<p>悲观锁,即足够悲观,认为并发写可能性高,故必须独占。如syn。</p>
+<p>●wait底层实现</p>
+<p>wait方法将当前线程放入wait set，等待被唤醒，并放弃lock对象上的所有同步声明。</p>
+<p>1、将当前线程封装成ObjectWaiter对象node；</p>
+<p>2、通过ObjectMonitor::AddWaiter方法将node添加到_WaitSet列表中；</p>
+<p>3、通过ObjectMonitor::exit方法释放当前的ObjectMonitor对象，这样其它竞争线程就可以获取该ObjectMonitor对象。</p>
+<p>4、最终底层的park方法将挂起线程；</p>
+<p>（最后与之对应的<strong>notify方法**</strong>）**<strong>会随机唤醒**</strong>_WaitSet中随机一个线程**</p>
+<p>●什么是死锁？死锁的原因是什么？</p>
+<span style="background-color:      #FFD700">
+
+</span>
+
+<p>两个或以上线程都在等待对方执行完毕才能往下执行的时候就发生了死锁。结果就是其陷入无限等待中。</p>
+<p>原因是两个或以上线程互相占有了自身往下执行所需要的资源。</p>
+<p>所谓死锁：是指两个或两个以上的进程在执行过程中，因争夺资源而造成的一种互相等待的现象，若无外力作用，它们都将无法推进下去。此时称系统处于死锁状态或系统产生了死锁，这些永远在互相等待的进程称为死锁进程。</p>
+<p>●线程有哪几种状态(线程的生命周期)？JAVA概念=&gt;待看——<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_33996921/article/details/106357703">详细</a>,<a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_45406092/article/details/108701347?utm_medium=distribute.pc_relevant.none-task-blog-title-1&spm=1001.2101.3001.4242">详细2</a>,再更新</p>
+<p>通过Thread.State枚举类可以看线程的状态有哪些(线程的生命周期)。</p>
+<p>new(初始状态,还未调用start)</p>
+<p>runnable(调用start后,run执行完前,就绪和运行统称为runnable)</p>
+<p>blocked(等待阻塞:wait、同步阻塞:同步锁、其他阻塞:sleep、join、IO等)</p>
+<p>waiting</p>
+<p>timed-waiting(超时等待状态,超时后自动返回)</p>
+<p>terminated</p>
+<p><span style="background-color:      #FFD700">blocked和wating、timed-waiting的区别是什么？？？</span></p>
+<p>●类里面可不可以只有方法的声明，没有方法的实现。</p>
+<p>可以。native方法可以只有声明没有实现。native的意思是要调操作系统底层函数和底层c语言函数库来实现。native方法调本地方法接口，调本地方法库。</p>
+<p>●Condition类和Object类锁方法区别</p>
+<p>1.await等效wait 2.signal等效notify 3.signalAll等效notifyAll 4.Condition可以进行指定唤醒,而Object只能随机唤醒或者唤醒所有。</p>
+<p><span style="background-color:      #FFD700"><strong>线程池相关</strong></span></p>
+<p>●什么是线程池,线程池的运行过程,七大参数,拒绝策略有哪些，有哪些线程池。</p>
+<span style="background-color:      #FFD700">
+
+</span>
+
+<p>线程池即事先创建好若干个线程放入到一个容器中，需要时自行从池子中获取而不用自行创建，使用完毕后不用销毁线程而是返回线程池中，从而减少创建和销毁线程的开销。</p>
+<p>首先，线程池被创建出来，此时线程池中没有任何线程，也不会执行任何任务。</p>
+<p>然后，当调用 execute（）方法添加一个任务时，线程池会进行判断：</p>
+<p>1.运行的线程数少于核心线程数，则马上创建线程运行此任务。</p>
+<p>2.运行的线程数大于等于核心线程数，且阻塞队列未满，将任务放入到阻塞队列中。</p>
+<p>3.运行的线程数大于等于核心消除数，且阻塞队列已满，且运行线程数少于最大线程数，那么创建非核心线程马上运行任务。</p>
+<p>4.运行线程数已经大于等于最大线程数，那么对新来的任务执行拒绝策略，默认是抛出异常。</p>
+<p>然后，当一个线程完成一个任务后，会从队列中取队首的任务来处理。</p>
+<p>然后，当线程空闲超过（keepAliveTime）时，且当前线程数大于核心线程数，线程池将销毁这个线程,试图将当前线程数缩小到核心线程数。</p>
+<p>七大参数：核心线程数，最大线程数，阻塞队列，线程存活时间，线程存活时间单位，阻塞队列，线程工厂，拒绝策略。</p>
+<p>拒绝策略有：AbortPolicy抛出异常（RejectedExecutionException）、CallerRunsPolicy回退任务、DiscardOldestPolicy抛弃等待最久的任务、DiscardPolicy抛弃当前任务</p>
+<p>线程池有：newFixedThreadPool 固定大小、newSchuledThreadPool 无限大、可计划任务、newCachedThreadPool可缓存临时无限增加、newSingleThreadPool单个线程 。</p>
+<p>●在工作中单一的/固定数的/可变的三种创建线程池的方法哪个用的多？实际生产中如何设置合理参数。</p>
+<p>哪个都不用。工作中我们只自己自定义线程池。</p>
+<p>首先通过Runtime.getRuntime().availableProcessors()查看核数。</p>
+<p>然后看是CPU密集型还是IO密集型,CPU密集型,CPU利用率高,n核设置为n+1,IO密集多设置点n核设置2n。</p>
+<p>然后最重要的是通过配置中心动态调整。</p>
+<p>●线程池中的线程资源怎么回收的？</p>
+<p>工作线程回收需要满足三个条件：</p>
+<p>参数allowCoreThreadTimeOut为true</p>
+<p>该线程在keepAliveTime时间内获取不到任务,即空闲这么长时间</p>
+<p>当前线程池大小 &gt; 核心线程池大小corePoolSize</p>
+<p><img src="/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/0.png" alt=".png"></p>
+<p><span style="background-color:      #FFD700"><strong>AQS相关</strong></span></p>
+<p>●什么是AQS（AbstractQueueSynchronizer）?</p>
+<p>AQS是实现锁的框架,也即是实现多线程访问共享资源的同步器的框架。许多同步类的实现都依赖于它，如ReentrantLock、CountDownLatch、Semaphone、ReadWriteLock。</p>
+<p>内部结构：等待队列FIFO(Node链表) + 共享资源state（volatile int修饰）</p>
+<p>线程模式：独占模式、共享模式、独占+共享(ReentrantReadWriteLock)。</p>
+<p>AQS实现核心：state资源状态计数。</p>
+<p>ReentLock实现：state初始化为0，表示为锁定，A线程lock(）调用tryAcquire()独占该锁并将state+1。此后，其他线程tryAcquire()将失败,直到A.unlock()将state重新变回到0为止。（其中A可以重复获取该锁,state会累加,这就是可重入的实现）</p>
+<p>CountdownLacth实现：state初始化为n,当一个线程执行调用countDown()一次,state就会CAS减1,当state为0,会unpack()主调用线程,朱调用线程返回，继续后续动作。</p>
+<p>●看一下AQS源码和JDK说明书。 OK。</p>
+<p><strong>ThreadLocal相关</strong></p>
+<p>**</p>
+<p>**</p>
+<p>●什么是ThreadLocal？谈一谈。</p>
+<p>ThreadLocal是线程本地变量(线程本地存储),<strong>这种变量只在线程的生命周期内起作用</strong>,目的是减少同一线程内多个函数或者组件之间一些<strong>公共变量的传递的复杂度</strong>。</p>
+<p>使用场景:最常见的 ThreadLocal 使用场景为 用来解决 数据库连接、Session 管理等。</p>
+<p>什么是ThreadLocalMap？</p>
+<p>线程的一个属性。(也是ThreadLocal的一个静态内部类)</p>
+<p>每个线程都有自己的一个ThreadLocalMap类对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">public</span><br><span class="line">class Thread implements Runnable &#123;</span><br><span class="line">...</span><br><span class="line">ThreadLocal.ThreadLocalMap threadLocals &#x3D; null;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">public class ThreadLocal&lt;T&gt; &#123;</span><br><span class="line">...</span><br><span class="line">public T get() &#123;</span><br><span class="line">    Thread t &#x3D; Thread.currentThread();</span><br><span class="line">    ThreadLocalMap map &#x3D; getMap(t);</span><br><span class="line">    if (map !&#x3D; null) &#123;</span><br><span class="line">        ThreadLocalMap.Entry e &#x3D; map.getEntry(this);</span><br><span class="line">        if (e !&#x3D; null) &#123;</span><br><span class="line">            @SuppressWarnings(&quot;unchecked&quot;)</span><br><span class="line">            T result &#x3D; (T)e.value;</span><br><span class="line">            return result;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    return setInitialValue();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void set(T value) &#123;</span><br><span class="line">    Thread t &#x3D; Thread.currentThread();</span><br><span class="line">    ThreadLocalMap map &#x3D; getMap(t);</span><br><span class="line">    if (map !&#x3D; null)</span><br><span class="line">        map.set(this, value);</span><br><span class="line">    else</span><br><span class="line">        createMap(t, value);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public void remove() &#123;</span><br><span class="line">    ThreadLocalMap m &#x3D; getMap(Thread.currentThread());</span><br><span class="line">    if (m !&#x3D; null)</span><br><span class="line">        m.remove(this);</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">static class ThreadLocalMap &#123;...&#125;</span><br><span class="line">...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1.线程可以将自己的对象保存在其中,并正确访问。</p>
+<ol>
+<li><p>将一个共用的 ThreadLocal 静态实例作为 key，将不同对象的引用保存到不同线程的 ThreadLocalMap 中，然后在线程执行的各处通过这个静态 ThreadLocal 实例的 get()方法取 得自己线程保存的那个对象，避免了将这个对象作为参数传递的麻烦。</p>
+</li>
+<li><p>ThreadLocalMap 其实就是线程里面的一个属性，它在 Thread 类中定义 ThreadLocal.ThreadLocalMap threadLocals = null;</p>
+</li>
+</ol>
+<p>向ThreadLocal存东西其实就是向它的Map里面存东西,然后ThreadLocal把这个Map挂在当前线程底下,这样Map就只属于这个线程了。</p>
+<span style="background-color:      #FFD700">
+
+</span>
+
+<p><span style="background-color:      #FFD700"><strong>线程</strong></span></p>
+<span style="background-color:      #FFD700">
+
+</span>
+
+<p>●说说JUC是什么吧?里面有什么？</p>
+<p>JUC是java.util.concurrent也就是java并发包。</p>
+<p><img src="/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/1.png" alt=".png"></p>
+<p>●如何保证线程安全？</p>
+<p>不在多线程的地方使用线程不安全的数据结构。 如ArrayList和HashMap等。</p>
+<p>在多线程的地方使用线程安全的数据结构。如ConcurrentHashMap和AtomicInteger等。</p>
+<p>●什么是juc？juc是JUC就是java.util .concurrent工具包的简称。</p>
+<p>●什么是多线程，为什么要使用多线程，多线程一定比单线程快吗？实现多个线程并发执行的技术。</p>
+<p>● Hotspot JVM 后台运行的系统线程有哪些？</p>
+<p>主要有下面几个。</p>
+<p>|虚拟机线程 （VM thread）|这个线程等待 JVM 到达安全点操作出现。这些操作必须要在独立的线程里执行，因为当 堆修改无法进行时，线程都需要 JVM 位于安全点。这些操作的类型有：stop-theworld 垃圾回收、线程栈 dump、线程暂停、线程偏向锁（biased locking）解除|<br>|周期性任务线程          |这线程负责定时器事件（也就是中断），用来调度周期性操作的执行。                                                                                                                                                              |<br>|GC 线程                 |这些线程支持 JVM 中不同的垃圾回收活动。                                                                                                                                                                                     |<br>|编译器线程              |这些线程在运行时将字节码动态编译成本地平台相关的机器码。                                                                                                                                                                    |<br>|信号分发线程            |这个线程接收发送到 JVM 的信号并调用适当的 JVM 方法处理。                                                                                                                                                                    |</p>
+<p>●什么是线程上下文切换？</p>
+<p>把当前任务的状态保存下来,在加载下一任务的状态后,继续服务下一任务,任务的保存及再加载.这段过程就叫做进程的上下文切换。（利用时间片轮换的方式）</p>
+<p>-&gt;什么是PCB?</p>
+<p>上下文切换可以看作是内核在CPU上对于进程(包含线程)进行切换，上下文切换过程中的信息是保存在进程控制块中。PCB也称切换帧。</p>
+<p>上下文切换的活动。</p>
+<p>1.挂其当前线程,将PCB存在内存某处。</p>
+<p>2.在内存中找到下一线程的PCB并在CPU寄存器中恢复。</p>
+<p>3.转跳到程序计数器的位置,恢复线程执行。</p>
+<p>引发原因</p>
+<p>1.时间片用完</p>
+<p>2.IO阻塞</p>
+<p>3.抢占锁,未抢到</p>
+<p>4.用户代码挂起</p>
+<p>5.硬件中断</p>
+<p>●JAVA如何实现线程的？</p>
+<p>JAVA本身并无法实现线程,线程的操作由OS来完成，而JAVA提供了对应的native方法的接口,调用native方法来实现线程。如start方法的底层调用的是native方法start0,start0调用OS来创建一个线程。</p>
+<p>●线程创建的过程是什么？创建线程有哪几种方法？</p>
+<p>见上一个问题。</p>
+<p>1.继承Thread类</p>
+<p>2.实现Runnable接口</p>
+<p>3.实现Callable接口</p>
+<p>4.通过线程池创建</p>
+<p><span style="background-color:      #FFD700"><strong>杂类</strong></span></p>
+<p>●介绍一下生产者消费者模式</p>
+<span style="background-color:      #FFD700">
+
+</span>
+
+<p>生产者消费者问题是线程模型中的经典问题；生产者和消费者在同一时间段内共用同一存储空间，生产者向空间里生产数据，而消费者取走数据。</p>
+<p>模型：生产者=&gt;缓冲区、消费者。</p>
+<p>优点：支持并发、解耦。</p>
+<p>●sleep和wait的区别。再详细点。</p>
+<p>1.sleep()方法是属于Thread类中,而wait()方法是属于Object()类的。</p>
+<p>2.sleep()方法导致了程序暂停执行指定时间,让出cpu给其他线程,但是它的监控状态依然保持着,当指定的时间到了又会恢复运行状态。(不详细)</p>
+<p>3.在调用sleep()方法的过程中,线程不会释放对象锁,而在调用wait()方法的时候,线程会放弃对象锁,进入等待该对象的等待锁定池,只有当针对该对象调用notify()方法后本线程才进入对象锁定池准备获取对象锁进入运行状态。</p>
+<p><span style="background-color:      #FFD700"><strong>syn相关</strong></span></p>
+<p>●syn的底层实现。</p>
+<p>在syn中,<strong>同步代码块是使用monitorenter和monitorexit指令实现的,而同步方法依靠的是方法修饰符上的ACC_SYNCHRONIZED标志隐式实现</strong>。</p>
+<p>任何一个java对象都一个Monitor(也称为管程或监视器锁,在HotSpot中,monitor由C++的ObjectMonitor实现的,<strong>monitor是依赖于底层的操作系统的Mutex Lock实现的</strong>)与之关联,当且一个Monitor被持有后,它将处于锁定状态。</p>
+<p>Syn在JVM的实现都是基于进入和退出Monitor对象来实现方法同步和代码块同步,虽然具体实现细节不一样,但是都可以通过成对的MonitorEnter和MonitorExit指令来实现。MonitorEnter指令插入在同步代码块的开始位置,当代码执行到该指令时,将会尝试获取该对象Monitor的所有权(注意只有当膨胀到重量级锁才尝试获取monitor,不然先走偏向-&gt;轻量-&gt;自旋-&gt;重量流程),即尝试获得该对象的锁,而monitorExit指令则插入再方法结束处和异常处,JVM保证每个MonitorEnter必须有对象的MonitorExit。</p>
+<p>Syn实现同步方法是在调用方法时检测ACC_SYNCHRONIZED标志(在方法常量池的方法表结构中)是否设置,如果设置,则执行线程尝试持有monitor(注意只有膨胀到重量级锁才持有monitor),成功则进入同步方法,失败则阻塞(因为获取monitor那必然是重量级锁了)。</p>
+<p>monitor(监视器锁):JAVA虚拟机给每个对象和class字节码都设置了一个监听器Montior,用于检测并发代码的重入,同时再Object类中还提供了notify和wait方法来对线程进行控制。</p>
+<p>monitor机制如下:</p>
+<p><img src="/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/2.png" alt=".png"></p>
+<p>monitor可以类比为一个特殊的房间,这个房间中有一些被保护的数据,monitor保证每次只能有一个线程能进入这个房间进行访问被保护的数据,进入房间即为持有monitor,退出房间即为释放monitor。</p>
+<p>当一个线程需要访问受保护的数据(即需要获取对象的monitor)时,它会首先在entry-set入口队列中排队(这里并不是真正的按照排队顺序),如果没有其他线程正在持有对象的monitor,那么它会和entry-set队列和wait-set队列中的被唤醒的其他线程进行竞争(即通过CPU调度),选出一个线程来获取对象的monitor,执行受保护的代码段,执行完毕后释放monitor,如果已经有线程持有对象的monitor,那么需要等待其释放monitor再竞争。</p>
+<p>再说一下wait-set队列。当一个线程拥有monitor后,经过某些条件的判断(比如用户取钱发现账号没钱),这个时候需要调用Object的wait方法,线程就释放了monitor,进行wait-set队列,等待object的notify方法(比如用户向账户内存钱)。当该对象调用了notify方法或者notifyAll方法后,wait-set中的线程就会被唤醒,然后再wait-set队列中被唤醒的线程和entry-set队列中的线程一起通过CPU调度来竞争对象的monitor,最终只有一个线程能获取对象的monitor。</p>
+<p>note:</p>
+<p>当一个线程在wait-set中被唤醒后,并不一定会立刻获取monitor,它需要和其他线程去平等竞争。</p>
+<p>如果一个线程是从wait-set队列中唤醒后,获取到的monitor,它会去读取它自己保持的PC计数器中的地址,从它调用wait方法的地方开始执行。</p>
+<p>monitor如何实现：通过syn关键字实现,分为同步代码块和同步方法。</p>
+<p>同步代码块即获取当前obj的monitor,同步方法中,静态同步方法即获取该类的字节码的monitor,非静态即获取该对象的实例的monitor。</p>
+<p>note:</p>
+<p>notify只能由该对象监视器所有者线程调用。如果不是,将抛出该异常——IllegalMonitorStateException</p>
+<p>●syn优化(<a target="_blank" rel="noopener" href="https://blog.csdn.net/jinjiniao1/article/details/91546512">详细</a>)</p>
+<p>1.5之前syn属于重量级锁,因为monitor依赖操作系统的Mutex Lock来实现,而操作系统进行线程切换需要从用户态切换到核心态,<strong>这个状态之间转换的时间较长</strong>,<strong>这也是为什么早期syn效率低的原因</strong>。而6以后,引入偏向锁、轻量级锁、自旋锁、锁消除和锁粗化等概念,对syn进行了优化。</p>
+<p>无锁和偏向锁是两种起始状态(因为没开偏向锁就不会有偏向锁,而开了偏向锁默认就不会是无锁)。</p>
+<p><strong>偏向锁(</strong><a target="_blank" rel="noopener" href="https://blog.csdn.net/zq1994520/article/details/84175573">超详细</a>**)**：</p>
+<p>引入目的:减少同一线程获取锁(CAS)的代价(大多数情况,锁不会竞争,且总被同一线程获取),让这个线程看起来被偏护了。(轻量级锁获取和释放需要多次CAS而偏向锁只需要在置换线程ID时进行一次CAS)</p>
+<p>适用场景:在一个线程执行同步块时提高性能。</p>
+<p><img src="/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/3.png" alt=".png"></p>
+<p>执行流程：</p>
+<p>1.检测Mark Word锁状态(偏向101);</p>
+<p>2.若为偏向,则检测线程ID是否为当前线程ID,是则执行同步代码块,否则执行3;</p>
+<p>3.通过CAS操作竞争锁,成功则将Mark Word的线程ID替换为当前线程ID,执行同步代码块,否则执行4;</p>
+<p>4.竞争锁失败,存在竞争,释放偏向锁。当到达全局安全点,获得偏向锁的线程被挂起(STW)。若获得偏向锁的线程仍活动,偏向锁升级为轻量级锁,然后被阻塞在安全点的线程继续往下执行同步代码块,否则再次执行3。</p>
+<p>简略版:</p>
+<p><img src="/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/4.png" alt=".png"></p>
+<p><img src="/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/5.png" alt=".png"></p>
+<p>释放锁：</p>
+<p>偏向锁的释放采用了一种只有竞争才会释放锁的机制,线程是不会主动去释放偏向锁,需要等待其他线程来竞争。偏向锁的撤销需要等待全局安全点(这个时间点上没有正在执行的代码)。步骤如下：</p>
+<p>1.暂停拥有偏向锁的线程,判断锁对象是否还处于被锁定状态;</p>
+<p>2.撤销偏向锁,恢复到无锁状态(01)或者轻量级锁状态(00);</p>
+<p>轻量级锁：</p>
+<p>引入目的:在没有多线程竞争前提下,减少传统的重量级锁使用产生的性能消耗(在整个同步周期可能不存在竞争,而是交替获取锁然后执行)。</p>
+<p>适用场景：在<strong>线程交替</strong>执行同步块时提高性能。</p>
+<p>执行流程：</p>
+<p>1.判断当前对象是否处于无锁状态(hashcode:0:01),如果是无锁状态,则在当前线程的栈帧中建立锁记录(Lock Record)来存储锁对象的Mark Word拷贝(Displaced Mark Word),否则执行3</p>
+<p>2.JVM利用CAS操作尝试将对象的Mark Word更新为指向Lock Record的指针,如果成功,则将锁标志位变为00,执行同步方法;如果失败则执行3;</p>
+<p>3.判断当前对象Mark Word是否指向当前线程的栈帧,如果是则表示当前线程持有该对象的锁,直接执行同步代码块;否则说明该锁对象已经被其他线程抢占,此时轻量级锁膨胀为重量级锁,锁标志位变为10,后面等待的线程将进入阻塞状态;</p>
+<p>简略版:</p>
+<p><img src="/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/6.png" alt=".png"></p>
+<p>释放锁：</p>
+<p>1.取出在获取轻量级锁保存的Displaced Mark Word中的数据;</p>
+<p>2.用CAS操作将取出的数据替换当前对象的Mark Word,如果成功,则说明释放锁成功,否则执行3</p>
+<p>3.如果CAS操作替换失败,说明有其他线程尝试获取该锁,则需要在释放锁的同时唤醒被挂机的线程。</p>
+<p>自旋锁：</p>
+<p>引入目的：为了减少频繁阻塞和唤醒将CPU从用户态转为核心态的大量资源消耗。(引入时间:1.4.2)</p>
+<p>适用场景: 锁竞争不激烈、持有锁线程时间短</p>
+<p>缺点: 锁的竞争激烈时,大量线程在竞争一个锁,会导致获取锁的时间很长,线程自旋的消耗大于线程阻塞挂起操作的消耗,造成 cpu 的浪费。这种情况下我们要关闭自旋锁；</p>
+<p>改进:1.6引入自适应自旋锁,自旋时间不再固定,而由前一次在同一个锁上的自旋时间以及锁的拥有者的状态来决定。</p>
+<p>执行流程:</p>
+<p>1.当一个线程(A)想要获取锁时,首先检查对象头中的锁标志,如果为偏向锁,则跳转到2;如果是无锁状态,则转跳到5;</p>
+<p>2.检查Mark Word中的线程id是否为A线程,是,则直接执行同步代码块,否则执行3;</p>
+<p>3.使用CAS操作替换Mark Word中的线程id,成功,则直接执行同步代码块,否则说明其他线程(B)拥有偏向锁了,那么释放偏向锁,执行4;</p>
+<p>4.B线程运行到全局安全点后,暂停该线程,检查其状态,若不活动或已退出同步代码块则B线程释放锁,然后A再次执行3。如果仍活动,则将锁升级为轻量级锁,此时执行5;</p>
+<p>5.在B线程的栈帧中建立锁记录,拷贝MarkWord到锁记录中,然后将MarkWord指向B线程,将锁标志信息改为00,然后唤醒B线程,从安全点处继续执行;</p>
+<p>6.由于锁升级为轻量级锁,A线程也进行相同操作,在A线程的栈帧中建立锁记录,拷贝Mark Word到锁记录中,然后CAS操作替换Mark Word,此时B线程拥有锁,因此,A线程自旋。如果自旋一定次数内成功获得锁,A线程获取轻量级锁,执行同步代码块。否则,A升级为重量级锁,将锁标志信息改为10,同时阻塞,执行7;</p>
+<p>7.B线程在释放锁的时候,CAS替换MarkWord中的信息,成功,则无竞争(说明还是轻量级锁,A线程可能在自旋,可能还没获取锁),直接释放锁。失败(锁标志为10),那么释放之后唤醒被挂起的线程(A)。</p>
+<p>简略版本:</p>
+<p><img src="/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/7.png" alt=".png"></p>
+<p><img src="/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/8.png" alt=".png"><br>其他优化：</p>
+<p>锁消除：锁消除是指虚拟机即是编译器在运行时,对于一些代码上要求同步但是被检测不可能存在共享数据竞争的锁进行消除。如String类型的连接操作,javac编译器对其作自动优化,1.5使用的是StringBuffer的append操作(会忽略所有同步直接执行),1.5之后使用StringBuilder的append操作。</p>
+<p>锁粗化：</p>
+<p>将多次连接在一起的加锁、解锁操作合并为一次,将多个连续的锁扩展成一个范围更大的锁。如StringBuffer的append方法每次都需要加锁,如果连续操作,就会合并成一个更大范围的加锁和解锁操作。</p>
+<p>●syn是重量级锁吗？锁升级详细说说吧。<a target="_blank" rel="noopener" href="http://www.mamicode.com/info-detail-3032100.html">详细</a></p>
+<p>1.5之前是重量级锁。而后对其做了优化,加入了偏向锁、轻量级锁、自旋锁等,对syn进行了优化,syn变成了偏向锁、轻量级锁、自旋锁和重量级锁过程的封装。</p>
+<p>锁升级:详见syn优化。</p>
+<p>●syn和volatile有了解吗？</p>
+<p>syn和volatile都是java关键字,且都用于线程相关操作。</p>
+<p>○syn</p>
+<p>syn可以认为是几种锁过程的封装（偏向-&gt;轻量-&gt;自旋-&gt;重量）。它可以把任意一个非NULL对象当做锁,它属于独占式的悲观锁,也是可重入锁,且不可中断。</p>
+<p>特点:互斥性、可重入性、非公平、不可中断。</p>
+<p>syn被称为同步锁,它的作用是保证一段代码在同一时间只能被一个线程执行。</p>
+<p>syn底层实现：见上面。</p>
+<p>/*</p>
+<p>对象包括：对象头、…..、…</p>
+<p>对象头:主要包括两部分数据,类型指针和标记字段,标记字段用来存储对象运行时的数据(包括…)。</p>
+<p>标记字段中的锁对象指针指向了一个monitor对象(<span style="background-color:      #FFD700">???</span>),每个对象都有一个对应的monitor对象,monitor对象是同步工具,线程在执行加了syn的代码段的时候要先去获取对象的monitor,执行完毕释放monitor。此过程是互斥的,一次只能一个线程获取monitor,只有该线程释放monitor以后其他线程才能再获取它。</p>
+<p>*/</p>
+<p>可作用于静态方法,实例方法和对象上,其作用分别是锁住类模板、当前对象和当前对象对应的代码块。</p>
+<p>使用的地方:StringBuffer、ConcurrentHashMap(1.7锁segment|1.8锁node）、</p>
+<p>常用于:</p>
+<p>volatile是轻量级的syn,用于修饰变量,其特点是不保证原子性,禁止指令重排,可见性。</p>
+<p>使用的地方:AtomicInteger(volatile int value)等原子类(其内部有unsafe类)、AQS的state变量、</p>
+<p>常用于:</p>
+<p>●syn为什么非公平？非公平的底层原理是什么？</p>
+<p>ObjectMonitor实现如下(<a target="_blank" rel="noopener" href="https://www.cnblogs.com/devilwind/p/6864474.html">详细</a>)：</p>
+<p><img src="/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/9.jpg" alt=".jpg"></p>
+<p>0.线程状态和转化关系</p>
+<p>当多个线程同时请求某个对象监视器时，对象监视器会设置几种状态用来区分请求的线程：</p>
+<p>Contention List：所有请求锁的线程将被首先放置到该竞争队列</p>
+<p>Entry List：Contention List中那些有资格成为候选人的线程被移到Entry List</p>
+<p>Wait Set：那些调用wait方法被阻塞的线程被放置到Wait Set</p>
+<p>OnDeck：任何时刻最多只能有一个线程正在竞争锁，该线程称为OnDeck</p>
+<p>Owner：获得锁的线程称为Owner</p>
+<p>!Owner：释放锁的线程</p>
+<p>新请求锁的线程将首先被加入到ConetentionList中，当某个拥有锁的线程（Owner状态）调用unlock之后，如果发现 EntryList为空则从ContentionList中移动线程到EntryList</p>
+<ol>
+<li>ContentionList虚拟队列</li>
+</ol>
+<p>ContentionList并不是一个真正的Queue，而只是一个虚拟队列，原因在于ContentionList是由Node及其next指 针逻辑构成，并不存在一个Queue的数据结构。ContentionList是一个后进先出（LIFO）的队列，每次新加入Node时都会在队头进行， 通过CAS改变第一个节点的的指针为新增节点，同时设置新增节点的next指向后续节点，而取得操作则发生在队尾。显然，该结构其实是个Lock- Free的队列。</p>
+<p>因为只有Owner线程才能从队尾取元素，也即线程出列操作无争用，当然也就避免了CAS的ABA问题。</p>
+<p><img src="/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/10.jpg" alt=".jpg"></p>
+<ol start="2">
+<li>EntryList</li>
+</ol>
+<p>EntryList与ContentionList逻辑上同属等待队列，ContentionList会被线程并发访问，为了降低对 ContentionList队尾的争用，而建立EntryList。Owner线程在unlock时会从ContentionList中迁移线程到 EntryList，并会指定EntryList中的某个线程（一般为Head）为Ready（OnDeck）线程。Owner线程并不是把锁传递给 OnDeck线程，只是把竞争锁的权利交给OnDeck，OnDeck线程需要重新竞争锁。这样做虽然牺牲了一定的公平性，但极大的提高了整体吞吐量，在 Hotspot中把OnDeck的选择行为称之为“竞争切换”。</p>
+<p>OnDeck线程获得锁后即变为owner线程，无法获得锁则会依然留在EntryList中，考虑到公平性，在EntryList中的位置不 发生变化（依然在队头）。如果Owner线程被wait方法阻塞，则转移到WaitSet队列；如果在某个时刻被notify/notifyAll唤醒， 则再次转移到EntryList。</p>
+<p>3自旋锁</p>
+<p>那些处于ContetionList、EntryList、WaitSet中的线程均处于阻塞状态，阻塞操作由操作系统完成（在Linxu下通 过pthread_mutex_lock函数）。线程被阻塞后便进入内核（Linux）调度状态，这个会导致系统在用户态与内核态之间来回切换，严重影响 锁的性能</p>
+<p>缓解上述问题的办法便是自旋，其原理是：当发生争用时，若Owner线程能在很短的时间内释放锁，则那些正在争用线程可以稍微等一等（自旋）， 在Owner线程释放锁后，争用线程可能会立即得到锁，从而避免了系统阻塞。但Owner运行的时间可能会超出了临界值，争用线程自旋一段时间后还是无法 获得锁，这时争用线程则会停止自旋进入阻塞状态（后退）。基本思路就是自旋，不成功再阻塞，尽量降低阻塞的可能性，这对那些执行时间很短的代码块来说有非 常重要的性能提高。自旋锁有个更贴切的名字：自旋-指数后退锁，也即复合锁。很显然，自旋在多处理器上才有意义。</p>
+<p>还有个问题是，线程自旋时做些啥？其实啥都不做，可以执行几次for循环，可以执行几条空的汇编指令，目的是占着CPU不放，等待获取锁的机 会。所以说，自旋是把双刃剑，如果旋的时间过长会影响整体性能，时间过短又达不到延迟阻塞的目的。显然，自旋的周期选择显得非常重要，但这与操作系统、硬 件体系、系统的负载等诸多场景相关，很难选择，如果选择不当，不但性能得不到提高，可能还会下降，因此大家普遍认为自旋锁不具有扩展性。</p>
+<p>自旋优化策略</p>
+<p>对自旋锁周期的选择上，HotSpot认为最佳时间应是一个线程上下文切换的时间，但目前并没有做到。经过调查，目前只是通过汇编暂停了几个CPU周期，除了自旋周期选择，HotSpot还进行许多其他的自旋优化策略，具体如下：</p>
+<p>如果平均负载小于CPUs则一直自旋|如果有超过(CPUs/2)个线程正在自旋，则后来线程直接阻塞|如果正在自旋的线程发现Owner发生了变化则延迟自旋时间（自旋计数）或进入阻塞|如果CPU处于节电模式则停止自旋|自旋时间的最坏情况是CPU的存储延迟（CPU A存储了一个数据，到CPU B得知这个数据直接的时间差）|自旋时会适当放弃线程优先级之间的差异</p>
+<p>那synchronized实现何时使用了自旋锁？答案是在线程进入ContentionList时，也即第一步操作前。线程在进入等待队列时 首先进行自旋尝试获得锁，如果不成功再进入等待队列。这对那些已经在等待队列中的线程来说，稍微显得不公平。还有一个不公平的地方是自旋线程可能会抢占了 Ready线程的锁。自旋锁由每个监视对象维护，每个监视对象一个。</p>
+<p>4 JVM1.6偏向锁</p>
+<p>在JVM1.6中引入了偏向锁，偏向锁主要解决无竞争下的锁性能问题，首先我们看下无竞争下锁存在什么问题：</p>
+<p>现在几乎所有的锁都是可重入的，也即已经获得锁的线程可以多次锁住/解锁监视对象，按照之前的HotSpot设计，每次加锁/解锁都会涉及到一些CAS操 作（比如对等待队列的CAS操作），CAS操作会延迟本地调用，因此偏向锁的想法是一旦线程第一次获得了监视对象，之后让监视对象“偏向”这个 线程，之后的多次调用则可以避免CAS操作，说白了就是置个变量，如果发现为true则无需再走各种加锁/解锁流程。但还有很多概念需要解释、很多引入的 问题需要解决：</p>
+<p>4.1 CAS及SMP架构</p>
+<p>CAS为什么会引入本地延迟？这要从SMP（对称多处理器）架构说起，下图大概表明了SMP的结构：</p>
+<p><img src="/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/11.jpg" alt=".png"></p>
+<p>其意思是所有的CPU会共享一条系统总线（BUS），靠此总线连接主存。每个核都有自己的一级缓存，各核相对于BUS对称分布，因此这种结构称为“对称多处理器”。</p>
+<p>而CAS的全称为Compare-And-Swap，是一条CPU的原子指令，其作用是让CPU比较后原子地更新某个位置的值，经过调查发现， 其实现方式是基于硬件平台的汇编指令，就是说CAS是靠硬件实现的，JVM只是封装了汇编调用，那些AtomicInteger类便是使用了这些封装后的 接口。</p>
+<p>Core1和Core2可能会同时把主存中某个位置的值Load到自己的L1 Cache中，当Core1在自己的L1 Cache中修改这个位置的值时，会通过总线，使Core2中L1 Cache对应的值“失效”，而Core2一旦发现自己L1 Cache中的值失效（称为Cache命中缺失）则会通过总线从内存中加载该地址最新的值，大家通过总线的来回通信称为“Cache一致性流量”，因为总 线被设计为固定的“通信能力”，如果Cache一致性流量过大，总线将成为瓶颈。而当Core1和Core2中的值再次一致时，称为“Cache一致 性”，从这个层面来说，锁设计的终极目标便是减少Cache一致性流量。</p>
+<p>而CAS恰好会导致Cache一致性流量，如果有很多线程都共享同一个对象，当某个Core CAS成功时必然会引起总线风暴，这就是所谓的本地延迟，本质上偏向锁就是为了消除CAS，降低Cache一致性流量。</p>
+<p>4.2 偏向解除</p>
+<p>偏向锁引入的一个重要问题是，在多争用的场景下，如果另外一个线程争用偏向对象，拥有者需要释放偏向锁，而释放的过程会带来一些性能开销，但总体说来偏向锁带来的好处还是大于CAS代价的。</p>
+<p>5 通过上面的介绍可以看出，synchronized的底层实现主要依靠Lock-Free的队列，基本思路是自旋后阻塞，竞争切换后继续竞争锁，稍微牺牲了公平性，但获得了高吞吐量。（注意,这个流程是获取monitor的,也就是无锁-&gt;偏向-&gt;轻量-&gt;自旋-&gt;重量的前三个步骤并不包含在该图流程中,而且轻量级锁自旋成功的话也不会进入该流程）</p>
+<p>/*锁的并发竞争状态维护就是就是依靠_WaitSet、_cxq | _EntryList|三个队列实现的,它们底层实现都是双向链表。</p>
+<p>获取过程：</p>
+<p>1.通过CAS尝试把monitor的_owner字段设置为当前线程；</p>
+<p>2.如果设置之前的_owner指向当前线程，说明当前线程再次进入monitor，即重入锁，执行_recursions ++ ，记录重入的次数；</p>
+<p>3.查看当前线程的锁记录中的Displaced Mark Word，即是否是该锁的轻量级锁持有者，如果是则是第一次加重量级锁，设置_recursions为1，_owner为当前线程，该线程成功获得锁并返回；</p>
+<p>4.如果获取锁失败，则等待锁的释放;</p>
+<p>monitor竞争失败,通过自旋执行ObjectMonitor::EnterI方法等待锁的释放:</p>
+<p>1.当前线程被封装成ObjectWaiter对象node，状态设置成ObjectWaiter::TS_CXQ；</p>
+<p>2、自旋CAS将当前节点使用头插法加入cxq队列</p>
+<p>3、node节点push到_cxq列表如果失败了，再尝试获取一次锁（因为此时同时线程加入,可以减少竞争），如果还是没有获取到锁，则通过park将当前线程挂起，等待被唤醒，当被系统唤醒时，继续从挂起的地方开始执行下一次循环也就是继续自旋尝试获取锁。如果经过一定时间获取失败继续挂起。</p>
+<p>释放过程:</p>
+<p>1、初始化ObjectMonitor的属性值，如果是重入锁递归次数减一，等待下次调用此方法，直到为0，该锁被释放完毕。</p>
+<p>2、根据不同的策略（由QMode指定），从cxq或EntryList中获取头节点，通过ObjectMonitor::ExitEpilog方法唤醒该节点封装的线程，唤醒操作最终由unpark完成。</p>
+<h4 id="wait-notify-notifyAll"><a href="#wait-notify-notifyAll" class="headerlink" title="wait()/notify()/notifyAll()"></a>wait()/notify()/notifyAll()</h4><p>这两个方法其实是调用内核的方法实现的，他们的逻辑是将调用wait()的线程<strong>加入_WaitSet</strong>中，然后<strong>等待notify唤醒他们</strong>，<strong>重新加入到锁的竞争之中</strong>，notify和notifyAll不同在于<strong>前者只唤醒一个线程后者唤醒所有队列中的线程</strong>。值得注意的是notify并不会立即释放锁，而是等到同步代码执行完毕。</p>
+<h4 id="hashCode-、wait-方法会使锁直接升级为重量级锁"><a href="#hashCode-、wait-方法会使锁直接升级为重量级锁" class="headerlink" title="hashCode()、wait()方法会使锁直接升级为重量级锁*/"></a>hashCode()、wait()方法会使锁直接升级为重量级锁*/</h4>
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">线程</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://caciacc.top/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+
+<nav id="article-nav">
+  
+    <a href="/2021/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          计算机基础-计算机网络知识
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/01/12/%E5%85%B6%E4%BB%96-%E5%8D%B0%E8%B1%A1%E7%AC%94%E8%AE%B0%E5%AF%BC%E5%87%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">其他-印象笔记转markdown</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+          </div>
+        </div>
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2021 <a href="http://caciacc.top/" target="_blank">caciaCC</a>
+    	</div>
+      	<div class="footer-right">
+			
+			
+      		<a href="https://github.com/litten/hexo-theme-yilia" target="_blank">hexo-theme-yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+  
+  
+  
+</footer>
+
+    </div>
+    <script>
+	var yiliaConfig = {
+		mathjax: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		toc_hide_index: true,
+		root: "/",
+		innerArchive: true,
+		showTags: true
+	}
+</script>
+
+<script>!function(r){function e(t){if(i[t])return i[t].exports;var n=i[t]={exports:{},id:t,loaded:!1};return r[t].call(n.exports,n,n.exports,e),n.loaded=!0,n.exports}var i={};e.m=r,e.c=i,e.p="./",e(0)}([function(t,n,r){r(208),t.exports=r(205)},function(t,n,r){var d=r(3),y=r(46),g=r(26),b=r(27),x=r(47),m="prototype",S=function(t,n,r){var e,i,o,u,c=t&S.F,f=t&S.G,a=t&S.S,s=t&S.P,l=t&S.B,h=f?d:a?d[n]||(d[n]={}):(d[n]||{})[m],v=f?y:y[n]||(y[n]={}),p=v[m]||(v[m]={});for(e in f&&(r=n),r)o=((i=!c&&h&&void 0!==h[e])?h:r)[e],u=l&&i?x(o,d):s&&"function"==typeof o?x(Function.call,o):o,h&&b(h,e,o,t&S.U),v[e]!=o&&g(v,e,u),s&&p[e]!=o&&(p[e]=o)};d.core=y,S.F=1,S.G=2,S.S=4,S.P=8,S.B=16,S.W=32,S.U=64,S.R=128,t.exports=S},function(t,n,r){var e=r(5);t.exports=function(t){if(!e(t))throw TypeError(t+" is not an object!");return t}},function(t,n){var r=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=r)},function(t,n){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n){var r=t.exports="undefined"!=typeof window&&window.Math==Math?window:"undefined"!=typeof self&&self.Math==Math?self:Function("return this")();"number"==typeof __g&&(__g=r)},function(t,n,r){var e=r(118)("wks"),i=r(79),o=r(3).Symbol,u="function"==typeof o;(t.exports=function(t){return e[t]||(e[t]=u&&o[t]||(u?o:i)("Symbol."+t))}).store=e},function(t,n,r){var e=r(49),i=Math.min;t.exports=function(t){return 0<t?i(e(t),9007199254740991):0}},function(t,n){var r={}.hasOwnProperty;t.exports=function(t,n){return r.call(t,n)}},function(t,n,r){t.exports=!r(4)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n,r){var e=r(2),i=r(174),o=r(53),u=Object.defineProperty;n.f=r(10)?Object.defineProperty:function(t,n,r){if(e(t),n=o(n,!0),e(r),i)try{return u(t,n,r)}catch(t){}if("get"in r||"set"in r)throw TypeError("Accessors not supported!");return"value"in r&&(t[n]=r.value),t}},function(t,n,r){t.exports=!r(20)(function(){return 7!=Object.defineProperty({},"a",{get:function(){return 7}}).a})},function(t,n,r){var e=r(14),i=r(24);t.exports=r(12)?function(t,n,r){return e.f(t,n,i(1,r))}:function(t,n,r){return t[n]=r,t}},function(t,n,r){var e=r(22),i=r(60),o=r(42),u=Object.defineProperty;n.f=r(12)?Object.defineProperty:function(t,n,r){if(e(t),n=o(n,!0),e(r),i)try{return u(t,n,r)}catch(t){}if("get"in r||"set"in r)throw TypeError("Accessors not supported!");return"value"in r&&(t[n]=r.value),t}},function(t,n,r){var e=r(96),i=r(34);t.exports=function(t){return e(i(t))}},function(t,n,r){var e=r(40)("wks"),i=r(25),o=r(6).Symbol,u="function"==typeof o;(t.exports=function(t){return e[t]||(e[t]=u&&o[t]||(u?o:i)("Symbol."+t))}).store=e},function(t,n,r){var e=r(51);t.exports=function(t){return Object(e(t))}},function(t,n){t.exports=function(t){return"object"==typeof t?null!==t:"function"==typeof t}},function(t,n){var r=t.exports={version:"2.6.9"};"number"==typeof __e&&(__e=r)},function(t,n){t.exports=function(t){try{return!!t()}catch(t){return!0}}},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n,r){var e=r(18);t.exports=function(t){if(!e(t))throw TypeError(t+" is not an object!");return t}},function(t,n){t.exports=!0},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n){var r=0,e=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++r+e).toString(36))}},function(t,n,r){var e=r(11),i=r(75);t.exports=r(10)?function(t,n,r){return e.f(t,n,i(1,r))}:function(t,n,r){return t[n]=r,t}},function(t,n,r){var o=r(3),u=r(26),c=r(30),f=r(79)("src"),e=r(219),i="toString",a=(""+e).split(i);r(46).inspectSource=function(t){return e.call(t)},(t.exports=function(t,n,r,e){var i="function"==typeof r;i&&(c(r,"name")||u(r,"name",n)),t[n]!==r&&(i&&(c(r,f)||u(r,f,t[n]?""+t[n]:a.join(String(n)))),t===o?t[n]=r:e?t[n]?t[n]=r:u(t,n,r):(delete t[n],u(t,n,r)))})(Function.prototype,i,function(){return"function"==typeof this&&this[f]||e.call(this)})},function(t,n,r){var e=r(1),i=r(4),u=r(51),c=/"/g,o=function(t,n,r,e){var i=String(u(t)),o="<"+n;return""!==r&&(o+=" "+r+'="'+String(e).replace(c,"&quot;")+'"'),o+">"+i+"</"+n+">"};t.exports=function(n,t){var r={};r[n]=t(o),e(e.P+e.F*i(function(){var t=""[n]('"');return t!==t.toLowerCase()||3<t.split('"').length}),"String",r)}},function(t,n,r){var e=r(65),i=r(35);t.exports=Object.keys||function(t){return e(t,i)}},function(t,n){var r={}.hasOwnProperty;t.exports=function(t,n){return r.call(t,n)}},function(t,n,r){var e=r(117),i=r(75),o=r(33),u=r(53),c=r(30),f=r(174),a=Object.getOwnPropertyDescriptor;n.f=r(10)?a:function(t,n){if(t=o(t),n=u(n,!0),f)try{return a(t,n)}catch(t){}if(c(t,n))return i(!e.f.call(t,n),t[n])}},function(t,n,r){var e=r(30),i=r(17),o=r(154)("IE_PROTO"),u=Object.prototype;t.exports=Object.getPrototypeOf||function(t){return t=i(t),e(t,o)?t[o]:"function"==typeof t.constructor&&t instanceof t.constructor?t.constructor.prototype:t instanceof Object?u:null}},function(t,n,r){var e=r(116),i=r(51);t.exports=function(t){return e(i(t))}},function(t,n){t.exports=function(t){if(null==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,n){t.exports={}},function(t,n){n.f={}.propertyIsEnumerable},function(t,n,r){var e=r(14).f,i=r(9),o=r(16)("toStringTag");t.exports=function(t,n,r){t&&!i(t=r?t:t.prototype,o)&&e(t,o,{configurable:!0,value:n})}},function(t,n,r){var e=r(40)("keys"),i=r(25);t.exports=function(t){return e[t]||(e[t]=i(t))}},function(t,n,r){var e=r(19),i=r(6),o="__core-js_shared__",u=i[o]||(i[o]={});(t.exports=function(t,n){return u[t]||(u[t]=void 0!==n?n:{})})("versions",[]).push({version:e.version,mode:r(23)?"pure":"global",copyright:"© 2019 Denis Pushkarev (zloirock.ru)"})},function(t,n){var r=Math.ceil,e=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(0<t?e:r)(t)}},function(t,n,r){var i=r(18);t.exports=function(t,n){if(!i(t))return t;var r,e;if(n&&"function"==typeof(r=t.toString)&&!i(e=r.call(t)))return e;if("function"==typeof(r=t.valueOf)&&!i(e=r.call(t)))return e;if(!n&&"function"==typeof(r=t.toString)&&!i(e=r.call(t)))return e;throw TypeError("Can't convert object to primitive value")}},function(t,n,r){var e=r(6),i=r(19),o=r(23),u=r(44),c=r(14).f;t.exports=function(t){var n=i.Symbol||(i.Symbol=o?{}:e.Symbol||{});"_"==t.charAt(0)||t in n||c(n,t,{value:u.f(t)})}},function(t,n,r){n.f=r(16)},function(t,n){var r={}.toString;t.exports=function(t){return r.call(t).slice(8,-1)}},function(t,n){var r=t.exports={version:"2.6.9"};"number"==typeof __e&&(__e=r)},function(t,n,r){var o=r(21);t.exports=function(e,i,t){if(o(e),void 0===i)return e;switch(t){case 1:return function(t){return e.call(i,t)};case 2:return function(t,n){return e.call(i,t,n)};case 3:return function(t,n,r){return e.call(i,t,n,r)}}return function(){return e.apply(i,arguments)}}},function(t,n,r){"use strict";var e=r(4);t.exports=function(t,n){return!!t&&e(function(){n?t.call(null,function(){},1):t.call(null)})}},function(t,n){var r=Math.ceil,e=Math.floor;t.exports=function(t){return isNaN(t=+t)?0:(0<t?e:r)(t)}},function(t,n,r){var x=r(47),m=r(116),S=r(17),w=r(8),e=r(138);t.exports=function(l,t){var h=1==l,v=2==l,p=3==l,d=4==l,y=6==l,g=5==l||y,b=t||e;return function(t,n,r){for(var e,i,o=S(t),u=m(o),c=x(n,r,3),f=w(u.length),a=0,s=h?b(t,f):v?b(t,0):void 0;a<f;a++)if((g||a in u)&&(i=c(e=u[a],a,o),l))if(h)s[a]=i;else if(i)switch(l){case 3:return!0;case 5:return e;case 6:return a;case 2:s.push(e)}else if(d)return!1;return y?-1:p||d?d:s}}},function(t,n){t.exports=function(t){if(null==t)throw TypeError("Can't call method on  "+t);return t}},function(t,n,r){var i=r(1),o=r(46),u=r(4);t.exports=function(t,n){var r=(o.Object||{})[t]||Object[t],e={};e[t]=n(r),i(i.S+i.F*u(function(){r(1)}),"Object",e)}},function(t,n,r){var i=r(5);t.exports=function(t,n){if(!i(t))return t;var r,e;if(n&&"function"==typeof(r=t.toString)&&!i(e=r.call(t)))return e;if("function"==typeof(r=t.valueOf)&&!i(e=r.call(t)))return e;if(!n&&"function"==typeof(r=t.toString)&&!i(e=r.call(t)))return e;throw TypeError("Can't convert object to primitive value")}},function(t,n,r){var d=r(6),y=r(19),g=r(93),b=r(13),x=r(9),m="prototype",S=function(t,n,r){var e,i,o,u=t&S.F,c=t&S.G,f=t&S.S,a=t&S.P,s=t&S.B,l=t&S.W,h=c?y:y[n]||(y[n]={}),v=h[m],p=c?d:f?d[n]:(d[n]||{})[m];for(e in c&&(r=n),r)(i=!u&&p&&void 0!==p[e])&&x(h,e)||(o=i?p[e]:r[e],h[e]=c&&"function"!=typeof p[e]?r[e]:s&&i?g(o,d):l&&p[e]==o?function(e){var t=function(t,n,r){if(this instanceof e){switch(arguments.length){case 0:return new e;case 1:return new e(t);case 2:return new e(t,n)}return new e(t,n,r)}return e.apply(this,arguments)};return t[m]=e[m],t}(o):a&&"function"==typeof o?g(Function.call,o):o,a&&((h.virtual||(h.virtual={}))[e]=o,t&S.R&&v&&!v[e]&&b(v,e,o)))};S.F=1,S.G=2,S.S=4,S.P=8,S.B=16,S.W=32,S.U=64,S.R=128,t.exports=S},function(t,n,r){var e=r(34);t.exports=function(t){return Object(e(t))}},function(t,n,r){var o=r(196),e=r(1),i=r(118)("metadata"),u=i.store||(i.store=new(r(200))),c=function(t,n,r){var e=u.get(t);if(!e){if(!r)return;u.set(t,e=new o)}var i=e.get(n);if(!i){if(!r)return;e.set(n,i=new o)}return i};t.exports={store:u,map:c,has:function(t,n,r){var e=c(n,r,!1);return void 0!==e&&e.has(t)},get:function(t,n,r){var e=c(n,r,!1);return void 0===e?void 0:e.get(t)},set:function(t,n,r,e){c(r,e,!0).set(t,n)},keys:function(t,n){var r=c(t,n,!1),e=[];return r&&r.forEach(function(t,n){e.push(n)}),e},key:function(t){return void 0===t||"symbol"==typeof t?t:String(t)},exp:function(t){e(e.S,"Reflect",t)}}},function(t,n,r){"use strict";if(r(10)){var g=r(68),b=r(3),x=r(4),m=r(1),S=r(132),e=r(159),h=r(47),w=r(70),i=r(75),_=r(26),o=r(76),u=r(49),O=r(8),E=r(194),c=r(78),f=r(53),a=r(30),M=r(81),P=r(5),v=r(17),p=r(145),j=r(72),F=r(32),A=r(73).f,d=r(161),s=r(79),l=r(7),y=r(50),I=r(120),L=r(119),N=r(162),T=r(82),k=r(125),R=r(77),C=r(137),D=r(166),G=r(11),W=r(31),U=G.f,V=W.f,B=b.RangeError,q=b.TypeError,z=b.Uint8Array,K="ArrayBuffer",H="Shared"+K,J="BYTES_PER_ELEMENT",$="prototype",Y=Array[$],X=e.ArrayBuffer,Q=e.DataView,Z=y(0),tt=y(2),nt=y(3),rt=y(4),et=y(5),it=y(6),ot=I(!0),ut=I(!1),ct=N.values,ft=N.keys,at=N.entries,st=Y.lastIndexOf,lt=Y.reduce,ht=Y.reduceRight,vt=Y.join,pt=Y.sort,dt=Y.slice,yt=Y.toString,gt=Y.toLocaleString,bt=l("iterator"),xt=l("toStringTag"),mt=s("typed_constructor"),St=s("def_constructor"),wt=S.CONSTR,_t=S.TYPED,Ot=S.VIEW,Et="Wrong length!",Mt=y(1,function(t,n){return It(L(t,t[St]),n)}),Pt=x(function(){return 1===new z(new Uint16Array([1]).buffer)[0]}),jt=!!z&&!!z[$].set&&x(function(){new z(1).set({})}),Ft=function(t,n){var r=u(t);if(r<0||r%n)throw B("Wrong offset!");return r},At=function(t){if(P(t)&&_t in t)return t;throw q(t+" is not a typed array!")},It=function(t,n){if(!(P(t)&&mt in t))throw q("It is not a typed array constructor!");return new t(n)},Lt=function(t,n){return Nt(L(t,t[St]),n)},Nt=function(t,n){for(var r=0,e=n.length,i=It(t,e);r<e;)i[r]=n[r++];return i},Tt=function(t,n,r){U(t,n,{get:function(){return this._d[r]}})},kt=function(t){var n,r,e,i,o,u,c=v(t),f=arguments.length,a=1<f?arguments[1]:void 0,s=void 0!==a,l=d(c);if(null!=l&&!p(l)){for(u=l.call(c),e=[],n=0;!(o=u.next()).done;n++)e.push(o.value);c=e}for(s&&2<f&&(a=h(a,arguments[2],2)),n=0,r=O(c.length),i=It(this,r);n<r;n++)i[n]=s?a(c[n],n):c[n];return i},Rt=function(){for(var t=0,n=arguments.length,r=It(this,n);t<n;)r[t]=arguments[t++];return r},Ct=!!z&&x(function(){gt.call(new z(1))}),Dt=function(){return gt.apply(Ct?dt.call(At(this)):At(this),arguments)},Gt={copyWithin:function(t,n){return D.call(At(this),t,n,2<arguments.length?arguments[2]:void 0)},every:function(t){return rt(At(this),t,1<arguments.length?arguments[1]:void 0)},fill:function(t){return C.apply(At(this),arguments)},filter:function(t){return Lt(this,tt(At(this),t,1<arguments.length?arguments[1]:void 0))},find:function(t){return et(At(this),t,1<arguments.length?arguments[1]:void 0)},findIndex:function(t){return it(At(this),t,1<arguments.length?arguments[1]:void 0)},forEach:function(t){Z(At(this),t,1<arguments.length?arguments[1]:void 0)},indexOf:function(t){return ut(At(this),t,1<arguments.length?arguments[1]:void 0)},includes:function(t){return ot(At(this),t,1<arguments.length?arguments[1]:void 0)},join:function(t){return vt.apply(At(this),arguments)},lastIndexOf:function(t){return st.apply(At(this),arguments)},map:function(t){return Mt(At(this),t,1<arguments.length?arguments[1]:void 0)},reduce:function(t){return lt.apply(At(this),arguments)},reduceRight:function(t){return ht.apply(At(this),arguments)},reverse:function(){for(var t,n=this,r=At(n).length,e=Math.floor(r/2),i=0;i<e;)t=n[i],n[i++]=n[--r],n[r]=t;return n},some:function(t){return nt(At(this),t,1<arguments.length?arguments[1]:void 0)},sort:function(t){return pt.call(At(this),t)},subarray:function(t,n){var r=At(this),e=r.length,i=c(t,e);return new(L(r,r[St]))(r.buffer,r.byteOffset+i*r.BYTES_PER_ELEMENT,O((void 0===n?e:c(n,e))-i))}},Wt=function(t,n){return Lt(this,dt.call(At(this),t,n))},Ut=function(t){At(this);var n=Ft(arguments[1],1),r=this.length,e=v(t),i=O(e.length),o=0;if(r<i+n)throw B(Et);for(;o<i;)this[n+o]=e[o++]},Vt={entries:function(){return at.call(At(this))},keys:function(){return ft.call(At(this))},values:function(){return ct.call(At(this))}},Bt=function(t,n){return P(t)&&t[_t]&&"symbol"!=typeof n&&n in t&&String(+n)==String(n)},qt=function(t,n){return Bt(t,n=f(n,!0))?i(2,t[n]):V(t,n)},zt=function(t,n,r){return!(Bt(t,n=f(n,!0))&&P(r)&&a(r,"value"))||a(r,"get")||a(r,"set")||r.configurable||a(r,"writable")&&!r.writable||a(r,"enumerable")&&!r.enumerable?U(t,n,r):(t[n]=r.value,t)};wt||(W.f=qt,G.f=zt),m(m.S+m.F*!wt,"Object",{getOwnPropertyDescriptor:qt,defineProperty:zt}),x(function(){yt.call({})})&&(yt=gt=function(){return vt.call(this)});var Kt=o({},Gt);o(Kt,Vt),_(Kt,bt,Vt.values),o(Kt,{slice:Wt,set:Ut,constructor:function(){},toString:yt,toLocaleString:Dt}),Tt(Kt,"buffer","b"),Tt(Kt,"byteOffset","o"),Tt(Kt,"byteLength","l"),Tt(Kt,"length","e"),U(Kt,xt,{get:function(){return this[_t]}}),t.exports=function(t,l,n,o){var h=t+((o=!!o)?"Clamped":"")+"Array",r="get"+t,u="set"+t,v=b[h],c=v||{},e=v&&F(v),i=!v||!S.ABV,f={},a=v&&v[$],p=function(t,i){U(t,i,{get:function(){return t=i,(n=this._d).v[r](t*l+n.o,Pt);var t,n},set:function(t){return n=i,r=t,e=this._d,o&&(r=(r=Math.round(r))<0?0:255<r?255:255&r),void e.v[u](n*l+e.o,r,Pt);var n,r,e},enumerable:!0})};i?(v=n(function(t,n,r,e){w(t,v,h,"_d");var i,o,u,c,f=0,a=0;if(P(n)){if(!(n instanceof X||(c=M(n))==K||c==H))return _t in n?Nt(v,n):kt.call(v,n);i=n,a=Ft(r,l);var s=n.byteLength;if(void 0===e){if(s%l)throw B(Et);if((o=s-a)<0)throw B(Et)}else if(s<(o=O(e)*l)+a)throw B(Et);u=o/l}else u=E(n),i=new X(o=u*l);for(_(t,"_d",{b:i,o:a,l:o,e:u,v:new Q(i)});f<u;)p(t,f++)}),a=v[$]=j(Kt),_(a,"constructor",v)):x(function(){v(1)})&&x(function(){new v(-1)})&&k(function(t){new v,new v(null),new v(1.5),new v(t)},!0)||(v=n(function(t,n,r,e){var i;return w(t,v,h),P(n)?n instanceof X||(i=M(n))==K||i==H?void 0!==e?new c(n,Ft(r,l),e):void 0!==r?new c(n,Ft(r,l)):new c(n):_t in n?Nt(v,n):kt.call(v,n):new c(E(n))}),Z(e!==Function.prototype?A(c).concat(A(e)):A(c),function(t){t in v||_(v,t,c[t])}),v[$]=a,g||(a.constructor=v));var s=a[bt],d=!!s&&("values"==s.name||null==s.name),y=Vt.values;_(v,mt,!0),_(a,_t,h),_(a,Ot,!0),_(a,St,v),(o?new v(1)[xt]==h:xt in a)||U(a,xt,{get:function(){return h}}),f[h]=v,m(m.G+m.W+m.F*(v!=c),f),m(m.S,h,{BYTES_PER_ELEMENT:l}),m(m.S+m.F*x(function(){c.of.call(v,1)}),h,{from:kt,of:Rt}),J in a||_(a,J,l),m(m.P,h,Gt),R(h),m(m.P+m.F*jt,h,{set:Ut}),m(m.P+m.F*!d,h,Vt),g||a.toString==yt||(a.toString=yt),m(m.P+m.F*x(function(){new v(1).slice()}),h,{slice:Wt}),m(m.P+m.F*(x(function(){return[1,2].toLocaleString()!=new v([1,2]).toLocaleString()})||!x(function(){a.toLocaleString.call([1,2])})),h,{toLocaleString:Dt}),T[h]=d?s:y,g||d||_(a,bt,y)}}else t.exports=function(){}},function(t,n){var r={}.toString;t.exports=function(t){return r.call(t).slice(8,-1)}},function(t,n,r){var e=r(18),i=r(6).document,o=e(i)&&e(i.createElement);t.exports=function(t){return o?i.createElement(t):{}}},function(t,n,r){t.exports=!r(12)&&!r(20)(function(){return 7!=Object.defineProperty(r(59)("div"),"a",{get:function(){return 7}}).a})},function(t,n,r){"use strict";var x=r(23),m=r(54),S=r(66),w=r(13),_=r(36),O=r(98),E=r(38),M=r(104),P=r(16)("iterator"),j=!([].keys&&"next"in[].keys()),F="values",A=function(){return this};t.exports=function(t,n,r,e,i,o,u){O(r,n,e);var c,f,a,s=function(t){if(!j&&t in p)return p[t];switch(t){case"keys":case F:return function(){return new r(this,t)}}return function(){return new r(this,t)}},l=n+" Iterator",h=i==F,v=!1,p=t.prototype,d=p[P]||p["@@iterator"]||i&&p[i],y=d||s(i),g=i?h?s("entries"):y:void 0,b="Array"==n&&p.entries||d;if(b&&((a=M(b.call(new t)))!==Object.prototype&&a.next&&(E(a,l,!0),x||"function"==typeof a[P]||w(a,P,A))),h&&d&&d.name!==F&&(v=!0,y=function(){return d.call(this)}),x&&!u||!j&&!v&&p[P]||w(p,P,y),_[n]=y,_[l]=A,i)if(c={values:h?y:s(F),keys:o?y:s("keys"),entries:g},u)for(f in c)f in p||S(p,f,c[f]);else m(m.P+m.F*(j||v),n,c);return c}},function(t,n,e){var i=e(22),o=e(101),u=e(35),c=e(39)("IE_PROTO"),f=function(){},a="prototype",s=function(){var t,n=e(59)("iframe"),r=u.length;for(n.style.display="none",e(95).appendChild(n),n.src="javascript:",(t=n.contentWindow.document).open(),t.write("<script>document.F=Object<\/script>"),t.close(),s=t.F;r--;)delete s[a][u[r]];return s()};t.exports=Object.create||function(t,n){var r;return null!==t?(f[a]=i(t),r=new f,f[a]=null,r[c]=t):r=s(),void 0===n?r:o(r,n)}},function(t,n,r){var e=r(65),i=r(35).concat("length","prototype");n.f=Object.getOwnPropertyNames||function(t){return e(t,i)}},function(t,n){n.f=Object.getOwnPropertySymbols},function(t,n,r){var u=r(9),c=r(15),f=r(92)(!1),a=r(39)("IE_PROTO");t.exports=function(t,n){var r,e=c(t),i=0,o=[];for(r in e)r!=a&&u(e,r)&&o.push(r);for(;n.length>i;)u(e,r=n[i++])&&(~f(o,r)||o.push(r));return o}},function(t,n,r){t.exports=r(13)},function(t,n,r){var e=r(7)("unscopables"),i=Array.prototype;null==i[e]&&r(26)(i,e,{}),t.exports=function(t){i[e][t]=!0}},function(t,n){t.exports=!1},function(t,n,r){var e=r(79)("meta"),i=r(5),o=r(30),u=r(11).f,c=0,f=Object.isExtensible||function(){return!0},a=!r(4)(function(){return f(Object.preventExtensions({}))}),s=function(t){u(t,e,{value:{i:"O"+ ++c,w:{}}})},l=t.exports={KEY:e,NEED:!1,fastKey:function(t,n){if(!i(t))return"symbol"==typeof t?t:("string"==typeof t?"S":"P")+t;if(!o(t,e)){if(!f(t))return"F";if(!n)return"E";s(t)}return t[e].i},getWeak:function(t,n){if(!o(t,e)){if(!f(t))return!0;if(!n)return!1;s(t)}return t[e].w},onFreeze:function(t){return a&&l.NEED&&f(t)&&!o(t,e)&&s(t),t}}},function(t,n){t.exports=function(t,n,r,e){if(!(t instanceof n)||void 0!==e&&e in t)throw TypeError(r+": incorrect invocation!");return t}},function(t,n,r){var h=r(47),v=r(177),p=r(145),d=r(2),y=r(8),g=r(161),b={},x={};(n=t.exports=function(t,n,r,e,i){var o,u,c,f,a=i?function(){return t}:g(t),s=h(r,e,n?2:1),l=0;if("function"!=typeof a)throw TypeError(t+" is not iterable!");if(p(a)){for(o=y(t.length);l<o;l++)if((f=n?s(d(u=t[l])[0],u[1]):s(t[l]))===b||f===x)return f}else for(c=a.call(t);!(u=c.next()).done;)if((f=v(c,s,u.value,n))===b||f===x)return f}).BREAK=b,n.RETURN=x},function(t,n,e){var i=e(2),o=e(183),u=e(141),c=e(154)("IE_PROTO"),f=function(){},a="prototype",s=function(){var t,n=e(140)("iframe"),r=u.length;for(n.style.display="none",e(143).appendChild(n),n.src="javascript:",(t=n.contentWindow.document).open(),t.write("<script>document.F=Object<\/script>"),t.close(),s=t.F;r--;)delete s[a][u[r]];return s()};t.exports=Object.create||function(t,n){var r;return null!==t?(f[a]=i(t),r=new f,f[a]=null,r[c]=t):r=s(),void 0===n?r:o(r,n)}},function(t,n,r){var e=r(185),i=r(141).concat("length","prototype");n.f=Object.getOwnPropertyNames||function(t){return e(t,i)}},function(t,n,r){var e=r(185),i=r(141);t.exports=Object.keys||function(t){return e(t,i)}},function(t,n){t.exports=function(t,n){return{enumerable:!(1&t),configurable:!(2&t),writable:!(4&t),value:n}}},function(t,n,r){var i=r(27);t.exports=function(t,n,r){for(var e in n)i(t,e,n[e],r);return t}},function(t,n,r){"use strict";var e=r(3),i=r(11),o=r(10),u=r(7)("species");t.exports=function(t){var n=e[t];o&&n&&!n[u]&&i.f(n,u,{configurable:!0,get:function(){return this}})}},function(t,n,r){var e=r(49),i=Math.max,o=Math.min;t.exports=function(t,n){return(t=e(t))<0?i(t+n,0):o(t,n)}},function(t,n){var r=0,e=Math.random();t.exports=function(t){return"Symbol(".concat(void 0===t?"":t,")_",(++r+e).toString(36))}},function(t,n,r){var e=r(5);t.exports=function(t,n){if(!e(t)||t._t!==n)throw TypeError("Incompatible receiver, "+n+" required!");return t}},function(t,n,r){var i=r(45),o=r(7)("toStringTag"),u="Arguments"==i(function(){return arguments}());t.exports=function(t){var n,r,e;return void 0===t?"Undefined":null===t?"Null":"string"==typeof(r=function(t,n){try{return t[n]}catch(t){}}(n=Object(t),o))?r:u?i(n):"Object"==(e=i(n))&&"function"==typeof n.callee?"Arguments":e}},function(t,n){t.exports={}},function(t,n,r){var e=r(11).f,i=r(30),o=r(7)("toStringTag");t.exports=function(t,n,r){t&&!i(t=r?t:t.prototype,o)&&e(t,o,{configurable:!0,value:n})}},function(t,n,r){var u=r(1),e=r(51),c=r(4),f=r(157),i="["+f+"]",o=RegExp("^"+i+i+"*"),a=RegExp(i+i+"*$"),s=function(t,n,r){var e={},i=c(function(){return!!f[t]()||"​"!="​"[t]()}),o=e[t]=i?n(l):f[t];r&&(e[r]=o),u(u.P+u.F*i,"String",e)},l=s.trim=function(t,n){return t=String(e(t)),1&n&&(t=t.replace(o,"")),2&n&&(t=t.replace(a,"")),t};t.exports=s},function(t,n,r){t.exports={default:r(88),__esModule:!0}},function(t,n,r){t.exports={default:r(89),__esModule:!0}},function(t,n,r){"use strict";function e(t){return t&&t.__esModule?t:{default:t}}n.__esModule=!0;var i=e(r(86)),o=e(r(85)),u="function"==typeof o.default&&"symbol"==typeof i.default?function(t){return typeof t}:function(t){return t&&"function"==typeof o.default&&t.constructor===o.default&&t!==o.default.prototype?"symbol":typeof t};n.default="function"==typeof o.default&&"symbol"===u(i.default)?function(t){return void 0===t?"undefined":u(t)}:function(t){return t&&"function"==typeof o.default&&t.constructor===o.default&&t!==o.default.prototype?"symbol":void 0===t?"undefined":u(t)}},function(t,n,r){r(111),r(109),r(112),r(113),t.exports=r(19).Symbol},function(t,n,r){r(110),r(114),t.exports=r(44).f("iterator")},function(t,n){t.exports=function(t){if("function"!=typeof t)throw TypeError(t+" is not a function!");return t}},function(t,n){t.exports=function(){}},function(t,n,r){var f=r(15),a=r(107),s=r(106);t.exports=function(c){return function(t,n,r){var e,i=f(t),o=a(i.length),u=s(r,o);if(c&&n!=n){for(;u<o;)if((e=i[u++])!=e)return!0}else for(;u<o;u++)if((c||u in i)&&i[u]===n)return c||u||0;return!c&&-1}}},function(t,n,r){var o=r(90);t.exports=function(e,i,t){if(o(e),void 0===i)return e;switch(t){case 1:return function(t){return e.call(i,t)};case 2:return function(t,n){return e.call(i,t,n)};case 3:return function(t,n,r){return e.call(i,t,n,r)}}return function(){return e.apply(i,arguments)}}},function(t,n,r){var c=r(29),f=r(64),a=r(37);t.exports=function(t){var n=c(t),r=f.f;if(r)for(var e,i=r(t),o=a.f,u=0;i.length>u;)o.call(t,e=i[u++])&&n.push(e);return n}},function(t,n,r){var e=r(6).document;t.exports=e&&e.documentElement},function(t,n,r){var e=r(58);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==e(t)?t.split(""):Object(t)}},function(t,n,r){var e=r(58);t.exports=Array.isArray||function(t){return"Array"==e(t)}},function(t,n,r){"use strict";var e=r(62),i=r(24),o=r(38),u={};r(13)(u,r(16)("iterator"),function(){return this}),t.exports=function(t,n,r){t.prototype=e(u,{next:i(1,r)}),o(t,n+" Iterator")}},function(t,n){t.exports=function(t,n){return{value:n,done:!!t}}},function(t,n,r){var e=r(25)("meta"),i=r(18),o=r(9),u=r(14).f,c=0,f=Object.isExtensible||function(){return!0},a=!r(20)(function(){return f(Object.preventExtensions({}))}),s=function(t){u(t,e,{value:{i:"O"+ ++c,w:{}}})},l=t.exports={KEY:e,NEED:!1,fastKey:function(t,n){if(!i(t))return"symbol"==typeof t?t:("string"==typeof t?"S":"P")+t;if(!o(t,e)){if(!f(t))return"F";if(!n)return"E";s(t)}return t[e].i},getWeak:function(t,n){if(!o(t,e)){if(!f(t))return!0;if(!n)return!1;s(t)}return t[e].w},onFreeze:function(t){return a&&l.NEED&&f(t)&&!o(t,e)&&s(t),t}}},function(t,n,r){var u=r(14),c=r(22),f=r(29);t.exports=r(12)?Object.defineProperties:function(t,n){c(t);for(var r,e=f(n),i=e.length,o=0;o<i;)u.f(t,r=e[o++],n[r]);return t}},function(t,n,r){var e=r(37),i=r(24),o=r(15),u=r(42),c=r(9),f=r(60),a=Object.getOwnPropertyDescriptor;n.f=r(12)?a:function(t,n){if(t=o(t),n=u(n,!0),f)try{return a(t,n)}catch(t){}if(c(t,n))return i(!e.f.call(t,n),t[n])}},function(t,n,r){var e=r(15),i=r(63).f,o={}.toString,u="object"==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[];t.exports.f=function(t){return u&&"[object Window]"==o.call(t)?function(t){try{return i(t)}catch(t){return u.slice()}}(t):i(e(t))}},function(t,n,r){var e=r(9),i=r(55),o=r(39)("IE_PROTO"),u=Object.prototype;t.exports=Object.getPrototypeOf||function(t){return t=i(t),e(t,o)?t[o]:"function"==typeof t.constructor&&t instanceof t.constructor?t.constructor.prototype:t instanceof Object?u:null}},function(t,n,r){var f=r(41),a=r(34);t.exports=function(c){return function(t,n){var r,e,i=String(a(t)),o=f(n),u=i.length;return o<0||u<=o?c?"":void 0:(r=i.charCodeAt(o))<55296||56319<r||o+1===u||(e=i.charCodeAt(o+1))<56320||57343<e?c?i.charAt(o):r:c?i.slice(o,o+2):e-56320+(r-55296<<10)+65536}}},function(t,n,r){var e=r(41),i=Math.max,o=Math.min;t.exports=function(t,n){return(t=e(t))<0?i(t+n,0):o(t,n)}},function(t,n,r){var e=r(41),i=Math.min;t.exports=function(t){return 0<t?i(e(t),9007199254740991):0}},function(t,n,r){"use strict";var e=r(91),i=r(99),o=r(36),u=r(15);t.exports=r(61)(Array,"Array",function(t,n){this._t=u(t),this._i=0,this._k=n},function(){var t=this._t,n=this._k,r=this._i++;return!t||r>=t.length?(this._t=void 0,i(1)):i(0,"keys"==n?r:"values"==n?t[r]:[r,t[r]])},"values"),o.Arguments=o.Array,e("keys"),e("values"),e("entries")},function(t,n){},function(t,n,r){"use strict";var e=r(105)(!0);r(61)(String,"String",function(t){this._t=String(t),this._i=0},function(){var t,n=this._t,r=this._i;return r>=n.length?{value:void 0,done:!0}:(t=e(n,r),this._i+=t.length,{value:t,done:!1})})},function(t,n,r){"use strict";var e=r(6),u=r(9),i=r(12),o=r(54),c=r(66),f=r(100).KEY,a=r(20),s=r(40),l=r(38),h=r(25),v=r(16),p=r(44),d=r(43),y=r(94),g=r(97),b=r(22),x=r(18),m=r(55),S=r(15),w=r(42),_=r(24),O=r(62),E=r(103),M=r(102),P=r(64),j=r(14),F=r(29),A=M.f,I=j.f,L=E.f,N=e.Symbol,T=e.JSON,k=T&&T.stringify,R="prototype",C=v("_hidden"),D=v("toPrimitive"),G={}.propertyIsEnumerable,W=s("symbol-registry"),U=s("symbols"),V=s("op-symbols"),B=Object[R],q="function"==typeof N&&!!P.f,z=e.QObject,K=!z||!z[R]||!z[R].findChild,H=i&&a(function(){return 7!=O(I({},"a",{get:function(){return I(this,"a",{value:7}).a}})).a})?function(t,n,r){var e=A(B,n);e&&delete B[n],I(t,n,r),e&&t!==B&&I(B,n,e)}:I,J=function(t){var n=U[t]=O(N[R]);return n._k=t,n},$=q&&"symbol"==typeof N.iterator?function(t){return"symbol"==typeof t}:function(t){return t instanceof N},Y=function(t,n,r){return t===B&&Y(V,n,r),b(t),n=w(n,!0),b(r),u(U,n)?(r.enumerable?(u(t,C)&&t[C][n]&&(t[C][n]=!1),r=O(r,{enumerable:_(0,!1)})):(u(t,C)||I(t,C,_(1,{})),t[C][n]=!0),H(t,n,r)):I(t,n,r)},X=function(t,n){b(t);for(var r,e=y(n=S(n)),i=0,o=e.length;i<o;)Y(t,r=e[i++],n[r]);return t},Q=function(t){var n=G.call(this,t=w(t,!0));return!(this===B&&u(U,t)&&!u(V,t))&&(!(n||!u(this,t)||!u(U,t)||u(this,C)&&this[C][t])||n)},Z=function(t,n){if(t=S(t),n=w(n,!0),t!==B||!u(U,n)||u(V,n)){var r=A(t,n);return!r||!u(U,n)||u(t,C)&&t[C][n]||(r.enumerable=!0),r}},tt=function(t){for(var n,r=L(S(t)),e=[],i=0;r.length>i;)u(U,n=r[i++])||n==C||n==f||e.push(n);return e},nt=function(t){for(var n,r=t===B,e=L(r?V:S(t)),i=[],o=0;e.length>o;)!u(U,n=e[o++])||r&&!u(B,n)||i.push(U[n]);return i};q||(c((N=function(){if(this instanceof N)throw TypeError("Symbol is not a constructor!");var n=h(0<arguments.length?arguments[0]:void 0),r=function(t){this===B&&r.call(V,t),u(this,C)&&u(this[C],n)&&(this[C][n]=!1),H(this,n,_(1,t))};return i&&K&&H(B,n,{configurable:!0,set:r}),J(n)})[R],"toString",function(){return this._k}),M.f=Z,j.f=Y,r(63).f=E.f=tt,r(37).f=Q,P.f=nt,i&&!r(23)&&c(B,"propertyIsEnumerable",Q,!0),p.f=function(t){return J(v(t))}),o(o.G+o.W+o.F*!q,{Symbol:N});for(var rt="hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","),et=0;rt.length>et;)v(rt[et++]);for(var it=F(v.store),ot=0;it.length>ot;)d(it[ot++]);o(o.S+o.F*!q,"Symbol",{for:function(t){return u(W,t+="")?W[t]:W[t]=N(t)},keyFor:function(t){if(!$(t))throw TypeError(t+" is not a symbol!");for(var n in W)if(W[n]===t)return n},useSetter:function(){K=!0},useSimple:function(){K=!1}}),o(o.S+o.F*!q,"Object",{create:function(t,n){return void 0===n?O(t):X(O(t),n)},defineProperty:Y,defineProperties:X,getOwnPropertyDescriptor:Z,getOwnPropertyNames:tt,getOwnPropertySymbols:nt});var ut=a(function(){P.f(1)});o(o.S+o.F*ut,"Object",{getOwnPropertySymbols:function(t){return P.f(m(t))}}),T&&o(o.S+o.F*(!q||a(function(){var t=N();return"[null]"!=k([t])||"{}"!=k({a:t})||"{}"!=k(Object(t))})),"JSON",{stringify:function(t){for(var n,r,e=[t],i=1;arguments.length>i;)e.push(arguments[i++]);if(r=n=e[1],(x(n)||void 0!==t)&&!$(t))return g(n)||(n=function(t,n){if("function"==typeof r&&(n=r.call(this,t,n)),!$(n))return n}),e[1]=n,k.apply(T,e)}}),N[R][D]||r(13)(N[R],D,N[R].valueOf),l(N,"Symbol"),l(Math,"Math",!0),l(e.JSON,"JSON",!0)},function(t,n,r){r(43)("asyncIterator")},function(t,n,r){r(43)("observable")},function(t,n,r){r(108);for(var e=r(6),i=r(13),o=r(36),u=r(16)("toStringTag"),c="CSSRuleList,CSSStyleDeclaration,CSSValueList,ClientRectList,DOMRectList,DOMStringList,DOMTokenList,DataTransferItemList,FileList,HTMLAllCollection,HTMLCollection,HTMLFormElement,HTMLSelectElement,MediaList,MimeTypeArray,NamedNodeMap,NodeList,PaintRequestList,Plugin,PluginArray,SVGLengthList,SVGNumberList,SVGPathSegList,SVGPointList,SVGStringList,SVGTransformList,SourceBufferList,StyleSheetList,TextTrackCueList,TextTrackList,TouchList".split(","),f=0;f<c.length;f++){var a=c[f],s=e[a],l=s&&s.prototype;l&&!l[u]&&i(l,u,a),o[a]=o.Array}},function(t,n,r){"use strict";var e=r(2);t.exports=function(){var t=e(this),n="";return t.global&&(n+="g"),t.ignoreCase&&(n+="i"),t.multiline&&(n+="m"),t.unicode&&(n+="u"),t.sticky&&(n+="y"),n}},function(t,n,r){var e=r(45);t.exports=Object("z").propertyIsEnumerable(0)?Object:function(t){return"String"==e(t)?t.split(""):Object(t)}},function(t,n){n.f={}.propertyIsEnumerable},function(t,n,r){var e=r(46),i=r(3),o="__core-js_shared__",u=i[o]||(i[o]={});(t.exports=function(t,n){return u[t]||(u[t]=void 0!==n?n:{})})("versions",[]).push({version:e.version,mode:r(68)?"pure":"global",copyright:"© 2019 Denis Pushkarev (zloirock.ru)"})},function(t,n,r){var i=r(2),o=r(21),u=r(7)("species");t.exports=function(t,n){var r,e=i(t).constructor;return void 0===e||null==(r=i(e)[u])?n:o(r)}},function(t,n,r){var f=r(33),a=r(8),s=r(78);t.exports=function(c){return function(t,n,r){var e,i=f(t),o=a(i.length),u=s(r,o);if(c&&n!=n){for(;u<o;)if((e=i[u++])!=e)return!0}else for(;u<o;u++)if((c||u in i)&&i[u]===n)return c||u||0;return!c&&-1}}},function(t,n,r){"use strict";var g=r(3),b=r(1),x=r(27),m=r(76),S=r(69),w=r(71),_=r(70),O=r(5),E=r(4),M=r(125),P=r(83),j=r(144);t.exports=function(e,t,n,r,i,o){var u=g[e],c=u,f=i?"set":"add",a=c&&c.prototype,s={},l=function(t){var r=a[t];x(a,t,"delete"==t?function(t){return!(o&&!O(t))&&r.call(this,0===t?0:t)}:"has"==t?function(t){return!(o&&!O(t))&&r.call(this,0===t?0:t)}:"get"==t?function(t){return o&&!O(t)?void 0:r.call(this,0===t?0:t)}:"add"==t?function(t){return r.call(this,0===t?0:t),this}:function(t,n){return r.call(this,0===t?0:t,n),this})};if("function"==typeof c&&(o||a.forEach&&!E(function(){(new c).entries().next()}))){var h=new c,v=h[f](o?{}:-0,1)!=h,p=E(function(){h.has(1)}),d=M(function(t){new c(t)}),y=!o&&E(function(){for(var t=new c,n=5;n--;)t[f](n,n);return!t.has(-0)});d||(((c=t(function(t,n){_(t,c,e);var r=j(new u,t,c);return null!=n&&w(n,i,r[f],r),r})).prototype=a).constructor=c),(p||y)&&(l("delete"),l("has"),i&&l("get")),(y||v)&&l(f),o&&a.clear&&delete a.clear}else c=r.getConstructor(t,e,i,f),m(c.prototype,n),S.NEED=!0;return P(c,e),s[e]=c,b(b.G+b.W+b.F*(c!=u),s),o||r.setStrong(c,e,i),c}},function(t,n,r){"use strict";r(197);var s=r(27),l=r(26),h=r(4),v=r(51),p=r(7),d=r(152),y=p("species"),g=!h(function(){var t=/./;return t.exec=function(){var t=[];return t.groups={a:"7"},t},"7"!=="".replace(t,"$<a>")}),b=function(){var t=/(?:)/,n=t.exec;t.exec=function(){return n.apply(this,arguments)};var r="ab".split(t);return 2===r.length&&"a"===r[0]&&"b"===r[1]}();t.exports=function(r,t,n){var e=p(r),o=!h(function(){var t={};return t[e]=function(){return 7},7!=""[r](t)}),i=o?!h(function(){var t=!1,n=/a/;return n.exec=function(){return t=!0,null},"split"===r&&(n.constructor={},n.constructor[y]=function(){return n}),n[e](""),!t}):void 0;if(!o||!i||"replace"===r&&!g||"split"===r&&!b){var u=/./[e],c=n(v,e,""[r],function(t,n,r,e,i){return n.exec===d?o&&!i?{done:!0,value:u.call(n,r,e)}:{done:!0,value:t.call(r,n,e)}:{done:!1}}),f=c[0],a=c[1];s(String.prototype,r,f),l(RegExp.prototype,e,2==t?function(t,n){return a.call(t,this,n)}:function(t){return a.call(t,this)})}}},function(t,n,r){var e=r(45);t.exports=Array.isArray||function(t){return"Array"==e(t)}},function(t,n,r){var e=r(5),i=r(45),o=r(7)("match");t.exports=function(t){var n;return e(t)&&(void 0!==(n=t[o])?!!n:"RegExp"==i(t))}},function(t,n,r){var o=r(7)("iterator"),u=!1;try{var e=[7][o]();e.return=function(){u=!0},Array.from(e,function(){throw 2})}catch(t){}t.exports=function(t,n){if(!n&&!u)return!1;var r=!1;try{var e=[7],i=e[o]();i.next=function(){return{done:r=!0}},e[o]=function(){return i},t(e)}catch(t){}return r}},function(t,n,r){"use strict";t.exports=r(68)||!r(4)(function(){var t=Math.random();__defineSetter__.call(null,t,function(){}),delete r(3)[t]})},function(t,n){n.f=Object.getOwnPropertySymbols},function(t,n,r){"use strict";var i=r(81),o=RegExp.prototype.exec;t.exports=function(t,n){var r=t.exec;if("function"==typeof r){var e=r.call(t,n);if("object"!=typeof e)throw new TypeError("RegExp exec method returned something other than an Object or null");return e}if("RegExp"!==i(t))throw new TypeError("RegExp#exec called on incompatible receiver");return o.call(t,n)}},function(t,n,r){"use strict";var e=r(1),u=r(21),c=r(47),f=r(71);t.exports=function(t){e(e.S,t,{from:function(t){var n,r,e,i,o=arguments[1];return u(this),(n=void 0!==o)&&u(o),null==t?new this:(r=[],n?(e=0,i=c(o,arguments[2],2),f(t,!1,function(t){r.push(i(t,e++))})):f(t,!1,r.push,r),new this(r))}})}},function(t,n,r){"use strict";var e=r(1);t.exports=function(t){e(e.S,t,{of:function(){for(var t=arguments.length,n=new Array(t);t--;)n[t]=arguments[t];return new this(n)}})}},function(t,n,r){var f=r(49),a=r(51);t.exports=function(c){return function(t,n){var r,e,i=String(a(t)),o=f(n),u=i.length;return o<0||u<=o?c?"":void 0:(r=i.charCodeAt(o))<55296||56319<r||o+1===u||(e=i.charCodeAt(o+1))<56320||57343<e?c?i.charAt(o):r:c?i.slice(o,o+2):e-56320+(r-55296<<10)+65536}}},function(t,n,r){for(var e,i=r(3),o=r(26),u=r(79),c=u("typed_array"),f=u("view"),a=!(!i.ArrayBuffer||!i.DataView),s=a,l=0,h="Int8Array,Uint8Array,Uint8ClampedArray,Int16Array,Uint16Array,Int32Array,Uint32Array,Float32Array,Float64Array".split(",");l<9;)(e=i[h[l++]])?(o(e.prototype,c,!0),o(e.prototype,f,!0)):s=!1;t.exports={ABV:a,CONSTR:s,TYPED:c,VIEW:f}},function(t,n,r){var e=r(3).navigator;t.exports=e&&e.userAgent||""},function(t,n){"use strict";var r,e={versions:(r=window.navigator.userAgent,{trident:-1<r.indexOf("Trident"),presto:-1<r.indexOf("Presto"),webKit:-1<r.indexOf("AppleWebKit"),gecko:-1<r.indexOf("Gecko")&&-1==r.indexOf("KHTML"),mobile:!!r.match(/AppleWebKit.*Mobile.*/),ios:!!r.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/),android:-1<r.indexOf("Android")||-1<r.indexOf("Linux"),iPhone:-1<r.indexOf("iPhone")||-1<r.indexOf("Mac"),iPad:-1<r.indexOf("iPad"),webApp:-1==r.indexOf("Safari"),weixin:-1==r.indexOf("MicroMessenger")})};t.exports=e},function(t,n,r){"use strict";var e,i=r(87),l=(e=i)&&e.__esModule?e:{default:e},h=function(){function n(t,n,r){return n||r?String.fromCharCode(n||r):o[t]||t}function r(t){return s[t]}var e=/&quot;|&lt;|&gt;|&amp;|&nbsp;|&apos;|&#(\d+);|&#(\d+)/g,i=/['<> "&]/g,o={"&quot;":'"',"&lt;":"<","&gt;":">","&amp;":"&","&nbsp;":" "},u=/\u00a0/g,c=/<br\s*\/?>/gi,f=/\r?\n/g,a=/\s/g,s={};for(var t in o)s[o[t]]=t;return o["&apos;"]="'",s["'"]="&#39;",{encode:function(t){return t?(""+t).replace(i,r).replace(f,"<br/>").replace(a,"&nbsp;"):""},decode:function(t){return t?(""+t).replace(c,"\n").replace(e,n).replace(u," "):""},encodeBase16:function(t){if(!t)return t;for(var n=[],r=0,e=(t+="").length;r<e;r++)n.push(t.charCodeAt(r).toString(16).toUpperCase());return n.join("")},encodeBase16forJSON:function(t){if(!t)return t;for(var n=[],r=0,e=(t=t.replace(/[\u4E00-\u9FBF]/gi,function(t){return escape(t).replace("%u","\\u")})).length;r<e;r++)n.push(t.charCodeAt(r).toString(16).toUpperCase());return n.join("")},decodeBase16:function(t){if(!t)return t;for(var n=[],r=0,e=(t+="").length;r<e;r+=2)n.push(String.fromCharCode("0x"+t.slice(r,r+2)));return n.join("")},encodeObject:function(t){if(t instanceof Array)for(var n=0,r=t.length;n<r;n++)t[n]=h.encodeObject(t[n]);else if("object"==(void 0===t?"undefined":(0,l.default)(t)))for(var e in t)t[e]=h.encodeObject(t[e]);else if("string"==typeof t)return h.encode(t);return t},loadScript:function(t){var n=document.createElement("script");document.getElementsByTagName("body")[0].appendChild(n),n.setAttribute("src",t)},addLoadEvent:function(t){var n=window.onload;"function"!=typeof window.onload?window.onload=t:window.onload=function(){n(),t()}}}}();t.exports=h},function(t,n,r){"use strict";var e=r(131)(!0);t.exports=function(t,n,r){return n+(r?e(t,n).length:1)}},function(t,n,r){"use strict";var c=r(17),f=r(78),a=r(8);t.exports=function(t){for(var n=c(this),r=a(n.length),e=arguments.length,i=f(1<e?arguments[1]:void 0,r),o=2<e?arguments[2]:void 0,u=void 0===o?r:f(o,r);i<u;)n[i++]=t;return n}},function(t,n,r){var e=r(215);t.exports=function(t,n){return new(e(t))(n)}},function(t,n,r){"use strict";var e=r(11),i=r(75);t.exports=function(t,n,r){n in t?e.f(t,n,i(0,r)):t[n]=r}},function(t,n,r){var e=r(5),i=r(3).document,o=e(i)&&e(i.createElement);t.exports=function(t){return o?i.createElement(t):{}}},function(t,n){t.exports="constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf".split(",")},function(t,n,r){var e=r(7)("match");t.exports=function(n){var r=/./;try{"/./"[n](r)}catch(t){try{return r[e]=!1,!"/./"[n](r)}catch(n){}}return!0}},function(t,n,r){var e=r(3).document;t.exports=e&&e.documentElement},function(t,n,r){var o=r(5),u=r(153).set;t.exports=function(t,n,r){var e,i=n.constructor;return i!==r&&"function"==typeof i&&(e=i.prototype)!==r.prototype&&o(e)&&u&&u(t,e),t}},function(t,n,r){var e=r(82),i=r(7)("iterator"),o=Array.prototype;t.exports=function(t){return void 0!==t&&(e.Array===t||o[i]===t)}},function(t,n,r){"use strict";var e=r(72),i=r(75),o=r(83),u={};r(26)(u,r(7)("iterator"),function(){return this}),t.exports=function(t,n,r){t.prototype=e(u,{next:i(1,r)}),o(t,n+" Iterator")}},function(t,n,r){"use strict";var x=r(68),m=r(1),S=r(27),w=r(26),_=r(82),O=r(146),E=r(83),M=r(32),P=r(7)("iterator"),j=!([].keys&&"next"in[].keys()),F="values",A=function(){return this};t.exports=function(t,n,r,e,i,o,u){O(r,n,e);var c,f,a,s=function(t){if(!j&&t in p)return p[t];switch(t){case"keys":case F:return function(){return new r(this,t)}}return function(){return new r(this,t)}},l=n+" Iterator",h=i==F,v=!1,p=t.prototype,d=p[P]||p["@@iterator"]||i&&p[i],y=d||s(i),g=i?h?s("entries"):y:void 0,b="Array"==n&&p.entries||d;if(b&&((a=M(b.call(new t)))!==Object.prototype&&a.next&&(E(a,l,!0),x||"function"==typeof a[P]||w(a,P,A))),h&&d&&d.name!==F&&(v=!0,y=function(){return d.call(this)}),x&&!u||!j&&!v&&p[P]||w(p,P,y),_[n]=y,_[l]=A,i)if(c={values:h?y:s(F),keys:o?y:s("keys"),entries:g},u)for(f in c)f in p||S(p,f,c[f]);else m(m.P+m.F*(j||v),n,c);return c}},function(t,n){var r=Math.expm1;t.exports=!r||22025.465794806718<r(10)||r(10)<22025.465794806718||-2e-17!=r(-2e-17)?function(t){return 0==(t=+t)?t:-1e-6<t&&t<1e-6?t+t*t/2:Math.exp(t)-1}:r},function(t,n){t.exports=Math.sign||function(t){return 0==(t=+t)||t!=t?t:t<0?-1:1}},function(t,n,r){var c=r(3),f=r(158).set,a=c.MutationObserver||c.WebKitMutationObserver,s=c.process,l=c.Promise,h="process"==r(45)(s);t.exports=function(){var r,e,i,t=function(){var t,n;for(h&&(t=s.domain)&&t.exit();r;){n=r.fn,r=r.next;try{n()}catch(t){throw r?i():e=void 0,t}}e=void 0,t&&t.enter()};if(h)i=function(){s.nextTick(t)};else if(!a||c.navigator&&c.navigator.standalone)if(l&&l.resolve){var n=l.resolve(void 0);i=function(){n.then(t)}}else i=function(){f.call(c,t)};else{var o=!0,u=document.createTextNode("");new a(t).observe(u,{characterData:!0}),i=function(){u.data=o=!o}}return function(t){var n={fn:t,next:void 0};e&&(e.next=n),r||(r=n,i()),e=n}}},function(t,n,r){"use strict";function e(t){var r,e;this.promise=new t(function(t,n){if(void 0!==r||void 0!==e)throw TypeError("Bad Promise constructor");r=t,e=n}),this.resolve=i(r),this.reject=i(e)}var i=r(21);t.exports.f=function(t){return new e(t)}},function(t,n,r){"use strict";var e,i,u=r(115),c=RegExp.prototype.exec,f=String.prototype.replace,o=c,a="lastIndex",s=(e=/a/,i=/b*/g,c.call(e,"a"),c.call(i,"a"),0!==e[a]||0!==i[a]),l=void 0!==/()??/.exec("")[1];(s||l)&&(o=function(t){var n,r,e,i,o=this;return l&&(r=new RegExp("^"+o.source+"$(?!\\s)",u.call(o))),s&&(n=o[a]),e=c.call(o,t),s&&e&&(o[a]=o.global?e.index+e[0].length:n),l&&e&&1<e.length&&f.call(e[0],r,function(){for(i=1;i<arguments.length-2;i++)void 0===arguments[i]&&(e[i]=void 0)}),e}),t.exports=o},function(t,n,i){var r=i(5),e=i(2),o=function(t,n){if(e(t),!r(n)&&null!==n)throw TypeError(n+": can't set as prototype!")};t.exports={set:Object.setPrototypeOf||("__proto__"in{}?function(t,r,e){try{(e=i(47)(Function.call,i(31).f(Object.prototype,"__proto__").set,2))(t,[]),r=!(t instanceof Array)}catch(t){r=!0}return function(t,n){return o(t,n),r?t.__proto__=n:e(t,n),t}}({},!1):void 0),check:o}},function(t,n,r){var e=r(118)("keys"),i=r(79);t.exports=function(t){return e[t]||(e[t]=i(t))}},function(t,n,r){var e=r(124),i=r(51);t.exports=function(t,n,r){if(e(n))throw TypeError("String#"+r+" doesn't accept regex!");return String(i(t))}},function(t,n,r){"use strict";var i=r(49),o=r(51);t.exports=function(t){var n=String(o(this)),r="",e=i(t);if(e<0||e==1/0)throw RangeError("Count can't be negative");for(;0<e;(e>>>=1)&&(n+=n))1&e&&(r+=n);return r}},function(t,n){t.exports="\t\n\v\f\r   ᠎             　\u2028\u2029\ufeff"},function(t,n,r){var e,i,o,u=r(47),c=r(175),f=r(143),a=r(140),s=r(3),l=s.process,h=s.setImmediate,v=s.clearImmediate,p=s.MessageChannel,d=s.Dispatch,y=0,g={},b="onreadystatechange",x=function(){var t=+this;if(g.hasOwnProperty(t)){var n=g[t];delete g[t],n()}},m=function(t){x.call(t.data)};h&&v||(h=function(t){for(var n=[],r=1;arguments.length>r;)n.push(arguments[r++]);return g[++y]=function(){c("function"==typeof t?t:Function(t),n)},e(y),y},v=function(t){delete g[t]},"process"==r(45)(l)?e=function(t){l.nextTick(u(x,t,1))}:d&&d.now?e=function(t){d.now(u(x,t,1))}:p?(o=(i=new p).port2,i.port1.onmessage=m,e=u(o.postMessage,o,1)):s.addEventListener&&"function"==typeof postMessage&&!s.importScripts?(e=function(t){s.postMessage(t+"","*")},s.addEventListener("message",m,!1)):e=b in a("script")?function(t){f.appendChild(a("script"))[b]=function(){f.removeChild(this),x.call(t)}}:function(t){setTimeout(u(x,t,1),0)}),t.exports={set:h,clear:v}},function(t,n,r){"use strict";function e(t,n,r){var e,i,o,u=new Array(r),c=8*r-n-1,f=(1<<c)-1,a=f>>1,s=23===n?W(2,-24)-W(2,-77):0,l=0,h=t<0||0===t&&1/t<0?1:0;for((t=G(t))!=t||t===C?(i=t!=t?1:0,e=f):(e=U(V(t)/B),t*(o=W(2,-e))<1&&(e--,o*=2),2<=(t+=1<=e+a?s/o:s*W(2,1-a))*o&&(e++,o/=2),f<=e+a?(i=0,e=f):1<=e+a?(i=(t*o-1)*W(2,n),e+=a):(i=t*W(2,a-1)*W(2,n),e=0));8<=n;u[l++]=255&i,i/=256,n-=8);for(e=e<<n|i,c+=n;0<c;u[l++]=255&e,e/=256,c-=8);return u[--l]|=128*h,u}function i(t,n,r){var e,i=8*r-n-1,o=(1<<i)-1,u=o>>1,c=i-7,f=r-1,a=t[f--],s=127&a;for(a>>=7;0<c;s=256*s+t[f],f--,c-=8);for(e=s&(1<<-c)-1,s>>=-c,c+=n;0<c;e=256*e+t[f],f--,c-=8);if(0===s)s=1-u;else{if(s===o)return e?NaN:a?-C:C;e+=W(2,n),s-=u}return(a?-1:1)*e*W(2,s-n)}function o(t){return t[3]<<24|t[2]<<16|t[1]<<8|t[0]}function u(t){return[255&t]}function c(t){return[255&t,t>>8&255]}function f(t){return[255&t,t>>8&255,t>>16&255,t>>24&255]}function a(t){return e(t,52,8)}function s(t){return e(t,23,4)}function l(t,n,r){M(t[I],n,{get:function(){return this[r]}})}function h(t,n,r,e){var i=O(+r);if(i+n>t[H])throw R(L);var o=t[K]._b,u=i+t[J],c=o.slice(u,u+n);return e?c:c.reverse()}function v(t,n,r,e,i,o){var u=O(+r);if(u+n>t[H])throw R(L);for(var c=t[K]._b,f=u+t[J],a=e(+i),s=0;s<n;s++)c[f+s]=a[o?s:n-s-1]}var p=r(3),d=r(10),y=r(68),g=r(132),b=r(26),x=r(76),m=r(4),S=r(70),w=r(49),_=r(8),O=r(194),E=r(73).f,M=r(11).f,P=r(137),j=r(83),F="ArrayBuffer",A="DataView",I="prototype",L="Wrong index!",N=p[F],T=p[A],k=p.Math,R=p.RangeError,C=p.Infinity,D=N,G=k.abs,W=k.pow,U=k.floor,V=k.log,B=k.LN2,q="byteLength",z="byteOffset",K=d?"_b":"buffer",H=d?"_l":q,J=d?"_o":z;if(g.ABV){if(!m(function(){N(1)})||!m(function(){new N(-1)})||m(function(){return new N,new N(1.5),new N(NaN),N.name!=F})){for(var $,Y=(N=function(t){return S(this,N),new D(O(t))})[I]=D[I],X=E(D),Q=0;X.length>Q;)($=X[Q++])in N||b(N,$,D[$]);y||(Y.constructor=N)}var Z=new T(new N(2)),tt=T[I].setInt8;Z.setInt8(0,2147483648),Z.setInt8(1,2147483649),!Z.getInt8(0)&&Z.getInt8(1)||x(T[I],{setInt8:function(t,n){tt.call(this,t,n<<24>>24)},setUint8:function(t,n){tt.call(this,t,n<<24>>24)}},!0)}else N=function(t){S(this,N,F);var n=O(t);this._b=P.call(new Array(n),0),this[H]=n},T=function(t,n,r){S(this,T,A),S(t,N,A);var e=t[H],i=w(n);if(i<0||e<i)throw R("Wrong offset!");if(e<i+(r=void 0===r?e-i:_(r)))throw R("Wrong length!");this[K]=t,this[J]=i,this[H]=r},d&&(l(N,q,"_l"),l(T,"buffer","_b"),l(T,q,"_l"),l(T,z,"_o")),x(T[I],{getInt8:function(t){return h(this,1,t)[0]<<24>>24},getUint8:function(t){return h(this,1,t)[0]},getInt16:function(t){var n=h(this,2,t,arguments[1]);return(n[1]<<8|n[0])<<16>>16},getUint16:function(t){var n=h(this,2,t,arguments[1]);return n[1]<<8|n[0]},getInt32:function(t){return o(h(this,4,t,arguments[1]))},getUint32:function(t){return o(h(this,4,t,arguments[1]))>>>0},getFloat32:function(t){return i(h(this,4,t,arguments[1]),23,4)},getFloat64:function(t){return i(h(this,8,t,arguments[1]),52,8)},setInt8:function(t,n){v(this,1,t,u,n)},setUint8:function(t,n){v(this,1,t,u,n)},setInt16:function(t,n){v(this,2,t,c,n,arguments[2])},setUint16:function(t,n){v(this,2,t,c,n,arguments[2])},setInt32:function(t,n){v(this,4,t,f,n,arguments[2])},setUint32:function(t,n){v(this,4,t,f,n,arguments[2])},setFloat32:function(t,n){v(this,4,t,s,n,arguments[2])},setFloat64:function(t,n){v(this,8,t,a,n,arguments[2])}});j(N,F),j(T,A),b(T[I],g.VIEW,!0),n[F]=N,n[A]=T},function(t,n,r){var e=r(3),i=r(46),o=r(68),u=r(195),c=r(11).f;t.exports=function(t){var n=i.Symbol||(i.Symbol=o?{}:e.Symbol||{});"_"==t.charAt(0)||t in n||c(n,t,{value:u.f(t)})}},function(t,n,r){var e=r(81),i=r(7)("iterator"),o=r(82);t.exports=r(46).getIteratorMethod=function(t){if(null!=t)return t[i]||t["@@iterator"]||o[e(t)]}},function(t,n,r){"use strict";var e=r(67),i=r(178),o=r(82),u=r(33);t.exports=r(147)(Array,"Array",function(t,n){this._t=u(t),this._i=0,this._k=n},function(){var t=this._t,n=this._k,r=this._i++;return!t||r>=t.length?(this._t=void 0,i(1)):i(0,"keys"==n?r:"values"==n?t[r]:[r,t[r]])},"values"),o.Arguments=o.Array,e("keys"),e("values"),e("entries")},function(t,n){t.exports=function(t,n){t.classList?t.classList.add(n):t.className+=" "+n}},function(t,n){t.exports=function(t,n){if(t.classList)t.classList.remove(n);else{var r=new RegExp("(^|\\b)"+n.split(" ").join("|")+"(\\b|$)","gi");t.className=t.className.replace(r," ")}}},function(t,n,r){var e=r(45);t.exports=function(t,n){if("number"!=typeof t&&"Number"!=e(t))throw TypeError(n);return+t}},function(t,n,r){"use strict";var a=r(17),s=r(78),l=r(8);t.exports=[].copyWithin||function(t,n){var r=a(this),e=l(r.length),i=s(t,e),o=s(n,e),u=2<arguments.length?arguments[2]:void 0,c=Math.min((void 0===u?e:s(u,e))-o,e-i),f=1;for(o<i&&i<o+c&&(f=-1,o+=c-1,i+=c-1);0<c--;)o in r?r[i]=r[o]:delete r[i],i+=f,o+=f;return r}},function(t,n,r){var e=r(71);t.exports=function(t,n){var r=[];return e(t,!1,r.push,r,n),r}},function(t,n,r){var s=r(21),l=r(17),h=r(116),v=r(8);t.exports=function(t,n,r,e,i){s(n);var o=l(t),u=h(o),c=v(o.length),f=i?c-1:0,a=i?-1:1;if(r<2)for(;;){if(f in u){e=u[f],f+=a;break}if(f+=a,i?f<0:c<=f)throw TypeError("Reduce of empty array with no initial value")}for(;i?0<=f:f<c;f+=a)f in u&&(e=n(e,u[f],f,o));return e}},function(t,n,r){"use strict";var o=r(21),u=r(5),c=r(175),f=[].slice,a={};t.exports=Function.bind||function(n){var r=o(this),e=f.call(arguments,1),i=function(){var t=e.concat(f.call(arguments));return this instanceof i?function(t,n,r){if(!(n in a)){for(var e=[],i=0;i<n;i++)e[i]="a["+i+"]";a[n]=Function("F,a","return new F("+e.join(",")+")")}return a[n](t,r)}(r,t.length,t):c(r,t,n)};return u(r.prototype)&&(i.prototype=r.prototype),i}},function(t,n,r){"use strict";var u=r(11).f,c=r(72),f=r(76),a=r(47),s=r(70),l=r(71),e=r(147),i=r(178),o=r(77),h=r(10),v=r(69).fastKey,p=r(80),d=h?"_s":"size",y=function(t,n){var r,e=v(n);if("F"!==e)return t._i[e];for(r=t._f;r;r=r.n)if(r.k==n)return r};t.exports={getConstructor:function(t,o,r,e){var i=t(function(t,n){s(t,i,o,"_i"),t._t=o,t._i=c(null),t._f=void 0,t._l=void 0,t[d]=0,null!=n&&l(n,r,t[e],t)});return f(i.prototype,{clear:function(){for(var t=p(this,o),n=t._i,r=t._f;r;r=r.n)r.r=!0,r.p&&(r.p=r.p.n=void 0),delete n[r.i];t._f=t._l=void 0,t[d]=0},delete:function(t){var n=p(this,o),r=y(n,t);if(r){var e=r.n,i=r.p;delete n._i[r.i],r.r=!0,i&&(i.n=e),e&&(e.p=i),n._f==r&&(n._f=e),n._l==r&&(n._l=i),n[d]--}return!!r},forEach:function(t){p(this,o);for(var n,r=a(t,1<arguments.length?arguments[1]:void 0,3);n=n?n.n:this._f;)for(r(n.v,n.k,this);n&&n.r;)n=n.p},has:function(t){return!!y(p(this,o),t)}}),h&&u(i.prototype,"size",{get:function(){return p(this,o)[d]}}),i},def:function(t,n,r){var e,i,o=y(t,n);return o?o.v=r:(t._l=o={i:i=v(n,!0),k:n,v:r,p:e=t._l,n:void 0,r:!1},t._f||(t._f=o),e&&(e.n=o),t[d]++,"F"!==i&&(t._i[i]=o)),t},getEntry:y,setStrong:function(t,r,n){e(t,r,function(t,n){this._t=p(t,r),this._k=n,this._l=void 0},function(){for(var t=this,n=t._k,r=t._l;r&&r.r;)r=r.p;return t._t&&(t._l=r=r?r.n:t._t._f)?i(0,"keys"==n?r.k:"values"==n?r.v:[r.k,r.v]):(t._t=void 0,i(1))},n?"entries":"values",!n,!0),o(r)}}},function(t,n,r){var e=r(81),i=r(167);t.exports=function(t){return function(){if(e(this)!=t)throw TypeError(t+"#toJSON isn't generic");return i(this)}}},function(t,n,r){"use strict";var u=r(76),c=r(69).getWeak,i=r(2),f=r(5),a=r(70),s=r(71),e=r(50),l=r(30),h=r(80),o=e(5),v=e(6),p=0,d=function(t){return t._l||(t._l=new y)},y=function(){this.a=[]},g=function(t,n){return o(t.a,function(t){return t[0]===n})};y.prototype={get:function(t){var n=g(this,t);if(n)return n[1]},has:function(t){return!!g(this,t)},set:function(t,n){var r=g(this,t);r?r[1]=n:this.a.push([t,n])},delete:function(n){var t=v(this.a,function(t){return t[0]===n});return~t&&this.a.splice(t,1),!!~t}},t.exports={getConstructor:function(t,r,e,i){var o=t(function(t,n){a(t,o,r,"_i"),t._t=r,t._i=p++,t._l=void 0,null!=n&&s(n,e,t[i],t)});return u(o.prototype,{delete:function(t){if(!f(t))return!1;var n=c(t);return!0===n?d(h(this,r)).delete(t):n&&l(n,this._i)&&delete n[this._i]},has:function(t){if(!f(t))return!1;var n=c(t);return!0===n?d(h(this,r)).has(t):n&&l(n,this._i)}}),o},def:function(t,n,r){var e=c(i(n),!0);return!0===e?d(t).set(n,r):e[t._i]=r,t},ufstore:d}},function(t,n,r){"use strict";var p=r(123),d=r(5),y=r(8),g=r(47),b=r(7)("isConcatSpreadable");t.exports=function t(n,r,e,i,o,u,c,f){for(var a,s,l=o,h=0,v=!!c&&g(c,f,3);h<i;){if(h in e){if(a=v?v(e[h],h,r):e[h],s=!1,d(a)&&(s=void 0!==(s=a[b])?!!s:p(a)),s&&0<u)l=t(n,r,a,y(a.length),l,u-1)-1;else{if(9007199254740991<=l)throw TypeError();n[l]=a}l++}h++}return l}},function(t,n,r){t.exports=!r(10)&&!r(4)(function(){return 7!=Object.defineProperty(r(140)("div"),"a",{get:function(){return 7}}).a})},function(t,n){t.exports=function(t,n,r){var e=void 0===r;switch(n.length){case 0:return e?t():t.call(r);case 1:return e?t(n[0]):t.call(r,n[0]);case 2:return e?t(n[0],n[1]):t.call(r,n[0],n[1]);case 3:return e?t(n[0],n[1],n[2]):t.call(r,n[0],n[1],n[2]);case 4:return e?t(n[0],n[1],n[2],n[3]):t.call(r,n[0],n[1],n[2],n[3])}return t.apply(r,n)}},function(t,n,r){var e=r(5),i=Math.floor;t.exports=function(t){return!e(t)&&isFinite(t)&&i(t)===t}},function(t,n,r){var o=r(2);t.exports=function(t,n,r,e){try{return e?n(o(r)[0],r[1]):n(r)}catch(n){var i=t.return;throw void 0!==i&&o(i.call(t)),n}}},function(t,n){t.exports=function(t,n){return{value:n,done:!!t}}},function(t,n,r){var o=r(149),e=Math.pow,u=e(2,-52),c=e(2,-23),f=e(2,127)*(2-c),a=e(2,-126);t.exports=Math.fround||function(t){var n,r,e=Math.abs(t),i=o(t);return e<a?i*(e/a/c+1/u-1/u)*a*c:f<(r=(n=(1+c/u)*e)-(n-e))||r!=r?i*(1/0):i*r}},function(t,n){t.exports=Math.log1p||function(t){return-1e-8<(t=+t)&&t<1e-8?t-t*t/2:Math.log(1+t)}},function(t,n){t.exports=Math.scale||function(t,n,r,e,i){return 0===arguments.length||t!=t||n!=n||r!=r||e!=e||i!=i?NaN:t===1/0||t===-1/0?t:(t-n)*(i-e)/(r-n)+e}},function(t,n,r){"use strict";var h=r(10),v=r(74),p=r(127),d=r(117),y=r(17),g=r(116),i=Object.assign;t.exports=!i||r(4)(function(){var t={},n={},r=Symbol(),e="abcdefghijklmnopqrst";return t[r]=7,e.split("").forEach(function(t){n[t]=t}),7!=i({},t)[r]||Object.keys(i({},n)).join("")!=e})?function(t,n){for(var r=y(t),e=arguments.length,i=1,o=p.f,u=d.f;i<e;)for(var c,f=g(arguments[i++]),a=o?v(f).concat(o(f)):v(f),s=a.length,l=0;l<s;)c=a[l++],h&&!u.call(f,c)||(r[c]=f[c]);return r}:i},function(t,n,r){var u=r(11),c=r(2),f=r(74);t.exports=r(10)?Object.defineProperties:function(t,n){c(t);for(var r,e=f(n),i=e.length,o=0;o<i;)u.f(t,r=e[o++],n[r]);return t}},function(t,n,r){var e=r(33),i=r(73).f,o={}.toString,u="object"==typeof window&&window&&Object.getOwnPropertyNames?Object.getOwnPropertyNames(window):[];t.exports.f=function(t){return u&&"[object Window]"==o.call(t)?function(t){try{return i(t)}catch(t){return u.slice()}}(t):i(e(t))}},function(t,n,r){var u=r(30),c=r(33),f=r(120)(!1),a=r(154)("IE_PROTO");t.exports=function(t,n){var r,e=c(t),i=0,o=[];for(r in e)r!=a&&u(e,r)&&o.push(r);for(;n.length>i;)u(e,r=n[i++])&&(~f(o,r)||o.push(r));return o}},function(t,n,r){var f=r(10),a=r(74),s=r(33),l=r(117).f;t.exports=function(c){return function(t){for(var n,r=s(t),e=a(r),i=e.length,o=0,u=[];o<i;)n=e[o++],f&&!l.call(r,n)||u.push(c?[n,r[n]]:r[n]);return u}}},function(t,n,r){var e=r(73),i=r(127),o=r(2),u=r(3).Reflect;t.exports=u&&u.ownKeys||function(t){var n=e.f(o(t)),r=i.f;return r?n.concat(r(t)):n}},function(t,n,r){var e=r(3).parseFloat,i=r(84).trim;t.exports=1/e(r(157)+"-0")!=-1/0?function(t){var n=i(String(t),3),r=e(n);return 0===r&&"-"==n.charAt(0)?-0:r}:e},function(t,n,r){var e=r(3).parseInt,i=r(84).trim,o=r(157),u=/^[-+]?0[xX]/;t.exports=8!==e(o+"08")||22!==e(o+"0x16")?function(t,n){var r=i(String(t),3);return e(r,n>>>0||(u.test(r)?16:10))}:e},function(t,n){t.exports=function(t){try{return{e:!1,v:t()}}catch(t){return{e:!0,v:t}}}},function(t,n,r){var e=r(2),i=r(5),o=r(151);t.exports=function(t,n){if(e(t),i(n)&&n.constructor===t)return n;var r=o.f(t);return(0,r.resolve)(n),r.promise}},function(t,n){t.exports=Object.is||function(t,n){return t===n?0!==t||1/t==1/n:t!=t&&n!=n}},function(t,n,r){var s=r(8),l=r(156),h=r(51);t.exports=function(t,n,r,e){var i=String(h(t)),o=i.length,u=void 0===r?" ":String(r),c=s(n);if(c<=o||""==u)return i;var f=c-o,a=l.call(u,Math.ceil(f/u.length));return a.length>f&&(a=a.slice(0,f)),e?a+i:i+a}},function(t,n,r){var e=r(49),i=r(8);t.exports=function(t){if(void 0===t)return 0;var n=e(t),r=i(n);if(n!==r)throw RangeError("Wrong length!");return r}},function(t,n,r){n.f=r(7)},function(t,n,r){"use strict";var e=r(170),i=r(80);t.exports=r(121)("Map",function(t){return function(){return t(this,0<arguments.length?arguments[0]:void 0)}},{get:function(t){var n=e.getEntry(i(this,"Map"),t);return n&&n.v},set:function(t,n){return e.def(i(this,"Map"),0===t?0:t,n)}},e,!0)},function(t,n,r){"use strict";var e=r(152);r(1)({target:"RegExp",proto:!0,forced:e!==/./.exec},{exec:e})},function(t,n,r){r(10)&&"g"!=/./g.flags&&r(11).f(RegExp.prototype,"flags",{configurable:!0,get:r(115)})},function(t,n,r){"use strict";var e=r(170),i=r(80);t.exports=r(121)("Set",function(t){return function(){return t(this,0<arguments.length?arguments[0]:void 0)}},{add:function(t){return e.def(i(this,"Set"),t=0===t?0:t,t)}},e)},function(t,n,r){"use strict";var o,e=r(3),i=r(50)(0),u=r(27),c=r(69),f=r(182),a=r(172),s=r(5),l=r(80),h=r(80),v=!e.ActiveXObject&&"ActiveXObject"in e,p="WeakMap",d=c.getWeak,y=Object.isExtensible,g=a.ufstore,b=function(t){return function(){return t(this,0<arguments.length?arguments[0]:void 0)}},x={get:function(t){if(s(t)){var n=d(t);return!0===n?g(l(this,p)).get(t):n?n[this._i]:void 0}},set:function(t,n){return a.def(l(this,p),t,n)}},m=t.exports=r(121)(p,b,x,a,!0,!0);h&&v&&(f((o=a.getConstructor(b,p)).prototype,x),c.NEED=!0,i(["delete","has","get","set"],function(e){var t=m.prototype,i=t[e];u(t,e,function(t,n){if(!s(t)||y(t))return i.call(this,t,n);this._f||(this._f=new o);var r=this._f[e](t,n);return"set"==e?this:r})}))},,,,function(t,n){"use strict";t.exports={init:function(){var t=document.querySelector("#page-nav");t&&!document.querySelector("#page-nav .extend.prev")&&(t.innerHTML='<a class="extend prev disabled" rel="prev"> Prev</a>'+t.innerHTML),t&&!document.querySelector("#page-nav .extend.next")&&(t.innerHTML=t.innerHTML+'<a class="extend next disabled" rel="next">Next </a>'),yiliaConfig&&yiliaConfig.open_in_new&&document.querySelectorAll(".article-entry a:not(.article-more-a)").forEach(function(t){var n=t.getAttribute("target");n&&""!==n||t.setAttribute("target","_blank")}),yiliaConfig&&yiliaConfig.toc_hide_index&&document.querySelectorAll(".toc-number").forEach(function(t){t.style.display="none"})}}},function(t,n,r){"use strict";function e(t){return t&&t.__esModule?t:{default:t}}function i(t,n,r,e,i){var o=function(t){for(var n=t.offsetLeft,r=t.offsetParent;null!==r;)n+=r.offsetLeft,r=r.offsetParent;return n}(t),u=function(t){for(var n=t.offsetTop,r=t.offsetParent;null!==r;)n+=r.offsetTop,r=r.offsetParent;return n}(t)-n;if(u-r<=i){var c=t.$newDom;c||(c=t.cloneNode(!0),(0,a.default)(t,c),(t.$newDom=c).style.position="fixed",c.style.top=(r||u)+"px",c.style.left=o+"px",c.style.zIndex=e||2,c.style.width="100%",c.style.color="#fff"),c.style.visibility="visible",t.style.visibility="hidden"}else{t.style.visibility="visible";var f=t.$newDom;f&&(f.style.visibility="hidden")}}function o(){var t=document.querySelector(".js-overlay"),n=document.querySelector(".js-header-menu");i(t,document.body.scrollTop,-63,2,0),i(n,document.body.scrollTop,1,3,0)}var f=e(r(163)),a=e((e(r(164)),r(414))),u=e(r(134)),c=e(r(204)),s=r(135);u.default.versions.mobile&&window.screen.width<800&&(function(){for(var t=document.querySelectorAll(".js-header-menu li a"),n=window.location.pathname,r=0,e=t.length;r<e;r++){var i=t[r];o=n,u=i.getAttribute("href"),c=/\/|index.html/g,o.replace(c,"")===u.replace(c,"")&&(0,f.default)(i,"active")}var o,u,c}(),document.querySelector("#container").addEventListener("scroll",function(t){o()}),window.addEventListener("scroll",function(t){o()}),o()),(0,s.addLoadEvent)(function(){c.default.init()}),t.exports={}},,,function(t,n,r){(function(t){"use strict";function n(t,n,r){t[n]||Object.defineProperty(t,n,{writable:!0,configurable:!0,value:r})}if(r(413),r(209),r(211),t._babelPolyfill)throw new Error("only one instance of babel-polyfill is allowed");t._babelPolyfill=!0;n(String.prototype,"padLeft","".padStart),n(String.prototype,"padRight","".padEnd),"pop,reverse,shift,keys,values,entries,indexOf,every,some,forEach,map,filter,find,findIndex,includes,join,slice,concat,push,splice,unshift,sort,lastIndexOf,reduce,reduceRight,copyWithin,fill".split(",").forEach(function(t){[][t]&&n(Array,t,Function.call.bind([][t]))})}).call(n,function(){return this}())},function(L,t){(function(t){!function(t){"use strict";function o(t,n,r,e){var o,u,c,f,i=n&&n.prototype instanceof h?n:h,a=Object.create(i.prototype),s=new p(e||[]);return a._invoke=(o=t,u=r,c=s,f=_,function(t,n){if(f===E)throw new Error("Generator is already running");if(f===M){if("throw"===t)throw n;return d()}for(c.method=t,c.arg=n;;){var r=c.delegate;if(r){var e=v(r,c);if(e){if(e===P)continue;return e}}if("next"===c.method)c.sent=c._sent=c.arg;else if("throw"===c.method){if(f===_)throw f=M,c.arg;c.dispatchException(c.arg)}else"return"===c.method&&c.abrupt("return",c.arg);f=E;var i=l(o,u,c);if("normal"===i.type){if(f=c.done?M:O,i.arg===P)continue;return{value:i.arg,done:c.done}}"throw"===i.type&&(f=M,c.method="throw",c.arg=i.arg)}}),a}function l(t,n,r){try{return{type:"normal",arg:t.call(n,r)}}catch(t){return{type:"throw",arg:t}}}function h(){}function r(){}function n(){}function e(t){["next","throw","return"].forEach(function(n){t[n]=function(t){return this._invoke(n,t)}})}function u(c){function f(t,n,r,e){var i=l(c[t],c,n);if("throw"!==i.type){var o=i.arg,u=o.value;return u&&"object"==typeof u&&y.call(u,"__await")?Promise.resolve(u.__await).then(function(t){f("next",t,r,e)},function(t){f("throw",t,r,e)}):Promise.resolve(u).then(function(t){o.value=t,r(o)},e)}e(i.arg)}var n;"object"==typeof t.process&&t.process.domain&&(f=t.process.domain.bind(f)),this._invoke=function(r,e){function t(){return new Promise(function(t,n){f(r,e,t,n)})}return n=n?n.then(t,t):t()}}function v(t,n){var r=t.iterator[n.method];if(r===a){if(n.delegate=null,"throw"===n.method){if(t.iterator.return&&(n.method="return",n.arg=a,v(t,n),"throw"===n.method))return P;n.method="throw",n.arg=new TypeError("The iterator does not provide a 'throw' method")}return P}var e=l(r,t.iterator,n.arg);if("throw"===e.type)return n.method="throw",n.arg=e.arg,n.delegate=null,P;var i=e.arg;return i?i.done?(n[t.resultName]=i.value,n.next=t.nextLoc,"return"!==n.method&&(n.method="next",n.arg=a),n.delegate=null,P):i:(n.method="throw",n.arg=new TypeError("iterator result is not an object"),n.delegate=null,P)}function i(t){var n={tryLoc:t[0]};1 in t&&(n.catchLoc=t[1]),2 in t&&(n.finallyLoc=t[2],n.afterLoc=t[3]),this.tryEntries.push(n)}function c(t){var n=t.completion||{};n.type="normal",delete n.arg,t.completion=n}function p(t){this.tryEntries=[{tryLoc:"root"}],t.forEach(i,this),this.reset(!0)}function f(n){if(n){var t=n[b];if(t)return t.call(n);if("function"==typeof n.next)return n;if(!isNaN(n.length)){var r=-1,e=function t(){for(;++r<n.length;)if(y.call(n,r))return t.value=n[r],t.done=!1,t;return t.value=a,t.done=!0,t};return e.next=e}}return{next:d}}function d(){return{value:a,done:!0}}var a,s=Object.prototype,y=s.hasOwnProperty,g="function"==typeof Symbol?Symbol:{},b=g.iterator||"@@iterator",x=g.asyncIterator||"@@asyncIterator",m=g.toStringTag||"@@toStringTag",S="object"==typeof L,w=t.regeneratorRuntime;if(w)S&&(L.exports=w);else{(w=t.regeneratorRuntime=S?L.exports:{}).wrap=o;var _="suspendedStart",O="suspendedYield",E="executing",M="completed",P={},j={};j[b]=function(){return this};var F=Object.getPrototypeOf,A=F&&F(F(f([])));A&&A!==s&&y.call(A,b)&&(j=A);var I=n.prototype=h.prototype=Object.create(j);r.prototype=I.constructor=n,n.constructor=r,n[m]=r.displayName="GeneratorFunction",w.isGeneratorFunction=function(t){var n="function"==typeof t&&t.constructor;return!!n&&(n===r||"GeneratorFunction"===(n.displayName||n.name))},w.mark=function(t){return Object.setPrototypeOf?Object.setPrototypeOf(t,n):(t.__proto__=n,m in t||(t[m]="GeneratorFunction")),t.prototype=Object.create(I),t},w.awrap=function(t){return{__await:t}},e(u.prototype),u.prototype[x]=function(){return this},w.AsyncIterator=u,w.async=function(t,n,r,e){var i=new u(o(t,n,r,e));return w.isGeneratorFunction(n)?i:i.next().then(function(t){return t.done?t.value:i.next()})},e(I),I[m]="Generator",I[b]=function(){return this},I.toString=function(){return"[object Generator]"},w.keys=function(r){var e=[];for(var t in r)e.push(t);return e.reverse(),function t(){for(;e.length;){var n=e.pop();if(n in r)return t.value=n,t.done=!1,t}return t.done=!0,t}},w.values=f,p.prototype={constructor:p,reset:function(t){if(this.prev=0,this.next=0,this.sent=this._sent=a,this.done=!1,this.delegate=null,this.method="next",this.arg=a,this.tryEntries.forEach(c),!t)for(var n in this)"t"===n.charAt(0)&&y.call(this,n)&&!isNaN(+n.slice(1))&&(this[n]=a)},stop:function(){this.done=!0;var t=this.tryEntries[0].completion;if("throw"===t.type)throw t.arg;return this.rval},dispatchException:function(r){function t(t,n){return o.type="throw",o.arg=r,e.next=t,n&&(e.method="next",e.arg=a),!!n}if(this.done)throw r;for(var e=this,n=this.tryEntries.length-1;0<=n;--n){var i=this.tryEntries[n],o=i.completion;if("root"===i.tryLoc)return t("end");if(i.tryLoc<=this.prev){var u=y.call(i,"catchLoc"),c=y.call(i,"finallyLoc");if(u&&c){if(this.prev<i.catchLoc)return t(i.catchLoc,!0);if(this.prev<i.finallyLoc)return t(i.finallyLoc)}else if(u){if(this.prev<i.catchLoc)return t(i.catchLoc,!0)}else{if(!c)throw new Error("try statement without catch or finally");if(this.prev<i.finallyLoc)return t(i.finallyLoc)}}}},abrupt:function(t,n){for(var r=this.tryEntries.length-1;0<=r;--r){var e=this.tryEntries[r];if(e.tryLoc<=this.prev&&y.call(e,"finallyLoc")&&this.prev<e.finallyLoc){var i=e;break}}i&&("break"===t||"continue"===t)&&i.tryLoc<=n&&n<=i.finallyLoc&&(i=null);var o=i?i.completion:{};return o.type=t,o.arg=n,i?(this.method="next",this.next=i.finallyLoc,P):this.complete(o)},complete:function(t,n){if("throw"===t.type)throw t.arg;return"break"===t.type||"continue"===t.type?this.next=t.arg:"return"===t.type?(this.rval=this.arg=t.arg,this.method="return",this.next="end"):"normal"===t.type&&n&&(this.next=n),P},finish:function(t){for(var n=this.tryEntries.length-1;0<=n;--n){var r=this.tryEntries[n];if(r.finallyLoc===t)return this.complete(r.completion,r.afterLoc),c(r),P}},catch:function(t){for(var n=this.tryEntries.length-1;0<=n;--n){var r=this.tryEntries[n];if(r.tryLoc===t){var e=r.completion;if("throw"===e.type){var i=e.arg;c(r)}return i}}throw new Error("illegal catch attempt")},delegateYield:function(t,n,r){return this.delegate={iterator:f(t),resultName:n,nextLoc:r},"next"===this.method&&(this.arg=a),P}}}}("object"==typeof t?t:"object"==typeof window?window:"object"==typeof self?self:this)}).call(t,function(){return this}())},,function(t,n,r){r(221),t.exports=r(46).RegExp.escape},,,,function(t,n,r){var e=r(5),i=r(123),o=r(7)("species");t.exports=function(t){var n;return i(t)&&("function"!=typeof(n=t.constructor)||n!==Array&&!i(n.prototype)||(n=void 0),e(n)&&(null===(n=n[o])&&(n=void 0))),void 0===n?Array:n}},function(t,n,r){"use strict";var e=r(4),i=Date.prototype.getTime,o=Date.prototype.toISOString,u=function(t){return 9<t?t:"0"+t};t.exports=e(function(){return"0385-07-25T07:06:39.999Z"!=o.call(new Date(-5e13-1))})||!e(function(){o.call(new Date(NaN))})?function(){if(!isFinite(i.call(this)))throw RangeError("Invalid time value");var t=this,n=t.getUTCFullYear(),r=t.getUTCMilliseconds(),e=n<0?"-":9999<n?"+":"";return e+("00000"+Math.abs(n)).slice(e?-6:-4)+"-"+u(t.getUTCMonth()+1)+"-"+u(t.getUTCDate())+"T"+u(t.getUTCHours())+":"+u(t.getUTCMinutes())+":"+u(t.getUTCSeconds())+"."+(99<r?r:"0"+u(r))+"Z"}:o},function(t,n,r){"use strict";var e=r(2),i=r(53);t.exports=function(t){if("string"!==t&&"number"!==t&&"default"!==t)throw TypeError("Incorrect hint");return i(e(this),"number"!=t)}},function(t,n,r){var c=r(74),f=r(127),a=r(117);t.exports=function(t){var n=c(t),r=f.f;if(r)for(var e,i=r(t),o=a.f,u=0;i.length>u;)o.call(t,e=i[u++])&&n.push(e);return n}},function(t,n,r){t.exports=r(118)("native-function-to-string",Function.toString)},function(t,n){t.exports=function(n,r){var e=r===Object(r)?function(t){return r[t]}:r;return function(t){return String(t).replace(n,e)}}},function(t,n,r){var e=r(1),i=r(220)(/[\\^$*+?.()|[\]{}]/g,"\\$&");e(e.S,"RegExp",{escape:function(t){return i(t)}})},function(t,n,r){var e=r(1);e(e.P,"Array",{copyWithin:r(166)}),r(67)("copyWithin")},function(t,n,r){"use strict";var e=r(1),i=r(50)(4);e(e.P+e.F*!r(48)([].every,!0),"Array",{every:function(t){return i(this,t,arguments[1])}})},function(t,n,r){var e=r(1);e(e.P,"Array",{fill:r(137)}),r(67)("fill")},function(t,n,r){"use strict";var e=r(1),i=r(50)(2);e(e.P+e.F*!r(48)([].filter,!0),"Array",{filter:function(t){return i(this,t,arguments[1])}})},function(t,n,r){"use strict";var e=r(1),i=r(50)(6),o="findIndex",u=!0;o in[]&&Array(1)[o](function(){u=!1}),e(e.P+e.F*u,"Array",{findIndex:function(t){return i(this,t,1<arguments.length?arguments[1]:void 0)}}),r(67)(o)},function(t,n,r){"use strict";var e=r(1),i=r(50)(5),o="find",u=!0;o in[]&&Array(1)[o](function(){u=!1}),e(e.P+e.F*u,"Array",{find:function(t){return i(this,t,1<arguments.length?arguments[1]:void 0)}}),r(67)(o)},function(t,n,r){"use strict";var e=r(1),i=r(50)(0),o=r(48)([].forEach,!0);e(e.P+e.F*!o,"Array",{forEach:function(t){return i(this,t,arguments[1])}})},function(t,n,r){"use strict";var h=r(47),e=r(1),v=r(17),p=r(177),d=r(145),y=r(8),g=r(139),b=r(161);e(e.S+e.F*!r(125)(function(t){Array.from(t)}),"Array",{from:function(t){var n,r,e,i,o=v(t),u="function"==typeof this?this:Array,c=arguments.length,f=1<c?arguments[1]:void 0,a=void 0!==f,s=0,l=b(o);if(a&&(f=h(f,2<c?arguments[2]:void 0,2)),null==l||u==Array&&d(l))for(r=new u(n=y(o.length));s<n;s++)g(r,s,a?f(o[s],s):o[s]);else for(i=l.call(o),r=new u;!(e=i.next()).done;s++)g(r,s,a?p(i,f,[e.value,s],!0):e.value);return r.length=s,r}})},function(t,n,r){"use strict";var e=r(1),i=r(120)(!1),o=[].indexOf,u=!!o&&1/[1].indexOf(1,-0)<0;e(e.P+e.F*(u||!r(48)(o)),"Array",{indexOf:function(t){return u?o.apply(this,arguments)||0:i(this,t,arguments[1])}})},function(t,n,r){var e=r(1);e(e.S,"Array",{isArray:r(123)})},function(t,n,r){"use strict";var e=r(1),i=r(33),o=[].join;e(e.P+e.F*(r(116)!=Object||!r(48)(o)),"Array",{join:function(t){return o.call(i(this),void 0===t?",":t)}})},function(t,n,r){"use strict";var e=r(1),i=r(33),o=r(49),u=r(8),c=[].lastIndexOf,f=!!c&&1/[1].lastIndexOf(1,-0)<0;e(e.P+e.F*(f||!r(48)(c)),"Array",{lastIndexOf:function(t){if(f)return c.apply(this,arguments)||0;var n=i(this),r=u(n.length),e=r-1;for(1<arguments.length&&(e=Math.min(e,o(arguments[1]))),e<0&&(e=r+e);0<=e;e--)if(e in n&&n[e]===t)return e||0;return-1}})},function(t,n,r){"use strict";var e=r(1),i=r(50)(1);e(e.P+e.F*!r(48)([].map,!0),"Array",{map:function(t){return i(this,t,arguments[1])}})},function(t,n,r){"use strict";var e=r(1),i=r(139);e(e.S+e.F*r(4)(function(){function t(){}return!(Array.of.call(t)instanceof t)}),"Array",{of:function(){for(var t=0,n=arguments.length,r=new("function"==typeof this?this:Array)(n);t<n;)i(r,t,arguments[t++]);return r.length=n,r}})},function(t,n,r){"use strict";var e=r(1),i=r(168);e(e.P+e.F*!r(48)([].reduceRight,!0),"Array",{reduceRight:function(t){return i(this,t,arguments.length,arguments[1],!0)}})},function(t,n,r){"use strict";var e=r(1),i=r(168);e(e.P+e.F*!r(48)([].reduce,!0),"Array",{reduce:function(t){return i(this,t,arguments.length,arguments[1],!1)}})},function(t,n,r){"use strict";var e=r(1),i=r(143),a=r(45),s=r(78),l=r(8),h=[].slice;e(e.P+e.F*r(4)(function(){i&&h.call(i)}),"Array",{slice:function(t,n){var r=l(this.length),e=a(this);if(n=void 0===n?r:n,"Array"==e)return h.call(this,t,n);for(var i=s(t,r),o=s(n,r),u=l(o-i),c=new Array(u),f=0;f<u;f++)c[f]="String"==e?this.charAt(i+f):this[i+f];return c}})},function(t,n,r){"use strict";var e=r(1),i=r(50)(3);e(e.P+e.F*!r(48)([].some,!0),"Array",{some:function(t){return i(this,t,arguments[1])}})},function(t,n,r){"use strict";var e=r(1),i=r(21),o=r(17),u=r(4),c=[].sort,f=[1,2,3];e(e.P+e.F*(u(function(){f.sort(void 0)})||!u(function(){f.sort(null)})||!r(48)(c)),"Array",{sort:function(t){return void 0===t?c.call(o(this)):c.call(o(this),i(t))}})},function(t,n,r){r(77)("Array")},function(t,n,r){var e=r(1);e(e.S,"Date",{now:function(){return(new Date).getTime()}})},function(t,n,r){var e=r(1),i=r(216);e(e.P+e.F*(Date.prototype.toISOString!==i),"Date",{toISOString:i})},function(t,n,r){"use strict";var e=r(1),i=r(17),o=r(53);e(e.P+e.F*r(4)(function(){return null!==new Date(NaN).toJSON()||1!==Date.prototype.toJSON.call({toISOString:function(){return 1}})}),"Date",{toJSON:function(t){var n=i(this),r=o(n);return"number"!=typeof r||isFinite(r)?n.toISOString():null}})},function(t,n,r){var e=r(7)("toPrimitive"),i=Date.prototype;e in i||r(26)(i,e,r(217))},function(t,n,r){var e=Date.prototype,i="Invalid Date",o="toString",u=e[o],c=e.getTime;new Date(NaN)+""!=i&&r(27)(e,o,function(){var t=c.call(this);return t==t?u.call(this):i})},function(t,n,r){var e=r(1);e(e.P,"Function",{bind:r(169)})},function(t,n,r){"use strict";var e=r(5),i=r(32),o=r(7)("hasInstance"),u=Function.prototype;o in u||r(11).f(u,o,{value:function(t){if("function"!=typeof this||!e(t))return!1;if(!e(this.prototype))return t instanceof this;for(;t=i(t);)if(this.prototype===t)return!0;return!1}})},function(t,n,r){var e=r(11).f,i=Function.prototype,o=/^\s*function ([^ (]*)/;"name"in i||r(10)&&e(i,"name",{configurable:!0,get:function(){try{return(""+this).match(o)[1]}catch(t){return""}}})},function(t,n,r){var e=r(1),i=r(180),o=Math.sqrt,u=Math.acosh;e(e.S+e.F*!(u&&710==Math.floor(u(Number.MAX_VALUE))&&u(1/0)==1/0),"Math",{acosh:function(t){return(t=+t)<1?NaN:94906265.62425156<t?Math.log(t)+Math.LN2:i(t-1+o(t-1)*o(t+1))}})},function(t,n,r){var e=r(1),i=Math.asinh;e(e.S+e.F*!(i&&0<1/i(0)),"Math",{asinh:function t(n){return isFinite(n=+n)&&0!=n?n<0?-t(-n):Math.log(n+Math.sqrt(n*n+1)):n}})},function(t,n,r){var e=r(1),i=Math.atanh;e(e.S+e.F*!(i&&1/i(-0)<0),"Math",{atanh:function(t){return 0==(t=+t)?t:Math.log((1+t)/(1-t))/2}})},function(t,n,r){var e=r(1),i=r(149);e(e.S,"Math",{cbrt:function(t){return i(t=+t)*Math.pow(Math.abs(t),1/3)}})},function(t,n,r){var e=r(1);e(e.S,"Math",{clz32:function(t){return(t>>>=0)?31-Math.floor(Math.log(t+.5)*Math.LOG2E):32}})},function(t,n,r){var e=r(1),i=Math.exp;e(e.S,"Math",{cosh:function(t){return(i(t=+t)+i(-t))/2}})},function(t,n,r){var e=r(1),i=r(148);e(e.S+e.F*(i!=Math.expm1),"Math",{expm1:i})},function(t,n,r){var e=r(1);e(e.S,"Math",{fround:r(179)})},function(t,n,r){var e=r(1),f=Math.abs;e(e.S,"Math",{hypot:function(t,n){for(var r,e,i=0,o=0,u=arguments.length,c=0;o<u;)c<(r=f(arguments[o++]))?(i=i*(e=c/r)*e+1,c=r):0<r?i+=(e=r/c)*e:i+=r;return c===1/0?1/0:c*Math.sqrt(i)}})},function(t,n,r){var e=r(1),i=Math.imul;e(e.S+e.F*r(4)(function(){return-5!=i(4294967295,5)||2!=i.length}),"Math",{imul:function(t,n){var r=65535,e=+t,i=+n,o=r&e,u=r&i;return 0|o*u+((r&e>>>16)*u+o*(r&i>>>16)<<16>>>0)}})},function(t,n,r){var e=r(1);e(e.S,"Math",{log10:function(t){return Math.log(t)*Math.LOG10E}})},function(t,n,r){var e=r(1);e(e.S,"Math",{log1p:r(180)})},function(t,n,r){var e=r(1);e(e.S,"Math",{log2:function(t){return Math.log(t)/Math.LN2}})},function(t,n,r){var e=r(1);e(e.S,"Math",{sign:r(149)})},function(t,n,r){var e=r(1),i=r(148),o=Math.exp;e(e.S+e.F*r(4)(function(){return-2e-17!=!Math.sinh(-2e-17)}),"Math",{sinh:function(t){return Math.abs(t=+t)<1?(i(t)-i(-t))/2:(o(t-1)-o(-t-1))*(Math.E/2)}})},function(t,n,r){var e=r(1),i=r(148),o=Math.exp;e(e.S,"Math",{tanh:function(t){var n=i(t=+t),r=i(-t);return n==1/0?1:r==1/0?-1:(n-r)/(o(t)+o(-t))}})},function(t,n,r){var e=r(1);e(e.S,"Math",{trunc:function(t){return(0<t?Math.floor:Math.ceil)(t)}})},function(t,n,r){"use strict";var e=r(3),i=r(30),o=r(45),u=r(144),s=r(53),c=r(4),f=r(73).f,a=r(31).f,l=r(11).f,h=r(84).trim,v="Number",p=e[v],d=p,y=p.prototype,g=o(r(72)(y))==v,b="trim"in String.prototype,x=function(t){var n=s(t,!1);if("string"==typeof n&&2<n.length){var r,e,i,o=(n=b?n.trim():h(n,3)).charCodeAt(0);if(43===o||45===o){if(88===(r=n.charCodeAt(2))||120===r)return NaN}else if(48===o){switch(n.charCodeAt(1)){case 66:case 98:e=2,i=49;break;case 79:case 111:e=8,i=55;break;default:return+n}for(var u,c=n.slice(2),f=0,a=c.length;f<a;f++)if((u=c.charCodeAt(f))<48||i<u)return NaN;return parseInt(c,e)}}return+n};if(!p(" 0o1")||!p("0b1")||p("+0x1")){p=function(t){var n=arguments.length<1?0:t,r=this;return r instanceof p&&(g?c(function(){y.valueOf.call(r)}):o(r)!=v)?u(new d(x(n)),r,p):x(n)};for(var m,S=r(10)?f(d):"MAX_VALUE,MIN_VALUE,NaN,NEGATIVE_INFINITY,POSITIVE_INFINITY,EPSILON,isFinite,isInteger,isNaN,isSafeInteger,MAX_SAFE_INTEGER,MIN_SAFE_INTEGER,parseFloat,parseInt,isInteger".split(","),w=0;S.length>w;w++)i(d,m=S[w])&&!i(p,m)&&l(p,m,a(d,m));(p.prototype=y).constructor=p,r(27)(e,v,p)}},function(t,n,r){var e=r(1);e(e.S,"Number",{EPSILON:Math.pow(2,-52)})},function(t,n,r){var e=r(1),i=r(3).isFinite;e(e.S,"Number",{isFinite:function(t){return"number"==typeof t&&i(t)}})},function(t,n,r){var e=r(1);e(e.S,"Number",{isInteger:r(176)})},function(t,n,r){var e=r(1);e(e.S,"Number",{isNaN:function(t){return t!=t}})},function(t,n,r){var e=r(1),i=r(176),o=Math.abs;e(e.S,"Number",{isSafeInteger:function(t){return i(t)&&o(t)<=9007199254740991}})},function(t,n,r){var e=r(1);e(e.S,"Number",{MAX_SAFE_INTEGER:9007199254740991})},function(t,n,r){var e=r(1);e(e.S,"Number",{MIN_SAFE_INTEGER:-9007199254740991})},function(t,n,r){var e=r(1),i=r(188);e(e.S+e.F*(Number.parseFloat!=i),"Number",{parseFloat:i})},function(t,n,r){var e=r(1),i=r(189);e(e.S+e.F*(Number.parseInt!=i),"Number",{parseInt:i})},function(t,n,r){"use strict";var e=r(1),a=r(49),s=r(165),l=r(156),i=1..toFixed,o=Math.floor,u=[0,0,0,0,0,0],h="Number.toFixed: incorrect invocation!",v=function(t,n){for(var r=-1,e=n;++r<6;)e+=t*u[r],u[r]=e%1e7,e=o(e/1e7)},p=function(t){for(var n=6,r=0;0<=--n;)r+=u[n],u[n]=o(r/t),r=r%t*1e7},d=function(){for(var t=6,n="";0<=--t;)if(""!==n||0===t||0!==u[t]){var r=String(u[t]);n=""===n?r:n+l.call("0",7-r.length)+r}return n},y=function(t,n,r){return 0===n?r:n%2==1?y(t,n-1,r*t):y(t*t,n/2,r)};e(e.P+e.F*(!!i&&("0.000"!==8e-5.toFixed(3)||"1"!==.9.toFixed(0)||"1.25"!==1.255.toFixed(2)||"1000000000000000128"!==(0xde0b6b3a7640080).toFixed(0))||!r(4)(function(){i.call({})})),"Number",{toFixed:function(t){var n,r,e,i,o=s(this,h),u=a(t),c="",f="0";if(u<0||20<u)throw RangeError(h);if(o!=o)return"NaN";if(o<=-1e21||1e21<=o)return String(o);if(o<0&&(c="-",o=-o),1e-21<o)if(r=(n=function(t){for(var n=0,r=t;4096<=r;)n+=12,r/=4096;for(;2<=r;)n+=1,r/=2;return n}(o*y(2,69,1))-69)<0?o*y(2,-n,1):o/y(2,n,1),r*=4503599627370496,0<(n=52-n)){for(v(0,r),e=u;7<=e;)v(1e7,0),e-=7;for(v(y(10,e,1),0),e=n-1;23<=e;)p(1<<23),e-=23;p(1<<e),v(1,1),p(2),f=d()}else v(0,r),v(1<<-n,0),f=d()+l.call("0",u);return f=0<u?c+((i=f.length)<=u?"0."+l.call("0",u-i)+f:f.slice(0,i-u)+"."+f.slice(i-u)):c+f}})},function(t,n,r){"use strict";var e=r(1),i=r(4),o=r(165),u=1..toPrecision;e(e.P+e.F*(i(function(){return"1"!==u.call(1,void 0)})||!i(function(){u.call({})})),"Number",{toPrecision:function(t){var n=o(this,"Number#toPrecision: incorrect invocation!");return void 0===t?u.call(n):u.call(n,t)}})},function(t,n,r){var e=r(1);e(e.S+e.F,"Object",{assign:r(182)})},function(t,n,r){var e=r(1);e(e.S,"Object",{create:r(72)})},function(t,n,r){var e=r(1);e(e.S+e.F*!r(10),"Object",{defineProperties:r(183)})},function(t,n,r){var e=r(1);e(e.S+e.F*!r(10),"Object",{defineProperty:r(11).f})},function(t,n,r){var e=r(5),i=r(69).onFreeze;r(52)("freeze",function(n){return function(t){return n&&e(t)?n(i(t)):t}})},function(t,n,r){var e=r(33),i=r(31).f;r(52)("getOwnPropertyDescriptor",function(){return function(t,n){return i(e(t),n)}})},function(t,n,r){r(52)("getOwnPropertyNames",function(){return r(184).f})},function(t,n,r){var e=r(17),i=r(32);r(52)("getPrototypeOf",function(){return function(t){return i(e(t))}})},function(t,n,r){var e=r(5);r(52)("isExtensible",function(n){return function(t){return!!e(t)&&(!n||n(t))}})},function(t,n,r){var e=r(5);r(52)("isFrozen",function(n){return function(t){return!e(t)||!!n&&n(t)}})},function(t,n,r){var e=r(5);r(52)("isSealed",function(n){return function(t){return!e(t)||!!n&&n(t)}})},function(t,n,r){var e=r(1);e(e.S,"Object",{is:r(192)})},function(t,n,r){var e=r(17),i=r(74);r(52)("keys",function(){return function(t){return i(e(t))}})},function(t,n,r){var e=r(5),i=r(69).onFreeze;r(52)("preventExtensions",function(n){return function(t){return n&&e(t)?n(i(t)):t}})},function(t,n,r){var e=r(5),i=r(69).onFreeze;r(52)("seal",function(n){return function(t){return n&&e(t)?n(i(t)):t}})},function(t,n,r){var e=r(1);e(e.S,"Object",{setPrototypeOf:r(153).set})},function(t,n,r){"use strict";var e=r(81),i={};i[r(7)("toStringTag")]="z",i+""!="[object z]"&&r(27)(Object.prototype,"toString",function(){return"[object "+e(this)+"]"},!0)},function(t,n,r){var e=r(1),i=r(188);e(e.G+e.F*(parseFloat!=i),{parseFloat:i})},function(t,n,r){var e=r(1),i=r(189);e(e.G+e.F*(parseInt!=i),{parseInt:i})},function(t,n,r){"use strict";var e,i,o,u,c=r(68),f=r(3),a=r(47),s=r(81),l=r(1),h=r(5),v=r(21),p=r(70),d=r(71),y=r(119),g=r(158).set,b=r(150)(),x=r(151),m=r(190),S=r(133),w=r(191),_="Promise",O=f.TypeError,E=f.process,M=E&&E.versions,P=M&&M.v8||"",j=f[_],F="process"==s(E),A=function(){},I=i=x.f,L=!!function(){try{var t=j.resolve(1),n=(t.constructor={})[r(7)("species")]=function(t){t(A,A)};return(F||"function"==typeof PromiseRejectionEvent)&&t.then(A)instanceof n&&0!==P.indexOf("6.6")&&-1===S.indexOf("Chrome/66")}catch(t){}}(),N=function(t){var n;return!(!h(t)||"function"!=typeof(n=t.then))&&n},T=function(s,r){if(!s._n){s._n=!0;var e=s._c;b(function(){for(var f=s._v,a=1==s._s,t=0,n=function(t){var n,r,e,i=a?t.ok:t.fail,o=t.resolve,u=t.reject,c=t.domain;try{i?(a||(2==s._h&&C(s),s._h=1),!0===i?n=f:(c&&c.enter(),n=i(f),c&&(c.exit(),e=!0)),n===t.promise?u(O("Promise-chain cycle")):(r=N(n))?r.call(n,o,u):o(n)):u(f)}catch(t){c&&!e&&c.exit(),u(t)}};e.length>t;)n(e[t++]);s._c=[],s._n=!1,r&&!s._h&&k(s)})}},k=function(o){g.call(f,function(){var t,n,r,e=o._v,i=R(o);if(i&&(t=m(function(){F?E.emit("unhandledRejection",e,o):(n=f.onunhandledrejection)?n({promise:o,reason:e}):(r=f.console)&&r.error&&r.error("Unhandled promise rejection",e)}),o._h=F||R(o)?2:1),o._a=void 0,i&&t.e)throw t.v})},R=function(t){return 1!==t._h&&0===(t._a||t._c).length},C=function(n){g.call(f,function(){var t;F?E.emit("rejectionHandled",n):(t=f.onrejectionhandled)&&t({promise:n,reason:n._v})})},D=function(t){var n=this;n._d||(n._d=!0,(n=n._w||n)._v=t,n._s=2,n._a||(n._a=n._c.slice()),T(n,!0))},G=function(t){var r,e=this;if(!e._d){e._d=!0,e=e._w||e;try{if(e===t)throw O("Promise can't be resolved itself");(r=N(t))?b(function(){var n={_w:e,_d:!1};try{r.call(t,a(G,n,1),a(D,n,1))}catch(t){D.call(n,t)}}):(e._v=t,e._s=1,T(e,!1))}catch(t){D.call({_w:e,_d:!1},t)}}};L||(j=function(t){p(this,j,_,"_h"),v(t),e.call(this);try{t(a(G,this,1),a(D,this,1))}catch(t){D.call(this,t)}},(e=function(t){this._c=[],this._a=void 0,this._s=0,this._d=!1,this._v=void 0,this._h=0,this._n=!1}).prototype=r(76)(j.prototype,{then:function(t,n){var r=I(y(this,j));return r.ok="function"!=typeof t||t,r.fail="function"==typeof n&&n,r.domain=F?E.domain:void 0,this._c.push(r),this._a&&this._a.push(r),this._s&&T(this,!1),r.promise},catch:function(t){return this.then(void 0,t)}}),o=function(){var t=new e;this.promise=t,this.resolve=a(G,t,1),this.reject=a(D,t,1)},x.f=I=function(t){return t===j||t===u?new o(t):i(t)}),l(l.G+l.W+l.F*!L,{Promise:j}),r(83)(j,_),r(77)(_),u=r(46)[_],l(l.S+l.F*!L,_,{reject:function(t){var n=I(this);return(0,n.reject)(t),n.promise}}),l(l.S+l.F*(c||!L),_,{resolve:function(t){return w(c&&this===u?j:this,t)}}),l(l.S+l.F*!(L&&r(125)(function(t){j.all(t).catch(A)})),_,{all:function(t){var u=this,n=I(u),c=n.resolve,f=n.reject,r=m(function(){var e=[],i=0,o=1;d(t,!1,function(t){var n=i++,r=!1;e.push(void 0),o++,u.resolve(t).then(function(t){r||(r=!0,e[n]=t,--o||c(e))},f)}),--o||c(e)});return r.e&&f(r.v),n.promise},race:function(t){var n=this,r=I(n),e=r.reject,i=m(function(){d(t,!1,function(t){n.resolve(t).then(r.resolve,e)})});return i.e&&e(i.v),r.promise}})},function(t,n,r){var e=r(1),o=r(21),u=r(2),c=(r(3).Reflect||{}).apply,f=Function.apply;e(e.S+e.F*!r(4)(function(){c(function(){})}),"Reflect",{apply:function(t,n,r){var e=o(t),i=u(r);return c?c(e,n,i):f.call(e,n,i)}})},function(t,n,r){var e=r(1),c=r(72),f=r(21),a=r(2),s=r(5),i=r(4),l=r(169),h=(r(3).Reflect||{}).construct,v=i(function(){function t(){}return!(h(function(){},[],t)instanceof t)}),p=!i(function(){h(function(){})});e(e.S+e.F*(v||p),"Reflect",{construct:function(t,n){f(t),a(n);var r=arguments.length<3?t:f(arguments[2]);if(p&&!v)return h(t,n,r);if(t==r){switch(n.length){case 0:return new t;case 1:return new t(n[0]);case 2:return new t(n[0],n[1]);case 3:return new t(n[0],n[1],n[2]);case 4:return new t(n[0],n[1],n[2],n[3])}var e=[null];return e.push.apply(e,n),new(l.apply(t,e))}var i=r.prototype,o=c(s(i)?i:Object.prototype),u=Function.apply.call(t,o,n);return s(u)?u:o}})},function(t,n,r){var e=r(11),i=r(1),o=r(2),u=r(53);i(i.S+i.F*r(4)(function(){Reflect.defineProperty(e.f({},1,{value:1}),1,{value:2})}),"Reflect",{defineProperty:function(t,n,r){o(t),n=u(n,!0),o(r);try{return e.f(t,n,r),!0}catch(t){return!1}}})},function(t,n,r){var e=r(1),i=r(31).f,o=r(2);e(e.S,"Reflect",{deleteProperty:function(t,n){var r=i(o(t),n);return!(r&&!r.configurable)&&delete t[n]}})},function(t,n,r){"use strict";var e=r(1),i=r(2),o=function(t){this._t=i(t),this._i=0;var n,r=this._k=[];for(n in t)r.push(n)};r(146)(o,"Object",function(){var t,n=this._k;do{if(this._i>=n.length)return{value:void 0,done:!0}}while(!((t=n[this._i++])in this._t));return{value:t,done:!1}}),e(e.S,"Reflect",{enumerate:function(t){return new o(t)}})},function(t,n,r){var e=r(31),i=r(1),o=r(2);i(i.S,"Reflect",{getOwnPropertyDescriptor:function(t,n){return e.f(o(t),n)}})},function(t,n,r){var e=r(1),i=r(32),o=r(2);e(e.S,"Reflect",{getPrototypeOf:function(t){return i(o(t))}})},function(t,n,r){var u=r(31),c=r(32),f=r(30),e=r(1),a=r(5),s=r(2);e(e.S,"Reflect",{get:function t(n,r){var e,i,o=arguments.length<3?n:arguments[2];return s(n)===o?n[r]:(e=u.f(n,r))?f(e,"value")?e.value:void 0!==e.get?e.get.call(o):void 0:a(i=c(n))?t(i,r,o):void 0}})},function(t,n,r){var e=r(1);e(e.S,"Reflect",{has:function(t,n){return n in t}})},function(t,n,r){var e=r(1),i=r(2),o=Object.isExtensible;e(e.S,"Reflect",{isExtensible:function(t){return i(t),!o||o(t)}})},function(t,n,r){var e=r(1);e(e.S,"Reflect",{ownKeys:r(187)})},function(t,n,r){var e=r(1),i=r(2),o=Object.preventExtensions;e(e.S,"Reflect",{preventExtensions:function(t){i(t);try{return o&&o(t),!0}catch(t){return!1}}})},function(t,n,r){var e=r(1),i=r(153);i&&e(e.S,"Reflect",{setPrototypeOf:function(t,n){i.check(t,n);try{return i.set(t,n),!0}catch(t){return!1}}})},function(t,n,r){var f=r(11),a=r(31),s=r(32),l=r(30),e=r(1),h=r(75),v=r(2),p=r(5);e(e.S,"Reflect",{set:function t(n,r,e){var i,o,u=arguments.length<4?n:arguments[3],c=a.f(v(n),r);if(!c){if(p(o=s(n)))return t(o,r,e,u);c=h(0)}if(l(c,"value")){if(!1===c.writable||!p(u))return!1;if(i=a.f(u,r)){if(i.get||i.set||!1===i.writable)return!1;i.value=e,f.f(u,r,i)}else f.f(u,r,h(0,e));return!0}return void 0!==c.set&&(c.set.call(u,e),!0)}})},function(t,n,r){var e=r(3),o=r(144),i=r(11).f,u=r(73).f,c=r(124),f=r(115),a=e.RegExp,s=a,l=a.prototype,h=/a/g,v=/a/g,p=new a(h)!==h;if(r(10)&&(!p||r(4)(function(){return v[r(7)("match")]=!1,a(h)!=h||a(v)==v||"/a/i"!=a(h,"i")}))){a=function(t,n){var r=this instanceof a,e=c(t),i=void 0===n;return!r&&e&&t.constructor===a&&i?t:o(p?new s(e&&!i?t.source:t,n):s((e=t instanceof a)?t.source:t,e&&i?f.call(t):n),r?this:l,a)};for(var d=function(n){n in a||i(a,n,{configurable:!0,get:function(){return s[n]},set:function(t){s[n]=t}})},y=u(s),g=0;y.length>g;)d(y[g++]);(l.constructor=a).prototype=l,r(27)(e,"RegExp",a)}r(77)("RegExp")},function(t,n,r){"use strict";var l=r(2),h=r(8),v=r(136),p=r(128);r(122)("match",1,function(e,i,a,s){return[function(t){var n=e(this),r=null==t?void 0:t[i];return void 0!==r?r.call(t,n):new RegExp(t)[i](String(n))},function(t){var n=s(a,t,this);if(n.done)return n.value;var r=l(t),e=String(this);if(!r.global)return p(r,e);for(var i,o=r.unicode,u=[],c=r.lastIndex=0;null!==(i=p(r,e));){var f=String(i[0]);""===(u[c]=f)&&(r.lastIndex=v(e,h(r.lastIndex),o)),c++}return 0===c?null:u}]})},function(t,n,r){"use strict";var O=r(2),e=r(17),E=r(8),M=r(49),P=r(136),j=r(128),F=Math.max,A=Math.min,h=Math.floor,v=/\$([$&`']|\d\d?|<[^>]*>)/g,p=/\$([$&`']|\d\d?)/g;r(122)("replace",2,function(i,o,S,w){function _(o,u,c,f,a,t){var s=c+o.length,l=f.length,n=p;return void 0!==a&&(a=e(a),n=v),S.call(t,n,function(t,n){var r;switch(n.charAt(0)){case"$":return"$";case"&":return o;case"`":return u.slice(0,c);case"'":return u.slice(s);case"<":r=a[n.slice(1,-1)];break;default:var e=+n;if(0===e)return t;if(l<e){var i=h(e/10);return 0===i?t:i<=l?void 0===f[i-1]?n.charAt(1):f[i-1]+n.charAt(1):t}r=f[e-1]}return void 0===r?"":r})}return[function(t,n){var r=i(this),e=null==t?void 0:t[o];return void 0!==e?e.call(t,r,n):S.call(String(r),t,n)},function(t,n){var r=w(S,t,this,n);if(r.done)return r.value;var e=O(t),i=String(this),o="function"==typeof n;o||(n=String(n));var u,c=e.global;if(c){var f=e.unicode;e.lastIndex=0}for(var a=[];;){var s=j(e,i);if(null===s)break;if(a.push(s),!c)break;""===String(s[0])&&(e.lastIndex=P(i,E(e.lastIndex),f))}for(var l="",h=0,v=0;v<a.length;v++){s=a[v];for(var p=String(s[0]),d=F(A(M(s.index),i.length),0),y=[],g=1;g<s.length;g++)y.push(void 0===(u=s[g])?u:String(u));var b=s.groups;if(o){var x=[p].concat(y,d,i);void 0!==b&&x.push(b);var m=String(n.apply(void 0,x))}else m=_(p,i,d,y,b,n);h<=d&&(l+=i.slice(h,d)+m,h=d+p.length)}return l+i.slice(h)}]})},function(t,n,r){"use strict";var f=r(2),a=r(192),s=r(128);r(122)("search",1,function(e,i,u,c){return[function(t){var n=e(this),r=null==t?void 0:t[i];return void 0!==r?r.call(t,n):new RegExp(t)[i](String(n))},function(t){var n=c(u,t,this);if(n.done)return n.value;var r=f(t),e=String(this),i=r.lastIndex;a(i,0)||(r.lastIndex=0);var o=s(r,e);return a(r.lastIndex,i)||(r.lastIndex=i),null===o?-1:o.index}]})},function(t,n,r){"use strict";var l=r(124),x=r(2),m=r(119),S=r(136),w=r(8),_=r(128),h=r(152),e=r(4),O=Math.min,v=[].push,u="split",p="length",d="lastIndex",E=4294967295,M=!e(function(){RegExp(E,"y")});r(122)("split",2,function(i,o,y,g){var b;return b="c"=="abbc"[u](/(b)*/)[1]||4!="test"[u](/(?:)/,-1)[p]||2!="ab"[u](/(?:ab)*/)[p]||4!="."[u](/(.?)(.?)/)[p]||1<"."[u](/()()/)[p]||""[u](/.?/)[p]?function(t,n){var r=String(this);if(void 0===t&&0===n)return[];if(!l(t))return y.call(r,t,n);for(var e,i,o,u=[],c=(t.ignoreCase?"i":"")+(t.multiline?"m":"")+(t.unicode?"u":"")+(t.sticky?"y":""),f=0,a=void 0===n?E:n>>>0,s=new RegExp(t.source,c+"g");(e=h.call(s,r))&&!(f<(i=s[d])&&(u.push(r.slice(f,e.index)),1<e[p]&&e.index<r[p]&&v.apply(u,e.slice(1)),o=e[0][p],f=i,u[p]>=a));)s[d]===e.index&&s[d]++;return f===r[p]?!o&&s.test("")||u.push(""):u.push(r.slice(f)),u[p]>a?u.slice(0,a):u}:"0"[u](void 0,0)[p]?function(t,n){return void 0===t&&0===n?[]:y.call(this,t,n)}:y,[function(t,n){var r=i(this),e=null==t?void 0:t[o];return void 0!==e?e.call(t,r,n):b.call(String(r),t,n)},function(t,n){var r=g(b,t,this,n,b!==y);if(r.done)return r.value;var e=x(t),i=String(this),o=m(e,RegExp),u=e.unicode,c=(e.ignoreCase?"i":"")+(e.multiline?"m":"")+(e.unicode?"u":"")+(M?"y":"g"),f=new o(M?e:"^(?:"+e.source+")",c),a=void 0===n?E:n>>>0;if(0===a)return[];if(0===i.length)return null===_(f,i)?[i]:[];for(var s=0,l=0,h=[];l<i.length;){f.lastIndex=M?l:0;var v,p=_(f,M?i:i.slice(l));if(null===p||(v=O(w(f.lastIndex+(M?0:l)),i.length))===s)l=S(i,l,u);else{if(h.push(i.slice(s,l)),h.length===a)return h;for(var d=1;d<=p.length-1;d++)if(h.push(p[d]),h.length===a)return h;l=s=v}}return h.push(i.slice(s)),h}]})},function(t,n,r){"use strict";r(198);var e=r(2),i=r(115),o=r(10),u="toString",c=/./[u],f=function(t){r(27)(RegExp.prototype,u,t,!0)};r(4)(function(){return"/a/b"!=c.call({source:"a",flags:"b"})})?f(function(){var t=e(this);return"/".concat(t.source,"/","flags"in t?t.flags:!o&&t instanceof RegExp?i.call(t):void 0)}):c.name!=u&&f(function(){return c.call(this)})},function(t,n,r){"use strict";r(28)("anchor",function(n){return function(t){return n(this,"a","name",t)}})},function(t,n,r){"use strict";r(28)("big",function(t){return function(){return t(this,"big","","")}})},function(t,n,r){"use strict";r(28)("blink",function(t){return function(){return t(this,"blink","","")}})},function(t,n,r){"use strict";r(28)("bold",function(t){return function(){return t(this,"b","","")}})},function(t,n,r){"use strict";var e=r(1),i=r(131)(!1);e(e.P,"String",{codePointAt:function(t){return i(this,t)}})},function(t,n,r){"use strict";var e=r(1),u=r(8),c=r(155),f="endsWith",a=""[f];e(e.P+e.F*r(142)(f),"String",{endsWith:function(t){var n=c(this,t,f),r=1<arguments.length?arguments[1]:void 0,e=u(n.length),i=void 0===r?e:Math.min(u(r),e),o=String(t);return a?a.call(n,o,i):n.slice(i-o.length,i)===o}})},function(t,n,r){"use strict";r(28)("fixed",function(t){return function(){return t(this,"tt","","")}})},function(t,n,r){"use strict";r(28)("fontcolor",function(n){return function(t){return n(this,"font","color",t)}})},function(t,n,r){"use strict";r(28)("fontsize",function(n){return function(t){return n(this,"font","size",t)}})},function(t,n,r){var e=r(1),o=r(78),u=String.fromCharCode,i=String.fromCodePoint;e(e.S+e.F*(!!i&&1!=i.length),"String",{fromCodePoint:function(t){for(var n,r=[],e=arguments.length,i=0;i<e;){if(n=+arguments[i++],o(n,1114111)!==n)throw RangeError(n+" is not a valid code point");r.push(n<65536?u(n):u(55296+((n-=65536)>>10),n%1024+56320))}return r.join("")}})},function(t,n,r){"use strict";var e=r(1),i=r(155);e(e.P+e.F*r(142)("includes"),"String",{includes:function(t){return!!~i(this,t,"includes").indexOf(t,1<arguments.length?arguments[1]:void 0)}})},function(t,n,r){"use strict";r(28)("italics",function(t){return function(){return t(this,"i","","")}})},function(t,n,r){"use strict";var e=r(131)(!0);r(147)(String,"String",function(t){this._t=String(t),this._i=0},function(){var t,n=this._t,r=this._i;return r>=n.length?{value:void 0,done:!0}:(t=e(n,r),this._i+=t.length,{value:t,done:!1})})},function(t,n,r){"use strict";r(28)("link",function(n){return function(t){return n(this,"a","href",t)}})},function(t,n,r){var e=r(1),u=r(33),c=r(8);e(e.S,"String",{raw:function(t){for(var n=u(t.raw),r=c(n.length),e=arguments.length,i=[],o=0;o<r;)i.push(String(n[o++])),o<e&&i.push(String(arguments[o]));return i.join("")}})},function(t,n,r){var e=r(1);e(e.P,"String",{repeat:r(156)})},function(t,n,r){"use strict";r(28)("small",function(t){return function(){return t(this,"small","","")}})},function(t,n,r){"use strict";var e=r(1),i=r(8),o=r(155),u="startsWith",c=""[u];e(e.P+e.F*r(142)(u),"String",{startsWith:function(t){var n=o(this,t,u),r=i(Math.min(1<arguments.length?arguments[1]:void 0,n.length)),e=String(t);return c?c.call(n,e,r):n.slice(r,r+e.length)===e}})},function(t,n,r){"use strict";r(28)("strike",function(t){return function(){return t(this,"strike","","")}})},function(t,n,r){"use strict";r(28)("sub",function(t){return function(){return t(this,"sub","","")}})},function(t,n,r){"use strict";r(28)("sup",function(t){return function(){return t(this,"sup","","")}})},function(t,n,r){"use strict";r(84)("trim",function(t){return function(){return t(this,3)}})},function(t,n,r){"use strict";var e=r(3),u=r(30),i=r(10),o=r(1),c=r(27),f=r(69).KEY,a=r(4),s=r(118),l=r(83),h=r(79),v=r(7),p=r(195),d=r(160),y=r(218),g=r(123),b=r(2),x=r(5),m=r(17),S=r(33),w=r(53),_=r(75),O=r(72),E=r(184),M=r(31),P=r(127),j=r(11),F=r(74),A=M.f,I=j.f,L=E.f,N=e.Symbol,T=e.JSON,k=T&&T.stringify,R="prototype",C=v("_hidden"),D=v("toPrimitive"),G={}.propertyIsEnumerable,W=s("symbol-registry"),U=s("symbols"),V=s("op-symbols"),B=Object[R],q="function"==typeof N&&!!P.f,z=e.QObject,K=!z||!z[R]||!z[R].findChild,H=i&&a(function(){return 7!=O(I({},"a",{get:function(){return I(this,"a",{value:7}).a}})).a})?function(t,n,r){var e=A(B,n);e&&delete B[n],I(t,n,r),e&&t!==B&&I(B,n,e)}:I,J=function(t){var n=U[t]=O(N[R]);return n._k=t,n},$=q&&"symbol"==typeof N.iterator?function(t){return"symbol"==typeof t}:function(t){return t instanceof N},Y=function(t,n,r){return t===B&&Y(V,n,r),b(t),n=w(n,!0),b(r),u(U,n)?(r.enumerable?(u(t,C)&&t[C][n]&&(t[C][n]=!1),r=O(r,{enumerable:_(0,!1)})):(u(t,C)||I(t,C,_(1,{})),t[C][n]=!0),H(t,n,r)):I(t,n,r)},X=function(t,n){b(t);for(var r,e=y(n=S(n)),i=0,o=e.length;i<o;)Y(t,r=e[i++],n[r]);return t},Q=function(t){var n=G.call(this,t=w(t,!0));return!(this===B&&u(U,t)&&!u(V,t))&&(!(n||!u(this,t)||!u(U,t)||u(this,C)&&this[C][t])||n)},Z=function(t,n){if(t=S(t),n=w(n,!0),t!==B||!u(U,n)||u(V,n)){var r=A(t,n);return!r||!u(U,n)||u(t,C)&&t[C][n]||(r.enumerable=!0),r}},tt=function(t){for(var n,r=L(S(t)),e=[],i=0;r.length>i;)u(U,n=r[i++])||n==C||n==f||e.push(n);return e},nt=function(t){for(var n,r=t===B,e=L(r?V:S(t)),i=[],o=0;e.length>o;)!u(U,n=e[o++])||r&&!u(B,n)||i.push(U[n]);return i};q||(c((N=function(){if(this instanceof N)throw TypeError("Symbol is not a constructor!");var n=h(0<arguments.length?arguments[0]:void 0),r=function(t){this===B&&r.call(V,t),u(this,C)&&u(this[C],n)&&(this[C][n]=!1),H(this,n,_(1,t))};return i&&K&&H(B,n,{configurable:!0,set:r}),J(n)})[R],"toString",function(){return this._k}),M.f=Z,j.f=Y,r(73).f=E.f=tt,r(117).f=Q,P.f=nt,i&&!r(68)&&c(B,"propertyIsEnumerable",Q,!0),p.f=function(t){return J(v(t))}),o(o.G+o.W+o.F*!q,{Symbol:N});for(var rt="hasInstance,isConcatSpreadable,iterator,match,replace,search,species,split,toPrimitive,toStringTag,unscopables".split(","),et=0;rt.length>et;)v(rt[et++]);for(var it=F(v.store),ot=0;it.length>ot;)d(it[ot++]);o(o.S+o.F*!q,"Symbol",{for:function(t){return u(W,t+="")?W[t]:W[t]=N(t)},keyFor:function(t){if(!$(t))throw TypeError(t+" is not a symbol!");for(var n in W)if(W[n]===t)return n},useSetter:function(){K=!0},useSimple:function(){K=!1}}),o(o.S+o.F*!q,"Object",{create:function(t,n){return void 0===n?O(t):X(O(t),n)},defineProperty:Y,defineProperties:X,getOwnPropertyDescriptor:Z,getOwnPropertyNames:tt,getOwnPropertySymbols:nt});var ut=a(function(){P.f(1)});o(o.S+o.F*ut,"Object",{getOwnPropertySymbols:function(t){return P.f(m(t))}}),T&&o(o.S+o.F*(!q||a(function(){var t=N();return"[null]"!=k([t])||"{}"!=k({a:t})||"{}"!=k(Object(t))})),"JSON",{stringify:function(t){for(var n,r,e=[t],i=1;arguments.length>i;)e.push(arguments[i++]);if(r=n=e[1],(x(n)||void 0!==t)&&!$(t))return g(n)||(n=function(t,n){if("function"==typeof r&&(n=r.call(this,t,n)),!$(n))return n}),e[1]=n,k.apply(T,e)}}),N[R][D]||r(26)(N[R],D,N[R].valueOf),l(N,"Symbol"),l(Math,"Math",!0),l(e.JSON,"JSON",!0)},function(t,n,r){"use strict";var e=r(1),i=r(132),o=r(159),a=r(2),s=r(78),l=r(8),u=r(5),c=r(3).ArrayBuffer,h=r(119),v=o.ArrayBuffer,p=o.DataView,f=i.ABV&&c.isView,d=v.prototype.slice,y=i.VIEW,g="ArrayBuffer";e(e.G+e.W+e.F*(c!==v),{ArrayBuffer:v}),e(e.S+e.F*!i.CONSTR,g,{isView:function(t){return f&&f(t)||u(t)&&y in t}}),e(e.P+e.U+e.F*r(4)(function(){return!new v(2).slice(1,void 0).byteLength}),g,{slice:function(t,n){if(void 0!==d&&void 0===n)return d.call(a(this),t);for(var r=a(this).byteLength,e=s(t,r),i=s(void 0===n?r:n,r),o=new(h(this,v))(l(i-e)),u=new p(this),c=new p(o),f=0;e<i;)c.setUint8(f++,u.getUint8(e++));return o}}),r(77)(g)},function(t,n,r){var e=r(1);e(e.G+e.W+e.F*!r(132).ABV,{DataView:r(159).DataView})},function(t,n,r){r(57)("Float32",4,function(e){return function(t,n,r){return e(this,t,n,r)}})},function(t,n,r){r(57)("Float64",8,function(e){return function(t,n,r){return e(this,t,n,r)}})},function(t,n,r){r(57)("Int16",2,function(e){return function(t,n,r){return e(this,t,n,r)}})},function(t,n,r){r(57)("Int32",4,function(e){return function(t,n,r){return e(this,t,n,r)}})},function(t,n,r){r(57)("Int8",1,function(e){return function(t,n,r){return e(this,t,n,r)}})},function(t,n,r){r(57)("Uint16",2,function(e){return function(t,n,r){return e(this,t,n,r)}})},function(t,n,r){r(57)("Uint32",4,function(e){return function(t,n,r){return e(this,t,n,r)}})},function(t,n,r){r(57)("Uint8",1,function(e){return function(t,n,r){return e(this,t,n,r)}})},function(t,n,r){r(57)("Uint8",1,function(e){return function(t,n,r){return e(this,t,n,r)}},!0)},function(t,n,r){"use strict";var e=r(172),i=r(80);r(121)("WeakSet",function(t){return function(){return t(this,0<arguments.length?arguments[0]:void 0)}},{add:function(t){return e.def(i(this,"WeakSet"),t,!0)}},e,!1,!0)},function(t,n,r){"use strict";var e=r(1),i=r(173),o=r(17),u=r(8),c=r(21),f=r(138);e(e.P,"Array",{flatMap:function(t){var n,r,e=o(this);return c(t),n=u(e.length),r=f(e,0),i(r,e,e,n,0,1,t,arguments[1]),r}}),r(67)("flatMap")},function(t,n,r){"use strict";var e=r(1),i=r(173),o=r(17),u=r(8),c=r(49),f=r(138);e(e.P,"Array",{flatten:function(){var t=arguments[0],n=o(this),r=u(n.length),e=f(n,0);return i(e,n,n,r,0,void 0===t?1:c(t)),e}}),r(67)("flatten")},function(t,n,r){"use strict";var e=r(1),i=r(120)(!0);e(e.P,"Array",{includes:function(t){return i(this,t,1<arguments.length?arguments[1]:void 0)}}),r(67)("includes")},function(t,n,r){var e=r(1),i=r(150)(),o=r(3).process,u="process"==r(45)(o);e(e.G,{asap:function(t){var n=u&&o.domain;i(n?n.bind(t):t)}})},function(t,n,r){var e=r(1),i=r(45);e(e.S,"Error",{isError:function(t){return"Error"===i(t)}})},function(t,n,r){var e=r(1);e(e.G,{global:r(3)})},function(t,n,r){r(129)("Map")},function(t,n,r){r(130)("Map")},function(t,n,r){var e=r(1);e(e.P+e.R,"Map",{toJSON:r(171)("Map")})},function(t,n,r){var e=r(1);e(e.S,"Math",{clamp:function(t,n,r){return Math.min(r,Math.max(n,t))}})},function(t,n,r){var e=r(1);e(e.S,"Math",{DEG_PER_RAD:Math.PI/180})},function(t,n,r){var e=r(1),i=180/Math.PI;e(e.S,"Math",{degrees:function(t){return t*i}})},function(t,n,r){var e=r(1),o=r(181),u=r(179);e(e.S,"Math",{fscale:function(t,n,r,e,i){return u(o(t,n,r,e,i))}})},function(t,n,r){var e=r(1);e(e.S,"Math",{iaddh:function(t,n,r,e){var i=t>>>0,o=r>>>0;return(n>>>0)+(e>>>0)+((i&o|(i|o)&~(i+o>>>0))>>>31)|0}})},function(t,n,r){var e=r(1);e(e.S,"Math",{imulh:function(t,n){var r=+t,e=+n,i=65535&r,o=65535&e,u=r>>16,c=e>>16,f=(u*o>>>0)+(i*o>>>16);return u*c+(f>>16)+((i*c>>>0)+(65535&f)>>16)}})},function(t,n,r){var e=r(1);e(e.S,"Math",{isubh:function(t,n,r,e){var i=t>>>0,o=r>>>0;return(n>>>0)-(e>>>0)-((~i&o|~(i^o)&i-o>>>0)>>>31)|0}})},function(t,n,r){var e=r(1);e(e.S,"Math",{RAD_PER_DEG:180/Math.PI})},function(t,n,r){var e=r(1),i=Math.PI/180;e(e.S,"Math",{radians:function(t){return t*i}})},function(t,n,r){var e=r(1);e(e.S,"Math",{scale:r(181)})},function(t,n,r){var e=r(1);e(e.S,"Math",{signbit:function(t){return(t=+t)!=t?t:0==t?1/t==1/0:0<t}})},function(t,n,r){var e=r(1);e(e.S,"Math",{umulh:function(t,n){var r=+t,e=+n,i=65535&r,o=65535&e,u=r>>>16,c=e>>>16,f=(u*o>>>0)+(i*o>>>16);return u*c+(f>>>16)+((i*c>>>0)+(65535&f)>>>16)}})},function(t,n,r){"use strict";var e=r(1),i=r(17),o=r(21),u=r(11);r(10)&&e(e.P+r(126),"Object",{__defineGetter__:function(t,n){u.f(i(this),t,{get:o(n),enumerable:!0,configurable:!0})}})},function(t,n,r){"use strict";var e=r(1),i=r(17),o=r(21),u=r(11);r(10)&&e(e.P+r(126),"Object",{__defineSetter__:function(t,n){u.f(i(this),t,{set:o(n),enumerable:!0,configurable:!0})}})},function(t,n,r){var e=r(1),i=r(186)(!0);e(e.S,"Object",{entries:function(t){return i(t)}})},function(t,n,r){var e=r(1),f=r(187),a=r(33),s=r(31),l=r(139);e(e.S,"Object",{getOwnPropertyDescriptors:function(t){for(var n,r,e=a(t),i=s.f,o=f(e),u={},c=0;o.length>c;)void 0!==(r=i(e,n=o[c++]))&&l(u,n,r);return u}})},function(t,n,r){"use strict";var e=r(1),i=r(17),o=r(53),u=r(32),c=r(31).f;r(10)&&e(e.P+r(126),"Object",{__lookupGetter__:function(t){var n,r=i(this),e=o(t,!0);do{if(n=c(r,e))return n.get}while(r=u(r))}})},function(t,n,r){"use strict";var e=r(1),i=r(17),o=r(53),u=r(32),c=r(31).f;r(10)&&e(e.P+r(126),"Object",{__lookupSetter__:function(t){var n,r=i(this),e=o(t,!0);do{if(n=c(r,e))return n.set}while(r=u(r))}})},function(t,n,r){var e=r(1),i=r(186)(!1);e(e.S,"Object",{values:function(t){return i(t)}})},function(t,n,r){"use strict";var e=r(1),o=r(3),u=r(46),i=r(150)(),c=r(7)("observable"),f=r(21),a=r(2),s=r(70),l=r(76),h=r(26),v=r(71),p=v.RETURN,d=function(t){return null==t?void 0:f(t)},y=function(t){var n=t._c;n&&(t._c=void 0,n())},g=function(t){return void 0===t._o},b=function(t){g(t)||(t._o=void 0,y(t))},x=function(t,n){a(t),this._c=void 0,this._o=t,t=new m(this);try{var r=n(t),e=r;null!=r&&("function"==typeof r.unsubscribe?r=function(){e.unsubscribe()}:f(r),this._c=r)}catch(n){return void t.error(n)}g(this)&&y(this)};x.prototype=l({},{unsubscribe:function(){b(this)}});var m=function(t){this._s=t};m.prototype=l({},{next:function(t){var n=this._s;if(!g(n)){var r=n._o;try{var e=d(r.next);if(e)return e.call(r,t)}catch(t){try{b(n)}finally{throw t}}}},error:function(t){var n=this._s;if(g(n))throw t;var r=n._o;n._o=void 0;try{var e=d(r.error);if(!e)throw t;t=e.call(r,t)}catch(t){try{y(n)}finally{throw t}}return y(n),t},complete:function(t){var n=this._s;if(!g(n)){var r=n._o;n._o=void 0;try{var e=d(r.complete);t=e?e.call(r,t):void 0}catch(t){try{y(n)}finally{throw t}}return y(n),t}}});var S=function(t){s(this,S,"Observable","_f")._f=f(t)};l(S.prototype,{subscribe:function(t){return new x(t,this._f)},forEach:function(e){var i=this;return new(u.Promise||o.Promise)(function(t,n){f(e);var r=i.subscribe({next:function(t){try{return e(t)}catch(t){n(t),r.unsubscribe()}},error:n,complete:t})})}}),l(S,{from:function(t){var n="function"==typeof this?this:S,r=d(a(t)[c]);if(r){var e=a(r.call(t));return e.constructor===n?e:new n(function(t){return e.subscribe(t)})}return new n(function(n){var r=!1;return i(function(){if(!r){try{if(v(t,!1,function(t){if(n.next(t),r)return p})===p)return}catch(t){if(r)throw t;return void n.error(t)}n.complete()}}),function(){r=!0}})},of:function(){for(var t=0,n=arguments.length,e=new Array(n);t<n;)e[t]=arguments[t++];return new("function"==typeof this?this:S)(function(n){var r=!1;return i(function(){if(!r){for(var t=0;t<e.length;++t)if(n.next(e[t]),r)return;n.complete()}}),function(){r=!0}})}}),h(S.prototype,c,function(){return this}),e(e.G,{Observable:S}),r(77)("Observable")},function(t,n,r){"use strict";var e=r(1),i=r(46),o=r(3),u=r(119),c=r(191);e(e.P+e.R,"Promise",{finally:function(n){var r=u(this,i.Promise||o.Promise),t="function"==typeof n;return this.then(t?function(t){return c(r,n()).then(function(){return t})}:n,t?function(t){return c(r,n()).then(function(){throw t})}:n)}})},function(t,n,r){"use strict";var e=r(1),i=r(151),o=r(190);e(e.S,"Promise",{try:function(t){var n=i.f(this),r=o(t);return(r.e?n.reject:n.resolve)(r.v),n.promise}})},function(t,n,r){var e=r(56),i=r(2),o=e.key,u=e.set;e.exp({defineMetadata:function(t,n,r,e){u(t,n,i(r),o(e))}})},function(t,n,r){var e=r(56),o=r(2),u=e.key,c=e.map,f=e.store;e.exp({deleteMetadata:function(t,n){var r=arguments.length<3?void 0:u(arguments[2]),e=c(o(n),r,!1);if(void 0===e||!e.delete(t))return!1;if(e.size)return!0;var i=f.get(n);return i.delete(r),!!i.size||f.delete(n)}})},function(t,n,r){var o=r(199),u=r(167),e=r(56),i=r(2),c=r(32),f=e.keys,a=e.key,s=function(t,n){var r=f(t,n),e=c(t);if(null===e)return r;var i=s(e,n);return i.length?r.length?u(new o(r.concat(i))):i:r};e.exp({getMetadataKeys:function(t){return s(i(t),arguments.length<2?void 0:a(arguments[1]))}})},function(t,n,r){var e=r(56),i=r(2),o=r(32),u=e.has,c=e.get,f=e.key,a=function(t,n,r){if(u(t,n,r))return c(t,n,r);var e=o(n);return null!==e?a(t,e,r):void 0};e.exp({getMetadata:function(t,n){return a(t,i(n),arguments.length<3?void 0:f(arguments[2]))}})},function(t,n,r){var e=r(56),i=r(2),o=e.keys,u=e.key;e.exp({getOwnMetadataKeys:function(t){return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var e=r(56),i=r(2),o=e.get,u=e.key;e.exp({getOwnMetadata:function(t,n){return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){var e=r(56),i=r(2),o=r(32),u=e.has,c=e.key,f=function(t,n,r){if(u(t,n,r))return!0;var e=o(n);return null!==e&&f(t,e,r)};e.exp({hasMetadata:function(t,n){return f(t,i(n),arguments.length<3?void 0:c(arguments[2]))}})},function(t,n,r){var e=r(56),i=r(2),o=e.has,u=e.key;e.exp({hasOwnMetadata:function(t,n){return o(t,i(n),arguments.length<3?void 0:u(arguments[2]))}})},function(t,n,r){var e=r(56),i=r(2),o=r(21),u=e.key,c=e.set;e.exp({metadata:function(r,e){return function(t,n){c(r,e,(void 0!==n?i:o)(t),u(n))}}})},function(t,n,r){r(129)("Set")},function(t,n,r){r(130)("Set")},function(t,n,r){var e=r(1);e(e.P+e.R,"Set",{toJSON:r(171)("Set")})},function(t,n,r){"use strict";var e=r(1),i=r(131)(!0);e(e.P,"String",{at:function(t){return i(this,t)}})},function(t,n,r){"use strict";var e=r(1),i=r(51),o=r(8),u=r(124),c=r(115),f=RegExp.prototype,a=function(t,n){this._r=t,this._s=n};r(146)(a,"RegExp String",function(){var t=this._r.exec(this._s);return{value:t,done:null===t}}),e(e.P,"String",{matchAll:function(t){if(i(this),!u(t))throw TypeError(t+" is not a regexp!");var n=String(this),r="flags"in f?String(t.flags):c.call(t),e=new RegExp(t.source,~r.indexOf("g")?r:"g"+r);return e.lastIndex=o(t.lastIndex),new a(e,n)}})},function(t,n,r){"use strict";var e=r(1),i=r(193),o=r(133),u=/Version\/10\.\d+(\.\d+)?( Mobile\/\w+)? Safari\//.test(o);e(e.P+e.F*u,"String",{padEnd:function(t){return i(this,t,1<arguments.length?arguments[1]:void 0,!1)}})},function(t,n,r){"use strict";var e=r(1),i=r(193),o=r(133),u=/Version\/10\.\d+(\.\d+)?( Mobile\/\w+)? Safari\//.test(o);e(e.P+e.F*u,"String",{padStart:function(t){return i(this,t,1<arguments.length?arguments[1]:void 0,!0)}})},function(t,n,r){"use strict";r(84)("trimLeft",function(t){return function(){return t(this,1)}},"trimStart")},function(t,n,r){"use strict";r(84)("trimRight",function(t){return function(){return t(this,2)}},"trimEnd")},function(t,n,r){r(160)("asyncIterator")},function(t,n,r){r(160)("observable")},function(t,n,r){var e=r(1);e(e.S,"System",{global:r(3)})},function(t,n,r){r(129)("WeakMap")},function(t,n,r){r(130)("WeakMap")},function(t,n,r){r(129)("WeakSet")},function(t,n,r){r(130)("WeakSet")},function(t,n,r){for(var e=r(162),i=r(74),o=r(27),u=r(3),c=r(26),f=r(82),a=r(7),s=a("iterator"),l=a("toStringTag"),h=f.Array,v={CSSRuleList:!0,CSSStyleDeclaration:!1,CSSValueList:!1,ClientRectList:!1,DOMRectList:!1,DOMStringList:!1,DOMTokenList:!0,DataTransferItemList:!1,FileList:!1,HTMLAllCollection:!1,HTMLCollection:!1,HTMLFormElement:!1,HTMLSelectElement:!1,MediaList:!0,MimeTypeArray:!1,NamedNodeMap:!1,NodeList:!0,PaintRequestList:!1,Plugin:!1,PluginArray:!1,SVGLengthList:!1,SVGNumberList:!1,SVGPathSegList:!1,SVGPointList:!1,SVGStringList:!1,SVGTransformList:!1,SourceBufferList:!1,StyleSheetList:!0,TextTrackCueList:!1,TextTrackList:!1,TouchList:!1},p=i(v),d=0;d<p.length;d++){var y,g=p[d],b=v[g],x=u[g],m=x&&x.prototype;if(m&&(m[s]||c(m,s,h),m[l]||c(m,l,g),f[g]=h,b))for(y in e)m[y]||o(m,y,e[y],!0)}},function(t,n,r){var e=r(1),i=r(158);e(e.G+e.B,{setImmediate:i.set,clearImmediate:i.clear})},function(t,n,r){var e=r(3),i=r(1),o=r(133),u=[].slice,c=/MSIE .\./.test(o),f=function(i){return function(t,n){var r=2<arguments.length,e=!!r&&u.call(arguments,2);return i(r?function(){("function"==typeof t?t:Function(t)).apply(this,e)}:t,n)}};i(i.G+i.B+i.F*c,{setTimeout:f(e.setTimeout),setInterval:f(e.setInterval)})},function(t,n,r){r(341),r(280),r(282),r(281),r(284),r(286),r(291),r(285),r(283),r(293),r(292),r(288),r(289),r(287),r(279),r(290),r(294),r(295),r(247),r(249),r(248),r(297),r(296),r(267),r(277),r(278),r(268),r(269),r(270),r(271),r(272),r(273),r(274),r(275),r(276),r(250),r(251),r(252),r(253),r(254),r(255),r(256),r(257),r(258),r(259),r(260),r(261),r(262),r(263),r(264),r(265),r(266),r(328),r(333),r(340),r(331),r(323),r(324),r(329),r(334),r(336),r(319),r(320),r(321),r(322),r(325),r(326),r(327),r(330),r(332),r(335),r(337),r(338),r(339),r(242),r(244),r(243),r(246),r(245),r(231),r(229),r(235),r(232),r(238),r(240),r(228),r(234),r(225),r(239),r(223),r(237),r(236),r(230),r(233),r(222),r(224),r(227),r(226),r(241),r(162),r(313),r(197),r(318),r(198),r(314),r(315),r(316),r(317),r(298),r(196),r(199),r(200),r(353),r(342),r(343),r(348),r(351),r(352),r(346),r(349),r(347),r(350),r(344),r(345),r(299),r(300),r(301),r(302),r(303),r(306),r(304),r(305),r(307),r(308),r(309),r(310),r(312),r(311),r(356),r(354),r(355),r(397),r(400),r(399),r(401),r(402),r(398),r(403),r(404),r(378),r(381),r(377),r(375),r(376),r(379),r(380),r(362),r(396),r(361),r(395),r(407),r(409),r(360),r(394),r(406),r(408),r(359),r(405),r(358),r(363),r(364),r(365),r(366),r(367),r(369),r(368),r(370),r(371),r(372),r(374),r(373),r(383),r(384),r(385),r(386),r(388),r(387),r(390),r(389),r(391),r(392),r(393),r(357),r(382),r(412),r(411),r(410),t.exports=r(46)},function(t,n){t.exports=function(t,n){if("string"==typeof n)return t.insertAdjacentHTML("afterend",n);var r=t.nextSibling;return r?t.parentNode.insertBefore(n,r):t.parentNode.appendChild(n)}}])</script><script src="/./main.5a5b0a.js"></script><script>!function(){var e,t;e="/slider.c27416.js",t=document.createElement("script"),document.getElementsByTagName("body")[0].appendChild(t),t.setAttribute("src",e)}()</script>
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+      tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+  });
+
+  MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+      for(i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+      }
+  });
+</script>
+
+<script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+
+<!--  -->
+
+
+    
+<div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
+  <div class="tools-nav header-menu">
+    
+    
+      
+      
+      
+    
+      
+    
+      
+    
+    
+
+    <ul style="width: 70%">
+    
+    
+      
+      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章(tag)</a></li>
+      
+        
+      
+        
+      
+        
+    </ul>
+  </div>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all" q-show="innerArchive">
+        <div class="search-wrap">
+          <input class="search-ipt" q-model="search" type="text" placeholder="find something…">
+          <i class="icon-search icon" q-show="search|isEmptyStr"></i>
+          <i class="icon-close icon" q-show="search|isNotEmptyStr" q-on="click:clearChose(e)"></i>
+        </div>
+        <div class="widget tagcloud search-tag">
+          <p class="search-tag-wording">tag:</p>
+          <label class="search-switch">
+            <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
+          </label>
+          <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">项目</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">codeforce</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">leetcode周赛</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">面试</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">杂项</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">框架</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">图论</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">线程</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">docker</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">mysql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">idea</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">collection</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">nosql</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">map</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">记录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wsdl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
+              </li>
+            
+            <div class="clearfix"></div>
+          </ul>
+        </div>
+        <ul class="search-ul">
+          <p q-show="jsonFail" style="padding: 20px; font-size: 12px;">
+            缺失模块。<br/>1、请确保node版本大于6.2<br/>2、在博客根目录（注意不是yilia-plus根目录）执行以下命令：<br/> npm i hexo-generator-json-content --save<br/><br/>
+            3、在根目录_config.yml里添加配置：
+<pre style="font-size: 12px;" q-show="jsonFail">
+  jsonContent:
+    meta: false
+    pages: false
+    posts:
+      title: true
+      date: true
+      path: true
+      text: false
+      raw: false
+      content: false
+      slug: false
+      updated: false
+      comments: false
+      link: false
+      permalink: false
+      excerpt: false
+      categories: false
+      tags: true
+</pre>
+          </p>
+          <li class="search-li" q-repeat="items" q-show="isShow">
+            <a q-attr="href:path|urlformat" class="search-title"><i class="icon-quo-left icon"></i><span q-text="title"></span></a>
+            <p class="search-time">
+              <i class="icon-calendar icon"></i>
+              <span q-text="date|dateformat"></span>
+            </p>
+            <p class="search-tag">
+              <i class="icon-price-tags icon"></i>
+              <span q-repeat="tags" q-on="click:choseTag(e, name)" q-text="name|tagformat"></span>
+            </p>
+          </li>
+        </ul>
+    	</section>
+    
+
+    
+
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+
+  
+  
+<script type="text/javascript" src="/plugins/activate-power-mode/activate-power-mode.js"></script>
+<script>
+  POWERMODE.colorful = true; // make power mode colorful
+  POWERMODE.shake = false; // turn off shake
+  document.body.addEventListener('input', POWERMODE);
+</script>
+
+  
+  <!-- <script async type="text/javascript" size="90" alpha="0.2" zIndex="0" src="/plugins/ribbon.js/ribbon.min.js"></script> -->
+  
+  
+  
+</body>
+
+</html>

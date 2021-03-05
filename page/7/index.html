@@ -79,18 +79,20 @@
 			
 				<li><a href="/" >主页</a></li>
 			
-				<li><a href="/tags/%E6%97%A5%E8%AE%B0" >日记本</a></li>
-			
-				<li><a href="/tags/JAVA" >JAVA</a></li>
+				<li><a href="/tags/java" >JAVA</a></li>
 			
 				<li><a href="/tags/%E7%AE%97%E6%B3%95" >算法</a></li>
+			
+				<li><a href="/tags/%E8%AE%B0%E5%BD%95" >记录</a></li>
+			
+				<li><a href="/archives/" >全部</a></li>
 			
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
 			
 				
-					<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+					<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章(tag)</a>
 				
 			
 				
@@ -100,6 +102,11 @@
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
+				
+					
+						<a class="leetcode" target="_blank" rel="noopener" href="https://leetcode-cn.com/u/cacia/" 
+												title="力扣" ><i class="icon-leetcode"></i></a>
+					
 				
 					
 						<a class="github" target="_blank" rel="noopener" href="https://github.com/caciaCC" 
@@ -129,11 +136,6 @@
 					
 						<a class="mail" target="_blank" rel="noopener" href="https://1732583038@qq.com" 
 												title="邮件联系" ><i class="icon-mail"></i></a>
-					
-				
-					
-						<a class="leetcode" target="_blank" rel="noopener" href="https://leetcode-cn.com/u/cacia/" 
-												title="力扣" ><i class="icon-leetcode"></i></a>
 					
 				
 			</div>
@@ -174,10 +176,17 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
 				<div class="social">
+					
+						
+						<a class="leetcode" target="_blank" 
+							href="https://leetcode-cn.com/u/cacia/" title="力扣"><i class="icon-leetcode"></i></a>
+						
 					
 						
 						<a class="github" target="_blank" 
@@ -209,11 +218,6 @@
 							href="https://1732583038@qq.com" title="邮件联系"><i class="icon-mail"></i></a>
 						
 					
-						
-						<a class="leetcode" target="_blank" 
-							href="https://leetcode-cn.com/u/cacia/" title="力扣"><i class="icon-leetcode"></i></a>
-						
-					
 				</div>
 			</nav>
 
@@ -221,13 +225,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 25%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/%E6%97%A5%E8%AE%B0">日记本</a></li>
+					<li style="width: 20%"><a href="/tags/java">JAVA</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/JAVA">JAVA</a></li>
+					<li style="width: 20%"><a href="/tags/%E7%AE%97%E6%B3%95">算法</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/%E7%AE%97%E6%B3%95">算法</a></li>
+					<li style="width: 20%"><a href="/tags/%E8%AE%B0%E5%BD%95">记录</a></li>
+		        
+					<li style="width: 20%"><a href="/archives/">全部</a></li>
 		        
 				</ul>
 			</nav>
@@ -246,7 +252,7 @@
             
 
   
-    <article id="post-图论模板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-算法-图论模板" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -254,7 +260,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/01/12/%E5%9B%BE%E8%AE%BA%E6%A8%A1%E6%9D%BF/">常用图论模板</a>
+	  <a class="article-title" href="/2021/01/12/%E7%AE%97%E6%B3%95-%E5%9B%BE%E8%AE%BA%E6%A8%A1%E6%9D%BF/">算法-常用图论模板</a>
 	
     </h1>
   
@@ -262,7 +268,7 @@
 
   
   
-<a href="/2021/01/12/%E5%9B%BE%E8%AE%BA%E6%A8%A1%E6%9D%BF/" class="archive-article-date">
+<a href="/2021/01/12/%E7%AE%97%E6%B3%95-%E5%9B%BE%E8%AE%BA%E6%A8%A1%E6%9D%BF/" class="archive-article-date">
         <time datetime="2021-01-12T02:28:01.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
 </a>
 
@@ -279,7 +285,7 @@
 <p>1.最短路</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">时间复杂是 O(n2+m), n 表示点数，m 表示边数</span><br><span class="line">int g[N][N];  &#x2F;&#x2F; 存储每条边</span><br><span class="line">int dist[N];  &#x2F;&#x2F; 存储1号点到每个点的最短距离</span><br><span class="line">bool st[N];   &#x2F;&#x2F; 存储每个点的最短路是否已经确定</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 求1号点到n号点的最短路，如果不存在则返回-1</span><br><span class="line">int dijkstra()</span><br><span class="line">&#123;</span><br><span class="line">    memset(dist, 0x3f, sizeof dist);</span><br><span class="line">    dist[1] &#x3D; 0;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;只需要扩展n-1次,因为最后一个点无法更新其他点的距离</span><br><span class="line">    for (int i &#x3D; 0; i &lt; n - 1; i ++ )</span><br><span class="line">    &#123;</span><br><span class="line">        int t &#x3D; -1;     &#x2F;&#x2F; 在还未确定最短路的点中，寻找距离最小的点</span><br><span class="line">        for (int j &#x3D; 1; j &lt;&#x3D; n; j ++ )</span><br><span class="line">            if (!st[j] &amp;&amp; (t &#x3D;&#x3D; -1 || dist[t] &gt; dist[j]))</span><br><span class="line">                t &#x3D; j;</span><br><span class="line"></span><br><span class="line">        &#x2F;&#x2F; 用t更新其他点的距离</span><br><span class="line">        for (int j &#x3D; 1; j &lt;&#x3D; n; j ++ )</span><br><span class="line">            dist[j] &#x3D; min(dist[j], dist[t] + g[t][j]);</span><br><span class="line"></span><br><span class="line">        st[t] &#x3D; true;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    if (dist[n] &#x3D;&#x3D; 0x3f3f3f3f) return -1;</span><br><span class="line">    return dist[n];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/%E5%9B%BE%E8%AE%BA%E6%A8%A1%E6%9D%BF/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/01/12/%E7%AE%97%E6%B3%95-%E5%9B%BE%E8%AE%BA%E6%A8%A1%E6%9D%BF/#more">more >></a>
     
     
 
@@ -310,7 +316,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/%E5%9B%BE%E8%AE%BA%E6%A8%A1%E6%9D%BF/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/01/12/%E7%AE%97%E6%B3%95-%E5%9B%BE%E8%AE%BA%E6%A8%A1%E6%9D%BF/">展开全文 >></a>
     </p>
     
 
@@ -340,7 +346,7 @@
 
 
   
-    <article id="post-leetcode-周赛第223场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-算法-leetcode-周赛第223场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -348,7 +354,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/01/11/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC223%E5%9C%BA/">leetcode-周赛第223场</a>
+	  <a class="article-title" href="/2021/01/11/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC223%E5%9C%BA/">算法-leetcode-周赛第223场</a>
 	
     </h1>
   
@@ -356,7 +362,7 @@
 
   
   
-<a href="/2021/01/11/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC223%E5%9C%BA/" class="archive-article-date">
+<a href="/2021/01/11/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC223%E5%9C%BA/" class="archive-article-date">
         <time datetime="2021-01-11T15:14:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-11</time>
 </a>
 
@@ -372,7 +378,7 @@
     <p>1.依次异或即可</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;public:</span><br><span class="line">    vector&lt;int&gt;res;</span><br><span class="line">    vector&lt;int&gt; decode(vector&lt;int&gt;&amp; encoded, int first) &#123;</span><br><span class="line">        int n &#x3D; encoded.size();</span><br><span class="line">        res.push_back(first);</span><br><span class="line">        int tmp &#x3D; first;</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">            tmp ^&#x3D; encoded[i];</span><br><span class="line">            res.push_back(tmp);</span><br><span class="line">        &#125;</span><br><span class="line">        return res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/01/11/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC223%E5%9C%BA/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/01/11/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC223%E5%9C%BA/#more">more >></a>
     
     
 
@@ -403,7 +409,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/11/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC223%E5%9C%BA/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/01/11/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC223%E5%9C%BA/">展开全文 >></a>
     </p>
     
 
@@ -433,7 +439,7 @@
 
 
   
-    <article id="post-git学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-项目-git学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -441,7 +447,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/01/11/git%E5%AD%A6%E4%B9%A0/">git学习</a>
+	  <a class="article-title" href="/2021/01/11/%E9%A1%B9%E7%9B%AE-git%E5%AD%A6%E4%B9%A0/">项目-git学习</a>
 	
     </h1>
   
@@ -449,7 +455,7 @@
 
   
   
-<a href="/2021/01/11/git%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+<a href="/2021/01/11/%E9%A1%B9%E7%9B%AE-git%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
         <time datetime="2021-01-11T14:14:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-11</time>
 </a>
 
@@ -465,7 +471,7 @@
     <h4 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h4><p><a target="_blank" rel="noopener" href="https://www.liaoxuefeng.com/wiki/896043488029600">廖雪峰Git教程</a><br><a target="_blank" rel="noopener" href="https://git-scm.com/book/zh/v2">Git官方中文教程</a><br><a target="_blank" rel="noopener" href="https://gitee.com/liaoxuefeng/learn-java/raw/master/teach/git-cheatsheet.pdf">GIT CHEAT SHEET</a></p>
 <h3 id="常用指令"><a href="#常用指令" class="headerlink" title="常用指令"></a>常用指令</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">创建:</span><br><span class="line">git clone</span><br><span class="line">git init</span><br><span class="line">本地修改:</span><br><span class="line">git status</span><br><span class="line">git diff</span><br><span class="line">git add &lt;file&gt;</span><br><span class="line">git commit -m &lt;message&gt;</span><br><span class="line">提交历史:</span><br><span class="line">git log</span><br><span class="line">git log --graph --pretty&#x3D;oneline --abbrev-commit</span><br><span class="line">分支和标签:</span><br><span class="line">git branch </span><br><span class="line">git switch branch</span><br><span class="line">git branch &lt;new-branch&gt;</span><br><span class="line">git checkout --track &lt;remote&#x2F;branch&gt;</span><br><span class="line">git branch -d &lt;branch&gt;</span><br><span class="line">git tag &lt;tagname&gt;</span><br><span class="line">更新和推送:</span><br><span class="line">git remote -v</span><br><span class="line">git remote show &lt;remote&gt;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/01/11/git%E5%AD%A6%E4%B9%A0/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/01/11/%E9%A1%B9%E7%9B%AE-git%E5%AD%A6%E4%B9%A0/#more">more >></a>
     
     
 
@@ -482,6 +488,10 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		
@@ -492,7 +502,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/11/git%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/01/11/%E9%A1%B9%E7%9B%AE-git%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
     </p>
     
 
@@ -522,7 +532,7 @@
 
 
   
-    <article id="post-hexo博客搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-项目-hexo博客搭建" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -530,7 +540,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/01/11/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">hexo博客搭建</a>
+	  <a class="article-title" href="/2021/01/11/%E9%A1%B9%E7%9B%AE-hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">项目-hexo博客搭建</a>
 	
     </h1>
   
@@ -538,7 +548,7 @@
 
   
   
-<a href="/2021/01/11/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="archive-article-date">
+<a href="/2021/01/11/%E9%A1%B9%E7%9B%AE-hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/" class="archive-article-date">
         <time datetime="2021-01-11T12:14:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-11</time>
 </a>
 
@@ -558,7 +568,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
 <p>初始化</p>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/01/11/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/01/11/%E9%A1%B9%E7%9B%AE-hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/#more">more >></a>
     
     
 
@@ -575,6 +585,10 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
         		</li>
       		
@@ -585,7 +599,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/11/hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/01/11/%E9%A1%B9%E7%9B%AE-hexo%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA/">展开全文 >></a>
     </p>
     
 
@@ -707,7 +721,7 @@
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章(tag)</a></li>
       
         
       
@@ -736,15 +750,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">项目</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -776,10 +782,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">框架</a>
               </li>
              
@@ -788,15 +790,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图论</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -805,10 +799,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -837,6 +827,26 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">map</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">记录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wsdl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
             
             <div class="clearfix"></div>

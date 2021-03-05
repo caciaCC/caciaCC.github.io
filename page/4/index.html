@@ -75,18 +75,20 @@
 			
 				<li><a href="/" >主页</a></li>
 			
-				<li><a href="/tags/%E6%97%A5%E8%AE%B0" >日记本</a></li>
-			
-				<li><a href="/tags/JAVA" >JAVA</a></li>
+				<li><a href="/tags/java" >JAVA</a></li>
 			
 				<li><a href="/tags/%E7%AE%97%E6%B3%95" >算法</a></li>
+			
+				<li><a href="/tags/%E8%AE%B0%E5%BD%95" >记录</a></li>
+			
+				<li><a href="/archives/" >全部</a></li>
 			
 			</ul>
 		</nav>
 		<nav class="header-smart-menu">
 			
 				
-					<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章</a>
+					<a q-on="click: openSlider(e, 'innerArchive')" href="javascript:void(0)">所有文章(tag)</a>
 				
 			
 				
@@ -96,6 +98,11 @@
 		</nav>
 		<nav class="header-nav">
 			<div class="social">
+				
+					
+						<a class="leetcode" target="_blank" rel="noopener" href="https://leetcode-cn.com/u/cacia/" 
+												title="力扣" ><i class="icon-leetcode"></i></a>
+					
 				
 					
 						<a class="github" target="_blank" rel="noopener" href="https://github.com/caciaCC" 
@@ -125,11 +132,6 @@
 					
 						<a class="mail" target="_blank" rel="noopener" href="https://1732583038@qq.com" 
 												title="邮件联系" ><i class="icon-mail"></i></a>
-					
-				
-					
-						<a class="leetcode" target="_blank" rel="noopener" href="https://leetcode-cn.com/u/cacia/" 
-												title="力扣" ><i class="icon-leetcode"></i></a>
 					
 				
 			</div>
@@ -170,10 +172,17 @@
 			
 				
 			
+				
+			
 			
 			
 			<nav class="header-nav">
 				<div class="social">
+					
+						
+						<a class="leetcode" target="_blank" 
+							href="https://leetcode-cn.com/u/cacia/" title="力扣"><i class="icon-leetcode"></i></a>
+						
 					
 						
 						<a class="github" target="_blank" 
@@ -205,11 +214,6 @@
 							href="https://1732583038@qq.com" title="邮件联系"><i class="icon-mail"></i></a>
 						
 					
-						
-						<a class="leetcode" target="_blank" 
-							href="https://leetcode-cn.com/u/cacia/" title="力扣"><i class="icon-leetcode"></i></a>
-						
-					
 				</div>
 			</nav>
 
@@ -217,13 +221,15 @@
 				<ul style="width: 70%">
 				
 				
-					<li style="width: 25%"><a href="/">主页</a></li>
+					<li style="width: 20%"><a href="/">主页</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/%E6%97%A5%E8%AE%B0">日记本</a></li>
+					<li style="width: 20%"><a href="/tags/java">JAVA</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/JAVA">JAVA</a></li>
+					<li style="width: 20%"><a href="/tags/%E7%AE%97%E6%B3%95">算法</a></li>
 		        
-					<li style="width: 25%"><a href="/tags/%E7%AE%97%E6%B3%95">算法</a></li>
+					<li style="width: 20%"><a href="/tags/%E8%AE%B0%E5%BD%95">记录</a></li>
+		        
+					<li style="width: 20%"><a href="/archives/">全部</a></li>
 		        
 				</ul>
 			</nav>
@@ -242,7 +248,7 @@
             
 
   
-    <article id="post-leetcode-周赛第225场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-算法-5道算法题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -250,7 +256,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/01/24/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/">leetcode-周赛第225场</a>
+	  <a class="article-title" href="/2021/01/23/%E7%AE%97%E6%B3%95-5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/">算法-5道算法题</a>
 	
     </h1>
   
@@ -258,100 +264,7 @@
 
   
   
-<a href="/2021/01/24/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/" class="archive-article-date">
-        <time datetime="2021-01-24T04:14:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>第一题<br>一个分类讨论= =。个人感觉写复杂了。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string maximumTime(string ans) &#123;</span><br><span class="line">        if(ans[0]&#x3D;&#x3D;&#39;0&#39;)&#123;</span><br><span class="line">            if(ans[1]&#x3D;&#x3D;&#39;?&#39;) ans[1] &#x3D; &#39;9&#39;;</span><br><span class="line">        &#125;else if(ans[0] &#x3D;&#x3D; &#39;1&#39;)&#123;</span><br><span class="line">            if(ans[1]&#x3D;&#x3D;&#39;?&#39;) ans[1] &#x3D; &#39;9&#39;;</span><br><span class="line">        &#125;else if(ans[0] &#x3D;&#x3D; &#39;2&#39;)&#123;</span><br><span class="line">            if(ans[1]&#x3D;&#x3D;&#39;?&#39;) ans[1] &#x3D; &#39;3&#39;;</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            if(ans[1]&#x3D;&#x3D;&#39;?&#39;&amp;&amp;ans[0]&#x3D;&#x3D;&#39;?&#39;) ans[0] &#x3D; &#39;2&#39;,ans[1] &#x3D; &#39;3&#39;;</span><br><span class="line">            else if(ans[1] &gt; &#39;3&#39;) ans[0] &#x3D; &#39;1&#39;;</span><br><span class="line">            else ans[0] &#x3D; &#39;2&#39;;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">         if(ans[3]!&#x3D;&#39;?&#39;)&#123;</span><br><span class="line">             if(ans[4] &#x3D;&#x3D;&#39;?&#39;) ans[4] &#x3D; &#39;9&#39;;</span><br><span class="line">         &#125;else &#123;</span><br><span class="line">             if(ans[4]&#x3D;&#x3D;&#39;?&#39;) ans[3] &#x3D; &#39;5&#39;, ans[4] &#x3D; &#39;9&#39;;</span><br><span class="line">             else ans[3] &#x3D; &#39;5&#39;;</span><br><span class="line">         &#125;</span><br><span class="line">            </span><br><span class="line">       return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/01/24/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/24/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-5道算法题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/01/23/5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/">5道算法题</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/01/23/5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/" class="archive-article-date">
+<a href="/2021/01/23/%E7%AE%97%E6%B3%95-5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/" class="archive-article-date">
         <time datetime="2021-01-23T08:58:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-23</time>
 </a>
 
@@ -371,7 +284,7 @@
 <p>2.给你一个数n(2^20内),然后是一个数组,n个正整数(int范围内),让找到最小的不在数组中的正整数。  </p>
 <p>这个也简单,建一个桶(2000010)即可。</p>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/01/23/5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/01/23/%E7%AE%97%E6%B3%95-5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/#more">more >></a>
     
     
 
@@ -398,7 +311,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/23/5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/01/23/%E7%AE%97%E6%B3%95-5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/">展开全文 >></a>
     </p>
     
 
@@ -428,7 +341,7 @@
 
 
   
-    <article id="post-codeforce-696-div2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-算法-codeforce-696-div2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -436,7 +349,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/01/20/codeforce-696-div2/">codeforce-696-div2</a>
+	  <a class="article-title" href="/2021/01/20/%E7%AE%97%E6%B3%95-codeforce-696-div2/">算法-codeforce-696-div2</a>
 	
     </h1>
   
@@ -444,7 +357,7 @@
 
   
   
-<a href="/2021/01/20/codeforce-696-div2/" class="archive-article-date">
+<a href="/2021/01/20/%E7%AE%97%E6%B3%95-codeforce-696-div2/" class="archive-article-date">
         <time datetime="2021-01-20T01:52:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-20</time>
 </a>
 
@@ -460,7 +373,7 @@
     <p>A题<br>贪心即可。<br>A数组第一个数必为1,后面每个A[i]+B[i]!=A[i-1]+B[i-1]并且让A[i]+B[i]尽可能大也就是A[i]尽可能大即可。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 3e5+10, M &#x3D; 1e5+10,INF &#x3D; 0x3f3f3f3f,inf &#x3D; 0x3f3f3f3f;</span><br><span class="line">typedef pair&lt;int,int&gt;PII;</span><br><span class="line">typedef pair&lt;int,int&gt;pii;</span><br><span class="line">typedef long long ll;</span><br><span class="line"></span><br><span class="line">int n;</span><br><span class="line">string b;</span><br><span class="line">int a[N];</span><br><span class="line"></span><br><span class="line">void init()&#123;</span><br><span class="line">   cin &gt;&gt; n;</span><br><span class="line">   cin &gt;&gt; b;</span><br><span class="line">&#125;</span><br><span class="line">void solve()&#123;</span><br><span class="line">    a[0] &#x3D; 1;</span><br><span class="line">   for(int i &#x3D; 1; i &lt; n; i ++)&#123;</span><br><span class="line">     int f &#x3D; a[i-1]+(b[i-1]-&#39;0&#39;);</span><br><span class="line">     if(f&#x3D;&#x3D;b[i]-&#39;0&#39;+1) a[i] &#x3D; 0;</span><br><span class="line">     else if(f&#x3D;&#x3D;b[i]-&#39;0&#39;)a[i] &#x3D; 1;</span><br><span class="line">     else a[i] &#x3D; 1;</span><br><span class="line">   &#125;</span><br><span class="line">   for(int i &#x3D; 0; i &lt; n; i ++) cout &lt;&lt; a[i];</span><br><span class="line">   cout &lt;&lt; endl;</span><br><span class="line">&#125;  </span><br><span class="line">int main()&#123;</span><br><span class="line">         int t; scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">         while(t--)&#123;</span><br><span class="line">        init();</span><br><span class="line">        solve();</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/01/20/codeforce-696-div2/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/01/20/%E7%AE%97%E6%B3%95-codeforce-696-div2/#more">more >></a>
     
     
 
@@ -491,7 +404,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/20/codeforce-696-div2/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/01/20/%E7%AE%97%E6%B3%95-codeforce-696-div2/">展开全文 >></a>
     </p>
     
 
@@ -521,7 +434,7 @@
 
 
   
-    <article id="post-wsdl学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-算法-leetcode-周赛第224场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -529,7 +442,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/01/17/wsdl%E5%AD%A6%E4%B9%A0/">wsdl学习</a>
+	  <a class="article-title" href="/2021/01/17/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC224%E5%9C%BA/">算法-leetcode-周赛第224场</a>
 	
     </h1>
   
@@ -537,98 +450,7 @@
 
   
   
-<a href="/2021/01/17/wsdl%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-        <time datetime="2021-01-17T13:20:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-17</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p>WSDL教程<a target="_blank" rel="noopener" href="https://www.w3school.com.cn/wsdl/index.asp">Link</a></p>
-<h3 id="什么是WSDL"><a href="#什么是WSDL" class="headerlink" title="什么是WSDL?"></a>什么是WSDL?</h3><p>WSDL是一门基于XML的,用于描述 Web Services 以及如何对它们进行访问的语言。  </p>
-<h3 id="WSDL文档结构"><a href="#WSDL文档结构" class="headerlink" title="WSDL文档结构"></a>WSDL文档结构</h3><p><code>&lt;portType&gt;</code> web service 执行的操作<br><code>&lt;message&gt;</code>  web service 使用的消息<br><code>&lt;types&gt;</code>    web service 使用的数据类型<br><code>&lt;binding&gt;</code>  web service 使用的通信协议  </p>
-<h3 id="WSDL端口"><a href="#WSDL端口" class="headerlink" title="WSDL端口"></a>WSDL端口</h3><p><code>&lt;portType&gt;</code> 描述可执行的合法操作。  </p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/01/17/wsdl%E5%AD%A6%E4%B9%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">网络</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/17/wsdl%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-leetcode-周赛第224场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/01/17/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC224%E5%9C%BA/">leetcode-周赛第224场</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/01/17/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC224%E5%9C%BA/" class="archive-article-date">
+<a href="/2021/01/17/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC224%E5%9C%BA/" class="archive-article-date">
         <time datetime="2021-01-17T06:28:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-17</time>
 </a>
 
@@ -644,7 +466,7 @@
     <p>1.对于每个矩形,相同大小则增加其数量,比当前打则将数量设为1,则最大边长更新即可。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int countGoodRectangles(vector&lt;vector&lt;int&gt;&gt;&amp; rec) &#123;</span><br><span class="line">        int n &#x3D; rec.size();</span><br><span class="line">        int mx &#x3D; 0, num &#x3D; 0;</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">            int l &#x3D; rec[i][0], w &#x3D; rec[i][1];</span><br><span class="line">            int now &#x3D; min(l,w);</span><br><span class="line">            if(now &gt; mx)&#123;</span><br><span class="line">                mx &#x3D; now;</span><br><span class="line">                num &#x3D; 1;</span><br><span class="line">            &#125;else if(now &#x3D;&#x3D; mx) num ++;</span><br><span class="line">        &#125;</span><br><span class="line">        return num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/01/17/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC224%E5%9C%BA/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/01/17/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC224%E5%9C%BA/#more">more >></a>
     
     
 
@@ -675,7 +497,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/17/leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC224%E5%9C%BA/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/01/17/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC224%E5%9C%BA/">展开全文 >></a>
     </p>
     
 
@@ -705,7 +527,7 @@
 
 
   
-    <article id="post-codeforce-102-div2-edu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-算法-codeforce-102-div2-edu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -713,7 +535,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/01/14/codeforce-102-div2-edu/">codeforce-102-div2-edu</a>
+	  <a class="article-title" href="/2021/01/14/%E7%AE%97%E6%B3%95-codeforce-102-div2-edu/">算法-codeforce-102-div2-edu</a>
 	
     </h1>
   
@@ -721,7 +543,7 @@
 
   
   
-<a href="/2021/01/14/codeforce-102-div2-edu/" class="archive-article-date">
+<a href="/2021/01/14/%E7%AE%97%E6%B3%95-codeforce-102-div2-edu/" class="archive-article-date">
         <time datetime="2021-01-14T14:43:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-14</time>
 </a>
 
@@ -737,7 +559,7 @@
     <p>第一题</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 3e5+10, M &#x3D; 1e5+10,INF &#x3D; 0x3f3f3f3f,inf &#x3D; 0x3f3f3f3f;</span><br><span class="line">typedef pair&lt;int,int&gt;PII;</span><br><span class="line">typedef pair&lt;int,int&gt;pii;</span><br><span class="line">typedef long long ll;</span><br><span class="line"></span><br><span class="line">int n,d;</span><br><span class="line">int a[N];</span><br><span class="line"></span><br><span class="line">void init()&#123;</span><br><span class="line">  cin &gt;&gt; n &gt;&gt; d;</span><br><span class="line">  for(int i &#x3D; 1; i &lt;&#x3D; n; i ++) cin &gt;&gt; a[i];</span><br><span class="line">&#125;</span><br><span class="line">void solve()&#123;</span><br><span class="line">   sort(a+1,a+1+n);</span><br><span class="line">   if(a[n]&lt;&#x3D;d)&#123;puts(&quot;yes&quot;);return;&#125;</span><br><span class="line">   int ache &#x3D; a[1] + a[2];</span><br><span class="line">   if(ache&lt;&#x3D;d) puts(&quot;yes&quot;);</span><br><span class="line">   else puts(&quot;no&quot;);</span><br><span class="line">&#125;  </span><br><span class="line">int main()&#123;</span><br><span class="line">         int t; scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">         while(t--)&#123;</span><br><span class="line">        init();</span><br><span class="line">        solve();</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/01/14/codeforce-102-div2-edu/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/01/14/%E7%AE%97%E6%B3%95-codeforce-102-div2-edu/#more">more >></a>
     
     
 
@@ -768,7 +590,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/14/codeforce-102-div2-edu/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/01/14/%E7%AE%97%E6%B3%95-codeforce-102-div2-edu/">展开全文 >></a>
     </p>
     
 
@@ -798,7 +620,7 @@
 
 
   
-    <article id="post-nosql" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-记录-2018至2020记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -806,7 +628,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/01/12/nosql/">nosql相关知识</a>
+	  <a class="article-title" href="/2021/01/12/%E8%AE%B0%E5%BD%95-2018%E8%87%B32020%E8%AE%B0/">记录-2018至2020</a>
 	
     </h1>
   
@@ -814,7 +636,488 @@
 
   
   
-<a href="/2021/01/12/nosql/" class="archive-article-date">
+<a href="/2021/01/12/%E8%AE%B0%E5%BD%95-2018%E8%87%B32020%E8%AE%B0/" class="archive-article-date">
+        <time datetime="2021-01-12T12:19:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>转眼见,时间已经来到了大三的暑假。<br>回顾大学三年,感觉一直都是迷茫而无知的。<br>大一的时候,我的专业并不是计算机。一开始也并没有想要转到计算机专业,而后还记是在国庆假期的时候,因为要学习C语言的原因,通过B站翁凯的C语言,我对于计算机产生了很强的兴趣,而后就产生了转专业的想法。学了一段时间的C语言之后,我找到了同专业的一位学长,准备开始学习JAVA。<br>大一上去参加了token的面试。第一面让手写冒泡排序,当时我好像已经看了啊哈算法,学了一点算法了,于是还是写出来了。之后二面没有好好准备,问我html我不会,问我怎么快速求链表的倒数第K个元素我只会遍历两遍的方法,而不会什么快慢指针。然后就没有然后了。<br>而后就是大一下了。<br>大一下转专业考试的时候,为了简历上好看一点,我还去leetcode上刷了大概100道简单题,当时用C语言做,用malloc和指针来写,感觉还是挺难的。然而并没有卵用。考试很水。  </p>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/01/12/%E8%AE%B0%E5%BD%95-2018%E8%87%B32020%E8%AE%B0/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">记录</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/01/12/%E8%AE%B0%E5%BD%95-2018%E8%87%B32020%E8%AE%B0/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-java学习-collection相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-collection%E7%9B%B8%E5%85%B3/">Java学习-Collection相关</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-collection%E7%9B%B8%E5%85%B3/" class="archive-article-date">
+        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><span style="background-color: #FFD700"><strong>Collection相关</strong></span></p>
+<p>●Collection和Collections的区别</p>
+<p>Collection是集合类的上级接口，继承它的接口主要有List、Set、Queue。</p>
+<p>Collections是集合类的一个帮助类，它提供一系列静态方法实现对各种集合的搜索、排序、<span style="background-color: #FFD700">线程安全化（synchronizedList（传入一个）、synchronizedMap（</span><span style="background-color: #FFD700">传入一个</span><span style="background-color: #FFD700">）、synchronizedSet（</span><span style="background-color: #FFD700">传入一个</span><span style="background-color: #FFD700">）-&gt;只能通过collection创建）</span>等优化操作。</p>
+<p>●List、Map、Set三个接口存取元素时，各有什么特点？</p>
+<p>List接口元素有序，存储的是值,并且元素可以重复。           =&gt;主要实现：ArrayList、LinkedList、Vector</p>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-collection%E7%9B%B8%E5%85%B3/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">collection</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-collection%E7%9B%B8%E5%85%B3/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-java学习-java基础知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">Java学习-Java基础知识</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><span style="background-color:      #FFD700"><strong>JAVA相关</strong></span></p>
+<p>●JAVA有哪些特性？举个多态的例子。</p>
+<p>封装、抽象、多态、继承。定义一个List的引用指向其实现类，List的具体方法实现比如add取决于具体的实现类，实现类是ArrayList和LinkedList将会调用各自的add方法。</p>
+<p><span style="background-color:      #FFD700"><strong>String相关</strong></span></p>
+<span style="background-color:      #FFD700">
+
+</span>
+
+<p>●String底层实现。</p>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-java学习-java设计模式知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9F%A5%E8%AF%86/">Java学习-Java设计模式知识</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>●什么是设计模式？</p>
+<p>所谓设计模式,就是一套被反复使用的代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。</p>
+<p>设计模式在宏观上分为三大类。</p>
+<p>①创建型（对类的实例化过程的抽象）</p>
+<p>②结构型（描述如何把类或对象结合在一起形成更大的结构）</p>
+<p>③行为型（对在不同的对象之间划分责任和算法的抽象化）</p>
+<p>设计模式一共23种，具体如下。</p>
+<p>●设计模式的思想有哪些？</p>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9F%A5%E8%AF%86/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9F%A5%E8%AF%86/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-java学习-java框架知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E6%A1%86%E6%9E%B6%E7%9F%A5%E8%AF%86/">Java学习-Java框架知识</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E6%A1%86%E6%9E%B6%E7%9F%A5%E8%AF%86/" class="archive-article-date">
+        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p><span style="background-color:      #FFD700"><strong>各种层。</strong></span></p>
+<span style="background-color:      #FFD700">
+
+</span>
+
+<p>●dao层是model层吗？</p>
+<p>不是。dao层(mapper层)是数据持久化层,负责数据库操作。model层(entity)则是负责数据实体模型(实体类)。</p>
+<p>service层。存放业务逻辑处理,但不与数据库直接打交道。</p>
+<p>controller层。控制器,导入service层, 因为service中的方法是我们使用到的,controller通过接收前端传过来的参数进行业务操作,再返回一个指定的路径或者数据表。</p>
+<p><strong>SPRING相关</strong></p>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E6%A1%86%E6%9E%B6%E7%9F%A5%E8%AF%86/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">框架</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E6%A1%86%E6%9E%B6%E7%9F%A5%E8%AF%86/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
+    <article id="post-nosql学习-nosql知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/01/12/nosql%E5%AD%A6%E4%B9%A0-nosql%E7%9F%A5%E8%AF%86/">Nosql学习-Nosql知识</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/01/12/nosql%E5%AD%A6%E4%B9%A0-nosql%E7%9F%A5%E8%AF%86/" class="archive-article-date">
         <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
 </a>
 
@@ -835,7 +1138,7 @@
 <p>1.KV型                  Redis Memached</p>
 <p>2.文档型数据库      mongoDB</p>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/nosql/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/01/12/nosql%E5%AD%A6%E4%B9%A0-nosql%E7%9F%A5%E8%AF%86/#more">more >></a>
     
     
 
@@ -866,291 +1169,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/nosql/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-基础" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/01/12/%E5%9F%BA%E7%A1%80/">JAVA基础知识</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/01/12/%E5%9F%BA%E7%A1%80/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><span style="background-color:      #FFD700"><strong>JAVA相关</strong></span></p>
-<p>●JAVA有哪些特性？举个多态的例子。</p>
-<p>封装、抽象、多态、继承。定义一个List的引用指向其实现类，List的具体方法实现比如add取决于具体的实现类，实现类是ArrayList和LinkedList将会调用各自的add方法。</p>
-<p><span style="background-color:      #FFD700"><strong>String相关</strong></span></p>
-<span style="background-color:      #FFD700">
-
-</span>
-
-<p>●String底层实现。</p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/%E5%9F%BA%E7%A1%80/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/%E5%9F%BA%E7%A1%80/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-操作系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/01/12/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">操作系统知识</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/01/12/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="操作系统"><a href="#操作系统" class="headerlink" title="操作系统"></a>操作系统</h1><p><span style="background-color:      #FFD700"><strong>Linux相关</strong></span></p>
-<span style="background-color:      #FFD700">
-
-</span>
-
-<p>●了解linux吗？</p>
-<p>●多路复用IO了解过吗？</p>
-<p>概念:</p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-参考文档" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/01/12/%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3/">各种参考文档</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/01/12/%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="参考文档"><a href="#参考文档" class="headerlink" title="参考文档"></a>参考文档</h1><p> ●mysql</p>
-<p><a target="_blank" rel="noopener" href="https://www.mysqlzh.com/">mysql中文文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://dev.mysql.com/doc/refman/5.6/en/">mysql英文文档</a></p>
-<p>●JAVA</p>
-<p><a target="_blank" rel="noopener" href="https://docs.oracle.com/en/java/javase/index.html">java英文文档</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_35028064/article/details/83657378">java文档名翻译</a></p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/01/12/nosql%E5%AD%A6%E4%B9%A0-nosql%E7%9F%A5%E8%AF%86/">展开全文 >></a>
     </p>
     
 
@@ -1272,7 +1291,7 @@
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章</a></li>
+      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章(tag)</a></li>
       
         
       
@@ -1301,15 +1320,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">JAVA</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">项目</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">网络</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1341,10 +1352,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">日记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">框架</a>
               </li>
              
@@ -1353,15 +1360,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">JVM</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">图论</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">数据库</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1370,10 +1369,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">线程</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">面试题</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1402,6 +1397,26 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">map</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机基础</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">记录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vue</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">wsdl</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">jvm</a>
               </li>
             
             <div class="clearfix"></div>
