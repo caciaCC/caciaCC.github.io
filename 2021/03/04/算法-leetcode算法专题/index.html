@@ -18,7 +18,7 @@
 <meta property="og:description" content="单调栈思想本质上是动态维护一个单调递增或单调递减的栈结构。 适用适用于解决求每个数左右距离最近的最大数(最小值)的值或下标,能做到O(n)的时间复杂度。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-04T11:26:38.000Z">
-<meta property="article:modified_time" content="2021-03-05T06:15:51.927Z">
+<meta property="article:modified_time" content="2021-03-06T05:28:52.520Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
@@ -276,7 +276,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">354字</span>
+      <span class="post-count">472字</span>
     </span>
   </span>
 
@@ -306,11 +306,13 @@
 <p>2.2若当前元素等于栈顶元素,用链表的形式将当前元素链到栈顶元素末尾。 </p>
 <p>2.3若当前元素大于栈顶元素,设栈顶元素为x,栈顶下一个元素是y,将栈顶元素出栈,于此同时,可确定栈顶元素的r值即为当前元素,栈顶元素的l值即为y,此时再将当前元素与栈顶元素y进行比较。</p>
 <p>3.得到结果</p>
-<h3 id="问题变形"><a href="#问题变形" class="headerlink" title="问题变形"></a>问题变形</h3><h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><h3 id="如何找状态表示"><a href="#如何找状态表示" class="headerlink" title="如何找状态表示"></a>如何找状态表示</h3><p>1.该状态表示出来的值是否唯一且确定?</p>
+<h3 id="问题变形"><a href="#问题变形" class="headerlink" title="问题变形"></a>问题变形</h3><p>1.最大矩形问题。</p>
+<p>如通过从左往右遍历一次求出最右能到达的位置,再通过从右往左遍历一次求出最左能到达的位置,这样就知道了该位置的左右边界,即矩形的w,乘以该数数值h,则得到以该值为高的最大矩形面积。</p>
+<h2 id="动态规划"><a href="#动态规划" class="headerlink" title="动态规划"></a>动态规划</h2><h3 id="如何找状态表示"><a href="#如何找状态表示" class="headerlink" title="如何找状态表示"></a>如何找状态表示</h3><p>1.该状态表示出来的值是否唯一且确定?</p>
 <p>例题:<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/maximum-score-from-performing-multiplication-operations/">1770.执行乘法运算的最大分数</a></p>
 <p>如f[i][j]表示从左边取i个,从右边取j个的分数的最大值,是可以表示的。</p>
 <h2 id="数学"><a href="#数学" class="headerlink" title="数学"></a>数学</h2><h3 id="规律寻找"><a href="#规律寻找" class="headerlink" title="规律寻找"></a>规律寻找</h3><p>1.注意题目的隐含条件,如<code>奇数</code>,<code>偶数</code>.</p>
-<hr>
+<h2 id="一道算法题的思考"><a href="#一道算法题的思考" class="headerlink" title="一道算法题的思考"></a>一道算法题的思考</h2><h3 id="1-按算法题的内容分析"><a href="#1-按算法题的内容分析" class="headerlink" title="1.按算法题的内容分析"></a>1.按算法题的内容分析</h3><h3 id="2-枚举所有的算法考点"><a href="#2-枚举所有的算法考点" class="headerlink" title="2.枚举所有的算法考点"></a>2.枚举所有的算法考点</h3><hr>
 <p>(待完善…)</p>
 
     
@@ -398,6 +400,15 @@
 
 
 <nav id="article-nav">
+  
+    <a href="/2021/03/06/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%85%AB/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          面试-一次模拟面试-八
+        
+      </div>
+    </a>
   
   
     <a href="/2021/03/04/%E9%9D%A2%E8%AF%95-%E5%AD%97%E8%8A%82%E5%90%8E%E7%AB%AF%E7%94%B5%E5%95%86%E5%AE%9E%E4%B9%A0%E4%B8%80%E3%80%81%E4%BA%8C%E3%80%81%E4%B8%89%E9%9D%A2/" id="article-nav-older" class="article-nav-link-wrap">

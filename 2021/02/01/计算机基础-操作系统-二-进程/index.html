@@ -6,66 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://caciacc.top">
-  <title>计算机基础-计算机网络-一 | caciaCC的博客</title>
+  <title>计算机基础-操作系统-二-进程 | caciaCC的博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="1.2.2 OSI参考模型(一)计算机网络分层结构  7层OSI参考模型(法定标准)  4层TCP&#x2F;IP参考模型(事实标准)   由1和2得到5层的体系结构">
+  <meta name="description" content="2.1进程的定义、组成、组织方式、特征进程的定义程序段、数据段、PCB三部分组成了进程实体(进程映象)。一般情况下,我们把进程实体简称为进程。创建进程即创建进程实体中的PCB,撤销进程即撤销进程实体中的PCB,PCB是进程存在的唯一标识。   进程是进程实体的运行过程,是系统进行资源分配和调度的一个单位。 进程的组成进程实体由程序段、数据段、PCB三部分组成。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="计算机基础-计算机网络-一">
-<meta property="og:url" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/index.html">
+<meta property="og:title" content="计算机基础-操作系统-二-进程">
+<meta property="og:url" content="http://caciacc.top/2021/02/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%8C-%E8%BF%9B%E7%A8%8B/index.html">
 <meta property="og:site_name" content="caciaCC的博客">
-<meta property="og:description" content="1.2.2 OSI参考模型(一)计算机网络分层结构  7层OSI参考模型(法定标准)  4层TCP&#x2F;IP参考模型(事实标准)   由1和2得到5层的体系结构">
+<meta property="og:description" content="2.1进程的定义、组成、组织方式、特征进程的定义程序段、数据段、PCB三部分组成了进程实体(进程映象)。一般情况下,我们把进程实体简称为进程。创建进程即创建进程实体中的PCB,撤销进程即撤销进程实体中的PCB,PCB是进程存在的唯一标识。   进程是进程实体的运行过程,是系统进行资源分配和调度的一个单位。 进程的组成进程实体由程序段、数据段、PCB三部分组成。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/0.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/1.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/2.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/3.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/4.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/5.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/6.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/7.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/8.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/9.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/10.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/11.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/12.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/40.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/13.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/14.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/15.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/16.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/17.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/18.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/19.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/20.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/21.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/22.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/23.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/24.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/25.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/26.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/27.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/28.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/29.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/30.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/31.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/32.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/33.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/34.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/35.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/36.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/37.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/36.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/38.jpg">
-<meta property="og:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/39.jpg">
-<meta property="article:published_time" content="2021-02-09T11:03:04.000Z">
-<meta property="article:modified_time" content="2021-03-05T06:11:01.251Z">
+<meta property="og:image" content="http://caciacc.top/2021/02/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%8C-%E8%BF%9B%E7%A8%8B/0.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/02/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%8C-%E8%BF%9B%E7%A8%8B/1.jpg">
+<meta property="article:published_time" content="2021-02-01T07:17:48.000Z">
+<meta property="article:modified_time" content="2021-03-06T06:05:13.417Z">
 <meta property="article:author" content="caciaCC">
-<meta property="article:tag" content="计算机网络">
+<meta property="article:tag" content="操作系统">
 <meta property="article:tag" content="计算机基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/0.jpg">
+<meta name="twitter:image" content="http://caciacc.top/2021/02/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%8C-%E8%BF%9B%E7%A8%8B/0.jpg">
   
     <link rel="alternative" href="/atom.xml" title="caciaCC的博客" type="application/atom+xml">
   
@@ -292,22 +252,22 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-计算机基础-计算机网络-一" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-计算机基础-操作系统-二-进程" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      计算机基础-计算机网络-一
+      计算机基础-操作系统-二-进程
     </h1>
   
 
 
   
   
-<a href="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/" class="archive-article-date">
-        <time datetime="2021-02-09T11:03:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-09</time>
+<a href="/2021/02/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%8C-%E8%BF%9B%E7%A8%8B/" class="archive-article-date">
+        <time datetime="2021-02-01T07:17:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-01</time>
 </a>
 
   
@@ -320,7 +280,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">6.5k字</span>
+      <span class="post-count">11.3k字</span>
     </span>
   </span>
 
@@ -329,7 +289,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">23分</span>
+      <span class="post-count">39分</span>
     </span>
   </span>
 </div>
@@ -340,350 +300,202 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="1-2-2-OSI参考模型-一"><a href="#1-2-2-OSI参考模型-一" class="headerlink" title="1.2.2 OSI参考模型(一)"></a>1.2.2 OSI参考模型(一)</h2><p>计算机网络分层结构</p>
-<ol>
-<li><p>7层OSI参考模型(法定标准)</p>
-</li>
-<li><p>4层TCP/IP参考模型(事实标准)</p>
-</li>
-</ol>
-<p>由1和2得到5层的体系结构</p>
+    <h2 id="2-1进程的定义、组成、组织方式、特征"><a href="#2-1进程的定义、组成、组织方式、特征" class="headerlink" title="2.1进程的定义、组成、组织方式、特征"></a>2.1进程的定义、组成、组织方式、特征</h2><h3 id="进程的定义"><a href="#进程的定义" class="headerlink" title="进程的定义"></a>进程的定义</h3><p>程序段、数据段、PCB三部分组成了进程实体(进程映象)。一般情况下,我们把进程实体简称为进程。创建进程即创建进程实体中的PCB,撤销进程即撤销进程实体中的PCB,PCB是进程存在的唯一标识。  </p>
+<p>进程是进程实体的运行过程,是系统进行资源分配和调度的一个单位。</p>
+<h3 id="进程的组成"><a href="#进程的组成" class="headerlink" title="进程的组成"></a>进程的组成</h3><p>进程实体由程序段、数据段、PCB三部分组成。  </p>
 <a id="more"></a>
-<h3 id="ISO-OSI参考模型–怎么来的"><a href="#ISO-OSI参考模型–怎么来的" class="headerlink" title="ISO/OSI参考模型–怎么来的?"></a>ISO/OSI参考模型–怎么来的?</h3><p>目的:支持异构网络系统的互联互通</p>
-<p>国际标准化组织(ISO)于1984年提出开放系统互连(OSI)参考模型。</p>
-<p>但是!理论成功,市场失败。</p>
-<h3 id="ISO-OSI参考模型"><a href="#ISO-OSI参考模型" class="headerlink" title="ISO/OSI参考模型"></a>ISO/OSI参考模型</h3><p>1.应用层</p>
-<p>2.表示层</p>
-<p>3.会话层</p>
-<p>4.传输层</p>
-<p>5.网络层</p>
-<p>6.数据链路层</p>
-<p>7.物理层</p>
-<p>记忆:物联网淑慧使用</p>
-<p>123层-资源子网(数据处理)</p>
-<p>567层-通信子网(数据通信)</p>
-<h3 id="ISO-OSI参考模型解释通信过程"><a href="#ISO-OSI参考模型解释通信过程" class="headerlink" title="ISO/OSI参考模型解释通信过程"></a>ISO/OSI参考模型解释通信过程</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/0.jpg" alt="0.jpg"></p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/1.jpg" alt="1.jpg"></p>
-<h2 id="1-2-3-OSI参考模型-二"><a href="#1-2-3-OSI参考模型-二" class="headerlink" title="1.2.3 OSI参考模型(二)"></a>1.2.3 OSI参考模型(二)</h2><h3 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h3><p>所有能与用户交互并产生网络流量的程序</p>
-<p>典型应用层服务:</p>
-<p>FTP(文件传输)</p>
-<p>SMTP(电子邮件)</p>
-<p>HTTP(万联网)</p>
-<p>…</p>
-<h3 id="表示层"><a href="#表示层" class="headerlink" title="表示层"></a>表示层</h3><p>用于处理在两个通信系统中交换信息的表示方式(语法与语义)</p>
-<p>功能一:数据格式变换(翻译官)</p>
-<p>功能二:数据加密解密</p>
-<p>功能三:数据压缩和恢复</p>
-<p>主要协议:JPEG/ASCII</p>
-<h3 id="会话层"><a href="#会话层" class="headerlink" title="会话层"></a>会话层</h3><p>向表示层实体、用户进程提供<code>建立连接</code>并在连接上<code>有序</code>地<code>传输</code>数据。</p>
-<p>这是会话,也是建立同步(SYN)</p>
-<p>功能一:建立、管理、中止会话</p>
-<p>功能二:使用校验点可使会话在通信失效时从校验点/同步点继续恢复通信,实现数据同步。</p>
-<p>适用于传输大文件。</p>
-<p>主要协议:ADSP、ASP </p>
-<h3 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h3><p>负责主机中的<code>两个进程</code>的通信,即<code>端到端</code>的通信。传输单位是报文段或用户数据报。</p>
-<p>功能一:<code>可</code>靠传输</p>
-<p>功能二:<code>差</code>错控制</p>
-<p>功能三:<code>流</code>量控制</p>
-<p>功能四:复<code>用</code>分用</p>
-<p>复用:多个应用层进程可同时使用下面传输层的服务</p>
-<p>分用:传输层把收到的信息分别交付给上面的应用层中相应的进程。</p>
-<p>记忆:可差流用-可差留用</p>
-<p>主要协议:TCP、UDP</p>
-<h3 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h3><p>主要任务是把<code>分组</code>从源端传到目的端,为分组交换网上的不同主机提供通信服务。网络层传输单位是<code>数据报</code>。</p>
-<p>数据报 = N * 分组</p>
-<p>功能一:路由选择-最佳路径</p>
-<p>功能二:流量控制</p>
-<p>功能三:差错控制</p>
-<p>功能四:拥塞控制</p>
-<p>若所有结点都来不及接受分组,而要丢弃大量分组的话,网络就处于拥塞状态。因此要采取一定措施,缓解这种拥塞。</p>
-<p>主要协议:IP、IPX、ICMP、IGMP、ARP、RARP、OSPF</p>
-<h3 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h3><p>主要任务是把网络层传下来的数据报<code>组装成帧</code>。</p>
-<p>数据链路层/链路层的传输单位是<code>帧</code>。</p>
-<p>功能一:成帧(定义开始帧的开始和结束)</p>
-<p>功能二:差错控制 <code>帧错+位错</code></p>
-<p>功能三:流量控制</p>
-<p>功能四:访问(接入)控制 – <code>控制对信道的访问</code></p>
-<p>主要协议:SDLC、HDLC、PPP、STP</p>
-<h3 id="物理层"><a href="#物理层" class="headerlink" title="物理层"></a>物理层</h3><p>主要任务是在<code>物理媒体</code>上实现比特流的<code>透明传输</code></p>
-<p>物理层传输单位是<code>比特</code></p>
-<p>透明传输:指不管所传数据是什么样的比特组合,都应当能够在链路上传送</p>
-<p>功能一:定义接口特性</p>
-<p>功能二:定义传输模式 <code>单工、单双工、双工</code></p>
-<p>功能三:定义传输速率</p>
-<p>功能四:比特同步</p>
-<p>功能五:比特编码</p>
-<p>主要协议:Rj45、802.3</p>
-<h2 id="1-2-4-TCP、IP参考模型和5层参考模型"><a href="#1-2-4-TCP、IP参考模型和5层参考模型" class="headerlink" title="1.2.4 TCP、IP参考模型和5层参考模型"></a>1.2.4 TCP、IP参考模型和5层参考模型</h2><h3 id="OSI参考模型与TCP-IP参考模型"><a href="#OSI参考模型与TCP-IP参考模型" class="headerlink" title="OSI参考模型与TCP/IP参考模型"></a>OSI参考模型与TCP/IP参考模型</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/2.jpg" alt="2.jpg"></p>
-<h3 id="OSI参考模型与TCP-IP参考模型相同点"><a href="#OSI参考模型与TCP-IP参考模型相同点" class="headerlink" title="OSI参考模型与TCP/IP参考模型相同点"></a>OSI参考模型与TCP/IP参考模型相同点</h3><p>1.都分层</p>
-<p>2.基于独立协议栈概念</p>
-<p>3.可以实现异构网络互联</p>
-<h3 id="OSI参考模型与TCP-IP参考模型不同点"><a href="#OSI参考模型与TCP-IP参考模型不同点" class="headerlink" title="OSI参考模型与TCP/IP参考模型不同点"></a>OSI参考模型与TCP/IP参考模型不同点</h3><p>1.OSI定义了三点:服务、协议、接口</p>
-<p>2.OSI先出现,参考模型先于协议发明,不偏向特定协议</p>
-<p>3.TCP/IP设计之初就考虑到异构网<code>互联</code>问题,将IP作为重要层次</p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/3.jpg" alt="3.jpg"></p>
-<p><code>面向连接</code>分为三个阶段,第一是建立连接,在此阶段,发出一个建立连接的请求。只有在连接成功建立之后,才能开始数据传输,这是第二阶段。接着,当数据传输完毕,必须释放连接。而面向<code>无连接</code>没有这么多阶段,它直接进行数据传输。</p>
-<h3 id="5层参考模型"><a href="#5层参考模型" class="headerlink" title="5层参考模型"></a>5层参考模型</h3><p>综合了OSI和TCP/IP的优点</p>
-<p>应用层 - 支持各种网络应用 FTP、SMTP、HTTP</p>
-<p>传输层 - 进程-进程的数据传输 TCP、UDP</p>
-<p>网络层 - 源主机到目的主机的数据分组路由与转发 IP、ICMP、OSPF等</p>
-<p>数据链路层 - 把网络层传下来的数据报组成成帧 Ethernet、PPP</p>
-<p>物理层 - 比特传输</p>
-<h3 id="5层参考模型的数据封装与解封装"><a href="#5层参考模型的数据封装与解封装" class="headerlink" title="5层参考模型的数据封装与解封装"></a>5层参考模型的数据封装与解封装</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/4.jpg" alt="4.jpg"></p>
-<h2 id="5-1传输层概述"><a href="#5-1传输层概述" class="headerlink" title="5.1传输层概述"></a>5.1传输层概述</h2><h3 id="传输层-1"><a href="#传输层-1" class="headerlink" title="传输层"></a>传输层</h3><p>只有主机才有的层次</p>
-<p>传输层的功能(为应用层提供通信服务使用网络层的服务):</p>
-<p>1.传输层提供<code>进程和进程</code>之间的逻辑通信。</p>
-<p>2.复用和分用</p>
-<p>3.传输层对收到的报文进行差错检测</p>
-<p>4.传输层的两种协议</p>
-<h3 id="传输层的两个协议"><a href="#传输层的两个协议" class="headerlink" title="传输层的两个协议"></a>传输层的两个协议</h3><p>面向连接的传输控制协议TCP</p>
-<p>传输数据之前必须建立连接,数据传送结束后要释放连接。不提供广播或多播服务。由于TCP要提供可靠的面向连接的传输服务,因此不可避免增加了许多开销:确认、流量控制、计时器及连接管理等。</p>
-<p><code>可靠、面向连接,时延大,适用于大文件。</code></p>
-<p>无连接的用户数据报协议UDP</p>
-<p>传送数据之前不需要建立连接,接到UDP报文后也不需要给出任何确认。</p>
-<p><code>不可靠,无连接,时延小,适用于小文件。</code></p>
-<h3 id="传输层的寻址与端口"><a href="#传输层的寻址与端口" class="headerlink" title="传输层的寻址与端口"></a>传输层的寻址与端口</h3><p>复用:应用层所有的应用进程都可以通过传输层再传输到网络层。</p>
-<p>分用:传输层从网络层收到数据后交付指明的应用进程。</p>
-<p>逻辑端口/软件端口 <code>端口</code>是传输层的SAP,标识主机中的应用进程。</p>
-<p>端口号只有本地意义,在因特网中不同计算机的相同端口是没有联系的。</p>
-<p>端口号长度是16bit,能标识65536个不同的端口。</p>
-<p>端口号(按范围分):</p>
-<p>1.服务端使用的端口号</p>
-<p>1.1熟知端口号:给TCP/IP最重要的一些应用程序,让所有用户都知道。(0-1023)</p>
-<p>1.2登记端口号:为没有熟知端口号的应用使用的(1024-49151)</p>
-<p>2.客户端使用的端口号:仅在客户进程运行时才动态选择</p>
-<p>49152-65535</p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/5.jpg" alt="5.jpg"></p>
-<p>在网络中采用发送方和接收方的套接字组合来识别端点,套接字唯一标识了网络中一个主机和它上面的一个进程。</p>
-<p>套接字Socket=(主机IP地址,端口号)</p>
-<h2 id="5-2UDP协议"><a href="#5-2UDP协议" class="headerlink" title="5.2UDP协议"></a>5.2UDP协议</h2><h3 id="用户数据报协议UDP"><a href="#用户数据报协议UDP" class="headerlink" title="用户数据报协议UDP"></a>用户数据报协议UDP</h3><p>UDP只是在IP数据报服务之上增加了很少功能,即复用分用和差错检测功能。</p>
-<p>UDP的主要特点:</p>
-<p>1.UDP是<code>无连接</code>的,减少开销和发送数据之前的时延。</p>
-<p>2.UDP使用最大努力交付,即<code>不保证可靠交付</code>。</p>
-<p>3.UDP是<code>面向报文</code>的,适合一次性传输少量数据的网络应用。</p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/6.jpg" alt="6.jpg"></p>
-<p>4.UDP无拥塞控制,适合很多实时应用。</p>
-<p>5.UDP首部开销小,8B,TCP20B。</p>
-<h3 id="UDP首部格式"><a href="#UDP首部格式" class="headerlink" title="UDP首部格式"></a>UDP首部格式</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/7.jpg" alt="7.jpg"></p>
-<p>分用时,找不到对应的目的端口号,就丢弃报文,并给发送方发送ICMP”端口不可达”差错报告报文。</p>
-<h3 id="UDP校验"><a href="#UDP校验" class="headerlink" title="UDP校验"></a>UDP校验</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/8.jpg" alt="8.jpg"></p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/9.jpg" alt="9.jpg"></p>
-<h2 id="5-3-1-TCP协议特点和TCP报文段格式"><a href="#5-3-1-TCP协议特点和TCP报文段格式" class="headerlink" title="5.3.1 TCP协议特点和TCP报文段格式"></a>5.3.1 TCP协议特点和TCP报文段格式</h2><h3 id="TCP协议的特点"><a href="#TCP协议的特点" class="headerlink" title="TCP协议的特点"></a>TCP协议的特点</h3><p>1.TCP是<code>面向连接</code>(虚连接)的传输层协议。打call</p>
-<p>2.每一条TCP连接只能有两个端点,每一条TCP只能是点对点的。</p>
-<p>3.TCP提供可靠交付的服务,无差错、不丢失、无重复、按序到达。<code>可靠有序,不丢不重</code></p>
-<p>4.TCP提供全双工通信 =&gt; 发送缓冲(准备发送的数据&amp;已发送但尚未收到确认的数据) &lt;=&gt; 接收缓冲0</p>
-<p>5.TCP面向字节流 =&gt; TCP把应用程序交下来的数据看成仅仅是一连串的<code>无结构的字节流</code>。</p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/10.jpg" alt="10.jpg"></p>
-<h3 id="TCP报文段首部格式"><a href="#TCP报文段首部格式" class="headerlink" title="TCP报文段首部格式"></a>TCP报文段首部格式</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/11.jpg" alt="11.jpg"></p>
-<p>序号:在一个TCP连接中传送的字节流中的每一个字节都按顺序编号,本字段表示本报文段所发送数据的<code>第一个字节的序号</code>。</p>
-<p>确认号:期望收到对方下一个报文段的第一个数据字节的序号。若确认号为N,则证明到序号N-1为止的所有数据都已正确接收。</p>
-<p>数据偏移(首部长度):TCP报文段的数据起始处距离TCP报文段的起始处有多远,以4B为单位,即1个数值是4B。</p>
-<p><code>紧急位URG</code>:URG=1,标明此报文段中有紧急数据,是高优先级的数据,应尽快传送,不用在缓存里排队,配合紧急指针字段使用。</p>
-<p><code>确认位ACK</code>:ACK=1时确认号有效,在连接建立后所有传送的报文段都必须把ACK置为1。</p>
-<p>推送位PSH:PSH=1时,接收方尽快交付接受应用进程,不再等到缓存填满再向上交付。</p>
-<p>复位RST:RST=1时,表明TCP连接中出现严重差错,必须释放连接,然后再重新建立传输链接。</p>
-<p><code>同步位SYN</code>: SYN=1时,表明是一个连接请求/连接接受报文。</p>
-<p><code>终止位</code>: FIN=1时,表明此报文段发送方数据已发完,要求释放连接。</p>
-<p>窗口:指的是发送本报文段的一方的接收窗口,即现在允许对方发送的数据量。</p>
-<p><code>校验和</code>: 检验首部+数据,检验时要加上12B伪首部,第四个字段为6。</p>
-<p><code>紧急指针</code>:URG=1时才有意义,指出本报文段中紧急数据的字节数。</p>
-<p><code>选项</code>:最大报文段长度MSS、窗口扩大、时间戳、选择确认…</p>
-<h2 id="5-3-2-TCP连接管理"><a href="#5-3-2-TCP连接管理" class="headerlink" title="5.3.2 TCP连接管理"></a>5.3.2 TCP连接管理</h2><h3 id="TCP连接管理"><a href="#TCP连接管理" class="headerlink" title="TCP连接管理"></a>TCP连接管理</h3><p>TCP连接传输三个阶段:</p>
-<p>连接建立-&gt;数据发送-&gt;连接释放</p>
-<p>TCP连接的建立采用<code>客户服务器</code>方式,主动发起连接建立的应用程序叫做客户,而被动等待连接建立的应用进程叫服务器。</p>
-<h3 id="TCP的连接建立"><a href="#TCP的连接建立" class="headerlink" title="TCP的连接建立"></a>TCP的连接建立</h3><p>假设运行在一台主机(客户)上的一个进程想与另一台主机(服务器)上的一个进程建立一条连接,客户应用进程首先通知客户TCP,他想建立一个与服务器上某个进程之间的连接,客户中的TCP会用以下步骤与服务器中的TCP建立一条TCP连接:</p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/12.jpg" alt="12.jpg"></p>
-<p>1:客户端发送连接请求报文段,无应用层数据。SYN=1,seq=x(随机)</p>
-<p>2:服务器端为该TCP连接<code>分配缓存和变量</code>,并向客户端返回<code>确认报文段</code>,允许连接,无应用层数据。<br>SYN=1,ACK=1,seq=y(随机),ack=x+1</p>
-<p>3:客户端为该TCP连接<code>分配缓存和变量</code>,并向服务器端返回确认的确认,可以携带数据。</p>
-<p>SYN=0,ACK=1,seq=x+1,ack=y+1</p>
-<h3 id="SYN洪泛攻击"><a href="#SYN洪泛攻击" class="headerlink" title="SYN洪泛攻击"></a>SYN洪泛攻击</h3><p>SYN洪泛攻击发生在OSI第四层,这种方式利用TCP协议的特性,就是三次握手。攻击者发送TCP SYN,SYN是TCP三次握手中的<code>第一个数据包</code>,而当服务器返回ACK后,该攻击者就不对其进行再确认,那这个TCP连接就处于挂起状态,也就是所谓的半连接状态,服务器收不到再确认的话,还会重复发送ACK给攻击者。这样更加会浪费服务器的资源。攻击者就对服务器发送非常大量的这种TCP连接,由于每一个都没法完成三次握手,所以在服务器上,这些TCP会因为挂起状态而消耗CPU和内存,最后服务器可能死机,就无法为正常用户提供服务了。</p>
-<p>解决方法:设置<code>SYN cookie</code></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SYN Cookie是对TCP服务器端的三次握手协议作一些修改，专门用来防范SYN Flood攻击的一种手段。它的原理是，在TCP服务器收到TCP SYN包并返回TCP SYN+ACK包时，不分配一个专门的数据区，而是根据这个SYN包计算出一个cookie值。在收到TCP ACK包时，TCP服务器在根据那个cookie值检查这个TCP ACK包的合法性。如果合法，再分配专门的数据区进行处理未来的TCP连接。</span><br></pre></td></tr></table></figure>
-<h3 id="TCP的连接释放"><a href="#TCP的连接释放" class="headerlink" title="TCP的连接释放"></a>TCP的连接释放</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/40.jpg" alt="40.jpg"><br>参与一条TCP连接的两个进程中的任何一个都能终止该连接,连接结束后,主机中的”资源”(缓存和变量)将被释放</p>
-<p>1:客户端发送连接释放报文段,停止发送数据,主动关闭TCP连接。</p>
-<p>  FIN=1,seq=u</p>
-<p>2:服务端回送一个确认报文段,客户到服务器这个方向的连接就释放了–半关闭状态</p>
-<p>  ACK=1,seq=v,ack=u+1</p>
-<p>3:服务器端发完数据,就发出连接释放报文段,主动关闭TCP连接。</p>
-<p>FIN=1,ACK=1,seq=w,ack=u+1</p>
-<p>4:客户端回送一个确认报文段,再等到时间等待计时器设置的2MSL(最长报文段寿命)后,连接彻底关闭。</p>
-<p>ACK=1,seq=u+1,ack=w+1</p>
-<h2 id="5-3-3-TCP可靠传输"><a href="#5-3-3-TCP可靠传输" class="headerlink" title="5.3.3 TCP可靠传输"></a>5.3.3 TCP可靠传输</h2><h3 id="TCP可靠传输"><a href="#TCP可靠传输" class="headerlink" title="TCP可靠传输"></a>TCP可靠传输</h3><p>传输层-使用TCP实现可靠传输</p>
-<p>网络层-提供尽最大努力交付,不可靠传输</p>
-<p>可靠:保证接受方进程从缓冲区读出的字节流与发送方的字节流是完全一样的。</p>
-<p>TCP实现可靠传输的机制</p>
-<p>1.校验</p>
-<p>与UDP校验一样,增加伪首部</p>
-<p>2.序号</p>
-<p>3.确认</p>
-<p>4.重传</p>
-<h3 id="序号"><a href="#序号" class="headerlink" title="序号"></a>序号</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/13.jpg" alt="13.jpg"></p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/14.jpg" alt="14.jpg"></p>
-<h3 id="重传"><a href="#重传" class="headerlink" title="重传"></a>重传</h3><p>确认重传不分家,TCP的发送方在<code>规定的时间</code>(重传时间)内没有收到确认就要重传已发送的报文段。– <code>超时重传</code></p>
-<p>TCP采用自适应算法:动态改变重传时间RTTs(加权平均往返时间)</p>
-<p><code>冗余ACK(冗余确认)</code></p>
-<p>每当比期望序号大的失序报文段到达时,发送一个<code>冗余ACK</code>,指明下一个期待字节的序号。</p>
-<p>发送方已发送1、2、3、4、5报文段</p>
-<p>接受方收到1,返回给1的确认(确认号为2的第一个字节)</p>
-<p>接受方收到3,仍返回给1的确认(确认号位2的第一个字节)</p>
-<p>接受方收到4,仍返回给1的确认(确认号位2的第一个字节)</p>
-<p>接受方收到5,仍返回给1的确认(确认号位2的第一个字节)</p>
-<p>发送方收到3个对于报文段1的冗余ACK=&gt;认为2报文段丢失,重传2号报文段 <code>快速重传</code></p>
-<h2 id="5-3-4-TCP流量控制"><a href="#5-3-4-TCP流量控制" class="headerlink" title="5.3.4 TCP流量控制"></a>5.3.4 TCP流量控制</h2><h3 id="TCP流量控制"><a href="#TCP流量控制" class="headerlink" title="TCP流量控制"></a>TCP流量控制</h3><p>流量控制:让发送放慢点,要让接受方来得及接收。</p>
-<p>TCP采用<code>滑动窗口</code>机制实现流量控制。</p>
-<p>在通信过程中,接收方根据自己<code>接收缓存的大小</code>,动态地调整发送方的发送窗口的大小,即接收窗口rwnd(接收放设置确认报文段的<code>窗口字段</code>来将rwnd通知给发送方),发送方的<code>发送窗口取接收窗口rwnd和拥塞窗口cwnd的最小值</code>。</p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/15.jpg" alt="15.jpg"></p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/16.jpg" alt="15.jpg"></p>
-<p>TCP为每一个连接设有一个持续计时器,只要TCP连接的一方收到对方的零窗口通知,就启动持续计时器。</p>
-<p>若持续计时器设置的时间到期,就发送一个零窗口<code>探测报文段</code>。接收方收到探测报文段时给出现在的窗口值。</p>
-<p>若窗口仍然为0,那么发送方就重新设置持续计时器。</p>
-<h2 id="5-3-5-TCP拥塞控制"><a href="#5-3-5-TCP拥塞控制" class="headerlink" title="5.3.5 TCP拥塞控制"></a>5.3.5 TCP拥塞控制</h2><h3 id="TCP拥塞控制"><a href="#TCP拥塞控制" class="headerlink" title="TCP拥塞控制"></a>TCP拥塞控制</h3><p>出现拥塞的条件:</p>
-<p> 对资源需求的总和&gt;可用资源</p>
-<p>网络中许多资源同时呈现供应不足-&gt;网络性能变坏-&gt;网络吞吐量将随输入负荷增大而下降</p>
-<p>拥塞控制:<br>    防止过多的数据注入到网络中。 <code>全局性</code></p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/17.jpg" alt="15.jpg"></p>
-<h3 id="拥塞控制四种算法"><a href="#拥塞控制四种算法" class="headerlink" title="拥塞控制四种算法"></a>拥塞控制四种算法</h3><p>1.慢开始</p>
-<p>2.拥塞避免</p>
-<p>3.快重传</p>
-<p>4.快恢复</p>
-<p>假定:<br>1.数据单方向传送,而另一个方向只传送确认</p>
-<p>2.接收方总是有足够大的缓存空间,因此发送窗口大小取决于拥塞程度</p>
-<p>发送窗口=Min{接收窗口rwnd,拥塞窗口cwnd}</p>
-<p>接收窗口: <code>接收方</code>根据接受缓存设置的值,并告知给发送方,反映接收方容量。</p>
-<p>拥塞窗口: <code>发送方</code>根据自己估算的网络拥塞程度而设置的窗口值,反映网络当前容量。</p>
-<h3 id="慢开始与拥塞避免"><a href="#慢开始与拥塞避免" class="headerlink" title="慢开始与拥塞避免"></a>慢开始与拥塞避免</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/18.jpg" alt="15.jpg"></p>
-<h3 id="快重传和快恢复"><a href="#快重传和快恢复" class="headerlink" title="快重传和快恢复"></a>快重传和快恢复</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/19.jpg" alt="15.jpg"></p>
-<h2 id="5-4传输层总结"><a href="#5-4传输层总结" class="headerlink" title="5.4传输层总结"></a>5.4传输层总结</h2><h2 id="6-1网络应用模型"><a href="#6-1网络应用模型" class="headerlink" title="6.1网络应用模型"></a>6.1网络应用模型</h2><h3 id="应用层概述"><a href="#应用层概述" class="headerlink" title="应用层概述"></a>应用层概述</h3><p>应用层对应用程序的通信提供服务。</p>
-<p>应用层协议定义:</p>
-<p> 应用进程交换的报文类型,请求还是响应?</p>
-<p> 各种报文类型的语法,如报文中个各个字段及其详细描述。</p>
-<p> 字段的语义,即包含在字段中的信息的含义。</p>
-<p> 进程何时、如何发送报文,以及对报文进行响应的规则。</p>
-<p>应用层的<code>功能</code></p>
-<p>文件传输、访问和管理 FTP</p>
-<p>电子邮件   SMTP、POP3</p>
-<p>虚拟终端   HTTP</p>
-<p>查询服务和远程作业登录 DNS</p>
-<h3 id="网络应用模型"><a href="#网络应用模型" class="headerlink" title="网络应用模型"></a>网络应用模型</h3><p>客户/服务模型(Client/Server)</p>
-<p>P2P模型(Peer-to-peer)</p>
-<h3 id="客户-服务器-C-S-模型"><a href="#客户-服务器-C-S-模型" class="headerlink" title="客户/服务器(C/S)模型"></a>客户/服务器(C/S)模型</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/20.jpg" alt="20.jpg"></p>
-<p>服务器:<code>提供计算服务</code>的设备。</p>
-<p>1.永久提供服务</p>
-<p>2.永久性访问地址/域名</p>
-<p>客户机:<code>请求计算服务</code>的主机<br>1.与服务器通信,使用服务器提供的服务  </p>
-<p>2.间隙性接入网络</p>
-<p>3.可能使用动态IP地址</p>
-<p>4.不与其他客户机直接通信</p>
-<p>应用:Web,文件传输FTP,远程登录,电子邮件</p>
-<p><code>网络健壮性差</code></p>
-<h3 id="P2P模型"><a href="#P2P模型" class="headerlink" title="P2P模型"></a>P2P模型</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/21.jpg" alt="21.jpg"></p>
-<p>不存在永远在线的服务器</p>
-<p>每个主机既可以<code>提供服务</code>,也可以<code>请求服务</code></p>
-<p>任意端系统/节点之间可以<code>直接通讯</code></p>
-<p>节点间歇性接入网络</p>
-<p>节点可能改变IP地址</p>
-<p>可扩展性好</p>
-<p>网络健壮性强</p>
-<h2 id="6-2-DNS系统"><a href="#6-2-DNS系统" class="headerlink" title="6.2 DNS系统"></a>6.2 DNS系统</h2><h3 id="DNS系统"><a href="#DNS系统" class="headerlink" title="DNS系统"></a>DNS系统</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/22.jpg" alt="22.jpg"></p>
-<h3 id="域名"><a href="#域名" class="headerlink" title="域名"></a>域名</h3><p>根</p>
-<p>顶级域名</p>
-<p>1.国家顶级域名 cn,us,uk</p>
-<p>2.通用顶级域名 com,net,org,int,aero,museum,travel</p>
-<p>3.基础结构域名/反向域名 arpa</p>
-<p>二级域名</p>
-<p>1.类别域名 ac,com,edu,gov,mil,net,org</p>
-<p>2.行政区域名 用于我国各省、自治区、直辖市 bj,js</p>
-<p>3.自己申请的 cctv、cskaoyan</p>
-<p>三级域名</p>
-<p>四级域名</p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/23.jpg" alt="23.jpg"></p>
-<h3 id="域名服务器"><a href="#域名服务器" class="headerlink" title="域名服务器"></a>域名服务器</h3><p>根域名服务器</p>
-<p>顶级域名服务器</p>
-<p>权限域名服务器</p>
-<p>本地域名服务器:当一个主机发出DNS查询请求时,这个查询请求报文就发给本地域名服务器。</p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/24.jpg" alt="24.jpg"></p>
-<h3 id="域名解析过程"><a href="#域名解析过程" class="headerlink" title="域名解析过程"></a>域名解析过程</h3><p>本地域名服务器</p>
-<p>1.递归查询</p>
-<p>2.迭代查询</p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/25.jpg" alt="25.jpg"></p>
-<p>高速缓存(动态更新):先查询主机高速缓存,查不到再查询本地域名服务器高速缓存。=&gt; 大大减轻域名服务器的负荷、使得DNS查询请求和回答报文的数量大大减少、加快DNS请求的速度。</p>
-<h2 id="6-3-文件传输协议FTP"><a href="#6-3-文件传输协议FTP" class="headerlink" title="6.3 文件传输协议FTP"></a>6.3 文件传输协议FTP</h2><h3 id="文件传送协议"><a href="#文件传送协议" class="headerlink" title="文件传送协议"></a>文件传送协议</h3><p>文件传送协议FTP(File Transfer Protocol)-提供不同种类主机系统(硬、软件体系等都可以不同)之间的文件传输能力。</p>
-<p>简单文件传送协议TFTP(Trivial File Transfer Protocol)</p>
-<p><code>拷贝</code>:<br>1.<code>上传</code><br>2.<code>下载</code></p>
-<h3 id="FTP服务器和用户端"><a href="#FTP服务器和用户端" class="headerlink" title="FTP服务器和用户端"></a>FTP服务器和用户端</h3><p>FTP是基于客户/服务器(C/S)的协议。</p>
-<p>用户通过一个客户机程序连接至远程计算机上运行的服务器程序。</p>
-<p>依照<code>FTP</code>协议提供服务,进行文件传送的计算机就是<code>FTP服务端</code>。</p>
-<p>连接FTP服务器,遵循FTP协议与服务器传送文件的电脑就是<code>FTP客户端</code>。</p>
-<h3 id="FTP工作原理"><a href="#FTP工作原理" class="headerlink" title="FTP工作原理"></a>FTP工作原理</h3><p><code>登陆</code> ftp地址 用户名&amp;密码</p>
-<p>匿名登陆:互联网中很大一部分FTP服务器被称为”匿名”(Anonymous)FTP服务器。这类服务器的目的是向公众提供文件拷贝服务,不要求用户事先在该服务器进行<code>登陆注册</code>,也不需要取得FTP服务器的<code>授权</code>。</p>
-<p>Anonymous(匿名文件传输)能够使用户与远程主机建立连接并以匿名身份从远程主机上拷贝文件,而不必是该远程主机的注册用户。用户使用特殊的用户名”Anonymous”登陆FTP服务,就可访问远程主机上公开的文件。</p>
-<p>FTP使用TCP实现可靠传输。</p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/26.jpg" alt="26.jpg"></p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/27.jpg" alt="27.jpg"></p>
-<p><code>控制</code>连接<code>始终</code>保持</p>
-<p><code>数据</code>连接保持一会</p>
-<p>是否使用TCP 20端口建立<code>数据连接</code>与<code>传输模式</code>有关</p>
-<p><code>主动</code>方式使用TCP 20端口</p>
-<p><code>被动</code>方式由服务器和客户端自行协商决定(端口&gt;1024)</p>
-<p><code>FTP传输模式</code><br>  文本模式:ASCII模式,以文本序列传输数据;<br>  二进制模式:Binary模式,以二进制序列传输数据。</p>
-<h2 id="6-4电子邮件"><a href="#6-4电子邮件" class="headerlink" title="6.4电子邮件"></a>6.4电子邮件</h2><h3 id="电子邮件系统概述-电子邮件的信息格式"><a href="#电子邮件系统概述-电子邮件的信息格式" class="headerlink" title="电子邮件系统概述-电子邮件的信息格式"></a>电子邮件系统概述-电子邮件的信息格式</h3><p>电子邮件:</p>
-<p>1.信封 <a href="mailto:&#97;&#98;&#x63;&#64;&#x31;&#54;&#51;&#x2e;&#99;&#111;&#x6d;">&#97;&#98;&#x63;&#64;&#x31;&#54;&#51;&#x2e;&#99;&#111;&#x6d;</a></p>
-<p>2.内容 </p>
-<p>2.1 首部<br>To: <a href="mailto:&#97;&#98;&#x63;&#x40;&#x31;&#54;&#x33;&#46;&#99;&#111;&#x6d;">&#97;&#98;&#x63;&#x40;&#x31;&#54;&#x33;&#46;&#99;&#111;&#x6d;</a><br>Subject: Hello!</p>
-<p>2.2 主体 </p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/28.jpg" alt="28.jpg"></p>
-<h3 id="电子邮件系统概述-组成结构"><a href="#电子邮件系统概述-组成结构" class="headerlink" title="电子邮件系统概述-组成结构"></a>电子邮件系统概述-组成结构</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/29.jpg" alt="29.jpg"></p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/30.jpg" alt="30.jpg"></p>
-<h3 id="简单邮件传送协议SMTP"><a href="#简单邮件传送协议SMTP" class="headerlink" title="简单邮件传送协议SMTP"></a>简单邮件传送协议SMTP</h3><p>SMTP规定了在两个相互通信的<code>SMTP进程</code>之间应如何交换信息</p>
-<p>负责发送邮件的SMTP进程就是<code>SMTP客户</code>,负责接收邮件的进程就是<code>SMTP服务器</code>。</p>
-<p>SMTP规定了14条命令(几个字母)和21种应答信息(三位数字代码+简单文字说明)</p>
-<p><code>TCP连接</code> <code>端口号25</code> <code>C/</code></p>
-<p>SMTP通信三个阶段:</p>
-<p><code>连接建立</code>=&gt;<code>邮件传送</code>=&gt;<code>连接释放</code></p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/31.jpg" alt="31.jpg"></p>
-<h3 id="MIME"><a href="#MIME" class="headerlink" title="MIME"></a>MIME</h3><p>SMTP的缺点:</p>
-<p>1.SMTP不能传送可执行文件或其他二进制对象。</p>
-<p>2.SMTP仅限于传送7位ASCII码,不能传送其他非英语国家的文字。</p>
-<p>3.SMTP服务器会拒绝超过一定长度的邮件。</p>
-<p><code>通用因特网邮件扩充MIME</code></p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/32.jpg" alt="32.jpg"></p>
-<p>使电子邮件系统可以支持声音、图像、视频、多种国家语言等等。</p>
-<p><code>使得传输内容丰富多彩</code></p>
-<h3 id="邮局协议POP3"><a href="#邮局协议POP3" class="headerlink" title="邮局协议POP3"></a>邮局协议POP3</h3><p>TCP连接 端口号110 C/S  </p>
-<p>POP3工作方式</p>
-<p>1.下载并保留(在服务器)</p>
-<p>2.下载并删除</p>
-<h3 id="网际报文存取协议IMAP"><a href="#网际报文存取协议IMAP" class="headerlink" title="网际报文存取协议IMAP"></a>网际报文存取协议IMAP</h3><p>IMAP协议比POP协议复杂。当用户Pc上的IMAP客户程序打开IMAP服务器的邮箱时,用户可以看到邮箱的首部,若用户需要打开某个邮件,该邮件才上传到用户的计算机上。</p>
-<p>IMAP可以让用户在不同的地方使用不同的计算机随时上网阅读处理邮件,还允许只读邮件中的某一个部分(先看正文,有WIFI的时候再下载附件)。</p>
-<h3 id="基于万维网的电子邮件"><a href="#基于万维网的电子邮件" class="headerlink" title="基于万维网的电子邮件"></a>基于万维网的电子邮件</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/33.jpg" alt="33.jpg"></p>
-<h3 id="脑图"><a href="#脑图" class="headerlink" title="脑图"></a>脑图</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/34.jpg" alt="34.jpg"></p>
-<h2 id="6-5-万维网和HTTP协议"><a href="#6-5-万维网和HTTP协议" class="headerlink" title="6.5 万维网和HTTP协议"></a>6.5 万维网和HTTP协议</h2><h3 id="万维网概述"><a href="#万维网概述" class="headerlink" title="万维网概述"></a>万维网概述</h3><p>万维网WWW(World Wide Web)是一个大规模、联机式的信息储藏所/<code>资料空间</code>,是无数个网络站点和网页的集合。</p>
-<p>统一资源定位符<code>URL</code>-&gt;唯一标识-&gt;资源(文字、视频、音频…)</p>
-<p>URL一般形式:<br>&lt;协议&gt;(http)://&lt;主机&gt;:&lt;端口&gt;/&lt;路径&gt; <a target="_blank" rel="noopener" href="http://www.pku.edu.cn/">http://www.pku.edu.cn</a>  </p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/35.jpg" alt="35.jpg"></p>
-<p>用户通过点击超链接(<a target="_blank" rel="noopener" href="http://www.baidu.com)获取资源,这些资源通过超文本传输协议(``http``)传送给使用者./">http://www.baidu.com)获取资源,这些资源通过超文本传输协议(``HTTP``)传送给使用者。</a></p>
-<p>万维网以<code>客户/服务器</code>方式工作,用户使用的浏览器就是万维网客户程序,万维网文档所驻留的主机运行服务器程序。</p>
-<p>万维网使用超文本标记语言<code>HTML</code>,使得万维网页面设计者可以很方便地从一个界面的链接转到另一个界面,并能够在自己的屏幕上显示出来。</p>
-<h3 id="超文本传输协议HTTP"><a href="#超文本传输协议HTTP" class="headerlink" title="超文本传输协议HTTP"></a>超文本传输协议HTTP</h3><p>HTTP协议定义了浏览器(万维网客户进程)怎样向万维网服务器请求万维网文档,以及服务器怎样把文档传送给浏览器。</p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/36.jpg" alt="36.jpg"></p>
-<h3 id="HTTP协议的特点"><a href="#HTTP协议的特点" class="headerlink" title="HTTP协议的特点"></a>HTTP协议的特点</h3><p>HTTP协议是<code>无状态</code>的。</p>
-<p>但是在实际工作中,一些万维网站点常常希望能够识别用户。如淘宝购物车</p>
-<p>于是使用<code>Cookie</code></p>
-<p>Cookie是存储在用户主机中的<code>文本文件</code>,记录一段时间内某用户(使用识别码标识,如”123456”)的访问记录。<br>=&gt;提供个性化服务</p>
-<p>HTTP采用<code>TCP</code>作为运输层协议,但<code>HTTP协议本身是无连接的</code>(通信双方在交换HTTP报文之前不需要先建立HTTP连接)</p>
-<p>HTTP连接方式</p>
-<p>1.持久连接Keep-alive</p>
-<p>1.1非流水线</p>
-<p>1.2流水线</p>
-<p>2.非持久连接Close</p>
-<h3 id="HTTP协议的连接方式"><a href="#HTTP协议的连接方式" class="headerlink" title="HTTP协议的连接方式"></a>HTTP协议的连接方式</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/37.jpg" alt="37.jpg"></p>
-<h3 id="超文本传输协议HTTP-报文结构"><a href="#超文本传输协议HTTP-报文结构" class="headerlink" title="超文本传输协议HTTP-报文结构"></a>超文本传输协议HTTP-报文结构</h3><p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/36.jpg" alt="36.jpg"></p>
-<p>HTTP报文:请求报文、响应报文</p>
-<p>HTTP报文是<code>面向文本</code>的,因此在报文中的每一个字段都是一些ASCII字符串。</p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/38.jpg" alt="38.jpg"></p>
-<p><img src="/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/39.jpg" alt="39.jpg"></p>
-<h2 id="6-6第六章总结"><a href="#6-6第六章总结" class="headerlink" title="6.6第六章总结"></a>6.6第六章总结</h2>
+<p>程序段:<br>程序代码本身。</p>
+<p>数据段:<br>程序运行时使用、产生的运算数据。</p>
+<p>PCB:<br>1.进程描述信息<br>2.进程控制和管理信息<br>3.资源分配清单<br>4.处理机相关信息</p>
+<!-- more -->
+<h3 id="进程的组织"><a href="#进程的组织" class="headerlink" title="进程的组织"></a>进程的组织</h3><p>进程的组织方式<br>1.链接方式(索引指针、就绪队列指令、阻塞队列指针)<br>2.索引方式(执行指针、索引表指针、阻塞表指针)</p>
+<h3 id="进程的特征"><a href="#进程的特征" class="headerlink" title="进程的特征"></a>进程的特征</h3><p>1.动态性<br>2.并发性<br>3.独立性-进程是进行资源分配、调度的基本单位<br>4.异步性-各进程以不可预知的速度向前执行,可以引起结果不同<br>5.结构性</p>
+<h2 id="2-2进程的状态与转换"><a href="#2-2进程的状态与转换" class="headerlink" title="2.2进程的状态与转换"></a>2.2进程的状态与转换</h2><h3 id="进程的状态–三种基本状态"><a href="#进程的状态–三种基本状态" class="headerlink" title="进程的状态–三种基本状态"></a>进程的状态–三种基本状态</h3><p>运行态。(占用CPU)<br>就绪态。(具备运行条件,但没有CPU)<br>阻塞态。(因等待某一事件而暂时无法运行)</p>
+<p>创建态。(为进程分配资源,初始PCB)<br>终止态。(回收资源,撤销PCB)</p>
+<h3 id="进程状态的转换"><a href="#进程状态的转换" class="headerlink" title="进程状态的转换"></a>进程状态的转换</h3><p>运行态:处理机(√)+其他(√)<br>就绪态:处理机(√)+其他(×)<br>阻塞态:处理机(×)+其他(×)  </p>
+<p>就绪态-&gt;运行态:进程被调度<br>运行态-&gt;就绪态:时间片到/CPU被其他高优先级的进程占用。<br>运行态-&gt;阻塞态:等待系统资源分配或等待某一事件的发生。(主动)<br>阻塞态-&gt;就绪态:资源分配到位,等待的事件发生。(被动)</p>
+<p>创建态-&gt;就绪态:系统完成创建进程相关的工作。<br>运行态-&gt;终止态:进程运行结束,或运行过程中遇到不可修复的错误。  </p>
+<h2 id="2-3进程控制"><a href="#2-3进程控制" class="headerlink" title="2.3进程控制"></a>2.3进程控制</h2><h3 id="什么是进程控制"><a href="#什么是进程控制" class="headerlink" title="什么是进程控制?"></a>什么是进程控制?</h3><p>进程控制就是实现进程状态的转换。</p>
+<h3 id="如何实现进程控制"><a href="#如何实现进程控制" class="headerlink" title="如何实现进程控制?"></a>如何实现进程控制?</h3><p>用原语来实现进程控制,原语的特点是必须一气呵成,不能中断。<br>这种不能被中断的操作被称为原子操作。<br>原语采用关中断和开中断指令实现。  </p>
+<p>原语运行在核心态。<br>关中断和开中断指令是只能在核心态下进行的特权指令。</p>
+<h3 id="进程控制相关的原语"><a href="#进程控制相关的原语" class="headerlink" title="进程控制相关的原语"></a>进程控制相关的原语</h3><p>无论哪个原语,所做的都是以下三类事情。<br>1.更新PCB中的信息。<br>a.所有的进程控制原语一定会修改进程状态标志。<br>b.剥夺当前运行进程的CPU使用权必然需要保存其运行环境。<br>c.某进程开始运行前必须要恢复其运行环境。<br>2.将PCB插入到合适的队列。<br>3.分配/回收资源。  </p>
+<p>举例:创建原语、撤销原语、阻塞原语、唤醒原语、切换原语。</p>
+<h2 id="2-4进程通信"><a href="#2-4进程通信" class="headerlink" title="2.4进程通信"></a>2.4进程通信</h2><h3 id="什么是进程通信"><a href="#什么是进程通信" class="headerlink" title="什么是进程通信?"></a>什么是进程通信?</h3><p>为了保证安全,一个进程不能直接访问其他进程的地址空间。</p>
+<h3 id="进程通信-共享存储"><a href="#进程通信-共享存储" class="headerlink" title="进程通信-共享存储"></a>进程通信-共享存储</h3><p>两个进程对共享空间的操作必须是互斥的。<br>互斥是由同步互斥工具实现的。</p>
+<p>共享存储分为:<br>1.基于数据结构的共享。(低级通信方式)<br>2.基于存储区的共享。(高级通信方式)  </p>
+<h3 id="进程通信-管道通信"><a href="#进程通信-管道通信" class="headerlink" title="进程通信-管道通信"></a>进程通信-管道通信</h3><p>1.管道只能实现半双工通信,某一时刻只能实现单向的传输。<br>2.各进程要互斥地访问管道。<br>3.数据是以字符流的形式写入管道的,当写满时,写进程的write()系统调用将被阻塞,等待读进程将数据取走。当读进程将数据全部取走,管道变空,此时读进程的read()系统调用将被阻塞。<br>4.没写满不允许读,没读空不允许写。<br>5.读进程最多只能一个。</p>
+<h3 id="进程通信-消息传递"><a href="#进程通信-消息传递" class="headerlink" title="进程通信-消息传递"></a>进程通信-消息传递</h3><p>进程间的数据交换以格式化的信息为单位。进程通过操作系统的发送消息/接受消息两个原语进程数据交换。  </p>
+<p>消息传递:<br>1.直接通信方式(把消息直接挂到目标进程的消息缓冲队列上)<br>2.间接通信方式(消息先发送到信箱中,故也称为信箱通信)</p>
+<h2 id="2-5线程概念和多线程模型"><a href="#2-5线程概念和多线程模型" class="headerlink" title="2.5线程概念和多线程模型"></a>2.5线程概念和多线程模型</h2><h3 id="什么是线程-为什么引入线程"><a href="#什么是线程-为什么引入线程" class="headerlink" title="什么是线程,为什么引入线程?"></a>什么是线程,为什么引入线程?</h3><p>有的进程需要同时执行很多事情,而传统的进程只能串行的执行。为此,引入了线程,来增加并发度。<br>引入线程后,线程成为了程序执行流的最小单位。<br>引入线程后,进程只作为除CPU外的资源分配的基本单位。</p>
+<h3 id="引入线程后-有什么变化"><a href="#引入线程后-有什么变化" class="headerlink" title="引入线程后,有什么变化?"></a>引入线程后,有什么变化?</h3><p>1.资源分配、调度<br>传统进程机制中,进程是资源调度和资源分配的基本单位。<br>引入线程后,进程是资源分配的基本单位,线程是调度的基本单位。<br>2.并发性<br>传统进程机制中,只能进程间并发。<br>引入线程后,各线程间也能并发,提高了并发性。<br>3.系统开销<br>传统的的进程间并发,需要切换进程的运行环境,系统开销很大。<br>线程间并发,如果是同一进程内的线程的切换,不需要切换进程的运行环境,系统开销小。<br>进入线程后,并发所带来的系统开销减小。  </p>
+<h3 id="线程的属性"><a href="#线程的属性" class="headerlink" title="线程的属性"></a>线程的属性</h3><p>线程是处理机调度的单位。<br>多CPU计算机中,各个线程可占用不同的CPU。<br>每个线程都有一个线程ID、线程控制块(TCB)。<br>线程也有就绪、阻塞、运行三种状态。<br>线程几乎不拥有系统资源<br>同一进程的不同线程间共享进程的资源。<br>由于共享内存地址空间,同一进程中的线程通信甚至无需系统干预。<br>同一进程的线程切换,不会引起进程切换。<br>不同进程的线程切换,会引起线程切换。<br>切换同进程的线程,系统开销小。<br>切换进程,系统开销大。  </p>
+<h3 id="线程的实现方式"><a href="#线程的实现方式" class="headerlink" title="线程的实现方式"></a>线程的实现方式</h3><p>1.用户级线程<br>用户级线程就是从用户的视角可以看到的线程。</p>
+<p>2.系统级线程(内核级线程)<br>系统级线程就是从操作系统内核视角可以看到的线程。</p>
+<p>在同时支持用户级线程和系统级线程的系统中,可采用两种组合的方式:将n个用户级线程映射到m个内核级线程上(n&gt;=m)。<br>内核级线程才是处理机分配的单位。</p>
+<h3 id="多线程模型"><a href="#多线程模型" class="headerlink" title="多线程模型"></a>多线程模型</h3><p>1.多对一模型(多个用户级线程-&gt;一个内核级线程)<br>2.一对一模型(一个用户级线程-&gt;一个内核级线程)<br>3.多对多模型(n-&gt;m)</p>
+<p>1.开销小,效率高,但并发低。<br>2.开销大,并发高。<br>3.集二者之所长。</p>
+<h2 id="2-2-1-处理机调度的概念、层次"><a href="#2-2-1-处理机调度的概念、层次" class="headerlink" title="2.2.1 处理机调度的概念、层次"></a>2.2.1 处理机调度的概念、层次</h2><h3 id="调度的基本概念"><a href="#调度的基本概念" class="headerlink" title="调度的基本概念"></a>调度的基本概念</h3><p>处理机调度,就是从就绪队列中按照一定的算法选择一个进程并将处理机分配给它运行,以实现进程的并发执行。  </p>
+<h3 id="调度的三个层次-高级调度"><a href="#调度的三个层次-高级调度" class="headerlink" title="调度的三个层次-高级调度"></a>调度的三个层次-高级调度</h3><p>高级调度(作业调度):按一定的原则从外存上处于后备队列的作业中挑选一个(或多个)作业,给他们分配内存等必要资源,并建立相应的进程(PCB),以使它们获得竞争处理机的权利。</p>
+<p>高级调度是辅存(外存)与内存之间的调度。每个作业只调入一次,调出一次。作业调入时会建立对应的PCB,作业调出时才撤销PCB。</p>
+<h3 id="调度的三个层次-中级调度"><a href="#调度的三个层次-中级调度" class="headerlink" title="调度的三个层次-中级调度"></a>调度的三个层次-中级调度</h3><p>引入了虚拟存储技术后,可将暂时不能运行的进程调至外存等待。等它重新具备了运行条件且内存又稍有空闲时,再重新调入内存。<br>暂时掉到外存等待的进程状态为挂起状态。其中,PCB并不会被一起调到外存,而是会常驻内存。被挂起的进程PCB会被放入到挂起队列中。<br>中级调度(内存调度),就是要决定将哪个处于挂起状态的进程重新调入内存。一个进程可能被多次调出和调入。于是中级调度频率比高级调度高。  </p>
+<h3 id="进程的挂机状态和七状态模型"><a href="#进程的挂机状态和七状态模型" class="headerlink" title="进程的挂机状态和七状态模型"></a>进程的挂机状态和七状态模型</h3><p>暂时掉到外存等待的进程状态为挂起状态。<br>挂起态又可以分为就绪挂起和阻塞挂起。  </p>
+<p>就绪挂起—&gt;激活—&gt; 就绪态<br>就绪态 —&gt;挂起—-&gt;就绪挂起<br>阻塞挂起—&gt;激活—&gt; 阻塞态<br>阻塞态 —&gt;挂起—-&gt;阻塞挂起<br>阻塞挂起 —&gt;事件出现—-&gt; 就绪挂起</p>
+<p>挂起和阻塞的区别:<br>挂起的进程映像调到外存去了,而阻塞态下的进程映像还在内存中。 </p>
+<h3 id="进程的三个层次–低级调度"><a href="#进程的三个层次–低级调度" class="headerlink" title="进程的三个层次–低级调度"></a>进程的三个层次–低级调度</h3><p>低级调度(进程调度):其主要任务是按照某种方法和策略从就绪队列中选取一个进程,将处理机分配给它。<br>进程调度是操作系统中最基本的一种调度,在一般的操作系统中都必须配置进程调度。进程调度的频率很高,一般几十毫秒一次。</p>
+<h3 id="三种调度的联系、对比"><a href="#三种调度的联系、对比" class="headerlink" title="三种调度的联系、对比"></a>三种调度的联系、对比</h3><p><img src="/2021/02/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%8C-%E8%BF%9B%E7%A8%8B/0.jpg" alt="0.jpg"></p>
+<h2 id="2-2-2进程调度的时机、切换与过程、方式"><a href="#2-2-2进程调度的时机、切换与过程、方式" class="headerlink" title="2.2.2进程调度的时机、切换与过程、方式"></a>2.2.2进程调度的时机、切换与过程、方式</h2><h3 id="进程调度"><a href="#进程调度" class="headerlink" title="进程调度"></a>进程调度</h3><p>进程调度(低级调度),就是按照某种方法和策略从就绪队列中选取一个进程,将处理机分配给它。   </p>
+<p>需要进行进程调度的情况:<br>1.主动放弃处理机(IO请求/进程正常终止/进程发生异常而终止)<br>2.被动放弃处理机(时机片用完/有更紧急的任务/有更高优先级的进程进入就绪队列)</p>
+<p>不能进行进程调度的情况:<br>1.在处理中断的过程中。<br>2.进程在操作系统内核程序临界区。<br>3.在原子操作过程中(原语)。  </p>
+<h3 id="进程调度的时机"><a href="#进程调度的时机" class="headerlink" title="进程调度的时机"></a>进程调度的时机</h3><p>进程在操作系统内核程序临界区不能进行调度和切换。 √<br>进程在临界区不能进行处理机调度。  ×  </p>
+<p>临界资源:一个时间段内只允许一个程序使用的资源,各进程只能互斥的访问临界资源。<br>临界区:访问临界资源的那段代码。</p>
+<p>内核程序临界区:一般是用来访问某种数据结构的,比如进程的就绪队列。(由各就绪进程的PCB组成)</p>
+<h3 id="进程调度的方式"><a href="#进程调度的方式" class="headerlink" title="进程调度的方式"></a>进程调度的方式</h3><p>1.非剥夺调度方式(非抢占式)<br>即只允许进程主动放弃处理机。如果有一个更重要或紧迫的进程需要使用处理机,当前进程仍然使用处理机,直到该进程终止或主动要求进入阻塞状态。  </p>
+<p>实现简单,系统开销小,但无法及时处理紧急任务。</p>
+<p>2.剥夺调度方式(抢占式)<br>当一个进程正在处理机上执行时,如果有一个更重要或紧迫的进程需要使用处理机,即立即暂停正在执行的进程,将处理机分配给更重要紧迫的那个进程。</p>
+<p>可优先处理紧急任务,也可实现时间片轮转的方式,适合分时和实时操作系统。</p>
+<h3 id="进程的切换和方式"><a href="#进程的切换和方式" class="headerlink" title="进程的切换和方式"></a>进程的切换和方式</h3><p>进程的切换:<br>1.对原来运行进程各种数据的保存。<br>2.对新的进程各种数据的恢复。  </p>
+<p>进程的切换需要付出代价,所以并不是进程切换越频繁,系统的并发度越高,过于频繁的进程切换,会让系统的效率降低。</p>
+<h2 id="2-2-3调度算法的评价指标"><a href="#2-2-3调度算法的评价指标" class="headerlink" title="2.2.3调度算法的评价指标"></a>2.2.3调度算法的评价指标</h2><h3 id="CPU利用率"><a href="#CPU利用率" class="headerlink" title="CPU利用率"></a>CPU利用率</h3><p>即CPU处于忙碌的时间占总时间的比例。  </p>
+<h3 id="系统吞吐量"><a href="#系统吞吐量" class="headerlink" title="系统吞吐量"></a>系统吞吐量</h3><p>单位时间内完成作业的数量。</p>
+<h3 id="周转时间"><a href="#周转时间" class="headerlink" title="周转时间"></a>周转时间</h3><p>周转时间即作业提交给系统开始,到作业完成为止的时间间隔。</p>
+<p>作业周转时间 = 作业完成时间 - 作业提交时间<br>平均周转时间 = (作业周转时间之和)/作业数量<br>带权周转时间 = 作业周转时间 / 作业实际运行时间<br>平均带权周转时间 = (各作业带权周转时间之和)/作业数  </p>
+<h3 id="等待时间"><a href="#等待时间" class="headerlink" title="等待时间"></a>等待时间</h3><p>等待时间就是作业处于等待处理机状态时间之和。</p>
+<p>平均等待时间即各个进程/作业等待时间的平均值。</p>
+<h3 id="响应时间"><a href="#响应时间" class="headerlink" title="响应时间"></a>响应时间</h3><p>响应时间即用户提交请求到首次产生响应的时间。</p>
+<h2 id="2-2-4-FCFS、SJF、HRRN调度算法-适合早期的批处理系统"><a href="#2-2-4-FCFS、SJF、HRRN调度算法-适合早期的批处理系统" class="headerlink" title="2.2.4 FCFS、SJF、HRRN调度算法(适合早期的批处理系统)"></a>2.2.4 FCFS、SJF、HRRN调度算法(适合早期的批处理系统)</h2><h3 id="先来先服务-FCFS"><a href="#先来先服务-FCFS" class="headerlink" title="先来先服务(FCFS)"></a>先来先服务(FCFS)</h3><p>算法思想:主要从”公平”角度考虑<br>算法规则:按照进程/作业到达的先后顺序进行服务<br>用于作业/进程调度:用于作业调度时考虑的是哪个作业先到达后备队列;用于进程调度时,考虑的是哪个作业先到达就绪队列<br>是否可抢占:非抢占式<br>优缺点:<br>优点:很公平;<br>缺点:对于长作业有利,对于短作业不利<br>是否会导致饥饿:不会   </p>
+<h3 id="短作业优先-SJF-–-短进程优先-SPF"><a href="#短作业优先-SJF-–-短进程优先-SPF" class="headerlink" title="短作业优先(SJF) – 短进程优先(SPF)"></a>短作业优先(SJF) – 短进程优先(SPF)</h3><p>算法思想:追求最短的平均等待时间,最少的平均周转时间,最少的平均平均带权周转时间<br>算法规则:最短的作业/进程优先得到服务<br>用于作业/进程调度:用于作业叫做SJF,用于进程叫做SPF<br>是否可抢占:SJF和SPF为非抢占式,但有抢占式版本(SRTN)–最短剩余时间优先<br>优缺点:<br>优点:”最短的”平均等待时间/平均周转时间;<br>缺点:对于长作业不利,对于短作业有利,可能产生饥饿。<br>是否会导致饥饿:会   </p>
+<h3 id="高响应比优先-HRRN"><a href="#高响应比优先-HRRN" class="headerlink" title="高响应比优先(HRRN)"></a>高响应比优先(HRRN)</h3><p>算法思想:要综合考虑作业/进程的等待时间和要求服务的时间<br>算法规则:选择响应比最高的作业/进程为其服务<br>用于作业/进程调度:用于作业和进程调度<br>是否可抢占:非抢占式算法<br>优缺点:<br>综合考虑了等待时间和运行时间(要求服务时间)<br>等待时间相同时,要求服务时间短的优先(SJF的优点)<br>要求服务时间相同是,等待时间长的优先(FCFS的优点)<br>对于长作业,等待时间越长,响应比越大,避免了饥饿。  </p>
+<p>是否会导致饥饿:不会  </p>
+<h2 id="2-2-5时间片轮转调度算法、优先级调度算法、多级反馈队列调度算法-适合交互式系统"><a href="#2-2-5时间片轮转调度算法、优先级调度算法、多级反馈队列调度算法-适合交互式系统" class="headerlink" title="2.2.5时间片轮转调度算法、优先级调度算法、多级反馈队列调度算法(适合交互式系统)"></a>2.2.5时间片轮转调度算法、优先级调度算法、多级反馈队列调度算法(适合交互式系统)</h2><h3 id="时间片轮转调度算法"><a href="#时间片轮转调度算法" class="headerlink" title="时间片轮转调度算法"></a>时间片轮转调度算法</h3><p>算法思想:公平、轮流地为每个进程服务,让每个进程在一定时间间隔内都能得到响应<br>算法规则:按照到达就绪队列的顺序,轮流让每个进程执行一个时间片(100ms)<br>用于作业/进程调度:用于进程调度<br>是否可抢占:抢占式算法(由时钟中断实现)<br>优缺点:<br>优点:公平;响应快,适合分时操作系统;<br>缺点:由于高频率的进程切换,因此有一定的开销;不区分任务的紧急程度;<br>是否会导致饥饿:不会  </p>
+<h3 id="优先级调度算法"><a href="#优先级调度算法" class="headerlink" title="优先级调度算法"></a>优先级调度算法</h3><p>算法思想:越来越多的应用场景需要根据任务紧急程度处理<br>算法规则:每个作业/进程有各自优先级,调度时选择优先级最高的作业/进程<br>用于作业/进程调度:用于作业调度/进程调度<br>是否可抢占:抢占式算法和非抢占式算法都有<br>优缺点:<br>优点:用优先级区分紧急程度、重要程度。适合实时操作系统。可灵活调整对各个作业/进程的偏好程度。<br>缺点:若高优先级进程源源不断地到来,可能会发生饥饿。<br>是否会导致饥饿:会  </p>
+<h3 id="多级反馈队列调度算法"><a href="#多级反馈队列调度算法" class="headerlink" title="多级反馈队列调度算法"></a>多级反馈队列调度算法</h3><p>算法思想:对其他调度算法的折中权衡<br>算法规则:<br>1.设置多级就绪队列,各级队列优先级从高到低,时间片从小到大;<br>2.新进程到达时先进入第1级队列,按FCFS原则排队等待被分配时间片,若用完时间片进程还未结束,则进程进入下一级队列队尾。如果此时已经是在最下级的队列,则重新放回该队列队尾。<br>3.只有第k级队列为空时,才会为k+1级队头的进程分配时间片<br>用于作业/进程调度:用于进程调度<br>是否可抢占:抢占式<br>优缺点:<br>优点:对各类型进程相对公平(FCFS的优点);每个到达的进程都可以快速响应(RR的优点);短进程只用较短的时间就可完成(SPF的优点);不必实现估计进程的运行时间(避免用户作假);可灵活地调整对各类进程的偏好程度;<br>是否会导致饥饿:会  </p>
+<h2 id="2-3-1进程同步、进程互斥"><a href="#2-3-1进程同步、进程互斥" class="headerlink" title="2.3.1进程同步、进程互斥"></a>2.3.1进程同步、进程互斥</h2><h3 id="什么是进程同步"><a href="#什么是进程同步" class="headerlink" title="什么是进程同步?"></a>什么是进程同步?</h3><p>同步亦称直接制约关系,它是指为完成某种任务而建立的两个或多个进程,这些进程因为需要在某些位置上协调它们的工作次序而产生的制约关系。进程间的直接制约关系就是源于它们之间的相互合作。</p>
+<h3 id="什么是进程互斥"><a href="#什么是进程互斥" class="headerlink" title="什么是进程互斥?"></a>什么是进程互斥?</h3><p>临界资源:一个时间段内只允许一个程序使用的资源,各进程只能互斥的访问临界资源。</p>
+<p>对临界资源的访问,必须互斥地进行。进程互斥是指当一个进程访问某临界资源时,另外一个想要访问该临界资源的进程必须等待。当前访问临界资源的进程访问结束,释放该资源之后,另一个进程才能够去访问临界资源。</p>
+<p>对临界资源的互斥访问,可以在逻辑上分为四个部分:<br>1.进入区(判断是否可访问,可访问则设置正在访问临界资源的标志,”上锁”,以阻止其他进程同时进入临界区)<br>2.临界区(访问临界资源的那段代码)<br>3.退出区(负责解除正在访问临界资源的标志,”解锁”)<br>4.剩余区  </p>
+<p>原则:<br>1.空闲让进<br>2.忙则等待<br>3.有限等待<br>4.让权等待</p>
+<h2 id="2-3-2进程互斥的实现方法"><a href="#2-3-2进程互斥的实现方法" class="headerlink" title="2.3.2进程互斥的实现方法"></a>2.3.2进程互斥的实现方法</h2><h3 id="单标志法"><a href="#单标志法" class="headerlink" title="单标志法"></a>单标志法</h3><p>算法思想:两个进程在访问完临界区后会把使用临界区的权限转交给另外一个进程。也就是说每个进程进入临界区的权限只能被另一个进程赋予。</p>
+<p>主要问题:违背空闲让进原则。</p>
+<h3 id="双标志先检查法"><a href="#双标志先检查法" class="headerlink" title="双标志先检查法"></a>双标志先检查法</h3><p>算法思想:设置一个布尔型的数组flag[],数组中每个元素用来标记各进程想进入临界区的意愿。每个进程在进入临界区之前先检查当前有没有别的进程想进入临界区,如果没有,则把自身对应的标志flag[ i ]设置为true,之后开始访问临界区。</p>
+<p>主要问题: 违背忙则等待原则。</p>
+<h3 id="双标志后检查法"><a href="#双标志后检查法" class="headerlink" title="双标志后检查法"></a>双标志后检查法</h3><p>算法思想:双标志先检查法的改版。先上锁,后检查。</p>
+<p>主要问题: 违背空闲让进和有限等待原则,可能产生饥饿。</p>
+<h3 id="Peterson算法"><a href="#Peterson算法" class="headerlink" title="Peterson算法"></a>Peterson算法</h3><p>算法思想:如果双方都争着进入临界区,可以尝试”孔融让梨”,主动让对方先使用临界区。</p>
+<p>问题:未遵循让权等待的原则,会发生忙等。</p>
+<h2 id="2-3-3进程互斥的硬件实现方法"><a href="#2-3-3进程互斥的硬件实现方法" class="headerlink" title="2.3.3进程互斥的硬件实现方法"></a>2.3.3进程互斥的硬件实现方法</h2><h3 id="中断屏蔽方法"><a href="#中断屏蔽方法" class="headerlink" title="中断屏蔽方法"></a>中断屏蔽方法</h3><p>利用”开/关中断”实现。(与原语实现思想相同)</p>
+<p>关中断;<br>临界区;<br>开中断;  </p>
+<p>优点:简单、高效<br>缺点:不适合于多处理机;只适用于操作系统内核进程,不适合于用户进程;</p>
+<h3 id="TestAndSet指令"><a href="#TestAndSet指令" class="headerlink" title="TestAndSet指令"></a>TestAndSet指令</h3><p>又称为TS指令或TestAndSetLock指令。<br>TSL指令是用硬件实现的,执行的过程不允许中断,只能一气呵成。</p>
+<p>优点:实现简单,无需像软件实现方法那样严格检查是否会有逻辑漏洞;适合于多处理器环境。<br>缺点:不满足让权等待的原则,会造成忙等。</p>
+<h3 id="swap指令"><a href="#swap指令" class="headerlink" title="swap指令"></a>swap指令</h3><p>swap指令是用硬件实现的,执行的过程不允许被中断,只能一气呵成。</p>
+<p>逻辑上和TSL无太大区别,和TSL优缺点一样。</p>
+<h2 id="2-3-4信号量机制"><a href="#2-3-4信号量机制" class="headerlink" title="2.3.4信号量机制"></a>2.3.4信号量机制</h2><h3 id="信号量机制"><a href="#信号量机制" class="headerlink" title="信号量机制"></a>信号量机制</h3><p>用户进程可以通过使用操作系统的一对原语来对信号量进行操作,从而很方便的实现进程互斥、进程同步。<br>信号量其实就是一个变量,可以用信号量来表示系统中某种资源的数量,如系统只有一台打印机,则信号量初始值为1。</p>
+<p>一对原语:wait(S)原语和signal(S)原语,可以把原语理解为我们自己写的函数,函数名分别为wait和signal,括号里的信号量S其实就是函数调用时传入的一个参数。</p>
+<p>wait、signal原语常简称为P、V操作。因此可把wait(S)和signal(S)两个操作分别写成P(S),V(S)</p>
+<h3 id="信号量机制–整型信号量"><a href="#信号量机制–整型信号量" class="headerlink" title="信号量机制–整型信号量"></a>信号量机制–整型信号量</h3><p>用一个整数型的变量作为信号量,用来表示系统中某种资源的数量。</p>
+<p>存在的问题:不满足让权等待的原则,且会发生忙等。</p>
+<h3 id="信号量机制–记录型信号量"><a href="#信号量机制–记录型信号量" class="headerlink" title="信号量机制–记录型信号量"></a>信号量机制–记录型信号量</h3><p>整形信号量的缺陷是存在忙等,于是人们提出记录型信号量,即用记录型数据结构表示的信号量。</p>
+<p>S.value的初值表示系统中某种资源的数量。  </p>
+<p>对信号量S的一次P操作意味着进程请求一个单位的该类资源,因此需要执行S.value–,表示资源数减1,当S.value&lt;0时表示该类资源已经分配完毕了,因此进程应调用block原语进行自我阻塞,主动放弃处理机,并插入该类资源的等待队列S.L中。可见,该机制遵循了让权等待的原则,不会出现忙等。</p>
+<p>对信号量S的一次V操作意味着进程释放一个单位的该类资源,因此需要执行S.value++,表示资源数加1,当S.value&lt;=0时表示仍然有进程在等待该类资源,因此应调用wakeup原语唤醒等待队列中第一个进程(阻塞态-&gt;就绪态)。</p>
+<p>P(S)和V(S)的操作,一般情况下S是指记录型信号量。</p>
+<h2 id="2-3-5用信号量实现进程互斥、同步、前驱关系"><a href="#2-3-5用信号量实现进程互斥、同步、前驱关系" class="headerlink" title="2.3.5用信号量实现进程互斥、同步、前驱关系"></a>2.3.5用信号量实现进程互斥、同步、前驱关系</h2><h3 id="信号量机制实现进程互斥"><a href="#信号量机制实现进程互斥" class="headerlink" title="信号量机制实现进程互斥"></a>信号量机制实现进程互斥</h3><p>1.分析并发进程的关键活动,划分临界区<br>2.设置互斥信号量mutex,初值为1<br>3.在临界区之前执行P(mutex)<br>4.在临界区之后执行V(mutex)  </p>
+<h3 id="信号量机制实现进程同步"><a href="#信号量机制实现进程同步" class="headerlink" title="信号量机制实现进程同步"></a>信号量机制实现进程同步</h3><p>进程同步:要让各并发进程按要求有序地推进。</p>
+<p>用信号量实现进程同步:<br>1.分析什么地方需要实现”同步”关系,即必须保证一前一后执行的两个操作(或两句代码)。<br>2.设置同步信号量S,初始为0。<br>3.在前操作之后执行V(S)。<br>4.在后操作之前执行P(S)。</p>
+<h3 id="信号量机制实现前驱关系"><a href="#信号量机制实现前驱关系" class="headerlink" title="信号量机制实现前驱关系"></a>信号量机制实现前驱关系</h3><p>进程P1中有句代码S1…进程P6中有句代码S6,这些代码要求按前驱图所示顺序执行。</p>
+<p>每一对前驱关系都是一个进程同步问题:<br>1.要在每一对前驱关系各设置一个同步变量。<br>2.在前操作之后执行V操作。<br>3.在后操作之前执行P操作。</p>
+<h2 id="2-3-6生产者-消费者问题"><a href="#2-3-6生产者-消费者问题" class="headerlink" title="2.3.6生产者-消费者问题"></a>2.3.6生产者-消费者问题</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>系统中一组生产者和一组消费者进程,生产者进程每次生产一个产品放入缓冲区,消费者进程每次从缓冲区中取一个产品并使用。(产品:可表示为某种数据)  </p>
+<p>生产者、消费者共享一个初始为空、大小为n的缓冲区。</p>
+<p>只有缓冲区没满时,生产者才能把产品放入缓冲区,否则必须等待。<br>只有缓冲区不空时,消费者才能从出取出产品,否则必须等待。<br>缓冲区是临界资源,各进程必须互斥地访问。</p>
+<h3 id="如何实现"><a href="#如何实现" class="headerlink" title="如何实现"></a>如何实现</h3><p>生产者、消费者共享一个初始为空、大小为n的缓冲区。<br>只有缓冲区没满时,生产者才能把产品放入缓冲区,否则必须等待。<br>只有缓冲区不空时,消费者才能从出取出产品,否则必须等待。<br>缓冲区是临界资源,各进程必须互斥地访问。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">semaphore mutex &#x3D; 1; &#x2F;&#x2F;互斥信号量,实现对缓冲区的互斥访问</span><br><span class="line">semaphore empty &#x3D; n; &#x2F;&#x2F;同步信号量,空闲缓冲区数目</span><br><span class="line">semaphore full &#x3D; 0;  &#x2F;&#x2F;同步信号量,产品数目,即非空闲缓冲区数目</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">producer()&#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        生产一个产品;</span><br><span class="line">        P(empty);</span><br><span class="line">        P(mutex);</span><br><span class="line">        把产品放入缓冲区;</span><br><span class="line">        V(mutex);</span><br><span class="line">        V(full);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">consumer()&#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">       P(full);</span><br><span class="line">       P(mutex);</span><br><span class="line">       从缓冲区取走一个产品;</span><br><span class="line">       V(mutex);</span><br><span class="line">       V(empty);</span><br><span class="line">       使用产品;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="思考-能否改变相邻P、V操作的顺序"><a href="#思考-能否改变相邻P、V操作的顺序" class="headerlink" title="思考:能否改变相邻P、V操作的顺序?"></a>思考:能否改变相邻P、V操作的顺序?</h3><p>P操作不能交换,会导致死锁。<br>即实现互斥的P操作一定要在实现同步的P操作之后。<br>V操作不会导致进程阻塞,因此两个V操作顺序可以交换。</p>
+<h2 id="2-3-7多生产者、多消费者问题"><a href="#2-3-7多生产者、多消费者问题" class="headerlink" title="2.3.7多生产者、多消费者问题"></a>2.3.7多生产者、多消费者问题</h2><h3 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h3><p>桌子上有一只盘子,每次只能向其中放入一个水果。爸爸专向盘子中放苹果,妈妈专向盘子中放橘子,儿子专等吃盘子中的橘子,女儿专等吃盘子中的苹果。只有盘子为空时,爸爸或妈妈才可向盘子中放一个水果。仅当盘子中有自己需要的水果时,儿子或女儿可以从盘子中取出水果。用PV操作实现上述过程。</p>
+<h3 id="如何实现-1"><a href="#如何实现-1" class="headerlink" title="如何实现"></a>如何实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">semaphore mutex &#x3D; 1; &#x2F;&#x2F;互斥信号量,实现对缓冲区的互斥访问</span><br><span class="line">semaphore apple &#x3D; 0; &#x2F;&#x2F;同步信号量,苹果个数</span><br><span class="line">semaphore orange &#x3D; 0;  &#x2F;&#x2F;同步信号量,产品数目,橘子个数</span><br><span class="line">semaphore plate &#x3D; 1; &#x2F;&#x2F;盘子中还能放多少个水果</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br></pre></td><td class="code"><pre><span class="line">dad()&#123;</span><br><span class="line"> while(1)&#123;</span><br><span class="line">   准备一个苹果;</span><br><span class="line">  P(plate);</span><br><span class="line">  P(mutex);</span><br><span class="line">  把苹果放入盘子里;</span><br><span class="line">  V(mutex);</span><br><span class="line">  V(apple);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">mom()&#123;</span><br><span class="line">  while(1)&#123;</span><br><span class="line">  准备一个橘子;</span><br><span class="line">  P(plate);</span><br><span class="line">  P(mutex);</span><br><span class="line">  把橘子放入盘子里;</span><br><span class="line">  V(mutex);</span><br><span class="line">  V(orange);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">daugther()&#123;</span><br><span class="line"> while(1)&#123;</span><br><span class="line">  P(apple);</span><br><span class="line">  P(mutex);</span><br><span class="line">  从盘子中取出苹果;</span><br><span class="line">  V(mutex);</span><br><span class="line">  V(plate);</span><br><span class="line">  吃掉苹果;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">son()&#123;</span><br><span class="line"> while(1)&#123;</span><br><span class="line">  P(orange);</span><br><span class="line">  P(mutex);</span><br><span class="line">  从盘子中取出梨子;</span><br><span class="line">  V(mutex);</span><br><span class="line">  V(plate);</span><br><span class="line">  吃掉梨子;</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>如果缓冲区大小大于1,就必须设置一个互斥信号量mutex来保证互斥访问缓冲区。如果缓冲区大于等于1,可能不需要设置互斥信号量mutex。  </p>
+<p>实现互斥的P操作一定要在实现同步的P操作之后,不然可能会引起”死锁”。</p>
+<h2 id="2-3-8吸烟者问题"><a href="#2-3-8吸烟者问题" class="headerlink" title="2.3.8吸烟者问题"></a>2.3.8吸烟者问题</h2><h3 id="问题描述-2"><a href="#问题描述-2" class="headerlink" title="问题描述"></a>问题描述</h3><p>假设一个系统有三个吸烟者进程和一个供应者进程。每个吸烟者不停地卷烟并抽掉它,但是要卷起并抽掉一支烟,抽烟者需要有三种材料:烟草、纸和胶水。三个抽烟者中,第一个拥有烟草、第二个拥有纸、第三个拥有胶水。供应者进程无限地提供三种材料,供应者每次将两种材料放在桌子上,拥有剩下那种材料的吸烟者卷一支烟并抽掉它,并给供应者一个信号告诉完成了,供应者就会放另外两种材料在桌上,这个过程一直重复。</p>
+<h3 id="如何实现-2"><a href="#如何实现-2" class="headerlink" title="如何实现"></a>如何实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">semaphore offer1 &#x3D; 0; &#x2F;&#x2F;桌上组合一的数量</span><br><span class="line">semaphore offer2 &#x3D; 0; &#x2F;&#x2F;桌上组合二的数量</span><br><span class="line">semaphore offer3 &#x3D; 0;  &#x2F;&#x2F;桌上组合三的数量</span><br><span class="line">semaphore finish &#x3D; 0; &#x2F;&#x2F;抽烟是否完成</span><br><span class="line">int i &#x3D; 0; &#x2F;&#x2F;用于实现三个抽烟者轮流抽烟</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">provider() &#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">         if(i&#x3D;&#x3D;0)&#123;</span><br><span class="line">           将组合一放桌子上;</span><br><span class="line">           V(offer1);</span><br><span class="line">         &#125;else if(i&#x3D;&#x3D;1)&#123;</span><br><span class="line">           将组合二放桌子上;</span><br><span class="line">           V(offer2);</span><br><span class="line">         &#125;else &#123;</span><br><span class="line">           将组合三放桌子上;</span><br><span class="line">           V(offer3);</span><br><span class="line">         &#125;</span><br><span class="line">         i &#x3D; (i+1)%3;</span><br><span class="line">         P(finish);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">smoke1() &#123;</span><br><span class="line">    P(offer1);</span><br><span class="line">    从桌子上拿走组合一;卷烟;抽掉;</span><br><span class="line">    V(finish);</span><br><span class="line">&#125;</span><br><span class="line">smoke2() &#123;</span><br><span class="line">    P(offer2);</span><br><span class="line">    从桌子上拿走组合二;卷烟;抽掉;</span><br><span class="line">    V(finish);</span><br><span class="line">&#125;</span><br><span class="line">smoke3() &#123;</span><br><span class="line">    P(offer3);</span><br><span class="line">    从桌子上拿走组合三;卷烟;抽掉;</span><br><span class="line">    V(finish);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-9-读者-写者问题"><a href="#2-3-9-读者-写者问题" class="headerlink" title="2.3.9 读者-写者问题"></a>2.3.9 读者-写者问题</h2><h3 id="问题描述-3"><a href="#问题描述-3" class="headerlink" title="问题描述"></a>问题描述</h3><p>有读者和写者两组并发进程,共享一个文件,当两个或两个以上的读进程同时访问共享数据时不会产生副作用,但若某个写进程和其他进程(读进程或写进程)同时访问共享数据时则可能导致数据不一致的错误。因此要求:1.允许多个读者可以对文件执行读操作;2.只允许写者往文件中写信息;3.任一写者在完成写操作之前不允许其他读者或写者工作;4.写者执行写操作前,应当已有的读者和写者全部退出。  </p>
+<h3 id="如何实现-3"><a href="#如何实现-3" class="headerlink" title="如何实现"></a>如何实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">semaphore rw &#x3D; 1; &#x2F;&#x2F;用于实现对文件的互斥访问。表示当前是否有进程在访问共享文件</span><br><span class="line">int count &#x3D; 0; &#x2F;&#x2F;记录当前有几个读进程在访问文件</span><br><span class="line">semaphore mutex &#x3D; 1; &#x2F;&#x2F;用于保证对count变量的互斥访问</span><br><span class="line">semaphore w &#x3D; 1;  &#x2F;&#x2F;用于实现&quot;写优先&quot;</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">writer() &#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">       P(w)</span><br><span class="line">       P(rw); &#x2F;&#x2F;写之前加锁</span><br><span class="line">       写文件...</span><br><span class="line">       V(rw); &#x2F;&#x2F;写之后解锁</span><br><span class="line">       V(w)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">reader() &#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">      P(w)</span><br><span class="line">      P(mutex);</span><br><span class="line">      if(count&#x3D;&#x3D;0) P(rw);</span><br><span class="line">      count++;</span><br><span class="line">      V(mutex);</span><br><span class="line">      V(w)</span><br><span class="line">      读文件...</span><br><span class="line">      P(mutex);</span><br><span class="line">      count--;</span><br><span class="line">      if(count&#x3D;&#x3D;0) V(rw);</span><br><span class="line">      V(mutex);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-3-10-哲学家进餐问题"><a href="#2-3-10-哲学家进餐问题" class="headerlink" title="2.3.10 哲学家进餐问题"></a>2.3.10 哲学家进餐问题</h2><h3 id="问题描述-4"><a href="#问题描述-4" class="headerlink" title="问题描述"></a>问题描述</h3><p>一张圆桌上坐着5名哲学家,每两个哲学家之间的桌上摆一根筷子,桌子的中间是一碗米饭。哲学家们倾注毕生的精力用于思考和进餐,哲学家在思考时,并不影响他人。只有当哲学家饥饿时,才试图拿起左、右两根筷子(一根一根地拿起)。如果筷子已在他人手上,则需等待。饥饿的哲学家只有同时拿起两根筷子才可以开始进餐,当进餐完毕后,放下筷子继续思考。</p>
+<h3 id="如何实现-4"><a href="#如何实现-4" class="headerlink" title="如何实现"></a>如何实现</h3><p>第一种:可以对哲学家进程施加一些限制条件,比如最多只允许四个哲学家进餐。</p>
+<p>第二种:奇数号哲学家必须先拿左边筷子,偶数号哲学家必须先拿右边筷子。</p>
+<p>第三种实现:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">semaphore chopsticks[5] &#x3D; &#123;1,1,1,1,1&#125;;</span><br><span class="line">semaphore mutex &#x3D; 1; &#x2F;&#x2F;互斥地取筷子</span><br><span class="line"></span><br><span class="line">Pi() &#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        P(mutex);</span><br><span class="line">        P(chopsticks[i]);</span><br><span class="line">        P(chopsticks[(i+1)%5]);</span><br><span class="line">        V(mutex);</span><br><span class="line">        吃饭...</span><br><span class="line">        V(chopsticks[i]);</span><br><span class="line">        V(chopsticks[(i+1)%5]);</span><br><span class="line">        思考...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>哲学家进餐问题的关键在于解决进程死锁。</p>
+<h2 id="2-3-11-管程"><a href="#2-3-11-管程" class="headerlink" title="2.3.11 管程"></a>2.3.11 管程</h2><h3 id="为什么要引入管程"><a href="#为什么要引入管程" class="headerlink" title="为什么要引入管程?"></a>为什么要引入管程?</h3><p>信号量机制存在的问题:编写困难、易出错(比如发生死锁…)。</p>
+<h3 id="管程的定义和基本特征"><a href="#管程的定义和基本特征" class="headerlink" title="管程的定义和基本特征"></a>管程的定义和基本特征</h3><p>管程(类似于类)是一种特殊的软件模块,有这些部分组成:<br>1.局部于管程的共享数据结构说明;<br>2.对该数据结构进行操作的一组过程(函数);<br>3.对局部于管程的共享数据设置初始值的语句;<br>4.管程有一个名字;</p>
+<p>管程的基本特征:<br>1.局部于管程的数据只能被局部于管程的过程所访问;<br>2.一个进程只能通过调用管程内的过程才能进入管程访问共享数据;<br>3.每次仅允许一个进程在管程内执行某个内部过程;</p>
+<h3 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h3><p>各进程必须互斥访问管程的特性是由编译器实现的。<br>可在管程中设置条件变量及等待/唤醒操作以解决同步问题。</p>
+<h3 id="扩展1-用管程解决生产者消费者问题"><a href="#扩展1-用管程解决生产者消费者问题" class="headerlink" title="扩展1:用管程解决生产者消费者问题"></a>扩展1:用管程解决生产者消费者问题</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">monitor ProducerConsumer</span><br><span class="line">condition full, empty; &#x2F;&#x2F;条件变量用来实现同步</span><br><span class="line">int count &#x3D; 0; &#x2F;&#x2F;缓冲区的产品数</span><br><span class="line">void insert(Item item)&#123;</span><br><span class="line">    if(count &#x3D;&#x3D; N) wait(full);</span><br><span class="line">    count++;</span><br><span class="line">    insert_item(item);</span><br><span class="line">    if(count&#x3D;&#x3D;1) signal(empty);</span><br><span class="line">&#125;</span><br><span class="line">Item remove()&#123;</span><br><span class="line">    if(count &#x3D;&#x3D; 0) wait(empty);</span><br><span class="line">    count--;</span><br><span class="line">    if(count &#x3D;&#x3D; N - 1) signal(full);</span><br><span class="line">    return remove_item();</span><br><span class="line">&#125;</span><br><span class="line">end monitor;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;生产者进程</span><br><span class="line">producer() &#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        item &#x3D; 生产一个产品;</span><br><span class="line">        ProdecerConsumer.insert(item);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;消费者进程</span><br><span class="line">consumer() &#123;</span><br><span class="line">    while(1)&#123;</span><br><span class="line">        item &#x3D; ProdecerConsumer.remove();</span><br><span class="line">        消费产品item;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="扩展2-JAVA中类似管程的机制"><a href="#扩展2-JAVA中类似管程的机制" class="headerlink" title="扩展2:JAVA中类似管程的机制"></a>扩展2:JAVA中类似管程的机制</h3><p>java中,如果用synchronized来描述一个函数,那么这个函数同一时间内只能被一个线程调用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">static class monitor &#123;</span><br><span class="line">    private Item buffer[] &#x3D; new Item[N];</span><br><span class="line">    private int count &#x3D; 0;</span><br><span class="line">    public synchronized void insert(Item item)&#123;</span><br><span class="line">        ......</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="2-4-1-死锁的概念"><a href="#2-4-1-死锁的概念" class="headerlink" title="2.4.1 死锁的概念"></a>2.4.1 死锁的概念</h2><h3 id="什么是死锁"><a href="#什么是死锁" class="headerlink" title="什么是死锁"></a>什么是死锁</h3><p>哲学家进餐问题中,如果五个哲学家都并发地执行,都拿起了左手边的筷子…</p>
+<p>每个哲学家都在等待自己右边的人放下筷子,这些哲学家进程都因等待筷子资源而被阻塞。即发生了”死锁”。</p>
+<p>在并发情况下,各进程因竞争资源而造成的一种互相等待对方手里的资源,导致各进程都阻塞,都无法向前推进的现象,就是”死锁”。发生死锁若无外力干涉,这些进程就都无法向前推进。</p>
+<h3 id="死锁、饥饿和死循环"><a href="#死锁、饥饿和死循环" class="headerlink" title="死锁、饥饿和死循环"></a>死锁、饥饿和死循环</h3><p>死锁:各进程相互等待手里的资源,导致各进程都阻塞,无法向前推进的现象。<br>饥饿:由于长期得不到想要的资源,某进程无法向前推进的现象。(SPF算法中源源不断地有短进程到来)<br>死循环:某进程执行过程中一直跳不出某个循环的现象。(有时是BUG,有时是程序员故意设计的)<br><img src="/2021/02/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%8C-%E8%BF%9B%E7%A8%8B/1.jpg" alt="1.png"></p>
+<h3 id="死锁产生的条件"><a href="#死锁产生的条件" class="headerlink" title="死锁产生的条件"></a>死锁产生的条件</h3><p>死锁产生必须满足四个条件,有一项不满足,死锁就不会发生。  </p>
+<p>互斥条件:只有对必须互斥的资源的争抢才会导致死锁(如哲学家的筷子、打印机设备)。  </p>
+<p>不剥夺条件:进程所拥有的资源在未使用完之前,不能由其他进程强行剥夺,只能主动释放。</p>
+<p>请求和保持条件:进程已保持了至少一个资源,但又提出了新的资源请求</p>
+<p>循环等待条件:存在一种进程资源的循环等待链。</p>
+<h3 id="什么时候会发生死锁"><a href="#什么时候会发生死锁" class="headerlink" title="什么时候会发生死锁"></a>什么时候会发生死锁</h3><p>1.对系统资源的竞争。</p>
+<p>2.进程推进顺序非法。</p>
+<p>3.信号量使用不当也会造成死锁。</p>
+<p>总之,对不可剥夺资源的不合理分配,可能导致死锁。</p>
+<h3 id="死锁的处理策略"><a href="#死锁的处理策略" class="headerlink" title="死锁的处理策略"></a>死锁的处理策略</h3><p>1.预防死锁。破坏死锁发生的条件。  </p>
+<p>2.避免死锁。用某种方法防止系统进入不安全状态,从而避免死锁。(银行家算法)</p>
+<p>3.死锁的检测和解除。允许死锁的发生,但是操作系统会负责检测出死锁的发生,然后采取某种措施解除死锁。</p>
+<h2 id="2-4-2-死锁的处理策略-预防死锁"><a href="#2-4-2-死锁的处理策略-预防死锁" class="headerlink" title="2.4.2 死锁的处理策略-预防死锁"></a>2.4.2 死锁的处理策略-预防死锁</h2><h3 id="破坏互斥条件"><a href="#破坏互斥条件" class="headerlink" title="破坏互斥条件"></a>破坏互斥条件</h3><p>互斥条件:只有对必须互斥使用的资源的争抢才会导致死锁。</p>
+<p>如果把只能互斥使用的资源改造为允许共享使用,则系统不会进入死锁状态。如SPOOLing技术。操作系统可以采用SPOOLing技术把独占设备在逻辑上改造成共享设备。比如,SPOOLing技术将打印机改造成共享设备。</p>
+<p>策略缺点:并不是所有资源都可以改造成可共享的资源。并且为了系统安全,很多地方还必须保持这种互斥性。因此,很多时候都无法破坏互斥条件。</p>
+<h3 id="破坏不剥夺条件"><a href="#破坏不剥夺条件" class="headerlink" title="破坏不剥夺条件"></a>破坏不剥夺条件</h3><p>不剥夺条件:进程所获得的资源在未使用完之前,不能由其他进程强行夺走,只能主动释放。</p>
+<p>破坏不剥夺条件:</p>
+<p>方案一: 当某个进程请求新的资源得不到满足时,它必须立即释放保持的所有资源,待以后需要时再重新申请。也就是说,即时某些资源尚未使用完,也需要主动释放,从而破坏了不可剥夺条件。  </p>
+<p>方案二: 当某个进程需要的资源被其他进程所占有的时候,可以由操作系统协助,将想要的资源强行剥夺。这种方式一般需要考虑各进程的优先级(比如:剥夺调度方式,就是把处理机资源强行剥夺给优先级更高的进程使用)</p>
+<p>策略缺点:</p>
+<p>1.实现起来比较复杂。</p>
+<p>2.释放已获得的资源可能造成前一阶段工作的失效。  </p>
+<p>3.反复地申请和释放资源会增大系统的开销。  </p>
+<p>4.若采用方案一,会导致进程饥饿。</p>
+<h3 id="破坏请求和保持条件"><a href="#破坏请求和保持条件" class="headerlink" title="破坏请求和保持条件"></a>破坏请求和保持条件</h3><p>请求和保持条件: 进程至少占有一个资源,但又发生了新的资源请求,而该资源又被其他进程占用,此时请求进程被阻塞,但又对自己已有的资源保持不放。</p>
+<p>可以采用静态分配方法,即进程在运行前一次申请完它所需要的所有资源。当资源未满足前,不让它投入运行。一旦投入运行后,这些资源就一直归它所有,该进程就不会再请求别的任何资源了。</p>
+<p>策略缺点:<br>有些资源可能只需要用很短的时间,因此如果进程的整个运行期间都一直保持着所有资源,就会造成严重的资源浪费,资源利用率极低。另外该策略也有可能会导致某些进程饥饿。</p>
+<h3 id="破坏循环等待条件"><a href="#破坏循环等待条件" class="headerlink" title="破坏循环等待条件"></a>破坏循环等待条件</h3><p>循环等待条件:存在一种进程资源的循环等待链,链中每一个进程已获得的资源被下一个进程所请求。</p>
+<p>可采用顺序资源分配法。首先给系统中的资源编号,规定每个进程必须按编号递增的顺序请求资源,同类资源(即编号相同的资源)必须一次申请完。</p>
+<p>策略缺点:<br>1.不方便增加新的设备,因为可能需要重新分配所有编号;</p>
+<p>2.进程实际使用资源的顺序可能与编号递增顺序不一致,会导致资源浪费;</p>
+<p>3.必须按规定次序申请资源,用户编程麻烦。</p>
+<h2 id="2-4-3-死锁的处理策略-避免死锁"><a href="#2-4-3-死锁的处理策略-避免死锁" class="headerlink" title="2.4.3 死锁的处理策略-避免死锁"></a>2.4.3 死锁的处理策略-避免死锁</h2><h3 id="什么是安全序列"><a href="#什么是安全序列" class="headerlink" title="什么是安全序列"></a>什么是安全序列</h3><p>所谓安全序列,就是指如果系统按照这样的序列分配资源,则每个进程都能顺利完成。只要能找出一个安全序列,系统就是安全状态。当然,安全序列可能有多个。</p>
+<h3 id="安全序列、不安全状态、死锁的联系"><a href="#安全序列、不安全状态、死锁的联系" class="headerlink" title="安全序列、不安全状态、死锁的联系"></a>安全序列、不安全状态、死锁的联系</h3><p>所谓安全序列,就是指如果系统按照这样的序列分配资源,则每个进程都能顺利完成。只要能找出一个安全序列,系统就是安全状态。当然,安全序列可能有多个。</p>
+<p>如果分配了资源之后,系统中找不到任何一个安全序列,系统就进入了不安全状态。这就意味着之后可能所有进程都无法顺利执行下去。当然,如果有进程提前归还了一些资源,那系统也有可能重新回到安全状态,不过我们在分配资源之前总是要考虑到最坏的情况。  </p>
+<p>如果系统处于安全状态,就一定不会发生死锁。如果系统进入不安全状态,就可能发生死锁。</p>
+<p>因此可以在资源分配之前预先判断这次分配是否会导致系统进入不安全状态,以此决定是否答应资源分配请求。这也是”银行家算法”的核心思想。</p>
+<h3 id="银行家算法"><a href="#银行家算法" class="headerlink" title="银行家算法"></a>银行家算法</h3><p>核心思想: 在进程提出资源申请时,先预判此次分配是否会导致系统进入不安全状态。如果会进入不安全状态,就暂时不答应这次请求,让该进程先阻塞等待。</p>
+<p>银行家算法步骤:</p>
+<p>1.检查此次申请是否超过了之前声明的最大需求数  </p>
+<p>2.检查此时系统剩余的可用资源是否还能满足这次请求</p>
+<p>3.试探着分配,更改各数据结构</p>
+<p>4.用安全性算法检查此次分配是否会导致系统进入不安全状态</p>
+<p>安全性算法步骤:<br>检查当前的剩余可用资源是否能满足某个进程的最大需求,如果可以,就把该进程加入安全序列,并把该进程持有的资源全部回收。<br>不断重复上述过程,看最终是否能让所有进程都加入安全序列。</p>
+<p>系统处于不安全状态未必会死锁,但死锁一定处于不安全状态。系统处于安全状态一定不会死锁。</p>
+<h2 id="2-4-4-死锁的处理策略-检测和解除"><a href="#2-4-4-死锁的处理策略-检测和解除" class="headerlink" title="2.4.4 死锁的处理策略-检测和解除"></a>2.4.4 死锁的处理策略-检测和解除</h2><h3 id="死锁的检测"><a href="#死锁的检测" class="headerlink" title="死锁的检测"></a>死锁的检测</h3><p>为了能对系统是否已发生死锁进行检测:<br>1.用某种数据结构来保存资源的请求和分配信息;  </p>
+<p>2.提供一种算法,利用上述信息来检测系统是否已进入死锁状态。  </p>
+<p>检测死锁的算法:</p>
+<p>1.在资源分配图中,找出既不阻塞又不是孤点的进程Pi。消去它所有的请求边和分配边,使其成为孤立的结点。</p>
+<p>2.进程Pi所释放的资源,可以唤醒某些因等待这些资源而阻塞的进程,原来的阻塞进程可能变为非阻塞进程。然后再进行1步骤,如果最终能消去途中所有的边,则称该图是可完全简化的。</p>
+<h3 id="死锁的解除"><a href="#死锁的解除" class="headerlink" title="死锁的解除"></a>死锁的解除</h3><p>一旦检测出死锁的发生,就应该立即解除死锁。</p>
+<p>补充:并不是系统中所有的进程都是死锁状态,用死锁检测算法化简资源分配图之后,还连着边的那些进程就是死锁进程。</p>
+<p>解锁死锁的方法:</p>
+<p>1.资源剥夺法。挂起(暂时放到外存上)某些死锁进程,并抢占它的资源,将这些资源分配给其他的死锁进程。但是应防止被挂起的进程长时间得不到资源而饥饿。 </p>
+<p>2.撤销进程法。强制撤销部分、甚至所有死锁进程,并剥夺这些进程的资源。这种方式的优点是实现简单,但所付出的代价可能会很大。因为有些进程可能已经运行了很长时间,已经接近结束了,一旦被终止可谓功亏一篑,以后还得重头再来。</p>
+<p>3.进程回退法。让一个或多个死锁进程回退到足以避免死锁的地步。这就要求系统要记录进程的历史信息,设置还原点。</p>
+
     
 
     
@@ -699,7 +511,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机网络</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -759,7 +571,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://caciacc.top/2021/02/09/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C-%E4%B8%80/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://caciacc.top/2021/02/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%8C-%E8%BF%9B%E7%A8%8B/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -774,18 +586,18 @@
 
 <nav id="article-nav">
   
-    <a href="/2021/02/13/%E9%9D%A2%E8%AF%95-%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2021/02/04/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%B8%89-%E5%86%85%E5%AD%98/" id="article-nav-newer" class="article-nav-link-wrap">
       <i class="icon-circle-left"></i>
       <div class="article-nav-title">
         
-          面试-一些面试题
+          计算机基础-操作系统-三-内存
         
       </div>
     </a>
   
   
-    <a href="/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">计算机基础-操作系统-五</div>
+    <a href="/2021/01/29/%E7%AE%97%E6%B3%95-codeforce-698-div2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">算法-codeforce-698-div2</div>
       <i class="icon-circle-right"></i>
     </a>
   

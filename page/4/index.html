@@ -248,6 +248,99 @@
             
 
   
+    <article id="post-算法-leetcode-周赛第225场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/">算法-leetcode-周赛第225场</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/" class="archive-article-date">
+        <time datetime="2021-01-24T04:14:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>第一题<br>一个分类讨论= =。个人感觉写复杂了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string maximumTime(string ans) &#123;</span><br><span class="line">        if(ans[0]&#x3D;&#x3D;&#39;0&#39;)&#123;</span><br><span class="line">            if(ans[1]&#x3D;&#x3D;&#39;?&#39;) ans[1] &#x3D; &#39;9&#39;;</span><br><span class="line">        &#125;else if(ans[0] &#x3D;&#x3D; &#39;1&#39;)&#123;</span><br><span class="line">            if(ans[1]&#x3D;&#x3D;&#39;?&#39;) ans[1] &#x3D; &#39;9&#39;;</span><br><span class="line">        &#125;else if(ans[0] &#x3D;&#x3D; &#39;2&#39;)&#123;</span><br><span class="line">            if(ans[1]&#x3D;&#x3D;&#39;?&#39;) ans[1] &#x3D; &#39;3&#39;;</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            if(ans[1]&#x3D;&#x3D;&#39;?&#39;&amp;&amp;ans[0]&#x3D;&#x3D;&#39;?&#39;) ans[0] &#x3D; &#39;2&#39;,ans[1] &#x3D; &#39;3&#39;;</span><br><span class="line">            else if(ans[1] &gt; &#39;3&#39;) ans[0] &#x3D; &#39;1&#39;;</span><br><span class="line">            else ans[0] &#x3D; &#39;2&#39;;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">         if(ans[3]!&#x3D;&#39;?&#39;)&#123;</span><br><span class="line">             if(ans[4] &#x3D;&#x3D;&#39;?&#39;) ans[4] &#x3D; &#39;9&#39;;</span><br><span class="line">         &#125;else &#123;</span><br><span class="line">             if(ans[4]&#x3D;&#x3D;&#39;?&#39;) ans[3] &#x3D; &#39;5&#39;, ans[4] &#x3D; &#39;9&#39;;</span><br><span class="line">             else ans[3] &#x3D; &#39;5&#39;;</span><br><span class="line">         &#125;</span><br><span class="line">            </span><br><span class="line">       return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+  
     <article id="post-算法-5道算法题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -620,7 +713,7 @@
 
 
   
-    <article id="post-记录-2018至2020记" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-记录-2018至2020" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -628,7 +721,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/01/12/%E8%AE%B0%E5%BD%95-2018%E8%87%B32020%E8%AE%B0/">记录-2018至2020</a>
+	  <a class="article-title" href="/2021/01/12/%E8%AE%B0%E5%BD%95-2018%E8%87%B32020/">记录-2018至2020</a>
 	
     </h1>
   
@@ -636,7 +729,7 @@
 
   
   
-<a href="/2021/01/12/%E8%AE%B0%E5%BD%95-2018%E8%87%B32020%E8%AE%B0/" class="archive-article-date">
+<a href="/2021/01/12/%E8%AE%B0%E5%BD%95-2018%E8%87%B32020/" class="archive-article-date">
         <time datetime="2021-01-12T12:19:54.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
 </a>
 
@@ -651,7 +744,7 @@
     
     <p>转眼见,时间已经来到了大三的暑假。<br>回顾大学三年,感觉一直都是迷茫而无知的。<br>大一的时候,我的专业并不是计算机。一开始也并没有想要转到计算机专业,而后还记是在国庆假期的时候,因为要学习C语言的原因,通过B站翁凯的C语言,我对于计算机产生了很强的兴趣,而后就产生了转专业的想法。学了一段时间的C语言之后,我找到了同专业的一位学长,准备开始学习JAVA。<br>大一上去参加了token的面试。第一面让手写冒泡排序,当时我好像已经看了啊哈算法,学了一点算法了,于是还是写出来了。之后二面没有好好准备,问我html我不会,问我怎么快速求链表的倒数第K个元素我只会遍历两遍的方法,而不会什么快慢指针。然后就没有然后了。<br>而后就是大一下了。<br>大一下转专业考试的时候,为了简历上好看一点,我还去leetcode上刷了大概100道简单题,当时用C语言做,用malloc和指针来写,感觉还是挺难的。然而并没有卵用。考试很水。  </p>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/%E8%AE%B0%E5%BD%95-2018%E8%87%B32020%E8%AE%B0/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/01/12/%E8%AE%B0%E5%BD%95-2018%E8%87%B32020/#more">more >></a>
     
     
 
@@ -678,7 +771,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/%E8%AE%B0%E5%BD%95-2018%E8%87%B32020%E8%AE%B0/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/01/12/%E8%AE%B0%E5%BD%95-2018%E8%87%B32020/">展开全文 >></a>
     </p>
     
 
@@ -737,10 +830,11 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p><span style="background-color: #FFD700"><strong>Collection相关</strong></span></p>
+    <hr>
+<p><strong>Collection相关</strong></p>
 <p>●Collection和Collections的区别</p>
 <p>Collection是集合类的上级接口，继承它的接口主要有List、Set、Queue。</p>
-<p>Collections是集合类的一个帮助类，它提供一系列静态方法实现对各种集合的搜索、排序、<span style="background-color: #FFD700">线程安全化（synchronizedList（传入一个）、synchronizedMap（</span><span style="background-color: #FFD700">传入一个</span><span style="background-color: #FFD700">）、synchronizedSet（</span><span style="background-color: #FFD700">传入一个</span><span style="background-color: #FFD700">）-&gt;只能通过collection创建）</span>等优化操作。</p>
+<p>Collections是集合类的一个帮助类，它提供一系列静态方法实现对各种集合的搜索、排序、<strong>线程安全化（synchronizedList（传入一个）、synchronizedMap（传入一个）、synchronizedSet（传入一个）-&gt;只能通过collection创建）等优化操作。</strong></p>
 <p>●List、Map、Set三个接口存取元素时，各有什么特点？</p>
 <p>List接口元素有序，存储的是值,并且元素可以重复。           =&gt;主要实现：ArrayList、LinkedList、Vector</p>
     
@@ -1072,104 +1166,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E6%A1%86%E6%9E%B6%E7%9F%A5%E8%AF%86/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-nosql学习-nosql知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/01/12/nosql%E5%AD%A6%E4%B9%A0-nosql%E7%9F%A5%E8%AF%86/">Nosql学习-Nosql知识</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/01/12/nosql%E5%AD%A6%E4%B9%A0-nosql%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>●快照(Snapshot)： 将内存中数据持久化保存到磁盘</p>
-<p>●3V： 海量Volume 多样Variety 实时Velocity 3高:高并发 高可拓 高性能</p>
-<p>●nosql</p>
-<p><strong>NOSQL相关</strong></p>
-<p>nosql分类。</p>
-<p>1.KV型                  Redis Memached</p>
-<p>2.文档型数据库      mongoDB</p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/nosql%E5%AD%A6%E4%B9%A0-nosql%E7%9F%A5%E8%AF%86/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nosql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/nosql%E5%AD%A6%E4%B9%A0-nosql%E7%9F%A5%E8%AF%86/">展开全文 >></a>
     </p>
     
 
