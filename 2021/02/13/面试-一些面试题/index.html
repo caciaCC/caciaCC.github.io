@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://pic2.zhimg.com/v2-287f87ad5328f2aa5cd7fbd48dadcd8f_r.jpg?source=1940ef5c">
 <meta property="og:image" content="http://caciacc.top/2021/02/13/%E9%9D%A2%E8%AF%95-%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98/2.jpg">
 <meta property="article:published_time" content="2021-02-13T02:32:57.000Z">
-<meta property="article:modified_time" content="2021-03-07T13:04:55.558Z">
+<meta property="article:modified_time" content="2021-03-08T03:31:05.945Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="JAVA">
 <meta property="article:tag" content="面试">
@@ -282,7 +282,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">34.6k字</span>
+      <span class="post-count">34.8k字</span>
     </span>
   </span>
 
@@ -1094,6 +1094,16 @@ volatile标记的变量不会被编译器优化；synchronized标记的变量可
 <h2 id="关于String的intern方法"><a href="#关于String的intern方法" class="headerlink" title="关于String的intern方法"></a>关于String的intern方法</h2><p>从分开的到抄袭(1.6-&gt;1.8)。<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/pastjx/p/12321431.html">https://www.cnblogs.com/pastjx/p/12321431.html</a></p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/seu_calvin/article/details/52291082">https://blog.csdn.net/seu_calvin/article/details/52291082</a></p>
 <h2 id="1117-H2O-生成"><a href="#1117-H2O-生成" class="headerlink" title="1117. H2O 生成"></a>1117. H2O 生成</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">class H2O &#123;</span><br><span class="line">    volatile int hNum &#x3D; 0;</span><br><span class="line">    ReentrantLock lock &#x3D; new ReentrantLock();</span><br><span class="line"></span><br><span class="line">    Condition hFull &#x3D; lock.newCondition();</span><br><span class="line">    Condition oFull &#x3D; lock.newCondition();</span><br><span class="line">    public H2O() &#123;</span><br><span class="line">        </span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F;</span><br><span class="line">    public void hydrogen(Runnable releaseHydrogen) throws InterruptedException &#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        try&#123;</span><br><span class="line">            while(hNum &#x3D;&#x3D; 2) hFull.await();</span><br><span class="line">            hNum++;</span><br><span class="line">            releaseHydrogen.run();</span><br><span class="line">            if(hNum &#x3D;&#x3D; 2)&#123;</span><br><span class="line">                oFull.signal();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; finally&#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; releaseHydrogen.run() outputs &quot;H&quot;. Do not change or remove this line.</span><br><span class="line">       </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void oxygen(Runnable releaseOxygen) throws InterruptedException &#123;</span><br><span class="line">        lock.lock();</span><br><span class="line">        try&#123;</span><br><span class="line">            while(hNum !&#x3D; 2) oFull.await();</span><br><span class="line">            hNum &#x3D; 0;</span><br><span class="line">            releaseOxygen.run();</span><br><span class="line">            hFull.signalAll();</span><br><span class="line">        &#125;finally&#123;</span><br><span class="line">            lock.unlock();</span><br><span class="line">        &#125;</span><br><span class="line">        &#x2F;&#x2F; releaseOxygen.run() outputs &quot;O&quot;. Do not change or remove this line.</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="JDBC中的PreparedStatement有哪些优点"><a href="#JDBC中的PreparedStatement有哪些优点" class="headerlink" title="JDBC中的PreparedStatement有哪些优点"></a>JDBC中的PreparedStatement有哪些优点</h2><p>继承自Statement,批量处理sql,具有安全性,防止sql注入。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_43258908/article/details/88583595">https://blog.csdn.net/weixin_43258908/article/details/88583595</a></p>
+<p>安全性问题<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ciangcic/p/3526968.html">https://www.cnblogs.com/ciangcic/p/3526968.html</a></p>
+<h2 id="JDBC的作用是什么？"><a href="#JDBC的作用是什么？" class="headerlink" title="JDBC的作用是什么？(*)"></a>JDBC的作用是什么？(*)</h2><p>JDBC(Java Data Base Connectivity),即用java语言操作数据库。</p>
+<p>作用:提供一套访问数据库的规范,使得JAVA可以通过JDBC接口操作各种数据库。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_41547486/article/details/80710567">https://blog.csdn.net/weixin_41547486/article/details/80710567</a></p>
+<h2 id="JDBC是如何实现和数据库连接的，基于什么协议？"><a href="#JDBC是如何实现和数据库连接的，基于什么协议？" class="headerlink" title="JDBC是如何实现和数据库连接的，基于什么协议？"></a>JDBC是如何实现和数据库连接的，基于什么协议？</h2><p>JDBC是一个接口,具体实现是对应数据库的驱动,由驱动实现和数据库连接。</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/leifei/p/8351440.html">https://www.cnblogs.com/leifei/p/8351440.html</a></p>
+<p>基于JDBC驱动协议,默认是TCP/IP协议。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/yuanyannan123/article/details/55252204">https://blog.csdn.net/yuanyannan123/article/details/55252204</a></p>
 <h2 id><a href="#" class="headerlink" title></a></h2>
     
 
