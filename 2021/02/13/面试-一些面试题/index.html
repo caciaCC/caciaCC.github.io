@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://pic2.zhimg.com/v2-287f87ad5328f2aa5cd7fbd48dadcd8f_r.jpg?source=1940ef5c">
 <meta property="og:image" content="http://caciacc.top/2021/02/13/%E9%9D%A2%E8%AF%95-%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98/2.jpg">
 <meta property="article:published_time" content="2021-02-13T02:32:57.000Z">
-<meta property="article:modified_time" content="2021-03-08T07:25:08.290Z">
+<meta property="article:modified_time" content="2021-03-08T14:17:36.582Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="JAVA">
 <meta property="article:tag" content="面试">
@@ -282,7 +282,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">35.4k字</span>
+      <span class="post-count">37.3k字</span>
     </span>
   </span>
 
@@ -291,7 +291,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">138分</span>
+      <span class="post-count">146分</span>
     </span>
   </span>
 </div>
@@ -1126,7 +1126,129 @@ volatile标记的变量不会被编译器优化；synchronized标记的变量可
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_34793133/article/details/80087727">https://blog.csdn.net/qq_34793133/article/details/80087727</a></p>
 <h2 id="Java应用都是单进程多线程的吗？有没有在什么项目中遇到过多进程单线程的例子"><a href="#Java应用都是单进程多线程的吗？有没有在什么项目中遇到过多进程单线程的例子" class="headerlink" title="Java应用都是单进程多线程的吗？有没有在什么项目中遇到过多进程单线程的例子"></a>Java应用都是单进程多线程的吗？有没有在什么项目中遇到过多进程单线程的例子</h2><p>JVM是这样的。后台线程有GC线程、虚拟机线程、编译器线程、周期任务线程、信号分发线程。</p>
 <h2 id="1-SQL题目-四个表，学生表（学号，姓名）、成绩表（学号，课程号，成绩）、课程表（课程号、课程名、教师号）、教师表（教师号、教师名）查出所有平均成绩大于60的学生学号和平均成绩"><a href="#1-SQL题目-四个表，学生表（学号，姓名）、成绩表（学号，课程号，成绩）、课程表（课程号、课程名、教师号）、教师表（教师号、教师名）查出所有平均成绩大于60的学生学号和平均成绩" class="headerlink" title="1. SQL题目 四个表，学生表（学号，姓名）、成绩表（学号，课程号，成绩）、课程表（课程号、课程名、教师号）、教师表（教师号、教师名）查出所有平均成绩大于60的学生学号和平均成绩"></a>1. SQL题目 四个表，学生表（学号，姓名）、成绩表（学号，课程号，成绩）、课程表（课程号、课程名、教师号）、教师表（教师号、教师名）查出所有平均成绩大于60的学生学号和平均成绩</h2><p>select id,avg(grade) from course group by id having avg(grade) &gt; 60</p>
-<h2 id="2-算法题"><a href="#2-算法题" class="headerlink" title="2. 算法题"></a>2. 算法题</h2>
+<h2 id="一些反问"><a href="#一些反问" class="headerlink" title="一些反问"></a>一些反问</h2><p>1.请问一下,你们部门是干什么的?</p>
+<p>2.</p>
+<h2 id="手撕代码-快速排序"><a href="#手撕代码-快速排序" class="headerlink" title="手撕代码 快速排序"></a>手撕代码 快速排序</h2><h2 id="1-TCP是什么？可靠连接怎么体现？接收端没收到报文时发送端如何重传？TCP建立连接的过程？"><a href="#1-TCP是什么？可靠连接怎么体现？接收端没收到报文时发送端如何重传？TCP建立连接的过程？" class="headerlink" title="1. TCP是什么？可靠连接怎么体现？接收端没收到报文时发送端如何重传？TCP建立连接的过程？"></a>1. TCP是什么？可靠连接怎么体现？接收端没收到报文时发送端如何重传？TCP建立连接的过程？</h2><p>TCP(Transmission Control Protocol)是传输控制协议,是一种面向连接的、可靠的、面向字节流的传输层通信协议。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/hayre/article/details/103041478">https://blog.csdn.net/hayre/article/details/103041478</a></p>
+<p>可靠连接怎么体现？</p>
+<pre><code>应用数据会被切段（小块数据传输保证通畅）
+数据段丢失重传
+数据段收到确认
+数据段数据校验和
+数据段重排序
+数据段去重
+流量控制</code></pre>
+<p>关于初始ISN</p>
+<p>ISN随时间而变化，是一个32bit的计数器，每4ms加1，这样的选择序号的目的在于防止在网络中被延迟的分组在以后又被传送，而导致某个链接的一方对它作错误的解释。</p>
+<p>接收端没收到报文时发送端如何重传？</p>
+<p>收到乱序的确认报文三次</p>
+<pre><code>        注：
+        1）原来报文的去向以上同。
+        2）重传报文可以与原报文不同，就是说重传报文长度可以比原报文长也可以比原报文短等。
+        3）说明下逆序问题。还没到快重传的时候，走丢的包就出现了。这时候接收端保留逆序包，发送端不用对其进行重传。</code></pre>
+<p>或者超时时间到达以后还没有收到确认(即发端计时器超时)</p>
+<p>TCP每发送一个报文段，就对这个报文段设置一次计时器。当计时器超时而没有收到确认时，就重传该报文。</p>
+<pre><code>    注：原来报文哪去了呢？两种可能：
+        1）在中间节点丢了。2）还在路上，走的慢。
+    对于第一种情况：接收端是不知情的，而对于第二种情况，接收端表现为收到两个一摸一样的报文。</code></pre>
+<h2 id="已知db中有几十万个IP地址，如何快速判断IP地址属于国内？我说的是把IP地址转换成整数段后进行二分查找，面试官说不太理想。有没有大佬有思路？还有想请问大佬们DNS的迭代查询和递归查询有什么区别？"><a href="#已知db中有几十万个IP地址，如何快速判断IP地址属于国内？我说的是把IP地址转换成整数段后进行二分查找，面试官说不太理想。有没有大佬有思路？还有想请问大佬们DNS的迭代查询和递归查询有什么区别？" class="headerlink" title="已知db中有几十万个IP地址，如何快速判断IP地址属于国内？我说的是把IP地址转换成整数段后进行二分查找，面试官说不太理想。有没有大佬有思路？还有想请问大佬们DNS的迭代查询和递归查询有什么区别？"></a>已知db中有几十万个IP地址，如何快速判断IP地址属于国内？我说的是把IP地址转换成整数段后进行二分查找，面试官说不太理想。有没有大佬有思路？还有想请问大佬们DNS的迭代查询和递归查询有什么区别？</h2><h2 id="TCP校验和怎么计算"><a href="#TCP校验和怎么计算" class="headerlink" title="TCP校验和怎么计算"></a>TCP校验和怎么计算</h2><p>UDP校验:</p>
+<p>发送端:</p>
+<p>1.填上伪首部</p>
+<p>2.全0填充检验和字段</p>
+<p>3.全0填充数据部分</p>
+<p>4.伪首部+首部+数据采用二进制反码求和</p>
+<p>5.把和求反码填入检验和字段</p>
+<p>接收端:</p>
+<p>1.填上伪首部</p>
+<p>2.伪首部+首部+数据采用二进制反码求和</p>
+<p>3.结果为全1则无差错,否则丢弃/或交给应用层附上出差错的警告。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/zhangskd/article/details/11770647">https://blog.csdn.net/zhangskd/article/details/11770647</a></p>
+<h2 id="TCP和UDP区别"><a href="#TCP和UDP区别" class="headerlink" title="TCP和UDP区别"></a>TCP和UDP区别</h2><p>TCP是面向字节流的,UDP是面向报文的。</p>
+<p>即应用层给UDP多长的报文,UDP就照样发送,即一次发一个完整报文。故UDP适合一次传输少量数据的网络应用。</p>
+<p>UDP无拥塞控制,适合很多实时应用。</p>
+<p>UDP首部开销小,8B,TCP首部开销大,20B。</p>
+<h2 id="虚拟机内存回收。我说了四个垃圾收集算法。他也没再问，明明我都准备好gcroots，可达性分析，cms，g1等等的。"><a href="#虚拟机内存回收。我说了四个垃圾收集算法。他也没再问，明明我都准备好gcroots，可达性分析，cms，g1等等的。" class="headerlink" title="虚拟机内存回收。我说了四个垃圾收集算法。他也没再问，明明我都准备好gcroots，可达性分析，cms，g1等等的。"></a>虚拟机内存回收。我说了四个垃圾收集算法。他也没再问，明明我都准备好gcroots，可达性分析，cms，g1等等的。</h2><pre><code>标记-清除算法
+
+复制算法
+
+标记-整理算法
+
+分代收集算法
+    年轻代（Young Generation）的回收算法
+   年老代（Old Generation）的回收算法
+    持久代（Permanent Generation）的回收算法</code></pre>
+<p>方法区存储内容是否需要回收的判断可就不一样咯。方法区主要回收的内容有：废弃常量和无用的类。对于废弃常量也可通过引用的可达性来判断，但是对于无用的类则需要同时满足下面3个条件：</p>
+<pre><code>该类所有的实例都已经被回收，也就是Java堆中不存在该类的任何实例；
+加载该类的ClassLoader已经被回收；
+该类对应的java.lang.Class对象没有在任何地方被引用，无法在任何地方通过反射访问该类的方法。</code></pre>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/1024Community/p/honery.html#343-%E6%8C%81%E4%B9%85%E4%BB%A3permanent-generation%E7%9A%84%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95">https://www.cnblogs.com/1024Community/p/honery.html#343-%E6%8C%81%E4%B9%85%E4%BB%A3permanent-generation%E7%9A%84%E5%9B%9E%E6%94%B6%E7%AE%97%E6%B3%95</a></p>
+<h2 id="反射的原理，怎么用的，场景。原理不懂，我觉得可能是虚拟机把类记录了一下，然后就能找到对应的方法和属性了吧。"><a href="#反射的原理，怎么用的，场景。原理不懂，我觉得可能是虚拟机把类记录了一下，然后就能找到对应的方法和属性了吧。" class="headerlink" title="反射的原理，怎么用的，场景。原理不懂，我觉得可能是虚拟机把类记录了一下，然后就能找到对应的方法和属性了吧。"></a>反射的原理，怎么用的，场景。原理不懂，我觉得可能是虚拟机把类记录了一下，然后就能找到对应的方法和属性了吧。</h2><h2 id="线程创建方法，多线程使用，怎么停止一个线程。我答了一个interrupt，其实还有一个stop。"><a href="#线程创建方法，多线程使用，怎么停止一个线程。我答了一个interrupt，其实还有一个stop。" class="headerlink" title="线程创建方法，多线程使用，怎么停止一个线程。我答了一个interrupt，其实还有一个stop。"></a>线程创建方法，多线程使用，怎么停止一个线程。我答了一个interrupt，其实还有一个stop。</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/swadian2008/article/details/99203151">https://blog.csdn.net/swadian2008/article/details/99203151</a></p>
+<h2 id="怎么拼接字符串，StringBuilder和StringBuffer区别"><a href="#怎么拼接字符串，StringBuilder和StringBuffer区别" class="headerlink" title="怎么拼接字符串，StringBuilder和StringBuffer区别"></a>怎么拼接字符串，StringBuilder和StringBuffer区别</h2><h2 id="了解什么设计模式，说一下工厂模式。"><a href="#了解什么设计模式，说一下工厂模式。" class="headerlink" title="了解什么设计模式，说一下工厂模式。"></a>了解什么设计模式，说一下工厂模式。</h2><p>设计模式是一种规范。主要分为创建型模式/结构型模式/行为型模式,除此之外还有j2ee设计模式。</p>
+<p><a target="_blank" rel="noopener" href="https://weibo.com/ttarticle/p/show?id=2309404578365431742716">https://weibo.com/ttarticle/p/show?id=2309404578365431742716</a></p>
+<h2 id="进程切换上下文又哪些"><a href="#进程切换上下文又哪些" class="headerlink" title="进程切换上下文又哪些"></a>进程切换上下文又哪些</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zqz365001/p/4544741.html">https://www.cnblogs.com/zqz365001/p/4544741.html</a></p>
+<p>1.SortedMap了解吗?除了TreeMap还有哪些Map?LinkedHashMap了解吗?TreeMap底层是什么?和二叉搜索树有什么区别?跳表知道吗?跳表和红黑树分别用在什么场景?</p>
+<p>2.redis的用途是什么?为什么要用redis?redis持久化了解吗?redis的集群搭建了解吗?</p>
+<p>3.AIO、BIO、NIO有了解吗?具体的应用场景是什么?有用过吗?多路复用IO有了解吗?实现原理有了解吗?</p>
+<p>4.如何实现一个Socket?具体的方法会用到哪些有了解吗?如何用socket建立一个TCP连接?</p>
+<p>5.DNS解析过程了解吗?假设服务器在北京,第一次握手传送报文是如何传送过去的?如果是校内网?</p>
+<p>6.TCP连接是如何保证可靠性的?流量控制可以详细说说吗?如果是0接受大小,而服务器窗口大小变化了,客户端怎么感知?拥塞控制能详细说说吗?</p>
+<p>7.HTTP1.0和HTTP1.1的区别。HTTP状态码200、302、404知道吗?</p>
+<p>8.cookie和session知道吗?是干什么的?有什么区别?你的项目中用到了吗?可以说说在你的项目中的应用么?</p>
+<p>9.给你一个序列,求出现次数最多的元素,如果有多个,返回任意一个。</p>
+<p>10.给你一个序列,包括正数,0,负数,求乘积最大的子数组。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">string s;</span><br><span class="line">int a[100010];</span><br><span class="line">int pre[100010];</span><br><span class="line">int ans;</span><br><span class="line">&#x2F;&#x2F; 3 -2 2 5 7 -3 -6 5 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 0 -3-2 3 0 2 |-4 3</span><br><span class="line">         2  -4 </span><br><span class="line">int main() &#123;</span><br><span class="line">  </span><br><span class="line">   int n;</span><br><span class="line">   cin &gt;&gt; n;</span><br><span class="line">   </span><br><span class="line">   for(int i &#x3D; 1; i &lt;&#x3D; n; i ++) cin &gt;&gt; a[i];</span><br><span class="line"></span><br><span class="line">   int tmp &#x3D; 1;</span><br><span class="line">   int mul &#x3D; 1;</span><br><span class="line">   int l &#x3D; 1, r;</span><br><span class="line">   for(int i &#x3D; 1; i &lt;&#x3D; n; i ++)&#123;</span><br><span class="line">       tmp *&#x3D; a[i];</span><br><span class="line">       pre[i] &#x3D; tmp;</span><br><span class="line">       ans &#x3D; max(ans, pre[i]);</span><br><span class="line">       if(a[i] &lt; 0) mul *&#x3D; -1;</span><br><span class="line">       if(a[i] &#x3D;&#x3D; 0|| i &#x3D;&#x3D; n)&#123;</span><br><span class="line">          if(mul &#x3D;&#x3D; 1)&#123;</span><br><span class="line">              ;</span><br><span class="line">          &#125;else&#123;</span><br><span class="line">              if(i&#x3D;&#x3D;n&amp;&amp;a[i]!&#x3D;0) r &#x3D; i;</span><br><span class="line">              else r &#x3D; i - 1;</span><br><span class="line">              int val1 &#x3D; 1, val2 &#x3D; 1;</span><br><span class="line">              while(l &lt;&#x3D; r &amp;&amp; a[l] &gt; 0) val1 *&#x3D; a[l], l++;</span><br><span class="line">              val1 *&#x3D; a[l];</span><br><span class="line">              while(l &lt;&#x3D; r &amp;&amp; a[r] &gt; 0) val2 *&#x3D; a[r], r--;</span><br><span class="line">              val2 *&#x3D; a[r];</span><br><span class="line">              if(i&#x3D;&#x3D;n&amp;&amp;a[i]!&#x3D;0)&#123;</span><br><span class="line">                ans &#x3D; max(ans, pre[i]&#x2F;val1);</span><br><span class="line">                ans &#x3D; max(ans, pre[i]&#x2F;val2);</span><br><span class="line">              &#125;else&#123;</span><br><span class="line">                ans &#x3D; max(ans,pre[i-1]&#x2F;val1);</span><br><span class="line">                ans &#x3D; max(ans,pre[i-1]&#x2F;val2);</span><br><span class="line">              &#125;</span><br><span class="line">              </span><br><span class="line">          &#125;</span><br><span class="line">          mul &#x3D; 1;</span><br><span class="line">          l &#x3D; i+1;</span><br><span class="line">          tmp &#x3D; 1;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">  cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     
 
     
