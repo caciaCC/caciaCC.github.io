@@ -22,7 +22,7 @@
 <meta property="og:image" content="https://pic2.zhimg.com/v2-287f87ad5328f2aa5cd7fbd48dadcd8f_r.jpg?source=1940ef5c">
 <meta property="og:image" content="http://caciacc.top/2021/02/13/%E9%9D%A2%E8%AF%95-%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98/2.jpg">
 <meta property="article:published_time" content="2021-02-13T02:32:57.000Z">
-<meta property="article:modified_time" content="2021-03-08T14:17:36.582Z">
+<meta property="article:modified_time" content="2021-03-11T03:16:52.479Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="JAVA">
 <meta property="article:tag" content="面试">
@@ -282,7 +282,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">37.3k字</span>
+      <span class="post-count">37.4k字</span>
     </span>
   </span>
 
@@ -1186,6 +1186,7 @@ volatile标记的变量不会被编译器优化；synchronized标记的变量可
 <h2 id="怎么拼接字符串，StringBuilder和StringBuffer区别"><a href="#怎么拼接字符串，StringBuilder和StringBuffer区别" class="headerlink" title="怎么拼接字符串，StringBuilder和StringBuffer区别"></a>怎么拼接字符串，StringBuilder和StringBuffer区别</h2><h2 id="了解什么设计模式，说一下工厂模式。"><a href="#了解什么设计模式，说一下工厂模式。" class="headerlink" title="了解什么设计模式，说一下工厂模式。"></a>了解什么设计模式，说一下工厂模式。</h2><p>设计模式是一种规范。主要分为创建型模式/结构型模式/行为型模式,除此之外还有j2ee设计模式。</p>
 <p><a target="_blank" rel="noopener" href="https://weibo.com/ttarticle/p/show?id=2309404578365431742716">https://weibo.com/ttarticle/p/show?id=2309404578365431742716</a></p>
 <h2 id="进程切换上下文又哪些"><a href="#进程切换上下文又哪些" class="headerlink" title="进程切换上下文又哪些"></a>进程切换上下文又哪些</h2><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/zqz365001/p/4544741.html">https://www.cnblogs.com/zqz365001/p/4544741.html</a></p>
+<p>腾讯1面</p>
 <p>1.SortedMap了解吗?除了TreeMap还有哪些Map?LinkedHashMap了解吗?TreeMap底层是什么?和二叉搜索树有什么区别?跳表知道吗?跳表和红黑树分别用在什么场景?</p>
 <p>2.redis的用途是什么?为什么要用redis?redis持久化了解吗?redis的集群搭建了解吗?</p>
 <p>3.AIO、BIO、NIO有了解吗?具体的应用场景是什么?有用过吗?多路复用IO有了解吗?实现原理有了解吗?</p>
@@ -1197,58 +1198,7 @@ volatile标记的变量不会被编译器优化；synchronized标记的变量可
 <p>9.给你一个序列,求出现次数最多的元素,如果有多个,返回任意一个。</p>
 <p>10.给你一个序列,包括正数,0,负数,求乘积最大的子数组。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line">string s;</span><br><span class="line">int a[100010];</span><br><span class="line">int pre[100010];</span><br><span class="line">int ans;</span><br><span class="line">&#x2F;&#x2F; 3 -2 2 5 7 -3 -6 5 </span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 0 -3-2 3 0 2 |-4 3</span><br><span class="line">         2  -4 </span><br><span class="line">int main() &#123;</span><br><span class="line">  </span><br><span class="line">   int n;</span><br><span class="line">   cin &gt;&gt; n;</span><br><span class="line">   </span><br><span class="line">   for(int i &#x3D; 1; i &lt;&#x3D; n; i ++) cin &gt;&gt; a[i];</span><br><span class="line"></span><br><span class="line">   int tmp &#x3D; 1;</span><br><span class="line">   int mul &#x3D; 1;</span><br><span class="line">   int l &#x3D; 1, r;</span><br><span class="line">   for(int i &#x3D; 1; i &lt;&#x3D; n; i ++)&#123;</span><br><span class="line">       tmp *&#x3D; a[i];</span><br><span class="line">       pre[i] &#x3D; tmp;</span><br><span class="line">       ans &#x3D; max(ans, pre[i]);</span><br><span class="line">       if(a[i] &lt; 0) mul *&#x3D; -1;</span><br><span class="line">       if(a[i] &#x3D;&#x3D; 0|| i &#x3D;&#x3D; n)&#123;</span><br><span class="line">          if(mul &#x3D;&#x3D; 1)&#123;</span><br><span class="line">              ;</span><br><span class="line">          &#125;else&#123;</span><br><span class="line">              if(i&#x3D;&#x3D;n&amp;&amp;a[i]!&#x3D;0) r &#x3D; i;</span><br><span class="line">              else r &#x3D; i - 1;</span><br><span class="line">              int val1 &#x3D; 1, val2 &#x3D; 1;</span><br><span class="line">              while(l &lt;&#x3D; r &amp;&amp; a[l] &gt; 0) val1 *&#x3D; a[l], l++;</span><br><span class="line">              val1 *&#x3D; a[l];</span><br><span class="line">              while(l &lt;&#x3D; r &amp;&amp; a[r] &gt; 0) val2 *&#x3D; a[r], r--;</span><br><span class="line">              val2 *&#x3D; a[r];</span><br><span class="line">              if(i&#x3D;&#x3D;n&amp;&amp;a[i]!&#x3D;0)&#123;</span><br><span class="line">                ans &#x3D; max(ans, pre[i]&#x2F;val1);</span><br><span class="line">                ans &#x3D; max(ans, pre[i]&#x2F;val2);</span><br><span class="line">              &#125;else&#123;</span><br><span class="line">                ans &#x3D; max(ans,pre[i-1]&#x2F;val1);</span><br><span class="line">                ans &#x3D; max(ans,pre[i-1]&#x2F;val2);</span><br><span class="line">              &#125;</span><br><span class="line">              </span><br><span class="line">          &#125;</span><br><span class="line">          mul &#x3D; 1;</span><br><span class="line">          l &#x3D; i+1;</span><br><span class="line">          tmp &#x3D; 1;</span><br><span class="line">       &#125;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">  cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+<h2 id="有什么推荐的计网的书籍吗"><a href="#有什么推荐的计网的书籍吗" class="headerlink" title="有什么推荐的计网的书籍吗"></a>有什么推荐的计网的书籍吗</h2>
     
 
     
