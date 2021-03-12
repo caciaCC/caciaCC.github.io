@@ -6,19 +6,54 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://caciacc.top">
-  <title>Archives | caciaCC的博客</title>
+  <title>计算机基础-深入理解TCP协议:从原理到实战-学习 | caciaCC的博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="leetcode刷题+java面试点记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="caciaCC的博客">
-<meta property="og:url" content="http://caciacc.top/archives/page/6/index.html">
+  <meta name="description" content="学习资料深入理解 TCP 协议：从原理到实战 2 历史与分层模型TCP&#x2F;IP 网络分层用 wireshark 抓包的方式来开始看网络分层。 打开 wireshark，在弹出的选项中，选中 en0 网卡，在过滤器中输入host www.baidu.com，只抓取与百度服务器通信的数据包。 在命令行中用 curl 命令发起 http 请求：curl http:&#x2F;&#x2F;www.baidu.com，抓到的中间">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机基础-深入理解TCP协议:从原理到实战-学习">
+<meta property="og:url" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="caciaCC的博客">
-<meta property="og:description" content="leetcode刷题+java面试点记录">
+<meta property="og:description" content="学习资料深入理解 TCP 协议：从原理到实战 2 历史与分层模型TCP&#x2F;IP 网络分层用 wireshark 抓包的方式来开始看网络分层。 打开 wireshark，在弹出的选项中，选中 en0 网卡，在过滤器中输入host www.baidu.com，只抓取与百度服务器通信的数据包。 在命令行中用 curl 命令发起 http 请求：curl http:&#x2F;&#x2F;www.baidu.com，抓到的中间">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/0.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/1.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/2.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/3.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/4.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/5.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/6.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/7.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/8.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/9.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/10.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/11.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/12.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/13.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/14.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/15.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/16.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/17.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/18.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/19.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/20.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/21.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/22.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/23.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/24.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/25.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/26.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/27.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/28.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/29.jpg">
+<meta property="article:published_time" content="2021-03-11T11:30:27.000Z">
+<meta property="article:modified_time" content="2021-03-12T07:09:07.726Z">
 <meta property="article:author" content="caciaCC">
+<meta property="article:tag" content="计算机基础">
+<meta property="article:tag" content="计算机基础-计算机网络知识">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/0.jpg">
   
     <link rel="alternative" href="/atom.xml" title="caciaCC的博客" type="application/atom+xml">
   
@@ -245,272 +280,223 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-计算机基础-深入理解TCP协议-从原理到实战-学习" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-collection%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-collection%E7%9B%B8%E5%85%B3/">Java学习-Collection相关</a>
-	
+    <h1 class="article-title" itemprop="name">
+      计算机基础-深入理解TCP协议:从原理到实战-学习
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">collection</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  
+  
+<a href="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+        <time datetime="2021-03-11T11:30:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-11</time>
+</a>
 
-          
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">5.6k字</span>
+    </span>
+  </span>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">20分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><p><a target="_blank" rel="noopener" href="https://juejin.cn/book/6844733788681928712">深入理解 TCP 协议：从原理到实战</a></p>
+<h2 id="2-历史与分层模型"><a href="#2-历史与分层模型" class="headerlink" title="2 历史与分层模型"></a>2 历史与分层模型</h2><h3 id="TCP-IP-网络分层"><a href="#TCP-IP-网络分层" class="headerlink" title="TCP/IP 网络分层"></a>TCP/IP 网络分层</h3><p>用 wireshark 抓包的方式来开始看网络分层。</p>
+<p>打开 wireshark，在弹出的选项中，选中 en0 网卡，在过滤器中输入host <code>www.baidu.com</code>，只抓取与百度服务器通信的数据包。</p>
+<p>在命令行中用 curl 命令发起 http 请求：<code>curl http://www.baidu.com</code>，抓到的中间一次数据包。</p>
+<p>[图片]</p>
+<p>可以看到协议的分层从上往下依次是</p>
+<p><code>Ethernet II</code>：网络接口层以太网帧头部信息<br><code>Internet Protocol Version 4</code>：互联网层 IP 包头部信息<br><code>Transmission Control Protocol</code>：传输层的数据段头部信息，此处是 TCP 协议<br><code>Hypertext Transfer Protocol</code>：应用层 HTTP 的信息</p>
+<a id="more"></a>
+
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/0.jpg"></p>
+<h4 id="应用层（Application-Layer）"><a href="#应用层（Application-Layer）" class="headerlink" title="应用层（Application Layer）"></a>应用层（Application Layer）</h4><p>应用层的本质是规定了应用程序之间如何相互传递报文， 以 HTTP 协议为例，它规定了</p>
+<p>1.报文的类型，是请求报文还是响应报文</p>
+<p>2.报文的语法，报文分为几段，各段是什么含义、用什么分隔，每个部分的每个字段什么什么含义</p>
+<p>3.进程应该以什么样的时序发送报文和处理响应报文</p>
+<p>HTTP 客户端和 HTTP 服务端的首要工作就是根据 HTTP 协议的标准组装和解析 HTTP 数据包，每个 HTTP 报文格式由三部分组成：</p>
+<p>1.起始行（start line），起始行根据是请求报文还是响应报文分为「请求行」和「响应行」。这个例子中起始行是<code>GET / HTTP/1.1</code>，表示这是一个<code> GET</code> 请求，请求的 URL 为<code>/</code>，协议版本为<code>HTTP 1.1</code>，起始行最后会有一个空行<code>CRLF（\r\n)</code>与下面的首部分隔开</p>
+<p>2.首部（header），首部采用形如<code>key:value</code>的方式，比如常见的<code>User-Agent</code>、<code>ETag</code>、<code>Content-Length</code>都属于 HTTP 首部，每个首部直接也是用空行分隔</p>
+<p>3.可选的实体（entity），实体是 HTTP 真正要传输的内容，比如下载一个图片文件，传输的一段 HTML等</p>
+<p>以本例的请求报文格式为例</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/1.jpg"></p>
+<p>除了我们熟知的 HTTP 协议，还有下面这些非常常用的应用层协议</p>
+<p>1.域名解析协议 DNS</p>
+<p>2.收发邮件 SMTP 和 POP3 协议</p>
+<p>3.时钟同步协议 NTP</p>
+<p>4.网络文件共享协议 NFS</p>
+<h4 id="传输层（Transport-Layer）"><a href="#传输层（Transport-Layer）" class="headerlink" title="传输层（Transport Layer）"></a>传输层（Transport Layer）</h4><p>传输层的作用是为两台主机之间的「应用进程」提供端到端的逻辑通信，相隔几千公里的两台主机的进程就好像在直接通信一样。</p>
+<p>虽然是叫传输层，但是并不是将数据包从一台主机传送到另一台，而是对「传输行为进行控制」，这本小册介绍的主要内容 TCP 协议就被称为传输控制协议（Transmission Control Protocol），为下面两层协议提供数据包的重传、流量控制、拥塞控制等。</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/2.jpg"></p>
+<p>假设你正在电脑上用微信跟女朋友聊天，用 QQ 跟技术大佬们讨论技术细节，当电脑收到一个数据包时，它怎么知道这是一条微信的聊天内容，还是一条 QQ 的消息呢？</p>
+<p>这就是端口号的作用。传输层用端口号来标识不同的应用程序，主机收到数据包以后根据目标端口号将数据包传递给对应的应用程序进行处理。比如这个例子中，目标端口号为 80，百度的服务器就根据这个目标端口号将请求交给<code>监听 80 端口</code>的应用程序（可能是 Nginx 等负载均衡器）处理</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/3.jpg"></p>
+<h4 id="网络互连层（Internet-Layer）"><a href="#网络互连层（Internet-Layer）" class="headerlink" title="网络互连层（Internet Layer）"></a>网络互连层（Internet Layer）</h4><p>网络互连层提供了主机到主机的通信，将传输层产生的的数据包封装成<code>分组数据包</code>发送到目标主机，并提供<code>路由选择</code>的能力</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/4.jpg"></p>
+<p>IP 协议是网络层的主要协议，TCP 和 UDP 都是用 IP 协议作为网络层协议。这一层的主要作用是给包加上<code>源地址</code>和<code>目标地址</code>，将数据包传送到目标地址。</p>
+<p>IP 协议是一个无连接的协议，也不具备重发机制，这也是 TCP 协议复杂的原因之一就是基于了这样一个「不靠谱」的协议。</p>
+<h4 id="网络访问层（Network-Access-Layer）"><a href="#网络访问层（Network-Access-Layer）" class="headerlink" title="网络访问层（Network Access Layer）"></a>网络访问层（Network Access Layer）</h4><p>网络访问层也有说法叫做网络接口层，以太网、Wifi、蓝牙工作在这一层，网络访问层提供了主机连接到物理网络需要的硬件和相关的协议。</p>
+<p>整体的分层图如下图所示</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/5.jpg"></p>
+<h3 id="分层的好处是什么呢？"><a href="#分层的好处是什么呢？" class="headerlink" title="分层的好处是什么呢？"></a>分层的好处是什么呢？</h3><p>分层的本质是通过分离关注点而让复杂问题简单化，通过分层可以做到：</p>
+<p>1.<code>各层独立</code>：限制了依赖关系的范围，各层之间使用标准化的接口，各层不需要知道上下层是如何工作的，增加或者修改一个应用层协议不会影响传输层协议</p>
+<p>2.<code>灵活性更好</code>：比如路由器不需要应用层和传输层，分层以后路由器就可以只用加载更少的几个协议层</p>
+<p>3.<code>易于测试和维护</code>：提高了可测试性，可以独立的测试特定层，某一层有了更好的实现可以整体替换掉</p>
+<p>4.<code>能促进标准化</code>：每一层职责清楚，方便进行标准化</p>
+<h3 id="习题"><a href="#习题" class="headerlink" title="习题"></a>习题</h3><p>1.收到 IP 数据包解析以后，它怎么知道这个分组应该投递到上层的哪一个协议（UDP 或 TCP）</p>
+<p>网络互联层 Internet Protocol Version 4 中有一个「protocol」标识，是通过它来判断投递到 TCP 或 UDP 。</p>
+<h2 id="3-TCP-概述-——-可靠的、面向连接的、基于字节流、全双工的协议"><a href="#3-TCP-概述-——-可靠的、面向连接的、基于字节流、全双工的协议" class="headerlink" title="3 TCP 概述 —— 可靠的、面向连接的、基于字节流、全双工的协议"></a>3 TCP 概述 —— 可靠的、面向连接的、基于字节流、全双工的协议</h2><p>如果要用一句话来描述 TCP 协议，我想应该是：TCP 是一个<code>可靠的</code>（reliable）、<code>面向连接的</code>（connection-oriented）、<code>基于字节流</code>（byte-stream）、<code>全双工的</code>（full-duplex）协议</p>
+<h3 id="0x01-TCP-是面向连接的协议"><a href="#0x01-TCP-是面向连接的协议" class="headerlink" title="0x01 TCP 是面向连接的协议"></a>0x01 TCP 是面向连接的协议</h3><p>一开始学习 TCP 的时候，我们就被告知 TCP 是面向连接的协议，那什么是面向连接，什么是无连接呢？</p>
+<p>1.面向连接（connection-oriented）：面向连接的协议要求正式发送数据之前需要通过「握手」建立一个<code>逻辑</code>连接，结束通信时也是通过有序的四次挥手来断开连接。</p>
+<p>2.无连接（connectionless）：无连接的协议则不需要</p>
+<h4 id="三次握手"><a href="#三次握手" class="headerlink" title="三次握手"></a>三次握手</h4><p>建立连接的过程是通过「三次握手」来完成的，顾名思义，通过三次数据交换建立一个连接。 通过三次握手协商好双方后续通信的起始序列号、窗口缩放大小等信息。</p>
+<p>如下图所示</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/6.jpg"></p>
+<h3 id="0x02-TCP-协议是可靠的"><a href="#0x02-TCP-协议是可靠的" class="headerlink" title="0x02 TCP 协议是可靠的"></a>0x02 TCP 协议是可靠的</h3><p>IP 是一种<code>无连接</code>、<code>不可靠</code>的协议：它尽最大可能将数据报从发送者传输给接收者，但并<code>不保证包到达的顺序</code>会与它们被传输的顺序一致，也<code>不保证包是否重复</code>，甚至都<code>不保证包是否会达到接收者</code>。</p>
+<p>TCP 要想在 IP 基础上构建可靠的传输层协议，必须有一个复杂的机制来保障可靠性。 主要有下面几个方面：</p>
+<p>1.对每个包提供<code>校验和</code></p>
+<p>2.包的<code>序列号</code>解决了接收数据的<code>乱序</code>、<code>重复</code>问题</p>
+<p>3.超时重传</p>
+<p>4.流量控制、拥塞控制</p>
+<p><code>校验和（checksum）</code> 每个 TCP 包首部中都有两字节用来表示校验和，防止在传输过程中有损坏。如果收到一个校验和有差错的报文，TCP 不会发送任何确认<code>直接丢弃它</code>，等待发送端重传。</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/7.jpg"></p>
+<p><code>包的序列号保证了接收数据的乱序和重复问题</code> 假设我们往 TCP 套接字里写 3000 字节的数据导致 TCP发送了 3 个数据包，每个数据包大小为 1000 字节：第一个包序列号为[1-1001)，第二个包序列号为 [1001-2001)，第三个包序号为[2001-3001)</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/8.jpg"></p>
+<p>假如因为网络的原因导致第二个、第三个包先到接收端，第一个包最后才到，接收端也不会因为他们到达的顺序不一致把包弄错，<code>TCP</code> 会根据他们的<code>序号</code>进行重新的<code>排列</code>然后把结果传递给上层应用程序。</p>
+<p>如果 TCP 接收到重复的数据，可能的原因是超时重传了两次但这个包并没有丢失，接收端会收到两次同样的数据，它能够根据包序号丢弃重复的数据。</p>
+<p><code>超时重传</code> TCP 发送数据后会启动一个定时器，等待对端确认收到这个数据包。如果在指定的时间内没有收到 ACK 确认，就会重传数据包，然后等待更长时间，如果还没有收到就再重传，<code>在多次重传仍然失败以后，TCP 会放弃这个包</code>。后面我们讲到超时重传模块的时候会详细介绍这部分内容。</p>
+<p><code>流量控制</code>、<code>拥塞控制</code> 这部分内容较复杂，后面有专门的文章进行讲解，这里先不展开。</p>
+<h3 id="0x03-TCP-是面向字节流的协议"><a href="#0x03-TCP-是面向字节流的协议" class="headerlink" title="0x03 TCP 是面向字节流的协议"></a>0x03 TCP 是面向字节流的协议</h3><p>TCP 是一种<code>字节流</code>（byte-stream）协议，流的含义是<code>没有固定的报文边界</code>。</p>
+<p>假设你调用 2 次 write 函数往 socket 里依次写 500 字节、800 字节。write 函数只是把字节拷贝到<code>内核缓冲区</code>，最终会以多少条报文发送出去是<code>不确定的</code>，如下图所示</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/9.jpg"></p>
+<p>情况 1：分为两条报文依次发出去 500 字节 和 800 字节数据<br>情况 2：两部分数据合并为一个长度为 1300 字节的报文，一次发送<br>情况 3：第一部分的 500 字节与第二部分的 500 字节合并为一个长度为 1000 字节的报文，第二部分剩下的 300 字节单独作为一个报文发送<br>情况 4：第一部分的 400 字节单独发送，剩下100字节与第二部分的 800 字节合并为一个 900 字节的包一起发送。<br>情况 N：还有更多可能的拆分组合  </p>
+<p>上面出现的情况取决于诸多因素：路径最大传输单元 <code>MTU</code>、<code>发送窗口大小</code>、<code>拥塞窗口大小</code>等。</p>
+<p>当接收方从 TCP 套接字读数据时，<code>它是没法得知对方每次写入的字节是多少的</code>。接收端可能分2 次每次 650 字节读取，也有可能先分三次，一次 100 字节，一次 200 字节，一次 1000 字节进行读取。</p>
+<h3 id="0x04-TCP-是全双工的协议"><a href="#0x04-TCP-是全双工的协议" class="headerlink" title="0x04 TCP 是全双工的协议"></a>0x04 TCP 是全双工的协议</h3><p>在 TCP 中发送端和接收端<code>可以是</code>客户端/服务端，<code>也可以是</code>服务器/客户端，通信的双方在任意时刻既可以是接收数据也可以是发送数据，每个方向的数据流都<code>独立管理````序列号</code>、<code>滑动窗口大小</code>、<code>MSS</code> 等信息。</p>
+<h3 id="0x05-小结与思考"><a href="#0x05-小结与思考" class="headerlink" title="0x05 小结与思考"></a>0x05 小结与思考</h3><p>TCP 是一个<code>可靠的</code>（reliable）、<code>面向连接的</code>（connection-oriented）、<code>基于字节流</code>（byte-stream）、<code>全双工</code>（full-duplex）的协议。<code>发送端</code>在发送数据以后启动一个<code>定时器</code>，如果超时没有收到对端确认会进行重传，接收端利用<code>序列号</code>对收到的包进行<code>排序</code>、<code>丢弃重复数据</code>，TCP 还提供了<code>流量控制</code>、<code>拥塞控制</code>等机制保证了稳定性。</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/10.jpg"></p>
+<h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><p>TCP提供了一种字节流服务，而收发双方都不保持记录的边界，应用程序应该如何提供他们自己的记录标识呢？</p>
+<p>这就涉及tcp沾包和拆包问题了，发送端给每个数据包添加包首部，首部中应该至少包含数据包的长度；发送端将每个数据包封装为固定长度（不够的可以通过补0填充）；在数据包之间设置边界，如添加特殊符号。</p>
+<h2 id="4-来自-Google-的协议栈测试神器-——-packetdrill"><a href="#4-来自-Google-的协议栈测试神器-——-packetdrill" class="headerlink" title="4 来自 Google 的协议栈测试神器 —— packetdrill"></a>4 来自 Google 的协议栈测试神器 —— packetdrill</h2><h2 id="5-支撑-TCP-协议的基石-——-剖析首部字段"><a href="#5-支撑-TCP-协议的基石-——-剖析首部字段" class="headerlink" title="5 支撑 TCP 协议的基石 —— 剖析首部字段"></a>5 支撑 TCP 协议的基石 —— 剖析首部字段</h2><p> 完整的 TCP 头部如下图所示</p>
+<p> <img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/11.jpg"></p>
+<p> 我们用一次访问百度网页抓包的例子来开始。<br> <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -v www.baidu.com</span><br></pre></td></tr></table></figure><br><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/12.jpg"></p>
+<h3 id="源端口号、目标端口号"><a href="#源端口号、目标端口号" class="headerlink" title="源端口号、目标端口号"></a>源端口号、目标端口号</h3><p>在第一个包的详情中，首先看到的高亮部分的<code>源端口号</code>（Src Port）和<code>目标端口号</code>（Dst Port)，这个例子中本地源端口号为 61024，百度目标端口号是 80。</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/13.jpg"></p>
+<p>TCP 报文头部里没有<code>源 ip</code> 和<code>目标 ip</code> 地址，只有源端口号和目标端口号</p>
+<p>这也是初学 wireshark 抓包时很多人会有的一个疑问：过滤 ip 地址为 172.19.214.24 包的条件为什么不是 “tcp.addr == 172.19.214.24”，而是 “ip.addr == 172.19.214.24”</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/14.jpg"></p>
+<p>TCP 的报文里是没有<code>源 ip </code>和<code>目标 ip</code> 的，因为那是 IP 层协议的事情，TCP 层只有源端口和目标端口。</p>
+<p><code>源 IP</code>、<code>源端口</code>、<code>目标 IP</code>、<code>目标端口</code>构成了 TCP 连接的「四元组」。一个四元组可以<code>唯一标识</code>一个连接。</p>
+<h3 id="序列号（Sequence-number）"><a href="#序列号（Sequence-number）" class="headerlink" title="序列号（Sequence number）"></a>序列号（Sequence number）</h3><p>TCP 是面向字节流的协议，通过 TCP 传输的字节流的每个字节都分配了序列号，序列号（Sequence number）指的是<code>本报文段第一个字节的序列号</code>。</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/15.jpg"></p>
+<p>序列号加上报文的长度，就可以确定传输的是哪一段数据。序列号是一个 <code>32 位的无符号整数</code>，达到 2^32-1 后循环到 0。</p>
+<p>在 SYN 报文中，序列号用于交换彼此的<code>初始序列号</code>，在其它报文中，序列号用于保证包的顺序。</p>
+<p>因为网络层（IP 层）不保证包的顺序，TCP 协议利用<code>序列号</code>来解决网络包<code>乱序</code>、<code>重复</code>的问题，以保证数据包以正确的顺序组装传递给上层应用。</p>
+<p>如果发送方发送的是四个报文序列号分别是1、2、3、4，但到达接收方的顺序是 2、4、3、1，接收方就可以通过<code>序列号</code>的大小顺序组装出原始的数据。</p>
+<h4 id="初始序列号（Initial-Sequence-Number-ISN）"><a href="#初始序列号（Initial-Sequence-Number-ISN）" class="headerlink" title="初始序列号（Initial Sequence Number, ISN）"></a>初始序列号（Initial Sequence Number, ISN）</h4><p>在建立连接之初，通信双方都会各自选择一个序列号，称之为<code>初始序列号</code>。在建立连接时，通信双方通过 SYN 报文交换彼此的 <code>ISN</code>，如下图所示</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/16.jpg"></p>
+<p>初始建立连接的过程中 SYN 报文交换过程如下图所示</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/17.jpg"></p>
+<p>其中第 2 步和第 3 步可以合并一起，这就是三次握手的过程</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/18.jpg"></p>
+<h4 id="初始序列号是如何生成的"><a href="#初始序列号是如何生成的" class="headerlink" title="初始序列号是如何生成的"></a>初始序列号是如何生成的</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">__u32 secure_tcp_sequence_number(__be32 saddr, __be32 daddr,</span><br><span class="line">				 __be16 sport, __be16 dport)</span><br><span class="line">&#123;</span><br><span class="line">	u32 hash[MD5_DIGEST_WORDS];</span><br><span class="line"></span><br><span class="line">	net_secret_init();</span><br><span class="line">	hash[0] &#x3D; (__force u32)saddr;</span><br><span class="line">	hash[1] &#x3D; (__force u32)daddr;</span><br><span class="line">	hash[2] &#x3D; ((__force u16)sport &lt;&lt; 16) + (__force u16)dport;</span><br><span class="line">	hash[3] &#x3D; net_secret[15];</span><br><span class="line">	</span><br><span class="line">	md5_transform(hash, net_secret);</span><br><span class="line"></span><br><span class="line">	return seq_scale(hash[0]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">static u32 seq_scale(u32 seq)</span><br><span class="line">&#123;</span><br><span class="line">	return seq + (ktime_to_ns(ktime_get_real()) &gt;&gt; 6);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>代码中的 net_secret 是一个长度为 16 的 int 数组，只有在第一次调用 net_secret_init 的时时候会将将这个数组的值初始化为随机值。在系统重启前保持不变。</p>
+<p>可以看到初始序列号的计算函数<code>secure_tcp_sequence_number()</code>的逻辑是通过<code>源地址</code>、<code>目标地址</code>、<code>源端口</code>、<code>目标端口</code>和<code>随机因子</code>通过 MD5 进行进行计算。如果仅有这几个因子，对于四元组相同的请求，计算出的初始序列号总是相同，这必然有很大的安全风险，所以函数的最后将计算出的序列号通过 seq_scale 函数再次计算。</p>
+<p>seq_scale 函数加入了<code>时间因子</code>，对于四元组相同的连接，序列号也<code>不会重复</code>了。</p>
+<h4 id="序列号回绕了怎么处理"><a href="#序列号回绕了怎么处理" class="headerlink" title="序列号回绕了怎么处理"></a>序列号回绕了怎么处理</h4><p>序列号是一个 32 位的无符号整数，从前面介绍的初始序列号计算算法可以知道，ISN 并不是从 0 开始，所以同一个连接的序列号是有可能<code>溢出回绕</code>（sequence wraparound）的。TCP 的很多校验比如丢包、乱序判断都是通过比较包的序号来实现的，我们来看看 linux 内核是如何处理的，代码如下所示。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">static inline bool before(__u32 seq1, __u32 seq2)</span><br><span class="line">&#123;</span><br><span class="line">        return (__s32)(seq1-seq2) &lt; 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>其中 <code>__u32</code> 表示无符号的 32 位整数，<code>__s32</code>表示有符号的 32 位整数。为什么 seq1 - seq2 转为有符号的 32 位整数就可以判断 seq1 和 seq2 的大小了呢？</p>
+<p>以 seq1 为 0xFFFFFFFF、seq2 为 0x02（回绕）为例，它们相减的结果如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seq1 - seq2 &#x3D; 0xFFFFFFFF - 0x02 &#x3D; 0xFFFFFFFD</span><br></pre></td></tr></table></figure>
+<p>0xFFFFFFFD 最高位为 1，表示为负数，实际值为 -(0x00000002 + 1) = -3，这样即使 seq2 回绕了，也可以知道 seq1 &lt; seq2。</p>
+<h3 id="确认号"><a href="#确认号" class="headerlink" title="确认号"></a>确认号</h3><p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/19.jpg"></p>
+<p>TCP 使用确认号（Acknowledgment number, ACK）来告知对方<code>下一个期望接收的序列号</code>，<code>小于此确认号的所有字节都已经收到</code>。</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/20.jpg"></p>
+<p>关于确认号有几个注意点：</p>
+<p>1.不是所有的包都需要确认的</p>
+<p>2.不是收到了数据包就立马需要确认的，<code>可以延迟</code>一会再<code>确认</code></p>
+<p>3.ACK 包本身不需要被确认，否则就会无穷无尽死循环了</p>
+<p>4.确认号永远是表示<code>小于此确认号的字节</code>都已经收到</p>
+<h3 id="TCP-Flags"><a href="#TCP-Flags" class="headerlink" title="TCP Flags"></a>TCP Flags</h3><p>TCP 有很多种<code>标记</code>，有些用来发起连接同步初始序列号，有些用来确认数据包，还有些用来结束连接。TCP 定义了一个 8 位的字段用来表示 flags，大部分都只用到了后 6 个，如下图所示</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/21.jpg"></p>
+<p>下面这个是 wireshark 第一个 SYN 包的 flags 截图</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/22.jpg"></p>
+<p>我们通常所说的 <code>SYN</code>、<code>ACK</code>、<code>FIN</code>、<code>RST</code> 其实只是把 flags 对应的 bit 位置为 1 而已，这些标记可以组合使用，比如 SYN+ACK，FIN+ACK 等</p>
+<p><code>SYN</code>（Synchronize）：用于发起连接数据包同步双方的初始序列号</p>
+<p><code>ACK</code>（Acknowledge）：确认数据包</p>
+<p><code>RST</code>（Reset）：这个标记用来<code>强制断开连接</code>，通常是之前建立的<code>连接已经不在了</code>、<code>包不合法</code>、或者实在<code>无能为力处理</code></p>
+<p><code>FIN</code>（Finish）：通知对方我发完了所有数据，准备断开连接，后面我不会再发数据包给你了。</p>
+<p><code>PSH</code>（Push）：告知对方这些数据包收到以后应该<code>马上</code>交给上层应用，不能缓存起来</p>
+<h3 id="窗口大小"><a href="#窗口大小" class="headerlink" title="窗口大小"></a>窗口大小</h3><p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/23.jpg"></p>
+<p>可以看到用于表示窗口大小的”Window Size” 只有 16 位，可能 TCP 协议设计者们认为 16 位的窗口大小已经够用了，也就是最大窗口大小是 65535 字节（<code>64KB</code>）。就像网传盖茨曾经说过：“640K内存对于任何人来说都足够了”一样。</p>
+<p>自己挖的坑当然要自己填，因此TCP 协议引入了「TCP 窗口缩放」选项 作为窗口缩放的比例因子，比例因子值的范围是 0 ~ 14，其中最小值 0 表示不缩放，最大值 14。比例因子可以将窗口扩大到原来的 2 的 n 次方，比如窗口大小缩放前为 1050，缩放因子为 7，则真正的窗口大小为 1050 * 128 = 134400，如下图所示</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/24.jpg"></p>
+<p>在 wireshark 中最终的窗口大小会自动计算出来，如下图中的 <code>Calculated window size</code>。以本文中抓包的例子为例</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/25.jpg"></p>
+<p>值得注意的是，<code>窗口缩放值</code>在<code>三次握手</code>的时候<code>指定</code>，如果抓包的时候没有抓到 SYN 包，wireshark 是不知道真正的窗口缩放值是多少的。</p>
+<h3 id="可选项"><a href="#可选项" class="headerlink" title="可选项"></a>可选项</h3><p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/26.jpg"></p>
+<p>可选项的格式入下所示</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/27.jpg"></p>
+<p>以 MSS 为例，kind=2，length=4，value=1460</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/28.jpg"></p>
+<p>常用的选项有以下几个：</p>
+<p>1.MSS：最大段大小选项，是 TCP 允许的<code>从对方接收的最大报文段</code><br>2.SACK：选择确认选项<br>3.Window Scale：窗口缩放选项  </p>
+<h3 id="作业题"><a href="#作业题" class="headerlink" title="作业题"></a>作业题</h3><p>1、如果一个 TCP 连接正在传送 5000 字节的数据，第一个字节的序号是 10001，数据被分为 5 段，每个段携带 1000 字节，请问每个段的序号是什么？</p>
+<p>10001 11001 12001 13001 14001</p>
+<p>2.A B 两个主机之间建立了一个 TCP 连接，A 主机发给 B 主机两个 TCP 报文，大小分别是 500 和 300，第一个报文的序列号是 200，那么 B 主机接收两个报文后，返回的确认号是（D）</p>
+<p>1.A、200<br>2.B、700<br>3.C、800<br>4.D、1000  </p>
+<p>3.客户端的使用 <code>ISN=2000</code> 打开一个连接，服务器端使用 <code>ISN=3000</code> 打开一个连接，经过 3 次握手建立连接。连接建立起来以后，假定客户端向服务器发送一段数据<code>Welcome the server!</code>（长度 20 Bytes），而服务器的回答数据<code>Thank you!</code>（长度 10 Bytes ），试画出三次握手和数据传输阶段报文段序列号、确认号的情况。</p>
+<p>1.client: seq = 2000, syn = 1,发送后进入syn_send阶段</p>
+<p>2.server: seq = 3000, ack = 1, ackNum = 2001, syn = 1,发送后进入syn_received阶段</p>
+<p>3.client: ack = 1,  ackNum = 3001,发送后进入establish阶段,server收到后进入establish阶段</p>
+<p>如果3发生丢失,server端的重传计数器会重新发送syn_ack报文,总共发送 net.ipv4.tcp_synack_retries次,client在没有收到重传的syn_ack之前，发送数据给server端，由于server端的状态为syn_received状态，而不是establish状态，就会发送rst报文给client端，client就能接收到server侧未收到ack报文。</p>
+<p>4.client: seq = 2001, len = 20, </p>
+<p>4.1server: ack = 1, ackNum = 2021</p>
+<p>5.server: seq = 3001, len = 10</p>
+<p>5.1client: ack = 1, ackNum = 3011</p>
+<h2 id="6-数据包大小对网络的影响-——-MTU-与-MSS-的奥秘"><a href="#6-数据包大小对网络的影响-——-MTU-与-MSS-的奥秘" class="headerlink" title="6 数据包大小对网络的影响 —— MTU 与 MSS 的奥秘"></a>6 数据包大小对网络的影响 —— MTU 与 MSS 的奥秘</h2><h3 id="最大传输单元（Maximum-Transmission-Unit-MTU）"><a href="#最大传输单元（Maximum-Transmission-Unit-MTU）" class="headerlink" title="最大传输单元（Maximum Transmission Unit, MTU）"></a>最大传输单元（Maximum Transmission Unit, MTU）</h3><p>数据链路层传输的帧大小是有限制的，不能把一个太大的包直接塞给链路层，这个限制被称为「最大传输单元（<code>Maximum Transmission Unit</code>, <code>MTU</code>）」</p>
+<p>下图是以太网的帧格式，以太网的帧最小的帧是 64 字节，除去 14 字节头部和 4 字节 CRC 字段，有效荷载最小为 46 字节。最大的帧是 1518 字节，除去 14 字节头部和 4 字节 CRC，有效荷载最大为 1500，这个值就是以太网的 <code>MTU</code>。因此如果传输 <code>100KB </code>的数据，至少需要 （100 * 1024 / 1500) = 69 个以太网帧。</p>
+<p><img src="/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/29.jpg"></p>
+
+    
+
+    
+
+    
+
   </div>
-</article>
-  
+  <div class="article-info article-info-index">
     
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">Java学习-Java基础知识</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E6%A1%86%E6%9E%B6%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E6%A1%86%E6%9E%B6%E7%9F%A5%E8%AF%86/">Java学习-Java框架知识</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">框架</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9F%A5%E8%AF%86/">Java学习-Java设计模式知识</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/nosql%E5%AD%A6%E4%B9%A0-nosql%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/nosql%E5%AD%A6%E4%B9%A0-nosql%E7%9F%A5%E8%AF%86/">Nosql学习-Nosql知识</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nosql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86/">计算机基础-操作系统知识</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -520,209 +506,115 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计算机基础-操作系统知识</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">计算机基础-计算机网络知识</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://caciacc.top/2021/03/11/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3TCP%E5%8D%8F%E8%AE%AE-%E4%BB%8E%E5%8E%9F%E7%90%86%E5%88%B0%E5%AE%9E%E6%88%98-%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/%E9%A1%B9%E7%9B%AE-%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021/03/09/mysql%E5%AD%A6%E4%B9%A0-%E6%8E%98%E9%87%91%E5%B0%8F%E5%86%8Cmysql/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">MySQL学习-掘金小册mysql</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/%E9%A1%B9%E7%9B%AE-%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3/">项目-各种参考文档</a>
-	
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-jvm%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-jvm%E7%9B%B8%E5%85%B3/">Java学习-JVM相关</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-map%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-map%E7%9B%B8%E5%85%B3/">Java学习-map相关知识</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">map</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/mysql%E5%AD%A6%E4%B9%A0-%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/mysql%E5%AD%A6%E4%B9%A0-%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/">Mysql学习-一些知识点</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/5/">Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/archives/page/7/">7</a><a class="extend next" rel="next" href="/archives/page/7/">Next</a>
-    </nav>
-  
+
+
+
 
 
           </div>
@@ -751,8 +643,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
