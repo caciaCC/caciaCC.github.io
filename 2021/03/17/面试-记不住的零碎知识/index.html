@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/1.jpg">
 <meta property="article:published_time" content="2021-03-17T11:22:43.000Z">
-<meta property="article:modified_time" content="2021-03-17T14:48:21.676Z">
+<meta property="article:modified_time" content="2021-03-18T00:54:24.697Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -278,7 +278,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">165字</span>
+      <span class="post-count">1.3k字</span>
     </span>
   </span>
 
@@ -287,7 +287,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">4分</span>
     </span>
   </span>
 </div>
@@ -311,6 +311,43 @@
 <p>URL统一资源定位符。(Locater) 可以提供找到该资源的路径。</p>
 <p>URL是URI的子集。</p>
 <p>是URI但不是URL的例子:urn:isbn:0-486-27557-4,这个是一本书的isbn,可以唯一标识这本书,更确切说这个是URN。</p>
+<p>5.哪些排序算法是稳定的,哪些不稳定</p>
+<p>如果排序结束后，a[0]可以保证一定在a[3]前头，也就是他们原有的顺序不变，那这种排序算法就是稳定的。</p>
+<p>冒泡排序、基数排序、插入排序、归并排序、桶排序、二叉树排序是稳定的排序算法。</p>
+<p>如果不能保证原有顺序，这种算法就是不稳定的。（比如常见的选择排序，希尔排序，堆排序，快速排序等都是不稳定的排序算法）</p>
+<p>6.一个场景,斗鱼有很多会议室,如何用数据库锁实现不会出现两批人占同一个会议室的情况</p>
+<p>我们在读取时上共享锁，由于更新是独占锁，它们不相容，这样可以避免判断失误的情况，因为不等两个共享锁释放它们都无法更新，但带来的新的问题，即两个都在无限期的等待对方释方,引起了死锁,其中一个事务会回滚,用户体验不好。</p>
+<p>更完善:在读时加独占锁,然后再进行更新即可。</p>
+<p>7.mysql的连接池有了解吗</p>
+<p>务器并不会立即把与该客户端交互的线程销毁掉，而是把它缓存起来，在另一个新的客户端再进行连接时，把这个缓存的线程分配给该新客户端。</p>
+<p>连接池的作用就是连接复用。避免了数据库连接频繁建立、关闭的开销。</p>
+<p>8.AOP是如何做的?java中动态代理是如何实现的?</p>
+<p>JDKProxy和Cglib</p>
+<p>如果目标对象实现了接口，默认情况下会采用JDK的动态代理实现AOP。</p>
+<p>如果目标对象没有实现了接口，必须采用CGLIB库，spring会自动在JDK动态代理和CGLIB之间转换</p>
+<p>JDK动态代理和CGLIB(Code Generation Library)字节码生成的区别？</p>
+<p>JDK动态代理只能对实现了接口的类生成代理，而不能针对类。</p>
+<p>CGLIB是针对类实现代理，主要是对指定的类生成一个子类，覆盖其中的方法。</p>
+<p>Spring AOP的底层就是通过JDK动态代理或者cglib动态代理技术为目标Bean横向织入。</p>
+<p>程序中应该优先对接口创建代理，便于程序解耦维护。</p>
+<p>9.为什么wait和notify是Object类中的方法?</p>
+<p>因为这些方法在操作同步线程时，都必须要标识它们操作线程的锁，只有同一个锁上的被等待线程，可以被同一个锁上的notify唤醒，不可以对不同锁中的线程进行唤醒。</p>
+<p>也就是说，等待和唤醒必须是同一个锁。而锁可以是任意对象，所以可以被任意对象调用的方法是定义在object类中。</p>
+<p>10.this.wait()是啥意思?</p>
+<p>若线程持有的是当前对象的锁 那么直接调用wait()、super.wait()、this.wait()，都是直接调用的当前对象的方法。</p>
+<p>如果当前线程持有的是对象A的锁，而使用条件对象时调用的是对象B的wait()\notify()方法组合，那么就会抛出一个<code>java.lang.IllegalMonitorStateException</code>异常</p>
+<p>如果当前线程在等待之前或在等待时被任何线程中断，则会抛出 <code>InterruptedException</code> 异常。</p>
+<p>11.调用了wait()的线程进入等待池，只有被notify唤醒之后才进入锁池，这两个池的内涵是什么?</p>
+<p>每个对象有一个与之对应的内部锁(monitor)。JAVA虚拟机会为每个对象维护两个队列,一个是Entry Set,一个是Wait Set。Entry存储等待获取X对应内部锁的所有线程,X的Wait Set存储执行了x.wait()的线程。</p>
+<p>当抢占锁时,唤醒EntrySet中任意一个线程,申请到则移除,否则继续阻塞。</p>
+<p>当notify时,任意一个Wait Set中线程被唤醒,与EntrySet以及其他可能线程一起争夺monitorX,抢占到则移除,否则继续在Wait Set等待。</p>
+<p>12.redis的各个数据类型的底层是什么?</p>
+<p>redis键key</p>
+<p>redis字符串String                    底层是SDS:简单动态字符串</p>
+<p>redis列表List（双向添加）              底层是双向链表或压缩列表(ziplist)-&gt;快速列表quicklist</p>
+<p>redis集合Set (无序无重复)              底层是整数集合或哈希表</p>
+<p>redis哈希Hash（类似JAVA的map）         底层是字典dict或压缩列表</p>
+<p>redis有序集合Zset (有序无重复)         底层是跳表(+dict)或压缩列表(ziplist)</p>
 
     
 

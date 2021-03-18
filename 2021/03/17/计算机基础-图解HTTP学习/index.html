@@ -10,19 +10,35 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="1了解 Web 及网络基础1.1 使用HTTP协议访问互联网Web是建立在HTTP协议上通信的。 1.2HTTP的诞生1.3网络基础TCP&#x2F;IP1.3.2 TCP&#x2F;IP的分层管理TCP&#x2F;IP 协议族按层次分别分为以下 4 层：应用层、传输层、网络层和数据链路层。 1.3.3 TCP&#x2F;IP通信传输流 封装的思想-把数据包装起来。 1.4 与 HTTP 关系密切的协议 : IP、TCP 和DNS1.4">
+  <meta name="description" content="1了解 Web 及网络基础1.1 使用HTTP协议访问互联网Web是建立在HTTP协议上通信的。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机基础-图解HTTP学习">
 <meta property="og:url" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="caciaCC的博客">
-<meta property="og:description" content="1了解 Web 及网络基础1.1 使用HTTP协议访问互联网Web是建立在HTTP协议上通信的。 1.2HTTP的诞生1.3网络基础TCP&#x2F;IP1.3.2 TCP&#x2F;IP的分层管理TCP&#x2F;IP 协议族按层次分别分为以下 4 层：应用层、传输层、网络层和数据链路层。 1.3.3 TCP&#x2F;IP通信传输流 封装的思想-把数据包装起来。 1.4 与 HTTP 关系密切的协议 : IP、TCP 和DNS1.4">
+<meta property="og:description" content="1了解 Web 及网络基础1.1 使用HTTP协议访问互联网Web是建立在HTTP协议上通信的。">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/1.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/2.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/3.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/4.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/5.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/6.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/7.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/8.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/9.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/10.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/11.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/12.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/13.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/14.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/15.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/16.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/17.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/18.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/19.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/20.jpg">
 <meta property="article:published_time" content="2021-03-17T12:50:00.000Z">
-<meta property="article:modified_time" content="2021-03-17T14:48:38.277Z">
+<meta property="article:modified_time" content="2021-03-18T14:35:59.888Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="计算机基础">
 <meta property="article:tag" content="计算机基础-计算机网络知识">
@@ -282,7 +298,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.1k字</span>
+      <span class="post-count">10.6k字</span>
     </span>
   </span>
 
@@ -291,7 +307,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">4分</span>
+      <span class="post-count">39分</span>
     </span>
   </span>
 </div>
@@ -303,6 +319,8 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id="1了解-Web-及网络基础"><a href="#1了解-Web-及网络基础" class="headerlink" title="1了解 Web 及网络基础"></a>1了解 Web 及网络基础</h1><h2 id="1-1-使用HTTP协议访问互联网"><a href="#1-1-使用HTTP协议访问互联网" class="headerlink" title="1.1 使用HTTP协议访问互联网"></a>1.1 使用HTTP协议访问互联网</h2><p>Web是建立在HTTP协议上通信的。</p>
+<a id="more"></a>
+
 <h2 id="1-2HTTP的诞生"><a href="#1-2HTTP的诞生" class="headerlink" title="1.2HTTP的诞生"></a>1.2HTTP的诞生</h2><h2 id="1-3网络基础TCP-IP"><a href="#1-3网络基础TCP-IP" class="headerlink" title="1.3网络基础TCP/IP"></a>1.3网络基础TCP/IP</h2><h3 id="1-3-2-TCP-IP的分层管理"><a href="#1-3-2-TCP-IP的分层管理" class="headerlink" title="1.3.2 TCP/IP的分层管理"></a>1.3.2 TCP/IP的分层管理</h3><p>TCP/IP 协议族按层次分别分为以下 4 层：应用层、传输层、网络层和数据链路层。</p>
 <h3 id="1-3-3-TCP-IP通信传输流"><a href="#1-3-3-TCP-IP通信传输流" class="headerlink" title="1.3.3 TCP/IP通信传输流"></a>1.3.3 TCP/IP通信传输流</h3><p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/1.jpg"></p>
 <p>封装的思想-把数据包装起来。</p>
@@ -342,6 +360,7 @@
 <p>HTTP/1.1 的 DELETE 方法本身和 PUT 方法一样不带验证机<br>制，所以一般的 Web 网站也不使用 DELETE 方法。</p>
 <p>OPTIONS：询问支持的方法</p>
 <p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/2.jpg"></p>
+<p>Allow:GET,POST,HEAD,OPTION</p>
 <p>TRACE：追踪路径</p>
 <p>TRACE 方法是让 Web 服务器端将之前的请求通信环回给客户端的方<br>法。</p>
 <p>发送请求时，在 Max-Forwards 首部字段中填入数值，每经过一个服<br>务器端就将该数字减 1，当数值刚好减到 0 时，就停止继续传输，最<br>后接收到请求的服务器端则返回状态码 200 OK 的响应。</p>
@@ -350,6 +369,322 @@
 <p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/3.jpg"></p>
 <p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/4.jpg"></p>
 <p>CONNECT：要求用隧道协议连接代理</p>
+<p>CONNECT 方法要求在与代理服务器通信时建立隧道，实现用隧道协<br>议进行 TCP 通信。主要使用 SSL（<code>Secure Sockets Layer</code>，安全套接<br>层）和 TLS（<code>Transport Layer Security</code>，传输层安全）协议把通信内容<br>加 密后经网络隧道传输。</p>
+<p>CONNECT的格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CONNECT 代理服务器:端口号 HTTP版本</span><br></pre></td></tr></table></figure>
+<h2 id="2-6-使用方法下达命令"><a href="#2-6-使用方法下达命令" class="headerlink" title="2.6 使用方法下达命令"></a>2.6 使用方法下达命令</h2><p>HTTP/1.0 和 HTTP/1.1 支持的方法。</p>
+<p>HTTP/1.1比HTTP/1.0多支持Trace/Option/Connect</p>
+<p>HTTP/1.0比HTTP/1.1多支持link/unlink</p>
+<h2 id="2-7-持久连接节省通信量"><a href="#2-7-持久连接节省通信量" class="headerlink" title="2.7 持久连接节省通信量"></a>2.7 持久连接节省通信量</h2><p>每次的请求都会造成无谓的 TCP 连接建立和断<br>开，增加通信量的开销。</p>
+<h3 id="2-7-1-持久连接"><a href="#2-7-1-持久连接" class="headerlink" title="2.7.1 持久连接"></a>2.7.1 持久连接</h3><p>为解决上述 TCP 连接的问题，HTTP/1.1 和一部分的 HTTP/1.0 想出了<br>持久连接（HTTP Persistent Connections，也称为 HTTP keep-alive 或<br>HTTP connection reuse）的方法。</p>
+<p>持久连接的好处在于减少了 TCP 连接的重复建立和断开所造成的额<br>外开销，减轻了服务器端的负载。</p>
+<p>在 HTTP/1.1 中，所有的连接默认都是持久连接，但在 HTTP/1.0 内并<br>未标准化。</p>
+<h3 id="2-7-2-管线化"><a href="#2-7-2-管线化" class="headerlink" title="2.7.2 管线化"></a>2.7.2 管线化</h3><p>持久连接使得多数请求以管线化（pipelining）方式发送成为可能。从<br>前发送请求后需等待并收到响应，才能发送下一个请求。管线化技术<br>出现后，不用等待响应亦可直接发送下一个请求。</p>
+<h2 id="2-8-使用-Cookie-的状态管理"><a href="#2-8-使用-Cookie-的状态管理" class="headerlink" title="2.8 使用 Cookie 的状态管理"></a>2.8 使用 Cookie 的状态管理</h2><p>由于不必保存状态，自然可减少服务器的 CPU 及内存资源的消耗。从另一侧面来说，也正是因为 HTTP 协议本身是非常简单的，所以才会被应用在各种场景里。</p>
+<p>Cookie 会根据从服务器端发送的响应报文内的一个叫做 Set-Cookie 的<br>首部字段信息，通知客户端保存 Cookie。当下次客户端再往该服务器<br>发送请求时，客户端会自动在请求报文中加入 Cookie 值后发送出去。</p>
+<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/5.jpg"></p>
+<p>1.client:无</p>
+<p>2.&lt; set - cookie &gt;</p>
+<p>3.Cookie</p>
+<h2 id="3-HTTP-报文内的-HTTP信息"><a href="#3-HTTP-报文内的-HTTP信息" class="headerlink" title="3 HTTP 报文内的 HTTP信息"></a>3 HTTP 报文内的 HTTP信息</h2><h3 id="3-1-HTTP-报文"><a href="#3-1-HTTP-报文" class="headerlink" title="3.1 HTTP 报文"></a>3.1 HTTP 报文</h3><p>通常，并不一定要有报文主体。</p>
+<h3 id="3-2-请求报文及响应报文的结构"><a href="#3-2-请求报文及响应报文的结构" class="headerlink" title="3.2 请求报文及响应报文的结构"></a>3.2 请求报文及响应报文的结构</h3><p>首部字段</p>
+<p>包含表示请求和响应的各种条件和属性的各类首部。<br>50一般有 4 种首部，分别是：通用首部、请求首部、响应首部和实体首部。</p>
+<p>其他<br>可能包含 HTTP 的 RFC 里未定义的首部（Cookie 等）。</p>
+<h3 id="3-3-编码提升传输速率"><a href="#3-3-编码提升传输速率" class="headerlink" title="3.3 编码提升传输速率"></a>3.3 编码提升传输速率</h3><p>HTTP 在传输数据时可以按照数据原貌直接传输，但也可以在传输过<br>程中通过编码提升传输速率。</p>
+<h4 id="3-3-1-报文主体和实体主体的差异"><a href="#3-3-1-报文主体和实体主体的差异" class="headerlink" title="3.3.1 报文主体和实体主体的差异"></a>3.3.1 报文主体和实体主体的差异</h4><p>通常，报文主体等于实体主体。只有当传输中进行编码操作时，实体<br>主体的内容发生变化，才导致它和报文主体产生差异。</p>
+<h4 id="3-3-2-压缩传输的内容编码"><a href="#3-3-2-压缩传输的内容编码" class="headerlink" title="3.3.2 压缩传输的内容编码"></a>3.3.2 压缩传输的内容编码</h4><p>向待发送邮件内增加附件时，为了使邮件容量变小，我们会先用 ZIP<br>压缩文件之后再添加附件发送。</p>
+<p>HTTP 协议中有一种被称为内容编码的功能也能进行类似的操作。</p>
+<p>内容编码指明应用在实体内容上的<code>编码格式</code>，并保持实体信息原样<code>压 缩</code>。内容编码后的实体由客户端接收并负责<code>解码</code>。</p>
+<h4 id="3-3-3-分割发送的分块传输编码"><a href="#3-3-3-分割发送的分块传输编码" class="headerlink" title="3.3.3 分割发送的分块传输编码"></a>3.3.3 分割发送的分块传输编码</h4><p>在传输大容量数据时，通过把数据分割成多块，能够让浏览器逐步显示页面。</p>
+<p>这种把实体主体分块的功能称为分块传输编码（Chunked Transfer<br>Coding）。</p>
+<p>分块传输编码会将实体主体分成多个部分（块）。每一块都会用十六<br>进制来标记块的大小，而实体主体的最后一块会使用“0(CR+LF)”来标<br>记。</p>
+<p>使用分块传输编码的实体主体会由接收的客户端负责解码，恢复到编<br>码前的实体主体。</p>
+<p><code>HTTP/1.1</code> 中存在一种称为传输编码（Transfer Coding）的机制，它可<br>以在通信时按某种编码方式传输，但只定义作用于分块传输编码中。</p>
+<h3 id="3-4-发送多种数据的多部分对象集合"><a href="#3-4-发送多种数据的多部分对象集合" class="headerlink" title="3.4 发送多种数据的多部分对象集合"></a>3.4 发送多种数据的多部分对象集合</h3><p>是因为采用了<code> MIME</code>（Multipurpose Internet Mail Extensions，多用途因特网邮件扩展）机制，它允许邮件处理文本、图片、视频等多个不同类型的数据。</p>
+<p>多部分对象集合包含的对象如下。</p>
+<p>multipart/form-data:在 Web 表单文件上传时使用。</p>
+<p>multipart/byteranges:状态码 206（Partial Content，部分内容）响应报文包含了多个范围的内容时使用。</p>
+<p>multipart/form-data</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Content-Type: multipart&#x2F;form-data; boundary&#x3D;AaB03x</span><br><span class="line"></span><br><span class="line">--AaB03x</span><br><span class="line">Content-Disposition: form-data; name&#x3D;&quot;field1&quot;</span><br><span class="line">Joe Blow</span><br><span class="line">--AaB03x</span><br><span class="line">Content-Disposition: form-data; name&#x3D;&quot;pics&quot;; filename&#x3D;&quot;file1.txt&quot;</span><br><span class="line">Content-Type: text&#x2F;plain</span><br><span class="line">...（file1.txt的数据）...</span><br><span class="line">--AaB03x--</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">Content-Type: multipart&#x2F;byteranges; boundary&#x3D;THIS_STRING_SEPARATES</span><br><span class="line"></span><br><span class="line">--THIS_STRING_SEPARATES</span><br><span class="line">Content-Type: application&#x2F;pdf</span><br><span class="line">Content-Range: bytes 500-999&#x2F;8000</span><br><span class="line"></span><br><span class="line">...（范围指定的数据）...</span><br><span class="line">--THIS_STRING_SEPARATES</span><br><span class="line">Content-Type: application&#x2F;pdf</span><br><span class="line">Content-Range: bytes 7000-7999&#x2F;8000</span><br><span class="line">...（范围指定的数据）...</span><br><span class="line">--THIS_STRING_SEPARATES--</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="3-5-获取部分内容的范围请求"><a href="#3-5-获取部分内容的范围请求" class="headerlink" title="3.5 获取部分内容的范围请求"></a>3.5 获取部分内容的范围请求</h3><p>为了解决网络中断问题,需要一种可恢复的机制。</p>
+<p>要实现该功能需要指定下载的实体范围。像这样，指定范围发送的请<br>求叫做范围请求（Range Request）。</p>
+<p>对一份 10 000 字节大小的资源，如果使用范围请求，可以只请求<br>5001~10 000 字节内的资源。</p>
+<p>针对范围请求，响应会返回状态码为 206 Partial Content 的响应报<br>文。另外，对于多重范围的范围请求，响应会在首部字段 ContentType 标明 multipart/byteranges 后返回响应报文。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Content-Range:  </span><br><span class="line">Content-Type:</span><br><span class="line">Content-Length:</span><br></pre></td></tr></table></figure>
+<h3 id="3-6-内容协商返回最合适的内容"><a href="#3-6-内容协商返回最合适的内容" class="headerlink" title="3.6 内容协商返回最合适的内容"></a>3.6 内容协商返回最合适的内容</h3><p>当浏览器的默认语言为英语或中文，访问相同 URI 的 Web 页面时，<br>则会显示对应的英语版或中文版的 Web 页面。这样的机制称为内容<br>协商（Content Negotiation）。</p>
+<p>Accept</p>
+<p>Accept-Charset</p>
+<p>Accept-Encoding</p>
+<p>Accept-Language</p>
+<p>Content-Language</p>
+<p>服务器驱动协商（Server-driven Negotiation）</p>
+<p>客户端驱动协商（Agent-driven Negotiation）</p>
+<p>透明协商（Transparent Negotiation）</p>
+<h2 id="第-4-章-返回结果的-HTTP-状态码"><a href="#第-4-章-返回结果的-HTTP-状态码" class="headerlink" title="第 4 章 返回结果的 HTTP 状态码"></a>第 4 章 返回结果的 HTTP 状态码</h2><h3 id="4-1-状态码告知从服务器端返回的请求结果"><a href="#4-1-状态码告知从服务器端返回的请求结果" class="headerlink" title="4.1 状态码告知从服务器端返回的请求结果"></a>4.1 状态码告知从服务器端返回的请求结果</h3><p>协议的版本+状态码+状态码描述</p>
+<h3 id="4-2-2XX-成功"><a href="#4-2-2XX-成功" class="headerlink" title="4.2 2XX 成功"></a>4.2 2XX 成功</h3><h4 id="4-2-1-200-OK"><a href="#4-2-1-200-OK" class="headerlink" title="4.2.1 200 OK"></a>4.2.1 200 OK</h4><p>表示从客户端发来的请求在服务器端被正常处理了。</p>
+<h4 id="4-2-2-204-No-Content"><a href="#4-2-2-204-No-Content" class="headerlink" title="4.2.2 204 No Content"></a>4.2.2 204 No Content</h4><p>该状态码代表服务器接收的请求已成功处理，但在返回的响应报文中<br>不含实体的主体部分。</p>
+<p>比如，当从浏览器发出请求处理后，返回 <code>204 响应</code>，那么浏览器显示的页面不发生更新。</p>
+<h4 id="4-2-3-206-Partial-Content"><a href="#4-2-3-206-Partial-Content" class="headerlink" title="4.2.3 206 Partial Content"></a>4.2.3 206 Partial Content</h4><p>该状态码表示客户端进行了<code>范围请求</code>，而服务器成功执行了这部分的<br>GET 请求。响应报文中包含由 <code>Content-Range</code> 指定范围的实体内容。</p>
+<h3 id="4-3-3XX-重定向"><a href="#4-3-3XX-重定向" class="headerlink" title="4.3 3XX 重定向"></a>4.3 3XX 重定向</h3><h4 id="4-3-1-301-Moved-Permanently"><a href="#4-3-1-301-Moved-Permanently" class="headerlink" title="4.3.1 301 Moved Permanently"></a>4.3.1 301 Moved Permanently</h4><p>永久性重定向。</p>
+<p>像下方给出的请求 URI，当指定资源路径的最后忘记添加斜杠“/”，就<br>会产生 301 状态码。</p>
+<p><a target="_blank" rel="noopener" href="http://example.com/sample">http://example.com/sample</a></p>
+<h4 id="4-3-2-302-Found"><a href="#4-3-2-302-Found" class="headerlink" title="4.3.2 302 Found"></a>4.3.2 302 Found</h4><p>临时性重定向。该状态码表示请求的资源已被分配了新的 URI，希望<br>用户（本次）能使用新的 URI 访问。</p>
+<h4 id="4-3-3-303-See-Other"><a href="#4-3-3-303-See-Other" class="headerlink" title="4.3.3 303 See Other"></a>4.3.3 303 See Other</h4><p>303 状态码和 302 Found 状态码有着相同的功能，但 303 状态码明确<br>表示客户端应当采用 GET 方法获取资源，这点与 302 状态码有区<br>别。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">当 301、302、303 响应状态码返回时，几乎所有的浏览器都会把</span><br><span class="line">POST 改成 GET，并删除请求报文内的主体，之后请求会自动再次</span><br><span class="line">发送。</span><br><span class="line">301、302 标准是禁止将 POST 方法改变成 GET 方法的，但实际使</span><br><span class="line">用时大家都会这么做。</span><br></pre></td></tr></table></figure>
+<h4 id="4-3-4-304-Not-Modified"><a href="#4-3-4-304-Not-Modified" class="headerlink" title="4.3.4 304 Not Modified"></a>4.3.4 304 Not Modified</h4><p>该状态码表示客户端发送附带条件的请求时，服务器端允许请求访<br>问资源，但未满足条件的情况。</p>
+<p>附带条件的请求是指采用 GET方法的请求报文中包含 <code>If-Match</code>，<code>If-ModifiedSince</code>，<code>If-None-Match</code>，<code>If-Range</code>，<code>If-Unmodified-Since</code> 中任一首部。</p>
+<h4 id="4-3-5-307-Temporary-Redirect"><a href="#4-3-5-307-Temporary-Redirect" class="headerlink" title="4.3.5 307 Temporary Redirect"></a>4.3.5 307 Temporary Redirect</h4><p>临时重定向。</p>
+<p>响应报文不会从 POST 变成 GET。</p>
+<h3 id="4-4-4XX-客户端错误"><a href="#4-4-4XX-客户端错误" class="headerlink" title="4.4 4XX 客户端错误"></a>4.4 4XX 客户端错误</h3><h4 id="4-4-1-400-Bad-Request"><a href="#4-4-1-400-Bad-Request" class="headerlink" title="4.4.1 400 Bad Request"></a>4.4.1 400 Bad Request</h4><p>该状态码表示请求报文中存在语法错误。</p>
+<h4 id="4-4-2-401-Unauthorized"><a href="#4-4-2-401-Unauthorized" class="headerlink" title="4.4.2 401 Unauthorized"></a>4.4.2 401 Unauthorized</h4><p>该状态码表示发送的请求需要有通过 HTTP 认证（BASIC 认证、<br>DIGEST 认证）的认证信息。</p>
+<p>当浏览器初次接收到 401 响应，会弹出认证用的对话窗口。</p>
+<h4 id="4-4-3-403-Forbidden"><a href="#4-4-3-403-Forbidden" class="headerlink" title="4.4.3 403 Forbidden"></a>4.4.3 403 Forbidden</h4><p>该状态码表明对请求资源的访问被服务器拒绝了。</p>
+<h4 id="4-4-4-404-Not-Found"><a href="#4-4-4-404-Not-Found" class="headerlink" title="4.4.4 404 Not Found"></a>4.4.4 404 Not Found</h4><p>该状态码表明服务器上无法找到请求的资源。</p>
+<h3 id="4-5-5XX-服务器错误"><a href="#4-5-5XX-服务器错误" class="headerlink" title="4.5 5XX 服务器错误"></a>4.5 5XX 服务器错误</h3><h4 id="4-5-1-500-Internal-Server-Error"><a href="#4-5-1-500-Internal-Server-Error" class="headerlink" title="4.5.1 500 Internal Server Error"></a>4.5.1 500 Internal Server Error</h4><p>该状态码表明服务器端在执行请求时发生了错误。</p>
+<h4 id="4-5-2-503-Service-Unavailable"><a href="#4-5-2-503-Service-Unavailable" class="headerlink" title="4.5.2 503 Service Unavailable"></a>4.5.2 503 Service Unavailable</h4><p>该状态码表明服务器暂时处于超负载或正在进行停机维护，现在无法<br>处理请求。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">状态码和状况的不一致</span><br><span class="line">不少返回的状态码响应都是错误的，但是用户可能察觉不到这点。</span><br><span class="line">比如 Web 应用程序内部发生错误，状态码依然返回 200 OK，这种</span><br><span class="line">情况也经常遇到。</span><br></pre></td></tr></table></figure>
+<h2 id="第-5-章-与-HTTP-协作的-Web-服务器"><a href="#第-5-章-与-HTTP-协作的-Web-服务器" class="headerlink" title="第 5 章 与 HTTP 协作的 Web 服务器"></a>第 5 章 与 HTTP 协作的 Web 服务器</h2><h3 id="5-1-用单台虚拟主机实现多个域名"><a href="#5-1-用单台虚拟主机实现多个域名" class="headerlink" title="5.1 用单台虚拟主机实现多个域名"></a>5.1 用单台虚拟主机实现多个域名</h3><p>即使物理层面只有一台服务器，但只要使用虚拟主机的功能，则可以<br>假想已具有多台服务器。</p>
+<p>在相同的 IP 地址下，由于虚拟主机可以寄存多个不同主机名和域名<br>的 Web 网站，因此在发送 HTTP 请求时，必须在<code> Host 首部</code>内完整指<br>定主机名或域名的URI。</p>
+<h3 id="5-2-通信数据转发程序-：代理、网关、隧道"><a href="#5-2-通信数据转发程序-：代理、网关、隧道" class="headerlink" title="5.2 通信数据转发程序 ：代理、网关、隧道"></a>5.2 通信数据转发程序 ：代理、网关、隧道</h3><p>代理:</p>
+<p>代理是一种有转发功能的应用程序，它扮演了位于服务器和客户<br>端“中间人”的角色，接收由<code>客户端</code>发送的<code>请求</code>并转发给<code>服务器</code>，同时<br>也<code>接收</code>服务器<code>返回</code>的响应并<code>转发</code>给<code>客户端</code>。</p>
+<p>网关:</p>
+<p>网关是转发其他服务器通信数据的服务器，接收从客户端发送来的请<br>求时，它就像自己拥有资源的源服务器一样对请求进行处理。</p>
+<p>隧道:</p>
+<p>隧道是在相隔甚远的客户端和服务器两者之间进行中转，并保持双方<br>通信连接的应用程序。</p>
+<h4 id="5-2-1-代理"><a href="#5-2-1-代理" class="headerlink" title="5.2.1 代理"></a>5.2.1 代理</h4><p>代理不改变请求 URI，会直接发送给前方持有资源的目标服务<br>器。</p>
+<p>持有资源实体的服务器被称为源服务器。从源服务器返回的响应经过<br>代理服务器后再传给客户端。</p>
+<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/6.jpg"></p>
+<p>每次通过代理服务器转发请求或响应时，会追加写入<code>Via</code> 首<br>部信息</p>
+<p>使用代理服务器的理由有：利用<code>缓存技术</code>（稍后讲解)<code>减少网络带宽 的流量</code>，组织内部针对特定网站的访问控制，以获取访问日志为主要<br>目的，等等。</p>
+<p>代理有多种使用方法，按两种基准分类。一种是是否使用缓存，另一<br>种是是否会修改报文。</p>
+<p>缓存代理</p>
+<p>代理转发响应时，<code>缓存代理</code>（Caching Proxy）会预先将资源的副本<br>（缓存）保存在<code>代理服务器上</code>。</p>
+<p>当代理再次接收到对相同资源的请求时，就可以不从源服务器那里获<br>取资源，而是将之前缓存的资源作为<code>响应返回</code>。</p>
+<p>透明代理</p>
+<p>转发请求或响应时，不对报文做任何加工的代理类型被称为透明代理<br>（Transparent Proxy）。反之，对报文内容进行加工的代理被称为非<br>透明代理。</p>
+<h4 id="5-2-2-网关"><a href="#5-2-2-网关" class="headerlink" title="5.2.2 网关"></a>5.2.2 网关</h4><p>网关能使通信线路上的服务器提供非 HTTP 协议服务。<br>利用网关能提高通信的安全性，因为可以在客户端与网关之间的通信<br>线路上加密以确保连接的安全。</p>
+<h4 id="5-2-3-隧道"><a href="#5-2-3-隧道" class="headerlink" title="5.2.3 隧道"></a>5.2.3 隧道</h4><p>隧道的目的是确保客户端能与服务器进行安全的通信。比如说使用SSL(Secure Sockets Layer)等加密手段通信。</p>
+<p>隧道本身不会去解析 HTTP 请求。</p>
+<p>通过隧道的传输，可以和远距离的服务器安全通信。</p>
+<h3 id="5-3-保存资源的缓存"><a href="#5-3-保存资源的缓存" class="headerlink" title="5.3 保存资源的缓存"></a>5.3 保存资源的缓存</h3><p>缓存是指代理服务器或客户端本地磁盘内保存的资源副本。利用缓存<br>可减少对源服务器的访问，因此也就节省了通信流量和通信时间。</p>
+<p>缓存服务器是代理服务器的一种，并归类在缓存代理类型中。</p>
+<p>缓存服务器的优势在于利用缓存可避免多次从源服务器转发资源。</p>
+<h4 id="5-3-1-缓存的有效期限"><a href="#5-3-1-缓存的有效期限" class="headerlink" title="5.3.1 缓存的有效期限"></a>5.3.1 缓存的有效期限</h4><p>若判断缓存失效，缓存服务器将会再次从源服务器上获取“新”资源。</p>
+<h4 id="5-3-2-客户端的缓存"><a href="#5-3-2-客户端的缓存" class="headerlink" title="5.3.2 客户端的缓存"></a>5.3.2 客户端的缓存</h4><p>缓存不仅可以存在于缓存服务器内，还可以存在客户端浏览器中。以<br>Internet Explorer 程序为例，把客户端缓存称为临时网络文件<br>（<code>Temporary Internet File</code>）。</p>
+<p>另外，和缓存服务器相同的一点是，当判定缓存过期后，会向源服务<br>器确认资源的有效性。</p>
+<p>FTP（File Transfer Protocol）传输文件时使用的协议。</p>
+<h2 id="第-6-章-HTTP-首部"><a href="#第-6-章-HTTP-首部" class="headerlink" title="第 6 章 HTTP 首部"></a>第 6 章 HTTP 首部</h2><h3 id="6-1-HTTP-报文首部"><a href="#6-1-HTTP-报文首部" class="headerlink" title="6.1 HTTP 报文首部"></a>6.1 HTTP 报文首部</h3><p>响应首部、通用首部、实体首部</p>
+<h3 id="6-2-HTTP-首部字段"><a href="#6-2-HTTP-首部字段" class="headerlink" title="6.2 HTTP 首部字段"></a>6.2 HTTP 首部字段</h3><h4 id="6-2-1-HTTP-首部字段传递重要信息"><a href="#6-2-1-HTTP-首部字段传递重要信息" class="headerlink" title="6.2.1 HTTP 首部字段传递重要信息"></a>6.2.1 HTTP 首部字段传递重要信息</h4><h4 id="6-2-2-HTTP-首部字段结构"><a href="#6-2-2-HTTP-首部字段结构" class="headerlink" title="6.2.2 HTTP 首部字段结构"></a>6.2.2 HTTP 首部字段结构</h4><p>key:value</p>
+<p>单个 HTTP 首部字段可以有多个值</p>
+<p>Keep-Alive: timeout=15, max=100</p>
+<p>若 HTTP 首部字段重复了会如何?<br>有些浏览器会优先处理第一次出现的首部字段，而有些则会优先处理最后出现的首部字段。</p>
+<h4 id="6-2-3-4-种-HTTP-首部字段类型"><a href="#6-2-3-4-种-HTTP-首部字段类型" class="headerlink" title="6.2.3 4 种 HTTP 首部字段类型"></a>6.2.3 4 种 HTTP 首部字段类型</h4><p>通用首部字段（General Header Fields）</p>
+<p>请求首部字段（Request Header Fields）</p>
+<p>响应首部字段（Response Header Fields）</p>
+<p>实体首部字段（Entity Header Fields）</p>
+<h4 id="6-2-4-HTTP-1-1-首部字段一览"><a href="#6-2-4-HTTP-1-1-首部字段一览" class="headerlink" title="6.2.4 HTTP/1.1 首部字段一览"></a>6.2.4 HTTP/1.1 首部字段一览</h4><p>HTTP/1.1 规范定义了如下 47 种首部字段</p>
+<p>通用首部字段:</p>
+<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/7.jpg"></p>
+<p>Date/Connection</p>
+<p>请求首部字段:</p>
+<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/8.jpg"></p>
+<p>if-Modified-since/Host/Accept</p>
+<p>响应首部字段:</p>
+<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/9.jpg"></p>
+<p>age/location</p>
+<p>实体首部字段:</p>
+<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/10.jpg"></p>
+<p>expires/allow/last-Modified</p>
+<h4 id="6-2-5-非-HTTP-1-1-首部字段"><a href="#6-2-5-非-HTTP-1-1-首部字段" class="headerlink" title="6.2.5 非 HTTP/1.1 首部字段"></a>6.2.5 非 HTTP/1.1 首部字段</h4><p>在 HTTP 协议通信交互中使用到的首部字段，不限于 RFC2616 中定<br>义的 47 种首部字段。</p>
+<p>还有 <code>Cookie</code>、<code>Set-Cookie</code> 和 <code>Content-Disposition</code><br>等在其他 RFC 中定义的首部字段，它们的使用频率也很高。</p>
+<h4 id="6-2-6-End-to-end-首部和-Hop-by-hop-首部"><a href="#6-2-6-End-to-end-首部和-Hop-by-hop-首部" class="headerlink" title="6.2.6 End-to-end 首部和 Hop-by-hop 首部"></a>6.2.6 End-to-end 首部和 Hop-by-hop 首部</h4><p>HTTP 首部字段将定义成缓存代理和非缓存代理的行为，分成 2 种类<br>型。</p>
+<p>1.端到端首部（End-to-end Header）</p>
+<p>2.逐跳首部（Hop-by-hop Header）</p>
+<p>Connection</p>
+<p>Keep-Alive</p>
+<p>Proxy-Authenticate</p>
+<p>Proxy-Authorization</p>
+<p>Trailer</p>
+<p>TE</p>
+<p>Transfer-Encoding</p>
+<p>Upgrade</p>
+<h3 id="6-3-HTTP-1-1-通用首部字段"><a href="#6-3-HTTP-1-1-通用首部字段" class="headerlink" title="6.3 HTTP/1.1 通用首部字段"></a>6.3 HTTP/1.1 通用首部字段</h3><h4 id="6-3-1-Cache-Control"><a href="#6-3-1-Cache-Control" class="headerlink" title="6.3.1 Cache-Control"></a>6.3.1 Cache-Control</h4><p>Cache-Control: public 明确表明其他用户也可利用缓存</p>
+<p>Cache-Control: private 与public相反</p>
+<p>Cache-Control: no-cache </p>
+<p>客户端发送的请求中如果包含 no-cache 指令，则表示客户端将不会接<br>收缓存过的响应。于是，“中间”的缓存服务器必须把客户端请求转发<br>给源服务器。</p>
+<p>如果服务器返回的响应中包含 no-cache 指令，那么缓存服务器不能对<br>资源进行缓存。</p>
+<p>Cache-Control: no-cache=Location</p>
+<p>由服务器返回的响应中，若报文首部字段 Cache-Control 中对 no-cache<br>字段名具体指定参数值，那么客户端在接收到这个被指定参数值的首<br>部字段对应的响应报文后，就不能使用缓存。</p>
+<p>Cache-Control: no-store</p>
+<p>当使用 no-store 指令时，暗示请求（和对应的响应）或响应中包含<br>机密信息。</p>
+<p>因此，该指令规定缓存不能在本地存储请求或响应的任一部分。</p>
+<p>Cache-Control: s-maxage=604800</p>
+<p>Cache-Control: max-age=604800</p>
+<p>当客户端发送的请求中包含 max-age 指令时，如果判定缓存资源的缓<br>存时间数值比指定时间的数值更小，那么客户端就接收缓存的资源。<br>另外，当指定 max-age 值为 0，那么缓存服务器通常需要将请求转发<br>给源服务器。</p>
+<p>应用 HTTP/1.1 版本的缓存服务器遇到同时存在 Expires 首部字段的情<br>况时，会优先处理 max-age 指令，而忽略掉 Expires 首部字段。</p>
+<p>Cache-Control: min-fresh=60</p>
+<p>min-fresh 指令要求缓存服务器返回至少还未过指定时间的缓存资源。</p>
+<p>Cache-Control: max-stale=3600</p>
+<p>使用 max-stale 可指示缓存资源，即使过期也照常接收。</p>
+<p>Cache-Control: only-if-cached</p>
+<p>使用 only-if-cached 指令表示客户端仅在缓存服务器本地缓存目标资<br>源的情况下才会要求其返回。换言之，该指令要求缓存服务器不重新<br>加载响应，也不会再次确认资源有效性。若发生请求缓存服务器的本<br>地缓存无响应，则返回状态码 <code>504 Gateway Timeout</code>。</p>
+<p>Cache-Control: must-revalidate</p>
+<p>使用 must-revalidate 指令，代理会向源服务器再次验证即将返回的响<br>应缓存目前是否仍然有效。</p>
+<p>若代理无法连通源服务器再次获取有效资源的话，缓存必须给客户端<br>一条<code> 504（Gateway Timeout）</code>状态码。</p>
+<p>Cache-Control: proxy-revalidate</p>
+<p>proxy-revalidate 指令要求所有的缓存服务器在接收到客户端带有该指<br>令的请求返回响应之前，必须再次验证缓存的有效性。</p>
+<p>Cache-Control: no-transform</p>
+<p>使用 no-transform 指令规定无论是在请求还是响应中，缓存都不能改<br>变实体主体的媒体类型。</p>
+<p>Cache-Control 扩展</p>
+<h4 id="6-3-2-Connection"><a href="#6-3-2-Connection" class="headerlink" title="6.3.2 Connection"></a>6.3.2 Connection</h4><p>作用:</p>
+<p>1.控制不再转发给代理的首部字段</p>
+<p>2.管理持久连接</p>
+<p>●控制不再转发给代理的首部字段</p>
+<p>Connection: 不再转发的首部字段名</p>
+<p>●管理持久连接</p>
+<p>Connection: close</p>
+<p>当服务器端想明确断开连接时，则指定Connection 首部字段的值为 Close。</p>
+<p>HTTP/1.1 版本的默认连接都是持久连接。HTTP/1.1 之前的 HTTP 版本的默认连接都是非持久连接。</p>
+<h4 id="6-3-3-Date"><a href="#6-3-3-Date" class="headerlink" title="6.3.3 Date"></a>6.3.3 Date</h4><p>表明创建 HTTP 报文的日期和时间。</p>
+<h4 id="6-3-4-Pragma"><a href="#6-3-4-Pragma" class="headerlink" title="6.3.4 Pragma"></a>6.3.4 Pragma</h4><p>Pragma: no-cache</p>
+<p>客户端会要求所有的中间服务器不返回缓存的资源。</p>
+<h4 id="6-3-5-Trailer"><a href="#6-3-5-Trailer" class="headerlink" title="6.3.5 Trailer"></a>6.3.5 Trailer</h4><p>首部字段 Trailer 会事先说明在报文主体后记录了哪些首部字段。该<br>首部字段可应用在 HTTP/1.1 版本分块传输编码时。</p>
+<h4 id="6-3-6-Transfer-Encoding"><a href="#6-3-6-Transfer-Encoding" class="headerlink" title="6.3.6 Transfer-Encoding"></a>6.3.6 Transfer-Encoding</h4><p>Transfer-Encoding 规定了传输报文主体时采用的编码方式。</p>
+<p>HTTP/1.1 的传输编码方式仅对分块传输编码有效。</p>
+<h4 id="6-3-7-Upgrade"><a href="#6-3-7-Upgrade" class="headerlink" title="6.3.7 Upgrade"></a>6.3.7 Upgrade</h4><p>首部字段 Upgrade 用于检测 HTTP 协议及其他协议是否可使用更高的<br>版本进行通信，其参数值可以用来指定一个完全不同的通信协议。</p>
+<h4 id="6-3-8-Via"><a href="#6-3-8-Via" class="headerlink" title="6.3.8 Via"></a>6.3.8 Via</h4><p>使用首部字段 Via 是为了追踪客户端与服务器之间的请求和响应报文<br>的传输路径。</p>
+<p>Via 首部是为了追踪传输路径，所以经常会和 TRACE 方法一起使<br>用。比如，代理服务器接收到由 TRACE 方法发送过来的请求（其中<br>Max-Forwards: 0）时，代理服务器就不能再转发该请求了。这种情况<br>下，代理服务器会将自身的信息附加到 Via 首部后，返回该请求的响<br>应。</p>
+<h4 id="6-3-9-Warning"><a href="#6-3-9-Warning" class="headerlink" title="6.3.9 Warning"></a>6.3.9 Warning</h4><p>该首部通常会告知用户一些与缓存相关的问题的警告。</p>
+<p>Warning: [警告码][警告的主机:端口号]“[警告内容]”([日期时间])</p>
+<h3 id="6-4-请求首部字段"><a href="#6-4-请求首部字段" class="headerlink" title="6.4 请求首部字段"></a>6.4 请求首部字段</h3><h4 id="6-4-1-Accept"><a href="#6-4-1-Accept" class="headerlink" title="6.4.1 Accept"></a>6.4.1 Accept</h4><p>Accept: text/html,application/xhtml+xml,application/xml;q=0</p>
+<p>Accept 首部字段可通知服务器，用户代理能够处理的媒体类型及媒体<br>类型的相对优先级。</p>
+<p>●文本文件</p>
+<p>text/html, text/plain, text/css …</p>
+<p>application/xhtml+xml, application/xml …</p>
+<p>●图片文件</p>
+<p>image/jpeg, image/gif, image/png …</p>
+<p>●视频文件</p>
+<p>video/mpeg, video/quicktime …</p>
+<p>●应用程序使用的二进制文件</p>
+<p>application/octet-stream, application/zip …</p>
+<h4 id="6-4-2-Accept-Charset"><a href="#6-4-2-Accept-Charset" class="headerlink" title="6.4.2 Accept-Charset"></a>6.4.2 Accept-Charset</h4><p>Accept-Charset 首部字段可用来通知服务器用户代理支持的字符集及<br>字符集的相对优先顺序。</p>
+<p>Accept-Charset: iso-8859-5, unicode-1-1;q=0.8</p>
+<h4 id="6-4-3-Accept-Encoding"><a href="#6-4-3-Accept-Encoding" class="headerlink" title="6.4.3 Accept-Encoding"></a>6.4.3 Accept-Encoding</h4><p>Accept-Encoding 首部字段用来告知服务器用户代理支持的内容编码及<br>内容编码的优先级顺序。</p>
+<h4 id="6-4-4-Accept-Language"><a href="#6-4-4-Accept-Language" class="headerlink" title="6.4.4 Accept-Language"></a>6.4.4 Accept-Language</h4><p>首部字段 Accept-Language 用来告知服务器用户代理能够处理的自然<br>语言集（指中文或英文等），以及自然语言集的相对优先级。</p>
+<h4 id="6-4-5-Authorization"><a href="#6-4-5-Authorization" class="headerlink" title="6.4.5 Authorization"></a>6.4.5 Authorization</h4><p>首部字段 Authorization 是用来告知服务器，用户代理的认证信息（证<br>书值）。</p>
+<p>通常，想要通过服务器认证的用户代理会在接收到返回的<br>401 状态码响应后，把首部字段 Authorization 加入请求中。</p>
+<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/11.jpg"></p>
+<h4 id="6-4-6-Expect"><a href="#6-4-6-Expect" class="headerlink" title="6.4.6 Expect"></a>6.4.6 Expect</h4><p>Expect: 100-continue</p>
+<p>客户端使用首部字段 Expect 来告知服务器，期望出现的某种特定行<br>为。</p>
+<h4 id="6-4-7-From"><a href="#6-4-7-From" class="headerlink" title="6.4.7 From"></a>6.4.7 From</h4><p>首部字段 From 用来告知服务器使用用户代理的用户的电子邮件地<br>址。通常，其使用目的就是为了显示搜索引擎等用户代理的负责人的<br>电子邮件联系方式。</p>
+<h4 id="6-4-8-Host"><a href="#6-4-8-Host" class="headerlink" title="6.4.8 Host"></a>6.4.8 Host</h4><p>首部字段 Host 会告知服务器，请求的资源所处的互联网主机名和端<br>口号。</p>
+<p>请求被发送至服务器时，请求中的主机名会用 IP 地址直接替换解<br>决。但如果这时，相同的 IP 地址下部署运行着多个域名，那么服务<br>器就会无法理解究竟是哪个域名对应的请求。因此，就需要使用首部<br>字段 Host 来明确指出请求的主机名。</p>
+<h4 id="6-4-9-If-Match"><a href="#6-4-9-If-Match" class="headerlink" title="6.4.9 If-Match"></a>6.4.9 If-Match</h4><p>形如 If-xxx 这种样式的请求首部字段，都可称为条件请求。服务器接<br>收到附带条件的请求后，只有判断指定条件为真时，才会执行请求。</p>
+<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/12.jpg"></p>
+<p>只有当 If-Match 的字段值跟 ETag 值匹配一致时，服务器才会<br>接受请求</p>
+<p>首部字段 If-Match，属附带条件之一，它会告知服务器匹配资源所用<br>的实体标记（ETag）值。</p>
+<p>服务器会比对 If-Match 的字段值和资源的 ETag 值，仅当两者一致<br>时，才会执行请求。反之，则返回状态码 412 Precondition Failed 的响<br>应。</p>
+<p>还可以使用星号（*）指定 If-Match 的字段值。针对这种情况，服务<br>器将会忽略 ETag 的值，只要资源存在就处理请求。</p>
+<h4 id="6-4-10-If-Modified-Since"><a href="#6-4-10-If-Modified-Since" class="headerlink" title="6.4.10 If-Modified-Since"></a>6.4.10 If-Modified-Since</h4><p>如果在 If-Modified-Since 字段指定的日期时间后，资源发生了<br>更新，服务器会接受请求</p>
+<p>首部字段 If-Modified-Since，属附带条件之一，它会告知服务器若 IfModified-Since 字段值早于资源的更新时间，则希望能处理该请求。<br>而在指定 If-Modified-Since 字段值的日期时间之后，如果请求的资源<br>都没有过更新，则返回状态码 <code>304 Not Modified</code> 的响应。</p>
+<h4 id="6-4-11-If-None-Match"><a href="#6-4-11-If-None-Match" class="headerlink" title="6.4.11 If-None-Match"></a>6.4.11 If-None-Match</h4><p>只有在 If-None-Match 的字段值与 ETag 值不一致时，可处理<br>该请求。</p>
+<h4 id="6-4-12-If-Range"><a href="#6-4-12-If-Range" class="headerlink" title="6.4.12 If-Range"></a>6.4.12 If-Range</h4><p>首部字段 If-Range 属于附带条件之一。它告知服务器若指定的 If-Range 字段值（ETag 值或者时间）和请求资源的 ETag 值或时间相一<br>致时，则作为范围请求处理。反之，则返回全体资源。</p>
+<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/13.jpg"></p>
+<p>下面我们思考一下不使用首部字段 If-Range 发送请求的情况。服务器<br>端的资源如果更新，那客户端持有资源中的一部分也会随之无效，当<br>然，范围请求作为前提是无效的。这时，服务器会暂且以状态码 412<br>Precondition Failed 作为响应返回，其目的是催促客户端再次发送请<br>求。这样一来，与使用首部字段 If-Range 比起来，就需要<code>花费两倍的 功夫</code>。</p>
+<h4 id="6-4-13-If-Unmodified-Since"><a href="#6-4-13-If-Unmodified-Since" class="headerlink" title="6.4.13 If-Unmodified-Since"></a>6.4.13 If-Unmodified-Since</h4><p>首部字段 If-Unmodified-Since 和首部字段 If-Modified-Since 的作用相<br>反。它的作用的是告知服务器，指定的请求资源只有在字段值内指定<br>的日期时间之后，未发生更新的情况下，才能处理请求。如果在指定<br>日期时间后发生了更新，则以状态码 <code>412 Precondition Failed</code> 作为响应返回。</p>
+<h4 id="6-4-14-Max-Forwards"><a href="#6-4-14-Max-Forwards" class="headerlink" title="6.4.14 Max-Forwards"></a>6.4.14 Max-Forwards</h4><p>通过 <code>TRACE</code> 方法或 <code>OPTIONS</code> 方法，发送包含首部字段 Max-Forwards 的请求时，该字段以十进制整数形式指定可经过的服务器最<br>大数目。服务器在往下一个服务器转发请求之前，Max-Forwards 的<br>值减 1 后重新赋值。当服务器接收到 Max-Forwards 值为 0 的请求<br>时，则不再进行转发，而是直接返回响应。</p>
+<p>使用 HTTP 协议通信时，请求可能会经过代理等多台服务器。途中，<br>如果代理服务器由于某些原因导致请求转发失败，客户端也就等不到<br>服务器返回的响应了。对此，我们无从可知。</p>
+<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/14.jpg"></p>
+<h4 id="6-4-15-Proxy-Authorization"><a href="#6-4-15-Proxy-Authorization" class="headerlink" title="6.4.15 Proxy-Authorization"></a>6.4.15 Proxy-Authorization</h4><p>接收到从代理服务器发来的认证质询时，客户端会发送包含首部字段<br>Proxy-Authorization 的请求，以告知服务器认证所需要的信息。</p>
+<h4 id="6-4-16-Range"><a href="#6-4-16-Range" class="headerlink" title="6.4.16 Range"></a>6.4.16 Range</h4><p>接收到附带 Range 首部字段请求的服务器，会在处理请求之后返回状<br>态码为 206 Partial Content 的响应。无法处理该范围请求时，则会返<br>回状态码 200 OK 的响应及全部资源。</p>
+<h4 id="6-4-17-Referer"><a href="#6-4-17-Referer" class="headerlink" title="6.4.17 Referer"></a>6.4.17 Referer</h4><p>首部字段 Referer 会告知服务器请求的原始资源的 URI。</p>
+<h4 id="6-4-18-TE"><a href="#6-4-18-TE" class="headerlink" title="6.4.18 TE"></a>6.4.18 TE</h4><p>首部字段 TE 会告知服务器客户端能够处理响应的传输编码方式及相<br>对优先级。它和首部字段 Accept-Encoding 的功能很相像，但是用于<br>传输编码。</p>
+<h4 id="6-4-189-User-Agent"><a href="#6-4-189-User-Agent" class="headerlink" title="6.4.189 User-Agent"></a>6.4.189 User-Agent</h4><p>User-Agent: Mozilla/5.0 (Windows NT 6.1; WOW64; rv:13.0) Gec</p>
+<p>首部字段 User-Agent 会将创建请求的浏览器和用户代理名称等信息传<br>达给服务器。</p>
+<p>由网络爬虫发起请求时，有可能会在字段内添加爬虫作者的电子邮件<br>地址。</p>
+<h3 id="6-5-响应首部字段"><a href="#6-5-响应首部字段" class="headerlink" title="6.5 响应首部字段"></a>6.5 响应首部字段</h3><h4 id="6-5-1-Accept-Ranges"><a href="#6-5-1-Accept-Ranges" class="headerlink" title="6.5.1 Accept-Ranges"></a>6.5.1 Accept-Ranges</h4><p>Accept-Ranges: bytes</p>
+<p>首部字段 Accept-Ranges 是用来告知客户端服务器是否能处理范围请<br>求，以指定获取服务器端某个部分的资源。<br>可指定的字段值有两种，可处理范围请求时指定其为 bytes，反之则<br>指定其为 none。</p>
+<h4 id="6-5-2-Age"><a href="#6-5-2-Age" class="headerlink" title="6.5.2 Age"></a>6.5.2 Age</h4><p>首部字段 Age 能告知客户端，源服务器在多久前创建了响应。字段值<br>的单位为秒。</p>
+<h4 id="6-5-3-ETag"><a href="#6-5-3-ETag" class="headerlink" title="6.5.3 ETag"></a>6.5.3 ETag</h4><p>首部字段 ETag 能告知客户端实体标识。它是一种可将资源以字符串<br>形式做唯一性标识的方式。<code>服务器会为每份资源分配对应的 ETag 值。</code></p>
+<p>另外，当资源更新时，ETag 值也需要更新。生成 ETag 值时，并没有<br>统一的算法规则，而仅仅是由服务器来分配。</p>
+<p>强 ETag 值和弱 Tag 值</p>
+<p>强 ETag 值:不论实体发生多么细微的变化都会改变其值。</p>
+<p>弱 Tag 值:弱 ETag 值只用于提示资源是否相同。只有资源发生了根本改变，产生差异时才会改变 ETag 值。</p>
+<h4 id="6-5-4-Location"><a href="#6-5-4-Location" class="headerlink" title="6.5.4 Location"></a>6.5.4 Location</h4><p>使用首部字段 Location 可以将响应接收方引导至某个与请求 URI 位置<br>不同的资源。</p>
+<p>基本上，该字段会配合 3xx ：Redirection 的响应，提供重定向的<br>URI。</p>
+<h4 id="6-5-5-Proxy-Authenticate"><a href="#6-5-5-Proxy-Authenticate" class="headerlink" title="6.5.5 Proxy-Authenticate"></a>6.5.5 Proxy-Authenticate</h4><p>首部字段 Proxy-Authenticate 会把由代理服务器所要求的认证信息发送<br>给客户端。</p>
+<h4 id="6-5-6-Retry-After"><a href="#6-5-6-Retry-After" class="headerlink" title="6.5.6 Retry-After"></a>6.5.6 Retry-After</h4><p>首部字段 Retry-After 告知客户端应该在多久之后再次发送请求。主要<br>配合状态码 503 Service Unavailable 响应，或 3xx Redirect 响应一起使用。</p>
+<h4 id="6-5-7-Server"><a href="#6-5-7-Server" class="headerlink" title="6.5.7 Server"></a>6.5.7 Server</h4><p>首部字段 Server 告知客户端当前服务器上安装的 HTTP 服务器应用程<br>序的信息。不单单会标出服务器上的软件应用名称，还有可能包括版<br>本号和安装时启用的可选项。</p>
+<p>Server: Apache/2.2.6 (Unix) PHP/5.2.5</p>
+<h4 id="6-5-8-Vary"><a href="#6-5-8-Vary" class="headerlink" title="6.5.8 Vary"></a>6.5.8 Vary</h4><p>首部字段 Vary 可对缓存进行控制。源服务器会向代理服务器传达关<br>于本地缓存使用方法的命令。</p>
+<h4 id="6-5-9-WWW-Authenticate"><a href="#6-5-9-WWW-Authenticate" class="headerlink" title="6.5.9 WWW-Authenticate"></a>6.5.9 WWW-Authenticate</h4><p>首部字段 WWW-Authenticate 用于 HTTP 访问认证。它会告知客户端<br>适用于访问请求 URI 所指定资源的认证方案（Basic 或是 Digest）和<br>带参数提示的质询（challenge）。状态码 401 Unauthorized 响应中，<br>肯定带有首部字段 WWW-Authenticate。</p>
+<h3 id="6-6-实体首部字段"><a href="#6-6-实体首部字段" class="headerlink" title="6.6 实体首部字段"></a>6.6 实体首部字段</h3><h4 id="6-6-1-Allow"><a href="#6-6-1-Allow" class="headerlink" title="6.6.1 Allow"></a>6.6.1 Allow</h4><p>Allow: GET, HEAD</p>
+<p>当服务器接收到不支持的 HTTP 方法时，会以状态码<br>405 Method Not Allowed 作为响应返回。</p>
+<h4 id="6-6-2-Content-Encoding"><a href="#6-6-2-Content-Encoding" class="headerlink" title="6.6.2 Content-Encoding"></a>6.6.2 Content-Encoding</h4><p>首部字段 Content-Encoding 会告知客户端服务器对实体的主体部分选<br>用的内容编码方式。</p>
+<p>Content-Encoding: gzip</p>
+<p>gzip</p>
+<p>compress</p>
+<p>deflate</p>
+<p>identity</p>
+<h4 id="6-6-3-Content-Language"><a href="#6-6-3-Content-Language" class="headerlink" title="6.6.3 Content-Language"></a>6.6.3 Content-Language</h4><p>Content-Language: zh-CN</p>
+<h4 id="6-6-4-Content-Length"><a href="#6-6-4-Content-Length" class="headerlink" title="6.6.4 Content-Length"></a>6.6.4 Content-Length</h4><p>实体主体部分的大小</p>
+<h4 id="6-6-5-Content-Location"><a href="#6-6-5-Content-Location" class="headerlink" title="6.6.5 Content-Location"></a>6.6.5 Content-Location</h4><p>Content-Location 表示的是报文主体返回资源对应的 URI</p>
+<h4 id="6-6-6-Content-MD5"><a href="#6-6-6-Content-MD5" class="headerlink" title="6.6.6 Content-MD5"></a>6.6.6 Content-MD5</h4><p>首部字段 Content-MD5 是一串由 MD5 算法生成的值，其目的在于检<br>查报文主体在传输过程中是否保持完整，以及确认传输到达。</p>
+<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/15.jpg"></p>
+<p>采用这种方法，对内容上的偶发性改变是无从查证的，也无法检测出<br>恶意篡改。</p>
+<h4 id="6-6-7-Content-Range"><a href="#6-6-7-Content-Range" class="headerlink" title="6.6.7 Content-Range"></a>6.6.7 Content-Range</h4><p>针对范围请求，返回响应时使用的首部字段 Content-Range，能告知客<br>户端作为响应返回的实体的哪个部分符合范围请求。</p>
+<h4 id="6-6-8-Content-Type"><a href="#6-6-8-Content-Type" class="headerlink" title="6.6.8 Content-Type"></a>6.6.8 Content-Type</h4><p>说明了实体主体内对象的媒体类型。</p>
+<h4 id="6-6-9-Expires"><a href="#6-6-9-Expires" class="headerlink" title="6.6.9 Expires"></a>6.6.9 Expires</h4><p>首部字段 Expires 会将资源失效的日期告知客户端。缓存服务器在接<br>收到含有首部字段 Expires 的响应后，会以缓存来应答请求，在<br>Expires 字段值指定的时间之前，响应的副本会一直被保存。当超过<br>指定的时间后，缓存服务器在请求发送过来时，会转向源服务器请求<br>资源。</p>
+<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/16.jpg"></p>
+<p>当首部字段 Cache-Control 有指定 max-age 指令时，比起首部字<br>段 Expires，会优先处理 max-age 指令。</p>
+<h4 id="6-6-10-Last-Modified"><a href="#6-6-10-Last-Modified" class="headerlink" title="6.6.10 Last-Modified"></a>6.6.10 Last-Modified</h4><p>首部字段 Last-Modified 指明资源最终修改的时间。</p>
+<h3 id="6-7-为-Cookie-服务的首部字段"><a href="#6-7-为-Cookie-服务的首部字段" class="headerlink" title="6.7 为 Cookie 服务的首部字段"></a>6.7 为 Cookie 服务的首部字段</h3><h4 id="6-7-1-Set-Cookie"><a href="#6-7-1-Set-Cookie" class="headerlink" title="6.7.1 Set-Cookie"></a>6.7.1 Set-Cookie</h4><p>set-cookie有很多字段。</p>
+<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/17.jpg"></p>
+<h4 id="6-7-2-Cookie"><a href="#6-7-2-Cookie" class="headerlink" title="6.7.2 Cookie"></a>6.7.2 Cookie</h4><p>首部字段 Cookie 会告知服务器，当客户端想获得 HTTP 状态管理支<br>持时，就会在请求中包含从服务器接收到的 Cookie。接收到多个<br>Cookie 时，同样可以以多个 Cookie 形式发送。</p>
+<h3 id="6-8-其他首部字段"><a href="#6-8-其他首部字段" class="headerlink" title="6.8 其他首部字段"></a>6.8 其他首部字段</h3><h4 id="6-8-1-X-Frame-Options"><a href="#6-8-1-X-Frame-Options" class="headerlink" title="6.8.1 X-Frame-Options"></a>6.8.1 X-Frame-Options</h4><p>其主要目的是为了防止点击劫持（clickjacking）攻击。</p>
+<h4 id="6-8-2-X-XSS-Protection"><a href="#6-8-2-X-XSS-Protection" class="headerlink" title="6.8.2 X-XSS-Protection"></a>6.8.2 X-XSS-Protection</h4><p>它是针对跨站脚本攻击（XSS）的一种对策，用于控制浏览器 XSS 防护机制的开关。</p>
+<h4 id="6-8-3-DNT"><a href="#6-8-3-DNT" class="headerlink" title="6.8.3 DNT"></a>6.8.3 DNT</h4><p>首部字段 DNT 属于 HTTP 请求首部，其中 DNT 是 Do Not Track 的简<br>称，意为拒绝个人信息被收集，是表示拒绝被精准广告追踪的一种方<br>法。</p>
+<h4 id="6-8-4-P3P"><a href="#6-8-4-P3P" class="headerlink" title="6.8.4 P3P"></a>6.8.4 P3P</h4><p>首部字段 P3P 属于 HTTP 相应首部，通过利用 P3P（The Platform for<br>Privacy Preferences，在线隐私偏好平台）技术，可以让 Web 网站上<br>的个人隐私变成一种仅供程序可理解的形式，以达到保护用户隐私的<br>目的。</p>
+<h2 id="第-7-章-确保-Web-安全的HTTPS"><a href="#第-7-章-确保-Web-安全的HTTPS" class="headerlink" title="第 7 章 确保 Web 安全的HTTPS"></a>第 7 章 确保 Web 安全的HTTPS</h2><p>HTTP 主要有这些不足:</p>
+<p>1.通信使用明文（不加密），内容可能会被窃听</p>
+<p>2.不验证通信方的身份，因此有可能遭遇伪装</p>
+<p>3.无法证明报文的完整性，所以有可能已遭篡改</p>
+<h3 id="7-1-1-通信使用明文可能会被窃听"><a href="#7-1-1-通信使用明文可能会被窃听" class="headerlink" title="7.1.1 通信使用明文可能会被窃听"></a>7.1.1 通信使用明文可能会被窃听</h3><p>●TCP/IP 是可能被窃听的网络</p>
+<p>被广泛使用的抓包工具 Wireshark</p>
+<p>●加密处理防止被窃听</p>
+<p>通信的加密:</p>
+<p>HTTP 协议中没有加密机制，但可以通过和 SSL（Secure Socket Layer，安全套接层）或TLS（Transport Layer Security，安全层传输协议）的组合使用，加密 HTTP 的通信内容。</p>
+<p>用 SSL建立安全通信线路之后，就可以在这条线路上进行 HTTP<br>通信了。与 SSL组合使用的 HTTP 被称为 HTTPS（<code>HTTP Secure</code>，超文本传输安全协议）或 <code>HTTP over SSL</code>。</p>
+<p>内容的加密:</p>
+<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/18.jpg"></p>
+<p>由于该方式不同于 SSL或 TLS 将整个通信线路加密<br>处理，所以内容仍有被篡改的风险。</p>
+<h3 id="7-1-2-不验证通信方的身份就可能遭遇伪装"><a href="#7-1-2-不验证通信方的身份就可能遭遇伪装" class="headerlink" title="7.1.2 不验证通信方的身份就可能遭遇伪装"></a>7.1.2 不验证通信方的身份就可能遭遇伪装</h3><p>HTTP 协议的实现本身非常简单，不论是谁发送过来的请求都会<br>返回响应，因此不确认通信方，会存在以下各种隐患。</p>
+<p>1.有可能是已伪装的 Web 服务<br>器。</p>
+<p>2.有可能是已伪装的客户端。</p>
+<p>3.有可能并没有访问权限。</p>
+<p>4.无法判断请求来源。</p>
+<p>5.无法阻止海量请求下的 DoS 攻击（Denial of Service，拒绝服务攻击）</p>
+<h3 id="7-1-3-无法证明报文完整性，可能已遭篡改"><a href="#7-1-3-无法证明报文完整性，可能已遭篡改" class="headerlink" title="7.1.3 无法证明报文完整性，可能已遭篡改"></a>7.1.3 无法证明报文完整性，可能已遭篡改</h3><p>接收到的内容可能有误</p>
+<p>像这样，请求或响应在传输途中，遭攻击者拦截并篡改内容的攻<br>击称为中间人攻击（Man-in-the-Middle attack，MITM）。</p>
+<p>●如何防止篡改</p>
+<p>虽然有使用 HTTP 协议确定报文完整性的方法，但事实上并不便<br>捷、可靠。其中常用的是 MD5 和 SHA-1 等散列值校验的方法，<br>以及用来确认文件的数字签名方法。</p>
+<p>可惜的是，用这些方法也依然无法百分百保证确认结果正确。因<br>为 PGP 和 MD5 本身被改写的话，用户是没有办法意识到的。</p>
+<p>为了有效防止这些弊端，有必要使用 HTTPS。<code>SSL</code>提供<code>认证</code>和<code>加 密处理</code>及<code>摘要</code>功能。</p>
+<h3 id="7-2-HTTP-加密-认证-完整性保护-HTTPS"><a href="#7-2-HTTP-加密-认证-完整性保护-HTTPS" class="headerlink" title="7.2 HTTP+ 加密 + 认证 + 完整性保护=HTTPS"></a>7.2 HTTP+ 加密 + 认证 + 完整性保护=HTTPS</h3><h4 id="7-2-1-HTTP-加上加密处理和认证以及完整性保护后即是HTTPS"><a href="#7-2-1-HTTP-加上加密处理和认证以及完整性保护后即是HTTPS" class="headerlink" title="7.2.1 HTTP 加上加密处理和认证以及完整性保护后即是HTTPS"></a>7.2.1 HTTP 加上加密处理和认证以及完整性保护后即是HTTPS</h4><p>当浏览器访问 HTTPS 通信有效的 Web 网站时，浏览器的地址栏内会出现一个带锁的标记。</p>
+<h4 id="7-2-2-HTTPS-是身披-SSL-外壳的-HTTP"><a href="#7-2-2-HTTPS-是身披-SSL-外壳的-HTTP" class="headerlink" title="7.2.2 HTTPS 是身披 SSL 外壳的 HTTP"></a>7.2.2 HTTPS 是身披 SSL 外壳的 HTTP</h4><p>通常，HTTP 直接和 TCP 通信。当使用 SSL时，则演变成先和 SSL通<br>信，再由 SSL和 TCP 通信了。</p>
+<p>SSL是<code>独立于 HTTP</code> 的协议，所以不光是 HTTP 协议，其他运行在应<br>用层的 SMTP 和 Telnet 等协议均可配合 SSL协议使用。</p>
+<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/19.jpg"></p>
+<h4 id="7-2-3-相互交换密钥的公开密钥加密技术"><a href="#7-2-3-相互交换密钥的公开密钥加密技术" class="headerlink" title="7.2.3 相互交换密钥的公开密钥加密技术"></a>7.2.3 相互交换密钥的公开密钥加密技术</h4><p>公开密钥加密方式很好地解决了共享密钥加密的困难。</p>
+<p>公开密钥加密使用一对非对称的密钥。一把叫做<code>私有密钥</code><br>（private key），另一把叫做<code>公开密钥</code>（public key）。</p>
+<p>●HTTPS 采用混合加密机制</p>
+<h4 id="7-2-4-证明公开密钥正确性的证书"><a href="#7-2-4-证明公开密钥正确性的证书" class="headerlink" title="7.2.4 证明公开密钥正确性的证书"></a>7.2.4 证明公开密钥正确性的证书</h4><p>如何证明收到的公开密钥就是原本预想的那台服务器发行的<code>公开密钥</code>。或许在公开密钥传输途中，真正的公开密钥已经被攻击者替换掉了。</p>
+<p>为了解决上述问题，可以使用由<code>数字证书认证机构</code>（CA，Certificate<br>Authority）和其相关机关颁发的<code>公开密钥证书</code>。</p>
+<p>首先，服务器的运营人员向数字证书认证机构提出公开密钥的申请。数字证书认证机构在判明提出申请者的身份之后，会对已申请的公开密钥做数字签<br>名，然后分配这个已签名的公开密钥，并将该公开密钥放入公钥证书<br>后绑定在一起。</p>
+<p>首先，服务器的运营人员向数字证书认证机构提出公开密钥的申请。数字证书认证机构在判明提出申请者的身份之后，会对已申请的公开密钥做数字签<br>名，然后分配这个已签名的公开密钥，并将该公开密钥放入公钥证书<br>后绑定在一起。</p>
+<p>接到证书的客户端可使用数字证书认证机构的公开密钥，对那张证书<br>上的数字签名进行验证，一旦验证通过，客户端便可明确两件事：<br>一，认证服务器的公开密钥的是真实有效的数字证书认证机构。二，<br>服务器的公开密钥是值得信赖的。</p>
+<p>此处认证机关的公开密钥必须安全地转交给客户端。使用通信方式<br>时，如何安全转交是一件很困难的事，因此，<code>多数浏览器开发商</code>发布<br>版本时，会事先在<code>内部植入</code>常用<code>认证机关的公开密钥</code>。</p>
+<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/20.jpg"></p>
 
     
 
@@ -440,6 +775,15 @@
 
 
 <nav id="article-nav">
+  
+    <a href="/2021/03/18/%E7%AE%97%E6%B3%95-%E6%90%BA%E7%A8%8B2021-3-18%E7%AC%94%E8%AF%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          算法-携程2021-3-18笔试
+        
+      </div>
+    </a>
   
   
     <a href="/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/" id="article-nav-older" class="article-nav-link-wrap">

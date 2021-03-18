@@ -248,6 +248,97 @@
             
 
   
+    <article id="post-算法-携程2021-3-18笔试" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/03/18/%E7%AE%97%E6%B3%95-%E6%90%BA%E7%A8%8B2021-3-18%E7%AC%94%E8%AF%95/">算法-携程2021-3-18笔试</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/03/18/%E7%AE%97%E6%B3%95-%E6%90%BA%E7%A8%8B2021-3-18%E7%AC%94%E8%AF%95/" class="archive-article-date">
+        <time datetime="2021-03-18T12:30:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-18</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>第一题</p>
+<p>一个简单的dp[i][j],和最长公共子串的转移差不多,比较简单。但是携程的输入输出无法用,有点离谱。</p>
+<p>第二题AC自动机</p>
+<p>不会写AC自动机。锻炼了一波输入输出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;numeric&gt;</span><br><span class="line">#include &lt;limits&gt;</span><br><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">map&lt;string,string&gt;mp;</span><br><span class="line">int main() &#123;</span><br><span class="line">    string s;</span><br><span class="line">    string t;</span><br><span class="line">    while(cin&gt;&gt;s)&#123;</span><br><span class="line">        if(s[0]&#x3D;&#x3D;&#39;q&#39;)&#123;</span><br><span class="line">            t &#x3D; s.substr(7);</span><br><span class="line">        &#x2F;&#x2F;   int i;</span><br><span class="line">        &#x2F;&#x2F;   for(i &#x3D; 0; s[i]!&#x3D;&#39;:&#39;; i ++)&#123;</span><br><span class="line">        &#x2F;&#x2F;       ;</span><br><span class="line">        &#x2F;&#x2F;   &#125;</span><br><span class="line">        &#x2F;&#x2F;   i++;</span><br><span class="line">        &#x2F;&#x2F;   int n &#x3D; s.size();</span><br><span class="line">        &#x2F;&#x2F;   for(; i &lt; n; i ++) t +&#x3D; s[i];</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        string ok;</span><br><span class="line">        int i;</span><br><span class="line">        for(i &#x3D; 0; s[i]!&#x3D;&#39;:&#39;; i ++)&#123;</span><br><span class="line">            ;</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">        for(;s[i]!&#x3D;&#39;:&#39;;i++) ok +&#x3D; s[i];</span><br><span class="line">        string tmp;</span><br><span class="line">        &#x2F;&#x2F; cout &lt;&lt; ok &lt;&lt; endl;</span><br><span class="line">        i++;</span><br><span class="line">        for(;i &lt; s.size(); i ++)&#123;</span><br><span class="line">            if(s[i]&#x3D;&#x3D;&#39;,&#39;||s[i]&#x3D;&#x3D;&#39; &#39;)&#123;</span><br><span class="line">               mp[tmp] &#x3D; ok;</span><br><span class="line">                &#x2F;&#x2F; cout &lt;&lt; tmp &lt;&lt; endl;</span><br><span class="line">                tmp &#x3D;&quot;&quot;;</span><br><span class="line">            &#125;else tmp +&#x3D; s[i];</span><br><span class="line">        &#125;</span><br><span class="line">        mp[tmp] &#x3D; ok;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; t &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; &quot;我想:[停词]&quot; &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; &quot;春节:[节假日]&quot; &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; &quot;从:[停词]&quot; &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; &quot;南京:[出发地]&quot; &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; &quot;去:[停词]&quot; &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; &quot;三亚:[目的地]&quot; &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; &quot;跟团游:[出游类型]&quot; &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; &quot;携程自营:[供应商]&quot; &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; t &lt;&lt; endl;</span><br><span class="line">    int n &#x3D; t.size();</span><br><span class="line">    string tmp;</span><br><span class="line">    for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">        tmp +&#x3D; t[i];</span><br><span class="line">        &#x2F;&#x2F; cout &lt;&lt; tmp &lt;&lt; endl;</span><br><span class="line">        if(mp.count(tmp))&#123;</span><br><span class="line">            cout &lt;&lt; tmp &lt;&lt; &quot;:[&quot; &lt;&lt; mp[tmp] &lt;&lt; &quot;]&quot; &lt;&lt; endl;</span><br><span class="line">            tmp &#x3D; &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/03/18/%E7%AE%97%E6%B3%95-%E6%90%BA%E7%A8%8B2021-3-18%E7%AC%94%E8%AF%95/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
     <article id="post-计算机基础-图解HTTP学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -278,54 +369,9 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h1 id="1了解-Web-及网络基础"><a href="#1了解-Web-及网络基础" class="headerlink" title="1了解 Web 及网络基础"></a>1了解 Web 及网络基础</h1><h2 id="1-1-使用HTTP协议访问互联网"><a href="#1-1-使用HTTP协议访问互联网" class="headerlink" title="1.1 使用HTTP协议访问互联网"></a>1.1 使用HTTP协议访问互联网</h2><p>Web是建立在HTTP协议上通信的。</p>
-<h2 id="1-2HTTP的诞生"><a href="#1-2HTTP的诞生" class="headerlink" title="1.2HTTP的诞生"></a>1.2HTTP的诞生</h2><h2 id="1-3网络基础TCP-IP"><a href="#1-3网络基础TCP-IP" class="headerlink" title="1.3网络基础TCP/IP"></a>1.3网络基础TCP/IP</h2><h3 id="1-3-2-TCP-IP的分层管理"><a href="#1-3-2-TCP-IP的分层管理" class="headerlink" title="1.3.2 TCP/IP的分层管理"></a>1.3.2 TCP/IP的分层管理</h3><p>TCP/IP 协议族按层次分别分为以下 4 层：应用层、传输层、网络层和数据链路层。</p>
-<h3 id="1-3-3-TCP-IP通信传输流"><a href="#1-3-3-TCP-IP通信传输流" class="headerlink" title="1.3.3 TCP/IP通信传输流"></a>1.3.3 TCP/IP通信传输流</h3><p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/1.jpg"></p>
-<p>封装的思想-把数据包装起来。</p>
-<h2 id="1-4-与-HTTP-关系密切的协议-IP、TCP-和DNS"><a href="#1-4-与-HTTP-关系密切的协议-IP、TCP-和DNS" class="headerlink" title="1.4 与 HTTP 关系密切的协议 : IP、TCP 和DNS"></a>1.4 与 HTTP 关系密切的协议 : IP、TCP 和DNS</h2><h3 id="1-4-1-负责传输的-IP-协议"><a href="#1-4-1-负责传输的-IP-协议" class="headerlink" title="1.4.1 负责传输的 IP 协议"></a>1.4.1 负责传输的 IP 协议</h3><p>两个重要的条件是 IP 地址和 MAC地址（Media Access Control Address）。</p>
-<p>IP地址可变化,MAC地址基本不会改变。</p>
-<p>ARP协议的使用。</p>
-<p>路由选择-&gt;路由器-&gt;路由选择算法-&gt;路由表</p>
-<h3 id="1-4-2-确保可靠性的-TCP-协议"><a href="#1-4-2-确保可靠性的-TCP-协议" class="headerlink" title="1.4.2 确保可靠性的 TCP 协议"></a>1.4.2 确保可靠性的 TCP 协议</h3><p>可靠的、面向连接的、基于字节流的、全双工的通信。</p>
-<h2 id="1-5-负责域名解析的-DNS-服务"><a href="#1-5-负责域名解析的-DNS-服务" class="headerlink" title="1.5 负责域名解析的 DNS 服务"></a>1.5 负责域名解析的 DNS 服务</h2><h2 id="1-6-各种协议与-HTTP-协议的关系"><a href="#1-6-各种协议与-HTTP-协议的关系" class="headerlink" title="1.6 各种协议与 HTTP 协议的关系"></a>1.6 各种协议与 HTTP 协议的关系</h2><h2 id="1-7-URI-和-URL"><a href="#1-7-URI-和-URL" class="headerlink" title="1.7 URI 和 URL"></a>1.7 URI 和 URL</h2><p>URL(统一资源定位符)<br>正是使用 Web 浏览器等访问 Web 页面时需要输入的网页地址</p>
-<p>URI(统一资源标识符)</p>
-<h3 id="1-7-1-统一资源标识符"><a href="#1-7-1-统一资源标识符" class="headerlink" title="1.7.1 统一资源标识符"></a>1.7.1 统一资源标识符</h3><p>Uniform-统一</p>
-<p>Resource-资源</p>
-<p>Identifier-标识符</p>
-<p>URI 用字符串标识某一互联网资源，而 URL表示资源的地点（互联<br>网上所处的位置）。可见 URL是 URI 的子集。</p>
-<h3 id="1-7-2-URI-格式"><a href="#1-7-2-URI-格式" class="headerlink" title="1.7.2 URI 格式"></a>1.7.2 URI 格式</h3><p>登录信息（认证）</p>
-<p>服务器地址</p>
-<p>服务器端口号</p>
-<p>带层次的文件路径</p>
-<p>(查询字符串)</p>
-<p>(片段标识符)</p>
-<h1 id="2-简单的-HTTP-协议"><a href="#2-简单的-HTTP-协议" class="headerlink" title="2 简单的 HTTP 协议"></a>2 简单的 HTTP 协议</h1><h2 id="2-1-HTTP-协议用于客户端和服务器端之间"><a href="#2-1-HTTP-协议用于客户端和服务器端之间" class="headerlink" title="2.1 HTTP 协议用于客户端和服务器端之间"></a>2.1 HTTP 协议用于客户端和服务器端之间</h2><p>两台计算机作为客户端和服务器端的角色有可能会互换。</p>
-<p>从一条通信路线来说，服务器端和客户端的角色是确定的，而用 HTTP 协议能够明确区分哪端是客户端，哪端是服务器端。</p>
-<h2 id="2-2-通过请求和响应的交换达成通信"><a href="#2-2-通过请求和响应的交换达成通信" class="headerlink" title="2.2 通过请求和响应的交换达成通信"></a>2.2 通过请求和响应的交换达成通信</h2><p>请求报文:<br>起始行开头的GET表示请求访问服务器的类型，称为方法</p>
-<p>随后的字符串 /index.htm 指明了请求访问的资源对象，<br>也叫做请求 URI（request-URI）。</p>
-<p>最后的 HTTP/1.1，即 HTTP 的版本<br>号，用来提示客户端使用的 HTTP 协议功能。</p>
-<p>响应报文:<br>在起始行开头的 HTTP/1.1 表示服务器对应的 HTTP 版本。</p>
-<p>紧挨着的 200 OK 表示请求的处理结果的状态码（status code）和原因<br>短语（reason-phrase）。</p>
-<h2 id="2-3-HTTP-是不保存状态的协议"><a href="#2-3-HTTP-是不保存状态的协议" class="headerlink" title="2.3 HTTP 是不保存状态的协议"></a>2.3 HTTP 是不保存状态的协议</h2><p>HTTP 协议自身不对请求和响应之间的通信状态进行保存。HTTP 这个级别，协议对于发送过的请求或响应都不做持久化处理。</p>
-<p>HTTP/1.1 虽然是无状态协议，但为了实现期望的保持状态功能，于<br>是引入了 Cookie 技术。</p>
-<h2 id="2-4-请求URL定位资源"><a href="#2-4-请求URL定位资源" class="headerlink" title="2.4 请求URL定位资源"></a>2.4 请求URL定位资源</h2><p>除此之外，如果不是访问特定资源而是对服务器本身发起请求，可以<br>用一个 * 来代替请求 URL。</p>
-<h2 id="2-5-告知服务器意图的-HTTP-方法"><a href="#2-5-告知服务器意图的-HTTP-方法" class="headerlink" title="2.5 告知服务器意图的 HTTP 方法"></a>2.5 告知服务器意图的 HTTP 方法</h2><p>GET ：获取资源</p>
-<p>POST：传输实体主体</p>
-<p>PUT：传输文件</p>
-<p>鉴于 HTTP/1.1 的 PUT 方法自身不带验证机制，任何人都可以<br>上传文件 , 存在安全性问题，因此一般的 Web 网站不使用该方法。</p>
-<p>HEAD：获得报文首部</p>
-<p>DELETE：删除文件</p>
-<p>HTTP/1.1 的 DELETE 方法本身和 PUT 方法一样不带验证机<br>制，所以一般的 Web 网站也不使用 DELETE 方法。</p>
-<p>OPTIONS：询问支持的方法</p>
-<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/2.jpg"></p>
-<p>TRACE：追踪路径</p>
-<p>TRACE 方法是让 Web 服务器端将之前的请求通信环回给客户端的方<br>法。</p>
-<p>发送请求时，在 Max-Forwards 首部字段中填入数值，每经过一个服<br>务器端就将该数字减 1，当数值刚好减到 0 时，就停止继续传输，最<br>后接收到请求的服务器端则返回状态码 200 OK 的响应。</p>
-<p>客户端通过 TRACE 方法可以查询发送出去的请求是怎样被加工修改<br>/ 篡改的。这是因为，请求想要连接到源目标服务器可能会通过代理<br>中转，TRACE 方法就是用来确认连接过程中发生的一系列操作。</p>
-<p>但是，TRACE 方法本来就不怎么常用，再加上它容易引发<br><code>XST</code>（Cross-Site Tracing，跨站追踪）攻击，通常就更不会用到了。</p>
-<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/3.jpg"></p>
-<p><img src="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/4.jpg"></p>
-<p>CONNECT：要求用隧道协议连接代理</p>
-
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/#more">more >></a>
+    
     
 
     
@@ -429,6 +475,43 @@
 <p>URL统一资源定位符。(Locater) 可以提供找到该资源的路径。</p>
 <p>URL是URI的子集。</p>
 <p>是URI但不是URL的例子:urn:isbn:0-486-27557-4,这个是一本书的isbn,可以唯一标识这本书,更确切说这个是URN。</p>
+<p>5.哪些排序算法是稳定的,哪些不稳定</p>
+<p>如果排序结束后，a[0]可以保证一定在a[3]前头，也就是他们原有的顺序不变，那这种排序算法就是稳定的。</p>
+<p>冒泡排序、基数排序、插入排序、归并排序、桶排序、二叉树排序是稳定的排序算法。</p>
+<p>如果不能保证原有顺序，这种算法就是不稳定的。（比如常见的选择排序，希尔排序，堆排序，快速排序等都是不稳定的排序算法）</p>
+<p>6.一个场景,斗鱼有很多会议室,如何用数据库锁实现不会出现两批人占同一个会议室的情况</p>
+<p>我们在读取时上共享锁，由于更新是独占锁，它们不相容，这样可以避免判断失误的情况，因为不等两个共享锁释放它们都无法更新，但带来的新的问题，即两个都在无限期的等待对方释方,引起了死锁,其中一个事务会回滚,用户体验不好。</p>
+<p>更完善:在读时加独占锁,然后再进行更新即可。</p>
+<p>7.mysql的连接池有了解吗</p>
+<p>务器并不会立即把与该客户端交互的线程销毁掉，而是把它缓存起来，在另一个新的客户端再进行连接时，把这个缓存的线程分配给该新客户端。</p>
+<p>连接池的作用就是连接复用。避免了数据库连接频繁建立、关闭的开销。</p>
+<p>8.AOP是如何做的?java中动态代理是如何实现的?</p>
+<p>JDKProxy和Cglib</p>
+<p>如果目标对象实现了接口，默认情况下会采用JDK的动态代理实现AOP。</p>
+<p>如果目标对象没有实现了接口，必须采用CGLIB库，spring会自动在JDK动态代理和CGLIB之间转换</p>
+<p>JDK动态代理和CGLIB(Code Generation Library)字节码生成的区别？</p>
+<p>JDK动态代理只能对实现了接口的类生成代理，而不能针对类。</p>
+<p>CGLIB是针对类实现代理，主要是对指定的类生成一个子类，覆盖其中的方法。</p>
+<p>Spring AOP的底层就是通过JDK动态代理或者cglib动态代理技术为目标Bean横向织入。</p>
+<p>程序中应该优先对接口创建代理，便于程序解耦维护。</p>
+<p>9.为什么wait和notify是Object类中的方法?</p>
+<p>因为这些方法在操作同步线程时，都必须要标识它们操作线程的锁，只有同一个锁上的被等待线程，可以被同一个锁上的notify唤醒，不可以对不同锁中的线程进行唤醒。</p>
+<p>也就是说，等待和唤醒必须是同一个锁。而锁可以是任意对象，所以可以被任意对象调用的方法是定义在object类中。</p>
+<p>10.this.wait()是啥意思?</p>
+<p>若线程持有的是当前对象的锁 那么直接调用wait()、super.wait()、this.wait()，都是直接调用的当前对象的方法。</p>
+<p>如果当前线程持有的是对象A的锁，而使用条件对象时调用的是对象B的wait()\notify()方法组合，那么就会抛出一个<code>java.lang.IllegalMonitorStateException</code>异常</p>
+<p>如果当前线程在等待之前或在等待时被任何线程中断，则会抛出 <code>InterruptedException</code> 异常。</p>
+<p>11.调用了wait()的线程进入等待池，只有被notify唤醒之后才进入锁池，这两个池的内涵是什么?</p>
+<p>每个对象有一个与之对应的内部锁(monitor)。JAVA虚拟机会为每个对象维护两个队列,一个是Entry Set,一个是Wait Set。Entry存储等待获取X对应内部锁的所有线程,X的Wait Set存储执行了x.wait()的线程。</p>
+<p>当抢占锁时,唤醒EntrySet中任意一个线程,申请到则移除,否则继续阻塞。</p>
+<p>当notify时,任意一个Wait Set中线程被唤醒,与EntrySet以及其他可能线程一起争夺monitorX,抢占到则移除,否则继续在Wait Set等待。</p>
+<p>12.redis的各个数据类型的底层是什么?</p>
+<p>redis键key</p>
+<p>redis字符串String                    底层是SDS:简单动态字符串</p>
+<p>redis列表List（双向添加）              底层是双向链表或压缩列表(ziplist)-&gt;快速列表quicklist</p>
+<p>redis集合Set (无序无重复)              底层是整数集合或哈希表</p>
+<p>redis哈希Hash（类似JAVA的map）         底层是字典dict或压缩列表</p>
+<p>redis有序集合Zset (有序无重复)         底层是跳表(+dict)或压缩列表(ziplist)</p>
 
     
 
@@ -543,6 +626,14 @@
 <p>8.有什么兴趣爱好?</p>
 <p>9.能够实习多久?一周能实习几天?</p>
 <p>10.期望的工作地点是哪里?</p>
+<h2 id="腾讯"><a href="#腾讯" class="headerlink" title="腾讯"></a>腾讯</h2><h3 id="一面-1"><a href="#一面-1" class="headerlink" title="一面"></a>一面</h3><p>1.HashMap和Map是如何实现的?能说一说么?</p>
+<p>2.红黑树和平衡二叉树有什么区别?</p>
+<p>3.如何在链表中判断是否有一个环?</p>
+<p>4.操作系统中堆和栈有什么区别?</p>
+<p>5.TCP中time_waiting状态的原因是什么?</p>
+<p>6.操作系统的大端序和小端序了解吗?</p>
+<p>7.写一道题,链表反转。</p>
+<p>8.进程的通信方式有哪些?管道通信中匿名管道和命名管道的区别。</p>
 
     
 
@@ -1134,104 +1225,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021/03/07/%E7%AE%97%E6%B3%95-2021%E5%B9%B43%E6%9C%886%E6%97%A5%E9%98%BF%E9%87%8C%E7%AC%94%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-算法-leetcode-周赛第231场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/03/07/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC231%E5%9C%BA/">算法-leetcode-周赛第231场</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/03/07/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC231%E5%9C%BA/" class="archive-article-date">
-        <time datetime="2021-03-07T05:51:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-07</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>1.ans等于连续1形成的序列个数。</p>
-<p>我的写法:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool checkOnesSegment(string s) &#123;</span><br><span class="line">        int cnt &#x3D; 0, n &#x3D; s.size(), ans &#x3D; 0;</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">            if(s[i]&#x3D;&#x3D;&#39;1&#39;)&#123;</span><br><span class="line">                ans++;</span><br><span class="line">                int j &#x3D; i;</span><br><span class="line">                while(j&lt;n&amp;&amp;s[j] &#x3D;&#x3D;&#39;1&#39;) j++;</span><br><span class="line">                if(j &#x3D;&#x3D; n) break;</span><br><span class="line">                i &#x3D; j - 1;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        return ans &lt;&#x3D; 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>大佬的写法:</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool checkOnesSegment(string s) &#123;</span><br><span class="line">        int i &#x3D; 0, j &#x3D; s.size() - 1;</span><br><span class="line">        while (i &lt;&#x3D; j &amp;&amp; s[i] &#x3D;&#x3D; &#39;0&#39;) i ++ ;</span><br><span class="line">        while (i &lt;&#x3D; j &amp;&amp; s[j] &#x3D;&#x3D; &#39;0&#39;) j -- ;</span><br><span class="line">        for (int k &#x3D; i; k &lt;&#x3D; j; k ++ )</span><br><span class="line">            if (s[k] &#x3D;&#x3D; &#39;0&#39;) return false;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/03/07/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC231%E5%9C%BA/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/03/07/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC231%E5%9C%BA/">展开全文 >></a>
     </p>
     
 

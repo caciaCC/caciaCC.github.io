@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://caciacc.top">
-  <title>Archives | caciaCC的博客</title>
+  <title>算法-携程2021-3-18笔试 | caciaCC的博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="leetcode刷题+java面试点记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="caciaCC的博客">
-<meta property="og:url" content="http://caciacc.top/archives/page/7/index.html">
+  <meta name="description" content="第一题 一个简单的dp[i][j],和最长公共子串的转移差不多,比较简单。但是携程的输入输出无法用,有点离谱。 第二题AC自动机 不会写AC自动机。锻炼了一波输入输出。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162">
+<meta property="og:type" content="article">
+<meta property="og:title" content="算法-携程2021-3-18笔试">
+<meta property="og:url" content="http://caciacc.top/2021/03/18/%E7%AE%97%E6%B3%95-%E6%90%BA%E7%A8%8B2021-3-18%E7%AC%94%E8%AF%95/index.html">
 <meta property="og:site_name" content="caciaCC的博客">
-<meta property="og:description" content="leetcode刷题+java面试点记录">
+<meta property="og:description" content="第一题 一个简单的dp[i][j],和最长公共子串的转移差不多,比较简单。但是携程的输入输出无法用,有点离谱。 第二题AC自动机 不会写AC自动机。锻炼了一波输入输出。 1234567891011121314151617181920212223242526272829303132333435363738394041424344454647484950515253545556575859606162">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-18T12:30:59.000Z">
+<meta property="article:modified_time" content="2021-03-18T12:36:29.024Z">
 <meta property="article:author" content="caciaCC">
+<meta property="article:tag" content="算法">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="caciaCC的博客" type="application/atom+xml">
@@ -245,484 +248,183 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-算法-携程2021-3-18笔试" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9F%A5%E8%AF%86/">Java学习-Java设计模式知识</a>
-	
+    <h1 class="article-title" itemprop="name">
+      算法-携程2021-3-18笔试
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
+  
+  
+<a href="/2021/03/18/%E7%AE%97%E6%B3%95-%E6%90%BA%E7%A8%8B2021-3-18%E7%AC%94%E8%AF%95/" class="archive-article-date">
+        <time datetime="2021-03-18T12:30:59.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-18</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">462字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">2分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>第一题</p>
+<p>一个简单的dp[i][j],和最长公共子串的转移差不多,比较简单。但是携程的输入输出无法用,有点离谱。</p>
+<p>第二题AC自动机</p>
+<p>不会写AC自动机。锻炼了一波输入输出。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;numeric&gt;</span><br><span class="line">#include &lt;limits&gt;</span><br><span class="line">#include&lt;bits&#x2F;stdc++.h&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">map&lt;string,string&gt;mp;</span><br><span class="line">int main() &#123;</span><br><span class="line">    string s;</span><br><span class="line">    string t;</span><br><span class="line">    while(cin&gt;&gt;s)&#123;</span><br><span class="line">        if(s[0]&#x3D;&#x3D;&#39;q&#39;)&#123;</span><br><span class="line">            t &#x3D; s.substr(7);</span><br><span class="line">        &#x2F;&#x2F;   int i;</span><br><span class="line">        &#x2F;&#x2F;   for(i &#x3D; 0; s[i]!&#x3D;&#39;:&#39;; i ++)&#123;</span><br><span class="line">        &#x2F;&#x2F;       ;</span><br><span class="line">        &#x2F;&#x2F;   &#125;</span><br><span class="line">        &#x2F;&#x2F;   i++;</span><br><span class="line">        &#x2F;&#x2F;   int n &#x3D; s.size();</span><br><span class="line">        &#x2F;&#x2F;   for(; i &lt; n; i ++) t +&#x3D; s[i];</span><br><span class="line">            break;</span><br><span class="line">        &#125;</span><br><span class="line">        string ok;</span><br><span class="line">        int i;</span><br><span class="line">        for(i &#x3D; 0; s[i]!&#x3D;&#39;:&#39;; i ++)&#123;</span><br><span class="line">            ;</span><br><span class="line">        &#125;</span><br><span class="line">        i++;</span><br><span class="line">        for(;s[i]!&#x3D;&#39;:&#39;;i++) ok +&#x3D; s[i];</span><br><span class="line">        string tmp;</span><br><span class="line">        &#x2F;&#x2F; cout &lt;&lt; ok &lt;&lt; endl;</span><br><span class="line">        i++;</span><br><span class="line">        for(;i &lt; s.size(); i ++)&#123;</span><br><span class="line">            if(s[i]&#x3D;&#x3D;&#39;,&#39;||s[i]&#x3D;&#x3D;&#39; &#39;)&#123;</span><br><span class="line">               mp[tmp] &#x3D; ok;</span><br><span class="line">                &#x2F;&#x2F; cout &lt;&lt; tmp &lt;&lt; endl;</span><br><span class="line">                tmp &#x3D;&quot;&quot;;</span><br><span class="line">            &#125;else tmp +&#x3D; s[i];</span><br><span class="line">        &#125;</span><br><span class="line">        mp[tmp] &#x3D; ok;</span><br><span class="line">    &#125;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; t &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; &quot;我想:[停词]&quot; &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; &quot;春节:[节假日]&quot; &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; &quot;从:[停词]&quot; &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; &quot;南京:[出发地]&quot; &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; &quot;去:[停词]&quot; &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; &quot;三亚:[目的地]&quot; &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; &quot;跟团游:[出游类型]&quot; &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; &quot;携程自营:[供应商]&quot; &lt;&lt; endl;</span><br><span class="line">    &#x2F;&#x2F; cout &lt;&lt; t &lt;&lt; endl;</span><br><span class="line">    int n &#x3D; t.size();</span><br><span class="line">    string tmp;</span><br><span class="line">    for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">        tmp +&#x3D; t[i];</span><br><span class="line">        &#x2F;&#x2F; cout &lt;&lt; tmp &lt;&lt; endl;</span><br><span class="line">        if(mp.count(tmp))&#123;</span><br><span class="line">            cout &lt;&lt; tmp &lt;&lt; &quot;:[&quot; &lt;&lt; mp[tmp] &lt;&lt; &quot;]&quot; &lt;&lt; endl;</span><br><span class="line">            tmp &#x3D; &quot;&quot;;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://caciacc.top/2021/03/18/%E7%AE%97%E6%B3%95-%E6%90%BA%E7%A8%8B2021-3-18%E7%AC%94%E8%AF%95/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/nosql%E5%AD%A6%E4%B9%A0-nosql%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021/03/17/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3HTTP%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">计算机基础-图解HTTP学习</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/nosql%E5%AD%A6%E4%B9%A0-nosql%E7%9F%A5%E8%AF%86/">Nosql学习-Nosql知识</a>
-	
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nosql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86/">计算机基础-操作系统知识</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计算机基础-操作系统知识</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/%E9%A1%B9%E7%9B%AE-%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/%E9%A1%B9%E7%9B%AE-%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3/">项目-各种参考文档</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-jvm%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-jvm%E7%9B%B8%E5%85%B3/">Java学习-JVM相关</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-map%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-map%E7%9B%B8%E5%85%B3/">Java学习-map相关知识</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">map</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/mysql%E5%AD%A6%E4%B9%A0-%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/mysql%E5%AD%A6%E4%B9%A0-%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/">Mysql学习-一些知识点</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">mysql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/">计算机基础-计算机网络知识</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">计算机基础-计算机网络知识</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-%E7%BA%BF%E7%A8%8B%E7%9B%B8%E5%85%B3%E7%9F%A5%E8%AF%86/">java学习-线程相关知识</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">线程</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/12/%E5%85%B6%E4%BB%96-%E5%8D%B0%E8%B1%A1%E7%AC%94%E8%AE%B0%E8%BD%ACmarkdown/" class="archive-article-date">
-        <time datetime="2021-01-12T03:18:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/12/%E5%85%B6%E4%BB%96-%E5%8D%B0%E8%B1%A1%E7%AC%94%E8%AE%B0%E8%BD%ACmarkdown/">其他-印象笔记转markdown</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">杂项</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/6/">Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/5/">5</a><a class="page-number" href="/archives/page/6/">6</a><span class="page-number current">7</span><a class="page-number" href="/archives/page/8/">8</a><a class="extend next" rel="next" href="/archives/page/8/">Next</a>
-    </nav>
-  
 
 
           </div>
@@ -751,8 +453,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
