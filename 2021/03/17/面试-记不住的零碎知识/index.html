@@ -18,8 +18,9 @@
 <meta property="og:description" content="1.EXPLAIN FORMAT&#x3D;JSON查看某个执行计划花费的成本。 2.网络编程一般步骤: TCP: o    服务端：socket -&gt; bind -&gt; listen -&gt; accept -&gt; recv&#x2F;send -&gt; close。 o    客户端：socket -&gt; connect -&gt; send&#x2F;recv -&gt; close UDP：o">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/1.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/2.jpg">
 <meta property="article:published_time" content="2021-03-17T11:22:43.000Z">
-<meta property="article:modified_time" content="2021-03-18T00:54:24.697Z">
+<meta property="article:modified_time" content="2021-03-19T13:56:27.261Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -278,7 +279,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.3k字</span>
+      <span class="post-count">2k字</span>
     </span>
   </span>
 
@@ -287,7 +288,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">4分</span>
+      <span class="post-count">7分</span>
     </span>
   </span>
 </div>
@@ -348,6 +349,37 @@
 <p>redis集合Set (无序无重复)              底层是整数集合或哈希表</p>
 <p>redis哈希Hash（类似JAVA的map）         底层是字典dict或压缩列表</p>
 <p>redis有序集合Zset (有序无重复)         底层是跳表(+dict)或压缩列表(ziplist)</p>
+<p>13.登录后的认证方案有哪些?</p>
+<p>1.session</p>
+<p>⭕服务器接收到第一个请求时，生成 session 对象，并通过响应头告诉客户端在 cookie 中放入 sessionId</p>
+<p>⭕客户端之后发送请求时，会带上包含 sessionId 的 cookie</p>
+<p>⭕服务器通过 sessionId 获取 session ，进而得到当前用户的状态（是否登录）等信息</p>
+<p>弊端:session存在内存里,会占用大量的内存空间。</p>
+<p>2.token</p>
+<p>⭕用户使用用户名密码登录，服务器验证通过后，根据用户名（或用户 id 等），按照预先设置的算法生成 token，其中也可以封装其它信息，并将 token 返回给客户端（可以设置到客户端的 cookie 中，也可以作为 response body）</p>
+<p>⭕客户端接收到 token，并在之后发送请求时带上它（利用 cookie、作为请求头或作为参数均可）</p>
+<p>⭕服务器对 token 进行解密、验证</p>
+<p>优势:无需服务器存储。</p>
+<p>14.客户端存储认证信息的方式有哪些?</p>
+<p>cookie、localStorage 和 sessionStorage。</p>
+<p><img src="/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/2.jpg" alt=".jpg"></p>
+<p>15.后端登录的整个过程说下?</p>
+<p>首先输入用户名密码,然后传入用户名密码到后端Controller的/login路径下,然后会根据用户名和密码生成一个<code>UsernamePasswordToken</code>,最后会将从数据库取出的信息变成authenticationInfo和其比较,比较正确则登录成功。</p>
+<p>16.用cookie和session被人伪装登录怎么解决?</p>
+<p>使用一个好的随机数生成器</p>
+<p>即使是有效的ID，也经常更新会话ID </p>
+<p>使用SSL加密整个通信过程等。</p>
+<p>17.AOP是什么的缩写?</p>
+<p>Aspect Oriented Programming.面向切面编程。</p>
+<p>18.SQL注入怎么解决?</p>
+<p>1.在JDBC中，使用Statement的子类PreparedStatement，这也是我们最先想到的方法(因为是预先编译)</p>
+<p>2.Mybatis中尽量使用#{}而不是${},使用#{}该语句在执行前会进行预编译,后来传入的参数通过占位符的方式填入到已经编译完的语句中,不会发生问题。</p>
+<p>3.手动过滤参数。声明一个危险参数数组danger，将前台传入的参数用“ ”分隔后，产生的参数数组与danger有交集时，终止该sql的执行，并反馈前台，提示禁止输入非法字符。</p>
+<p>19.如何在java中接入redis?</p>
+<p>配置pom</p>
+<p>配置application.yml</p>
+<p>创建RedisConfig,配置redis的相关参数。</p>
+<p>创建RedisService和其实现类RedisServiceImpl,在其中注入RedisTemplate对象,并设置对应的对RedisTemplate的对象操作的方法即可。</p>
 
     
 
