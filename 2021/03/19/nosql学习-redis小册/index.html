@@ -19,8 +19,21 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://caciacc.top/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/0.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/1.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/2.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/3.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/4.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/5.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/6.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/7.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/8.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/9.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/10.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/11.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/12.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/13.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/14.jpg">
 <meta property="article:published_time" content="2021-03-19T07:25:02.000Z">
-<meta property="article:modified_time" content="2021-03-19T14:11:58.074Z">
+<meta property="article:modified_time" content="2021-03-20T06:53:04.784Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="JAVA">
 <meta property="article:tag" content="nosql">
@@ -280,7 +293,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">4.9k字</span>
+      <span class="post-count">31.1k字</span>
     </span>
   </span>
 
@@ -289,7 +302,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">19分</span>
+      <span class="post-count">114分</span>
     </span>
   </span>
 </div>
@@ -411,6 +424,413 @@
 <p>但是这也不是一个完美的方案，它只是相对安全一点，因为如果真的超时了，当前线程的逻辑没有执行完，其它线程也会乘虚而入。</p>
 <h3 id="可重入性"><a href="#可重入性" class="headerlink" title="可重入性"></a>可重入性</h3><p>可重入性是指线程在持有锁的情况下再次请求加锁，如果一个锁支持同一个线程的多次加锁，那么这个锁就是可重入的。比如 Java 语言里有个 ReentrantLock 就是可重入锁。Redis 分布式锁如果要支持可重入，需要对客户端的 set 方法进行包装，使用线程的<code> Threadlocal</code> 变量存储当前持有锁的计数。</p>
 <p>不推荐使用可重入锁，它加重了客户端的复杂性，在编写业务方法时注意在逻辑结构上进行调整完全可以不使用可重入锁。</p>
+<h2 id="应用-2：缓兵之计-——-延时队列"><a href="#应用-2：缓兵之计-——-延时队列" class="headerlink" title="应用 2：缓兵之计 —— 延时队列"></a>应用 2：缓兵之计 —— 延时队列</h2><p>有了 Redis，它就可以让我们解脱出来，对于那些只有一组消费者的消息队列，使用 Redis 就可以非常轻松的搞定。Redis 的消息队列不是专业的消息队列，它没有非常多的高级特性，没有 ack 保证，如果对消息的可靠性有着极致的追求，那么它就不适合使用。</p>
+<h3 id="异步消息队列"><a href="#异步消息队列" class="headerlink" title="异步消息队列"></a>异步消息队列</h3><p>Redis 的 list(列表) 数据结构常用来作为异步消息队列使用，使用<code>rpush/lpush</code>操作入队列，使用<code>lpop 和 rpop</code>来出队列。</p>
+<h3 id="队列空了怎么办？"><a href="#队列空了怎么办？" class="headerlink" title="队列空了怎么办？"></a>队列空了怎么办？</h3><p>如果队列空了，客户端就会陷入 pop 的死循环，不停地 pop，没有数据，接着再 pop，又没有数据。这就是浪费生命的空轮询。空轮询不但拉高了客户端的 CPU，redis 的 QPS(Query Per Second)) 也会被拉高，如果这样空轮询的客户端有几十来个，Redis 的慢查询可能会显著增多。</p>
+<p>通常我们使用 sleep 来解决这个问题，让线程睡一会，睡个 1s 钟就可以了。不但客户端的 CPU 能降下来，Redis 的 QPS 也降下来了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Thread.sleep(1000)  # java 睡 1s</span><br></pre></td></tr></table></figure>
+<h3 id="空闲连接自动断开"><a href="#空闲连接自动断开" class="headerlink" title="空闲连接自动断开"></a>空闲连接自动断开</h3><p>如果线程一直阻塞在哪里，Redis 的客户端连接就成了闲置连接，闲置过久，服务器一般会主动断开连接，减少闲置资源占用。这个时候<code>blpop/brpop</code>会抛出异常来。</p>
+<h3 id="锁冲突处理"><a href="#锁冲突处理" class="headerlink" title="锁冲突处理"></a>锁冲突处理</h3><h3 id="延时队列的实现"><a href="#延时队列的实现" class="headerlink" title="延时队列的实现"></a>延时队列的实现</h3><p>延时队列可以通过 Redis 的 zset(有序列表) 来实现。我们将消息序列化成一个字符串作为 zset 的<code>value</code>，这个消息的到期处理时间作为<code>score</code>，然后用多个线程轮询 zset 获取到期的任务进行处理，多个线程是为了保障可用性，万一挂了一个线程还有其它线程可以继续处理。因为有多个线程，所以需要考虑并发争抢任务，确保任务不能被多次执行。</p>
+<h2 id="4-应用-3：节衣缩食-——-位图"><a href="#4-应用-3：节衣缩食-——-位图" class="headerlink" title="4 应用 3：节衣缩食 —— 位图"></a>4 应用 3：节衣缩食 —— 位图</h2><p>在我们平时开发过程中，会有一些 bool 型数据需要存取，比如用户一年的签到记录，签了是 1，没签是 0，要记录 365 天。如果使用普通的 key/value，每个用户要记录 365 个，当用户上亿的时候，需要的存储空间是惊人的。</p>
+<p>为了解决这个问题，Redis 提供了位图数据结构，这样每天的签到记录只占据一个位，365 天就是 365 个位，46 个字节 (一个稍长一点的字符串) 就可以完全容纳下，这就大大节约了存储空间。</p>
+<p>位图不是特殊的数据结构，它的内容其实就是普通的字符串，也就是 byte 数组。我们可以使用普通的 get/set 直接获取和设置整个位图的内容，也可以使用位图操作 getbit/setbit 等将 byte 数组看成「位数组」来处理。</p>
+<p>当我们要统计月活的时候，因为需要去重，需要使用 set 来记录所有活跃用户的 id，这非常浪费内存。这时就可以考虑使用位图来标记用户的活跃状态。每个用户会都在这个位图的一个确定位置上，0 表示不活跃，1 表示活跃。然后到月底遍历一次位图就可以得到月度活跃用户数。不过这个方法也是有条件的，那就是 userid 是整数连续的，并且活跃占比较高，否则可能得不偿失。</p>
+<h2 id="5-应用-4：四两拨千斤-——-HyperLogLog"><a href="#5-应用-4：四两拨千斤-——-HyperLogLog" class="headerlink" title="5 应用 4：四两拨千斤 —— HyperLogLog"></a>5 应用 4：四两拨千斤 —— HyperLogLog</h2><p>Redis统计PV和UV</p>
+<p>如果统计 <code>PV</code>(Page View) 那非常好办，给每个网页一个独立的 Redis 计数器就可以了，这个计数器的 key 后缀加上当天的日期。这样来一个请求，<code>incrby</code> 一次，最终就可以统计出所有的 <code>PV </code>数据。</p>
+<p>但是 UV 不一样，它要去重，同一个用户一天之内的多次访问请求只能计数一次。这就要求每一个网页请求都需要带上用户的 ID，无论是登陆用户还是未登陆用户都需要一个唯一 ID 来标识。</p>
+<p>你也许已经想到了一个简单的方案，那就是为每一个页面一个独立的 set 集合来存储所有当天访问过此页面的用户 ID。当一个请求过来时，我们使用 sadd 将用户 ID 塞进去就可以了。通过 scard 可以取出这个集合的大小，这个数字就是这个页面的 UV 数据。没错，这是一个非常简单的方案。</p>
+<p>但是，如果你的页面访问量非常大，比如一个爆款页面几千万的 UV，你需要一个很大的 set 集合来统计，这就非常浪费空间。如果这样的页面很多，那所需要的存储空间是惊人的。为这样一个去重功能就耗费这样多的存储空间，值得么？其实老板需要的数据又不需要太精确，105w 和 106w 这两个数字对于老板们来说并没有多大区别，So，有没有更好的解决方案呢？</p>
+<p>这就是本节要引入的一个解决方案，Redis 提供了 <code>HyperLogLog </code>数据结构就是用来解决这种统计问题的。HyperLogLog 提供不精确的去重计数方案，虽然不精确但是也不是非常不精确，标准误差是 0.81%，这样的精确度已经可以满足上面的 UV 统计需求了。</p>
+<h2 id="5-应用-5：层峦叠嶂-——-布隆过滤器"><a href="#5-应用-5：层峦叠嶂-——-布隆过滤器" class="headerlink" title="5 应用 5：层峦叠嶂 —— 布隆过滤器"></a>5 应用 5：层峦叠嶂 —— 布隆过滤器</h2><p>讲个使用场景，比如我们在使用新闻客户端看新闻时，它会给我们不停地推荐新的内容，它每次推荐时要去重，去掉那些已经看过的内容。问题来了，新闻客户端推荐系统如何实现推送去重的？</p>
+<p>你会想到服务器记录了用户看过的所有历史记录，当推荐系统推荐新闻时会从每个用户的历史记录里进行筛选，过滤掉那些已经存在的记录。问题是当用户量很大，每个用户看过的新闻又很多的情况下，这种方式，推荐系统的去重工作在性能上跟的上么？</p>
+<p>实际上，如果历史记录存储在关系数据库里，去重就需要频繁地对数据库进行 exists 查询，当系统并发量很高时，数据库是很难扛住压力的。</p>
+<p>你可能又想到了缓存，但是如此多的历史记录全部缓存起来，那得浪费多大存储空间啊？而且这个存储空间是随着时间线性增长，你撑得住一个月，你能撑得住几年么？但是不缓存的话，性能又跟不上，这该怎么办？</p>
+<p>这时，布隆过滤器 (Bloom Filter)  闪亮登场了，它就是专门用来解决这种<code>去重</code>问题的。它在起到去重的同时，在空间上还能节省 90% 以上，只是稍微有那么点不精确，也就是有一定的误判概率。</p>
+<h3 id="布隆过滤器是什么？"><a href="#布隆过滤器是什么？" class="headerlink" title="布隆过滤器是什么？"></a>布隆过滤器是什么？</h3><p>布隆过滤器可以理解为一个不怎么精确的 set 结构，当你使用它的 contains 方法判断某个对象是否存在时，它可能会误判。但是布隆过滤器也不是特别不精确，只要参数设置的合理，它的精确度可以控制的相对足够精确，只会有小小的误判概率。</p>
+<p>当布隆过滤器说某个值存在时，这个值可能不存在；当它说不存在时，那就肯定不存在。打个比方，当它说不认识你时，肯定就不认识；当它说见过你时，可能根本就没见过面，不过因为你的脸跟它认识的人中某脸比较相似 (某些熟脸的系数组合)，所以误判以前见过你。</p>
+<h3 id="布隆过滤器的原理"><a href="#布隆过滤器的原理" class="headerlink" title="布隆过滤器的原理"></a>布隆过滤器的原理</h3><p>每个布隆过滤器对应到 Redis 的数据结构里面就是一个大型的位数组和几个不一样的无偏 hash 函数。所谓无偏就是能够把元素的 hash 值算得比较均匀。</p>
+<p>向布隆过滤器中添加 key 时，会使用多个 hash 函数对 key 进行 hash 算得一个整数索引值然后对位数组长度进行取模运算得到一个位置，每个 hash 函数都会算得一个不同的位置。再把位数组的这几个位置都置为 1 就完成了 add 操作。</p>
+<p>向布隆过滤器询问 key 是否存在时，跟 add 一样，也会把 hash 的几个位置都算出来，看看位数组中这几个位置是否都为 1，只要有一个位为 0，那么说明布隆过滤器中这个 key 不存在。如果都是 1，这并不能说明这个 key 就一定存在，只是极有可能存在，因为这些位被置为 1 可能是因为其它的 key 存在所致。如果这个位数组比较稀疏，判断正确的概率就会很大，如果这个位数组比较拥挤，判断正确的概率就会降低。</p>
+<p>使用时不要让实际元素远大于初始化大小，当实际元素开始超出初始化大小时，应该对布隆过滤器进行重建，重新分配一个 size 更大的过滤器，再将所有的历史元素批量 add 进去 (这就要求我们在其它的存储器中记录所有的历史元素)。因为 error_rate 不会因为数量超出就急剧增加，这就给我们重建过滤器提供了较为宽松的时间。</p>
+<h3 id="空间占用估计"><a href="#空间占用估计" class="headerlink" title="空间占用估计"></a>空间占用估计</h3><p>你也许会想，如果一个元素需要占据 15 个 bit，那相对 set 集合的空间优势是不是就没有那么明显了？这里需要明确的是，set 中会存储每个元素的内容，而布隆过滤器仅仅存储元素的指纹。</p>
+<h3 id="布隆过滤器的其它应用"><a href="#布隆过滤器的其它应用" class="headerlink" title="布隆过滤器的其它应用"></a>布隆过滤器的其它应用</h3><p>在<code>爬虫系统</code>中，我们需要对 URL 进行去重，已经爬过的网页就可以不用爬了。但是 URL 太多了，几千万几个亿，如果用一个集合装下这些 URL 地址那是非常浪费空间的。这时候就可以考虑使用布隆过滤器。它可以大幅降低去重存储消耗，只不过也会使得爬虫系统错过少量的页面。</p>
+<p>布隆过滤器在 <code>NoSQL 数据库领域使用</code>非常广泛，我们平时用到的 HBase、Cassandra 还有 LevelDB、RocksDB 内部都有布隆过滤器结构，布隆过滤器可以显著降低数据库的 IO 请求数量。当用户来查询某个 row 时，可以先通过内存中的布隆过滤器过滤掉大量不存在的 row 请求，然后再去磁盘进行查询。</p>
+<p>邮箱系统的<code>垃圾邮件过滤功能</code>也普遍用到了布隆过滤器，因为用了这个过滤器，所以平时也会遇到某些正常的邮件被放进了垃圾邮件目录中，这个就是误判所致，概率很低。</p>
+<h2 id="7-应用-6：断尾求生-——-简单限流"><a href="#7-应用-6：断尾求生-——-简单限流" class="headerlink" title="7 应用 6：断尾求生 —— 简单限流"></a>7 应用 6：断尾求生 —— 简单限流</h2><h3 id="如何使用-Redis-来实现简单限流策略？"><a href="#如何使用-Redis-来实现简单限流策略？" class="headerlink" title="如何使用 Redis 来实现简单限流策略？"></a>如何使用 Redis 来实现简单限流策略？</h3><p>首先我们来看一个常见 的简单的限流策略。系统要限定用户的某个行为在指定的时间里只能允许发生 N 次，如何使用 Redis 的数据结构来实现这个限流的功能？</p>
+<p>我们先定义这个接口，理解了这个接口的定义，读者就应该能明白我们期望达到的功能。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># 指定用户 user_id 的某个行为 action_key 在特定的时间内 period 只允许发生一定的次数 max_count</span><br><span class="line">def is_action_allowed(user_id, action_key, period, max_count):</span><br><span class="line">    return True</span><br><span class="line"># 调用这个接口 , 一分钟内只允许最多回复 5 个帖子</span><br><span class="line">can_reply &#x3D; is_action_allowed(&quot;laoqian&quot;, &quot;reply&quot;, 60, 5)</span><br><span class="line">if can_reply:</span><br><span class="line">    do_reply()</span><br><span class="line">else:</span><br><span class="line">    raise ActionThresholdOverflow()</span><br></pre></td></tr></table></figure>
+<p>先不要继续往后看，想想如果让你来实现，你该怎么做？</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>个限流需求中存在一个滑动时间窗口，想想 zset 数据结构的 score 值，是不是可以通过 score 来圈出这个时间窗口来。而且我们只需要保留这个时间窗口，窗口之外的数据都可以砍掉。那这个 zset 的 value 填什么比较合适呢？它只需要保证唯一性即可，用 uuid 会比较浪费空间，那就改用毫秒时间戳吧。</p>
+<p>如图所示，用一个 zset 结构记录用户的行为历史，每一个行为都会作为 zset 中的一个 key 保存下来。同一个用户同一种行为用一个 zset 记录。</p>
+<p>为节省内存，我们只需要保留时间窗口内的行为记录，同时如果用户是冷用户，滑动时间窗口内的行为是空记录，那么这个 zset 就可以从内存中移除，不再占用空间。</p>
+<p>通过统计滑动窗口内的行为数量与阈值 max_count 进行比较就可以得出当前的行为是否允许。</p>
+<h2 id="8-应用-7：一毛不拔-——-漏斗限流"><a href="#8-应用-7：一毛不拔-——-漏斗限流" class="headerlink" title="8 应用 7：一毛不拔 —— 漏斗限流"></a>8 应用 7：一毛不拔 —— 漏斗限流</h2><h2 id="9-应用-8：近水楼台-——-GeoHash"><a href="#9-应用-8：近水楼台-——-GeoHash" class="headerlink" title="9 应用 8：近水楼台 —— GeoHash"></a>9 应用 8：近水楼台 —— GeoHash</h2><p>Redis 在 3.2 版本以后增加了地理位置 GEO 模块，意味着我们可以使用 Redis 来实现摩拜单车「附近的 Mobike」、美团和饿了么「附近的餐馆」这样的功能了。</p>
+<h3 id="GeoHash-算法"><a href="#GeoHash-算法" class="headerlink" title="GeoHash 算法"></a>GeoHash 算法</h3><p>业界比较通用的地理位置距离排序算法是 GeoHash 算法，Redis 也使用 GeoHash 算法。GeoHash 算法将二维的经纬度数据映射到一维的整数，这样所有的元素都将在挂载到一条线上，距离靠近的二维坐标映射到一维后的点之间距离也会很接近。当我们想要计算「附近的人时」，首先将目标位置映射到这条线上，然后在这个一维的线上获取附近的点就行了。</p>
+<p>编码之后，每个地图元素的坐标都将变成一个整数，通过这个整数可以还原出元素的坐标，整数越长，还原出来的坐标值的损失程度就越小。对于「附近的人」这个功能而言，损失的一点精确度可以忽略不计。</p>
+<h3 id="小结-amp-注意事项"><a href="#小结-amp-注意事项" class="headerlink" title="小结 &amp; 注意事项"></a>小结 &amp; 注意事项</h3><p>在一个地图应用中，车的数据、餐馆的数据、人的数据可能会有百万千万条，如果使用 Redis 的 Geo 数据结构，它们将全部放在一个 zset 集合中。在 Redis 的集群环境中，集合可能会从一个节点迁移到另一个节点，如果单个 key 的数据过大，会对集群的迁移工作造成较大的影响，在集群环境中单个 key 对应的数据量不宜超过 1M，否则会导致集群迁移出现卡顿现象，影响线上服务的正常运行。</p>
+<p>所以，这里建议 Geo 的数据使用单独的 Redis 实例部署，不使用集群环境。</p>
+<p>如果数据量过亿甚至更大，就需要对 Geo 数据进行拆分，按国家拆分、按省拆分，按市拆分，在人口特大城市甚至可以按区拆分。这样就可以显著降低单个 zset 集合的大小。</p>
+<h2 id="10-应用-9：大海捞针-——-Scan"><a href="#10-应用-9：大海捞针-——-Scan" class="headerlink" title="10 应用 9：大海捞针 —— Scan"></a>10 应用 9：大海捞针 —— Scan</h2><p>keys指令有很明显的两个<strong>缺点</strong>。</p>
+<ol>
+<li>没有 offset、limit 参数，一次性吐出所有满足条件的 key，万一实例中有几百 w 个 key 满足条件，当你看到满屏的字符串刷的没有尽头时，你就知道难受了。</li>
+<li>keys 算法是遍历算法，复杂度是 O(n)，如果实例中有千万级以上的 key，这个指令就会导致 Redis 服务卡顿，所有读写 Redis 的其它的指令都会被延后甚至会超时报错，因为 Redis 是单线程程序，顺序执行所有指令，其它指令必须等到当前的 keys 指令执行完了才可以继续。</li>
+</ol>
+<p>Redis 为了解决这个问题，它在 2.8 版本中加入了大海捞针的指令——<code>scan</code>。<code>scan</code> 相比 <code>keys</code> 具备有以下特点:</p>
+<ol>
+<li>复杂度虽然也是 O(n)，但是它是通过游标分步进行的，不会阻塞线程;</li>
+<li>提供 limit 参数，可以控制每次返回结果的最大条数，limit 只是一个 hint，返回的结果可多可少;</li>
+<li>同 keys 一样，它也提供模式匹配功能;</li>
+<li>服务器不需要为游标保存状态，游标的唯一状态就是 scan 返回给客户端的游标整数;</li>
+<li>返回的结果可能会有重复，需要客户端去重复，这点非常重要;</li>
+<li>遍历的过程中如果有数据修改，改动后的数据能不能遍历到是不确定的;</li>
+<li>单次返回的结果是空的并不意味着遍历结束，而要看返回的游标值是否为零;</li>
+</ol>
+<h3 id="scan-基础使用"><a href="#scan-基础使用" class="headerlink" title="scan 基础使用"></a>scan 基础使用</h3><h3 id="字典的结构"><a href="#字典的结构" class="headerlink" title="字典的结构"></a>字典的结构</h3><p>在 Redis 中所有的 key 都存储在一个很大的字典中，这个字典的结构和 Java 中的 <code>HashMap</code> 一样，是<code>一维数组 + 二维链表结构</code>，第一维数组的大小总是 2^n(n&gt;=0)，扩容一次数组大小空间加倍，也就是 n++。</p>
+<p>scan 指令返回的游标就是第一维数组的位置索引，我们将这个位置索引称为槽 (slot)。如果不考虑字典的扩容缩容，直接按数组下标挨个遍历就行了。limit 参数就表示需要遍历的槽位数，之所以返回的结果可能多可能少，是因为不是所有的槽位上都会挂接链表，有些槽位可能是空的，还有些槽位上挂接的链表上的元素可能会有多个。每一次遍历都会将 limit 数量的槽位上挂接的所有链表元素进行模式匹配过滤后，一次性返回给客户端。</p>
+<h3 id="scan-遍历顺序"><a href="#scan-遍历顺序" class="headerlink" title="scan 遍历顺序"></a>scan 遍历顺序</h3><p>scan 的遍历顺序非常特别。它不是从第一维数组的第 0 位一直遍历到末尾，而是采用了高位进位加法来遍历。之所以使用这样特殊的方式进行遍历，是考虑到<code>字典的扩容和缩容时避免槽位的遍历重复和遗漏</code>。</p>
+<h3 id="字典扩容"><a href="#字典扩容" class="headerlink" title="字典扩容"></a>字典扩容</h3><p>抽象一点说，假设开始槽位的二进制数是 xxx，那么该槽位中的元素将被 rehash 到 0xxx 和 1xxx(xxx+8) 中。<br>如果字典长度由 16 位扩容到 32 位，那么对于二进制槽位 xxxx 中的元素将被 rehash 到 0xxxx 和 1xxxx(xxxx+16) 中。</p>
+<h3 id="对比扩容缩容前后的遍历顺序"><a href="#对比扩容缩容前后的遍历顺序" class="headerlink" title="对比扩容缩容前后的遍历顺序"></a>对比扩容缩容前后的遍历顺序</h3><h3 id="渐进式-rehash"><a href="#渐进式-rehash" class="headerlink" title="渐进式 rehash"></a>渐进式 rehash</h3><p>ava 的 HashMap 在扩容时会一次性将旧数组下挂接的元素全部转移到新数组下面。如果 HashMap 中元素特别多，线程就会出现卡顿现象。Redis 为了解决这个问题，它采用<strong>渐进式 rehash</strong>。</p>
+<p>它会同时保留旧数组和新数组，然后在<code>定时任务</code>中以及后续对 hash 的指令操作中渐渐地将旧数组中挂接的元素迁移到新数组上。这意味着要操作处于 rehash 中的字典，需要同时访问<code>新旧两个数组结构</code>。如果在旧数组下面找不到元素，还需要去新数组下面去寻找。</p>
+<p>scan 也需要考虑这个问题，对与 rehash 中的字典，它需要同时扫描新旧槽位，然后将结果融合后返回给客户端。</p>
+<h3 id="更多的-scan-指令"><a href="#更多的-scan-指令" class="headerlink" title="更多的 scan 指令"></a>更多的 scan 指令</h3><h3 id="大-key-扫描"><a href="#大-key-扫描" class="headerlink" title="大 key 扫描"></a>大 key 扫描</h3><p>如果某个 key 太大，会数据导致迁移卡顿。另外在内存分配上，如果一个 key 太大，那么当它需要扩容时，会一次性申请更大的一块内存，这也会导致卡顿。如果这个大 key 被删除，内存会一次性回收，卡顿现象会再一次产生。</p>
+<p><strong>在平时的业务开发中，要尽量避免大 key 的产生</strong>。</p>
+<p><strong>那如何定位大 key 呢？</strong></p>
+<p>为了避免对线上 Redis 带来卡顿，这就要用到 scan 指令，对于扫描出来的每一个 key，使用 type 指令获得 key 的类型，然后使用相应数据结构的 size 或者 len 方法来得到它的大小，对于每一种类型，保留大小的前 N 名作为扫描结果展示出来。</p>
+<h2 id="11-原理-1：鞭辟入里-——-线程-IO-模型"><a href="#11-原理-1：鞭辟入里-——-线程-IO-模型" class="headerlink" title="11 原理 1：鞭辟入里 —— 线程 IO 模型"></a>11 原理 1：鞭辟入里 —— 线程 IO 模型</h2><p><strong>Redis 是个单线程程序</strong>！这点必须铭记。(redis6.0之后引入了多线程,原因是read/write系统调用在Redis执行期间占用了大部分CPU时间，如果把网络读写做成多线程的方式对性能会有很大提升)</p>
+<p><strong>Redis 单线程为什么还能这么快？</strong></p>
+<p>因为它所有的数据都在内存中，所有的运算都是内存级别的运算。正因为 Redis 是单线程，所以要小心使用 Redis 指令，对于那些时间复杂度为 O(n) 级别的指令，一定要谨慎使用，一不小心就可能会导致 Redis 卡顿。</p>
+<p><strong>Redis 单线程如何处理那么多的并发客户端连接？</strong></p>
+<p>这个问题，有很多中高级程序员都无法回答，因为他们没听过<strong>多路复用</strong>这个词汇，不知道 select 系列的事件轮询 API，没用过非阻塞 IO。</p>
+<h3 id="非阻塞-IO"><a href="#非阻塞-IO" class="headerlink" title="非阻塞 IO"></a>非阻塞 IO</h3><p>当我们调用套接字的读写方法，默认它们是阻塞的，比如<code>read</code>方法要传递进去一个参数<code>n</code>，表示最多读取这么多字节后再返回，如果一个字节都没有，那么线程就会卡在那里，直到新的数据到来或者连接关闭了，<code>read</code>方法才可以返回，线程才能继续处理。而<code>write</code>方法一般来说不会阻塞，除非内核为套接字分配的写缓冲区已经满了，<code>write</code>方法就会阻塞，直到缓存区中有空闲空间挪出来了。</p>
+<p><img src="/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/2.jpg" alt=".jpg"></p>
+<p>非阻塞 IO 在套接字对象上提供了一个选项<code>Non_Blocking</code>，当这个选项打开时，读写方法不会阻塞，而是能读多少读多少，能写多少写多少。能读多少取决于内核为套接字分配的读缓冲区内部的数据字节数，能写多少取决于内核为套接字分配的写缓冲区的空闲空间字节数。读方法和写方法都会通过返回值来告知程序实际读写了多少字节。</p>
+<p>有了非阻塞 IO 意味着线程在读写 IO 时可以不必再阻塞了，读写可以瞬间完成然后线程可以继续干别的事了。</p>
+<h3 id="事件轮询-多路复用"><a href="#事件轮询-多路复用" class="headerlink" title="事件轮询 (多路复用)"></a>事件轮询 (多路复用)</h3><p>非阻塞 IO 有个问题，那就是线程要读数据，结果读了一部分就返回了，线程如何知道何时才应该继续读。也就是当数据到来时，线程如何得到通知。写也是一样，如果缓冲区满了，写不完，剩下的数据何时才应该继续写，线程也应该得到通知。</p>
+<p>事件轮询 API 就是用来解决这个问题的，最简单的事件轮询 API 是<code>select</code>函数，它是操作系统提供给用户程序的 API。输入是读写描述符列表<code>read_fds &amp; write_fds</code>，输出是与之对应的可读可写事件。同时还提供了一个<code>timeout</code>参数，如果没有任何事件到来，那么就最多等待<code>timeout</code>时间，线程处于阻塞状态。一旦期间有任何事件到来，就可以立即返回。时间过了之后还是没有任何事件到来，也会立即返回。拿到事件后，线程就可以继续挨个处理相应的事件。处理完了继续过来轮询。于是线程就进入了一个死循环，我们把这个死循环称为事件循环，一个循环为一个周期。</p>
+<p>每个客户端套接字<code>socket</code>都有对应的读写文件描述符。</p>
+<p>因为我们通过<code>select</code>系统调用同时处理多个通道描述符的读写事件，因此我们将这类系统调用称为多路复用 API。现代操作系统的多路复用 API 已经不再使用<code>select</code>系统调用，而改用<code>epoll(linux)</code>和<code>kqueue(freebsd &amp; macosx)</code>，因为 select 系统调用的性能在描述符特别多时性能会非常差。它们使用起来可能在形式上略有差异，但是本质上都是差不多的，都可以使用上面的伪代码逻辑进行理解。</p>
+<p>服务器套接字<code>serversocket</code>对象的读操作是指调用<code>accept</code>接受客户端新连接。何时有新连接到来，也是通过<code>select</code>系统调用的读事件来得到通知的。</p>
+<p>select:轮询一遍,如果拿到事件,就挨个执行,否则就阻塞,直到有事件到来。</p>
+<p><strong>事件轮询 API 就是 Java 语言里面的 NIO 技术</strong></p>
+<p>Java 的 NIO 并不是 Java 特有的技术，其它计算机语言都有这个技术，只不过换了一个词汇，不叫 NIO 而已。</p>
+<h3 id="指令队列"><a href="#指令队列" class="headerlink" title="指令队列"></a>指令队列</h3><p>Redis 会将每个客户端套接字都关联一个指令队列。客户端的指令通过队列来排队进行顺序处理，先到先服务。</p>
+<h3 id="响应队列"><a href="#响应队列" class="headerlink" title="响应队列"></a>响应队列</h3><p>Redis 同样也会为每个客户端套接字关联一个响应队列。Redis 服务器通过响应队列来将指令的返回结果回复给客户端。<br>如果队列为空，那么意味着连接暂时处于空闲状态，不需要去获取写事件，也就是可以将当前的客户端描述符从<code>write_fds</code>里面移出来。等到队列有数据了，再将描述符放进去。避免<code>select</code>系统调用立即返回写事件，结果发现没什么数据可以写。出这种情况的线程会飙高 CPU。</p>
+<h3 id="定时任务"><a href="#定时任务" class="headerlink" title="定时任务"></a>定时任务</h3><p>服务器处理要响应 IO 事件外，还要处理其它事情。比如定时任务就是非常重要的一件事。如果线程阻塞在 select 系统调用上，定时任务将无法得到准时调度。那 Redis 是如何解决这个问题的呢？</p>
+<p>Redis 的定时任务会记录在一个称为<code>最小堆</code>的数据结构中。这个堆中，最快要执行的任务排在堆的最上方。在每个循环周期，Redis 都会将最小堆里面已经到点的任务立即进行处理。处理完毕后，将最快要执行的任务还需要的时间记录下来，这个时间就是<code>select</code>系统调用的<code>timeout</code>参数。因为 Redis 知道未来<code>timeout</code>时间内，没有其它定时任务需要处理，所以可以安心睡眠<code>timeout</code>的时间。</p>
+<h2 id="12-原理-2：交头接耳-——-通信协议"><a href="#12-原理-2：交头接耳-——-通信协议" class="headerlink" title="12 原理 2：交头接耳 —— 通信协议"></a>12 原理 2：交头接耳 —— 通信协议</h2><p>Redis 的作者认为数据库系统的瓶颈一般不在于网络流量，而是数据库自身内部逻辑处理上。所以即使 Redis 使用了浪费流量的文本协议，依然可以取得极高的访问性能。Redis 将所有数据都放在内存，用一个单线程对外提供服务，单个节点在跑满一个 CPU 核心的情况下可以达到了 10w/s 的超高 QPS(query per second)。</p>
+<h3 id="RESP-Redis-Serialization-Protocol"><a href="#RESP-Redis-Serialization-Protocol" class="headerlink" title="RESP(Redis Serialization Protocol)"></a>RESP(Redis Serialization Protocol)</h3><p>RESP 是 Redis 序列化协议的简写。它是一种直观的文本协议，优势在于实现异常简单，解析性能极好。</p>
+<p>Redis 协议将传输的结构数据分为 5 种最小单元类型，单元结束时统一加上回车换行符号<code>\r\n</code>。</p>
+<ol>
+<li>单行字符串 以 <code>+</code> 符号开头。</li>
+<li>多行字符串 以 <code>$</code> 符号开头，后跟字符串长度。</li>
+<li>整数值 以 <code>:</code> 符号开头，后跟整数的字符串形式。</li>
+<li>错误消息 以 <code>-</code> 符号开头。</li>
+<li>数组 以 <code>*</code> 号开头，后跟数组的长度。</li>
+</ol>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>Redis 协议里有大量冗余的回车换行符，但是这不影响它成为互联网技术领域非常受欢迎的一个文本协议。有很多开源项目使用 RESP 作为它的通讯协议。在技术领域性能并不总是一切，还有简单性、易理解性和易实现性，这些都需要进行适当权衡。</p>
+<h2 id="13-原理-3：未雨绸缪-——-持久化"><a href="#13-原理-3：未雨绸缪-——-持久化" class="headerlink" title="13 原理 3：未雨绸缪 —— 持久化"></a>13 原理 3：未雨绸缪 —— 持久化</h2><p>Redis 的数据全部在内存里，如果突然宕机，数据就会全部丢失，因此必须有一种机制来保证 Redis 的数据不会因为故障而丢失，这种机制就是 Redis 的持久化机制。</p>
+<p>Redis 的持久化机制有两种，第一种是快照，第二种是 AOF 日志。<code>快照是一次全量备份</code>，AOF 日志是<code>连续的增量备份</code>。快照是内存数据的<code>二进制序列化形式</code>，在存储上非常紧凑，而 AOF 日志记录的是内存数据修改的<code>指令记录文本</code>。AOF 日志在长期的运行过程中会变的无比庞大，数据库重启时需要加载 AOF 日志进行指令重放，这个时间就会无比漫长。所以<code>需要定期进行 AOF 重写</code>，给 <code>AOF 日志进行瘦身</code>。</p>
+<p><img src="/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/3.jpg" alt=".jpg"></p>
+<h3 id="快照原理"><a href="#快照原理" class="headerlink" title="快照原理"></a>快照原理</h3><p>我们知道 Redis 是单线程程序，这个线程要同时负责多个客户端套接字的并发读写操作和内存数据结构的逻辑读写。</p>
+<p>在服务线上请求的同时，Redis 还需要进行内存快照，内存快照要求 Redis 必须进行文件 IO 操作，可文件 IO 操作是不能使用多路复用 API。</p>
+<p>这意味着单线程同时在服务线上的请求还要进行文件 IO 操作，文件 IO 操作会严重拖垮服务器请求的性能。还有个<strong>重要的问题是为了不阻塞线上的业务，就需要边持久化边响应客户端请求</strong>。持久化的同时，内存数据结构还在改变，比如一个大型的 hash 字典正在持久化，结果一个请求过来把它给删掉了，还没持久化完呢，这尼玛要怎么搞？</p>
+<p><strong>那该怎么办呢？</strong></p>
+<p>Redis 使用操作系统的多进程 <code>COW</code>(<code>Copy On Write</code>) 机制来实现快照持久化，这个机制很有意思，也很少人知道。多进程 COW 也是鉴定程序员知识广度的一个重要指标。</p>
+<h3 id="fork-多进程"><a href="#fork-多进程" class="headerlink" title="fork(多进程)"></a>fork(多进程)</h3><p>Redis 在持久化时会调用 glibc 的函数<code>fork</code>产生一个子进程，快照持久化完全交给子进程来处理，父进程继续处理客户端请求。子进程刚刚产生时，它和父进程共享内存里面的代码段和数据段。这时你可以将父子进程想像成一个连体婴儿，共享身体。这是 Linux 操作系统的机制，为了节约内存资源，所以尽可能让它们共享起来。在进程分离的一瞬间，内存的增长几乎没有明显变化。</p>
+<p>用 Python 语言描述进程分离的逻辑如下。<code>fork</code>函数会在父子进程同时返回，在父进程里返回子进程的 pid，在子进程里返回零。如果操作系统内存资源不足，pid 就会是负数，表示<code>fork</code>失败。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">pid &#x3D; os.fork()</span><br><span class="line">if pid &gt; 0:</span><br><span class="line">    handle_client_requests()  # 父进程继续处理客户端请求</span><br><span class="line">if pid &#x3D;&#x3D; 0:</span><br><span class="line">    handle_snapshot_write()  # 子进程处理快照写磁盘</span><br><span class="line">if pid &lt; 0:</span><br><span class="line">    # fork error</span><br></pre></td></tr></table></figure>
+<p>子进程做数据持久化，它不会修改现有的内存数据结构，它只是对数据结构进行遍历读取，然后序列化写到磁盘中。但是父进程不一样，它必须持续服务客户端请求，然后对内存数据结构进行不间断的修改。</p>
+<p>这个时候就会使用操作系统的 COW 机制来进行数据段页面的分离。数据段是由很多操作系统的页面组合而成，<code>当父进程对其中一个页面的数据进行修改时，会将被共享的页面复制一份分离出来，然后对这个复制的页面进行修改。这时子进程相应的页面是没有变化的，还是进程产生时那一瞬间的数据。</code></p>
+<p><img src="/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/4.jpg" alt=".jpg"></p>
+<p>随着父进程修改操作的持续进行，越来越多的共享页面被分离出来，内存就会持续增长。但是也不会超过原有数据内存的 <code>2 倍大小</code>。另外一个 Redis 实例里冷数据占的比例往往是比较高的，所以很少会出现所有的页面都会被分离，被分离的往往只有其中一部分页面。每个页面的大小<code>只有 4K</code>，一个 Redis 实例里面一般都会有成千上万的页面。</p>
+<p>子进程因为数据没有变化，它能看到的内存里的数据在进程产生的一瞬间就凝固了，再也不会改变，这也是为什么 Redis 的持久化叫「快照」的原因。接下来子进程就可以非常安心的遍历数据了进行序列化写磁盘了。</p>
+<h3 id="AOF-原理"><a href="#AOF-原理" class="headerlink" title="AOF 原理"></a>AOF 原理</h3><p>AOF 日志存储的是 Redis 服务器的顺序指令序列，AOF 日志只记录对内存进行修改的指令记录。</p>
+<p>假设 AOF 日志记录了自 Redis 实例创建以来所有的修改性指令序列，那么就可以通过对一个空的 Redis 实例顺序执行所有的指令，也就是「重放」，来恢复 Redis 当前实例的内存数据结构的状态。</p>
+<p>Redis 会在收到客户端修改指令后，进行参数校验进行逻辑处理后，如果没问题，就立即将该指令文本存储到 AOF 日志中，也就是先执行指令才将日志存盘。这点不同于leveldb、hbase等存储引擎，它们都是先存储日志再做逻辑处理。</p>
+<p>Redis 在长期运行的过程中，AOF 的日志会越变越长。如果实例宕机重启，重放整个 AOF 日志会<code>非常耗时</code>，导致长时间 Redis 无法对外提供服务。所以需要<code>对 AOF 日志瘦身</code>。</p>
+<h3 id="AOF-重写"><a href="#AOF-重写" class="headerlink" title="AOF 重写"></a>AOF 重写</h3><p>Redis 提供了 <code>bgrewriteaof</code> 指令用于对 AOF 日志进行瘦身。其原理就是<code>开辟一个子进程</code>对内存进行遍历转换成一系列 Redis 的操作指令，序列化到一个新的 AOF 日志文件中。<code>序列化完毕后再将操作期间发生的</code>增量 AOF 日志``追加到这个新的 AOF 日志文件中，追加完毕后就立即替代旧的 AOF 日志文件了，瘦身工作就完成了。</p>
+<h3 id="fsync"><a href="#fsync" class="headerlink" title="fsync"></a>fsync</h3><p>AOF 日志是以文件的形式存在的，当程序对 AOF 日志文件进行写操作时，<code>实际上是将内容写到了内核为文件描述符分配的一个内存缓存中，然后内核会异步将脏数据刷回到磁盘的</code>。</p>
+<p>这就意味着如果机器突然宕机，<code>AOF 日志内容可能还没有来得及完全刷到磁盘中</code>，这个时候就会出现日志丢失。那该怎么办？</p>
+<p>Linux 的<code>glibc</code>提供了<code>fsync(int fd)</code>函数可以将指定文件的内容强制从内核缓存刷到磁盘。只要 Redis 进程实时调用 fsync 函数就可以保证 aof 日志不丢失。但是 fsync 是一个<code>磁盘 IO 操作</code>，它很慢！如果 Redis 执行一条指令就要 fsync 一次，那么 Redis 高性能的地位就不保了。</p>
+<p>所以在生产环境的服务器中，Redis 通常是每隔 1s 左右执行一次 fsync 操作，周期 1s 是可以配置的。这是在数据安全性和性能之间做了一个折中，在保持高性能的同时，尽可能使得数据少丢失。</p>
+<p>Redis 同样也提供了另外两种策略，一个是永不 fsync——让操作系统来决定何时同步磁盘，很不安全，另一个是来一个指令就 fsync 一次——非常慢。但是在生产环境基本不会使用，了解一下即可。</p>
+<h3 id="运维"><a href="#运维" class="headerlink" title="运维"></a>运维</h3><p>快照是通过开启子进程的方式进行的，它是一个比较耗资源的操作。</p>
+<ol>
+<li>遍历整个内存，大块写磁盘会加重系统负载</li>
+<li>AOF 的 fsync 是一个耗时的 IO 操作，它会降低 Redis 性能，同时也会增加系统 IO 负担</li>
+</ol>
+<p>所以通常 Redis 的主节点是不会进行持久化操作，持久化操作主要在从节点进行。从节点是备份节点，没有来自客户端请求的压力，它的操作系统资源往往比较充沛。</p>
+<p>但是如果出现网络分区，从节点长期连不上主节点，就会出现数据不一致的问题，特别是在网络分区出现的情况下又不小心主节点宕机了，那么数据就会丢失，所以在生产环境要做好实时监控工作，保证网络畅通或者能快速修复。另外还应该再增加一个从节点以降低网络分区的概率，只要有一个从节点数据同步正常，数据也就不会轻易丢失。</p>
+<h3 id="Redis-4-0-混合持久化"><a href="#Redis-4-0-混合持久化" class="headerlink" title="Redis 4.0 混合持久化"></a>Redis 4.0 混合持久化</h3><p>重启 Redis 时，我们很少使用 rdb 来恢复内存状态，因为会丢失大量数据。我们通常使用 AOF 日志重放，但是重放 AOF 日志性能相对 rdb 来说要慢很多，这样在 Redis 实例很大的情况下，启动需要花费很长的时间。</p>
+<p><code>Redis 4.0 </code>为了解决这个问题，带来了一个新的持久化选项——混合持久化。将 rdb 文件的内容和增量的 AOF 日志文件存在一起。这里的 AOF 日志不再是全量的日志，而是自持久化开始到持久化结束的这段时间发生的增量 AOF 日志，通常这部分 AOF 日志很小。</p>
+<p><img src="/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/5.jpg" alt=".jpg"></p>
+<p>于是在 Redis 重启的时候，可以先加载 rdb 的内容，然后再重放增量 AOF 日志就可以完全替代之前的 AOF 全量文件重放，重启效率因此大幅得到提升。</p>
+<h3 id="思考题"><a href="#思考题" class="headerlink" title="思考题"></a>思考题</h3><p>⭕有人说 Redis 只适合用来做缓存，当数据库来用并不合适，你怎么看？</p>
+<p>Redis能否做数据库用取决于以下几个条件：</p>
+<ol>
+<li>数据量: redis是内存数据库，要受限于内存的容量。</li>
+<li>数据的结构：是否能够将关系型数据结构都转换成key/value的形式</li>
+<li>查询的效率：对范围查询等，是否能转换为搞笑的hash索引查询<br>Redis能不能用来当数据库，取决于你想要存储什么数据：<br>如果你打算存储一些临时数据，数据规模不大，不需要太复杂的查询，但是要求性能比较高，这种情况下是可以当数据库使用的。<br>能否用来做数据库，要看具体的需求：</li>
+<li>redis的持久化有问题，如果使用的是aof模式，并且设置的是fsync always方式，那么性能会很低，如果数据结构非常适用于适用redis存储并且对性能要求不高，或者对性能要求很高但允许一定程度的丢失数据，则可以。</li>
+<li>redis数据都是存储在内存中的，如果内存满了，数据就不会存储到硬盘上了。<br>redis是一种key/value的内存数据库，项目里基本上都是用来做缓存的，可以对数据设置过期时间，时间到了之后就会被清理掉。</li>
+</ol>
+<p>⭕为什么 Redis 先执行指令再记录aof日志而不是像其它存储引擎一样反过来呢？</p>
+<p>因为Redis会在收到客户端修改指令后，进行参数校验、逻辑处理，如果没有问题，就立即将该指令文本存储到AOF日志中，也就是说，先执行指令才将日志存盘。如果反过来，则可能会存入很多无效的指令（或者错误指令）。</p>
+<p>Redis 的数据是存内存的，断电之后就丢了。Redis 的 AOF / RDB 相当于有一个把硬盘当内存的 slave。存储引擎数据是存硬盘的，断电之后，可能有脏数据，也可能没有，需要 redo log / undo log 来做原子 commit。保护 commit 的数据是不可能在 commit 之后写的。存储引擎的日志只保护 uncommitted data。</p>
+<h2 id="14-原理-4：雷厉风行-——-管道"><a href="#14-原理-4：雷厉风行-——-管道" class="headerlink" title="14 原理 4：雷厉风行 —— 管道"></a>14 原理 4：雷厉风行 —— 管道</h2><p>对于<code>value = redis.get(key)</code>这样一个简单的请求来说，<code>write</code>操作几乎没有耗时，直接写到发送缓冲就返回，而<code>read</code>就会比较耗时了，因为它要等待消息经过网络路由到目标机器处理后的响应消息,再回送到当前的内核读缓冲才可以返回。<strong>这才是一个网络来回的真正开销</strong>。</p>
+<p>而对于管道来说，连续的<code>write</code>操作根本就没有耗时，之后第一个<code>read</code>操作会等待一个网络的来回开销，然后所有的响应消息就都已经回送到内核的读缓冲了，后续的 <code>read</code> 操作直接就可以从缓冲拿到结果，瞬间就返回了。</p>
+<h2 id="15-原理-5：同舟共济-——-事务"><a href="#15-原理-5：同舟共济-——-事务" class="headerlink" title="15 原理 5：同舟共济 —— 事务"></a>15 原理 5：同舟共济 —— 事务</h2><h3 id="Redis-事务的基本使用"><a href="#Redis-事务的基本使用" class="headerlink" title="Redis 事务的基本使用"></a>Redis 事务的基本使用</h3><p>Redis 在形式上看起来也差不多，分别是 multi/exec/discard。multi 指示事务的开始，exec 指示事务的执行，discard 指示事务的丢弃。</p>
+<h3 id="原子性"><a href="#原子性" class="headerlink" title="原子性"></a>原子性</h3><p>Redis 的事务根本不能算「原子性」，而仅仅是满足了事务的「隔离性」</p>
+<h3 id="discard-丢弃"><a href="#discard-丢弃" class="headerlink" title="discard(丢弃)"></a>discard(丢弃)</h3><p>Redis 为事务提供了一个 discard 指令，用于丢弃事务缓存队列中的所有指令，在 exec 执行之前。</p>
+<h3 id="Watch"><a href="#Watch" class="headerlink" title="Watch"></a>Watch</h3><p>Redis 提供了这种 watch 的机制，它就是一种乐观锁。</p>
+<h2 id="16-原理-6：小道消息-——-PubSub"><a href="#16-原理-6：小道消息-——-PubSub" class="headerlink" title="16 原理 6：小道消息 —— PubSub"></a>16 原理 6：小道消息 —— PubSub</h2><h2 id="17-原理-7：开源节流-——-小对象压缩"><a href="#17-原理-7：开源节流-——-小对象压缩" class="headerlink" title="17 原理 7：开源节流 —— 小对象压缩"></a>17 原理 7：开源节流 —— 小对象压缩</h2><h3 id="32bit-vs-64bit"><a href="#32bit-vs-64bit" class="headerlink" title="32bit vs 64bit"></a>32bit vs 64bit</h3><p>Redis 如果使用 32bit 进行编译，内部所有数据结构所使用的指针空间占用会少一半，如果你对 Redis 使用内存不超过 4G，可以考虑使用 32bit 进行编译，可以节约大量内存。4G 的容量作为一些小型站点的缓存数据库是绰绰有余了，如果不足还可以通过增加实例的方式来解决。</p>
+<h3 id="小对象压缩存储-ziplist"><a href="#小对象压缩存储-ziplist" class="headerlink" title="小对象压缩存储 (ziplist)"></a>小对象压缩存储 (ziplist)</h3><p>Redis 的 ziplist 是一个紧凑的字节数组结构，如下图所示，每个元素之间都是紧挨着的。我们不用过于关心 <code>zlbytes/zltail</code> 和 <code>zlend</code> 的含义，稍微了解一下就好。</p>
+<p><img src="/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/6.jpg" alt=".jpg"></p>
+<p>如果它存储的是 hash 结构，那么 key 和 value 会作为两个 entry 相邻存在一起。</p>
+<p>如果它存储的是 zset，那么 value 和 score 会作为两个 entry 相邻存在一起。</p>
+<p>Redis 的 <code>intset</code> 是一个紧凑的整数数组结构，它用于存放元素都是整数的并且元素个数较少的 set 集合。</p>
+<p>如果整数可以用 uint16 表示，那么 intset 的元素就是 16 位的数组，如果新加入的整数超过了 uint16 的表示范围，那么就使用 uint32 表示，如果新加入的元素超过了 uint32 的表示范围，那么就使用 uint64 表示，Redis 支持 set 集合动态从 uint16 升级到 uint32，再升级到 uint64。</p>
+<p>如果 set 里存储的是字符串，那么 sadd 立即升级为 hashtable 结构。还记得 Java 的 HashSet 么，它内部是使用 HashMap 实现的。</p>
+<p><strong>存储界限</strong></p>
+<p>当集合对象的元素不断增加，或者某个 value 值过大，这种小对象存储也会被升级为标准结构。Redis 规定在小对象存储结构的限制条件如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">hash-max-ziplist-entries 512  # hash 的元素个数超过 512 就必须用标准结构存储</span><br><span class="line">hash-max-ziplist-value 64  # hash 的任意元素的 key&#x2F;value 的长度超过 64 就必须用标准结构存储</span><br><span class="line">list-max-ziplist-entries 512  # list 的元素个数超过 512 就必须用标准结构存储</span><br><span class="line">list-max-ziplist-value 64  # list 的任意元素的长度超过 64 就必须用标准结构存储</span><br><span class="line">zset-max-ziplist-entries 128  # zset 的元素个数超过 128 就必须用标准结构存储</span><br><span class="line">zset-max-ziplist-value 64  # zset 的任意元素的长度超过 64 就必须用标准结构存储</span><br><span class="line">set-max-intset-entries 512  # set 的整数元素个数超过 512 就必须用标准结构存储</span><br></pre></td></tr></table></figure>
+<h3 id="内存回收机制"><a href="#内存回收机制" class="headerlink" title="内存回收机制"></a>内存回收机制</h3><p>Redis 并不总是可以将空闲内存立即归还给操作系统。</p>
+<p>如果当前 Redis 内存有 10G，当你删除了 1GB 的 key 后，再去观察内存，你会发现内存变化不会太大。原因是操作系统回收内存是以页为单位，如果这个页上只要有一个 key 还在使用，那么它就不能被回收。Redis 虽然删除了 1GB 的 key，但是这些 key 分散到了很多页面中，每个页面都还有其它 key 存在，这就导致了内存不会立即被回收。</p>
+<p>不过，如果你执行 <code>flushdb</code>，然后再观察内存会发现内存确实被回收了。原因是所有的 key 都干掉了，大部分之前使用的页面都完全干净了，会立即被操作系统回收。</p>
+<p>Redis 虽然无法保证立即回收已经删除的 key 的内存，但是它会重用那些尚未回收的空闲内存。这就好比电影院里虽然人走了，但是座位还在，下一波观众来了，直接坐就行。而操作系统回收内存就好比把座位都给搬走了。这个比喻是不是很 6？</p>
+<h3 id="内存分配算法"><a href="#内存分配算法" class="headerlink" title="内存分配算法"></a>内存分配算法</h3><p>内存分配是一个非常复杂的课题，需要适当的算法划分内存页，需要考虑内存碎片，需要平衡性能和效率。</p>
+<p>Redis 为了保持自身结构的简单性，在内存分配这里直接做了甩手掌柜，将内存分配的细节丢给了第三方内存分配库去实现。目前 Redis 可以使用 jemalloc(facebook) 库来管理内存，也可以切换到tcmalloc(google)。因为 jemalloc 相比 tcmalloc的性能要稍好一些，所以Redis默认使用了<code>jemalloc</code>。</p>
+<h2 id="18-原理-8：有备无患-——-主从同步"><a href="#18-原理-8：有备无患-——-主从同步" class="headerlink" title="18 原理 8：有备无患 —— 主从同步"></a>18 原理 8：有备无患 —— 主从同步</h2><h3 id="CAP-原理"><a href="#CAP-原理" class="headerlink" title="CAP 原理"></a>CAP 原理</h3><p>CAP 原理就好比分布式领域的牛顿定律，它是分布式存储的理论基石。自打 CAP 的论文发表之后，分布式存储中间件犹如雨后春笋般一个一个涌现出来。理解这个原理其实很简单，本节我们首先对这个原理进行一些简单的讲解。</p>
+<ul>
+<li><strong>C</strong> - Consistent ，一致性</li>
+<li><strong>A</strong> - Availability ，可用性</li>
+<li><strong>P</strong> - Partition tolerance ，分区容忍性</li>
+</ul>
+<p>分布式系统的节点往往都是分布在不同的机器上进行网络隔离开的，这意味着必然会有网络断开的风险，这个网络断开的场景的专业词汇叫着「<strong>网络分区</strong>」。</p>
+<p>在网络分区发生时，两个分布式节点之间无法进行通信，我们对一个节点进行的修改操作将无法同步到另外一个节点，所以数据的「<strong>一致性</strong>」将无法满足，因为两个分布式节点的数据不再保持一致。除非我们牺牲「<strong>可用性</strong>」，也就是暂停分布式节点服务，在网络分区发生时，不再提供修改数据的功能，直到网络状况完全恢复正常再继续对外提供服务。</p>
+<p>一句话概括 CAP 原理就是——<strong>网络分区发生时，一致性和可用性两难全</strong>。</p>
+<h3 id="最终一致"><a href="#最终一致" class="headerlink" title="最终一致"></a>最终一致</h3><p>Redis 的主从数据是异步同步的，所以分布式的 Redis 系统并不满足「<strong>一致性</strong>」要求。当客户端在 Redis 的主节点修改了数据后，立即返回，即使在主从网络断开的情况下，主节点依旧可以正常对外提供修改服务，所以 Redis 满足「<strong>可用性</strong>」。</p>
+<p>Redis 保证「<strong>最终一致性</strong>」，从节点会努力追赶主节点，最终从节点的状态会和主节点的状态将保持一致。如果网络断开了，主从节点的数据将会出现大量不一致，一旦网络恢复，从节点会采用多种策略努力追赶上落后的数据，继续尽力保持和主节点一致。</p>
+<h3 id="主从同步"><a href="#主从同步" class="headerlink" title="主从同步"></a>主从同步</h3><h3 id="增量同步"><a href="#增量同步" class="headerlink" title="增量同步"></a>增量同步</h3><p>Redis 同步的是指令流，主节点会将那些对自己的状态产生修改性影响的指令记录在本地的内存 buffer 中，然后异步将 buffer 中的指令同步到从节点，从节点一边执行同步的指令流来达到和主节点一样的状态，一边向主节点反馈自己同步到哪里了 (偏移量)。</p>
+<p>因为内存的 buffer 是有限的，所以 Redis 主库不能将所有的指令都记录在内存 buffer 中。Redis 的复制内存 buffer 是一个定长的环形数组，如果数组内容满了，就会从头开始覆盖前面的内容。</p>
+<p>如果因为网络状况不好，从节点在短时间内无法和主节点进行同步，那么当网络状况恢复时，Redis 的主节点中那些没有同步的指令在 buffer 中有可能已经被后续的指令覆盖掉了，从节点将无法直接通过指令流来进行同步，这个时候就需要用到更加复杂的同步机制 —— 快照同步。</p>
+<h3 id="快照同步"><a href="#快照同步" class="headerlink" title="快照同步"></a>快照同步</h3><p>快照同步是一个非常耗费资源的操作，它首先需要在主库上进行一次 bgsave 将当前内存的数据全部快照到磁盘文件中，然后再将快照文件的内容全部传送到从节点。从节点将快照文件接受完毕后，立即执行一次全量加载，加载之前先要将当前内存的数据清空。加载完毕后通知主节点继续进行增量同步。</p>
+<p>在整个快照同步进行的过程中，主节点的复制 buffer 还在不停的往前移动，如果快照同步的时间过长或者复制 buffer 太小，都会导致同步期间的增量指令在复制 buffer 中被覆盖，这样就会导致快照同步完成后无法进行增量复制，然后会再次发起快照同步，如此极有可能会陷入快照同步的死循环。</p>
+<p>所以务必配置一个合适的复制 buffer 大小参数，避免快照复制的死循环。</p>
+<h3 id="增加从节点"><a href="#增加从节点" class="headerlink" title="增加从节点"></a>增加从节点</h3><p>当从节点刚刚加入到集群时，它必须先要进行一次快照同步，同步完成后再继续进行增量同步。</p>
+<h3 id="无盘复制"><a href="#无盘复制" class="headerlink" title="无盘复制"></a>无盘复制</h3><p>主节点在进行快照同步时，会进行很重的文件 IO 操作，特别是对于非 SSD 磁盘存储时，快照会对系统的负载产生较大影响。特别是当系统正在进行 AOF 的 fsync 操作时如果发生快照，fsync 将会被推迟执行，这就会严重影响主节点的服务效率。</p>
+<p>所以从 Redis 2.8.18 版开始支持无盘复制。所谓无盘复制是指主服务器直接通过套接字将快照内容发送到从节点，生成快照是一个遍历的过程，主节点会一边遍历内存，一边将序列化的内容发送到从节点，从节点还是跟之前一样，先将接收到的内容存储到磁盘文件中，再进行一次性加载。</p>
+<h3 id="Wait-指令"><a href="#Wait-指令" class="headerlink" title="Wait 指令"></a>Wait 指令</h3><p>Redis 的复制是异步进行的，wait 指令可以让异步复制变身同步复制，确保系统的强一致性 (不严格)。</p>
+<h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p>主从复制是 Redis 分布式的基础，Redis 的高可用离开了主从复制将无从进行。后面的章节我们会开始讲解 Redis 的集群模式，这几种集群模式都依赖于本节所讲的主从复制。</p>
+<p>不过复制功能也不是必须的，如果你将 Redis 只用来做缓存，跟 memcache 一样来对待，也就无需要从库做备份，挂掉了重新启动一下就行。但是只要你使用了 Redis 的持久化功能，就必须认真对待主从复制，它是系统数据安全的基础保障。</p>
+<h2 id="19-集群-1：李代桃僵-——-Sentinel"><a href="#19-集群-1：李代桃僵-——-Sentinel" class="headerlink" title="19 集群 1：李代桃僵 —— Sentinel"></a>19 集群 1：李代桃僵 —— Sentinel</h2><p>我们必须有一个高可用方案来抵抗节点故障，当故障发生时可以自动进行从主切换，程序可以不用重启，运维可以继续睡大觉，仿佛什么事也没发生一样。Redis 官方提供了这样一种方案 —— Redis Sentinel(哨兵)。</p>
+<p>我们可以将 Redis Sentinel 集群看成是一个 ZooKeeper 集群，它是集群高可用的心脏，它一般是由 3～5 个节点组成，这样挂了个别节点集群还可以正常运转。</p>
+<p>它负责持续监控主从节点的健康，当主节点挂掉时，自动选择一个最优的从节点切换为主节点。客户端来连接集群时，会首先连接 sentinel，通过 sentinel 来查询主节点的地址，然后再去连接主节点进行数据交互。当主节点发生故障时，客户端会重新向 sentinel 要地址，sentinel 会将最新的主节点地址告诉客户端。如此应用程序将无需重启即可自动完成节点切换。比如上图的主节点挂掉后，集群将可能自动调整为下图所示结构。</p>
+<p><img src="/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/7.jpg" alt=".jpg"></p>
+<p>从这张图中我们能看到主节点挂掉了，原先的主从复制也断开了，客户端和损坏的主节点也断开了。从节点被提升为新的主节点，其它从节点开始和新的主节点建立复制关系。客户端通过新的主节点继续进行交互。Sentinel 会持续监控已经挂掉了主节点，待它恢复后，集群会调整为下面这张图。</p>
+<p><img src="/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/8.jpg" alt=".jpg"></p>
+<p>此时原先挂掉的主节点现在变成了从节点，从新的主节点那里建立复制关系。</p>
+<h3 id="Sentinel-基本使用"><a href="#Sentinel-基本使用" class="headerlink" title="Sentinel 基本使用"></a>Sentinel 基本使用</h3><p>接下来我们看看客户端如何使用 sentinel，标准的流程应该是客户端可以通过 sentinel 发现主从节点的地址，然后在通过这些地址建立相应的连接来进行数据存取操作。我们来看看 Python 客户端是如何做的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&gt;&gt;&gt; from redis.sentinel import Sentinel</span><br><span class="line">&gt;&gt;&gt; sentinel &#x3D; Sentinel([(&#39;localhost&#39;, 26379)], socket_timeout&#x3D;0.1)</span><br><span class="line">&gt;&gt;&gt; sentinel.discover_master(&#39;mymaster&#39;)</span><br><span class="line">(&#39;127.0.0.1&#39;, 6379)</span><br><span class="line">&gt;&gt;&gt; sentinel.discover_slaves(&#39;mymaster&#39;)</span><br><span class="line">[(&#39;127.0.0.1&#39;, 6380)]</span><br></pre></td></tr></table></figure>
+
+<p>entinel 的默认端口是 26379，不同于 Redis 的默认端口 6379，通过 sentinel 对象的 discover_xxx 方法可以发现主从地址，主地址只有一个，从地址可以有多个。</p>
+<p>通过 xxx_for 方法可以从连接池中拿出一个连接来使用，因为从地址有多个，redis 客户端对从地址采用轮询方案，也就是 RoundRobin 轮着来。</p>
+<p>有个问题是，但 sentinel 进行主从切换时，客户端如何知道地址变更了 ? 通过分析源码，我发现 redis-py 在建立连接的时候进行了主库地址变更判断。</p>
+<p>连接池建立新连接时，会去查询主库地址，然后跟内存中的主库地址进行比对，如果变更了，就断开所有连接，重新使用新地址建立新连接。如果是旧的主库挂掉了，那么所有正在使用的连接都会被关闭，然后在重连时就会用上新地址。</p>
+<p>但是这样还不够，如果是 sentinel 主动进行主从切换，主库并没有挂掉，而之前的主库连接已经建立了在使用了，没有新连接需要建立，那这个连接是不是一致切换不了？</p>
+<p>继续深入研究源码，我发现 redis-py 在另外一个点也做了控制。那就是在处理命令的时候捕获了一个特殊的异常<code>ReadOnlyError</code>，在这个异常里将所有的旧连接全部关闭了，后续指令就会进行重连。</p>
+<p>主从切换后，之前的主库被降级到从库，所有的修改性的指令都会抛出<code>ReadonlyError</code>。如果没有修改性指令，虽然连接不会得到切换，但是数据不会被破坏，所以即使不切换也没关系。</p>
+<h2 id="20-集群-2：分而治之-——-Codis"><a href="#20-集群-2：分而治之-——-Codis" class="headerlink" title="20 集群 2：分而治之 —— Codis"></a>20 集群 2：分而治之 —— Codis</h2><h2 id="21-集群-3：众志成城-——-Cluster"><a href="#21-集群-3：众志成城-——-Cluster" class="headerlink" title="21 集群 3：众志成城 —— Cluster"></a>21 集群 3：众志成城 —— Cluster</h2><h2 id="22-拓展-1：耳听八方-——-Stream"><a href="#22-拓展-1：耳听八方-——-Stream" class="headerlink" title="22 拓展 1：耳听八方 —— Stream"></a>22 拓展 1：耳听八方 —— Stream</h2><h2 id="23-拓展-2：无所不知-——-Info-指令"><a href="#23-拓展-2：无所不知-——-Info-指令" class="headerlink" title="23 拓展 2：无所不知 —— Info 指令"></a>23 拓展 2：无所不知 —— Info 指令</h2><p>在使用 Redis 时，时常会遇到很多问题需要诊断，在诊断之前需要了解 Redis 的运行状态，通过强大的 Info 指令，你可以清晰地知道 Redis 内部一系列运行参数。</p>
+<p>Info 指令显示的信息非常繁多，分为 9 大块，每个块都有非常多的参数，这 9 个块分别是:</p>
+<ol>
+<li>Server  服务器运行的环境参数</li>
+<li>Clients 客户端相关信息</li>
+<li>Memory 服务器运行内存统计数据</li>
+<li>Persistence 持久化信息</li>
+<li>Stats 通用统计数据</li>
+<li>Replication 主从复制相关信息</li>
+<li>CPU CPU 使用情况</li>
+<li>Cluster 集群信息</li>
+<li>KeySpace 键值对统计数量信息</li>
+</ol>
+<p>Info 可以一次性获取所有的信息，也可以按块取信息。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># 获取所有信息</span><br><span class="line">&gt; info</span><br><span class="line"># 获取内存相关信息</span><br><span class="line">&gt; info memory</span><br><span class="line"># 获取复制相关信息</span><br><span class="line">&gt; info replication</span><br></pre></td></tr></table></figure>
+<h3 id="Redis-每秒执行多少次指令？"><a href="#Redis-每秒执行多少次指令？" class="headerlink" title="Redis 每秒执行多少次指令？"></a>Redis 每秒执行多少次指令？</h3><p>这个信息在 Stats 块里，可以通过 <code>info stats</code> 看到。</p>
+<h3 id="Redis-连接了多少客户端？"><a href="#Redis-连接了多少客户端？" class="headerlink" title="Redis 连接了多少客户端？"></a>Redis 连接了多少客户端？</h3><p>这个信息在 Clients 块里，可以通过 <code>info clients</code> 看到。</p>
+<h3 id="Redis-内存占用多大"><a href="#Redis-内存占用多大" class="headerlink" title="Redis 内存占用多大 ?"></a>Redis 内存占用多大 ?</h3><p>这个信息在 Memory 块里，可以通过 <code>info memory</code> 看到。</p>
+<h3 id="复制积压缓冲区多大？"><a href="#复制积压缓冲区多大？" class="headerlink" title="复制积压缓冲区多大？"></a>复制积压缓冲区多大？</h3><p>这个信息在 Replication 块里，可以通过 <code>info replication</code> 看到。</p>
+<h2 id="24-拓展-3：拾遗漏补-——-再谈分布式锁"><a href="#24-拓展-3：拾遗漏补-——-再谈分布式锁" class="headerlink" title="24 拓展 3：拾遗漏补 —— 再谈分布式锁"></a>24 拓展 3：拾遗漏补 —— 再谈分布式锁</h2><p>在第三节，我们细致讲解了分布式锁的原理，它的使用非常简单，一条指令就可以完成加锁操作。不过在集群环境下，这种方式是有缺陷的，它不是绝对安全的。</p>
+<p>比如在 Sentinel 集群中，主节点挂掉时，从节点会取而代之，客户端上却并没有明显感知。原先第一个客户端在主节点中申请成功了一把锁，但是这把锁还没有来得及同步到从节点，主节点突然挂掉了。然后从节点变成了主节点，这个新的节点内部没有这个锁，所以当另一个客户端过来请求加锁时，立即就批准了。这样就会导致系统中同样一把锁被两个客户端同时持有，不安全性由此产生。</p>
+<p>分布式锁在集群条件下不安全。</p>
+<h3 id="Redlock-算法"><a href="#Redlock-算法" class="headerlink" title="Redlock 算法"></a>Redlock 算法</h3><h2 id="25-拓展-4：朝生暮死-——-过期策略"><a href="#25-拓展-4：朝生暮死-——-过期策略" class="headerlink" title="25 拓展 4：朝生暮死 —— 过期策略"></a>25 拓展 4：朝生暮死 —— 过期策略</h2><p>Redis 所有的数据结构都可以设置过期时间，时间一到，就会自动删除。你可以想象 Redis 内部有一个死神，时刻盯着所有设置了过期时间的 key，寿命一到就会立即收割。</p>
+<p>你还可以进一步站在死神的角度思考，会不会因为同一时间太多的 key 过期，以至于忙不过来。同时因为 Redis 是单线程的，收割的时间也会占用线程的处理时间，如果收割的太过于繁忙，会不会导致线上读写指令出现卡顿。</p>
+<p>这些问题 Antirez 早就想到了，所有在过期这件事上，Redis 非常小心。</p>
+<h3 id="过期的-key-集合"><a href="#过期的-key-集合" class="headerlink" title="过期的 key 集合"></a>过期的 key 集合</h3><p>redis 会将每个设置了过期时间的 key 放入到一个独立的字典中，以后会定时遍历这个字典来删除到期的 key。除了定时遍历之外，它还会使用惰性策略来删除过期的 key，所谓惰性策略就是在客户端访问这个 key 的时候，redis 对 key 的过期时间进行检查，如果过期了就立即删除。<code>定时删除是集中处理</code>，<code>惰性删除是零散处理</code>。</p>
+<h3 id="定时扫描策略"><a href="#定时扫描策略" class="headerlink" title="定时扫描策略"></a>定时扫描策略</h3><p>Redis 默认会每秒进行十次过期扫描，过期扫描不会遍历过期字典中所有的 key，而是采用了一种简单的贪心策略。</p>
+<ol>
+<li>从过期字典中随机 20 个 key；</li>
+<li>删除这 20 个 key 中已经过期的 key；</li>
+<li>如果过期的 key 比率超过 1/4，那就重复步骤 1；</li>
+</ol>
+<p>同时，为了保证过期扫描不会出现循环过度，导致线程卡死现象，算法还增加了扫描时间的上限，默认不会超过 25ms。</p>
+<p>设想一个大型的 Redis 实例中所有的 key 在同一时间过期了，会出现怎样的结果？</p>
+<p>毫无疑问，Redis 会持续扫描过期字典 (循环多次)，直到过期字典中过期的 key 变得稀疏，才会停止 (循环次数明显下降)。这就会导致线上读写请求出现明显的卡顿现象。导致这种卡顿的另外一种原因是内存管理器需要频繁回收内存页，这也会产生一定的 CPU 消耗。</p>
+<p>当客户端请求到来时，服务器如果正好进入过期扫描状态，客户端的请求将会等待至少 25ms 后才会进行处理，如果客户端将超时时间设置的比较短，比如 10ms，那么就会出现大量的链接因为超时而关闭，业务端就会出现很多异常。而且这时你还无法从 Redis 的 slowlog 中看到慢查询记录，因为慢查询指的是逻辑处理过程慢，不包含等待时间。</p>
+<p><code>所以业务开发人员一定要注意过期时间，如果有大批量的 key 过期，要给过期时间设置一个随机范围，而不宜全部在同一时间过期，分散过期处理的压力。</code></p>
+<p>在一些活动系统中，因为活动是一期一会，下一期活动举办时，前面几期的很多数据都可以丢弃了，所以需要给相关的活动数据设置一个过期时间，以减少不必要的 Redis 内存占用。如果不加注意，你可能会将过期时间设置为活动结束时间再增加一个常量的冗余时间，如果参与活动的人数太多，就会导致大量的 key 同时过期。</p>
+<h3 id="从库的过期策略"><a href="#从库的过期策略" class="headerlink" title="从库的过期策略"></a>从库的过期策略</h3><p>从库不会进行过期扫描，从库对过期的处理是被动的。主库在 key 到期时，会在 AOF 文件里增加一条 <code>del</code> 指令，同步到所有的从库，从库通过执行这条 <code>del</code> 指令来删除过期的 key。</p>
+<p>因为指令同步是异步进行的，所以主库过期的 key 的 <code>del</code> 指令没有及时同步到从库的话，会出现主从数据的不一致，主库没有的数据在从库里还存在，比如上一节的集群环境分布式锁的算法漏洞就是因为这个同步延迟产生的。</p>
+<h2 id="26-拓展-5：优胜劣汰-——-LRU"><a href="#26-拓展-5：优胜劣汰-——-LRU" class="headerlink" title="26 拓展 5：优胜劣汰 —— LRU"></a>26 拓展 5：优胜劣汰 —— LRU</h2><p>当 Redis 内存超出物理内存限制时，内存的数据会开始和磁盘产生频繁的交换 (swap)。交换会让 Redis 的性能急剧下降，对于访问量比较频繁的 Redis 来说，这样龟速的存取效率基本上等于不可用。</p>
+<p>在生产环境中我们是不允许 Redis 出现交换行为的，为了限制最大使用内存，Redis 提供了配置参数 <code>maxmemory</code> 来限制内存超出期望大小。</p>
+<p>当实际内存超出 <code>maxmemory</code> 时，Redis 提供了几种可选策略 (maxmemory-policy) 来让用户自己决定该如何腾出新的空间以继续提供读写服务。</p>
+<p><strong>noeviction</strong><br>不会继续服务写请求 (DEL 请求可以继续服务)，读请求可以继续进行。这样可以保证不会丢失数据，但是会让线上的业务不能持续进行。这是默认的淘汰策略。</p>
+<p><strong>volatile-lru</strong><br>尝试淘汰设置了过期时间的 key，最少使用的 key 优先被淘汰。没有设置过期时间的 key 不会被淘汰，这样可以保证需要持久化的数据不会突然丢失。</p>
+<p><strong>volatile-ttl</strong><br>跟上面一样，除了淘汰的策略不是 LRU，而是 key 的剩余寿命 ttl 的值，ttl 越小越优先被淘汰。</p>
+<p><strong>volatile-random</strong><br>跟上面一样，不过淘汰的 key 是过期 key 集合中随机的 key。</p>
+<p><strong>allkeys-lru</strong><br>区别于 volatile-lru，这个策略要淘汰的 key 对象是全体的 key 集合，而不只是过期的 key 集合。这意味着没有设置过期时间的 key 也会被淘汰。</p>
+<p><strong>allkeys-random</strong><br>跟上面一样，不过淘汰的策略是随机的 key。</p>
+<p>volatile-xxx 策略只会针对带过期时间的 key 进行淘汰，allkeys-xxx 策略会对所有的 key 进行淘汰。如果你只是拿 Redis 做缓存，那应该使用 allkeys-xxx，客户端写缓存时不必携带过期时间。如果你还想同时使用 Redis 的持久化功能，那就使用 volatile-xxx 策略，这样可以保留没有设置过期时间的 key，它们是永久的 key 不会被 LRU 算法淘汰。</p>
+<h3 id="LRU-算法"><a href="#LRU-算法" class="headerlink" title="LRU 算法"></a>LRU 算法</h3><p>实现 LRU 算法除了需要 key/value 字典外，还需要附加一个链表，链表中的元素按照一定的顺序进行排列。当空间满的时候，会踢掉链表尾部的元素。当字典的某个元素被访问时，它在链表中的位置会被移动到表头。所以链表的元素排列顺序就是元素最近被访问的时间顺序。</p>
+<p>位于链表尾部的元素就是不被重用的元素，所以会被踢掉。位于表头的元素就是最近刚刚被人用过的元素，所以暂时不会被踢。</p>
+<h3 id="近似-LRU-算法"><a href="#近似-LRU-算法" class="headerlink" title="近似 LRU 算法"></a>近似 LRU 算法</h3><p>Redis 使用的是一种近似 LRU 算法，它跟 LRU 算法还不太一样。之所以不使用 LRU 算法，是因为需要消耗大量的额外的内存，需要对现有的数据结构进行较大的改造。近似 LRU 算法则很简单，在现有数据结构的基础上使用随机采样法来淘汰元素，能达到和 LRU 算法非常近似的效果。Redis 为实现近似 LRU 算法，它给每个 key 增加了一个额外的小字段，这个字段的长度是 24 个 bit，也就是最后一次被访问的时间戳。</p>
+<p>上一节提到处理 key 过期方式分为集中处理和懒惰处理，LRU 淘汰不一样，它的处理方式只有懒惰处理。当 Redis 执行写操作时，发现内存超出 maxmemory，就会执行一次 LRU 淘汰算法。这个算法也很简单，就是随机采样出 5(可以配置) 个 key，然后淘汰掉最旧的 key，如果淘汰后内存还是超出 maxmemory，那就继续随机采样淘汰，直到内存低于 maxmemory 为止。</p>
+<p>如何采样就是看 maxmemory-policy 的配置，如果是 allkeys 就是从所有的 key 字典中随机，如果是 volatile 就从带过期时间的 key 字典中随机。每次采样多少个 key 看的是 maxmemory_samples 的配置，默认为 5。</p>
+<h2 id="27-拓展-6：平波缓进-——-懒惰删除"><a href="#27-拓展-6：平波缓进-——-懒惰删除" class="headerlink" title="27 拓展 6：平波缓进 —— 懒惰删除"></a>27 拓展 6：平波缓进 —— 懒惰删除</h2><h3 id="Redis-为什么要懒惰删除-lazy-free-？"><a href="#Redis-为什么要懒惰删除-lazy-free-？" class="headerlink" title="Redis 为什么要懒惰删除(lazy free)？"></a>Redis 为什么要懒惰删除(lazy free)？</h3><p>删除指令 <code>del</code> 会直接释放对象的内存，大部分情况下，这个指令非常快，没有明显延迟。不过如果删除的 key 是一个非常大的对象，比如一个包含了千万元素的 hash，那么删除操作就会导致单线程卡顿。</p>
+<p>Redis 为了解决这个卡顿问题，在 4.0 版本引入了 <code>unlink</code> 指令，它能对删除操作进行懒处理，丢给后台线程来异步回收内存。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; unlink key</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+<p>如果有多线程的开发经验，你肯定会担心这里的线程安全问题，会不会出现多个线程同时并发修改数据结构的情况存在。</p>
+<p>关于这点，我打个比方。可以将整个 Redis 内存里面所有有效的数据想象成一棵大树。当 <code>unlink</code> 指令发出时，它只是把大树中的一个树枝别断了，然后扔到旁边的火堆里焚烧 (异步线程池)。树枝离开大树的一瞬间，它就再也无法被主线程中的其它指令访问到了，因为主线程只会沿着这颗大树来访问。</p>
+<h3 id="flush"><a href="#flush" class="headerlink" title="flush"></a>flush</h3><p>Redis 提供了 <code>flushdb</code> 和 <code>flushall</code> 指令，用来清空数据库，这也是极其缓慢的操作。Redis 4.0 同样给这两个指令也带来了异步化，在指令后面增加 <code>async</code> 参数就可以将整棵大树连根拔起，扔给后台线程慢慢焚烧。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&gt; flushall async</span><br><span class="line">OK</span><br></pre></td></tr></table></figure>
+<h3 id="异步队列"><a href="#异步队列" class="headerlink" title="异步队列"></a>异步队列</h3><p>主线程将对象的引用从「大树」中摘除后，会将这个 key 的内存回收操作包装成一个任务，塞进异步任务队列，后台线程会从这个异步队列中取任务。任务队列被主线程和异步线程同时操作，所以必须是一个线程安全的队列。</p>
+<p><img src="/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/9.jpg" alt=".jpg"></p>
+<p>不是所有的 <code>unlink</code> 操作都会延后处理，如果对应 key 所占用的内存很小，延后处理就没有必要了，这时候 Redis 会将对应的 key 内存立即回收，跟 <code>del</code> 指令一样。</p>
+<h3 id="AOF-Sync也很慢"><a href="#AOF-Sync也很慢" class="headerlink" title="AOF Sync也很慢"></a>AOF Sync也很慢</h3><p>Redis需要每秒一次(可配置)同步AOF日志到磁盘，确保消息尽量不丢失，需要调用sync函数，这个操作会比较耗时，会导致主线程的效率下降，所以Redis也将这个操作移到异步线程来完成。执行AOF Sync操作的线程是一个独立的异步线程，和前面的懒惰删除线程不是一个线程，同样它也有一个属于自己的任务队列，队列里只用来存放AOF Sync任务。</p>
+<h3 id="更多异步删除点"><a href="#更多异步删除点" class="headerlink" title="更多异步删除点"></a>更多异步删除点</h3><p>Redis 回收内存除了 <code>del</code> 指令和 <code>flush</code> 之外，还会存在于在 key 的过期、LRU 淘汰、rename 指令以及从库全量同步时接受完 rdb 文件后会立即进行的 flush 操作。</p>
+<p>Redis4.0 为这些删除点也带来了异步删除机制，打开这些点需要额外的配置选项。</p>
+<ol>
+<li><code>slave-lazy-flush</code>  从库接受完 rdb 文件后的 flush 操作</li>
+<li><code>lazyfree-lazy-eviction</code> 内存达到 maxmemory 时进行淘汰</li>
+<li><code>lazyfree-lazy-expire key</code> 过期删除</li>
+<li><code>lazyfree-lazy-server-del</code> rename 指令删除 destKey</li>
+</ol>
+<h2 id="28-拓展-7：妙手仁心-——-优雅地使用-Jedis"><a href="#28-拓展-7：妙手仁心-——-优雅地使用-Jedis" class="headerlink" title="28 拓展 7：妙手仁心 —— 优雅地使用 Jedis"></a>28 拓展 7：妙手仁心 —— 优雅地使用 Jedis</h2><p>Java 程序一般都是多线程的应用程序，意味着我们很少直接使用 Jedis，而是要用到 Jedis 的连接池 —— JedisPool。同时因为 Jedis 对象不是线程安全的，当我们要使用 Jedis 对象时，需要从连接池中拿出一个 Jedis 对象独占，使用完毕后再将这个对象还给连接池。</p>
+<p>用代码表示如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import redis.clients.jedis.Jedis;</span><br><span class="line">import redis.clients.jedis.JedisPool;</span><br><span class="line"></span><br><span class="line">public class JedisTest &#123;</span><br><span class="line"></span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    JedisPool pool &#x3D; new JedisPool();</span><br><span class="line">    Jedis jedis &#x3D; pool.getResource(); &#x2F;&#x2F; 拿出 Jedis 链接对象</span><br><span class="line">    doSomething(jedis);</span><br><span class="line">    jedis.close(); &#x2F;&#x2F; 归还链接</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private static void doSomething(Jedis jedis) &#123;</span><br><span class="line">    &#x2F;&#x2F; code it here</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的代码有个问题，如果 <code>doSomething</code> 方法抛出了异常的话，从连接池中拿出来的 Jedis 对象将无法归还给连接池。如果这样的异常发生了好几次，连接池中的所有链接都被持久占用了，新的请求过来时就会阻塞等待空闲的链接，这样的阻塞一般会直接导致应用程序卡死。</p>
+<p>为了避免这种情况的发生，程序员需要在使用 JedisPool 里面的 Jedis 链接时，应该使用 <code>try-with-resource</code> 语句来保护 Jedis 对象。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">import redis.clients.jedis.Jedis;</span><br><span class="line">import redis.clients.jedis.JedisPool;</span><br><span class="line"></span><br><span class="line">public class JedisTest &#123;</span><br><span class="line"></span><br><span class="line">  public static void main(String[] args) &#123;</span><br><span class="line">    JedisPool pool &#x3D; new JedisPool();</span><br><span class="line">    try (Jedis jedis &#x3D; pool.getResource()) &#123; &#x2F;&#x2F; 用完自动 close</span><br><span class="line">      doSomething(jedis);</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">  private static void doSomething(Jedis jedis) &#123;</span><br><span class="line">    &#x2F;&#x2F; code it here</span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="29-拓展-8：居安思危-——-保护-Redis"><a href="#29-拓展-8：居安思危-——-保护-Redis" class="headerlink" title="29 拓展 8：居安思危 —— 保护 Redis"></a>29 拓展 8：居安思危 —— 保护 Redis</h2><h3 id="指令安全"><a href="#指令安全" class="headerlink" title="指令安全"></a>指令安全</h3><p>Redis 有一些非常危险的指令，这些指令会对 Redis 的稳定以及数据安全造成非常严重的影响。比如 <code>keys</code> 指令会导致 Redis 卡顿，<code>flushdb</code> 和 <code>flushall</code> 会让 Redis 的所有数据全部清空。如何避免人为操作失误导致这些灾难性的后果也是运维人员特别需要注意的风险点之一。</p>
+<p>Redis 在配置文件中提供了 <code>rename-command</code> 指令用于将某些危险的指令修改成特别的名称，用来避免人为误操作。比如在配置文件的 security 块增加下面的内容:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename-command keys abckeysabc</span><br></pre></td></tr></table></figure>
+<p>如果还想执行 keys 方法，那就不能直接敲 <code>keys</code> 命令了，而需要键入<code>abckeysabc</code>。<br>如果想完全封杀某条指令，可以将指令 <code>rename</code> 成空串，就无法通过任何字符串指令来执行这条指令了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rename-command flushall &quot;&quot;</span><br></pre></td></tr></table></figure>
+<h3 id="端口安全"><a href="#端口安全" class="headerlink" title="端口安全"></a>端口安全</h3><p>Redis 默认会监听 <code>*:6379</code>，如果当前的服务器主机有外网地址，Redis 的服务将会直接暴露在公网上，任何一个初级黑客使用适当的工具对 IP 地址进行端口扫描就可以探测出来。</p>
+<p>Redis 的服务地址一旦可以被外网直接访问，内部的数据就彻底丧失了安全性。高级一点的黑客们可以通过 Redis 执行 Lua 脚本拿到服务器权限，恶意的竞争对手们甚至会直接清空你的 Redis 数据库。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bind 10.100.20.13</span><br></pre></td></tr></table></figure>
+<p>所以，运维人员务必在 Redis 的配置文件中指定监听的 IP 地址，避免这样的惨剧发生。更进一步，还可以增加 Redis 的密码访问限制，客户端必须使用 <code>auth</code> 指令传入正确的密码才可以访问 Redis，这样即使地址暴露出去了，普通黑客也无法对 Redis 进行任何指令操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">requirepass yoursecurepasswordhereplease</span><br></pre></td></tr></table></figure>
+<p>密码控制也会影响到从库复制，从库必须在配置文件里使用 masterauth 指令配置相应的密码才可以进行复制操作。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">masterauth yoursecurepasswordhereplease</span><br></pre></td></tr></table></figure>
+<h3 id="Lua-脚本安全"><a href="#Lua-脚本安全" class="headerlink" title="Lua 脚本安全"></a>Lua 脚本安全</h3><h3 id="SSL-代理"><a href="#SSL-代理" class="headerlink" title="SSL 代理"></a>SSL 代理</h3><p>Redis 并不支持 SSL 链接，意味着客户端和服务器之间交互的数据不应该直接暴露在公网上传输，否则会有被窃听的风险。如果必须要用在公网上，可以考虑使用 SSL 代理。</p>
+<p>SSL 代理比较常见的有 ssh，不过 Redis 官方推荐使用 <a target="_blank" rel="noopener" href="http://www.tarsnap.com/spiped.html">spiped</a> 工具，可能是因为 spiped 的功能相对比较单一，使用也比较简单，易于理解。下面这张图是使用 spiped 对 ssh 通道进行二次加密 (因为 ssh 通道也可能存在 bug)。</p>
+<p><img src="/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/10.jpg" alt=".jpg"></p>
+<p>同样 SSL 代理也可以用在主从复制上，如果 Redis 主从实例需要跨机房复制，spiped 也可以派上用场。</p>
+<h2 id="30-拓展-9：隔墙有耳-——-Redis-安全通信"><a href="#30-拓展-9：隔墙有耳-——-Redis-安全通信" class="headerlink" title="30 拓展 9：隔墙有耳 —— Redis 安全通信"></a>30 拓展 9：隔墙有耳 —— Redis 安全通信</h2><p>想象这样一个应用场景，公司有两个机房。因为一个紧急需求，需要跨机房读取 Redis 数据。应用部署在 A 机房，存储部署在 B 机房。如果使用普通 tcp 直接访问，因为跨机房所以传输数据会暴露在公网，这非常不安全，客户端服务器交互的数据存在被窃听的风险。</p>
+<p>Redis 本身并不支持 SSL 安全链接，不过有了 SSL 代理软件，我们可以让通信数据透明地得到加密，就好像 Redis 穿上了一层隐身外套一样。spiped 就是这样的一款 SSL 代理软件，它是 Redis 官方推荐的代理软件。</p>
+<h2 id="31拓展-10：法力无边-——-Redis-Lua-脚本执行原理"><a href="#31拓展-10：法力无边-——-Redis-Lua-脚本执行原理" class="headerlink" title="31拓展 10：法力无边 —— Redis Lua 脚本执行原理"></a>31拓展 10：法力无边 —— Redis Lua 脚本执行原理</h2><h2 id="32拓展-11：短小精悍-——-命令行工具的妙用"><a href="#32拓展-11：短小精悍-——-命令行工具的妙用" class="headerlink" title="32拓展 11：短小精悍 —— 命令行工具的妙用"></a>32拓展 11：短小精悍 —— 命令行工具的妙用</h2><h3 id="执行单条命令"><a href="#执行单条命令" class="headerlink" title="执行单条命令"></a>执行单条命令</h3><h3 id="批量执行命令"><a href="#批量执行命令" class="headerlink" title="批量执行命令"></a>批量执行命令</h3><h3 id="set-多行字符串"><a href="#set-多行字符串" class="headerlink" title="set 多行字符串"></a>set 多行字符串</h3><h3 id="重复执行指令"><a href="#重复执行指令" class="headerlink" title="重复执行指令"></a>重复执行指令</h3><h3 id="导出-csv"><a href="#导出-csv" class="headerlink" title="导出 csv"></a>导出 csv</h3><h3 id="执行-lua-脚本"><a href="#执行-lua-脚本" class="headerlink" title="执行 lua 脚本"></a>执行 lua 脚本</h3><h3 id="监控服务器状态"><a href="#监控服务器状态" class="headerlink" title="监控服务器状态"></a>监控服务器状态</h3><p>我们可以使用 –stat 参数来实时监控服务器的状态，间隔 1s 实时输出一次。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ redis-cli --stat</span><br></pre></td></tr></table></figure>
+<h3 id="扫描大-KEY"><a href="#扫描大-KEY" class="headerlink" title="扫描大 KEY"></a>扫描大 KEY</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ .&#x2F;redis-cli --bigkeys -i 0.01</span><br></pre></td></tr></table></figure>
+<h3 id="采样服务器指令"><a href="#采样服务器指令" class="headerlink" title="采样服务器指令"></a>采样服务器指令</h3><h3 id="诊断服务器时延"><a href="#诊断服务器时延" class="headerlink" title="诊断服务器时延"></a>诊断服务器时延</h3><h3 id="远程-rdb-备份"><a href="#远程-rdb-备份" class="headerlink" title="远程 rdb 备份"></a>远程 rdb 备份</h3><h3 id="模拟从库"><a href="#模拟从库" class="headerlink" title="模拟从库"></a>模拟从库</h3><h2 id="33-源码-1：丝分缕析-——-探索「字符串」内部结构"><a href="#33-源码-1：丝分缕析-——-探索「字符串」内部结构" class="headerlink" title="33 源码 1：丝分缕析 —— 探索「字符串」内部结构"></a>33 源码 1：丝分缕析 —— 探索「字符串」内部结构</h2><p>Redis 中的字符串是可以修改的字符串，在内存中它是以字节数组的形式存在的。我们知道 C 语言里面的字符串标准形式是以 NULL 作为结束符，但是在 Redis 里面字符串不是这么表示的。因为要获取 NULL 结尾的字符串的长度使用的是 <code>strlen</code> 标准库函数，这个函数的算法复杂度是 O(n)，它需要对字节数组进行遍历扫描，作为单线程的 Redis 表示承受不起。</p>
+<p>Redis 的字符串叫着「SDS」，也就是<code>Simple Dynamic String</code>。它的结构是一个<code>带长度信息的字节数组</code>。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">struct</span> SDS&lt;T&gt; &#123;</span><br><span class="line">  T capacity; <span class="comment">// 数组容量</span></span><br><span class="line">  T <span class="built_in">len</span>; <span class="comment">// 数组长度</span></span><br><span class="line">  <span class="keyword">byte</span> flags; <span class="comment">// 特殊标识位，不理睬它</span></span><br><span class="line">  <span class="keyword">byte</span>[] content; <span class="comment">// 数组内容</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如代码所示，<code>content</code> 里面存储了真正的字符串内容，那 <code>capacity</code> 和 <code>len</code> 表示什么意思呢？它有点类似于 Java 语言的 ArrayList 结构，需要比实际的内容长度多分配一些冗余空间。<code>capacity</code> 表示所分配数组的长度，<code>len</code> 表示字符串的实际长度。前面我们提到字符串是可以修改的字符串，它要支持 <code>append</code> 操作。如果数组没有冗余空间，那么追加操作必然涉及到分配新数组，然后将旧内容复制过来，再 <code>append</code> 新内容。如果字符串的长度非常长，这样的内存分配和复制开销就会非常大。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* Append the specified binary-safe string pointed by &#39;t&#39; of &#39;len&#39; bytes to the</span><br><span class="line"> * end of the specified sds string &#39;s&#39;.</span><br><span class="line"> *</span><br><span class="line"> * After the call, the passed sds string is no longer valid and all the</span><br><span class="line"> * references must be substituted with the new pointer returned by the call. *&#x2F;</span><br><span class="line">sds sdscatlen(sds s, const void *t, size_t len) &#123;</span><br><span class="line">    size_t curlen &#x3D; sdslen(s);  &#x2F;&#x2F; 原字符串长度</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 按需调整空间，如果 capacity 不够容纳追加的内容，就会重新分配字节数组并复制原字符串的内容到新数组中</span><br><span class="line">    s &#x3D; sdsMakeRoomFor(s,len);</span><br><span class="line">    if (s &#x3D;&#x3D; NULL) return NULL; &#x2F;&#x2F; 内存不足</span><br><span class="line">    memcpy(s+curlen, t, len);  &#x2F;&#x2F; 追加目标字符串的内容到字节数组中</span><br><span class="line">    sdssetlen(s, curlen+len); &#x2F;&#x2F; 设置追加后的长度值</span><br><span class="line">    s[curlen+len] &#x3D; &#39;\0&#39;; &#x2F;&#x2F; 让字符串以\0 结尾，便于调试打印，还可以直接使用 glibc 的字符串函数进行操作</span><br><span class="line">    return s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上面的 SDS 结构使用了范型 <code>T</code>，为什么不直接用 <code>int</code> 呢，这是因为当字符串比较短时，<code>len</code> 和 <code>capacity</code> 可以使用 <code>byte</code> 和 <code>short</code> 来表示，Redis 为了对内存做极致的优化，不同长度的字符串使用不同的结构体来表示。</p>
+<p>Redis 规定字符串的长度不得超过 512M 字节。创建字符串时 <code>len</code> 和 <code>capacity</code> 一样长，不会多分配冗余空间，这是因为绝大多数场景下我们不会使用 <code>append</code> 操作来修改字符串。</p>
+<h3 id="embstr-vs-raw"><a href="#embstr-vs-raw" class="headerlink" title="embstr vs raw"></a>embstr vs raw</h3><p>Redis 的字符串有两种存储方式，在长度特别短时，使用 <code>emb</code> 形式存储 (embeded)，当长度超过 44 时，使用 <code>raw</code> 形式存储。</p>
+<h3 id="扩容策略"><a href="#扩容策略" class="headerlink" title="扩容策略"></a>扩容策略</h3><p>字符串在长度小于 1M 之前，扩容空间采用加倍策略，也就是保留 100% 的冗余空间。当长度超过 1M 之后，为了避免加倍后的冗余空间过大而导致浪费，每次扩容只会多分配 1M 大小的冗余空间。</p>
+<h2 id="34-源码-2：循序渐进-——-探索「字典」内部"><a href="#34-源码-2：循序渐进-——-探索「字典」内部" class="headerlink" title="34 源码 2：循序渐进 —— 探索「字典」内部"></a>34 源码 2：循序渐进 —— 探索「字典」内部</h2><p>dict 是 Redis 服务器中出现最为频繁的复合型数据结构，除了 hash 结构的数据会用到字典外，整个 Redis 数据库的所有 key 和 value 也组成了一个<code>全局字典</code>，还有<code>带过期时间的 key 集合也是一个字典</code>。<code>zset 集合</code>中存储 value 和 score 值的映射关系也是通过 dict 结构实现的。</p>
+<h3 id="dict-内部结构"><a href="#dict-内部结构" class="headerlink" title="dict 内部结构"></a>dict 内部结构</h3><p>dict 结构内部包含两个 hashtable，通常情况下只有一个 hashtable 是有值的。但是在 dict 扩容缩容时，需要分配新的 hashtable，然后进行渐进式搬迁，这时候两个 hashtable 存储的分别是旧的 hashtable 和新的 hashtable。待搬迁结束后，旧的 hashtable 被删除，新的 hashtable 取而代之。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">struct dict &#123;</span><br><span class="line">    ...</span><br><span class="line">    dictht ht[2];</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>所以，字典数据结构的精华就落在了 hashtable 结构上了。hashtable 的结构和 Java 的 HashMap 几乎是一样的，都是通过分桶的方式解决 hash 冲突。第一维是数组，第二维是链表。数组中存储的是第二维链表的第一个元素的指针。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">struct dictEntry &#123;</span><br><span class="line">    void* key;</span><br><span class="line">    void* val;</span><br><span class="line">    dictEntry* next; &#x2F;&#x2F; 链接下一个 entry</span><br><span class="line">&#125;</span><br><span class="line">struct dictht &#123;</span><br><span class="line">    dictEntry** table; &#x2F;&#x2F; 二维</span><br><span class="line">    long size; &#x2F;&#x2F; 第一维数组的长度</span><br><span class="line">    long used; &#x2F;&#x2F; hash 表中的元素个数</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="渐进式rehash"><a href="#渐进式rehash" class="headerlink" title="渐进式rehash"></a>渐进式rehash</h3><p>大字典的扩容是比较耗时间的，需要重新申请新的数组，然后将旧字典所有链表中的元素重新挂接到新的数组下面，这是一个O(n)级别的操作，作为单线程的Redis表示很难承受这样耗时的过程。步子迈大了会扯着蛋，所以Redis使用渐进式rehash小步搬迁。虽然慢一点，但是肯定可以搬完。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">dictEntry *dictAddRaw(dict *d, void *key, dictEntry **existing)</span><br><span class="line">&#123;</span><br><span class="line">    long index;</span><br><span class="line">    dictEntry *entry;</span><br><span class="line">    dictht *ht;</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 这里进行小步搬迁</span><br><span class="line">    if (dictIsRehashing(d)) _dictRehashStep(d);</span><br><span class="line"></span><br><span class="line">    &#x2F;* Get the index of the new element, or -1 if</span><br><span class="line">     * the element already exists. *&#x2F;</span><br><span class="line">    if ((index &#x3D; _dictKeyIndex(d, key, dictHashKey(d,key), existing)) &#x3D;&#x3D; -1)</span><br><span class="line">        return NULL;</span><br><span class="line"></span><br><span class="line">    &#x2F;* Allocate the memory and store the new entry.</span><br><span class="line">     * Insert the element in top, with the assumption that in a database</span><br><span class="line">     * system it is more likely that recently added entries are accessed</span><br><span class="line">     * more frequently. *&#x2F;</span><br><span class="line">    &#x2F;&#x2F; 如果字典处于搬迁过程中，要将新的元素挂接到新的数组下面</span><br><span class="line">    ht &#x3D; dictIsRehashing(d) ? &amp;d-&gt;ht[1] : &amp;d-&gt;ht[0];</span><br><span class="line">    entry &#x3D; zmalloc(sizeof(*entry));</span><br><span class="line">    entry-&gt;next &#x3D; ht-&gt;table[index];</span><br><span class="line">    ht-&gt;table[index] &#x3D; entry;</span><br><span class="line">    ht-&gt;used++;</span><br><span class="line"></span><br><span class="line">    &#x2F;* Set the hash entry fields. *&#x2F;</span><br><span class="line">    dictSetKey(d, entry, key);</span><br><span class="line">    return entry;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>搬迁操作埋伏在当前字典的后续指令中(来自客户端的hset/hdel指令等)，但是有可能客户端闲下来了，没有了后续指令来触发这个搬迁，那么Redis就置之不理了么？当然不会，优雅的Redis怎么可能设计的这样潦草。Redis还会在定时任务中对字典进行主动搬迁。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; 服务器定时任务</span><br><span class="line">void databaseCron() &#123;</span><br><span class="line">    ...</span><br><span class="line">    if (server.activerehashing) &#123;</span><br><span class="line">        for (j &#x3D; 0; j &lt; dbs_per_call; j++) &#123;</span><br><span class="line">            int work_done &#x3D; incrementallyRehash(rehash_db);</span><br><span class="line">            if (work_done) &#123;</span><br><span class="line">                &#x2F;* If the function did some work, stop here, we&#39;ll do</span><br><span class="line">                 * more at the next cron loop. *&#x2F;</span><br><span class="line">                break;</span><br><span class="line">            &#125; else &#123;</span><br><span class="line">                &#x2F;* If this db didn&#39;t need rehash, we&#39;ll try the next one. *&#x2F;</span><br><span class="line">                rehash_db++;</span><br><span class="line">                rehash_db %&#x3D; server.dbnum;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="查找过程"><a href="#查找过程" class="headerlink" title="查找过程"></a>查找过程</h3><p>插入和删除操作都依赖于查找，先必须把元素找到，才可以进行数据结构的修改操作。hashtable 的元素是在第二维的链表上，所以首先我们得想办法定位出元素在哪个链表上。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">func get(key) &#123;</span><br><span class="line">    let index &#x3D; hash_func(key) % size;</span><br><span class="line">    let entry &#x3D; table[index];</span><br><span class="line">    while(entry !&#x3D; NULL) &#123;</span><br><span class="line">        if entry.key &#x3D;&#x3D; target &#123;</span><br><span class="line">            return entry.value;</span><br><span class="line">        &#125;</span><br><span class="line">        entry &#x3D; entry.next;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>值得注意的是代码中的<code>hash_func</code>，它会将 key 映射为一个整数，不同的 key 会被映射成分布比较均匀散乱的整数。只有 hash 值均匀了，整个 hashtable 才是平衡的，所有的二维链表的长度就不会差距很远，查找算法的性能也就比较稳定。</p>
+<h3 id="hash-函数"><a href="#hash-函数" class="headerlink" title="hash 函数"></a>hash 函数</h3><p>hashtable 的性能好不好完全取决于 hash 函数的质量。hash 函数如果可以将 key 打散的比较均匀，那么这个 hash 函数就是个好函数。Redis 的字典默认的 hash 函数是 <code>siphash</code>。siphash 算法即使在输入 key 很小的情况下，也可以产生随机性特别好的输出，而且它的性能也非常突出。对于 Redis 这样的单线程来说，字典数据结构如此普遍，字典操作也会非常频繁，hash 函数自然也是越快越好。</p>
+<h3 id="hash-攻击"><a href="#hash-攻击" class="headerlink" title="hash 攻击"></a>hash 攻击</h3><p>如果 hash 函数存在偏向性，黑客就可能利用这种偏向性对服务器进行攻击。存在偏向性的 hash 函数在特定模式下的输入会导致 hash 第二维链表长度极为不均匀，甚至所有的元素都集中到个别链表中，直接导致查找效率急剧下降，从<code>O(1)</code>退化到<code>O(n)</code>。有限的服务器计算能力将会被 hashtable 的查找效率彻底拖垮。这就是所谓 hash 攻击。</p>
+<h3 id="扩容条件"><a href="#扩容条件" class="headerlink" title="扩容条件"></a>扩容条件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* Expand the hash table if needed *&#x2F;</span><br><span class="line">static int _dictExpandIfNeeded(dict *d)</span><br><span class="line">&#123;</span><br><span class="line">    &#x2F;* Incremental rehashing already in progress. Return. *&#x2F;</span><br><span class="line">    if (dictIsRehashing(d)) return DICT_OK;</span><br><span class="line"></span><br><span class="line">    &#x2F;* If the hash table is empty expand it to the initial size. *&#x2F;</span><br><span class="line">    if (d-&gt;ht[0].size &#x3D;&#x3D; 0) return dictExpand(d, DICT_HT_INITIAL_SIZE);</span><br><span class="line"></span><br><span class="line">    &#x2F;* If we reached the 1:1 ratio, and we are allowed to resize the hash</span><br><span class="line">     * table (global setting) or we should avoid it but the ratio between</span><br><span class="line">     * elements&#x2F;buckets is over the &quot;safe&quot; threshold, we resize doubling</span><br><span class="line">     * the number of buckets. *&#x2F;</span><br><span class="line">    if (d-&gt;ht[0].used &gt;&#x3D; d-&gt;ht[0].size &amp;&amp;</span><br><span class="line">        (dict_can_resize ||</span><br><span class="line">         d-&gt;ht[0].used&#x2F;d-&gt;ht[0].size &gt; dict_force_resize_ratio))</span><br><span class="line">    &#123;</span><br><span class="line">        return dictExpand(d, d-&gt;ht[0].used*2);</span><br><span class="line">    &#125;</span><br><span class="line">    return DICT_OK;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>正常情况下，当 hash 表中元素的个数等于第一维数组的长度时，就会开始扩容，扩容的新数组是原数组大小的 2 倍。不过如果 Redis 正在做 bgsave，为了减少内存页的过多分离 (Copy On Write)，Redis 尽量不去扩容 (<code>dict_can_resize</code>)，但是如果 hash 表已经非常满了，元素的个数已经达到了第一维数组长度的 5 倍 (<code>dict_force_resize_ratio</code>)，说明 hash 表已经过于拥挤了，这个时候就会强制扩容。</p>
+<h3 id="缩容条件"><a href="#缩容条件" class="headerlink" title="缩容条件"></a>缩容条件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">int htNeedsResize(dict *dict) &#123;</span><br><span class="line">    long long size, used;</span><br><span class="line"></span><br><span class="line">    size &#x3D; dictSlots(dict);</span><br><span class="line">    used &#x3D; dictSize(dict);</span><br><span class="line">    return (size &gt; DICT_HT_INITIAL_SIZE &amp;&amp;</span><br><span class="line">            (used*100&#x2F;size &lt; HASHTABLE_MIN_FILL));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>当 hash 表因为元素的逐渐删除变得越来越稀疏时，Redis 会对 hash 表进行缩容来减少 hash 表的第一维数组空间占用。缩容的条件是元素个数低于数组长度的 10%。缩容不会考虑 Redis 是否正在做 bgsave。</p>
+<h3 id="set-的结构"><a href="#set-的结构" class="headerlink" title="set 的结构"></a>set 的结构</h3><p>Redis 里面 set 的结构底层实现也是字典，只不过所有的 value 都是 NULL，其它的特性和字典一模一样。</p>
+<h2 id="35-源码-3：挨肩迭背-——-探索「压缩列表」内部"><a href="#35-源码-3：挨肩迭背-——-探索「压缩列表」内部" class="headerlink" title="35 源码 3：挨肩迭背 —— 探索「压缩列表」内部"></a>35 源码 3：挨肩迭背 —— 探索「压缩列表」内部</h2><p>Redis 为了节约内存空间使用，zset 和 hash 容器对象在元素个数较少的时候，采用压缩列表 (ziplist) 进行存储。压缩列表是一块连续的内存空间，元素之间紧挨着存储，没有任何冗余空隙。</p>
+<p>压缩列表为了支持双向遍历，所以才会有 <code>ztail_offset</code> 这个字段，用来快速定位到最后一个元素，然后倒着遍历。</p>
+<p>entry 块随着容纳的元素类型不同，也会有不一样的结构。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct entry &#123;</span><br><span class="line">    int&lt;var&gt; prevlen; &#x2F;&#x2F; 前一个 entry 的字节长度</span><br><span class="line">    int&lt;var&gt; encoding; &#x2F;&#x2F; 元素类型编码</span><br><span class="line">    optional byte[] content; &#x2F;&#x2F; 元素内容</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>它的 <code>prevlen</code> 字段表示前一个 entry 的字节长度，当压缩列表倒着遍历时，需要通过这个字段来快速定位到下一个元素的位置。它是一个变长的整数，当字符串长度小于 254(0xFE) 时，使用一个字节表示；如果达到或超出 254(0xFE) 那就使用 5 个字节来表示。第一个字节是 0xFE(254)，剩余四个字节表示字符串长度。你可能会觉得用 5 个字节来表示字符串长度，是不是太浪费了。我们可以算一下，当字符串长度比较长的时候，其实 5 个字节也只占用了不到<code>(5/(254+5))&lt;2%</code>的空间。</p>
+<p>Redis 为了节约存储空间，对 encoding 字段进行了相当复杂的设计。Redis 通过这个字段的前缀位来识别具体存储的数据形式。下面我们来看看 Redis 是如何根据<code>encoding</code>的前缀位来区分内容的：</p>
+<ol>
+<li><code>00xxxxxx</code> 最大长度位 63 的短字符串，后面的 6 个位存储字符串的位数，剩余的字节就是字符串的内容。</li>
+<li><code>01xxxxxx xxxxxxxx</code> 中等长度的字符串，后面 14 个位来表示字符串的长度，剩余的字节就是字符串的内容。</li>
+<li><code>10000000 aaaaaaaa bbbbbbbb cccccccc dddddddd</code> 特大字符串，需要使用额外 4 个字节来表示长度。第一个字节前缀是<code>10</code>，剩余 6 位没有使用，统一置为零。后面跟着字符串内容。不过这样的大字符串是没有机会使用的，压缩列表通常只是用来存储小数据的。</li>
+<li><code>11000000</code> 表示 int16，后跟两个字节表示整数。</li>
+<li><code>11010000</code> 表示 int32，后跟四个字节表示整数。</li>
+<li><code>11100000</code> 表示 int64，后跟八个字节表示整数。</li>
+<li><code>11110000</code> 表示 int24，后跟三个字节表示整数。</li>
+<li><code>11111110</code> 表示 int8，后跟一个字节表示整数。</li>
+<li><code>11111111</code> 表示 ziplist 的结束，也就是 zlend 的值 0xFF。</li>
+<li><code>1111xxxx</code> 表示极小整数，xxxx 的范围只能是 (<code>0001~1101</code>), 也就是<code>1~13</code>，因为<code>0000、1110、1111</code>都被占用了。读取到的 value 需要将 xxxx 减 1，也就是整数<code>0~12</code>就是最终的 value。</li>
+</ol>
+<p>注意到 <code>content</code> 字段在结构体中定义为 optional 类型，表示这个字段是可选的，对于很小的整数而言，它的内容已经内联到 encoding 字段的尾部了。</p>
+<h3 id="增加元素"><a href="#增加元素" class="headerlink" title="增加元素"></a>增加元素</h3><p>因为 ziplist 都是紧凑存储，没有冗余空间 (对比一下 Redis 的字符串结构)。意味着插入一个新的元素就需要调用 realloc 扩展内存。取决于内存分配器算法和当前的 ziplist 内存大小，realloc 可能会重新分配新的内存空间，并将之前的内容一次性拷贝到新的地址，也可能在原有的地址上进行扩展，这时就不需要进行旧内容的内存拷贝。</p>
+<p>如果 ziplist 占据内存太大，重新分配内存和拷贝内存就会有很大的消耗。所以 ziplist 不适合存储大型字符串，存储的元素也不宜过多。</p>
+<h3 id="级联更新"><a href="#级联更新" class="headerlink" title="级联更新"></a>级联更新</h3><h3 id="IntSet-小整数集合"><a href="#IntSet-小整数集合" class="headerlink" title="IntSet 小整数集合"></a>IntSet 小整数集合</h3><p>当 set 集合容纳的元素都是整数并且元素个数较小时，Redis 会使用 <code>intset</code> 来存储结合元素。<code>intset</code> 是紧凑的数组结构，同时支持 16 位、32 位和 64 位整数。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">struct intset&lt;T&gt; &#123;</span><br><span class="line">    int32 encoding; &#x2F;&#x2F; 决定整数位宽是 16 位、32 位还是 64 位</span><br><span class="line">    int32 length; &#x2F;&#x2F; 元素个数</span><br><span class="line">    int&lt;T&gt; contents; &#x2F;&#x2F; 整数数组，可以是 16 位、32 位和 64 位</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/11.jpg" alt=".jpg"></p>
+<p>老钱也不是很能理解为什么 intset 的 encoding 字段和 length 字段使用 32 位整数存储。毕竟它只是用来存储小整数的，长度不应该很长，而且 encoding 只有 16 位、32 位和 64 位三个类型，用一个字节存储就绰绰有余。关于这点，读者们可以进一步讨论。</p>
+<h2 id="36-源码-4：风驰电掣-——-探索「快速列表」内部"><a href="#36-源码-4：风驰电掣-——-探索「快速列表」内部" class="headerlink" title="36 源码 4：风驰电掣 —— 探索「快速列表」内部"></a>36 源码 4：风驰电掣 —— 探索「快速列表」内部</h2><p>Redis 早期版本存储 list 列表数据结构使用的是压缩列表 ziplist 和普通的双向链表 linkedlist，也就是元素少时用 ziplist，元素多时用 linkedlist。</p>
+<p>考虑到链表的附加空间相对太高，prev 和 next 指针就要占去 16 个字节 (64bit 系统的指针是 8 个字节)，另外每个节点的内存都是单独分配，会加剧内存的碎片化，影响内存管理效率。后续版本对列表数据结构进行了改造，使用 quicklist 代替了 ziplist 和 linkedlist。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&gt; rpush codehole go java python</span><br><span class="line">(integer) 3</span><br><span class="line">&gt; debug object codehole</span><br><span class="line">Value at:0x7fec2dc2bde0 refcount:1 encoding:quicklist serializedlength:31 lru:6101643 lru_seconds_idle:5 ql_nodes:1 ql_avg_node:3.00 ql_ziplist_max:-2 ql_compressed:0 ql_uncompressed_size:29</span><br></pre></td></tr></table></figure>
+<p>注意观察上面输出字段 encoding 的值。quicklist 是 ziplist 和 linkedlist 的混合体，它将 linkedlist 按段切分，每一段使用 ziplist 来紧凑存储，多个 ziplist 之间使用双向指针串接起来。</p>
+<p><img src="/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/12.jpg" alt=".jpg"></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">struct ziplist &#123;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">struct ziplist_compressed &#123;</span><br><span class="line">    int32 size;</span><br><span class="line">    byte[] compressed_data;</span><br><span class="line">&#125;</span><br><span class="line">struct quicklistNode &#123;</span><br><span class="line">    quicklistNode* prev;</span><br><span class="line">    quicklistNode* next;</span><br><span class="line">    ziplist* zl; &#x2F;&#x2F; 指向压缩列表</span><br><span class="line">    int32 size; &#x2F;&#x2F; ziplist 的字节总数</span><br><span class="line">    int16 count; &#x2F;&#x2F; ziplist 中的元素数量</span><br><span class="line">    int2 encoding; &#x2F;&#x2F; 存储形式 2bit，原生字节数组还是 LZF 压缩存储</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">struct quicklist &#123;</span><br><span class="line">    quicklistNode* head;</span><br><span class="line">    quicklistNode* tail;</span><br><span class="line">    long count; &#x2F;&#x2F; 元素总数</span><br><span class="line">    int nodes; &#x2F;&#x2F; ziplist 节点的个数</span><br><span class="line">    int compressDepth; &#x2F;&#x2F; LZF 算法压缩深度</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述代码简单地表示了 quicklist 的大致结构。为了进一步节约空间，Redis 还会对 ziplist 进行压缩存储，使用 LZF 算法压缩，可以选择压缩深度。</p>
+<h3 id="每个-ziplist-存多少元素？"><a href="#每个-ziplist-存多少元素？" class="headerlink" title="每个 ziplist 存多少元素？"></a>每个 ziplist 存多少元素？</h3><p>quicklist 内部默认单个 ziplist 长度为 8k 字节，超出了这个字节数，就会新起一个 ziplist。ziplist 的长度由配置参数<code>list-max-ziplist-size</code>决定。</p>
+<h3 id="压缩深度"><a href="#压缩深度" class="headerlink" title="压缩深度"></a>压缩深度</h3><p>quicklist 默认的压缩深度是 0，也就是不压缩。压缩的实际深度由配置参数<code>list-compress-depth</code>决定。为了支持快速的 push/pop 操作，quicklist 的首尾两个 ziplist 不压缩，此时深度就是 1。如果深度为 2，就表示 quicklist 的首尾第一个 ziplist 以及首尾第二个 ziplist 都不压缩。</p>
+<h2 id="37-源码-5：凌波微步-——-探索「跳跃列表」内部结构"><a href="#37-源码-5：凌波微步-——-探索「跳跃列表」内部结构" class="headerlink" title="37 源码 5：凌波微步 —— 探索「跳跃列表」内部结构"></a>37 源码 5：凌波微步 —— 探索「跳跃列表」内部结构</h2><p>Redis 的 zset 是一个复合结构，一方面它需要一个 hash 结构来存储 value 和 score 的对应关系，另一方面需要提供按照 score 来排序的功能，还需要能够指定 score 的范围来获取 value 列表的功能，这就需要另外一个结构「跳跃列表」。</p>
+<p><img src="/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/13.jpg" alt=".jpg"></p>
+<p>zset 的内部实现是一个 hash 字典加一个跳跃列表 (skiplist)。hash 结构在讲字典结构时已经详细分析过了，它很类似于 Java 语言中的 HashMap 结构。本节我们来讲跳跃列表，它比较复杂，读者要有心理准备。</p>
+<h3 id="基本结构"><a href="#基本结构" class="headerlink" title="基本结构"></a>基本结构</h3><p><img src="/2021/03/19/nosql%E5%AD%A6%E4%B9%A0-redis%E5%B0%8F%E5%86%8C/14.jpg" alt=".jpg"></p>
+<p>上图就是跳跃列表的示意图，图中只画了四层，Redis 的跳跃表共有 64 层，容纳 2^64 个元素应该不成问题。每一个 kv 块对应的结构如下面的代码中的<code>zslnode</code>结构，kv header 也是这个结构，只不过 value 字段是 null 值——无效的，score 是 Double.MIN_VALUE，用来垫底的。kv 之间使用指针串起来形成了双向链表结构，它们是 <strong>有序</strong> 排列的，从小到大。不同的 kv 层高可能不一样，层数越高的 kv 越少。同一层的 kv 会使用指针串起来。每一个层元素的遍历都是从 kv header 出发。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">zslnode</span> &#123;</span></span><br><span class="line">  <span class="built_in">string</span> value;</span><br><span class="line">  <span class="keyword">double</span> score;</span><br><span class="line">  zslnode*[] forwards;  <span class="comment">// 多层连接指针</span></span><br><span class="line">  zslnode* backward;  <span class="comment">// 回溯指针</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">zsl</span> &#123;</span></span><br><span class="line">  zslnode* header; <span class="comment">// 跳跃列表头指针</span></span><br><span class="line">  <span class="keyword">int</span> maxLevel; <span class="comment">// 跳跃列表当前的最高层</span></span><br><span class="line">  <span class="built_in">map</span>&lt;<span class="built_in">string</span>, zslnode*&gt; ht; <span class="comment">// hash 结构的所有键值对</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(最高层两个节点)</p>
+<h3 id="查找过程-1"><a href="#查找过程-1" class="headerlink" title="查找过程"></a>查找过程</h3><p>如图所示，我们要定位到那个紫色的 kv，需要从 header 的最高层开始遍历找到第一个节点 (最后一个比「我」小的元素)，然后从这个节点开始降一层再遍历找到第二个节点 (最后一个比「我」小的元素)，然后一直降到最底层进行遍历就找到了期望的节点 (最底层的最后一个比我「小」的元素)。</p>
+<p>我们将中间经过的一系列节点称之为「搜索路径」，它是从最高层一直到最底层的每一层最后一个比「我」小的元素节点列表。</p>
+<p>有了这个搜索路径，我们就可以插入这个新节点了。不过这个插入过程也不是特别简单。因为新插入的节点到底有多少层，得有个算法来分配一下，跳跃列表使用的是随机算法。</p>
+<h3 id="随机层数"><a href="#随机层数" class="headerlink" title="随机层数"></a>随机层数</h3><p>对于每一个新插入的节点，都需要调用一个随机算法给它分配一个合理的层数。直观上期望的目标是 50% 的 Level1，25% 的 Level2，12.5% 的 Level3，一直到最顶层<code>2^-63</code>，因为这里每一层的晋升概率是 50%。</p>
+<h3 id="插入过程"><a href="#插入过程" class="headerlink" title="插入过程"></a>插入过程</h3><p>首先我们在搜索合适插入点的过程中将「搜索路径」摸出来了，然后就可以开始创建新节点了，创建的时候需要给这个节点随机分配一个层数，再将搜索路径上的节点和这个新节点通过前向后向指针串起来。如果分配的新节点的高度高于当前跳跃列表的最大高度，就需要更新一下跳跃列表的最大高度</p>
+<h3 id="删除过程"><a href="#删除过程" class="headerlink" title="删除过程"></a>删除过程</h3><p>删除过程和插入过程类似，都需先把这个「搜索路径」找出来。然后对于每个层的相关节点都重排一下前向后向指针就可以了。同时还要注意更新一下最高层数<code>maxLevel</code>。</p>
+<h3 id="更新过程"><a href="#更新过程" class="headerlink" title="更新过程"></a>更新过程</h3><p>当我们调用 zadd 方法时，如果对应的 value 不存在，那就是插入过程。如果这个 value 已经存在了，只是调整一下 score 的值，那就需要走一个更新的流程。假设这个新的 score 值不会带来排序位置上的改变，那么就不需要调整位置，直接修改元素的 score 值就可以了。但是如果排序位置改变了，那就要调整位置。那该如何调整位置呢？</p>
+<p>一个简单的策略就是先删除这个元素，再插入这个元素，需要经过两次路径搜索。Redis 就是这么干的。<br>不过 Redis 遇到 score 值改变了就直接删除再插入，不会去判断位置是否需要调整，从这点看，Redis 的 zadd 的代码似乎还有优化空间。关于这一点，读者们可以继续讨论。</p>
+<h3 id="如果-score-值都一样呢？"><a href="#如果-score-值都一样呢？" class="headerlink" title="如果 score 值都一样呢？"></a>如果 score 值都一样呢？</h3><p>在一个极端的情况下，zset 中所有的 score 值都是一样的，zset 的查找性能会退化为 O(n) 么？Redis 作者自然考虑到了这一点，所以 zset 的排序元素不只看 score 值，如果 score 值相同还需要再比较 value 值 (字符串比较)。</p>
+<h3 id="元素排名是怎么算出来的？"><a href="#元素排名是怎么算出来的？" class="headerlink" title="元素排名是怎么算出来的？"></a>元素排名是怎么算出来的？</h3><p>前面我们啰嗦了一堆，但是有一个重要的属性没有提到，那就是 zset 可以获取元素的排名 rank。那这个 rank 是如何算出来的？如果仅仅使用上面的结构，rank 是不能算出来的。Redis 在 skiplist 的 forward 指针上进行了优化，给每一个 forward 指针都增加了 span 属性，span 是「跨度」的意思，表示从前一个节点沿着当前层的 forward 指针跳到当前这个节点中间会跳过多少个节点。Redis 在插入删除操作时会小心翼翼地更新 span 值的大小。</p>
+<p>这样当我们要计算一个元素的排名时，只需要将「搜索路径」上的经过的所有节点的跨度 span 值进行叠加就可以算出元素的最终 rank 值。</p>
+<h2 id="38-源码-6：破旧立新-——-探索「紧凑列表」内部"><a href="#38-源码-6：破旧立新-——-探索「紧凑列表」内部" class="headerlink" title="38 源码 6：破旧立新 —— 探索「紧凑列表」内部"></a>38 源码 6：破旧立新 —— 探索「紧凑列表」内部</h2><h2 id="39-源码-7：金枝玉叶-——-探索「基数树」内部"><a href="#39-源码-7：金枝玉叶-——-探索「基数树」内部" class="headerlink" title="39 源码 7：金枝玉叶 —— 探索「基数树」内部"></a>39 源码 7：金枝玉叶 —— 探索「基数树」内部</h2><h2 id="40-源码-8：精益求精-——-LFU-vs-LRU"><a href="#40-源码-8：精益求精-——-LFU-vs-LRU" class="headerlink" title="40 源码 8：精益求精 —— LFU vs LRU"></a>40 源码 8：精益求精 —— LFU vs LRU</h2><p>在第 27 小节，我们讲到了 Redis 的 LRU 模式，它可以有效的控制 Redis 占用内存大小，将冷数据从内存中淘汰出去。Antirez 在 Redis 4.0 里引入了一个新的淘汰策略 —— LFU 模式，作者认为它比 LRU 更加优秀。</p>
+<p>LFU 的全称是<code>Least Frequently Used</code>，表示按最近的访问频率进行淘汰，它比 LRU 更加精准地表示了一个 key 被访问的热度。</p>
+<p>如果一个 key 长时间不被访问，只是刚刚偶然被用户访问了一下，那么在使用 LRU 算法下它是不容易被淘汰的，因为 LRU 算法认为当前这个 key 是很热的。而 LFU 是需要追踪最近一段时间的访问频率，如果某个 key 只是偶然被访问一次是不足以变得很热的，它需要在近期一段时间内被访问很多次才有机会被认为很热。</p>
+<h2 id="41-源码-9-如履薄冰-——-懒惰删除的巨大牺牲"><a href="#41-源码-9-如履薄冰-——-懒惰删除的巨大牺牲" class="headerlink" title="41 源码 9: 如履薄冰 —— 懒惰删除的巨大牺牲"></a>41 源码 9: 如履薄冰 —— 懒惰删除的巨大牺牲</h2><p>前面我们讲了 Redis 懒惰删除的特性，它是使用异步线程对已删除的节点进行内存回收。但是还不够深入，所以本节我们要对异步线程逻辑处理的细节进行分析，看看 Antirez 是如何实现异步线程处理的。</p>
+<p>异步线程在 Redis 内部有一个特别的名称，它就是<code>BIO</code>，全称是<code>Background IO</code>，意思是在背后默默干活的 IO 线程。不过内存回收本身并不是什么 IO 操作，只是 CPU 的计算消耗可能会比较大而已。</p>
+<h3 id="懒惰删除的最初实现不是异步线程"><a href="#懒惰删除的最初实现不是异步线程" class="headerlink" title="懒惰删除的最初实现不是异步线程"></a>懒惰删除的最初实现不是异步线程</h3><h2 id="42-源码-10：跋山涉水-——-深入字典遍历"><a href="#42-源码-10：跋山涉水-——-深入字典遍历" class="headerlink" title="42 源码 10：跋山涉水 —— 深入字典遍历"></a>42 源码 10：跋山涉水 —— 深入字典遍历</h2><h3 id="一边遍历一边修改"><a href="#一边遍历一边修改" class="headerlink" title="一边遍历一边修改"></a>一边遍历一边修改</h3><p>我们知道 Redis 对象树的主干是一个字典，如果对象很多，这个主干字典也会很大。当我们使用 <code>keys</code> 命令搜寻指定模式的 key 时，它会遍历整个主干字典。值得注意的是，在遍历的过程中，如果满足模式匹配条件的 key 被找到了，还需要判断 key 指向的对象是否已经过期。如果过期了就需要从主干字典中将该 key 删除。</p>
+<p>那么，你是否想到了其中的困难之处，在遍历字典的时候还需要修改字典，会不会出现指针安全问题？</p>
+<h3 id="重复遍历"><a href="#重复遍历" class="headerlink" title="重复遍历"></a>重复遍历</h3><p>字典在扩容的时候要进行渐进式迁移，会存在新旧两个 hashtable。遍历需要对这两个 hashtable 依次进行，先遍历完旧的 hashtable，再继续遍历新的 hashtable。如果在遍历的过程中进行了 rehashStep，将已经遍历过的旧的 hashtable 的元素迁移到了新的 hashtable 中，那么遍历会不会出现元素的重复？这也是遍历需要考虑的疑难之处，下面我们来看看 Redis 是如何解决这个问题的。</p>
+<h3 id="迭代器的结构"><a href="#迭代器的结构" class="headerlink" title="迭代器的结构"></a>迭代器的结构</h3><p>Redis 为字典的遍历提供了 2 种迭代器，一种是安全迭代器，另一种是不安全迭代器。</p>
+<h2 id="43-源码-11：见缝插针-——-探索-HyperLogLog-内部"><a href="#43-源码-11：见缝插针-——-探索-HyperLogLog-内部" class="headerlink" title="43 源码 11：见缝插针 —— 探索 HyperLogLog 内部"></a>43 源码 11：见缝插针 —— 探索 HyperLogLog 内部</h2><h2 id="44-尾声：百尺竿头-——-继续深造指南"><a href="#44-尾声：百尺竿头-——-继续深造指南" class="headerlink" title="44 尾声：百尺竿头 —— 继续深造指南"></a>44 尾声：百尺竿头 —— 继续深造指南</h2><p><a target="_blank" rel="noopener" href="http://redisbook.com/">《Redis 设计与实现》</a></p>
 
     
 
@@ -501,6 +921,15 @@
 
 
 <nav id="article-nav">
+  
+    <a href="/2021/03/20/java%E5%AD%A6%E4%B9%A0-%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E5%AD%A6%E4%B9%A0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          java学习-设计模式学习
+        
+      </div>
+    </a>
   
   
     <a href="/2021/03/18/%E7%AE%97%E6%B3%95-%E6%90%BA%E7%A8%8B2021-3-18%E7%AC%94%E8%AF%95/" id="article-nav-older" class="article-nav-link-wrap">

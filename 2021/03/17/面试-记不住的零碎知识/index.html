@@ -19,8 +19,9 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/1.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/2.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/5.jpg">
 <meta property="article:published_time" content="2021-03-17T11:22:43.000Z">
-<meta property="article:modified_time" content="2021-03-19T13:56:27.261Z">
+<meta property="article:modified_time" content="2021-03-20T12:08:14.178Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -279,7 +280,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">2k字</span>
+      <span class="post-count">6.5k字</span>
     </span>
   </span>
 
@@ -288,7 +289,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">7分</span>
+      <span class="post-count">25分</span>
     </span>
   </span>
 </div>
@@ -322,15 +323,21 @@
 <p>7.mysql的连接池有了解吗</p>
 <p>务器并不会立即把与该客户端交互的线程销毁掉，而是把它缓存起来，在另一个新的客户端再进行连接时，把这个缓存的线程分配给该新客户端。</p>
 <p>连接池的作用就是连接复用。避免了数据库连接频繁建立、关闭的开销。</p>
-<p>8.AOP是如何做的?java中动态代理是如何实现的?</p>
+<p>8.什么是AOP?AOP是如何做的?java中动态代理是如何实现的?</p>
+<p>AOP是面向切面编程。它将软件系统分为,核心关注点和横切关注点。(横切关注点如权限认证/日志/事务等)</p>
 <p>JDKProxy和Cglib</p>
 <p>如果目标对象实现了接口，默认情况下会采用JDK的动态代理实现AOP。</p>
 <p>如果目标对象没有实现了接口，必须采用CGLIB库，spring会自动在JDK动态代理和CGLIB之间转换</p>
 <p>JDK动态代理和CGLIB(Code Generation Library)字节码生成的区别？</p>
 <p>JDK动态代理只能对实现了接口的类生成代理，而不能针对类。</p>
 <p>CGLIB是针对类实现代理，主要是对指定的类生成一个子类，覆盖其中的方法。</p>
+<p>CGLIB</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">@Aspect</span><br><span class="line">public class TransactionDemo &#123;</span><br><span class="line"> @Pointcut(value&#x3D;&quot;execution(* com.yangxin.core.service.*.*.*(..))&quot;)</span><br><span class="line"> public void point()&#123;</span><br><span class="line"> &#125;</span><br><span class="line"> @Before(value&#x3D;&quot;point()&quot;)</span><br><span class="line"> public void before()&#123;</span><br><span class="line"> System.out.println(&quot;transaction begin&quot;);</span><br><span class="line"> &#125;</span><br><span class="line"> @AfterReturning(value &#x3D; &quot;point()&quot;)</span><br><span class="line"> public void after()&#123;</span><br><span class="line"> System.out.println(&quot;transaction commit&quot;);</span><br><span class="line"> &#125;</span><br><span class="line"> @Around(&quot;point()&quot;)</span><br><span class="line"> public void around(ProceedingJoinPoint joinPoint) throws Throwable&#123;</span><br><span class="line"> System.out.println(&quot;transaction begin&quot;);</span><br><span class="line"> joinPoint.proceed();</span><br><span class="line"> System.out.println(&quot;transaction commit&quot;);</span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
 <p>Spring AOP的底层就是通过JDK动态代理或者cglib动态代理技术为目标Bean横向织入。</p>
 <p>程序中应该优先对接口创建代理，便于程序解耦维护。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Aspect（切面）： Aspect 声明类似于 Java 中的类声明，在 Aspect 中会包含着一些 Pointcut 以及相应的 Advice。</span><br><span class="line">Joint point（连接点）：表示在程序中明确定义的点，典型的包括方法调用，对类成员的访问以及异常处理程序块的执行等等，它自身还可以嵌套其它 joint point。</span><br><span class="line">Pointcut（切点）：表示一组 joint point，这些 joint point 或是通过逻辑关系组合起来，或是通过通配、正则表达式等方式集中起来，它定义了相应的 Advice 将要发生的地方。</span><br><span class="line">Advice（增强）：Advice 定义了在 Pointcut 里面定义的程序点具体要做的操作，它通过 before、after 和 around 来区别是在每个 joint point 之前、之后还是代替执行的代码。</span><br><span class="line">Target（目标对象）：织入 Advice 的目标对象.。</span><br><span class="line">Weaving（织入）：将 Aspect 和其他对象连接起来, 并创建 Adviced object 的过程</span><br></pre></td></tr></table></figure>
+<p>项目中是使用的Cglib实现的,具体使用是定义一个Aspect类,定义好pointcut,定义好签名,然后定义通知方法,在通知方法传参中传入jointPoint,并通过反射拿到对应的信息,然后进行对应的操作即可。</p>
 <p>9.为什么wait和notify是Object类中的方法?</p>
 <p>因为这些方法在操作同步线程时，都必须要标识它们操作线程的锁，只有同一个锁上的被等待线程，可以被同一个锁上的notify唤醒，不可以对不同锁中的线程进行唤醒。</p>
 <p>也就是说，等待和唤醒必须是同一个锁。而锁可以是任意对象，所以可以被任意对象调用的方法是定义在object类中。</p>
@@ -380,6 +387,136 @@
 <p>配置application.yml</p>
 <p>创建RedisConfig,配置redis的相关参数。</p>
 <p>创建RedisService和其实现类RedisServiceImpl,在其中注入RedisTemplate对象,并设置对应的对RedisTemplate的对象操作的方法即可。</p>
+<p>20.A和B两个线程,B调用A.join()怎么理解?</p>
+<p>意思是在B阻塞,直到A执行完之后才能继续执行。</p>
+<p>21.Java 中 IO 流分为几种?有什么区别?</p>
+<p>BIO：Block IO 同步阻塞式 IO，就是我们平常使用的传统 IO，它的特点是模式简单使用方便，并发处理能力低。<br>NIO：Non IO 同步非阻塞 IO，是传统 IO 的升级，客户端和服务器端通过 Channel（通道）通讯，实现了多路复用。<br>AIO：Asynchronous IO 是 NIO 的升级，也叫 NIO2，实现了异步非堵塞 IO ，异步 IO 的操作基于事件和回调机制。</p>
+<p>BIO：同步并阻塞，服务器实现模式为一个连接一个线程，即客户端有连接请求时服务器端就需要启动一个线程进行处理，如果这个连接不做任何事情会造成不必要的线程开销，当然可以通过线程池机制改善。</p>
+<p>NIO：同步非阻塞，服务器实现模式为一个请求一个线程，即客户端发送的连接请求都会注册到多路复用器上，多路复用器轮询到连接有I/O请求时才启动一个线程进行处理。</p>
+<p>AIO：异步非阻塞，服务器实现模式为一个有效请求一个线程，客户端的I/O请求都是由OS先完成了再通知服务器应用去启动线程进行处理。</p>
+<p><strong>适用场景分析</strong></p>
+<p>BIO方式适用于<code>连接数目比较小且固定的架构</code>，这种方式对服务器资源要求比较高，并发局限于应用中，JDK1.4以前的唯一选择，但程序直观简单易理解。<br>NIO方式适用于<code>连接数目多且连接比较短</code>（轻操作）的架构，比如<code>聊天服务器</code>，并发局限于应用中，编程比较复杂，JDK1.4开始支持。<br>AIO方式使用于<code>连接数目多且连接比较长</code>（重操作）的架构，比如相册服务器，充分调用OS参与并发操作，编程比较复杂，JDK7开始支持。</p>
+<p>22.什么是惊群问题?</p>
+<p>计算机中的惊群问题指的是：多进程/多线程同时监听同一个套接字，当有网络事件发生时，所有等待的进程/线程同时被唤醒，但是只有其中一个进程/线程可以处理该网络事件，其它的进程/线程获取失败重新进入休眠。</p>
+<p>23.磁盘和内存的速度大小差多少?</p>
+<p>⭕顺序访问：这种情况下，内存访问速度仅仅是硬盘访问速度的6~7倍（358.2M / 53.2M = 6.7）</p>
+<p>⭕随机访问：这种情况下，内存访问速度就要比硬盘访问速度快上10万倍以上 （36.7M / 316 = 113,924）</p>
+<p>24.ConcurrentHashMap的get操作是线程安全吗?怎么避免脏读?</p>
+<p>get操作可以无锁是由于Node的元素val和指针next是用volatile修饰的，在多线程环境下线程A修改结点的val或者新增节点的时候是对线程B可见的。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">static class Node&lt;K,V&gt; implements Map.Entry&lt;K,V&gt; &#123;</span><br><span class="line">    final int hash;</span><br><span class="line">    final K key;</span><br><span class="line">    &#x2F;&#x2F;可以看到这些都用了volatile修饰</span><br><span class="line">    volatile V val;</span><br><span class="line">    volatile Node&lt;K,V&gt; next;</span><br><span class="line"></span><br><span class="line">    Node(int hash, K key, V val, Node&lt;K,V&gt; next) &#123;</span><br><span class="line">        this.hash &#x3D; hash;</span><br><span class="line">        this.key &#x3D; key;</span><br><span class="line">        this.val &#x3D; val;</span><br><span class="line">        this.next &#x3D; next;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public final K getKey() &#123; return key; &#125;</span><br><span class="line">    public final V getValue() &#123; return val; &#125;</span><br><span class="line">    public final int hashCode() &#123; return key.hashCode() ^ val.hashCode(); &#125;</span><br><span class="line">    public final String toString()&#123; return key + &quot;&#x3D;&quot; + val; &#125;</span><br><span class="line">    public final V setValue(V value) &#123;</span><br><span class="line">        throw new UnsupportedOperationException();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public final boolean equals(Object o) &#123;</span><br><span class="line">        Object k, v, u; Map.Entry&lt;?,?&gt; e;</span><br><span class="line">        return ((o instanceof Map.Entry) &amp;&amp;</span><br><span class="line">          (k &#x3D; (e &#x3D; (Map.Entry&lt;?,?&gt;)o).getKey()) !&#x3D; null &amp;&amp;</span><br><span class="line">          (v &#x3D; e.getValue()) !&#x3D; null &amp;&amp;</span><br><span class="line">          (k &#x3D;&#x3D; key || k.equals(key)) &amp;&amp;</span><br><span class="line">          (v &#x3D;&#x3D; (u &#x3D; val) || v.equals(u))); </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    &#x2F;**</span><br><span class="line">    * Virtualized support for map.get(); overridden in subclasses.</span><br><span class="line">    *&#x2F;</span><br><span class="line">    Node&lt;K,V&gt; find(int h, Object k) &#123;</span><br><span class="line">        Node&lt;K,V&gt; e &#x3D; this;</span><br><span class="line">        if (k !&#x3D; null) &#123;</span><br><span class="line">            do &#123;</span><br><span class="line">                K ek;</span><br><span class="line">                if (e.hash &#x3D;&#x3D; h &amp;&amp;</span><br><span class="line">                 ((ek &#x3D; e.key) &#x3D;&#x3D; k || (ek !&#x3D; null &amp;&amp; k.equals(ek))))</span><br><span class="line">                   return e;</span><br><span class="line">            &#125; while ((e &#x3D; e.next) !&#x3D; null);</span><br><span class="line">        &#125;</span><br><span class="line">        return null;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>既然volatile修饰数组对get操作没有效果那加在数组上的volatile的目的是什么呢？</p>
+<p>其实就是为了使得Node数组在扩容的时候对其他线程具有可见性而加的volatile</p>
+<p>总结</p>
+<pre><code>在1.8中ConcurrentHashMap的get操作全程不需要加锁，这也是它比其他并发集合比如hashtable、用Collections.synchronizedMap()包装的hashmap;安全效率高的原因之一。get操作全程不需要加锁是因为Node的成员val是用volatile修饰的和数组用volatile修饰没有关系。数组用volatile修饰主要是保证在数组扩容的时候保证可见性。</code></pre>
+<p>25.hash算法又哪些？</p>
+<p>• 加法Hash；把输入元素一个一个的加起来构成最后的结果</p>
+<p>• 位运算Hash；这类型Hash函数通过利用各种位运算（常见的是移位和异或）来充分的混合输入元素</p>
+<p>• 乘法Hash；这种类型的Hash函数利用了乘法的不相关性（乘法的这种性质，最有名的莫过于平方取头尾的随机数生成算<br>法，虽然这种算法效果并不好）；jdk5.0里面的String类的hashCode()方法也使用乘法Hash；32位FNV算法</p>
+<p>• 除法Hash；除法和乘法一样，同样具有表面上看起来的不相关性。不过，因为除法太慢，这种方式几乎找不到真正的应用</p>
+<p>• 查表Hash；查表Hash最有名的例子莫过于CRC系列算法。虽然CRC系列算法本身并不是查表，但是，查表是它的一种最快<br>的实现方式。查表Hash中有名的例子有：Universal Hashing和Zobrist Hashing。他们的表格都是随机生成的。</p>
+<p>• 混合Hash；混合Hash算法利用了以上各种方式。各种常见的Hash算法，比如MD5、Tiger都属于这个范围。它们一般很少<br>在面向查找的Hash函数里面使用</p>
+<p>●环 hash</p>
+<p>如何解决数据倾斜问题？</p>
+<p>引入了虚拟机器概念，一台机器需要在环上映射出多个这个位置，比如 我们用机器的 ip 来 hash ，这样就实现了一台物理机映射出多个虚拟机器的编号。</p>
+<p>26.ArrayList源码有了解吗?</p>
+<p>transient修饰的Object[]数组,默认大小,扩容机制。</p>
+<p>27.ArrayList和LinkedList哪个更占空间?</p>
+<p>一般情况下，LinkedList的占用空间更大，因为每个节点要维护指向前后地址的两个节点，但也不是绝对，如果刚好数据量超过ArrayList默认的临时值时，ArrayList占用的空间也是不小的，因为扩容的原因会浪费将近原来数组一半的容量，不过，因为ArrayList的数组变量是用transient关键字修饰的，如果集合本身需要做序列化操作的话，ArrayList这部分多余的空间不会被序列化。</p>
+<p>28.SortedMap了解吗?</p>
+<p>TreeMap继承于AbstractMap，实现了Map, Cloneable, NavigableMap, Serializable接口。</p>
+<p>保证按照键的升序排列的映射，可以按照键的自然顺序（参见 Comparable 接口）进行排序， 或者通过创建有序映射时提供的比较器进行排序。</p>
+<p> TreeMap 是 SortedMap 接口的基于红黑树的实现。</p>
+<p>一颗红黑树必须满足一下几点要求：</p>
+<pre><code>树中每个节点必须是有颜色的，要么红色，要么黑色；
+
+树中的根节点必须是黑色的；
+
+树中的叶节点必须是黑色的，也就是树尾的NIL节点或者为null的节点；
+
+树中任意一个节点如果是红色的，那么它的两个子节点一点是黑色的；
+
+任意节点到叶节点（树最下面一个节点）的每一条路径所包含的黑色节点数目一定相同；</code></pre>
+<p>为了维持平衡会有左旋和右旋。</p>
+<p>平衡二叉搜索树则是对于每个节点,其左右子树高度差的绝对值不超过1.</p>
+<p>为了维持平衡会有RR旋转/LL旋转/RL旋转/LR旋转。</p>
+<p>29.post一次最多传输多少数据?</p>
+<p>GET请求最多传2083字节。</p>
+<p>POST协议本身没有数据量的限制。</p>
+<p>真正对其大小进行限制的是服务器的处理程序能力。Tomcat服务器对POST大小限制为2M。</p>
+<p>30.跳表和红黑树分别用在什么场景?</p>
+<p>红黑树广泛用于C++的STL中。如map和set都是用红黑树实现的。</p>
+<p>跳表用于redis的zset当中。</p>
+<p>跳表比红黑树的优点有插入和删除更简单,耗时少。</p>
+<p>B/B+树用于磁盘文件组织,数据索引和数据库索引。</p>
+<p>31.读写锁了解吗?</p>
+<ul>
+<li>  读-读可以共存</li>
+<li>  读-写不能共存</li>
+<li>  写-写不能共存<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">package demo.thread;</span><br><span class="line"></span><br><span class="line">import java.util.HashMap;</span><br><span class="line">import java.util.Map;</span><br><span class="line">import java.util.concurrent.TimeUnit;</span><br><span class="line">import java.util.concurrent.locks.Lock;</span><br><span class="line">import java.util.concurrent.locks.ReentrantLock;</span><br><span class="line">import java.util.concurrent.locks.ReentrantReadWriteLock;</span><br><span class="line"></span><br><span class="line">class MyCache</span><br><span class="line">&#123;</span><br><span class="line">   private  volatile Map&lt;String,Object&gt; map &#x3D; new HashMap&lt;String,Object&gt;();</span><br><span class="line">&#x2F;&#x2F;   Lock lock &#x3D; new ReentrantLock();</span><br><span class="line">    private  ReentrantReadWriteLock rwLock &#x3D; new ReentrantReadWriteLock();</span><br><span class="line">    public void put(String key, Object value)&#123;</span><br><span class="line">        rwLock.writeLock().lock();</span><br><span class="line">        try &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+&quot;\t is writing:&quot; + key);</span><br><span class="line">            try&#123;</span><br><span class="line">                TimeUnit.MILLISECONDS.sleep(300);&#125; catch(InterruptedException e) &#123; e.printStackTrace();&#125;</span><br><span class="line">            map.put(key,value);</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+&quot;\t finish writing&quot;);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            rwLock.writeLock().unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public void get(String key)&#123;</span><br><span class="line">        rwLock.readLock().lock();</span><br><span class="line">        try &#123;</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+&quot;\t is reading&quot;);</span><br><span class="line">            try&#123;</span><br><span class="line">                TimeUnit.MILLISECONDS.sleep(300);&#125; catch(InterruptedException e) &#123; e.printStackTrace();&#125;</span><br><span class="line">            Object result &#x3D; map.get(key);</span><br><span class="line">            System.out.println(Thread.currentThread().getName()+&quot;\t finish reading:&quot; + result);</span><br><span class="line">        &#125; catch (Exception e) &#123;</span><br><span class="line">            e.printStackTrace();</span><br><span class="line">        &#125; finally &#123;</span><br><span class="line">            rwLock.readLock().unlock();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">&#x2F;**</span><br><span class="line"> * 多个线程同时读一个资源类没有问题,所以为了满足并发量，读取共享资源应该可以同时进行</span><br><span class="line"> * 但是</span><br><span class="line"> * 如果有一个线程想去写共享资源来，就不应该再有其他线程可以对该资源进行读或写</span><br><span class="line"> * 小总结：</span><br><span class="line"> *      读-读可以共存</span><br><span class="line"> *      读-写不能共存</span><br><span class="line"> *      写-写不能共存</span><br><span class="line"> *</span><br><span class="line"> *      写操作：原子+独占,整个过程必须是一个完整的统一体，中间不许被分割,被打断</span><br><span class="line"> *&#x2F;</span><br><span class="line">public class ReadWriteLockDemo &#123;</span><br><span class="line"></span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        MyCache myCache &#x3D; new MyCache();</span><br><span class="line">        for(int i &#x3D; 1; i &lt;&#x3D; 20; i ++)</span><br><span class="line">        &#123;</span><br><span class="line">            int finalI &#x3D; i;</span><br><span class="line">            int finalI1 &#x3D; i;</span><br><span class="line">            new Thread(()-&gt;&#123;</span><br><span class="line">              myCache.put(finalI+&quot;&quot;, finalI1+&quot;&quot;);</span><br><span class="line">          &#125;,String.valueOf(i)).start();</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i &#x3D; 1; i &lt;&#x3D; 20; i ++)</span><br><span class="line">        &#123;</span><br><span class="line">            int finalI &#x3D; i;</span><br><span class="line">            int finalI1 &#x3D; i;</span><br><span class="line">            new Thread(()-&gt;&#123;</span><br><span class="line">                myCache.get(finalI+&quot;&quot;);</span><br><span class="line">            &#125;,String.valueOf(i)).start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure></li>
+</ul>
+<p>32.如何实现一个Socket?<br><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv4253716/">https://www.bilibili.com/read/cv4253716/</a></p>
+<p>33.springmvc工作流程？</p>
+<p>1.DispatcherServlet表示前置控制器，是整个SpringMVC的控制中心。用户发出请求，DispatcherServlet接收请求并拦截请求，</p>
+<p>我们假设请求的url为:</p>
+<p><a target="_blank" rel="noopener" href="http://localhost:9999/SpringMVC/input-product">http://localhost:9999/SpringMVC/input-product</a></p>
+<p>如上url拆分成三部分：</p>
+<p>(1)<a target="_blank" rel="noopener" href="http://localhost:9999/">http://localhost:9999</a> 服务器域名</p>
+<p>(2)SpringMVC部署在服务器(<a href="http://localhost:9999)上的web站点">http://localhost:9999)上的web站点</a></p>
+<p>(3)input-product表示控制器</p>
+<p>通过分析，如上url表示为：请求位于服务器localhost:9999上的SpringMVC站点的input-product控制器</p>
+<p>2.HandlerMapping为处理器映射。DispatcherServlet调用HandlerMapping,HandlerMapping根据请求url查找Handler</p>
+<p>3.HandlerExecution表示具体的Handler,其主要作用是根据url查找控制器，如上url被查找控制器为：input-product</p>
+<p>4.HandlerExecution将解析后的信息传递给DispatcherServlet,如解析控制器映射等</p>
+<p>5.HandlerAdapter表示处理器适配器，其按照特定的规则去执行Handler</p>
+<p>6.Handler让具体的Controller执行</p>
+<p>7.Controller将具体的执行信息返回给HandlerAdapter,如ModelAndView</p>
+<p>8.HandlerAdapter将视图逻辑名或模型传递给DispatcherServlet</p>
+<p>9.DispatcherServlet调用视图解析器(ViewResolver)来解析HandlerAdapter传递的逻辑视图名</p>
+<p>10.视图解析器将解析的逻辑视图名传给DispatcherServlet</p>
+<p>11.DispatcherServlet根据视图解析器解析的视图结果，调用具体的视图</p>
+<p>12.最终视图呈现给用户。</p>
+<p><img src="/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/5.jpg" alt=".jpg"></p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/wangjiming/p/10487832.html">https://www.cnblogs.com/wangjiming/p/10487832.html</a></p>
+<p>34.什么是大端序,什么是小端序？</p>
+<p>1、大端模式：高字节保存在内存的低地址</p>
+<p>2、小端模式：高字节保存在内存的高地址</p>
+<p>小端的好处是学计算机原里的时候大多都学的这个，而且无论大端小端的cpu，1个字节内的顺序都是小端，比较符合一般初学者思维惯性。</p>
+<p>大端的好处是网络通信的TCP/IP协议中字节序就是按照大端规定的。x86的cpu处理所有网络数据包时都要先将数字进行字节序反转才能进行运算，发送时也要先反转才能发送，增加了一点计算开销。如果你是大尾cpu就不需要反转了。</p>
+<p>最坏的情况是，现实中者两种字节序我们都必然要用到。</p>
+<p>35.http对称加密用的是啥算法,非对称用的是啥？</p>
+<p>非对称加密用RSA算法。</p>
+<p>对称加密用DEA算法。</p>
+<p>（1）DES（Data Encryption Standard）：数据加密标准，速度较快，适用于加密大量数据的场合。</p>
+<p>（2）3DES（Triple DES）：是基于DES，对一块数据用三个不同的密钥进行三次加密，强度更高。</p>
+<p>（3）AES（Advanced Encryption Standard）：高级加密标准，是下一代的加密算法标准，速度快，安全级别高；</p>
+<p>36.堆和栈的区别?</p>
+<p>1.Java的堆是一个运行时数据区，类的对象从堆中分配空间。</p>
+<p>2.堆的优势是可以动态地分配内存空间，需要多少内存空间不必事先告诉编译器，因为它是在运行时动态分配的。但缺点是，由于需要在运行时动态分配内存，所以存取速度较慢。</p>
+<p>3.栈中主要存放一些基本数据类型的变量（byte，short，int，long，float，double，boolean，char）和对象的引用和其他(局部变量表/操作数栈/对象引用/方法出口等)。每一个方法执行对应一个栈帧入栈的过程,每一个方法执行完成对应一个栈帧出栈的过程。</p>
+<p>4.栈的优势是，存取速度比堆快，栈数据可以共享。但缺点是，存放在栈中的数据占用多少内存空间需要在编译时确定下来，缺乏灵活性。</p>
+<p>5.栈是线程私有的,堆是线程共有的。</p>
+<p>37.常见的异常，说一下oom，怎么处理oom?</p>
+<p>1、Java heap space-&gt; 针对大部分情况，通常只需要通过 -Xmx 参数调高 JVM 堆内存空间即可。</p>
+<p>2.GC overhead limit exceeded-&gt; 针对大部分情况，通常只需要通过 -Xmx 参数调高 JVM 堆内存空间即可。</p>
+<p>3.Permgen space  程序启动报错，修改 -XX:MaxPermSize 启动参数，调大永久代空间。</p>
+<p>4.Metaspace  需要特别注意的是调整 Metaspace 空间大小的启动参数为 -XX:MaxMetaspaceSize。</p>
+<p>5.Unable to create new native thread  使用 -Xss 参数减少线程栈的大小；</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/79355050">https://zhuanlan.zhihu.com/p/79355050</a></p>
+<p>38.linux下的管道是干啥的</p>
+<p>通信。充当缓冲区(如网络编程的read/write缓冲区)</p>
+<p>39.TCP连接大量CLOSE_WAIT状态问题排查</p>
+<p>CLOSE_WAIT状态的一端都是被动关闭连接的，如果该端的socket程序没有正确关闭从而发送不了FIN信号，将会导致长时间CLOSE_WAIT状态。</p>
+<p>1.数据库连接问题导致服务器端线程阻塞，服务器线程阻塞导致服务器socket不能正常关闭。</p>
+<p>2.CPU负载高</p>
+<p>3.被人为攻击</p>
+<p>40.linux进程内存空间分为哪几个段？</p>
+<p>Linux的内存空间简单可以分为5个部分：</p>
+<p>Text（代码区）：存放可执行的指令操作，其只读不能写</p>
+<p>Bss（静态区or全局区）：存放未初始化的全局变量和静态变量</p>
+<p>Data（数据区）：存放初始化的全局变量和静态变量</p>
+<p>Stack：存放临时变量，函数参数等</p>
+<p>Heap：存放new/malloc等动态申请的变量，用户必须手动进行</p>
+<p>delete/free操作。 其中Stack和Heap的内存增长方向是相反的</p>
 
     
 
