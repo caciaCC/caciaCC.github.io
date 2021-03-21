@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/2.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/5.jpg">
 <meta property="article:published_time" content="2021-03-17T11:22:43.000Z">
-<meta property="article:modified_time" content="2021-03-20T12:08:14.178Z">
+<meta property="article:modified_time" content="2021-03-21T11:01:03.624Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -280,7 +280,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">6.5k字</span>
+      <span class="post-count">6.8k字</span>
     </span>
   </span>
 
@@ -289,7 +289,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">25分</span>
+      <span class="post-count">26分</span>
     </span>
   </span>
 </div>
@@ -306,6 +306,7 @@
 <p>o    服务端：<code>socket</code> -&gt; bind -&gt; listen -&gt; accept -&gt; recv/send -&gt; close。</p>
 <p>o    客户端：socket -&gt; connect -&gt; send/recv -&gt; close</p>
 <p>UDP：<br>o    服务端：socket -&gt; bind -&gt; recvfrom/sendto -&gt; close。<br>o    客户端：socket -&gt; sendto/recvfrom -&gt; close。</p>
+<a id="more"></a>
 <p>3.IOC是什么与过程。</p>
 <p><img src="/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/1.jpg" alt=".jpg"></p>
 <p>4.URI和URL区别</p>
@@ -517,6 +518,23 @@
 <p>Stack：存放临时变量，函数参数等</p>
 <p>Heap：存放new/malloc等动态申请的变量，用户必须手动进行</p>
 <p>delete/free操作。 其中Stack和Heap的内存增长方向是相反的</p>
+<p>41.给你两个ip地址,在局域网内怎么进行UDP报文的传输?</p>
+<p>通过ARP协议先获取MAC地址。</p>
+<p>1.先查询A主机自身的ARP高速缓存(IP地址与MAC地址的映射)</p>
+<p>2.没有,则要广播一个ARP请求分组。</p>
+<p>3.交换机收到广播分组,将其广播</p>
+<p>4.对应B主机返回一个单播ARP响应分组,然后A就知道了B的MAC地址。</p>
+<p>如果是与不是一个局域网内的进行通信呢?</p>
+<p>42.什么是ping攻击?</p>
+<p>Ping攻击就是不断向指定的IP地址发送不接收回复的数据包，这种攻击通过发送大于65536字节的ICMP包使操作系统崩溃。<br>通常不可能发送大于65536个字节的ICMP包，但可以把报文分割成片段，然后在目标主机上重组，最终会导致被攻击目标缓冲区溢出，直至目标主机有限系统资源被消耗殆尽。</p>
+<p>43.有一个TCP链接,刚建立,双方还没传送报文,服务器崩溃和服务器对应进程崩溃,客户端分别会发生什么。</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/a13602955218/article/details/105579810">https://blog.csdn.net/a13602955218/article/details/105579810</a></p>
+<p>44.统计[1, 1000000000000]中有多少个素数（程序运行在2核心处理器的linux服务器上）</p>
+<ul>
+<li>提示：双核服务器上的运行效率要近似达到单核服务器对2倍</li>
+</ul>
+<p>没写返回值return 0。</p>
+<p>45.</p>
 
     
 
