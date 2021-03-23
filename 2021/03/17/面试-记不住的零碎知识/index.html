@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/2.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/5.jpg">
 <meta property="article:published_time" content="2021-03-17T11:22:43.000Z">
-<meta property="article:modified_time" content="2021-03-21T11:01:03.624Z">
+<meta property="article:modified_time" content="2021-03-22T10:55:15.753Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -280,7 +280,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">6.8k字</span>
+      <span class="post-count">7.1k字</span>
     </span>
   </span>
 
@@ -289,7 +289,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">26分</span>
+      <span class="post-count">27分</span>
     </span>
   </span>
 </div>
@@ -534,7 +534,25 @@
 <li>提示：双核服务器上的运行效率要近似达到单核服务器对2倍</li>
 </ul>
 <p>没写返回值return 0。</p>
-<p>45.</p>
+<p>45.MySQL如何开启慢查询日志?</p>
+<p>①数据库重启失效的配置</p>
+<p>1.set global slow_query_log=’ON’;</p>
+<p>2.设置慢查询日志存放的位置</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">mysql&gt; set global slow_query_log_file&#x3D;&#39;&#x2F;usr&#x2F;local&#x2F;mysql&#x2F;data&#x2F;slow.log&#39;; &#x2F;&#x2F;linux</span><br><span class="line">mysql&gt; set global slow_query_log_file&#x3D;&#39;D:\\mysq\data\slow.log&#39;;         &#x2F;&#x2F;windows</span><br></pre></td></tr></table></figure>
+<p>3.设置查询超过1秒就记录</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">set global long_query_time&#x3D;1;</span><br></pre></td></tr></table></figure>
+<p>②配置文件<br>1.修改my.cnf</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">[mysqld]</span><br><span class="line">slow_query_log &#x3D; ON</span><br><span class="line">slow_query_log_file &#x3D; &#x2F;usr&#x2F;local&#x2F;mysql&#x2F;data&#x2F;slow.log     &#x2F;&#x2F;linux</span><br><span class="line">long_query_time &#x3D; 1</span><br></pre></td></tr></table></figure>
+<p>2.重启mysql服务</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">service mysqld restart</span><br></pre></td></tr></table></figure>
+<p>46.什么情况下进入Block、waiting、time-wating状态?</p>
+<p>blocked:一个阻塞线程在等待monitor锁,比如,想进入syn但是被阻塞。</p>
+<p>wating:在同步块中调用wait(),join(),park()不加超时参数。</p>
+<p>time_waiting:sleep(),wait(),join()加了超时参数的条件。</p>
+<p>47.关于CopyonwriteList了解多少?</p>
+<p>传入一个集合类,变成Copyonwrite集合类。</p>
+<p>add(和set一样)、set(加Reentrant锁、先复制,再改变引号)、get(直接)</p>
+<p>48.</p>
 
     
 
