@@ -40,8 +40,10 @@
 <meta property="og:image" content="http://caciacc.top/2021/03/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E7%89%88%E5%AD%A6%E4%B9%A0/22.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E7%89%88%E5%AD%A6%E4%B9%A0/23.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E7%89%88%E5%AD%A6%E4%B9%A0/24.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E7%89%88%E5%AD%A6%E4%B9%A0/25.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E7%89%88%E5%AD%A6%E4%B9%A0/26.jpg">
 <meta property="article:published_time" content="2021-03-21T08:42:40.000Z">
-<meta property="article:modified_time" content="2021-03-23T01:24:39.367Z">
+<meta property="article:modified_time" content="2021-03-23T01:43:56.112Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="操作系统">
 <meta property="article:tag" content="计算机基础">
@@ -301,7 +303,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">7.3k字</span>
+      <span class="post-count">7.6k字</span>
     </span>
   </span>
 
@@ -310,7 +312,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">25分</span>
+      <span class="post-count">26分</span>
     </span>
   </span>
 </div>
@@ -565,7 +567,12 @@
 <h3 id="3-3-1-分页"><a href="#3-3-1-分页" class="headerlink" title="3.3.1 分页"></a>3.3.1 分页</h3><p>大多数虚拟内存系统都使用一种称为分页的技术。</p>
 <p>由程序产生的这些地址称为虚拟地址,它们构成了一个虚拟地址空间。</p>
 <p>在没有虚拟内存的计算机上,系统直接将虚拟地址送到内存总线上,读写操作使用具有相同地址的物理内存字;而在使用虚拟内存的情况下,虚拟地址不能被直接送到内存总线上,而是被送到<code>内存管理单元</code>(MMU),MMU把虚拟地址映射为物理地址。</p>
-
+<p><img src="/2021/03/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E7%89%88%E5%AD%A6%E4%B9%A0/25.jpg"></p>
+<p>下图说明了这种映射是如何工作的。在这个例子中,有一台可以产生16位地址的计算机,地址范围从0-64k,且这些地址是虚拟地址。然而,这台计算机只有32KB的物理内存,因此,虽然可以编写64KB的程序,但它们却不能被完全调入内存运行。在磁盘上必须有一个可以大到64KB的程序核心印象的完整副本,以保证程序片段在需要时能被调入内存。</p>
+<p><img src="/2021/03/21/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E7%8E%B0%E4%BB%A3%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%AC%AC%E4%B8%89%E7%89%88%E5%AD%A6%E4%B9%A0/26.jpg"></p>
+<p>虚拟内存空间按照固定大小划分成称为<code>页面</code>的若干单位。在物理内存中对应的单元称为<code>页框</code>。页面和页框的大小通常是一样的。</p>
+<p>当程序访问了一个未映射的页面,MMU注意到该页面没有被映射,于是使CPU陷入到操作系统,这个陷阱称为缺页中断。操作系统找到一个很少使用的页框且将它的内容写入磁盘(如果它不在磁盘上)。随后把需要访问的页面读到刚才回收的页框中,修改映射关系,然后重新启动引起陷入的指令。</p>
+<h3 id="3-3-2页表"><a href="#3-3-2页表" class="headerlink" title="3.3.2页表"></a>3.3.2页表</h3>
     
 
     
