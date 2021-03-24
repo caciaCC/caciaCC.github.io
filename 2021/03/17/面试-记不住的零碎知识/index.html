@@ -20,8 +20,10 @@
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/1.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/2.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/5.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/6.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/7.jpg">
 <meta property="article:published_time" content="2021-03-17T11:22:43.000Z">
-<meta property="article:modified_time" content="2021-03-22T10:55:15.753Z">
+<meta property="article:modified_time" content="2021-03-24T10:26:50.272Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -280,7 +282,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">7.1k字</span>
+      <span class="post-count">8.2k字</span>
     </span>
   </span>
 
@@ -289,7 +291,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">27分</span>
+      <span class="post-count">31分</span>
     </span>
   </span>
 </div>
@@ -382,6 +384,7 @@
 <p>18.SQL注入怎么解决?</p>
 <p>1.在JDBC中，使用Statement的子类PreparedStatement，这也是我们最先想到的方法(因为是预先编译)</p>
 <p>2.Mybatis中尽量使用#{}而不是${},使用#{}该语句在执行前会进行预编译,后来传入的参数通过占位符的方式填入到已经编译完的语句中,不会发生问题。</p>
+<p>(${ }在动态 SQL 解析阶段会直接进行变量替换，而#{ }会被解析成占位符？，之后再进行变量替换。)</p>
 <p>3.手动过滤参数。声明一个危险参数数组danger，将前台传入的参数用“ ”分隔后，产生的参数数组与danger有交集时，终止该sql的执行，并反馈前台，提示禁止输入非法字符。</p>
 <p>19.如何在java中接入redis?</p>
 <p>配置pom</p>
@@ -552,7 +555,42 @@
 <p>47.关于CopyonwriteList了解多少?</p>
 <p>传入一个集合类,变成Copyonwrite集合类。</p>
 <p>add(和set一样)、set(加Reentrant锁、先复制,再改变引号)、get(直接)</p>
-<p>48.</p>
+<p>48.一个进程绑定了端口号后，创建子进程（fork），子进程是不是和父进程绑定了同一个端口号？</p>
+<p>子进程会复制父进程的文件描述符表,故父进程的一个socket绑定了一个端口，那么fork以后，子进程也同样能够引用到这个socket。</p>
+<p>但是这样会导致惊群现象,包括accep惊群和epoll_wait惊群。</p>
+<p>故可以用so_reuseport,实现内核级别的负载均衡。</p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/360939266">https://www.zhihu.com/question/360939266</a></p>
+<p>49.Semaphore原理是啥?</p>
+<p>Semaphore中有静态内部类FairSync和NonfairSync,继承了<code>AbstractQueuedSynchronizer</code>,分别实现了<code>tryAcquireShared</code>和<code>tryReleaseShared</code>,<code>tryAcquire</code>,<code>tryRelease</code>之类的方法。</p>
+<p>50.什么是操作系统颠簸(抖动)?</p>
+<p>颠簸是不作处理的计算机活动，通常是因为内存或其他资源耗尽或有限而无法完成所要执行的操作。(具体表现为频繁发生缺页中断等等)</p>
+<p>解决方法:</p>
+<p>1.如果是页面替换算法的问题,修改页面替换算法。</p>
+<p>2.如果是运行的多道程序过多,降低多道程序的数量。</p>
+<p>51.跨域后端怎么配置的?</p>
+<p>继承WebMvcConfigurerAdapter实现的全局配置。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">@Configuration</span><br><span class="line">public class WebMvcConfig extends WebMvcConfigurerAdapter &#123;</span><br><span class="line">    @Override</span><br><span class="line">    public void addCorsMappings(CorsRegistry registry) &#123;</span><br><span class="line">        registry.addMapping(&quot;&#x2F;**&quot;)</span><br><span class="line">                .allowedOrigins(&quot;*&quot;)</span><br><span class="line">                .allowedMethods(&quot;POST&quot;, &quot;GET&quot;, &quot;PUT&quot;, &quot;OPTIONS&quot;, &quot;DELETE&quot;)</span><br><span class="line">                .maxAge(3600)</span><br><span class="line">                .allowCredentials(true);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>52.协程是什么?</p>
+<p>协程本质上就是用户态下的线程。</p>
+<p>53.linux中程序在内存中的布局?</p>
+<p><img src="/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/6.jpg" alt=".jpg"></p>
+<p>左边的是UNIX/LINUX系统的执行文件，右边是对应进程逻辑地址空间的划分情况。</p>
+<p>首先是堆栈区(stack)，堆栈是由编译器自动分配释放 ，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。栈的申请是由系统自动分配，如在函数内部申请一个局部变量 int h，同时判别所申请空间是否小于栈的剩余空间，如若小于的话，在堆栈中为其开辟空间，为程序提供内存，否则将报异常提示栈溢出。 </p>
+<p>其次是堆(heap)，堆一般由程序员分配释放， 若程序员不释放，程序结束时可能由OS回收 。注意它与数据结构中的堆是两回事，分配方式倒是类似于链表。堆的申请是由程序员自己来操作的，在C中使用malloc函数，而C++中使用new运算符，但是堆的申请过程比较复杂：当系统收到程序的申请时，会遍历记录空闲内存地址的链表，以求寻找第一个空间大于所申请空间的堆结点，然后将该结点从空闲结点链表中删除，并将该结点的空间分配给程序，此处应该注意的是有些情况下，新申请的内存块的首地址记录本次分配的内存块大小，这样在delete尤其是delete[]时就能正确的释放内存空间。</p>
+<p>接着是全局数据区(静态区) (static)，全局变量和静态变量的存储是放在一块的，初始化的全局变量和静态变量在一块区域， 未初始化的全局变量和未初始化的静态变量在相邻的另一块区域。 另外文字常量区，常量字符串就是放在这里，程序结束后有系统释放。</p>
+<p>最后是程序代码区，放着函数体的二进制代码。</p>
+<p>54.Spring 的 Bean 的加载过程</p>
+<p>获取完整定义 -&gt; 实例化 -&gt; 依赖注入 -&gt; 初始化(里面可以用BeanPostProcessor做增强) -&gt; 类型转换。</p>
+<p>55.AQS如何完成线程同步?</p>
+<p>AQS依赖内部的同步队列（FIFO双向队列）来完成同步状态的管理，当前线程获取同步状态失败时，同步器将会将当前线程以及等待状态等信息构造成为一个节点（NODE）并将其加入同步队列，同时会阻塞当前线程，当同步状态释放时，会把首节点中的线程唤醒，使其再次尝试获取同步状态。</p>
+<p><img src="/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/7.jpg" alt=".jpg"></p>
+<p>56.反问环节问什么?</p>
+<p>1.部门做什么的?</p>
+<p>2.推荐什么书籍?</p>
+<p>3.觉得我有哪方面需要加强?</p>
+<p>4.如果有机会实习的话,我要学习什么?</p>
+<p>5.作为面试官你喜欢考察候选者的什么能力呢?或者说你喜欢什么样的候选者?</p>
+<p>6.?</p>
 
     
 

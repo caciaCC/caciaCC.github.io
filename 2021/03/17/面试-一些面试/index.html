@@ -18,7 +18,7 @@
 <meta property="og:description" content="斗鱼-日常实习一面1.数据结构了解吗?说说常见的数据结构,冒泡排序、选择排序、插入排序中,如果序列已经90%有序,使用哪种排序算法比较好,为什么?手动模拟一下两种你熟悉的排序算法,哪些排序算法是稳定的,哪些不稳定?">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-03-17T06:05:49.000Z">
-<meta property="article:modified_time" content="2021-03-23T01:27:40.948Z">
+<meta property="article:modified_time" content="2021-03-24T07:13:41.701Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -276,7 +276,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.2k字</span>
+      <span class="post-count">2.1k字</span>
     </span>
   </span>
 
@@ -285,7 +285,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">4分</span>
+      <span class="post-count">7分</span>
     </span>
   </span>
 </div>
@@ -341,6 +341,30 @@
 <p>6.linux操作系统内存空间有哪些部分组成?</p>
 <p>7.说一下操作系统内存空间的内存管理是怎么样的?</p>
 <p>8.统计[1, 1000000000000]中有多少个素数(程序运行在2核心处理器的linux服务器上) – 提示：双核服务器上的运行效率要近似达到单核服务器对2倍</p>
+<h2 id="携程"><a href="#携程" class="headerlink" title="携程"></a>携程</h2><h3 id="一面-2"><a href="#一面-2" class="headerlink" title="一面"></a>一面</h3><p>1.介绍项目。什么是RBAC?</p>
+<p>2.redis做缓存是做了哪些缓存呢?redis缓存穿透了解吗?布隆过滤器是使用什么样的hash算法呢?实际使用时布隆过滤器设置多大,hash算法怎么选取?</p>
+<p>3.项目中不同模块之间如何进行相互调用呢?服务的注册发现了解吗?</p>
+<p>4.Java中的HashMap的底层结构说一下吧?扩容机制说一下?hashmap1.7和hashmap1.8分别会有什么样的异常?线程安全的hashmap说一下?</p>
+<p>5.syn的1.5之前是重量级锁,后面进行了什么样的变化?偏向锁和轻量级锁的适用场景说一说吧?</p>
+<p>6.JVM了解吗?说一下垃圾回收算法有哪些?年轻代晋升到老年代有哪些可能的情况?</p>
+<p>7.JVM调优的各种参数了解吗?举一个OutOfMemory异常的例子吧。</p>
+<p>8.线程池有了解吗?线程池的七大参数说一下吧。然后如果是超出核心线程数,线程是先进入阻塞队列还是先运行在非核心线程数里面?</p>
+<p>9.类加载的过程了解吗?类加载的双亲委派机制?</p>
+<p>10.JVM的主存和工作内存的模型说一说?volatile关键字是如何作用于主存和工作内存的?禁止指令重排的意义是什么?JVM为什么要进行指令重排?</p>
+<p>11.spring的bean的生命周期了解吗?什么是process?</p>
+<p>12.一道题目。反转链表。</p>
+<h2 id="美团"><a href="#美团" class="headerlink" title="美团"></a>美团</h2><h3 id="一面-3"><a href="#一面-3" class="headerlink" title="一面"></a>一面</h3><p>1.自我介绍。</p>
+<p>2.图书管理系统redis是怎么配置的?缓存怎么做的?删除缓存是怎么删除的?是先删缓存还是先改数据库?如果先删缓存会有什么问题?先删数据库呢?怎么解决?</p>
+<p>3.redis的各个类型的数据结构了解吗?zset底层有跳表和字典树,查名字用啥?zset用于什么样的场景?zset查询的时间复杂度是多少?zset的层数有限制吗?redis的pipeline有了解吗?</p>
+<p>4.hash有了解吗?hash表的扩容是怎么样的过程?它是一个个慢慢执行还是一次性执行的?</p>
+<p>5.分布式锁有了解吗?分布式锁是怎么用的?</p>
+<p>6.mysql中索引有了解吗?为什么要有索引?B+树和B树比有什么优势?给你一条慢查询语句,怎么分析它哪里慢?如果有两个索引a和b,我希望执行索引a,但是实际执行的是索引b,该怎么办?</p>
+<p>7.book表和user表,多对多关系,如何表示多对多关系?只有两种查询select  * from xxx where userid = ?,select * from xxx where userid = ? and bookid = ?,如何建立索引,为什么?如果有1000w条数据,怎么进行优化?分库分表是怎么实现的?</p>
+<p>8.数据库事务默认的隔离级别了解吗?是如何实现的?</p>
+<p>8.HashMap是线程安全的吗?有哪些线程安全的Map?concurrenthashmap怎么实现线程安全的?</p>
+<p>9.http和https的区别是什么?LRU了解吗,说一说?</p>
+<p>10.做一道题。 1-&gt;3-&gt;5 2-&gt;4-&gt;6,按大小合并链表。用java实现。</p>
+<p>11.反问,有什么推荐的书籍吗?部门是做什么的?</p>
 
     
 
