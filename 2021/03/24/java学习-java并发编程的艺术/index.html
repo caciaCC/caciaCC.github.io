@@ -6,19 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://caciacc.top">
-  <title>Archives | caciaCC的博客</title>
+  <title>Java学习-Java并发编程的艺术 | caciaCC的博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="leetcode刷题+java面试点记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="caciaCC的博客">
-<meta property="og:url" content="http://caciacc.top/archives/page/6/index.html">
+  <meta name="description" content="第一章 并发编程的挑战1.1上下文切换时间片一般是几十毫秒（ms）。 CPU通过时间片分配算法来循环执行任务，当前任务执行一个时间片后会切换到下一个任务。但是，在切换前会保存上一个任务的状态，以便下次切换回这个任务时，可以再加载这个任务的状态。所以任务从保存到再加载的过程就是一次上下文切换。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Java学习-Java并发编程的艺术">
+<meta property="og:url" content="http://caciacc.top/2021/03/24/java%E5%AD%A6%E4%B9%A0-java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/index.html">
 <meta property="og:site_name" content="caciaCC的博客">
-<meta property="og:description" content="leetcode刷题+java面试点记录">
+<meta property="og:description" content="第一章 并发编程的挑战1.1上下文切换时间片一般是几十毫秒（ms）。 CPU通过时间片分配算法来循环执行任务，当前任务执行一个时间片后会切换到下一个任务。但是，在切换前会保存上一个任务的状态，以便下次切换回这个任务时，可以再加载这个任务的状态。所以任务从保存到再加载的过程就是一次上下文切换。">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://caciacc.top/2021/03/24/java%E5%AD%A6%E4%B9%A0-java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/1.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/24/java%E5%AD%A6%E4%B9%A0-java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/2.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/24/java%E5%AD%A6%E4%B9%A0-java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/3.jpg">
+<meta property="article:published_time" content="2021-03-24T12:14:40.000Z">
+<meta property="article:modified_time" content="2021-03-24T14:59:26.314Z">
 <meta property="article:author" content="caciaCC">
+<meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://caciacc.top/2021/03/24/java%E5%AD%A6%E4%B9%A0-java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="caciaCC的博客" type="application/atom+xml">
   
@@ -245,41 +252,133 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-java学习-java并发编程的艺术" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/27/%E9%A1%B9%E7%9B%AE-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9E%E7%8E%B0-%E4%BA%8C/" class="archive-article-date">
-        <time datetime="2021-01-27T12:54:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-27</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/27/%E9%A1%B9%E7%9B%AE-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9E%E7%8E%B0-%E4%BA%8C/">项目-一个简单图书管理系统的实现-二</a>
-	
+    <h1 class="article-title" itemprop="name">
+      Java学习-Java并发编程的艺术
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
+  
+  
+<a href="/2021/03/24/java%E5%AD%A6%E4%B9%A0-java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/" class="archive-article-date">
+        <time datetime="2021-03-24T12:14:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-24</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">4.1k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">16分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h1 id="第一章-并发编程的挑战"><a href="#第一章-并发编程的挑战" class="headerlink" title="第一章 并发编程的挑战"></a>第一章 并发编程的挑战</h1><h2 id="1-1上下文切换"><a href="#1-1上下文切换" class="headerlink" title="1.1上下文切换"></a>1.1上下文切换</h2><p>时间片一般是几十毫秒（ms）。</p>
+<p>CPU通过时间片分配算法来循环执行任务，当前任务执行一个时间片后会切换到下一个任务。但是，在切换前会保存上一个任务的状态，以便下次切换回这个任务时，可以再加载这个任务的状态。所以<code>任务从保存到再加载的过程就是一次上下文切换</code>。</p>
+<a id="more"></a>
+
+<h3 id="1-1-1-多线程一定快吗"><a href="#1-1-1-多线程一定快吗" class="headerlink" title="1.1.1 多线程一定快吗"></a>1.1.1 多线程一定快吗</h3><p>下面的代码演示串行和并发执行并累加操作的时间，请分析：下面的代码并发执行一定比串行执行快吗？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">ConcurrencyTest</span> </span>&#123;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">long</span> count = <span class="number">10000l</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line">concurrency();</span><br><span class="line">serial();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">concurrency</span><span class="params">()</span> <span class="keyword">throws</span> InterruptedException </span>&#123;</span><br><span class="line"><span class="keyword">long</span> start = System.currentTimeMillis();</span><br><span class="line">Thread thread = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">a += <span class="number">5</span>;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line">thread.start();</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">b--;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">long</span> time = System.currentTimeMillis() - start;</span><br><span class="line">thread.join();</span><br><span class="line">System.out.println(<span class="string">&quot;concurrency :&quot;</span> + time+<span class="string">&quot;ms,b=&quot;</span>+b);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">serial</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">long</span> start = System.currentTimeMillis();</span><br><span class="line"><span class="keyword">int</span> a = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">a += <span class="number">5</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">int</span> b = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">long</span> i = <span class="number">0</span>; i &lt; count; i++) &#123;</span><br><span class="line">b--;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">long</span> time = System.currentTimeMillis() - start;</span><br><span class="line">System.out.println(<span class="string">&quot;serial:&quot;</span> + time+<span class="string">&quot;ms,b=&quot;</span>+b+<span class="string">&quot;,a=&quot;</span>+a);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>上述问题的答案是<code>“不一定”</code>，测试结果如图所示。</p>
+<p><img src="/2021/03/24/java%E5%AD%A6%E4%B9%A0-java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/1.jpg" alt=".jpg"></p>
+<p>从表1-1可以发现，当并发执行累加操作不超过百万次时，速度会比串行执行累加操作要慢。那么，为什么并发执行的速度会比串行慢呢？这是因为<code>线程有创建和上下文切换的开销</code>。</p>
+<h3 id="1-1-2-测试上下文切换次数和时长"><a href="#1-1-2-测试上下文切换次数和时长" class="headerlink" title="1.1.2 测试上下文切换次数和时长"></a>1.1.2 测试上下文切换次数和时长</h3><p>下面我们来看看有什么工具可以度量上下文切换带来的消耗。</p>
+<p>使用<code>Lmbench3</code>可以测量上下文切换的时长。</p>
+<p>使用<code>vmstat</code>可以测量上下文切换的次数。</p>
+<p>下面是利用<code>vmstat</code>测量上下文切换次数的示例。</p>
+<p><img src="/2021/03/24/java%E5%AD%A6%E4%B9%A0-java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/2.jpg" alt=".jpg"></p>
+<p>CS（<code>Content Switch</code>）表示上下文切换的次数，从上面的测试结果中我们可以看到，上下文每1秒切换1000多次。</p>
+<h3 id="1-1-3-如何减少上下文切换"><a href="#1-1-3-如何减少上下文切换" class="headerlink" title="1.1.3 如何减少上下文切换"></a>1.1.3 如何减少上下文切换</h3><p>减少上下文切换的方法有<code>无锁并发编程</code>、<code>CAS算法</code>、<code>使用最少线程</code>和<code>使用协程</code>。</p>
+<p>·无锁并发编程。多线程竞争锁时，会引起上下文切换，所以多线程处理数据时，可以用一些办法来避免使用锁，如将数据的ID<code>按照Hash算法</code>取模分段，不同的线程处理不同段的数据。</p>
+<p>·CAS算法。Java的<code>Atomic包</code>使用CAS算法来更新数据，而不需要加锁。</p>
+<p>·使用最少线程。避免创建不需要的线程，比如任务很少，但是创建了很多线程来处理，这样会造成大量线程都处于等待状态。</p>
+<p>·协程：在单线程里实现多任务的调度，并在单线程里维持多个任务间的切换。</p>
+<h3 id="1-1-4-减少上下文切换实战"><a href="#1-1-4-减少上下文切换实战" class="headerlink" title="1.1.4 减少上下文切换实战"></a>1.1.4 减少上下文切换实战</h3><p>本节将通过减少线上大量WAITING的线程，来减少上下文切换次数。</p>
+<p>第一步：用<code>jstack</code>命令dump线程信息，看看pid为3117的进程里的线程都在做什么。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo -u admin &#x2F;opt&#x2F;ifeve&#x2F;java&#x2F;bin&#x2F;jstack 31177 &gt; &#x2F;home&#x2F;tengfei.fangtf&#x2F;dump17</span><br></pre></td></tr></table></figure>
+<p>第二步：统计所有线程分别处于什么状态，发现300多个线程处于<code>WAITING（onobjectmonitor）</code>状态。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[tengfei.fangtf@ifeve ~]$ grep java.lang.Thread.State dump17 | awk &#39;&#123;print $2$3$4$5&#125;&#39;</span><br><span class="line">| sort | uniq -c</span><br><span class="line">39 RUNNABLE</span><br><span class="line">21 TIMED_WAITING(onobjectmonitor)</span><br><span class="line">6 TIMED_WAITING(parking)</span><br><span class="line">51 TIMED_WAITING(sleeping)</span><br><span class="line">305 WAITING(onobjectmonitor)</span><br><span class="line">3 WAITING(parking)</span><br></pre></td></tr></table></figure>
+<p>第三步：打开dump文件查看处于<code>WAITING（onobjectmonitor）</code>的线程在做什么。发现这些线程基本全是JBOSS的工作线程，在await。说明JBOSS线程池里线程接收到的任务太少，大量线程都闲着。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&quot;http-0.0.0.0-7001-97&quot; daemon prio&#x3D;10 tid&#x3D;0x000000004f6a8000 nid&#x3D;0x555e in</span><br><span class="line">Object.wait() [0x0000000052423000]</span><br><span class="line">java.lang.Thread.State: WAITING (on object monitor)</span><br><span class="line">at java.lang.Object.wait(Native Method)</span><br><span class="line">- waiting on &lt;0x00000007969b2280&gt; (a org.apache.tomcat.util.net.AprEndpoint$Worker)</span><br><span class="line">at java.lang.Object.wait(Object.java:485)</span><br><span class="line">at org.apache.tomcat.util.net.AprEndpoint$Worker.await(AprEndpoint.java:1464)</span><br><span class="line">- locked &lt;0x00000007969b2280&gt; (a org.apache.tomcat.util.net.AprEndpoint$Worker)</span><br><span class="line">at org.apache.tomcat.util.net.AprEndpoint$Worker.run(AprEndpoint.java:1489)</span><br><span class="line">at java.lang.Thread.run(Thread.java:662)</span><br></pre></td></tr></table></figure>
+<p>第四步：减少JBOSS的工作线程数，找到JBOSS的线程池配置信息，将maxThreads降到100。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;maxThreads&#x3D;&quot;250&quot; maxHttpHeaderSize&#x3D;&quot;8192&quot;</span><br><span class="line">emptySessionPath&#x3D;&quot;false&quot; minSpareThreads&#x3D;&quot;40&quot; maxSpareThreads&#x3D;&quot;75&quot;</span><br><span class="line">maxPostSize&#x3D;&quot;512000&quot; protocol&#x3D;&quot;HTTP&#x2F;1.1&quot;</span><br><span class="line">enableLookups&#x3D;&quot;false&quot; redirectPort&#x3D;&quot;8443&quot; acceptCount&#x3D;&quot;200&quot; bufferSize&#x3D;&quot;16384&quot;</span><br><span class="line">connectionTimeout&#x3D;&quot;15000&quot; disableUploadTimeout&#x3D;&quot;false&quot; useBodyEncodingForURI&#x3D; &quot;true&quot;&gt;</span><br></pre></td></tr></table></figure>
+<p>第五步：重启JBOSS，再dump线程信息，然后统计WAITING（onobjectmonitor）的线程，发现减少了175个。WAITING的线程少了，系统上下文切换的次数就会少，因为每一次从WAITTING到RUNNABLE都会进行一次上下文的切换。读者也可以使用<code>vmstat</code>命令测试一下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[tengfei.fangtf@ifeve ~]$ grep java.lang.Thread.State dump17 | awk &#39;&#123;print $2$3$4$5&#125;&#39;</span><br><span class="line">| sort | uniq -c</span><br><span class="line">44 RUNNABLE</span><br><span class="line">22 TIMED_WAITING(onobjectmonitor)</span><br><span class="line">9 TIMED_WAITING(parking)</span><br><span class="line">36 TIMED_WAITING(sleeping)</span><br><span class="line">130 WAITING(onobjectmonitor)</span><br><span class="line">1 WAITING(parking)</span><br></pre></td></tr></table></figure>
+<h2 id="1-2-死锁"><a href="#1-2-死锁" class="headerlink" title="1.2 死锁"></a>1.2 死锁</h2><p>锁是个非常有用的工具，运用场景非常多，因为它使用起来非常简单，而且易于理解。但同时它也会带来一些困扰，那就是可能会引起死锁，一旦产生死锁，就会造成系统功能不可用。让我们先来看一段代码，这段代码会引起死锁，使线程t1和线程t2互相等待对方释放锁。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">DeadLockDemo</span> </span>&#123;</span><br><span class="line">privat <span class="keyword">static</span> String A = <span class="string">&quot;A&quot;</span>;</span><br><span class="line"><span class="keyword">private</span> <span class="keyword">static</span> String B = <span class="string">&quot;B&quot;</span>;</span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line"><span class="keyword">new</span> DeadLockDemo().deadLock();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">void</span> <span class="title">deadLock</span><span class="params">()</span> </span>&#123;</span><br><span class="line">Thread t1 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function">publicvoid <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">synchronized</span> (A) &#123;</span><br><span class="line"><span class="keyword">try</span> &#123; Thread.currentThread().sleep(<span class="number">2000</span>);</span><br><span class="line">&#125; <span class="keyword">catch</span> (InterruptedException e) &#123;</span><br><span class="line">e.printStackTrace();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">synchronized</span> (B) &#123;</span><br><span class="line">System.out.println(<span class="string">&quot;1&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line">Thread t2 = <span class="keyword">new</span> Thread(<span class="keyword">new</span> Runnable() &#123;</span><br><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function">publicvoid <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="keyword">synchronized</span> (B) &#123;</span><br><span class="line"><span class="keyword">synchronized</span> (A) &#123;</span><br><span class="line">System.out.println(<span class="string">&quot;2&quot;</span>);</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;);</span><br><span class="line">t1.start();</span><br><span class="line">t2.start();</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这段代码只是演示死锁的场景，在现实中你可能不会写出这样的代码。但是，在一些更为<br>复杂的场景中，你可能会遇到这样的问题，比如t1拿到锁之后，因为一些异常情况没有释放锁<br>（死循环）。又或者是t1拿到一个数据库锁，释放锁的时候抛出了异常，没释放掉。</p>
+<p>一旦出现死锁，业务是可感知的，因为不能继续提供服务了，那么只能通过<code>dump线程查看</code>到底是哪个线程出现了问题，以下线程信息告诉我们是DeadLockDemo类的第42行和第31行引起的死锁。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">&quot;Thread-2&quot; prio&#x3D;5 tid&#x3D;7fc0458d1000 nid&#x3D;0x116c1c000 waiting for monitor entry [116c1b000]</span><br><span class="line">java.lang.Thread.State: BLOCKED (on object monitor)</span><br><span class="line">at com.ifeve.book.forkjoin.DeadLockDemo$2.run(DeadLockDemo.java:42)</span><br><span class="line">- waiting to lock &lt;7fb2f3ec0&gt; (a java.lang.String)</span><br><span class="line">- locked &lt;7fb2f3ef8&gt; (a java.lang.String)</span><br><span class="line">at java.lang.Thread.run(Thread.java:695)</span><br><span class="line">&quot;Thread-1&quot; prio&#x3D;5 tid&#x3D;7fc0430f6800 nid&#x3D;0x116b19000 waiting for monitor entry [116b18000]</span><br><span class="line">java.lang.Thread.State: BLOCKED (on object monitor)</span><br><span class="line">at com.ifeve.book.forkjoin.DeadLockDemo$1.run(DeadLockDemo.java:31)</span><br><span class="line">- waiting to lock &lt;7fb2f3ef8&gt; (a java.lang.String)</span><br><span class="line">- locked &lt;7fb2f3ec0&gt; (a java.lang.String)</span><br><span class="line">at java.lang.Thread.run(Thread.java:695)</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>现在我们介绍避免死锁的几个常见方法。</p>
+<p>·避免一个线程同时获取多个锁。</p>
+<p>·避免一个线程在锁内同时占用多个资源，尽量保证每个锁只占用一个资源。</p>
+<p>·<code>尝试使用定时锁</code>，使用lock.tryLock（timeout）来替代使用内部锁机制。</p>
+<p>·对于数据库锁，<code>加锁和解锁必须在一个数据库连接里</code>，否则会出现解锁失败的情况</p>
+<h2 id="1-3-资源限制的挑战"><a href="#1-3-资源限制的挑战" class="headerlink" title="1.3 资源限制的挑战"></a>1.3 资源限制的挑战</h2><p>（1）什么是资源限制</p>
+<p>资源限制是指在进行并发编程时，程序的执行速度受限于<code>计算机硬件资源</code>或<code>软件资源</code>。例如，服务器的带宽只有2Mb/s，某个资源的下载速度是1Mb/s每秒，系统启动10个线程下载资源，下载速度不会变成10Mb/s，所以在进行并发编程时，要考虑这些资源的限制。<code>硬件资源限制</code>有带宽的上传/下载速度、硬盘读写速度和CPU的处理速度。<code>软件资源限制</code>有数据库的连接数和socket连接数等。</p>
+<p>（2）资源限制引发的问题</p>
+<p>在并发编程中，将代码执行速度加快的原则是将代码中串行执行的部分变成并发执行，但是如果将某段串行的代码并发执行，因为受限于资源，仍然在串行执行，这时候<code>程序不仅不会加快执行，反而会更慢</code>，因为增加了上下文切换和资源调度的时间。例如，之前看到一段程序使用多线程在办公网并发地下载和处理数据时，导致CPU利用率达到100%，几个小时都不能运行完成任务，后来修改成单线程，一个小时就执行完成了。</p>
+<p>（3）如何解决资源限制的问题</p>
+<p>对于硬件资源限制，可以考虑<code>使用集群并行执行程序</code>。既然单机的资源有限制，那么就让程序在多机上运行。比如使用ODPS、Hadoop或者自己搭建服务器集群，不同的机器处理不同的数据。可以通过<code>“数据ID%机器数”</code>，计算得到一个机器编号，然后<code>由对应编号的机器处理这笔数据</code>。</p>
+<p>对于软件资源限制，可以考虑<code>使用资源池将资源复用</code>。比如使用连接池将数据库和Socket连接复用，或者在调用对方webservice接口获取数据时，只建立一个连接。</p>
+<p>（4）在资源限制情况下进行并发编程</p>
+<p>如何在资源限制的情况下，让程序执行得更快呢？方法就是，根据不同的资源限制调整程序的并发度，比如下载文件程序依赖于两个资源——<code>带宽和硬盘读写速度</code>。有数据库操作时，<code>涉及数据库连接数</code>，如果SQL语句执行非常快，而线程的数量比数据库连接数大很多，则<code>某些线程会被阻塞，等待数据库连接</code>。</p>
+<h2 id="1-4-本章小结"><a href="#1-4-本章小结" class="headerlink" title="1.4 本章小结"></a>1.4 本章小结</h2><p>建议多使用JDK并发包提供的并发容器和工具类来解决并发<br>问题。</p>
+<h1 id="第2章-Java并发机制的底层实现原理"><a href="#第2章-Java并发机制的底层实现原理" class="headerlink" title="第2章 Java并发机制的底层实现原理"></a>第2章 Java并发机制的底层实现原理</h1><p>Java代码在编译后会变成Java字节码，字节码被类加载器加载到JVM里，JVM执行字节码，最终需要转化为汇编指令在CPU上执行，Java中所使用的并发机制依赖于<code>JVM的实现</code>和<code>CPU的指令</code>。本章我们将深入底层一起探索下Java并发机制的底层实现原理。</p>
+<h2 id="2-1-volatile的应用"><a href="#2-1-volatile的应用" class="headerlink" title="2.1 volatile的应用"></a>2.1 volatile的应用</h2><p>在多线程并发编程中synchronized和volatile都扮演着重要的角色，volatile是轻量级的synchronized，它在多处理器开发中保证了共享变量的<code>“可见性”</code>。可见性的意思是当一个线程修改一个共享变量时，另外一个线程能读到这个修改的值。如果volatile变量修饰符使用恰当的话，它比synchronized的使用和执行成本更低，因为它不会引起线程上下文的切换和调度。本文将深入分析在硬件层面上Intel处理器是如何实现volatile的，通过深入分析帮助我们正确地使用volatile变量。</p>
+<h3 id="1-volatile的定义与实现原理"><a href="#1-volatile的定义与实现原理" class="headerlink" title="1.volatile的定义与实现原理"></a>1.volatile的定义与实现原理</h3><p>Java编程语言允许线程访问共享变量，为了确保共享变量能被准确和一致地更新，线程应该确保通过排他锁单独获得这个变量。Java语言提供了volatile，在某些情况下比锁要更加方便。如果一个字段被声明成volatile，<code>Java线程内存模型</code>确保所有线程看到这个变量的值是一致的。</p>
+<p>CPU术语。</p>
+<p><img src="/2021/03/24/java%E5%AD%A6%E4%B9%A0-java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/3.jpg" alt=".jpg"></p>
+<p>volatile是如何来保证可见性的呢？让我们在X86处理器下通过工具获取JIT编译器生成的汇编指令来查看对volatile进行写操作时，CPU会做什么事情。</p>
+<p>Java代码如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">instance &#x3D; new Singleton(); &#x2F;&#x2F; instance是volatile变量</span><br></pre></td></tr></table></figure>
+<p>转变成汇编代码，如下。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0x01a3de1d: movb $0×0,0×1104800(%esi);0x01a3de24: lock addl $0×0,(%esp);</span><br></pre></td></tr></table></figure>
+<p>有volatile变量修饰的共享变量进行写操作的时候会多出第二行汇编代码，通过查IA-32架构软件开发者手册可知，Lock前缀的指令在多核处理器下会引发了两件事情。</p>
+<p>1）将当前处理器缓存行的数据<code>写回到系统内存</code>。</p>
+<p>2）这个写回内存的操作会使在其他CPU里缓存了该内存地址的数据无效。</p>
+<p>为了提高处理速度，处理器不直接和内存进行通信，而是先将系统内存的数据读到内部缓存（L1，L2或其他）后再进行操作，但操作完不知道何时会写到内存。如果对声明了volatile的变量进行写操作，JVM就会向处理器发送一条Lock前缀的指令，将这个变量所在缓存行的数据写回到系统内存。但是，就算写回到内存，如果其他处理器缓存的值还是旧的，再执行计算操<br>作就会有问题。所以，在多处理器下，为了保证各个处理器的缓存是一致的，就会实现<code>缓存一致性协议</code>，每个处理器通过<code>嗅探在总线上传播的数据</code>来检查自己缓存的值是不是过期了，当处理器发现自己缓存行对应的内存地址被修改，就会将当前处理器的缓存行<code>设置成无效状态</code>(感觉像懒惰删除)，当处理器对这个数据进行修改操作的时候，会重新从系统内存中把数据读到处理器缓存里。</p>
+<p>下面来具体讲解volatile的两条实现原则。</p>
+<p>1）<code>Lock前缀指令会引起处理器缓存回写到内存</code>。Lock前缀指令导致在执行指令期间，声言处理器的LOCK#信号。在多处理器环境中，LOCK#信号确保在声言该信号期间，处理器可以独占任何共享内存。但是，在最近的处理器里，<code>LOCK＃信号一般不锁总线，而是锁缓存</code>，毕竟锁总线开销的比较大。在8.1.4节有详细说明锁定操作对处理器缓存的影响，对于Intel486和<br>Pentium处理器，在锁操作时，总是在总线上声言LOCK#信号。但在P6和目前的处理器中，如果访问的内存区域已经缓存在处理器内部，则不会声言LOCK#信号。相反，它会锁定这块内存区域的缓存并回写到内存，并使用缓存一致性机制来确保修改的原子性，此操作被称为“缓存锁定”，缓存一致性机制会阻止同时修改由两个以上处理器缓存的内存区域数据。</p>
+<p>2）一个处理器的缓存回写到内存会导致其他处理器的缓存无效。IA-32处理器和Intel 64处<br>理器使用MESI（修改、独占、共享、无效）控制协议去维护内部缓存和其他处理器缓存的一致<br>性。在多核处理器系统中进行操作的时候，IA-32和Intel 64处理器能嗅探其他处理器访问系统<br>内存和它们的内部缓存。处理器使用嗅探技术保证它的内部缓存、系统内存和其他处理器的<br>缓存的数据在总线上保持一致。例如，在Pentium和P6 family处理器中，如果通过嗅探一个处理<br>器来检测其他处理器打算写内存地址，而这个地址当前处于共享状态，那么正在嗅探的处理<br>器将使它的缓存行无效，在下次访问相同内存地址时，强制执行缓存行填充。</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -287,442 +386,113 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
-        		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://caciacc.top/2021/03/24/java%E5%AD%A6%E4%B9%A0-java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/26/%E7%AE%97%E6%B3%95-codeforce-697-div3/" class="archive-article-date">
-        <time datetime="2021-01-25T16:02:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-26</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021/03/23/java%E5%AD%A6%E4%B9%A0-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Java学习-深入理解Java虚拟机</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/26/%E7%AE%97%E6%B3%95-codeforce-697-div3/">算法-codeforce-697-div3</a>
-	
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">codeforce</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/24/%E8%AE%B0%E5%BD%95-%E6%9D%82%E8%AE%B01/" class="archive-article-date">
-        <time datetime="2021-01-24T07:40:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/24/%E8%AE%B0%E5%BD%95-%E6%9D%82%E8%AE%B01/">记录-杂记1</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC44%E5%9C%BA/" class="archive-article-date">
-        <time datetime="2021-01-24T05:08:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC44%E5%9C%BA/">算法-leetcode-双周赛第44场</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/" class="archive-article-date">
-        <time datetime="2021-01-24T04:14:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/">算法-leetcode-周赛第225场</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/23/%E7%AE%97%E6%B3%95-5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/" class="archive-article-date">
-        <time datetime="2021-01-23T08:58:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-23</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/23/%E7%AE%97%E6%B3%95-5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/">算法-5道算法题</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/20/%E7%AE%97%E6%B3%95-codeforce-696-div2/" class="archive-article-date">
-        <time datetime="2021-01-20T01:52:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-20</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/20/%E7%AE%97%E6%B3%95-codeforce-696-div2/">算法-codeforce-696-div2</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">codeforce</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/19/%E9%A1%B9%E7%9B%AE-vue%E6%89%93%E5%8C%85%E9%97%AE%E9%A2%98/" class="archive-article-date">
-        <time datetime="2021-01-19T08:09:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-19</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/19/%E9%A1%B9%E7%9B%AE-vue%E6%89%93%E5%8C%85%E9%97%AE%E9%A2%98/">项目-vue打包问题</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/19/%E9%A1%B9%E7%9B%AE-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/" class="archive-article-date">
-        <time datetime="2021-01-19T04:49:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-19</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/19/%E9%A1%B9%E7%9B%AE-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/">项目-服务器配置过程</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/18/%E9%A1%B9%E7%9B%AE-mybatis%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98/" class="archive-article-date">
-        <time datetime="2021-01-18T06:38:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-18</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/18/%E9%A1%B9%E7%9B%AE-mybatis%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98/">项目-mybatis注解方式的一个问题</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/page/5/">Prev</a><a class="page-number" href="/archives/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/page/4/">4</a><a class="page-number" href="/archives/page/5/">5</a><span class="page-number current">6</span><a class="page-number" href="/archives/page/7/">7</a><a class="page-number" href="/archives/page/8/">8</a><a class="page-number" href="/archives/page/9/">9</a><a class="extend next" rel="next" href="/archives/page/7/">Next</a>
-    </nav>
-  
 
 
           </div>
@@ -751,8 +521,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
