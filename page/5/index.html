@@ -248,6 +248,104 @@
             
 
   
+    <article id="post-面试-一些面试题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/02/13/%E9%9D%A2%E8%AF%95-%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98/">面试-一些面试题</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/02/13/%E9%9D%A2%E8%AF%95-%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98/" class="archive-article-date">
+        <time datetime="2021-02-13T02:32:57.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-13</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h3 id="虚拟内存有啥用，如何实现-怎么把虚拟地址转化为真实地址"><a href="#虚拟内存有啥用，如何实现-怎么把虚拟地址转化为真实地址" class="headerlink" title="虚拟内存有啥用，如何实现,怎么把虚拟地址转化为真实地址"></a>虚拟内存有啥用，如何实现,怎么把虚拟地址转化为真实地址</h3><p>程序不需要全部装入即可运行,运行时根据需要动态调入数据,若内存不够,还需换出一些数据。</p>
+<p>虚拟内存的实现有三种方式:请求分页存储管理/请求分段存储管理/请求段页式存储管理</p>
+<p>具体要实现请求调页(段)功能和页面(段)置换功能</p>
+<p>请求分页管理方式:1.页表机制 2.缺页中断机构 3.地址变换机构</p>
+<p>怎么把虚拟地址转化为真实地址见地址变换机构。先将虚拟地址拆为页号+页内偏移量,然后查询快表,没命中则查询请求页表,找到对应项的外存地址,外存地址+页内偏移量即为物理地址。</p>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/02/13/%E9%9D%A2%E8%AF%95-%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/02/13/%E9%9D%A2%E8%AF%95-%E4%B8%80%E4%BA%9B%E9%9D%A2%E8%AF%95%E9%A2%98/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
     <article id="post-计算机基础-计算机网络" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1097,101 +1195,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021/02/01/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%8C-%E8%BF%9B%E7%A8%8B/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-算法-codeforce-698-div2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/01/29/%E7%AE%97%E6%B3%95-codeforce-698-div2/">算法-codeforce-698-div2</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/01/29/%E7%AE%97%E6%B3%95-codeforce-698-div2/" class="archive-article-date">
-        <time datetime="2021-01-29T10:52:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-29</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>A</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">#include&lt;algorithm&gt;</span><br><span class="line">#include&lt;cstring&gt;</span><br><span class="line">#include&lt;cstdio&gt;</span><br><span class="line">#include&lt;queue&gt;</span><br><span class="line">#include&lt;iostream&gt;</span><br><span class="line">#include&lt;cmath&gt;</span><br><span class="line">#include&lt;stdio.h&gt;</span><br><span class="line">#include&lt;map&gt;</span><br><span class="line">using namespace std;</span><br><span class="line">const int N &#x3D; 2e5+10, M &#x3D; 1e5+10,INF &#x3D; 0x3f3f3f3f,inf &#x3D; 0x3f3f3f3f;</span><br><span class="line">typedef pair&lt;int,int&gt;PII;</span><br><span class="line">typedef pair&lt;int,int&gt;pii;</span><br><span class="line">typedef long long ll;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">int n;</span><br><span class="line">int a[N];</span><br><span class="line"></span><br><span class="line">void init()&#123;</span><br><span class="line">  cin &gt;&gt; n;</span><br><span class="line">  for(int i &#x3D; 1; i &lt;&#x3D; n; i ++) cin &gt;&gt; a[i];</span><br><span class="line">&#125;</span><br><span class="line">void solve()&#123;</span><br><span class="line">  int ans &#x3D; 0, num &#x3D; 0, now &#x3D; 0;</span><br><span class="line">  for(int i &#x3D; 1; i &lt;&#x3D; n; i ++)&#123;</span><br><span class="line">     if(a[i] !&#x3D; now)&#123;</span><br><span class="line">        num &#x3D; 1;</span><br><span class="line">        now &#x3D; a[i];</span><br><span class="line">     &#125;else num++;</span><br><span class="line">     ans &#x3D; max(ans,num);</span><br><span class="line">  &#125;</span><br><span class="line">  cout &lt;&lt; ans &lt;&lt; endl;</span><br><span class="line">&#125;</span><br><span class="line">int main()&#123;</span><br><span class="line">         int t; scanf(&quot;%d&quot;,&amp;t);</span><br><span class="line">         while(t--)&#123;</span><br><span class="line">        init();</span><br><span class="line">        solve();</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/01/29/%E7%AE%97%E6%B3%95-codeforce-698-div2/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">codeforce</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/29/%E7%AE%97%E6%B3%95-codeforce-698-div2/">展开全文 >></a>
     </p>
     
 
