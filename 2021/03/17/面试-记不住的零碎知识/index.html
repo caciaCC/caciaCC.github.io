@@ -31,10 +31,11 @@
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/15.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/16.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/17.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/20.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/18.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/19.jpg">
 <meta property="article:published_time" content="2021-03-17T11:22:43.000Z">
-<meta property="article:modified_time" content="2021-03-29T12:01:36.449Z">
+<meta property="article:modified_time" content="2021-03-30T07:17:46.200Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -293,7 +294,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">14k字</span>
+      <span class="post-count">14.5k字</span>
     </span>
   </span>
 
@@ -302,7 +303,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">52分</span>
+      <span class="post-count">54分</span>
     </span>
   </span>
 </div>
@@ -771,7 +772,15 @@
 <p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/dde92ec37bd1">https://www.jianshu.com/p/dde92ec37bd1</a></p>
 <p>82.spring事务是如何实现的?</p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/228451195">https://zhuanlan.zhihu.com/p/228451195</a></p>
-<p>83.redis前后6.0之区别?</p>
+<p>83.redis前后4.0之区别?</p>
+<p>redis 4.0 开始就有多线程的概念了，比如 redis 通过多线程方式在后台删除对象、以及通过 redis 模块实现的阻塞命令等。redis 采用 IO 多路复用机制同时监听多个 socket，根据 socket 上的事件来选择对应的事件处理器进行处理。</p>
+<p>单线程模式。</p>
+<p>Redis 是基于 Reactor 单线程模式来实现的。<br>  IO多路复用程序接收到用户的请求后，全部推送到一个队列里，交给文件分派器。对于后续的操作，和在 reactor 单线程实现方案里看到的一样，整个过程都在一个线程里完成，因此 Redis 被称为是单线程的操作。</p>
+<p><img src="/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/20.jpg" alt=".jpg"></p>
+<p>多线程模式。</p>
+<p>Redis6 版本中引入了多线程。上边已经提到过 Redis 单线程处理有着很快的速度，那为什么还要引入多线程呢？单线程的瓶颈在什么地方？</p>
+<p>  先来看第二个问题，在 Redis 中，单线程的性能瓶颈主要在网络IO操作上。也就是在读写网络 read/write 系统调用执行期间会占用大部分 CPU 时间。如果要对一些大的键值对进行删除操作的话，在短时间内是删不完的，那么对于单线程来说就会阻塞后边的操作。</p>
+<p>  回想下上边讲得 Reactor 模式中单线程的处理方式。针对非连接事件，Reactor 会调用对应的 handler 完成 read-&gt;业务处理-&gt;write 处理流程，也就是说这一步会造成性能上的瓶颈。<br>Redis 在设计上采用将网络数据读写和协议解析通过多线程的方式来处理，对于命令执行来说，仍然使用单线程操作。</p>
 <p><a target="_blank" rel="noopener" href="https://blog.csdn.net/dl962454/article/details/115218011">https://blog.csdn.net/dl962454/article/details/115218011</a></p>
 <p>84.mysql怎么实现分布式锁?</p>
 <p>1.基于排他锁（for update）实现:select .. for update;</p>
@@ -820,6 +829,12 @@
 <p><a target="_blank" rel="noopener" href="https://www.oschina.net/question/12_623">https://www.oschina.net/question/12_623</a></p>
 <p>93.冯诺依曼体系结构?</p>
 <p><img src="/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/19.jpg" alt=".jpg"></p>
+<p>94.redis怎么删除大key?</p>
+<p>1.分批删除</p>
+<p>2.懒惰删除</p>
+<p>3.lazy删除</p>
+<p>4.unlink删除(可将删除操作放在后台，让后台子线程(bio)执行，避免主线程阻塞)</p>
+<p>95.</p>
 
     
 
