@@ -34,8 +34,10 @@
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/20.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/18.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/19.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/21.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/22.jpg">
 <meta property="article:published_time" content="2021-03-17T11:22:43.000Z">
-<meta property="article:modified_time" content="2021-03-30T07:17:46.200Z">
+<meta property="article:modified_time" content="2021-03-31T12:43:56.898Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -294,7 +296,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">14.5k字</span>
+      <span class="post-count">16.1k字</span>
     </span>
   </span>
 
@@ -303,7 +305,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">54分</span>
+      <span class="post-count">60分</span>
     </span>
   </span>
 </div>
@@ -834,7 +836,78 @@
 <p>2.懒惰删除</p>
 <p>3.lazy删除</p>
 <p>4.unlink删除(可将删除操作放在后台，让后台子线程(bio)执行，避免主线程阻塞)</p>
-<p>95.</p>
+<p>95.拷贝的分类?</p>
+<p>1.对象拷贝(拷贝地址)</p>
+<p>2.浅拷贝(生成新对象)</p>
+<p>3.深拷贝(生成新对象和对象中新的成员变量引用的对象)</p>
+<p>96.查询语句select from where group by having order by执行顺序?</p>
+<p>from group by select order by.</p>
+<p><img src="/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/21.jpg" alt=".jpg"></p>
+<p>97.慢查询怎么优化?</p>
+<p>explain看索引。看索引使用情况等。</p>
+<p>看联表如何。</p>
+<p>分库分表。</p>
+<p>看执行情况(optimizer trace)</p>
+<p>98.什么是软中断?什么是硬中断?</p>
+<p>为了避免由于中断处理程序执行时间过长，而影响正常进程的调度，Linux 将中断处理程序分为上半部和下半部：</p>
+<pre><code>上半部，对应硬中断，由硬件触发中断，用来快速处理中断；下半部，对应软中断，由内核触发中断，用来异步处理上半部未完成的工作；</code></pre>
+<p>Linux 中的软中断包括网络收发、定时、调度、RCU 锁等各种类型，可以通过查看 /proc/softirqs 来观察软中断的累计中断次数情况，如果要实时查看中断次数的变化率，可以使用 watch -d cat /proc/softirqs 命令。</p>
+<p>硬中断由外部设备（例如：磁盘，网卡，键盘，时钟）产生，用来通知操作系统外设状态变化。</p>
+<p>时钟中断： 一种硬中断，用于定期打断 CPU 执行的线程，以便切换给其他线程以得到执行机会。</p>
+<p>缺页中断: 一种硬中断。</p>
+<p>硬中断的处理流程如下：1、外设 将中断请求发送给中断控制器；2、中断控制器 根据中断优先级，有序地将中断传递给 CPU；3、CPU 终止执行当前程序流，将 CPU 所有寄存器的数值保存到栈中；4、CPU 根据中断向量，从中断向量表中查找中断处理程序的入口地址，执行中断处理程序；5、CPU 恢复寄存器中的数值，返回原程序流停止位置继续执行。</p>
+<p>软中断是一条 CPU 指令，由当前正在运行的进程产生。</p>
+<p>软中断模拟了硬中断的处理过程：1、无2、无3、CPU 终止执行当前程序流，将 CPU 所有寄存器的数值保存到栈中；4、CPU 根据中断向量，从中断向量表中查找中断处理程序的入口地址，执行中断处理程序；5、CPU 恢复寄存器中的数值，返回原程序流停止位置继续执行。</p>
+<p>系统调用： 是一种软中断处理程序，用于让程序从用户态陷入内核态，以执行相应的操作。</p>
+<p>99.什么是带外数据?</p>
+<p>有些传输层协议具有带外(Out of Band,OOB)数据的概念,用于迅速通告对方本端发生的重要事件。         因此，带外数据比普通数据（也称带内数据）有更高的优先级，它应该总是立即发送，而不论发送缓冲区是否有排队等待发送的普通数据。         带外数据的传输可以使用一条独立的传输层连接，也可以映射到传输普通数据的连接中，TCP采用的是后者（postscript：前者应该怎么实现，应该比较复杂和消耗性能）         在实际应用中，带外数据的使用很少见，已知的仅有telnet、ftp等远程非活跃程序。</p>
+<p>100.windows和linux区别?</p>
+<p>1.免费和付费</p>
+<p>2.NT内核和linux内核,开源和闭源。</p>
+<p>3.注册表。</p>
+<p>4.图形界面与命令行</p>
+<p>5.Linux的文件夹结构</p>
+<p>/：根目录</p>
+<p>/boot:系统启动和内核</p>
+<p>/bin ：系统基本命令 (bin是binary的缩写)</p>
+<p>/lib : 系统库(不能直接运行的代码)(lib是libary的缩写)</p>
+<p>/dev : 设备驱动 (dev是device的缩写)</p>
+<p>101.一条mysql语句在MySQL中是如何执行的?</p>
+<p><img src="/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/22.jpg" alt=".jpg"></p>
+<p>写undolog-&gt;写redolog-&gt;写undolog-&gt;提交事务-&gt;刷redolog(commit -prepare)-&gt;刷undolog(commit-commit)</p>
+<p>有一个两阶段提交的过程。</p>
+<p>102.timestamp, datetime的区别</p>
+<p>YYYY-MM-DD HH:MM:SS</p>
+<p>datetime没有默认值,timestamp有默认值当前时间</p>
+<p>存储范围不同。</p>
+<p>datetime的存储范围是 1000-01-01 00:00:00.000000 到 9999-12-31 23:59:59.999999，而timestamp的范围是 1970-01-01 00:00:01.000000到 2038-01-19 03:14:07.999999(准备的来讲应该是UTC范围)；</p>
+<p>时区相关。</p>
+<p>datetime时区无关,timestamp时区相关。</p>
+<p>存储大小。</p>
+<p>datetime占用8个字节,timestamp占用4个字节。</p>
+<p>103.Linux性能调优，如何发现及诊断问题 </p>
+<p> 常用命令vmstat、sar、iostat、netstat、free、ps、top等</p>
+<p> uptime:快速查看机器的负载情况</p>
+<p> vmstat: 输出一些系统核心指标</p>
+<p> iostat:查看IO性能</p>
+<p> free:free命令可以查看系统内存的使用情况</p>
+<p> sar:网络吞吐量情况</p>
+<p> top:top命令包含了前面好几个命令的检查的内容。比如系统负载情况（uptime）、系统内存使用情况（free）、系统CPU使用情况（vmstat）等。</p>
+<p> df:查看磁盘使用情况</p>
+<p>104.什么是一致性哈希?</p>
+<p>为什么有?<br>size变化后尽量降低或减少location的变更。</p>
+<p>哈希环。</p>
+<p>无论节点(硬件)或者请求(数据)都通过哈希算法后通过2的32次方进行hash取模0到2的32次方-1来确定哈希环的位置</p>
+<p>增加桶,减少桶。</p>
+<p>这样做最大的好处就是当增、减节点，只需要局部变动数据归属</p>
+<p>特点:</p>
+<p>平衡性</p>
+<p>105.僵尸进程你知道吗?</p>
+<p>僵尸进程是当子进程比父进程先结束，而父进程又没有回收子进程，释放子进程占用的资源，此时子进程将成为一个僵尸进程。如果父进程先退出 ，子进程被init接管，子进程退出后init会回收其占用的相关资源。</p>
+<p>106.孤儿进程是什么?</p>
+<p>在操作系统领域中，孤儿进程指的是在其父进程执行完成或被终止后仍继续运行的一类进程。这些孤儿进程将被init进程(进程号为1)所收养，并由init进程对它们完成状态收集工作。</p>
+<p>106.redis多线程模型了解吗?</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/118450227">https://zhuanlan.zhihu.com/p/118450227</a></p>
 
     
 
