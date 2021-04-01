@@ -36,8 +36,9 @@
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/19.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/21.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/22.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/23.jpg">
 <meta property="article:published_time" content="2021-03-17T11:22:43.000Z">
-<meta property="article:modified_time" content="2021-03-31T12:43:56.898Z">
+<meta property="article:modified_time" content="2021-04-01T03:16:17.093Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -296,7 +297,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">16.1k字</span>
+      <span class="post-count">16.7k字</span>
     </span>
   </span>
 
@@ -305,7 +306,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">60分</span>
+      <span class="post-count">62分</span>
     </span>
   </span>
 </div>
@@ -908,6 +909,26 @@
 <p>在操作系统领域中，孤儿进程指的是在其父进程执行完成或被终止后仍继续运行的一类进程。这些孤儿进程将被init进程(进程号为1)所收养，并由init进程对它们完成状态收集工作。</p>
 <p>106.redis多线程模型了解吗?</p>
 <p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/118450227">https://zhuanlan.zhihu.com/p/118450227</a></p>
+<p>107.堆和栈的区别?</p>
+<p>一个由C/C++编译的程序占用的内存分为以下几个部分</p>
+<p>1、栈区（stack）：由编译器自动分配释放 ，存放函数的参数值，局部变量的值等。其操作方式类似于数据结构中的栈。</p>
+<p>2、堆区（heap）：一般由程序员分配释放， 若程序员不释放，程序结束时可能由OS回<br>收 。注意它与数据结构中的堆是两回事，分配方式倒是类似于链表，呵呵。</p>
+<p>3、全局区（静态区）（static）：全局变量和静态变量的存储是放在一块的，初始化的全局变量和静态变量在一块区域， 未初始化的全局变量和未初始化的静态变量在相邻的另一块区域。 - 程序结束后由系统释放。</p>
+<p>4、文字常量区：常量字符串就是放在这里的。 程序结束后由系统释放</p>
+<p>5、程序代码区：存放函数体的二进制代码。 </p>
+<p><img src="/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/23.jpg" alt=".jpg"></p>
+<p>1.申请后系统的响应</p>
+<p>2.申请大小的限制</p>
+<p>3.申请效率的比较</p>
+<p>4.堆和栈中的存储内容</p>
+<p>栈： 在函数调用时，第一个进栈的是主函数中后的下一条指令（函数调用语句的下一条可执行语句）的地址，然后是函数的各个参数，在大多数的C编译器中，参数是由右往左入栈的，然后是函数中的局部变量。注意静态变量是不入栈的。当本次函数调用结束后，局部变量先出栈，然后是参数，最后栈顶指针指向最开始存的地址，也就是主函数中的下一条指令，程序由该点继续运行。</p>
+<p>堆：一般是在堆的头部用一个字节存放堆的大小。堆中的具体内容由程序员安排。</p>
+<p>5.存取效率的比较</p>
+<p>108.fail-fast 与 fail-safe 机制有什么区别?</p>
+<p>fail-fast的字面意思是“快速失败”。当我们在遍历集合元素的时候，经常会使用迭代器，但在迭代器遍历元素的过程中，如果集合的结构被改变的话，就会抛出异常，防止继续遍历。这就是所谓的快速失败机制。</p>
+<p>fail-safe是开始就复制了一份数据，直接在复制的数据上进行遍历。</p>
+<p>109.redis多线程相关问题?</p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/144914576">https://zhuanlan.zhihu.com/p/144914576</a></p>
 
     
 
