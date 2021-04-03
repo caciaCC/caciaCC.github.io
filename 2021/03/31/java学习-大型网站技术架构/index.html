@@ -29,7 +29,7 @@
 <meta property="og:image" content="http://caciacc.top/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/10.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/11.jpg">
 <meta property="article:published_time" content="2021-03-31T02:13:46.000Z">
-<meta property="article:modified_time" content="2021-04-01T13:45:25.281Z">
+<meta property="article:modified_time" content="2021-04-02T00:50:40.288Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
@@ -288,7 +288,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">3.5k字</span>
+      <span class="post-count">4.1k字</span>
     </span>
   </span>
 
@@ -297,7 +297,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">11分</span>
+      <span class="post-count">13分</span>
     </span>
   </span>
 </div>
@@ -391,7 +391,18 @@
 <p>在数据库端,索引、缓存、SQL优化等都已经比较成熟。NoSQL通过优化数据模型、存储结构、伸缩特性等手段在性能方面的优势也日趋明显。</p>
 <p>衡量网站性能有一系列指标,重要的有响应时间、TPS、系统性能计数器等,通过测试这些指标以确定系统设计是否达到目标。</p>
 <p>因为无法预知网络可能面临的访问压力,所以必须要考察系统在高并发情况下,超出负载设计能力的情况下可能会出现的性能问题。</p>
-
+<h2 id="3-2可用性"><a href="#3-2可用性" class="headerlink" title="3.2可用性"></a>3.2可用性</h2><p>网站高可用的主要手段是冗余。</p>
+<p>除了运行环境,网站的高可用还需要软件开发过程的质量保证。通过预发布验证、自动化测试、自动化发布、灰度发布等手段,减少将故障引入线上环境的可能,避免故障范围扩大。</p>
+<h2 id="3-3伸缩性"><a href="#3-3伸缩性" class="headerlink" title="3.3伸缩性"></a>3.3伸缩性</h2><p>所谓伸缩性是通过不断向集群中加入服务器的手段来缓解不断上升的用户并发访问压力和和不断增长的数据存储需求。</p>
+<p>对于应用服务器集群,只要服务器上不保存数据,所有服务器都是对等的,通过使用合适的负载均衡设备就可以向集群中不断加入服务器。</p>
+<p>对于缓存服务器集群,加入新的服务器可能会导致缓存路由器失效,进而导致集群中大部分缓存数据都无法访问。<code>虽然缓存的数据可以通过数据库重新加载,但是如果应用已经严重依赖缓存,可能会导致整个网站崩溃。</code>需要改进缓存路由算法保证缓存数据的可访问性。</p>
+<p>关系型数据库的集群收缩性必须在数据库之外实现,通过路由分区等手段将部署有多个数据库的服务器组成一个集群。</p>
+<p>NoSQL数据库,天生为海量数据而生,对其伸缩性的支持通常都比较好。</p>
+<h2 id="3-4扩展性"><a href="#3-4扩展性" class="headerlink" title="3.4扩展性"></a>3.4扩展性</h2><p>网站可伸缩架构的主要手段是事件驱动架构和分布式服务。</p>
+<p>事件驱动架构在网站通常利用消息队列实现,将用户请求和其他业务事件构造成消息发布到消息队列,消息的处理者作为消费者从消息队列中获取消息进行处理。</p>
+<p>分布式服务则是将业务和可复用服务分离开来,通过分布式服务框架调用。</p>
+<h2 id="3-5安全性"><a href="#3-5安全性" class="headerlink" title="3.5安全性"></a>3.5安全性</h2><h2 id="3-6小结"><a href="#3-6小结" class="headerlink" title="3.6小结"></a>3.6小结</h2><h1 id="架构"><a href="#架构" class="headerlink" title="架构"></a>架构</h1><h1 id="4-瞬时响应-网站的高性能架构"><a href="#4-瞬时响应-网站的高性能架构" class="headerlink" title="4 瞬时响应:网站的高性能架构"></a>4 瞬时响应:网站的高性能架构</h1><p>网站性能是客观的指标,可以具体体现到响应时间、吞吐量等技术指标,同时也是主观感受。</p>
+<h2 id="4-1网站性能测试"><a href="#4-1网站性能测试" class="headerlink" title="4.1网站性能测试"></a>4.1网站性能测试</h2>
     
 
     
@@ -477,6 +488,15 @@
 
 
 <nav id="article-nav">
+  
+    <a href="/2021/04/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-Linux%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          计算机基础-Linux高性能服务器编程学习
+        
+      </div>
+    </a>
   
   
     <a href="/2021/03/29/java%E5%AD%A6%E4%B9%A0-%E4%B8%80%E4%BA%9B%E9%A2%98%E7%9B%AE/" id="article-nav-older" class="article-nav-link-wrap">
