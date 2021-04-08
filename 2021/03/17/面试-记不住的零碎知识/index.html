@@ -39,7 +39,7 @@
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/23.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/24.jpg">
 <meta property="article:published_time" content="2021-03-17T11:22:43.000Z">
-<meta property="article:modified_time" content="2021-04-06T14:52:51.446Z">
+<meta property="article:modified_time" content="2021-04-08T12:27:18.314Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -298,7 +298,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">17.7k字</span>
+      <span class="post-count">18.1k字</span>
     </span>
   </span>
 
@@ -307,7 +307,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">66分</span>
+      <span class="post-count">67分</span>
     </span>
   </span>
 </div>
@@ -956,6 +956,15 @@
 <p>切入点:切入点是用来指明所需连接点的程序构造，可以用它来指明一系列的连接点。</p>
 <p>通知:通知指定当到达特定切入点处应该执行的方法，SpringAOP提供了前置,后置,环绕通知,异常通知,结果通知。</p>
 <p>方面(Aspect):方面是一个AOP的模块，比如某个Aspect.java这个类就是一个方面。把切入点和通知都包含在一起。</p>
+<p>114.红黑树相关。</p>
+<p>TreeMap 通过 put 和 deleteEntry 实现增加和删除树节点。插入新节点的规则有三个：<br>①需要调整的新节点总是红色的。</p>
+<p>② 如果插入新节点的父节点是黑色的，不需要调整。</p>
+<p>③ 如果插入新节点的父节点是红色的，由于红黑树不能出现相邻红色，进入循环判断，通过重新着色或左右旋转来调整。TreeMap 的插入操作就是按照 Key 的对比往下遍历，大于节点值向右查找，小于向左查找，先按照二叉查找树的特性操作，后续会重新着色和旋转，保持红黑树的特性。</p>
+<p><code>它不严格控制左、右子树高度或节点数之差小于等于 1。</code> </p>
+<p>相比于 BST(二叉搜索树)，因为红黑树可以能确保树的最长路径不大于两倍的最短路径的长度，所以可以看出它的查找效果是有最低保证的。</p>
+<p>此外，由于它的设计，任何不平衡都会在三次旋转之内解决。</p>
+<p>在插入和删除操作上，AVL 树每次插入删除会进行大量的平衡度计<br>算，红黑树是牺牲了严格的高度平衡的优越条件为代价，它只要求部分地达到平衡要求，结合变色，降低了对旋转的要求，从而提高了性能。红黑树能够以 O(log2 n)的时间复杂度进行搜索、插入、删除操作。</p>
+<p>115.什么是倒排索引?</p>
 
     
 
