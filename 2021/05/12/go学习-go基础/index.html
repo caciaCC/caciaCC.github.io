@@ -10,15 +10,15 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="GO特色●简洁 ●并行 ●内存管理 GO语言用途在高性能、分布式系统领域,有着更高的开发效率。 安装GO1.在官网下载GO。官网链接 2.配置环境(根据系统不同) Win: 3.配置GoProxy(代理) 12$ go env -w GO111MODULE&#x3D;on$ go env -w GOPROXY&#x3D;https:&#x2F;&#x2F;goproxy.cn,direct 4.配">
+  <meta name="description" content="GO特色●简洁 ●并行 ●内存管理 GO语言用途在高性能、分布式系统领域,有着更高的开发效率。">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Go学习-Go基础">
 <meta property="og:url" content="http://caciacc.top/2021/05/12/go%E5%AD%A6%E4%B9%A0-go%E5%9F%BA%E7%A1%80/index.html">
 <meta property="og:site_name" content="caciaCC的博客">
-<meta property="og:description" content="GO特色●简洁 ●并行 ●内存管理 GO语言用途在高性能、分布式系统领域,有着更高的开发效率。 安装GO1.在官网下载GO。官网链接 2.配置环境(根据系统不同) Win: 3.配置GoProxy(代理) 12$ go env -w GO111MODULE&#x3D;on$ go env -w GOPROXY&#x3D;https:&#x2F;&#x2F;goproxy.cn,direct 4.配">
+<meta property="og:description" content="GO特色●简洁 ●并行 ●内存管理 GO语言用途在高性能、分布式系统领域,有着更高的开发效率。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-12T06:30:57.000Z">
-<meta property="article:modified_time" content="2021-05-12T12:32:55.604Z">
+<meta property="article:modified_time" content="2021-05-13T03:59:02.717Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
@@ -276,7 +276,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">99字</span>
+      <span class="post-count">837字</span>
     </span>
   </span>
 
@@ -285,7 +285,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">3分</span>
     </span>
   </span>
 </div>
@@ -300,14 +300,51 @@
 <p>●并行</p>
 <p>●内存管理</p>
 <h3 id="GO语言用途"><a href="#GO语言用途" class="headerlink" title="GO语言用途"></a>GO语言用途</h3><p>在高性能、分布式系统领域,有着更高的开发效率。</p>
+<a id="more"></a>
 <h3 id="安装GO"><a href="#安装GO" class="headerlink" title="安装GO"></a>安装GO</h3><p>1.在官网下载GO。<a target="_blank" rel="noopener" href="https://golang.google.cn/dl/">官网链接</a></p>
 <p>2.配置环境(根据系统不同)</p>
 <p>Win:</p>
 <p>3.配置GoProxy(代理)</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ go env -w GO111MODULE&#x3D;on</span><br><span class="line">$ go env -w GOPROXY&#x3D;https:&#x2F;&#x2F;goproxy.cn,direct</span><br></pre></td></tr></table></figure>
 <p>4.配置GoPath</p>
-<p>5.配置VSCODE</p>
-<h3 id="第一个GO程序"><a href="#第一个GO程序" class="headerlink" title="第一个GO程序"></a>第一个GO程序</h3>
+<p>在系统配置里设置即可</p>
+<p>5.配置Go mod </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">go mod init 项目名</span><br></pre></td></tr></table></figure>
+<p>6.配置VSCODE-&gt;下载插件-&gt;配置launch.json-&gt;配置setting.json</p>
+<p>7.配置GoLand-&gt;newProject-&gt;new go file-&gt;new configuration-&gt;Go Build-&gt; run</p>
+<h3 id="第一个GO程序"><a href="#第一个GO程序" class="headerlink" title="第一个GO程序"></a>第一个GO程序</h3><p>两种方式运行。</p>
+<p>1.go run xxx.go </p>
+<p>2.go build xxx.go(生成exe文件)-&gt;然后点击运行即可</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	fmt.Print(<span class="string">&quot;hello world&quot;</span>)</span><br><span class="line">	time.Sleep(<span class="number">1</span> * time.Second)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="项目结构"><a href="#项目结构" class="headerlink" title="项目结构"></a>项目结构</h3><ul>
+<li>项目名  <ul>
+<li>其他包  </li>
+<li>main.go(import其他包)</li>
+</ul>
+</li>
+</ul>
+<h3 id="基础"><a href="#基础" class="headerlink" title="基础"></a>基础</h3><h4 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h4><p>申明变量格式</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">var 变量名 变量类型</span><br><span class="line">var identifier type</span><br><span class="line">var identifier1, identifier2 type</span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F;类型相同多个变量, 非全局变量</span><br><span class="line">var vname1, vname2, vname3 type</span><br><span class="line">vname1, vname2, vname3 &#x3D; v1, v2, v3</span><br><span class="line"></span><br><span class="line">var vname1, vname2, vname3 &#x3D; v1, v2, v3 &#x2F;&#x2F; 和 python 很像,不需要显示声明类型，自动推断</span><br><span class="line"></span><br><span class="line">vname1, vname2, vname3 :&#x3D; v1, v2, v3 &#x2F;&#x2F; 出现在 :&#x3D; 左侧的变量不应该是已经被声明过的，否则会导致编译错误</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#x2F;&#x2F; 这种因式分解关键字的写法一般用于声明全局变量</span><br><span class="line">var (</span><br><span class="line">    vname1 v_type1</span><br><span class="line">    vname2 v_type2</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>如果初始化时不指定值,则为默认值。(0/false/“”/nil等)</p>
+<p>在函数中简易申明变量</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	a := <span class="string">&quot;hello world&quot;</span></span><br><span class="line">	fmt.Println(a)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h4 id="空白标识符"><a href="#空白标识符" class="headerlink" title="空白标识符"></a>空白标识符</h4><p>空白标识符在函数返回值时的使用：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">  _,numb,strs := numbers() <span class="comment">//只获取函数返回值的后两个</span></span><br><span class="line">  fmt.Println(numb,strs)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//一个可以返回多个值的函数</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">numbers</span><span class="params">()</span><span class="params">(<span class="keyword">int</span>,<span class="keyword">int</span>,<span class="keyword">string</span>)</span></span>&#123;</span><br><span class="line">  a , b , c := <span class="number">1</span> , <span class="number">2</span> , <span class="string">&quot;str&quot;</span></span><br><span class="line">  <span class="keyword">return</span> a,b,c</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>输出结果：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 str</span><br></pre></td></tr></table></figure>
+<h4 id="常量"><a href="#常量" class="headerlink" title="常量"></a>常量</h4><p>与变量相似,将var换成const即可。</p>
+<h4 id="iota"><a href="#iota" class="headerlink" title="iota"></a>iota</h4><p>iota，特殊常量，可以认为是一个可以被编译器修改的常量。</p>
+<p>iota 在 const关键字出现时将被重置为 0(const 内部的第一行之前)，const 中每新增一行常量声明将使 iota 计数一次(iota 可理解为 const 语句块中的行索引)。</p>
+<p>具体举例</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">    <span class="keyword">const</span> (</span><br><span class="line">            a = <span class="literal">iota</span>   <span class="comment">//0</span></span><br><span class="line">            b          <span class="comment">//1</span></span><br><span class="line">            c          <span class="comment">//2</span></span><br><span class="line">            d = <span class="string">&quot;ha&quot;</span>   <span class="comment">//独立值，iota += 1</span></span><br><span class="line">            e          <span class="comment">//&quot;ha&quot;   iota += 1</span></span><br><span class="line">            f = <span class="number">100</span>    <span class="comment">//iota +=1</span></span><br><span class="line">            g          <span class="comment">//100  iota +=1</span></span><br><span class="line">            h = <span class="literal">iota</span>   <span class="comment">//7,恢复计数</span></span><br><span class="line">            i          <span class="comment">//8</span></span><br><span class="line">    )</span><br><span class="line">    fmt.Println(a,b,c,d,e,f,g,h,i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>以上实例运行结果为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 1 2 ha ha 100 100 7 8</span><br></pre></td></tr></table></figure>
+<h4 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">运算符	描述	            实例</span><br><span class="line">&amp;	      返回变量存储地址	 &amp;a; 将给出变量的实际地址。</span><br><span class="line">*	      指针变量。	         *a; 是一个指针变量</span><br></pre></td></tr></table></figure>
+<p>举例。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	a := <span class="string">&quot;hello world&quot;</span></span><br><span class="line">	<span class="keyword">var</span> b <span class="keyword">int</span> = <span class="number">5</span></span><br><span class="line">	<span class="keyword">var</span> p *<span class="keyword">int</span></span><br><span class="line">	p = &amp;b</span><br><span class="line">	fmt.Println(a,b,p)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="select语句"><a href="#select语句" class="headerlink" title="select语句"></a>select语句</h4><p>elect 是 Go 中的一个控制结构，类似于用于通信的 switch 语句。每个 case 必须是一个通信操作，要么是发送要么是接收。</p>
+<p>select 随机执行一个可运行的 case。如果没有 case 可运行，它将阻塞，直到有 case 可运行。一个默认的子句应该总是可运行的。</p>
+
     
 
     
