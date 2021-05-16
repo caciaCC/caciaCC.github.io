@@ -6,19 +6,26 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://caciacc.top">
-  <title>Archives: 2021 | caciaCC的博客</title>
+  <title>go学习-基于Go语言构建企业级的RESTful——API服务 | caciaCC的博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="leetcode刷题+java面试点记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="caciaCC的博客">
-<meta property="og:url" content="http://caciacc.top/archives/2021/page/8/index.html">
+  <meta name="description" content="0 实现的API功能通过实现一个账号系统，来演示如何构建一个真实的 API 服务器，构建方法和技术是根据多年的大型 API 服务器开发经验不断优化沉淀而成。通过实战展示了API 构建过程中各个流程（准备 -&gt; 设计 -&gt; 开发 -&gt; 测试 -&gt; 部署）的实现方法。 1 RESTful API 介绍什么是APIAPI（Application Programming Inter">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go学习-基于Go语言构建企业级的RESTful——API服务">
+<meta property="og:url" content="http://caciacc.top/2021/05/16/go%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E4%BA%8EGo%E8%AF%AD%E8%A8%80%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%9A%84RESTful%E2%80%94%E2%80%94API%E6%9C%8D%E5%8A%A1/index.html">
 <meta property="og:site_name" content="caciaCC的博客">
-<meta property="og:description" content="leetcode刷题+java面试点记录">
+<meta property="og:description" content="0 实现的API功能通过实现一个账号系统，来演示如何构建一个真实的 API 服务器，构建方法和技术是根据多年的大型 API 服务器开发经验不断优化沉淀而成。通过实战展示了API 构建过程中各个流程（准备 -&gt; 设计 -&gt; 开发 -&gt; 测试 -&gt; 部署）的实现方法。 1 RESTful API 介绍什么是APIAPI（Application Programming Inter">
 <meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://caciacc.top/2021/05/16/go%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E4%BA%8EGo%E8%AF%AD%E8%A8%80%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%9A%84RESTful%E2%80%94%E2%80%94API%E6%9C%8D%E5%8A%A1/1.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/05/16/go%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E4%BA%8EGo%E8%AF%AD%E8%A8%80%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%9A%84RESTful%E2%80%94%E2%80%94API%E6%9C%8D%E5%8A%A1/2.jpg">
+<meta property="og:image" content="http://caciacc.top/2021/05/16/go%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E4%BA%8EGo%E8%AF%AD%E8%A8%80%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%9A%84RESTful%E2%80%94%E2%80%94API%E6%9C%8D%E5%8A%A1/3.jpg">
+<meta property="article:published_time" content="2021-05-16T08:21:34.000Z">
+<meta property="article:modified_time" content="2021-05-16T13:27:51.290Z">
 <meta property="article:author" content="caciaCC">
+<meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://caciacc.top/2021/05/16/go%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E4%BA%8EGo%E8%AF%AD%E8%A8%80%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%9A%84RESTful%E2%80%94%E2%80%94API%E6%9C%8D%E5%8A%A1/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="caciaCC的博客" type="application/atom+xml">
   
@@ -245,484 +252,304 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-go学习-基于Go语言构建企业级的RESTful——API服务" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/24/%E8%AE%B0%E5%BD%95-%E6%9D%82%E8%AE%B01/" class="archive-article-date">
-        <time datetime="2021-01-24T07:40:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/24/%E8%AE%B0%E5%BD%95-%E6%9D%82%E8%AE%B01/">记录-杂记1</a>
-	
+    <h1 class="article-title" itemprop="name">
+      go学习-基于Go语言构建企业级的RESTful——API服务
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
+  
+  
+<a href="/2021/05/16/go%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E4%BA%8EGo%E8%AF%AD%E8%A8%80%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%9A%84RESTful%E2%80%94%E2%80%94API%E6%9C%8D%E5%8A%A1/" class="archive-article-date">
+        <time datetime="2021-05-16T08:21:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-16</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">3.6k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">13分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="0-实现的API功能"><a href="#0-实现的API功能" class="headerlink" title="0 实现的API功能"></a>0 实现的API功能</h2><p>通过实现一个账号系统，来演示如何构建一个真实的 API 服务器，构建方法和技术是根据多年的大型 API 服务器开发经验不断优化沉淀而成。通过实战展示了API 构建过程中各个流程<code>（准备 -&gt; 设计 -&gt; 开发 -&gt; 测试 -&gt; 部署）</code>的实现方法。</p>
+<h2 id="1-RESTful-API-介绍"><a href="#1-RESTful-API-介绍" class="headerlink" title="1 RESTful API 介绍"></a>1 RESTful API 介绍</h2><h3 id="什么是API"><a href="#什么是API" class="headerlink" title="什么是API"></a>什么是API</h3><p>API（Application Programming Interface，应用程序编程接口）是一些预先定义的函数或者接口，目的是提供应用程序与开发人员基于某软件或硬件得以访问一组例程的能力，而又<code>无须访问源码，或理解内部工作机制的细节</code>。</p>
+<p>要实现一个 API 服务器，首先要考虑两个方面：API 风格和媒体类型。Go 语言中常用的 API 风格是 <code>RPC</code> 和 <code>REST</code>，常用的媒体类型是 JSON、XML 和 Protobuf。在 Go API 开发中常用的组合是 <code>gRPC + Protobuf</code> 和 <code>REST + JSON</code>。</p>
+<a id="more"></a>
+<h3 id="REST-简介"><a href="#REST-简介" class="headerlink" title="REST 简介"></a>REST 简介</h3><p>REST 代表表现层状态转移（REpresentational State Transfer），由 Roy Fielding 在他的 <a target="_blank" rel="noopener" href="https://www.ics.uci.edu/~fielding/pubs/dissertation/top.htm">论文</a> 中提出。REST 是一种软件架构风格，不是技术框架，REST 有一系列规范，满足这些规范的 API 均可称为 RESTful API。REST 规范中有如下几个核心：</p>
+<ol>
+<li><p>REST 中一切实体都被抽象成资源，每个资源有一个唯一的标识 —— URI，所有的行为都应该是在资源上的 CRUD 操作</p>
+</li>
+<li><p>使用标准的方法来更改资源的状态，常见的操作有：资源的增删改查操作</p>
+</li>
+<li><p>无状态：这里的无状态是指每个 RESTful API 请求都包含了所有足够完成本次操作的信息，服务器端无须保持 Session</p>
+<pre><code>无状态对于服务端的弹性扩容是很重要的。</code></pre>
+</li>
+</ol>
+<p>REST 风格虽然适用于很多传输协议，但在实际开发中，REST 由于天生和 HTTP 协议相辅相成，因此 HTTP 协议已经成了实现 RESTful API 事实上的标准。在 HTTP 协议中通过 POST、DELETE、PUT、GET 方法来对应 REST 资源的增、删、改、查操作，具体的对应关系如下：</p>
+<table>
+<thead>
+<tr>
+<th>HTTP 方法</th>
+<th>行为</th>
+<th>URI</th>
+<th>示例说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>GET</td>
+<td>获取资源列表</td>
+<td>/users</td>
+<td>获取用户列表</td>
+</tr>
+<tr>
+<td>GET</td>
+<td>获取一个具体的资源</td>
+<td>/users/admin</td>
+<td>获取 admin 用户的详细信息</td>
+</tr>
+<tr>
+<td>POST</td>
+<td>创建一个新的资源</td>
+<td>/users</td>
+<td>创建一个新用户</td>
+</tr>
+<tr>
+<td>PUT</td>
+<td>以整体的方式更新一个资源</td>
+<td>/users/1</td>
+<td>更新 id 为 1 的用户</td>
+</tr>
+<tr>
+<td>DELETE</td>
+<td>删除服务器上的一个资源</td>
+<td>/users/1</td>
+<td>删除 id 为 1 的用户</td>
+</tr>
+</tbody></table>
+<h3 id="RPC-简介"><a href="#RPC-简介" class="headerlink" title="RPC 简介"></a>RPC 简介</h3><p>根据维基百科的定义：远程过程调用（Remote Procedure Call，RPC）是一个计算机通信协议。该协议允许运行于<code>一台计算机的程序调用另一台计算机的子程序</code>，而程序员无须额外地为这个交互作用编程。</p>
+<p>通俗来讲，就是服务端实现了一个函数，客户端使用 RPC 框架提供的接口，调用这个函数的实现，并获取返回值。RPC 屏蔽了底层的网络通信细节，使得开发人员无须关注网络编程的细节，而将更多的时间和精力放在业务逻辑本身的实现上，从而提高开发效率。</p>
+<p>RPC 的调用过程如下:</p>
+<p><img src="/2021/05/16/go%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E4%BA%8EGo%E8%AF%AD%E8%A8%80%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%9A%84RESTful%E2%80%94%E2%80%94API%E6%9C%8D%E5%8A%A1/1.jpg"></p>
+<ol>
+<li>Client 通过本地调用，调用 Client Stub</li>
+<li>Client Stub 将<code>参数打包</code>（也叫 Marshalling）成一个消息，然后发送这个消息</li>
+<li>Client 所在的 OS 将消息发送给 Server</li>
+<li>Server 端接收到消息后，将消息传递给 Server Stub</li>
+<li>Server Stub 将<code>消息解包</code>（也叫 Unmarshalling）得到参数</li>
+<li>Server Stub 调用服务端的子程序（函数），处理完后，将最终结果按照相反的步骤返回给 Client</li>
+</ol>
+<p>●Stub 负责调用参数和返回值的<code>流化</code>（serialization）、<code>参数的打包解包</code>，以及负责<code>网络层的通信</code>。Client 端一般叫 Stub，Server 端一般叫 Skeleton。</p>
+<h3 id="REST-vs-RPC"><a href="#REST-vs-RPC" class="headerlink" title="REST vs RPC"></a>REST vs RPC</h3><p>在做 API 服务器开发时，很多人都会遇到这个问题 —— 选择 REST 还是 RPC。RPC 相比 REST 的优点主要有 3 点：</p>
+<ol>
+<li>RPC+Protobuf 采用的是 TCP 做传输协议，REST 直接使用 HTTP 做应用层协议，这种区别导致 REST 在调用<code>性能</code>上会比 RPC+Protobuf <code>低</code></li>
+<li>RPC 不像 REST 那样，每一个操作都要抽象成对资源的增删改查，在实际开发中，有很多操作<code>很难抽象</code>成资源，比如登录操作。所以在实际开发中并不能严格按照 REST 规范来写 API，RPC 就不存在这个问题</li>
+<li>RPC 屏蔽网络细节、<code>易用</code>，<code>和本地调用类似</code></li>
+</ol>
+<p>●这里的易用指的是调用方式上的易用性。在做 RPC 开发时，开发过程很烦琐，需要先写一个 DSL 描述文件，然后用代码生成器生成各种语言代码，当描述文件有更改时，必须重新定义和编译，<code>维护性差</code>。</p>
+<p>但是 REST 相较 RPC 也有很多优势：</p>
+<ol>
+<li>轻量级，简单易用，<code>维护性和扩展性都比较好</code></li>
+<li>REST 相对更规范，更<code>标准</code>，更<code>通用</code>，无论哪种语言都支持 HTTP 协议，可以对接外部很多系统，只要满足 HTTP 调用即可，更适合对外，RPC 会有语言限制，<code>不同语言的 RPC 调用起来很麻烦</code></li>
+<li>JSON 格式<code>可读性更强</code>，开发调试都很方便</li>
+<li>在开发过程中，如果严格按照 REST 规范来写 API，API 看起来更清晰，更<code>容易被大家理解</code></li>
+</ol>
+<p>●在实际开发中，严格按照 REST 规范来写很难，只能<code>尽可能 RESTful 化</code>。</p>
+<p>其实业界普遍采用的做法是，<code>内部系统之间调用用 RPC，对外用 REST</code>，因为内部系统之间可能调用很频繁，需要 RPC 的<code>高性能支撑</code>。对外用 REST 更易理解，更通用些。当然以现有的服务器性能，如果两个系统间调用不是特别频繁，对性能要求不是非常高，以笔者的开发经验来看，REST 的性能完全可以满足。本小册不是讨论<code>微服务</code>，所以不存在<code>微服务之间的高频调用</code>场景，此外 REST 在实际开发中，能够满足绝大部分的需求场景，所以 RPC 的性能优势可以忽略，相反基于 REST 的其他优势，笔者更倾向于用 REST 来构建 API 服务器，本小册正是用 REST 风格来构建 API 的。</p>
+<h3 id="媒体类型选择"><a href="#媒体类型选择" class="headerlink" title="媒体类型选择"></a>媒体类型选择</h3><p>媒体类型是独立于平台的类型，设计用于分布式系统间的通信，媒体类型用于传递信息，一个正式的规范定义了这些信息应该如何表示。HTTP 的 REST 能够提供多种不同的响应形式，常见的是 XML 和 JSON。JSON 无论从形式上还是使用方法上都更简单。相比 XML，<code>JSON 的内容更加紧凑，数据展现形式直观易懂，开发测试都非常方便</code>，所以在媒体类型选择上，选择了 JSON 格式，这也是很多大公司所采用的格式。</p>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>可以知道,API风格有REST风格和RPC风格,媒体类型有JSON和XML格式。在实现软件架构时,要对API风格和媒体类型进行选择。</p>
+<h2 id="2-API-流程和代码结构"><a href="#2-API-流程和代码结构" class="headerlink" title="2 API 流程和代码结构"></a>2 API 流程和代码结构</h2><h3 id="API-流程和代码结构"><a href="#API-流程和代码结构" class="headerlink" title="API 流程和代码结构"></a>API 流程和代码结构</h3><p> API 开发有两个流程。</p>
+<ul>
+<li>HTTP API 服务器启动流程</li>
+<li>HTTP 请求处理流程</li>
+</ul>
+<h3 id="HTTP-API-服务器启动流程"><a href="#HTTP-API-服务器启动流程" class="headerlink" title="HTTP API 服务器启动流程"></a>HTTP API 服务器启动流程</h3><p><img src="/2021/05/16/go%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E4%BA%8EGo%E8%AF%AD%E8%A8%80%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%9A%84RESTful%E2%80%94%E2%80%94API%E6%9C%8D%E5%8A%A1/2.jpg"></p>
+<p>如上图，在启动一个 API 命令后，API 命令会首先加载配置文件，根据配置做后面的处理工作。通常会将日志相关的配置记录在配置文件中，在解析完配置文件后，就可以加载日志包初始化函数，来初始化日志实例，供后面的程序调用。接下来会初始化数据库实例，建立数据库连接，供后面对数据库的 CRUD 操作使用。在建立完数据库连接后，需要设置 HTTP，通常包括 3 方面的设置：</p>
+<ol>
+<li>设置 Header</li>
+<li>注册路由</li>
+<li>注册中间件</li>
+</ol>
+<p>之后会调用 <code>net/http</code> 包的 <code>ListenAndServe()</code> 方法启动 HTTP 服务器。</p>
+<p>在启动 HTTP 端口之前，程序会 go 一个协程，来ping HTTP 服务器的 <code>/sd/health</code> 接口，如果程序成功启动，ping 协程在 timeout 之前会成功返回，如果程序启动失败，则 ping 协程最终会 timeout，并终止整个程序。</p>
+<p>●解析配置文件、初始化 Log 、初始化数据库的顺序根据自己的喜好和需求来排即可。</p>
+<h2 id="HTTP-请求处理流程"><a href="#HTTP-请求处理流程" class="headerlink" title="HTTP 请求处理流程"></a>HTTP 请求处理流程</h2><p><img src="/2021/05/16/go%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E4%BA%8EGo%E8%AF%AD%E8%A8%80%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%9A%84RESTful%E2%80%94%E2%80%94API%E6%9C%8D%E5%8A%A1/3.jpg"></p>
+<p>一次完整的 HTTP 请求处理流程如上图所示。</p>
+<p><strong>1. 建立连接</strong></p>
+<p>客户端发送 HTTP 请求后，服务器会根据域名进行域名解析，就是将网站名称转变成 IP 地址：localhost -&gt; 127.0.0.1，Linux hosts文件、DNS 域名解析等可以实现这种功能。之后通过发起 TCP 的三次握手建立连接。TCP 三次连接请参考 <a target="_blank" rel="noopener" href="https://blog.csdn.net/oney139/article/details/8103223">TCP 三次握手详解及释放连接过程</a>，建立连接之后就可以发送 HTTP 请求了。</p>
+<p><strong>2. 接收请求</strong></p>
+<p>HTTP 服务器软件进程，这里指的是 API 服务器，在接收到请求之后，首先根据 HTTP 请求行的信息来解析到 HTTP 方法和路径，在上图所示的报文中，方法是 <code>GET</code>，路径是 <code>/index.html</code>，之后根据 API 服务器注册的路由信息（大概可以理解为：HTTP 方法 + 路径和具体处理函数的映射）找到具体的处理函数。</p>
+<p><strong>3. 处理请求</strong></p>
+<p>在接收到请求之后，API 通常会解析 HTTP 请求报文获取请求头和消息体，然后根据这些信息进行相应的业务处理，<code>HTTP 框架一般都有自带的解析函数</code>，只需要输入 HTTP 请求报文，就可以解析到需要的请求头和消息体。通常情况下，业务逻辑处理可以分为两种：包含对数据库的操作和不包含对数据的操作。大型系统中通常两种都会有：</p>
+<ol>
+<li>包含对数据库的操作：需要访问数据库（增删改查），然后获取指定的数据，对数据处理后构建指定的响应结构体，返回响应包。数据库通常用的是 MySQL，因为免费，功能和性能也都能满足企业级应用的要求。</li>
+<li>不包含对数据库的操作：进行业务逻辑处理后，构建指定的响应结构体，返回响应包。</li>
+</ol>
+<p><strong>4. 记录事务处理过程</strong></p>
+<p>在业务逻辑处理过程中，需要记录一些关键信息，方便后期 Debug 用。在 Go 中有各种各样的日志包可以用来记录这些信息。</p>
+<h3 id="HTTP-请求和响应格式介绍"><a href="#HTTP-请求和响应格式介绍" class="headerlink" title="HTTP 请求和响应格式介绍"></a>HTTP 请求和响应格式介绍</h3><h3 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br></pre></td><td class="code"><pre><span class="line">├── admin.sh                     # 进程的start|stop|status|restart控制文件</span><br><span class="line">├── conf                         # 配置文件统一存放目录</span><br><span class="line">│   ├── config.yaml              # 配置文件</span><br><span class="line">│   ├── server.crt               # TLS配置文件</span><br><span class="line">│   └── server.key</span><br><span class="line">├── config                       # 专门用来处理配置和配置文件的Go package</span><br><span class="line">│   └── config.go                 </span><br><span class="line">├── db.sql                       # 在部署新环境时，可以登录MySQL客户端，执行source db.sql创建数据库和表</span><br><span class="line">├── docs                         # swagger文档，执行 swag init 生成的</span><br><span class="line">│   ├── docs.go</span><br><span class="line">│   └── swagger</span><br><span class="line">│       ├── swagger.json</span><br><span class="line">│       └── swagger.yaml</span><br><span class="line">├── handler                      # 类似MVC架构中的C，用来读取输入，并将处理流程转发给实际的处理函数，最后返回结果</span><br><span class="line">│   ├── handler.go</span><br><span class="line">│   ├── sd                       # 健康检查handler</span><br><span class="line">│   │   └── check.go </span><br><span class="line">│   └── user                     # 核心：用户业务逻辑handler</span><br><span class="line">│       ├── create.go            # 新增用户</span><br><span class="line">│       ├── delete.go            # 删除用户</span><br><span class="line">│       ├── get.go               # 获取指定的用户信息</span><br><span class="line">│       ├── list.go              # 查询用户列表</span><br><span class="line">│       ├── login.go             # 用户登录</span><br><span class="line">│       ├── update.go            # 更新用户</span><br><span class="line">│       └── user.go              # 存放用户handler公用的函数、结构体等</span><br><span class="line">├── main.go                      # Go程序唯一入口</span><br><span class="line">├── Makefile                     # Makefile文件，一般大型软件系统都是采用make来作为编译工具</span><br><span class="line">├── model                        # 数据库相关的操作统一放在这里，包括数据库初始化和对表的增删改查</span><br><span class="line">│   ├── init.go                  # 初始化和连接数据库</span><br><span class="line">│   ├── model.go                 # 存放一些公用的go struct</span><br><span class="line">│   └── user.go                  # 用户相关的数据库CURD操作</span><br><span class="line">├── pkg                          # 引用的包</span><br><span class="line">│   ├── auth                     # 认证包</span><br><span class="line">│   │   └── auth.go</span><br><span class="line">│   ├── constvar                 # 常量统一存放位置</span><br><span class="line">│   │   └── constvar.go</span><br><span class="line">│   ├── errno                    # 错误码存放位置</span><br><span class="line">│   │   ├── code.go</span><br><span class="line">│   │   └── errno.go</span><br><span class="line">│   ├── token</span><br><span class="line">│   │   └── token.go</span><br><span class="line">│   └── version                  # 版本包</span><br><span class="line">│       ├── base.go</span><br><span class="line">│       ├── doc.go</span><br><span class="line">│       └── version.go</span><br><span class="line">├── README.md                    # API目录README</span><br><span class="line">├── router                       # 路由相关处理</span><br><span class="line">│   ├── middleware               # API服务器用的是Gin Web框架，Gin中间件存放位置</span><br><span class="line">│   │   ├── auth.go </span><br><span class="line">│   │   ├── header.go</span><br><span class="line">│   │   ├── logging.go</span><br><span class="line">│   │   └── requestid.go</span><br><span class="line">│   └── router.go</span><br><span class="line">├── service                      # 实际业务处理函数存放位置</span><br><span class="line">│   └── service.go</span><br><span class="line">├── util                         # 工具类函数存放目录</span><br><span class="line">│   ├── util.go </span><br><span class="line">│   └── util_test.go</span><br><span class="line">└── vendor                         # vendor目录用来管理依赖包</span><br><span class="line">    ├── github.com</span><br><span class="line">    ├── golang.org</span><br><span class="line">    ├── gopkg.in</span><br><span class="line">    └── vendor.json</span><br></pre></td></tr></table></figure>
+<p>Go API 项目中，一般都会包括这些功能项：<code>Makefile 文件</code>、<code>配置文件目录</code>、RESTful API 服务器的<code> handler 目录</code>、<code>model 目录</code>、<code>工具类目录</code>、<code>vendor 目录</code>，以及实际处理业务逻辑函数所存放的 <code>service 目录</code>。这些都在上述的代码结构中有列出，新加功能时将代码放入对应功能的目录/文件中，可以使整个项目代码结构更加清晰，非常有利于后期的查找和维护。</p>
+<h3 id="小结-1"><a href="#小结-1" class="headerlink" title="小结"></a>小结</h3><p>API 服务器启动流程和 HTTP 请求处理流程是十分重要的。除此之外,API 服务器源码结构也非常重要，一个好的源码结构通常能让<code>逻辑更加清晰，编写更加顺畅，后期维护更加容易</code>。</p>
+<h2 id="3-Go-API-开发环境配置"><a href="#3-Go-API-开发环境配置" class="headerlink" title="3 Go API 开发环境配置"></a>3 Go API 开发环境配置</h2><h2 id="4-启动一个最简单的-RESTful-API-服务器"><a href="#4-启动一个最简单的-RESTful-API-服务器" class="headerlink" title="4 启动一个最简单的 RESTful API 服务器"></a>4 启动一个最简单的 RESTful API 服务器</h2><h3 id="核心内容"><a href="#核心内容" class="headerlink" title="核心内容"></a>核心内容</h3><ul>
+<li>启动一个最简单的 RESTful API 服务器</li>
+<li>设置 HTTP Header</li>
+<li>API 服务器健康检查和状态查询</li>
+<li>编译并测试 API</li>
+</ul>
+<h3 id="REST-Web-框架选择"><a href="#REST-Web-框架选择" class="headerlink" title="REST Web 框架选择"></a>REST Web 框架选择</h3><p>要编写一个 RESTful 风格的 API 服务器，首先需要一个 RESTful Web 框架，经过调研选择了 GitHub star 数最多的 <a target="_blank" rel="noopener" href="https://github.com/gin-gonic/gin">Gin</a>。采用轻量级的 Gin 框架，具有如下优点：<code>高性能</code>、<code>扩展性强</code>、<code>稳定性强</code>、相对而言比较简洁（查看 <a target="_blank" rel="noopener" href="https://github.com/gin-gonic/gin/blob/master/BENCHMARKS.md">性能对比</a>）。关于 Gin 的更多介绍可以参考 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a31e4ee25305">Golang 微框架 Gin 简介</a>。</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">记录</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://caciacc.top/2021/05/16/go%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E4%BA%8EGo%E8%AF%AD%E8%A8%80%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%9A%84RESTful%E2%80%94%E2%80%94API%E6%9C%8D%E5%8A%A1/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC44%E5%9C%BA/" class="archive-article-date">
-        <time datetime="2021-01-24T05:08:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021/05/16/%E8%AE%B0%E5%BD%95-%E6%9D%82%E8%AE%B03/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">记录-杂记3</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC44%E5%9C%BA/">算法-leetcode-双周赛第44场</a>
-	
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/" class="archive-article-date">
-        <time datetime="2021-01-24T04:14:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/">算法-leetcode-周赛第225场</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/23/%E7%AE%97%E6%B3%95-5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/" class="archive-article-date">
-        <time datetime="2021-01-23T08:58:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-23</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/23/%E7%AE%97%E6%B3%95-5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/">算法-5道算法题</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/20/%E7%AE%97%E6%B3%95-codeforce-696-div2/" class="archive-article-date">
-        <time datetime="2021-01-20T01:52:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-20</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/20/%E7%AE%97%E6%B3%95-codeforce-696-div2/">算法-codeforce-696-div2</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">codeforce</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/19/%E9%A1%B9%E7%9B%AE-vue%E6%89%93%E5%8C%85%E9%97%AE%E9%A2%98/" class="archive-article-date">
-        <time datetime="2021-01-19T08:09:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-19</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/19/%E9%A1%B9%E7%9B%AE-vue%E6%89%93%E5%8C%85%E9%97%AE%E9%A2%98/">项目-vue打包问题</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/19/%E9%A1%B9%E7%9B%AE-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/" class="archive-article-date">
-        <time datetime="2021-01-19T04:49:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-19</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/19/%E9%A1%B9%E7%9B%AE-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/">项目-服务器配置过程</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/18/%E9%A1%B9%E7%9B%AE-mybatis%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98/" class="archive-article-date">
-        <time datetime="2021-01-18T06:38:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-18</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/18/%E9%A1%B9%E7%9B%AE-mybatis%E6%B3%A8%E8%A7%A3%E6%96%B9%E5%BC%8F%E7%9A%84%E4%B8%80%E4%B8%AA%E9%97%AE%E9%A2%98/">项目-mybatis注解方式的一个问题</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/17/%E9%A1%B9%E7%9B%AE-wsdl%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-        <time datetime="2021-01-17T13:20:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-17</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/17/%E9%A1%B9%E7%9B%AE-wsdl%E5%AD%A6%E4%B9%A0/">项目-wsdl学习</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">wsdl</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/17/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC224%E5%9C%BA/" class="archive-article-date">
-        <time datetime="2021-01-17T06:28:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-17</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/17/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC224%E5%9C%BA/">算法-leetcode-周赛第224场</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2021/page/7/">Prev</a><a class="page-number" href="/archives/2021/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2021/page/6/">6</a><a class="page-number" href="/archives/2021/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/archives/2021/page/9/">9</a><a class="page-number" href="/archives/2021/page/10/">10</a><a class="page-number" href="/archives/2021/page/11/">11</a><a class="extend next" rel="next" href="/archives/2021/page/9/">Next</a>
-    </nav>
-  
 
 
           </div>
@@ -751,8 +578,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
