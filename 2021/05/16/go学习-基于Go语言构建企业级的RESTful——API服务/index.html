@@ -21,7 +21,7 @@
 <meta property="og:image" content="http://caciacc.top/2021/05/16/go%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E4%BA%8EGo%E8%AF%AD%E8%A8%80%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%9A%84RESTful%E2%80%94%E2%80%94API%E6%9C%8D%E5%8A%A1/2.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/05/16/go%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E4%BA%8EGo%E8%AF%AD%E8%A8%80%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%9A%84RESTful%E2%80%94%E2%80%94API%E6%9C%8D%E5%8A%A1/3.jpg">
 <meta property="article:published_time" content="2021-05-16T08:21:34.000Z">
-<meta property="article:modified_time" content="2021-05-16T13:27:51.290Z">
+<meta property="article:modified_time" content="2021-05-16T13:47:21.778Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
@@ -280,7 +280,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">3.6k字</span>
+      <span class="post-count">3.8k字</span>
     </span>
   </span>
 
@@ -289,7 +289,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">13分</span>
+      <span class="post-count">14分</span>
     </span>
   </span>
 </div>
@@ -425,7 +425,10 @@
 <li>编译并测试 API</li>
 </ul>
 <h3 id="REST-Web-框架选择"><a href="#REST-Web-框架选择" class="headerlink" title="REST Web 框架选择"></a>REST Web 框架选择</h3><p>要编写一个 RESTful 风格的 API 服务器，首先需要一个 RESTful Web 框架，经过调研选择了 GitHub star 数最多的 <a target="_blank" rel="noopener" href="https://github.com/gin-gonic/gin">Gin</a>。采用轻量级的 Gin 框架，具有如下优点：<code>高性能</code>、<code>扩展性强</code>、<code>稳定性强</code>、相对而言比较简洁（查看 <a target="_blank" rel="noopener" href="https://github.com/gin-gonic/gin/blob/master/BENCHMARKS.md">性能对比</a>）。关于 Gin 的更多介绍可以参考 <a target="_blank" rel="noopener" href="https://www.jianshu.com/p/a31e4ee25305">Golang 微框架 Gin 简介</a>。</p>
-
+<h3 id="加载路由，并启动-HTTP-服务"><a href="#加载路由，并启动-HTTP-服务" class="headerlink" title="加载路由，并启动 HTTP 服务"></a>加载路由，并启动 HTTP 服务</h3><p>main.go 中的 <code>main()</code> 函数是 Go 程序的入口函数，在 <code>main()</code> 函数中主要做一些配置文件解析、程序初始化和路由加载之类的事情，最终调用 <code>http.ListenAndServe()</code> 在指定端口<code>启动一个 HTTP 服务器</code>。本小节是一个简单的 HTTP 服务器，仅初始化一个 Gin 实例，加载路由并启动 HTTP 服务器。</p>
+<p><strong>编写入口函数</strong></p>
+<p>编写 <code>main()</code> 函数，main.go 代码：</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line"></span><br><span class="line">	<span class="string">&quot;apiserver/router&quot;</span></span><br><span class="line"></span><br><span class="line">	<span class="string">&quot;github.com/gin-gonic/gin&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	<span class="comment">// Create the Gin engine.</span></span><br><span class="line">	g := gin.New()</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// gin middlewares</span></span><br><span class="line">	middlewares := []gin.HandlerFunc&#123;&#125;</span><br><span class="line"></span><br><span class="line">	<span class="comment">// Routes.</span></span><br><span class="line">	router.Load(</span><br><span class="line">		<span class="comment">// Cores.</span></span><br><span class="line">		g,</span><br><span class="line"></span><br><span class="line">		<span class="comment">// Middlewares.</span></span><br><span class="line">		middlewares...,</span><br><span class="line">	)</span><br><span class="line"></span><br><span class="line">	log.Printf(<span class="string">&quot;Start to listening the incoming requests on http address: %s&quot;</span>, <span class="string">&quot;:8080&quot;</span>)</span><br><span class="line">	log.Printf(http.ListenAndServe(<span class="string">&quot;:8080&quot;</span>, g).Error())</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     
 
     
