@@ -18,7 +18,7 @@
 <meta property="og:description" content="前言Go语言起源Go语言有时候被描述为”C类似语言”,或者是”21世纪的C语言”。 除此之外,Go语言还有其他两支祖先。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-17T06:27:55.000Z">
-<meta property="article:modified_time" content="2021-05-20T01:58:25.345Z">
+<meta property="article:modified_time" content="2021-05-20T13:43:48.092Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
@@ -276,7 +276,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">12.3k字</span>
+      <span class="post-count">14.2k字</span>
     </span>
   </span>
 
@@ -285,7 +285,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">55分</span>
+      <span class="post-count">62分</span>
     </span>
   </span>
 </div>
@@ -364,6 +364,12 @@
 <p>我们简单地将web服务器和之前的lissajous函数结合起来,这样GIF动画可以被写到HTTP客户端,而不是标准输出流。</p>
 <p>练习 1.12</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;image&quot;</span></span><br><span class="line">	<span class="string">&quot;image/color&quot;</span></span><br><span class="line">	<span class="string">&quot;image/gif&quot;</span></span><br><span class="line">	<span class="string">&quot;io&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;math&quot;</span></span><br><span class="line">	<span class="string">&quot;math/rand&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	<span class="string">&quot;strconv&quot;</span></span><br><span class="line">	<span class="string">&quot;strings&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">var</span> palette = []color.Color&#123;color.RGBA&#123;<span class="number">0xFF</span>, <span class="number">0xFF</span>, <span class="number">0xFF</span>, <span class="number">0xFF</span>&#125;,color.RGBA&#123;<span class="number">0</span>, <span class="number">0xFF</span>, <span class="number">0</span>, <span class="number">0xFF</span>&#125;,color.RGBA&#123;<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0xFF</span>&#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span>(</span><br><span class="line">	whiteIndex = <span class="number">0</span></span><br><span class="line">	greenIndex = <span class="number">1</span></span><br><span class="line">	blackIndex = <span class="number">2</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	http.HandleFunc(<span class="string">&quot;/&quot;</span>,handler)</span><br><span class="line">	log.Fatal(http.ListenAndServe(<span class="string">&quot;localhost:8080&quot;</span>,<span class="literal">nil</span>))</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">handler</span><span class="params">(w http.ResponseWriter, r *http.Request)</span></span>&#123;</span><br><span class="line">	url := r.URL.RawQuery</span><br><span class="line">	fmt.Println(url)</span><br><span class="line">	cycles := <span class="number">5</span></span><br><span class="line">	<span class="keyword">if</span> strings.HasPrefix(url,<span class="string">&quot;cycles=&quot;</span>)&#123;</span><br><span class="line">		<span class="keyword">var</span> num <span class="keyword">string</span></span><br><span class="line">		num  = url[<span class="number">7</span>:]</span><br><span class="line">		cycles, err := strconv.Atoi(num)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span>&#123;</span><br><span class="line">			fmt.Println(err)</span><br><span class="line">			<span class="keyword">return</span></span><br><span class="line">		&#125;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;val:%d\n&quot;</span>,cycles)</span><br><span class="line">	&#125;</span><br><span class="line">	lissajous(w, cycles)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">lissajous</span><span class="params">(out io.Writer, cycles <span class="keyword">int</span>)</span></span>&#123;</span><br><span class="line">	<span class="keyword">const</span>(</span><br><span class="line">	<span class="comment">//	cycles = 5</span></span><br><span class="line">		res = <span class="number">0.001</span></span><br><span class="line">		size = <span class="number">100</span></span><br><span class="line">		nframes = <span class="number">64</span></span><br><span class="line">		delay = <span class="number">8</span></span><br><span class="line">	)</span><br><span class="line"></span><br><span class="line">	freq := rand.Float64() * <span class="number">3.0</span></span><br><span class="line">	anim := gif.GIF&#123;LoopCount: nframes&#125;</span><br><span class="line">	phase := <span class="number">0.0</span></span><br><span class="line">	<span class="keyword">for</span> i := <span class="number">0</span>; i &lt; nframes; i++ &#123;</span><br><span class="line">		rect := image.Rect(<span class="number">0</span>,<span class="number">0</span>,<span class="number">2</span>*size+<span class="number">1</span>,<span class="number">2</span>*size+<span class="number">1</span>)</span><br><span class="line">		img := image.NewPaletted(rect,palette)</span><br><span class="line">		<span class="keyword">for</span> t := <span class="number">0.0</span>; t &lt; <span class="keyword">float64</span>(cycles)* <span class="number">2</span> * math.Pi ; t+= res &#123;</span><br><span class="line">			x := math.Sin(t)</span><br><span class="line">			y := math.Sin(t * freq + phase)</span><br><span class="line">			img.SetColorIndex(size + <span class="keyword">int</span>(x * size + <span class="number">0.5</span>),size + <span class="keyword">int</span>(y * size + <span class="number">0.5</span>), <span class="keyword">uint8</span>(i%<span class="number">3</span>+<span class="number">1</span>))</span><br><span class="line">		&#125;</span><br><span class="line">		phase += <span class="number">0.1</span></span><br><span class="line">		anim.Delay = <span class="built_in">append</span>(anim.Delay,delay)</span><br><span class="line">		anim.Image = <span class="built_in">append</span>(anim.Image, img)</span><br><span class="line">	&#125;</span><br><span class="line">	gif.EncodeAll(out,&amp;anim)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-12-不足"><a href="#1-12-不足" class="headerlink" title="1.12 不足"></a>1.12 不足</h2><p>1.用字符串做校验可能导致出错。应该用request提供的原始方式做参数解析什么的,而不是用字符串截断,自带的原生类型来做。</p>
+<p>2.应该给对应不好理解的const写上注释</p>
+<p>3.应该是/xxx而不是/,对应路径。</p>
+<p>4.一个大函数中如果包含多个有明确界限个功能,应拆分为多个小函数。</p>
+<p>5.err一定有对应的处理。</p>
+<p>6.const变量应按照标准放在全局变量位置,而不放在函数里。</p>
 <h2 id="1-8-本章小结"><a href="#1-8-本章小结" class="headerlink" title="1.8 本章小结"></a>1.8 本章小结</h2><p>switch的case执行完自动退出,如果不自动退出使用fallthrough。</p>
 <p>switch可以不带操作对象,相当于true。</p>
 <p>Go语言平衡了指针约束,没有指针运算。</p>
@@ -582,7 +588,7 @@
 <p>许多web服务都提供JSON接口,通过HTTP接口发送JSON格式请求并返回JSON格式的信息。</p>
 <p>SearchIssues函数发出HTTP请求,然后解码返回的JSON格式的结果。因为用户提供的查询条件可能包含类似?和&amp;之类的特殊字符,为了避免对URL造成冲突,我们用url.QueryEscape来对查询中的特殊字符进行转义操作。</p>
 <p>练习 4.10</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;log&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">	<span class="string">&quot;testProject1/github&quot;</span></span><br><span class="line">	<span class="string">&quot;time&quot;</span></span><br><span class="line">)</span><br><span class="line"></span><br><span class="line"><span class="comment">//!+</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	result, err := github.SearchIssues(os.Args[<span class="number">1</span>:])</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		log.Fatal(err)</span><br><span class="line">	&#125;</span><br><span class="line">	fmt.Printf(<span class="string">&quot;%d issues:\n&quot;</span>, result.TotalCount)</span><br><span class="line">	<span class="keyword">for</span> _, item := <span class="keyword">range</span> result.Items &#123;</span><br><span class="line">		fmt.Printf(<span class="string">&quot;#%-5d %9.9s %.55s  &quot;</span>,</span><br><span class="line">			item.Number, item.User.Login, item.Title)</span><br><span class="line">		<span class="keyword">if</span> time.Since(item.CreatedAt).Seconds() &gt; <span class="number">31536000</span>&#123;</span><br><span class="line">			fmt.Println(<span class="string">&quot;over a year&quot;</span>)</span><br><span class="line">		&#125; <span class="keyword">else</span> <span class="keyword">if</span> time.Since(item.CreatedAt) &gt; <span class="number">2626560</span>&#123;</span><br><span class="line">			fmt.Println(<span class="string">&quot;over a month&quot;</span>)</span><br><span class="line">		&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			fmt.Println(<span class="string">&quot;less than a month&quot;</span>)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>练习 4.11</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 <p>练习 4.12</p>
@@ -596,7 +602,19 @@
 <p>一旦模板已经创建、注册了dayAgo函数、并通过分析和检测,我们就可以使用github.IssuesSearchResult作为输入源,os.Stdout作为输出源来执行模板。</p>
 <p>练习 4.14</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
-<h1 id="第五章-函数"><a href="#第五章-函数" class="headerlink" title="第五章 函数"></a>第五章 函数</h1><h2 id="5-3-多返回值"><a href="#5-3-多返回值" class="headerlink" title="5.3 多返回值"></a>5.3 多返回值</h2><p>许多标准库中的函数返回两个值,一个是期望得到的返回值,另一个是函数出错时的错误信息。</p>
+<h1 id="第五章-函数"><a href="#第五章-函数" class="headerlink" title="第五章 函数"></a>第五章 函数</h1><h2 id="5-1-函数声明"><a href="#5-1-函数声明" class="headerlink" title="5.1 函数声明"></a>5.1 函数声明</h2><p>对形参的修改不会影响实参,但是,如果实参包括引用类型,如指针、slice(切片)、map、funciton、channel等类型,实参可能会由于函数的简介引用被修改。</p>
+<p>可能会偶尔遇到没有函数体的函数声明,这表示该函数不是以Go实现的。</p>
+<h2 id="5-2-递归"><a href="#5-2-递归" class="headerlink" title="5.2 递归"></a>5.2 递归</h2><p>当outline调用自身时,被调用者接受的是stack的拷贝。被调用者的入栈操作,修改的是stack的拷贝,而不是调用者的stack,因此当函数返回时,调用者的stack并未修改。</p>
+<p>函数调用栈,常见的大小从64KB到2MB不等。当你用递归处理大量数据时,需要避免栈溢出。Go语言使用可变栈,栈的大小按需增加(初始时很小),使得我们不必考虑溢出和安全问题。</p>
+<p>练习 5.1</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习 5.2</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习 5.3</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习 5.4</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="5-3-多返回值"><a href="#5-3-多返回值" class="headerlink" title="5.3 多返回值"></a>5.3 多返回值</h2><p>许多标准库中的函数返回两个值,一个是期望得到的返回值,另一个是函数出错时的错误信息。</p>
 <p>调用多返回值函数时,返回给调用者的是一组值,调用者必须显式将这些值分配给变量。</p>
 <p>如果一个函数将所有的返回值都显示的变量名,那么该函数的return语句可以省略操作数。这称之为bare return。</p>
 <p>bare return 可以减少代码的重复,但是使得代码难以被理解。</p>
@@ -604,8 +622,68 @@
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 <p>练习 5.6</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="5-4-错误"><a href="#5-4-错误" class="headerlink" title="5.4 错误"></a>5.4 错误</h2><p>对于那些将运行失败看作是预期结果的函数,它们会返回一个额外的返回值,通常是最后一个,来传递错误信息。</p>
+<p>对I/O操作而言,用户需要了解更多的错误信息。因此,额外的返回值不再是简单的布尔类型,而是error类型。</p>
+<p>内置的error是接口类型。error类型可能是nil或者non-nil。</p>
+<p>将这个错误以异常的形式抛出会混乱对错误的描述,这通常会导致一些糟糕的后果。</p>
+<p>Go使用控制流机制(如if和return)处理异常,使编码人员更多关注错误处理。</p>
+<h3 id="5-4-1-错误处理策略"><a href="#5-4-1-错误处理策略" class="headerlink" title="5.4.1 错误处理策略"></a>5.4.1 错误处理策略</h3><p>最常用的方式是传播错误。</p>
+<p>由于错误信息经常是以链式组合在一起的,所以错误信息中应避免大写和换行符。</p>
+<p>可以通过类似grep的工具处理错误信息。</p>
+<p>重新尝试失败的操作。要限制重试的时间间隔或重试的次数,防止无限制的重试。</p>
+<p>输出错误信息并结束程序。需要注意的是,这种策略只应在main中执行。对库函数来说,应仅向上传播错误。</p>
+<p>有时,我们只需要输出错误信息就足够了,不需要中断程序的运行。我们可以通过log包提供函数。</p>
+<h3 id="5-4-2-文件结尾错误-EOF"><a href="#5-4-2-文件结尾错误-EOF" class="headerlink" title="5.4.2 文件结尾错误 (EOF)"></a>5.4.2 文件结尾错误 (EOF)</h3><p>很多时候,程序必须根据错误类型,作出不同的响应。</p>
+<p>因为文件结束这种错误不需要更多的描述,所以io.EOF有固定的错误信息——“EOF”。对于其他错误,我们可能需要在错误信息中描述错误的类型和数量,这使得我们不能像io.EOF一样采用固定的错误信息。</p>
+<h2 id="5-5-函数值"><a href="#5-5-函数值" class="headerlink" title="5.5 函数值"></a>5.5 函数值</h2><p>函数像其他值一样,拥有类型,可以被赋值给其他变量,传递给函数,从函数返回。</p>
+<p>对函数值的调用类似函数调用。</p>
+<p>函数类型的零值是nil。调用值为nil的函数值会引发panic错误。</p>
+<p>函数值使得我们不仅仅可以通过数据来参数化函数,亦可通过行为。</p>
+<p>使用函数值,我们可以将遍历结点的逻辑和操作结点的逻辑分离,使得我们可以复用遍历的逻辑,从而对结点进行不同的操作。</p>
+<p>练习 5.7</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习 5.8</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习 5.9</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="5-6-匿名函数"><a href="#5-6-匿名函数" class="headerlink" title="5.6 匿名函数"></a>5.6 匿名函数</h2><p>拥有函数名的函数只能在包级语法块中被声明,通过函数字面量,我们可以绕过这一限制,在任何表达式中表示一个函数值。</p>
+<p>函数字面量是一种表达式,它的值被称为匿名函数。</p>
+<p>通过这种方式定义的函数可以访问完整的词法环境,这意味着在函数中定义的内部函数可以引用该函数的变量。</p>
+<p>函数值不仅仅是一串代码,还记录了状态。这就是函数值属于引用类型和函数值不可比较的原因。Go使用闭包技术实现函数值,Go程序员也将函数值称为闭包。</p>
+<p>练习 5.10</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习 5.11</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习 5.12</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习 5.13</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习 5.14</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="5-6-1-警告-捕捉迭代变量"><a href="#5-6-1-警告-捕捉迭代变量" class="headerlink" title="5.6.1 警告:捕捉迭代变量"></a>5.6.1 警告:捕捉迭代变量</h3><p>以dir为例,后续的迭代会不断更新dir的值,当删除操作执行时,for循环已经完成,dir存储的值等于最后一次迭代的值。这意味着,每次对os.RemoveAll的调用删除的都是相同的目录。</p>
+<p>为了解决这个问题,我们会引入一个与循环变量同名的局部变量,作为循环变量的副本。</p>
+<h2 id="5-7-可变参数"><a href="#5-7-可变参数" class="headerlink" title="5.7 可变参数"></a>5.7 可变参数</h2><p>参数数量可变的函数称为可变参数函数。</p>
+<p>需要在参数列表的最后一个参数类型之前加上省略符号”…”。</p>
+<p>可变参数函数经常被用于格式化字符串。</p>
+<p>interface{}表示函数的最后一个参数可以接受任意类型。</p>
+<p>练习 5.15</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习 5.16</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习 5.17</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 <h2 id="5-8-Deferred函数"><a href="#5-8-Deferred函数" class="headerlink" title="5.8 Deferred函数"></a>5.8 Deferred函数</h2><p>在调用普通函数或方法前加上关键字defer,就完成了defer的语法。当defer被执行后,跟在defer后面的函数会被延迟执行。直到包含该defer语句执行完毕后,defer后的函数才会执行。</p>
-
+<p>练习 5.18</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="5-9-Panic函数"><a href="#5-9-Panic函数" class="headerlink" title="5.9 Panic函数"></a>5.9 Panic函数</h2><p>数组访问越界、空指针引用等,这些运行时错误会引起panic异常。</p>
+<p>一般而言,当panic异常发生时,程序会中断运行,并立即执行在该goroutine中被延迟的函数(defer机制)。</p>
+<p>不是所有的panic异常都来自运行时,直接调用内置的panic函数也会引发panic异常;panic函数接受任何值作为参数。</p>
+<p>虽然Go的panic机制类似于其他语言的异常,但panic的适用场景有一些不同。由于panic会引起程序的崩溃,因此panic一般用于严重错误。</p>
+<h2 id="5-10-Recover捕获异常"><a href="#5-10-Recover捕获异常" class="headerlink" title="5.10 Recover捕获异常"></a>5.10 Recover捕获异常</h2><p>通常来说,不应该对panic异常做任何处理,但有时,也许我们可以从异常中恢复,至少我们可以在程序崩溃前,做一些操作。</p>
+<p>如果在deferred函数中调用了内置函数recover,并且定义了该defer语句的函数发生了panic异常,recover会使程序从panic恢复,并返回panic value。</p>
+<p>安全的做法是有选择的recover。当recover时对panic value进行检查,如果发现panic value是特殊类型,就将这个panic 作为error处理,如果不是,则按照正常的panic进行处理。</p>
+<p>练习 5.19</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
     
 
     
