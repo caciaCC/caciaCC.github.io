@@ -18,7 +18,7 @@
 <meta property="og:description" content="前言Go语言起源Go语言有时候被描述为”C类似语言”,或者是”21世纪的C语言”。 除此之外,Go语言还有其他两支祖先。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-17T06:27:55.000Z">
-<meta property="article:modified_time" content="2021-05-23T13:25:58.676Z">
+<meta property="article:modified_time" content="2021-05-24T13:20:10.200Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
@@ -276,7 +276,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">20.4k字</span>
+      <span class="post-count">25.8k字</span>
     </span>
   </span>
 
@@ -285,7 +285,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">87分</span>
+      <span class="post-count">107分</span>
     </span>
   </span>
 </div>
@@ -606,8 +606,8 @@
 <p>可能会偶尔遇到没有函数体的函数声明,这表示该函数不是以Go实现的。</p>
 <h2 id="5-2-递归"><a href="#5-2-递归" class="headerlink" title="5.2 递归"></a>5.2 递归</h2><p>当outline调用自身时,被调用者接受的是stack的拷贝。被调用者的入栈操作,修改的是stack的拷贝,而不是调用者的stack,因此当函数返回时,调用者的stack并未修改。</p>
 <p>函数调用栈,常见的大小从64KB到2MB不等。当你用递归处理大量数据时,需要避免栈溢出。Go语言使用可变栈,栈的大小按需增加(初始时很小),使得我们不必考虑溢出和安全问题。</p>
-<p>练习 5.1</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习 5.1(还未完成)</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> (</span><br><span class="line">	<span class="string">&quot;fmt&quot;</span></span><br><span class="line">	<span class="string">&quot;golang.org/x/net/html&quot;</span></span><br><span class="line">	<span class="string">&quot;io&quot;</span></span><br><span class="line">	<span class="string">&quot;net/http&quot;</span></span><br><span class="line">	<span class="string">&quot;os&quot;</span></span><br><span class="line">	<span class="string">&quot;strings&quot;</span></span><br><span class="line">)</span><br><span class="line"><span class="keyword">var</span> c <span class="keyword">chan</span> io.Reader</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Url</span><span class="params">()</span></span>&#123;</span><br><span class="line">	urls := os.Args[<span class="number">1</span>:]</span><br><span class="line">	<span class="comment">//	file,err := os.Create(&quot;a.txt&quot;)</span></span><br><span class="line">	<span class="comment">//	if err != nil &#123;</span></span><br><span class="line">	<span class="comment">//		fmt.Println(err)</span></span><br><span class="line">	<span class="comment">//	&#125;</span></span><br><span class="line">	<span class="keyword">for</span> _, url := <span class="keyword">range</span> urls &#123;</span><br><span class="line">		<span class="keyword">if</span> !strings.HasPrefix(url,<span class="string">&quot;http://&quot;</span>)&#123;</span><br><span class="line">			url = <span class="string">&quot;http://&quot;</span> + url</span><br><span class="line">		&#125;</span><br><span class="line">		resp,err := http.Get(url)</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span>&#123;</span><br><span class="line">			fmt.Fprintf(os.Stderr,<span class="string">&quot;fetch: %v\n&quot;</span>,err)</span><br><span class="line">			os.Exit(<span class="number">1</span>)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//b,err := ioutil.ReadAll(resp.Body)</span></span><br><span class="line">		<span class="comment">//if err != nil&#123;</span></span><br><span class="line">		<span class="comment">//	fmt.Fprintf(os.Stderr,&quot;fetch:reading %s: %v\n&quot;,url,err)</span></span><br><span class="line">		<span class="comment">//	os.Exit(1)</span></span><br><span class="line">		<span class="comment">//&#125;</span></span><br><span class="line">		<span class="comment">//c &lt;- resp.Body</span></span><br><span class="line">		c &lt;- resp.Body</span><br><span class="line">		<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">			fmt.Fprintf(os.Stderr,<span class="string">&quot;fetch:reading %s: %v\n&quot;</span>,url,err)</span><br><span class="line">			os.Exit(<span class="number">1</span>)</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="comment">//	fmt.Printf(&quot;%s\n&quot;,b)</span></span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">Parse</span><span class="params">()</span></span>&#123;</span><br><span class="line">	doc, err := html.Parse(&lt;-c)</span><br><span class="line">	<span class="keyword">if</span> err != <span class="literal">nil</span> &#123;</span><br><span class="line">		fmt.Fprintf(os.Stderr, <span class="string">&quot;findlinks1: %v\n&quot;</span>, err)</span><br><span class="line">		os.Exit(<span class="number">1</span>)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> _, link := <span class="keyword">range</span> visit(<span class="literal">nil</span>, doc) &#123;</span><br><span class="line">		fmt.Println(link)</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	c = <span class="built_in">make</span>(<span class="keyword">chan</span> io.Reader)</span><br><span class="line">	<span class="keyword">go</span> Url()</span><br><span class="line">	<span class="keyword">go</span> Parse()</span><br><span class="line">	<span class="keyword">var</span> s <span class="keyword">int</span></span><br><span class="line">	fmt.Scanf(<span class="string">&quot;%d&quot;</span>,&amp;s)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//!-main</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//!+visit</span></span><br><span class="line"><span class="comment">// visit appends to links each link found in n and returns the result.</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">visit</span><span class="params">(links []<span class="keyword">string</span>, n *html.Node)</span> []<span class="title">string</span></span> &#123;</span><br><span class="line">	<span class="keyword">if</span> n.Type == html.ElementNode &amp;&amp; n.Data == <span class="string">&quot;a&quot;</span> &#123;</span><br><span class="line">		<span class="keyword">for</span> _, a := <span class="keyword">range</span> n.Attr &#123;</span><br><span class="line">			<span class="keyword">if</span> a.Key == <span class="string">&quot;href&quot;</span> &#123;</span><br><span class="line">				links = <span class="built_in">append</span>(links, a.Val)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> c := n.FirstChild; c != <span class="literal">nil</span>; c = c.NextSibling &#123;</span><br><span class="line">		links = visit(links, c)</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> links</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//!-visit</span></span><br></pre></td></tr></table></figure>
 <p>练习 5.2</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 <p>练习 5.3</p>
@@ -845,7 +845,150 @@
 <h2 id="7-15-一些建议"><a href="#7-15-一些建议" class="headerlink" title="7.15 一些建议"></a>7.15 一些建议</h2><p>当设计一个新包时,新的Go程序员总创建一个接口的集合再定义满足接口的具体类型。别这样做。接口只有当有两个或两个以上的具体类型必须以相同的方式进行处理时才需要。</p>
 <p>当一个接口只被单一的具体类型实现时有一个例外,就是由于它的依赖,这个具体类型不能和这个接口存在在一个相同的包中。这种情况下,一个接口是解耦这两个包的好方式。</p>
 <p>对于接口设计的一个好的标准是只考虑你需要的东西,使用更小的接口。</p>
+<h1 id="第八章-Goroutines和Channels"><a href="#第八章-Goroutines和Channels" class="headerlink" title="第八章 Goroutines和Channels"></a>第八章 Goroutines和Channels</h1><p>Go语言中的并发程序可以用两种手段来实现。一是顺序进程通信或被简称为CSP,另一是多线程共享内存。</p>
+<h2 id="8-1-Goroutines"><a href="#8-1-Goroutines" class="headerlink" title="8.1 Goroutines"></a>8.1 Goroutines</h2><p>在Go语言中,每一个并发执行的单元叫做一个goroutine。</p>
+<p>当一个程序启动时,其主函数就在一个单独的goroutine中运行,我们叫它main goroutine。</p>
+<p>当主函数返回时,所有的goroutine都会被打断,程序退出。</p>
+<p>可以通过goroutine之间的通信来让一个goroutine请求其他的goroutine,并让其自己结束执行。</p>
+<h2 id="8-2-示例-并发的Clock服务"><a href="#8-2-示例-并发的Clock服务" class="headerlink" title="8.2 示例:并发的Clock服务"></a>8.2 示例:并发的Clock服务</h2><p>net包提供了编写一个网络客户端或服务端程序的基本组件,无论两者间的通信方式是TCP,UDP或者Unix domain sockets。</p>
+<p>listner对象的Accept方法会直接阻塞,直到一个新连接被创建,然后会返回一个net.Conn对象来表示这个连接。</p>
+<p>由于net.Conn实现了io.Writer接口,我们可以直接向其写入内容。这个死循环会一直执行,直到写入失败。最可能的原因是客户端主动断开连接。这种情况下handleConn函数会用defer调用关闭服务器侧的连接,然后返回到主函数,继续等待下一个连接请求。</p>
+<p>为了连接例子中的服务器,我们需要一个客户端程序,比如netcat这个工具(nc命令)。</p>
+<p>用net.Dial就可以简单地创建一个TCP连接。</p>
+<p>这个程序会从连接中读取数据,并将读到的内容写到标准输出中,直到遇到end of file的文件或者发生错误。</p>
+<p>我们这里对服务端程序做一点小改动,使其支持并发:在handleConn函数调用的地方增加go关键字,让每一次handleConn的调用都进入一个独立的goroutine。</p>
+<p>现在多个客户端可以同时接收到时间了。</p>
+<h2 id="8-3-示例-并发的Echo服务"><a href="#8-3-示例-并发的Echo服务" class="headerlink" title="8.3 示例:并发的Echo服务"></a>8.3 示例:并发的Echo服务</h2><p>在本节中我们会创建一个echo服务器,这个服务器在每个连接中会有多个goroutine。</p>
+<p>当main goroutine从输入流读取内容并发送给服务器时,另一个goroutine会读取并打印服务端的响应。当main goroutine遇到输入终止时,例如,用户在终端按了Control-D,在windows上是Control-C,这时程序就会被终止。</p>
+<p>我们需要go这个关键词来调用echo。</p>
+<p>让服务使用并发不只是处理多个客户端的请求,甚至在处理单个连接时也有可能会用到,就像我们上面的两个go关键字的用法。</p>
+<h2 id="8-4-Channels"><a href="#8-4-Channels" class="headerlink" title="8.4 Channels"></a>8.4 Channels</h2><p>每个channel都有一个特殊的类型,也就是channels可发送数据的类型。一个可以int数据的channel一般写作chan int。</p>
+<p>使用内置的make函数,我们可以创建一个channel。</p>
+<p>和map类似,channel也是一个对应make创建的底层数据结构的引用。</p>
+<p>两个相同类型的channel可以使用==运算符比较。</p>
+<p>一个channel有发送和接收两种主要操作,都是通信行为。</p>
+<p>Channel还支持close操作,用于关闭channel,随后对基于该channel的任何发送操作都将导致panic异常。</p>
+<p>使用内置的close函数就可以关闭一个channel。</p>
+<p>以最简单的方式调用make函数创建的是一个无缓存的channel,但是我们也可以指定第二个整形参数,对应channel的容量。如果channel的容量大于0,那么该channel就是带缓存的channel。</p>
+<h3 id="8-4-1不带缓存的Channels"><a href="#8-4-1不带缓存的Channels" class="headerlink" title="8.4.1不带缓存的Channels"></a>8.4.1不带缓存的Channels</h3><p>如果接收操作先发生,那么接收者goroutine也将阻塞,直到有另一个goroutine在相同的Channels上执行发送操作。</p>
+<p>基于无缓存的Channels的发送和接收操作将导致两个goroutine做一次同步操作。因为这个原因,无缓存Channels有时也叫做同步Channels。</p>
+<p>当我们说x事件在y事件之前发生,并不是说x事件在时间上比y事件更早;我们的意思是要保证在此之前的事件都已经完成了。</p>
+<p>在我们说x事件既不是在y事件之前发生也不是在y事件之后发生,我们就说x事件和y事件是并发的。</p>
+<p>我们需要要让主goroutine等待后台goroutine完成工作后再退出,我们使用了一个channel来同步两个goroutine。</p>
+<p>在后台goroutine返回之前,它先打印一个日志信息,然后向done对应的channel发送一个值。主goroutine在退出前等待从done对应的channel接收一个值。因此,总是可以在程序退出前正确输出”done”信息。</p>
+<p>有些信息事件并不携带额外的信息,它仅仅是用作两个goroutine之间的同步,这时候我们可以用struct{}空结构体作为channels元素的类型,虽然也可以用bool或int实现相同的功能, done&lt;-1也比done&lt;-struct{}{}更短。</p>
+<p>练习8.3</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="8-4-2-串联的Channels-Pipeline"><a href="#8-4-2-串联的Channels-Pipeline" class="headerlink" title="8.4.2 串联的Channels(Pipeline)"></a>8.4.2 串联的Channels(Pipeline)</h3><p>Channels也可用于将多个goroutine链接在一起,一个Channels的输出作为下一个Channels的输入。这种串联的Channels就是所谓的管道(pipeline)。</p>
+<p>当一个channel被关闭后,再向该channel发送数据将导致panic异常。当一个被关闭的channel中已发送的数据都被成功接收后,后续的接收操作将不再阻塞,它们会立即返回一个零值。</p>
+<p>没有办法直接测试一个channel是否被关闭,但是接收操作有一个变体形式:它多接收一个结果,多接收的结果是一个布尔值ok,true表示成功从channels中接收到值,false表示channels已经被关闭并且里面没有值可接收。</p>
+<p>其实你并不需要关闭每一个channel。只要当需要告诉接收者goroutine,所有的数据已经全部发送时才需要关闭channel。</p>
+<p>试图重复关闭一个channel将导致panic异常,试图关闭一个nil值的channel也会导致一个panic异常。关闭一个channels还会触发一个广播机制。</p>
+<h3 id="8-4-3-单方向的Channel"><a href="#8-4-3-单方向的Channel" class="headerlink" title="8.4.3 单方向的Channel"></a>8.4.3 单方向的Channel</h3><p>随着程序的增长,人们习惯于将大的函数拆分为小的函数。</p>
+<p>当一个channel用于函数参数时,它一般总是被专门用于只发送或者只接收。</p>
+<p>为了表明这种意图并防止滥用,Go语言的类型系统提供了单方面的channel类型,分别用于只发送或者只接收的channel。类型chan&lt;-int表示一个只发送int的channel,只能发送不能接收。相反,&lt;-chan int表示一个只接收int的channel,只能接收不能发送。</p>
+<p>因为关闭操作只用于断言不再向channel发送新的数据,所以只有在发送者所在的goroutine才会调用close函数,因此对一个只接收的channel调用close将是一个编译错误。</p>
+<p>任何双向channel到单向channel的赋值都将导致该隐式转换。这里并没有反向转换的语法。</p>
+<h3 id="8-4-4-带缓存的Channel"><a href="#8-4-4-带缓存的Channel" class="headerlink" title="8.4.4 带缓存的Channel"></a>8.4.4 带缓存的Channel</h3><p>带缓存的channel内部持有一个元素队列。队列的最大容量是在调用make函数时通过第二个参数指定的。</p>
+<p>向缓存channel的发送操作就是向内部缓存队列的尾部插入元素,接收操作则是从队列的头部删除元素。</p>
+<p>在某些特殊情况下,程序可能需要知道channel内部缓存的容量,可以用内置的cap函数获取。</p>
+<p>len函数将返回channel内部缓存有效元素个数。</p>
+<p>Channel和goroutine的调度机制是紧密相连的,一个发送操作——或者使得整个程序——会永久阻塞。</p>
+<p>如果我们使用了无缓存的channel,两个慢的goroutine将会因为没有人接收而被永久卡住。这种情况,称为goroutines泄漏,将会是一个BUG。</p>
+<p>关于无缓存或带缓存channel之间的选择,或者是带缓存channel容量大小的选择,都可能影响程序的正确性。</p>
+<p>Channel的缓存也可能影响程序的性能。</p>
+<p>生产线的隐喻对于理解channels和goroutines的机制是有很大帮助的。</p>
+<h2 id="8-5-并发的循环"><a href="#8-5-并发的循环" class="headerlink" title="8.5 并发的循环"></a>8.5 并发的循环</h2><p>像这种子问题都是完全彼此独立的问题被叫做易并行问题。易并行问题是最容易被实现为并行的一类问题,并且是最能够享受并发带来的好处,能够随着并发的规模线性地扩展。</p>
+<p>因为我们知道内部的goroutines只有len(filesname),所以外部的goroutine只需要在返回之前对这些事件计数。</p>
+<p>注意我们将f的值作为一个显式变量传给了函数,而不是在闭包中声明。</p>
+<p>这个程序有一个微妙的BUG。当它遇到第一个非nil的error时会直接把error返回给调用方,使得没有一个goroutine去排空errors channel。这样剩下的worker gouroutine在向这个channel发送值时,都会永远地阻塞下去,并且永远都不会退出。这种情况叫做goroutine泄漏,可能导致整个程序卡住或跑出out of memory的错误。</p>
+<p>最简单的解决方法就是用一个具有合适大小的buffered channel,这样这些worker goroutine向channel中发送值时就不会被阻塞。</p>
+<p>为了知道最后一个goroutine什么时候结束,我们需要一个递增的计数器,在每个goroutine启动时+1,在每个goroutine退出时-1。</p>
+<p>观察一下我们是怎么创建一个closer goroutine,并让其等待worker们在关闭掉sizes channel之前退出的。</p>
+<p>两步操作:wait和close,必须是基于sizes的循环的并发。考虑一下另一种方案,如果等待操作被放在了main goroutine中,在循环之前,这样的话就永远不会结束了,如果在循环之后,那么又变成了不可达的部分,因为没有任何东西去关闭这个channel,这个循环就永远不会终止。</p>
+<p>练习8.4</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习8.5</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="8-6-示例-并发的web爬虫"><a href="#8-6-示例-并发的web爬虫" class="headerlink" title="8.6 示例:并发的web爬虫"></a>8.6 示例:并发的web爬虫</h2><p>注意这里将命令行参数传入worklist也是在一个另外的goroutine中进行的,这是为了避免在main goroutine和crawler goroutine中同时向另一个goroutine通过channel发送内容时发生死锁。</p>
+<p>为了解决过于并行的问题,我们可以限制并发程序所使用的资源来使之适应自己的运行环境。</p>
+<p>我们可以用一个有容量限制的buffered channel来控制并发,这类似操作系统里的计数信号量概念。从概念上讲,channel里的n个空槽代表n个可以处理内容的token(通行证),从channel里接收一个值会释放其中的一个token,并且生成一个新的空槽位。这样保证了在没有接收介入时最多有n个发送操作。</p>
+<p>第二个问题是这个程序永远都不会终止,即使它已经爬到了所有初始链接衍生出的链接。</p>
+<p>这里的++操作是在每启动一个crawler的goroutine之前。主循环会在n减到0时终止,表示没活干了。</p>
+<p>所有的爬虫goroutine现在都是被同一个channel-unseenLinks喂饱了。主channel负责拆分从worklist里拿到的元素,然后把没有抓过的经由unseenLinks channel发送给一个爬虫的goroutine。</p>
+<p>crawl函数爬到的链接在一个专门的goroutine中被发送到worklist中来避免死锁。</p>
+<p>练习8.6</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习8.7</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="8-7-基于select的多路复用"><a href="#8-7-基于select的多路复用" class="headerlink" title="8.7 基于select的多路复用"></a>8.7 基于select的多路复用</h2><p>select会等待case中有能够执行的去执行。当条件满足时,select才会去通信并执行case之后的语句,这时候其他通信是不会执行的。</p>
+<p>如果多个case同时就绪时,select会随机地选择一个执行,这样来保证每一个channel都有平等地被执行的机会。</p>
+<p>Tick函数挺方便,但是只有当程序整个生命周期都需要这个时间时我们使用它才比较合适,否则我们应采用以下方式,以避免goroutine泄漏。</p>
+<p>这是一个非阻塞的接收操作,反复做这样的操作叫做”轮询channel”。</p>
+<p>channel的零值是nil。nil的channel也有一定用处。因为对一个ni的channel发送和接收操作会永远阻塞,在select语句中操作nil的channel永远都不会被select到。</p>
+<p>这使得我们可以用nil来激活和禁用case,以达成处理其他输入或输出事件时超时或取消的逻辑。</p>
+<p>练习8.8</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="8-8-示例-并发的字典遍历"><a href="#8-8-示例-并发的字典遍历" class="headerlink" title="8.8 示例:并发的字典遍历"></a>8.8 示例:并发的字典遍历</h2><p>创建一个程序来生成指定目录的硬盘使用情况报告。</p>
+<p>主goroutine现在使用了计时器来每500ms生成事件,然后用select语句来等待文件大小的信息来更新总大小数据,或者一个计时器的事件来打印当前的总大小数据。</p>
+<p>如果-v的flag在运行时没有传入的话,tick这个channel会保持为nil,这样在select里的case也就相当于被禁用了。</p>
+<p>第三个版本的du,会对每一个walkDir的调用创建一个新的goroutine。它使用syn.WaitGroup来对仍然活跃的walkDir调用进行计数,另一个goroutine会在计数器减为0的时候将fileSizes这个channel关闭。</p>
+<p>由于这个程序在高峰期会创建成百上千的goroutine,我们需要修改dirents函数,用计数信号量来阻止他打开太多的文件。</p>
+<p>练习8.9</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="8-9-并发的退出"><a href="#8-9-并发的退出" class="headerlink" title="8.9 并发的退出"></a>8.9 并发的退出</h2><p>Go语言并没有提供在一个goroutine中终止另一个goroutine的方法,由于这样会导致goroutine之间的共享变量落在未定义的状态上。</p>
+<p>我们的广播机制:不要向channel发送值,而是用关闭一个channel来进行广播。</p>
+<p>现在当取消发生时,所有后台的goroutine都会停止并且主函数会返回。</p>
+<p>取消掉直接从主函数返回,我们调用一个panic,然后runtime会把每一个goroutine的栈dump下来。如果main goroutine是唯一一个剩下的goroutine的话,他会清理掉自己的一切资源。但是如果还有其他的goroutine没有退出的话,他们可能没办法正确地取消掉,也有可能被取消但是取消操作会很花时间;所以这里的一个调研还是很有必要的。</p>
+<p>练习8.10</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习8.11</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="8-10-示例-聊天服务"><a href="#8-10-示例-聊天服务" class="headerlink" title="8.10 示例:聊天服务"></a>8.10 示例:聊天服务</h2><p>聊天服务器,这个程序可以让一些用户通过服务器向其他所有用户广播文本信息。</p>
+<p>另外,handleConn为每一个客户端创建了一个clientWriter的goroutine来接收向客户端发出信息channel中发送的广播信息,并将它们写入到客户端的网络连接。</p>
+<p>clients这个map被限制在了一个独立的goroutine中,broadcaster,所以它不能被并发地访问。多个goroutine共享的变量只有这些channel和net.Conn的实例,两个东西都是并发安全的。</p>
+<p>练习8.12</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习8.13</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习8.14</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="第九章-基于共享变量的并发"><a href="#第九章-基于共享变量的并发" class="headerlink" title="第九章 基于共享变量的并发"></a>第九章 基于共享变量的并发</h1><h1 id="第十章-包和工具"><a href="#第十章-包和工具" class="headerlink" title="第十章 包和工具"></a>第十章 包和工具</h1><p>Go语言有超过100个标准包,标准库为大多数的程序提供了必要的基础构件。</p>
+<p>Go还自带了工具箱,里面有很多用来简化工作区和包管理的小工具。</p>
+<h2 id="10-1-包简介"><a href="#10-1-包简介" class="headerlink" title="10.1 包简介"></a>10.1 包简介</h2><p>任何包系统设计的目的都是为了简化大型程序的设计和维护工作。</p>
+<p>每一个包一般都定义了一个不同的名字空间用于它内部的每个标识符的访问。</p>
+<p>每个包还可以通过控制包内名字的可见性和是否导出实现封装特性。</p>
+<p>当我们修改了一个源文件,我们必须重新编译该源文件对应的包和所有依赖该包的其他包。</p>
+<h2 id="10-2-导入路径"><a href="#10-2-导入路径" class="headerlink" title="10.2 导入路径"></a>10.2 导入路径</h2><p>Go语言的规范并没有指明包的导入路径字符串的具体含义,导入路径的具体含义是由构建工具来解释的。</p>
+<h2 id="10-3-包声明"><a href="#10-3-包声明" class="headerlink" title="10.3 包声明"></a>10.3 包声明</h2><p>在每个Go语言源文件的开头必须有包声明语句。包声明语句的主要目的是确定当前包被其他包导入时的默认标识符。</p>
+<p>通常来说,默认的包名就是包导入路径的最后一段,因此即使两个包的包导入路径不同,它们依然可能有一个相同的包名。</p>
+<p>关于默认包名一般采用导入路径名的最后一段的约定也有三种例外情况。第一个例外,包对应一个可执行程序,也就是main包,这时候main包本身的导入路径是无关紧要的。</p>
+<p>第二个例外,包所在的目录中可能有一些文件名是以test.go为后缀的go源文件,并且这些源文件声明的包名也是以_test为后缀名的。</p>
+<p>第三个例外,一些依赖版本号的管理工具会在导入路径后追加版本号信息,例如”gopkg.in/yaml.v2”</p>
+<h2 id="10-4-导入声明"><a href="#10-4-导入声明" class="headerlink" title="10.4 导入声明"></a>10.4 导入声明</h2><p>导入的包之间可以通过添加空行来分组;通常将来自不同组织的包独自分组。</p>
+<p>如果我们想要导入两个有着名字相同的包,例如math/rand包和crypte/rand包,那么导入声明必须至少为一个同名包指定一个新的包名以避免冲突。这叫做导入包的重命名。</p>
+<p>每个导入声明语句都明确指定了当前包和被导入包之前的依赖关系。如果遇到包循环导入的情况,Go语言的构建工具会报告错误。</p>
+<h2 id="10-5-包的匿名导入"><a href="#10-5-包的匿名导入" class="headerlink" title="10.5 包的匿名导入"></a>10.5 包的匿名导入</h2><p>如果只是导入一个包而不使用导入的包将会导致一个编译错误。但是有时很我们只是想利用导入包所产生的副作用,这时候我们需要抑制”unused import”编译错误,我们可以用下划线重命名导入的包。</p>
+<p>这个被称为包的匿名导入。</p>
+<p>每个驱动入口是通过调用image.RegisterFormat函数注册,一般是在每个格式包的init初始化函数中调用,例如image/png包是这样注册的。</p>
+<p>最终效果是,主程序只需要匿名导入特定图像驱动包就可以用image.Decode解码对应格式的图像了。</p>
+<p>数据库包database/sql也是采用了类似的技术,让用户可以根据自己的需要选择导入必要的数据库驱动。</p>
+<h2 id="10-6-包和命名"><a href="#10-6-包和命名" class="headerlink" title="10.6 包和命名"></a>10.6 包和命名</h2><p>当创建一个包时,一般要用短小的包名,但也不能太短导致难以理解。</p>
+<p>包名一般采用单数形式。</p>
+<p>要避免包名有其他的含义。</p>
+<p>当设计一个包的时候,要考虑包名和成员名两个部分如何很好地配合。</p>
+<h2 id="10-7-工具"><a href="#10-7-工具" class="headerlink" title="10.7 工具"></a>10.7 工具</h2><p>Go语言的工具箱是集合了一系列的功能的命令集。</p>
+<h3 id="10-7-1-工作区结构"><a href="#10-7-1-工作区结构" class="headerlink" title="10.7.1 工作区结构"></a>10.7.1 工作区结构</h3><p>GOPATH用来指定工作区。</p>
+<h3 id="10-7-2-下载包"><a href="#10-7-2-下载包" class="headerlink" title="10.7.2 下载包"></a>10.7.2 下载包</h3><p>go get可以下载单一的包或者整个子目录里每个包。</p>
+<p>练习10.3</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
 
+<h3 id="10-7-3-构建包"><a href="#10-7-3-构建包" class="headerlink" title="10.7.3 构建包"></a>10.7.3 构建包</h3><p>go build命令编译命令行参数指定的每个包。如果包的名字是main,go build将调用连接器在当前目录创建一个可执行程序。</p>
+<h3 id="10-7-4-包文档"><a href="#10-7-4-包文档" class="headerlink" title="10.7.4 包文档"></a>10.7.4 包文档</h3><p>go doc命令,该命令打印包的声明和每个成员的文档注释。</p>
+<h3 id="10-7-5-内部包"><a href="#10-7-5-内部包" class="headerlink" title="10.7.5 内部包"></a>10.7.5 内部包</h3><p>Go语言的构建工具对包含internal名字的路径段的包导入路径做了特殊处理。这种包叫internal包,一个internal包只能被和internal目录有同一个父目录的包所导入。</p>
+<h3 id="10-7-6-查询包"><a href="#10-7-6-查询包" class="headerlink" title="10.7.6 查询包"></a>10.7.6 查询包</h3><p>go list命令可以查询可用包的信息。</p>
+<p>练习10.4</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
     
 
     
