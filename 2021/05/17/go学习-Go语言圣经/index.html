@@ -18,7 +18,7 @@
 <meta property="og:description" content="前言Go语言起源Go语言有时候被描述为”C类似语言”,或者是”21世纪的C语言”。 除此之外,Go语言还有其他两支祖先。">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-05-17T06:27:55.000Z">
-<meta property="article:modified_time" content="2021-05-24T13:20:10.200Z">
+<meta property="article:modified_time" content="2021-05-25T09:39:23.901Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
@@ -276,7 +276,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">25.8k字</span>
+      <span class="post-count">28.6k字</span>
     </span>
   </span>
 
@@ -285,7 +285,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">107分</span>
+      <span class="post-count">117分</span>
     </span>
   </span>
 </div>
@@ -989,6 +989,118 @@
 <h3 id="10-7-6-查询包"><a href="#10-7-6-查询包" class="headerlink" title="10.7.6 查询包"></a>10.7.6 查询包</h3><p>go list命令可以查询可用包的信息。</p>
 <p>练习10.4</p>
 <figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h1 id="第十一章-测试"><a href="#第十一章-测试" class="headerlink" title="第十一章 测试"></a>第十一章 测试</h1><p>我们说测试的时候一般是指自动化测试,也就是写一些小的程序用来检测被测试代码的行为和预期的一样,这些通常都是精心设计的执行某些特定的功能或者通过随机性的输入要验证边界的处理。</p>
+<p>软件测试是一个巨大的领域。</p>
+<p>Go语言的测试技术是相对低级的。它依赖一个go test测试命令和一组按照规约方式编写的测试函数,测试命令可以运行这些测试函数。</p>
+<p>在实践中,编写测试代码和编写程序本身并没有多大区别。</p>
+<h2 id="11-1-go-test"><a href="#11-1-go-test" class="headerlink" title="11.1 go test"></a>11.1 go test</h2><p>go test命令是一个按照一定的约定和组织的测试代码的驱动程序。在包目录内,所有以_test.go为后缀的源文件并不是go build构建包的一部分,它们是go test测试的一部分。</p>
+<p>在*_test.go文件中,有三种类型的函数:测试函数、基准测试函数、示例函数。</p>
+<p>go test命令会遍历所有的*_test.go文件中符合上述命名规则的函数,然后生成一个临时的main包用于调用相应的测试函数,然后构建并运行、报告测试结果,最后清理测试中生成的临时文件。</p>
+<h2 id="11-2-测试函数"><a href="#11-2-测试函数" class="headerlink" title="11.2 测试函数"></a>11.2 测试函数</h2><p>每个测试函数必须导入testing包。 </p>
+<p>测试函数的名字必须以Test开头,可选的后缀名必须以大写字母开头。</p>
+<p>其中t参数用于报告测试失败和附件的日志信息。</p>
+<p>先编写测试用例并观察到测试用例触发了和用户报告的错误相同的描述是一个好的测试习惯。只有这样,我们才能定位我们要真正解决的问题。</p>
+<p>先写测试用例的另外的好处是,运行测试通常会比手工描述报告的处理更快,这让我们可以进行快速地迭代。</p>
+<p>这种表格驱动的测试在go中很常见。</p>
+<p>失败的测试的输出并不包括调用t.Errorf时刻的堆栈调用信息。</p>
+<p>测试失败的信息一般的形式是”f(x) = y,want z”,f(x)解释了失败的操作和对应的输出,y是实际的运行结果,z是期望的正确的结果。</p>
+<p>练习11.1</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习11.2</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="11-2-1-随机测试"><a href="#11-2-1-随机测试" class="headerlink" title="11.2.1 随机测试"></a>11.2.1 随机测试</h3><p>随机测试,也就是通过构造更广泛的随机输入来测试探索函数的行为。</p>
+<p>对于随机输入,怎么知道预期结果?第一个是编写另一个函数,使用简单和清晰的算法,虽然效率较低和要测试的函数一致,然后针对相同的随机输入检查两者的输出结果。第二种是生成的随机输入数据遵循特定的模式,这样我们就可以知道期望输出的模式。</p>
+<p>虽然随机测试用不确定因素,但是它也是至关重要的,我们可以从失败测试的日志获取足够的信息。</p>
+<p>通过使用当前时间作为随机种子,在整个过程中的每个运行测试命令时都将探索新的随机数据。</p>
+<p>练习11.3</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习11.4</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="11-2-2-测试一个命令"><a href="#11-2-2-测试一个命令" class="headerlink" title="11.2.2 测试一个命令"></a>11.2.2 测试一个命令</h3><p>要注意的是测试代码和产品代码在同一个包。虽然是main包,也有main入口函数,但是在测试的时候main包只是TestEcho测试函数导入的一个普通包,里面main函数并没有被导出是被忽略的。</p>
+<p>错误信息描述了尝试的操作(使用Go类型语法),实际的行为,期望的行为。通过这样的信息,你可以在检查代码之前很容易定位错误的原因。</p>
+<h3 id="11-2-3-白盒测试"><a href="#11-2-3-白盒测试" class="headerlink" title="11.2.3 白盒测试"></a>11.2.3 白盒测试</h3><p>白盒测试有访问包内部函数和数据结构的权限,因此可以做到一些普通客户端无法实现的测试。</p>
+<p>TestEcho测试调用了内部的echo函数,并且更新了内部的out全局变量,这两个都是未导出的,因此它的白盒测试。</p>
+<p>当测试函数返回后,CheckQuota将不能正常工作,因为notifyUser依然使用的是测试函数的伪发送邮件函数。</p>
+<p>在这种情况下,我们建议使用defer处理恢复的代码。</p>
+<p>这种处理模式可以用来暂时保存和恢复所有的全局变量,包括命令行标志参数,调试选项,和优化参数;安装和移除导致生产代码产生一些调试信息的钩子函数,还有有些诱导生产代码进入某些重要状态的改变,比如超时,错误,甚至是一些刻意制造的并发行为。</p>
+<h3 id="11-2-4-扩展测试包"><a href="#11-2-4-扩展测试包" class="headerlink" title="11.2.4 扩展测试包"></a>11.2.4 扩展测试包</h3><p>我们可以通过测试扩展包的方式解决循环依赖的问题,也就是在net/url包所在的目录一个url_test测试扩展包。</p>
+<p>因为测试扩展包是一个独立的包,因此可以导入测试依赖的其他的辅助包。</p>
+<p>通过避免循环导入依赖,扩展测试包可以更灵活的测试,特别是集成测试,可以像普通应用程序那样自由地导入其他包。</p>
+<h3 id="11-2-5-编写有效的测试"><a href="#11-2-5-编写有效的测试" class="headerlink" title="11.2.5 编写有效的测试"></a>11.2.5 编写有效的测试</h3><p>现在的测试不仅报告了调用的具体函数,它的输入,和结果的意义;并且打印的真实返回的值和期望返回的值;并且即时断言失败依然尝试运行更多的测试。</p>
+<p>练习11.5</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="11-2-6-避免不稳定的测试"><a href="#11-2-6-避免不稳定的测试" class="headerlink" title="11.2.6 避免不稳定的测试"></a>11.2.6 避免不稳定的测试</h3><p>避免脆弱测试的方法是只测试你真正关心的属性。</p>
+<h2 id="11-3-测试覆盖率"><a href="#11-3-测试覆盖率" class="headerlink" title="11.3 测试覆盖率"></a>11.3 测试覆盖率</h2><p>就其性质而言,测试不可能是完整的。</p>
+<p>由测试驱动触发运行到的被测试函数的代码数目称为测试的覆盖率。</p>
+<p>语句的覆盖率是指在测试中至少被运行一次的代码占总代码的比例。</p>
+<p>实现100%的测试覆盖率听起来很好,但是在实际实践中通常是不可行的,也不是值得推荐的做法。</p>
+<h2 id="11-4-基准测试"><a href="#11-4-基准测试" class="headerlink" title="11.4 基准测试"></a>11.4 基准测试</h2><p>基准测试是测试一个程序在固定工作负载下的性能。在Go语言中,基准测试函数和普通测试函数类似,但是以Benchmark为前缀名,并且带有一个*testing.B类型的参数; *testing.B除了提供和 *testing.T类似的方法,还提供一些额外的和性能测试相关的方法。</p>
+<p>练习11.6</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习11.7</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="11-5-剖析"><a href="#11-5-剖析" class="headerlink" title="11.5 剖析"></a>11.5 剖析</h2><p>CPU分析文件标识了函数执行时所需要的CPU时间。</p>
+<p>堆分析则记录了程序的内存使用情况。</p>
+<p>阻塞分析则记录了goroutine最大的阻塞操作。</p>
+<h2 id="11-6-示例函数"><a href="#11-6-示例函数" class="headerlink" title="11.6 示例函数"></a>11.6 示例函数</h2><p>第三种go test特别处理的函数是示例函数,以Exmaple为函数名开头。示例函数没有函数参数和返回值。</p>
+<p>示例函数有三个用处。最主要的一个是用于文档。</p>
+<p>示例文档的第二个用处是在go test执行测试的时候也运行示例函数测试。</p>
+<p>示例函数的第三个目的是提供一个真实的演练场。</p>
+<h1 id="第十二章-反射"><a href="#第十二章-反射" class="headerlink" title="第十二章 反射"></a>第十二章 反射</h1><h2 id="12-1-为何需要反射"><a href="#12-1-为何需要反射" class="headerlink" title="12.1 为何需要反射?"></a>12.1 为何需要反射?</h2><p>没有一种方法来检查未知类型的表示方式,我们被卡住了。这就是我们为何需要反射的原因。</p>
+<h2 id="12-2-reflect-Type和reflect-Value"><a href="#12-2-reflect-Type和reflect-Value" class="headerlink" title="12.2 reflect.Type和reflect.Value"></a>12.2 reflect.Type和reflect.Value</h2><p>反射是由reflect包提供支持,它定义了两个重要的类型,Type和Value。</p>
+<p>函数reflect.TypeOf接受任何类型的interface{}类型,并返回对应动态类型的reflect.Type。</p>
+<p>reflect.Type接口是满足fmt.Stringer接口的。</p>
+<p>reflect包中另一个重要的类型是Value。一个reflect.Value可以持有一个任意类型的值。函数reflect.ValueOf接受任何类型的interface{}类型,并返回对应动态类型的reflect.Value。</p>
+<p>reflect.Value也满足fmt.Stringer接口的。</p>
+<p>一个reflect.Value和interface{}都能保存任意的值。</p>
+<p>我们使用reflect.Value的Kind方法来替代之前的类型switch。</p>
+<h2 id="12-3-Display递归打印"><a href="#12-3-Display递归打印" class="headerlink" title="12.3 Display递归打印"></a>12.3 Display递归打印</h2><p>如何改善聚合数据类型的显示。</p>
+<p>可能的情况下,你应该避免在一个包中暴露和反射相关的接口。</p>
+<p>在display函数中,我们使用了前面定义的打印基础类型——基本类型、函数和chan等一一元素值的formatAtom函数,但是我们会使用reflect.Value的方法来递归显示聚合类型的每一个成员或元素。</p>
+<p>练习12.1</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习12.2</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="12-4-示例-编码S表达式"><a href="#12-4-示例-编码S表达式" class="headerlink" title="12.4 示例:编码S表达式"></a>12.4 示例:编码S表达式</h2><p>Go语言的标准库支持了包括JSON、XML和ASN.1等多种编码方式。还有另一种依然被广泛使用的格式是S表达式格式。</p>
+<p>练习12.3</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习12.4</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习12.5</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习12.6</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习12.7</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="12-5-通过reflect-Value修改值"><a href="#12-5-通过reflect-Value修改值" class="headerlink" title="12.5 通过reflect.Value修改值"></a>12.5 通过reflect.Value修改值</h2><p>如何通过反射机制来修改变量。</p>
+<p>第一步是调用Addr()方法,它返回一个Value,里面保存了指向变量的指针。然后是在Value上调用Interface()方法,也就是返回一个interface{},里面通常包括指向变量的指针。最后,如果我们知道变量的类型,我们可以使用类型的断言机制将得到的interface{}类型的接口强制转换成普通的指针类型。这样我们就可以使用这个普通指针类更新变量了。</p>
+<p>或者,不使用指针,而是通过调用可取地址的reflect.Value的reflect.Value.Set方法来更新对应的值。</p>
+<p>利用反射机制并不能修改未导出的成员。</p>
+<p>一个可取地址的reflect.Value会记录一个结构体成员是否是未导出成员,如果是的话则拒绝修改。</p>
+<p>CanSet是用于检查对应的reflect.Value是否是可取地址并可被修改的。</p>
+<h2 id="12-6-示例-解码S表达式"><a href="#12-6-示例-解码S表达式" class="headerlink" title="12.6 示例:解码S表达式"></a>12.6 示例:解码S表达式</h2><p>Unmarshall函数使用了反射机制类修改movie变量的每个成员,根据输入的内容为Movie成员创建对应的map、结构体和slice。</p>
+<p>练习12.8</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习12.9</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习12.10</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="12-7-获取结构体字段标识"><a href="#12-7-获取结构体字段标识" class="headerlink" title="12.7 获取结构体字段标识"></a>12.7 获取结构体字段标识</h2><p>对于一个web服务,大部分HTTP处理函数要做的第一件事情就是展开请求中的参数到本地变量中。</p>
+<p>练习12.11</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习12.12</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+<p>练习12.13</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h2 id="12-8-显示一个类型的方法集"><a href="#12-8-显示一个类型的方法集" class="headerlink" title="12.8 显示一个类型的方法集"></a>12.8 显示一个类型的方法集</h2><p>使用reflect.Type来打印任意值的类型和枚举它的方法。</p>
+<p>reflect.Type和reflect.Value都提供了一个Method方法。每次t.Method(i)调用将一个reflect.Method的实例,对应一个用于描述一个方法的名称和类型的结构体。</p>
+<h2 id="12-9-几点忠告"><a href="#12-9-几点忠告" class="headerlink" title="12.9 几点忠告"></a>12.9 几点忠告</h2><p>反射是强大和富有表达力的工具,应该被谨慎使用。</p>
+<p>第一个原因,基于反射的代码是比较脆弱的。</p>
+<p>第二个原因,即使对应类型提供了相同的文档,但是反射的操作不能做静态类型检查,而且大量反射的代码通常难以理解。</p>
+<p>第三个原因,基于反射的代码一般要比正常的代码慢一到两个数量级。</p>
+
     
 
     
