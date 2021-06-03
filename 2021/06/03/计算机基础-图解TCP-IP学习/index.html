@@ -6,18 +6,22 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://caciacc.top">
-  <title>Archives: 2021 | caciaCC的博客</title>
+  <title>计算机基础-图解TCP/IP学习 | caciaCC的博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="leetcode刷题+java面试点记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="caciaCC的博客">
-<meta property="og:url" content="http://caciacc.top/archives/2021/page/8/index.html">
+  <meta name="description" content="1.1 计算机网络出现的背景1.1.2 从独立模式到网络互联模式计算机网络,根据其规模可分为WAN(广域网)和LAN(局域网)。 1.2 计算机与网络发展的7个阶段1.3 协议1.3.1 随处可见的协议TCP&#x2F;IP就是IP、TCP、HTTP、ICMP、TELNET等协议的集合。 1.3.2 协议的必要性协议就是计算机与计算机之间通过网络实现通信时事先达成的一种”约定”。使得不同厂商、不同CPU、不">
+<meta property="og:type" content="article">
+<meta property="og:title" content="计算机基础-图解TCP&#x2F;IP学习">
+<meta property="og:url" content="http://caciacc.top/2021/06/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3TCP-IP%E5%AD%A6%E4%B9%A0/index.html">
 <meta property="og:site_name" content="caciaCC的博客">
-<meta property="og:description" content="leetcode刷题+java面试点记录">
+<meta property="og:description" content="1.1 计算机网络出现的背景1.1.2 从独立模式到网络互联模式计算机网络,根据其规模可分为WAN(广域网)和LAN(局域网)。 1.2 计算机与网络发展的7个阶段1.3 协议1.3.1 随处可见的协议TCP&#x2F;IP就是IP、TCP、HTTP、ICMP、TELNET等协议的集合。 1.3.2 协议的必要性协议就是计算机与计算机之间通过网络实现通信时事先达成的一种”约定”。使得不同厂商、不同CPU、不">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-03T06:50:19.000Z">
+<meta property="article:modified_time" content="2021-06-03T12:19:19.999Z">
 <meta property="article:author" content="caciaCC">
+<meta property="article:tag" content="计算机基础">
+<meta property="article:tag" content="计算机基础-计算机网络知识">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="caciaCC的博客" type="application/atom+xml">
@@ -245,484 +249,281 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-计算机基础-图解TCP-IP学习" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%B8%80-%E6%A6%82%E8%BF%B0/" class="archive-article-date">
-        <time datetime="2021-01-28T13:08:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-28</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%B8%80-%E6%A6%82%E8%BF%B0/">计算机基础-操作系统-一-概述</a>
-	
+    <h1 class="article-title" itemprop="name">
+      计算机基础-图解TCP/IP学习
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
+  
+  
+<a href="/2021/06/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3TCP-IP%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
+        <time datetime="2021-06-03T06:50:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-03</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">2.9k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">10分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="1-1-计算机网络出现的背景"><a href="#1-1-计算机网络出现的背景" class="headerlink" title="1.1 计算机网络出现的背景"></a>1.1 计算机网络出现的背景</h2><h3 id="1-1-2-从独立模式到网络互联模式"><a href="#1-1-2-从独立模式到网络互联模式" class="headerlink" title="1.1.2 从独立模式到网络互联模式"></a>1.1.2 从独立模式到网络互联模式</h3><p>计算机网络,根据其规模可分为WAN(广域网)和LAN(局域网)。</p>
+<h2 id="1-2-计算机与网络发展的7个阶段"><a href="#1-2-计算机与网络发展的7个阶段" class="headerlink" title="1.2 计算机与网络发展的7个阶段"></a>1.2 计算机与网络发展的7个阶段</h2><h2 id="1-3-协议"><a href="#1-3-协议" class="headerlink" title="1.3 协议"></a>1.3 协议</h2><h3 id="1-3-1-随处可见的协议"><a href="#1-3-1-随处可见的协议" class="headerlink" title="1.3.1 随处可见的协议"></a>1.3.1 随处可见的协议</h3><p>TCP/IP就是IP、TCP、HTTP、ICMP、TELNET等协议的集合。</p>
+<h3 id="1-3-2-协议的必要性"><a href="#1-3-2-协议的必要性" class="headerlink" title="1.3.2 协议的必要性"></a>1.3.2 协议的必要性</h3><p>协议就是计算机与计算机之间通过网络实现通信时事先达成的一种”约定”。使得不同厂商、不同CPU、不同操作系统的通信成为可能。</p>
+<h3 id="1-3-5-分组交换协议"><a href="#1-3-5-分组交换协议" class="headerlink" title="1.3.5 分组交换协议"></a>1.3.5 分组交换协议</h3><p>分组交换是指将大数据分割成一个个叫做包的较小单位进行传输的方法。</p>
+<h2 id="1-4-协议由谁制定"><a href="#1-4-协议由谁制定" class="headerlink" title="1.4 协议由谁制定"></a>1.4 协议由谁制定</h2><h3 id="1-4-2-协议的标准化"><a href="#1-4-2-协议的标准化" class="headerlink" title="1.4.2 协议的标准化"></a>1.4.2 协议的标准化</h3><p>ISO制定了一个国际标准OSI,对通信系统进行了标准化。</p>
+<p>TCP/IP并非ISO所制定的某种国际标准。而是由IETF所建议的、致力于推进其标准化作业的一种协议。</p>
+<p>TCP/IP作为互联网之上的一种标准,也作为业界标准,俨然已成为全世界广泛应用的通信协议。</p>
+<h2 id="1-5-协议分层与OSI参考模型"><a href="#1-5-协议分层与OSI参考模型" class="headerlink" title="1.5 协议分层与OSI参考模型"></a>1.5 协议分层与OSI参考模型</h2><h3 id="1-5-1-协议的分层"><a href="#1-5-1-协议的分层" class="headerlink" title="1.5.1 协议的分层"></a>1.5.1 协议的分层</h3><p>OSI模型将通信协议中必要的功能分成了7层。</p>
+<p>在OSI模型中,每个分层都接收由下一层所提供的特定服务,并且负责为自己的上一层提供特定的服务。</p>
+<p>上下层之间进行交互时所遵循的约定叫做”接口”。同一层之间交互所遵循的约定叫做”协议”。</p>
+<p>分层的优点:扩展性强,比较灵活。每个分层的变化不会影响整个系统。</p>
+<p>分层的缺点:过分模块化、使处理变得过于沉重和每个模块要实现相似的处理逻辑。</p>
+<h3 id="1-5-3-OSI参考模型"><a href="#1-5-3-OSI参考模型" class="headerlink" title="1.5.3 OSI参考模型"></a>1.5.3 OSI参考模型</h3><p>OSI参考模型只是一个模型,它只是对各层的作用做了一些粗略的定义,并没有对协议和接口进行详细的定义。</p>
+<h3 id="1-5-4-OSI参考模型中各个分层的作用"><a href="#1-5-4-OSI参考模型中各个分层的作用" class="headerlink" title="1.5.4 OSI参考模型中各个分层的作用"></a>1.5.4 OSI参考模型中各个分层的作用</h3><p>1.应用层:为应用程序提供服务并规定应用程序中通信相关的细节。包括文件传输、电子邮件、远程登录(虚拟终端)等协议。</p>
+<p>2.表示层:将应用处理的信息转换为适合网络传输的格式,它主要负责数据格式的转换。</p>
+<p>3.会话层:负责建立和断开通信连接。</p>
+<p>4.传输层:可靠传输的作用。只在通信双方节点上进行处理,而无需在路由器进行处理。</p>
+<p>5.网络层:将数据传输到目标地址。这一层主要负责寻址和路由选择。</p>
+<p>6.数据链路层:负责物理上互联的、节点之间的通信传输。</p>
+<p>7.物理层:负责01比特流的互换。</p>
+<h2 id="1-6-OSI参考模型通信处理举例"><a href="#1-6-OSI参考模型通信处理举例" class="headerlink" title="1.6 OSI参考模型通信处理举例"></a>1.6 OSI参考模型通信处理举例</h2><h2 id="1-7-传输方式的分类"><a href="#1-7-传输方式的分类" class="headerlink" title="1.7 传输方式的分类"></a>1.7 传输方式的分类</h2><h3 id="1-7-1-面向有连接和面向无连接"><a href="#1-7-1-面向有连接和面向无连接" class="headerlink" title="1.7.1 面向有连接和面向无连接"></a>1.7.1 面向有连接和面向无连接</h3><p>面向有连接,在发送数据之前,需要在收发主机之间建立一条通信线路。</p>
+<p>面向无连接则不要求建立和断开连接。</p>
+<p>因此,在面向无连接的通信中,不需要确认对端是否存在。</p>
+<h3 id="1-7-2-电路交换和分组交换"><a href="#1-7-2-电路交换和分组交换" class="headerlink" title="1.7.2 电路交换和分组交换"></a>1.7.2 电路交换和分组交换</h3><p>网络通信方式大致分为电路交换和分组交换。</p>
+<p>TCP/IP采用的是分组交换。</p>
+<p>电路交换:发送数据时,需要通过交换机和目标主机建立通信电路。一台计算机在收发时会独占整个电路。</p>
+<p>电路交换机与电路交换机之间有两条电路。</p>
+<p>分组交换:将发送的数据分成多个数据包,按照一定顺序排列后再分别发送。</p>
+<p>路由器与路由器之间一般只有一条通信线路。路由器的缓存饱和或溢出时,可能会发生分组数据丢失、无法发送到对端的情况。</p>
+<h3 id="1-7-3-根据接收端数目分类"><a href="#1-7-3-根据接收端数目分类" class="headerlink" title="1.7.3 根据接收端数目分类"></a>1.7.3 根据接收端数目分类</h3><p>单播:1对1</p>
+<p>广播:1对多</p>
+<p>多播:1对多。比如电视会议。</p>
+<p>任播:多选一。比如DNS根域名解析服务器。</p>
+<h2 id="1-8-地址"><a href="#1-8-地址" class="headerlink" title="1.8 地址"></a>1.8 地址</h2><h3 id="1-8-1-地址的唯一性"><a href="#1-8-1-地址的唯一性" class="headerlink" title="1.8.1 地址的唯一性"></a>1.8.1 地址的唯一性</h3><h3 id="1-8-2-地址的层次性"><a href="#1-8-2-地址的层次性" class="headerlink" title="1.8.2 地址的层次性"></a>1.8.2 地址的层次性</h3><p>正是有了这种层次分类才能更加快速地定位某一个地址。</p>
+<p>MAC地址和IP地址都具有唯一性,但是只有IP地址具有层次性。</p>
+<h2 id="1-9-网络的构成要素"><a href="#1-9-网络的构成要素" class="headerlink" title="1.9 网络的构成要素"></a>1.9 网络的构成要素</h2><h3 id="1-9-1-通信媒介与数据链路"><a href="#1-9-1-通信媒介与数据链路" class="headerlink" title="1.9.1 通信媒介与数据链路"></a>1.9.1 通信媒介与数据链路</h3><p>两个设备之间数据流动的物理速度叫做传输速率。单位为bps(Bits Per Second)。</p>
+<p>传输速率又称为带宽。</p>
+<p>带宽越大网络传输能力就越强。</p>
+<p>主机之间的实际传输速率叫做吞吐量。其单位也为bps。</p>
+<h3 id="1-9-2-网卡"><a href="#1-9-2-网卡" class="headerlink" title="1.9.2 网卡"></a>1.9.2 网卡</h3><p>网卡也称为网络接口卡,网络适配器,LAN卡。</p>
+<h3 id="1-9-3-中继器"><a href="#1-9-3-中继器" class="headerlink" title="1.9.3 中继器"></a>1.9.3 中继器</h3><p>集线器可看成多端口中继器。</p>
+<h3 id="1-9-4-网桥-2层交换机"><a href="#1-9-4-网桥-2层交换机" class="headerlink" title="1.9.4 网桥/2层交换机"></a>1.9.4 网桥/2层交换机</h3><p><code>交换机内部有一张MAC地址与网线接口的映射表。</code></p>
+<p><code>当MAC地址表找不到指定的MAC地址会怎么样?</code></p>
+<p><code>交换机无法判断应该把包转发到哪个端口,只能把包转发到除了源端口之外的所有端口上,无论在设备连接在哪个端口上都能接收到这个包。</code></p>
+<h3 id="1-9-5-路由器-3层交换机"><a href="#1-9-5-路由器-3层交换机" class="headerlink" title="1.9.5 路由器/3层交换机"></a>1.9.5 路由器/3层交换机</h3><p>网络层面上连接两个网络,并对分组报文进行转发的设备。</p>
+<p><code>路由器内部有一张路由选择表。</code></p>
+<p><code>几个重要的字段是目标地址、子网掩码和网关。</code></p>
+<p><code>流程是:   用目标地址和子网掩码做&amp;运算,与对应条目的目标地址看是否匹配。 若匹配则转发给网关IP,若网关为空则就直接接收。若不匹配则选择默认路由(子网掩码是0.0.0.0)进行转发。</code></p>
+<h3 id="1-9-6-4-7层交换机"><a href="#1-9-6-4-7层交换机" class="headerlink" title="1.9.6 4-7层交换机"></a>1.9.6 4-7层交换机</h3><p>负责处理OSI模型中传输层至应用层的数据。</p>
+<h3 id="1-9-7-网关"><a href="#1-9-7-网关" class="headerlink" title="1.9.7 网关"></a>1.9.7 网关</h3><p>负责将从传输层到应用层的数据进行转换和转发的设备。</p>
+<h2 id="1-10-现代网络实态"><a href="#1-10-现代网络实态" class="headerlink" title="1.10 现代网络实态"></a>1.10 现代网络实态</h2><h1 id="第二章-TCP-IP基础知识"><a href="#第二章-TCP-IP基础知识" class="headerlink" title="第二章 TCP/IP基础知识"></a>第二章 TCP/IP基础知识</h1><h2 id="2-1-TCP-IP出现的背景及其历史"><a href="#2-1-TCP-IP出现的背景及其历史" class="headerlink" title="2.1 TCP/IP出现的背景及其历史"></a>2.1 TCP/IP出现的背景及其历史</h2><h2 id="2-2-TCP-IP的标准化"><a href="#2-2-TCP-IP的标准化" class="headerlink" title="2.2 TCP/IP的标准化"></a>2.2 TCP/IP的标准化</h2><h3 id="2-2-1-TCP-IP的具体含义"><a href="#2-2-1-TCP-IP的具体含义" class="headerlink" title="2.2.1 TCP/IP的具体含义"></a>2.2.1 TCP/IP的具体含义</h3><p>TCP/IP只是利用IP进行通信时所必须用到的协议群的统称。</p>
+<h2 id="2-3-互联网基础知识"><a href="#2-3-互联网基础知识" class="headerlink" title="2.3 互联网基础知识"></a>2.3 互联网基础知识</h2><h3 id="2-3-3-互联网的结构"><a href="#2-3-3-互联网的结构" class="headerlink" title="2.3.3 互联网的结构"></a>2.3.3 互联网的结构</h3><p>互联网中的每个网络都是由骨干网和末端网组成的。</p>
+<h2 id="2-4-TCP-IP协议分层模型"><a href="#2-4-TCP-IP协议分层模型" class="headerlink" title="2.4 TCP/IP协议分层模型"></a>2.4 TCP/IP协议分层模型</h2><h3 id="2-4-1-TCP-IP与OSI参考模型"><a href="#2-4-1-TCP-IP与OSI参考模型" class="headerlink" title="2.4.1 TCP/IP与OSI参考模型"></a>2.4.1 TCP/IP与OSI参考模型</h3><p>OSI参考模型更注重通信协议必要的功能是什么,TCP/IP更强调在计算机中实现协议应该开发哪种程序。</p>
+<h3 id="2-4-2-硬件-物理层"><a href="#2-4-2-硬件-物理层" class="headerlink" title="2.4.2 硬件(物理层)"></a>2.4.2 硬件(物理层)</h3><p>TCP/IP的最底层是负责数据传输的硬件。</p>
+<h3 id="2-4-3-网络接口层-数据链路层"><a href="#2-4-3-网络接口层-数据链路层" class="headerlink" title="2.4.3 网络接口层(数据链路层)"></a>2.4.3 网络接口层(数据链路层)</h3><p>网络接口层利用以太网的数据链路层进行通信,因此属于接口层。</p>
+<h3 id="2-4-4-互联网层-网络层"><a href="#2-4-4-互联网层-网络层" class="headerlink" title="2.4.4 互联网层(网络层)"></a>2.4.4 互联网层(网络层)</h3><p>IP:IP虽然也是分组交换的一种协议,但是它不具有重发机制。</p>
+<p>ICMP:无法到达对端地址,发送一个异常通知。</p>
+<p>ARP: IP地址解析出MAC地址。</p>
+<h3 id="2-4-5-传输层"><a href="#2-4-5-传输层" class="headerlink" title="2.4.5 传输层"></a>2.4.5 传输层</h3><p>TCP:不利于在视频会议等场景使用。</p>
+<p>UDP:常用于分组数据较少或多播、广播通信以及视频通信等多媒体领域。</p>
+<h3 id="2-4-6-应用层"><a href="#2-4-6-应用层" class="headerlink" title="2.4.6 应用层"></a>2.4.6 应用层</h3><p>TCP/IP应用一般采用客户端-服务器模型。</p>
+<p>WWW:是应用层协议,而HTML属于表示层协议。</p>
+<p>电子邮件:使用SMTP协议,MIME属于表示层。</p>
+<p>文件传输:使用FTP协议,使用二进制或文本方式。</p>
+<p>远程登录:常用TELNET和SSH两种协议。</p>
+<p>网络管理:采用SNMP协议。</p>
+<h2 id="2-5-TCP-IP分层模型与通信示例"><a href="#2-5-TCP-IP分层模型与通信示例" class="headerlink" title="2.5 TCP/IP分层模型与通信示例"></a>2.5 TCP/IP分层模型与通信示例</h2><h3 id="2-5-1-数据包首部"><a href="#2-5-1-数据包首部" class="headerlink" title="2.5.1 数据包首部"></a>2.5.1 数据包首部</h3><p>包可以说是全能性术语。帧表示数据链路层包的单位。而数据包是IP层和UDP等网络层以上的分层中包的单位。段则表示TCP数据流中的信息。消息是指应用协议中数据的单位。</p>
+<h3 id="2-5-2-发送数据包"><a href="#2-5-2-发送数据包" class="headerlink" title="2.5.2 发送数据包"></a>2.5.2 发送数据包</h3><p>1.应用层处理 </p>
+<p>2.TCP模块的处理</p>
+<p>TCP首部包括源端口号、目标端口号、序号、确认号、紧急指针、选项、窗口、数据偏移和检验和等。</p>
+<p>3.IP模块的处理 </p>
+<p>IP首部包括源IP、目标IP、标识、偏移量、协议、TTL、版本、首部长度等。</p>
+<p>IP包生成后,参考路由控制表决定接受该IP包的路由或主机。</p>
+<p>如果不知道接收端的MAC地址,可使用ARP协议查找。</p>
+<p>4.网络接口的处理</p>
+<p>给其附加上以太网首部(发送端MAC地址、接收端MAC地址以及标识以太网类型的以太网数据的协议)。</p>
+<h3 id="2-5-3-经过数据链路的包"><a href="#2-5-3-经过数据链路的包" class="headerlink" title="2.5.3 经过数据链路的包"></a>2.5.3 经过数据链路的包</h3><p>注意,以太网层附加的有以太网首部和以太网包尾。</p>
+<h3 id="2-5-4-数据包接收处理"><a href="#2-5-4-数据包接收处理" class="headerlink" title="2.5.4 数据包接收处理"></a>2.5.4 数据包接收处理</h3><p>5.网络接口的处理 </p>
+<p>主机收到以太网包以后,首先从以太网的包首部查找MAC地址判断是否是发送给自己的包,不是则丢弃。</p>
+<p>如果是发送给自己的包,则查找以太网协议所传来的数据类型。如IP包则交付给IP,ARP包则交给ARP处理。</p>
+<p>6.IP模块的处理</p>
+<p>对于有路由器的情况下,接收端地址往往不是自己的地址,此时需要借助路由控制表,在调查应该送到的主机或路由器之后再转发数据。</p>
+<p>7.TCP模块的处理</p>
+<p>首先会计算一个校验和,判断数据是否被破坏。</p>
+<p>数据接收完毕后,接收端则发送一个”确认回执”给发送端。</p>
+<p>数据完整识别后,交付给由端口号识别的应用程序。</p>
+<p>8.应用程序的处理</p>
+<p>接收端应用程序会直接接受发送端发送的数据。</p>
+<hr>
+<p>由于移动电话、智能手机、平板电脑等进行分组数据通信,故装入电池开机时,已设置好具体IP地址。</p>
+<h1 id="第三章-数据链路"><a href="#第三章-数据链路" class="headerlink" title="第三章 数据链路"></a>第三章 数据链路</h1><h2 id="3-1-数据链路的作用"><a href="#3-1-数据链路的作用" class="headerlink" title="3.1 数据链路的作用"></a>3.1 数据链路的作用</h2><p>数据链路可被视为网络传输的最小单位。</p>
+<h2 id="3-2-数据链路相关技术"><a href="#3-2-数据链路相关技术" class="headerlink" title="3.2 数据链路相关技术"></a>3.2 数据链路相关技术</h2><h3 id="3-2-1-MAC地址"><a href="#3-2-1-MAC地址" class="headerlink" title="3.2.1 MAC地址"></a>3.2.1 MAC地址</h3><p>MAC地址长48比特。在使用网卡(NIC)的情况下,MAC地址一般会被烧入到ROM中。任何一个网卡的MAC地址都是唯一的。</p>
+<p>即使MAC地址相同,只要不是同属一个数据链路就不会出现问题。</p>
+<h3 id="3-2-4-根据MAC地址转发"><a href="#3-2-4-根据MAC地址转发" class="headerlink" title="3.2.4 根据MAC地址转发"></a>3.2.4 根据MAC地址转发</h3><p>以太网交换机是持有多个端口的网桥。它们根据数据链路层每个帧的目标MAC地址,决定从哪个网络接口转发,用于记录发送接口的表,叫做转发表。</p>
+<h2 id="3-3-以太网"><a href="#3-3-以太网" class="headerlink" title="3.3 以太网"></a>3.3 以太网</h2><h3 id="3-3-4-以太网帧格式"><a href="#3-3-4-以太网帧格式" class="headerlink" title="3.3.4 以太网帧格式"></a>3.3.4 以太网帧格式</h3><p>前导码+以太网首部+…+以太网尾部 </p>
+<h2 id="3-4-无线通信"><a href="#3-4-无线通信" class="headerlink" title="3.4 无线通信"></a>3.4 无线通信</h2><h2 id="3-5-PPP"><a href="#3-5-PPP" class="headerlink" title="3.5 PPP"></a>3.5 PPP</h2><h3 id="3-5-1-PPP定义"><a href="#3-5-1-PPP定义" class="headerlink" title="3.5.1 PPP定义"></a>3.5.1 PPP定义</h3><p>PPP是指点到点、一对一连接计算机的协议。</p>
+<p>PPP可以使用电话线、ISDN、专线、ATM线路、ADSL、有线电视等。</p>
+<h2 id="3-6-其他数据链路"><a href="#3-6-其他数据链路" class="headerlink" title="3.6 其他数据链路"></a>3.6 其他数据链路</h2><h3 id="3-6-1-ATM"><a href="#3-6-1-ATM" class="headerlink" title="3.6.1 ATM"></a>3.6.1 ATM</h3><p>ATM是一种面向连接的数据链路。</p>
+<h2 id="3-7-公共网络"><a href="#3-7-公共网络" class="headerlink" title="3.7 公共网络"></a>3.7 公共网络</h2><h1 id="第四章-IP协议"><a href="#第四章-IP协议" class="headerlink" title="第四章 IP协议"></a>第四章 IP协议</h1>
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机基础</a>
         		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/27/%E9%A1%B9%E7%9B%AE-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9E%E7%8E%B0-%E4%BA%8C/" class="archive-article-date">
-        <time datetime="2021-01-27T12:54:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-27</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/27/%E9%A1%B9%E7%9B%AE-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9E%E7%8E%B0-%E4%BA%8C/">项目-一个简单图书管理系统的实现-二</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">计算机基础-计算机网络知识</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://caciacc.top/2021/06/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3TCP-IP%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/26/%E7%AE%97%E6%B3%95-codeforce-697-div3/" class="archive-article-date">
-        <time datetime="2021-01-25T16:02:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-26</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2021/06/03/go%E5%AD%A6%E4%B9%A0-%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">go学习-一些总结</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/26/%E7%AE%97%E6%B3%95-codeforce-697-div3/">算法-codeforce-697-div3</a>
-	
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">codeforce</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/24/%E8%AE%B0%E5%BD%95-%E6%9D%82%E8%AE%B01/" class="archive-article-date">
-        <time datetime="2021-01-24T07:40:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/24/%E8%AE%B0%E5%BD%95-%E6%9D%82%E8%AE%B01/">记录-杂记1</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC44%E5%9C%BA/" class="archive-article-date">
-        <time datetime="2021-01-24T05:08:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC44%E5%9C%BA/">算法-leetcode-双周赛第44场</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/" class="archive-article-date">
-        <time datetime="2021-01-24T04:14:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/">算法-leetcode-周赛第225场</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/23/%E7%AE%97%E6%B3%95-5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/" class="archive-article-date">
-        <time datetime="2021-01-23T08:58:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-23</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/23/%E7%AE%97%E6%B3%95-5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/">算法-5道算法题</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/20/%E7%AE%97%E6%B3%95-codeforce-696-div2/" class="archive-article-date">
-        <time datetime="2021-01-20T01:52:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-20</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/20/%E7%AE%97%E6%B3%95-codeforce-696-div2/">算法-codeforce-696-div2</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">codeforce</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/19/%E9%A1%B9%E7%9B%AE-vue%E6%89%93%E5%8C%85%E9%97%AE%E9%A2%98/" class="archive-article-date">
-        <time datetime="2021-01-19T08:09:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-19</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/19/%E9%A1%B9%E7%9B%AE-vue%E6%89%93%E5%8C%85%E9%97%AE%E9%A2%98/">项目-vue打包问题</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/19/%E9%A1%B9%E7%9B%AE-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/" class="archive-article-date">
-        <time datetime="2021-01-19T04:49:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-19</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/19/%E9%A1%B9%E7%9B%AE-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/">项目-服务器配置过程</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2021/page/7/">Prev</a><a class="page-number" href="/archives/2021/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2021/page/6/">6</a><a class="page-number" href="/archives/2021/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/archives/2021/page/9/">9</a><a class="page-number" href="/archives/2021/page/10/">10</a><a class="page-number" href="/archives/2021/page/11/">11</a><a class="extend next" rel="next" href="/archives/2021/page/9/">Next</a>
-    </nav>
-  
 
 
           </div>
@@ -751,8 +552,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,

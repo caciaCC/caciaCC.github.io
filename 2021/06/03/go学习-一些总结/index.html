@@ -6,18 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://caciacc.top">
-  <title>Archives: 2021 | caciaCC的博客</title>
+  <title>go学习-一些总结 | caciaCC的博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="leetcode刷题+java面试点记录">
-<meta property="og:type" content="website">
-<meta property="og:title" content="caciaCC的博客">
-<meta property="og:url" content="http://caciacc.top/archives/2021/page/8/index.html">
+  <meta name="description" content="5.20Q:从go语言学到了什么? A:①一门语言是不可能做到完美不缺的。有优点就必须有缺点,只有牺牲一部分,才能把另外一部分做的更好。比如go的高性能,就是因为go从语言级别支持并发,通过轻量级协程 Goroutine 来实现程序并发运行。也就是设计的时候将goroutine设置的很轻量(上下文切换代价小,内存占用少)。但是另外一方面,因为goroutine非显示可控,所以容易导致内存泄漏的问题">
+<meta property="og:type" content="article">
+<meta property="og:title" content="go学习-一些总结">
+<meta property="og:url" content="http://caciacc.top/2021/06/03/go%E5%AD%A6%E4%B9%A0-%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="caciaCC的博客">
-<meta property="og:description" content="leetcode刷题+java面试点记录">
+<meta property="og:description" content="5.20Q:从go语言学到了什么? A:①一门语言是不可能做到完美不缺的。有优点就必须有缺点,只有牺牲一部分,才能把另外一部分做的更好。比如go的高性能,就是因为go从语言级别支持并发,通过轻量级协程 Goroutine 来实现程序并发运行。也就是设计的时候将goroutine设置的很轻量(上下文切换代价小,内存占用少)。但是另外一方面,因为goroutine非显示可控,所以容易导致内存泄漏的问题">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-06-03T03:04:47.000Z">
+<meta property="article:modified_time" content="2021-06-03T10:12:35.129Z">
 <meta property="article:author" content="caciaCC">
+<meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="caciaCC的博客" type="application/atom+xml">
@@ -245,484 +248,227 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
+            <article id="post-go学习-一些总结" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
   
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2021" class="archive-year">2021</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%B8%80-%E6%A6%82%E8%BF%B0/" class="archive-article-date">
-        <time datetime="2021-01-28T13:08:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-28</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%B8%80-%E6%A6%82%E8%BF%B0/">计算机基础-操作系统-一-概述</a>
-	
+    <h1 class="article-title" itemprop="name">
+      go学习-一些总结
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
+  
+  
+<a href="/2021/06/03/go%E5%AD%A6%E4%B9%A0-%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/" class="archive-article-date">
+        <time datetime="2021-06-03T03:04:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-06-03</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.5k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">6分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="5-20"><a href="#5-20" class="headerlink" title="5.20"></a>5.20</h2><p>Q:从go语言学到了什么?</p>
+<p>A:<br>①一门语言是不可能做到完美不缺的。有优点就必须有缺点,只有牺牲一部分,<br>才能把另外一部分做的更好。比如go的高性能,就是因为go从语言级别支持并发,<br>通过轻量级协程 Goroutine 来实现程序并发运行。也就是设计的时候将goroutine设置<br>的很轻量(上下文切换代价小,内存占用少)。但是另外一方面,因为goroutine非显示可控,<br>所以容易导致内存泄漏的问题。</p>
+<p>②对于错误处理,有错误一定要处理,并且按照错误的不同做不同的处理。</p>
+<p>Q:go与java有什么区别?</p>
+<p>go与java相比十分简洁。go语言是类c语言,不是面向对象的编程语言,go语言特性很少，go语言没有泛型,没有继承,没有运算符重载,没有异常,没有线程局部变量,只有最基本的map和slice数据结构,并且生态没有java好,而且对于大业务不好维护。</p>
+<p>但另一方面,go语言本身稳定,保证向后兼容,而java只是大部分时候支持向后兼容。</p>
+<p>go语言的类型系统也比较简单,安全性更好,性能更好。</p>
+<p>go中聚合类型需要的空间和内存更少,并且因为其CSP并发特性,go语言创建一个goroutine的代价很小,能达到百万级别的goroutine。</p>
+<p>go语言标准库很丰富,特别是网络协议相关的,简化了程序逻辑。</p>
+<p>Q:go的堆怎么实现?</p>
+<p>A:<br>①先看container/heap,接口是这样定义的。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Interface <span class="keyword">interface</span> &#123;  </span><br><span class="line">    sort.Interface  </span><br><span class="line">    Push(x <span class="keyword">interface</span>&#123;&#125;) <span class="comment">// add x as element Len()  </span></span><br><span class="line">    Pop() <span class="keyword">interface</span>&#123;&#125;   <span class="comment">// remove and return element Len() - 1.  </span></span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
+<p>②于是需要实现<code>sort.Interface</code>的三个方法和其他两个方法。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Interface <span class="keyword">interface</span> &#123;</span><br><span class="line">Len() </span><br><span class="line">intLess(i, j <span class="keyword">int</span>) <span class="keyword">bool</span> <span class="comment">// i, j are indices of sequence elements</span></span><br><span class="line">Swap(i, j <span class="keyword">int</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>③具体实现:<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/top-k-frequent-words/solution/692godui-pai-xu-shi-xian-by-cacia-qlmq/">https://leetcode-cn.com/problems/top-k-frequent-words/solution/692godui-pai-xu-shi-xian-by-cacia-qlmq/</a></p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> word <span class="keyword">struct</span> &#123;</span><br><span class="line">    name <span class="keyword">string</span></span><br><span class="line">    freq  <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> Stu []word</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Stu)</span> <span class="title">Len</span><span class="params">()</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(*t) <span class="comment">//</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Stu)</span> <span class="title">Less</span><span class="params">(i, j <span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (*t)[i].freq == (*t)[j].freq &#123;</span><br><span class="line">        <span class="keyword">return</span> (*t)[i].name &lt; (*t)[j].name</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>  (*t)[i].freq &gt; (*t)[j].freq</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Stu)</span> <span class="title">Swap</span><span class="params">(i, j <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    (*t)[i], (*t)[j] = (*t)[j], (*t)[i]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Stu)</span> <span class="title">Push</span><span class="params">(x <span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">    *t = <span class="built_in">append</span>(*t, x.(word))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Stu)</span> <span class="title">Pop</span><span class="params">()</span> <span class="title">interface</span></span>&#123;&#125; &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(*t)</span><br><span class="line">    x := (*t)[n<span class="number">-1</span>]</span><br><span class="line">    *t = (*t)[:n<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">topKFrequent</span><span class="params">(words []<span class="keyword">string</span>, k <span class="keyword">int</span>)</span> []<span class="title">string</span></span> &#123;</span><br><span class="line">    hp := &amp;Stu&#123;&#125;</span><br><span class="line">    heap.Init(hp)</span><br><span class="line">    mp := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(words); i ++&#123;</span><br><span class="line">        mp[words[i]] ++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> k,v := <span class="keyword">range</span> mp&#123;</span><br><span class="line">        tmp := word&#123;k,v&#125;</span><br><span class="line">        heap.Push(hp, tmp)</span><br><span class="line">    &#125;</span><br><span class="line">    ans := <span class="built_in">make</span>([]<span class="keyword">string</span>,<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> k &gt; <span class="number">0</span>&#123;</span><br><span class="line">        tmp := (*hp)[<span class="number">0</span>].name</span><br><span class="line">        heap.Pop(hp)</span><br><span class="line">        ans = <span class="built_in">append</span>(ans, tmp)</span><br><span class="line">        k --</span><br><span class="line">        fmt.Println(tmp)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>④注意:创建出结构体(或数组)的指针后记得进行初始化操作,即heap.Init(ptr)。</p>
+<h2 id="5-21"><a href="#5-21" class="headerlink" title="5.21"></a>5.21</h2><p>1.用字符串做校验可能导致出错。应该用request提供的原始方式做参数解析什么的,而不是用字符串截断,自带的原生类型来做。<br>对的，后面你会用到很多成熟的框架，框架里面做这些事更简单。</p>
+<p>2.应该给对应不好理解的const写上注释<br>不光是const，函数、方法、枚举，如果不能通过命名来清晰表达，就加注释吧</p>
+<p>3.应该是/xxx而不是/,对应路径。<br>接口要和接口功能对应，接口名应该清晰表达接口功能</p>
+<p>4.一个大函数中如果包含多个有明确界限个功能,应拆分为多个小函数。</p>
+<p>5.err一定有对应的处理。</p>
+<p>6.const变量应按照标准放在全局变量位置,而不放在函数里。</p>
+<h2 id="5-24"><a href="#5-24" class="headerlink" title="5.24"></a>5.24</h2><p>Q:有一个程序是把结果输出到os.Stdout，然后另外一个程序是对os.Stdin进行处理。于是可以把第一个程序的输出重定向到第二个程序的输入。那如果要把两个程序合成一个程序咋弄?</p>
+<p>A:可以用channel。 </p>
+<p>Q:方法的receiver用指针还是非指针,怎么判断?</p>
+<p>A:指针才能真正修改结构体中的变量,而非指针无法做到。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Object <span class="keyword">struct</span> &#123;</span><br><span class="line">	x <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="comment">//func (o *Object) modifyX()&#123;</span></span><br><span class="line"><span class="comment">//	o.x = 9999</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line"><span class="comment">//2</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(o Object)</span> <span class="title">modifyX</span><span class="params">()</span></span>&#123;</span><br><span class="line">	o.x = <span class="number">9999</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	obj := Object&#123;<span class="number">0</span>&#125;</span><br><span class="line">	obj.modifyX()</span><br><span class="line">	fmt.Println(obj.x)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<p>Q:为什么handler不需要传给ListenAndServe函数,而只需要传入一个nil?</p>
+<p>A:为了方便,net/http包提供了一个全局的ServerMux实例DefaultServerMux和包级别的http.Handle和http.Func函数。现在,为了使用DefaultServeMux作为服务器的主handler,我们不需要将它传给ListenAndServe函数;nil值就可以工作。</p>
+<h2 id="6-3"><a href="#6-3" class="headerlink" title="6.3"></a>6.3</h2><p>1.err怎么处理,根据err的不同进行处理,①会导致程序无法向下进行,则将err返回上层逻辑统一处理,②直接处理,一般不用panic,会导致程序崩溃。</p>
+<p>err的处理跟java的异常是一样的，结合业务情况，有一些err需要方法内部处理，有一些需要向上抛，比如最终通过errcode的方式吐给client，需要注意的是有些逻辑发生err会导致接下来的业务流程没法走，就应该及时处理了。</p>
+<p>2.避免重复查询数据库。</p>
+<p>3.数据库对于相关查询建立索引。</p>
+<p>4.将业务逻辑要进行单元测试的部分进行拆分然后进行测试。</p>
+<p>5.var ctx = context.Background()使用错误? 看下是咋用的。</p>
+<p>ctx的生命周期应该是一个请求,而不是整个服务,每一个请求都有自己的上下文。</p>
+<p>6.token不应该被使用,该业务场景下不应用到token。</p>
+<p>Q:sqlmock的原理是什么?</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机基础</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://caciacc.top/2021/06/03/go%E5%AD%A6%E4%B9%A0-%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/27/%E9%A1%B9%E7%9B%AE-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9E%E7%8E%B0-%E4%BA%8C/" class="archive-article-date">
-        <time datetime="2021-01-27T12:54:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-27</time>
-</a>
 
+
+<nav id="article-nav">
+  
+    <a href="/2021/06/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3TCP-IP%E5%AD%A6%E4%B9%A0/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          计算机基础-图解TCP/IP学习
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2021/05/17/go%E5%AD%A6%E4%B9%A0-Go%E8%AF%AD%E8%A8%80%E5%9C%A3%E7%BB%8F/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">go学习-Go语言圣经</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/27/%E9%A1%B9%E7%9B%AE-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9E%E7%8E%B0-%E4%BA%8C/">项目-一个简单图书管理系统的实现-二</a>
-	
-    </h1>
-  
+        
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/26/%E7%AE%97%E6%B3%95-codeforce-697-div3/" class="archive-article-date">
-        <time datetime="2021-01-25T16:02:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-26</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/26/%E7%AE%97%E6%B3%95-codeforce-697-div3/">算法-codeforce-697-div3</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">codeforce</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/24/%E8%AE%B0%E5%BD%95-%E6%9D%82%E8%AE%B01/" class="archive-article-date">
-        <time datetime="2021-01-24T07:40:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/24/%E8%AE%B0%E5%BD%95-%E6%9D%82%E8%AE%B01/">记录-杂记1</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">记录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC44%E5%9C%BA/" class="archive-article-date">
-        <time datetime="2021-01-24T05:08:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC44%E5%9C%BA/">算法-leetcode-双周赛第44场</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/" class="archive-article-date">
-        <time datetime="2021-01-24T04:14:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/">算法-leetcode-周赛第225场</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/23/%E7%AE%97%E6%B3%95-5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/" class="archive-article-date">
-        <time datetime="2021-01-23T08:58:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-23</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/23/%E7%AE%97%E6%B3%95-5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/">算法-5道算法题</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/20/%E7%AE%97%E6%B3%95-codeforce-696-div2/" class="archive-article-date">
-        <time datetime="2021-01-20T01:52:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-20</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/20/%E7%AE%97%E6%B3%95-codeforce-696-div2/">算法-codeforce-696-div2</a>
-	
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">codeforce</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/19/%E9%A1%B9%E7%9B%AE-vue%E6%89%93%E5%8C%85%E9%97%AE%E9%A2%98/" class="archive-article-date">
-        <time datetime="2021-01-19T08:09:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-19</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/19/%E9%A1%B9%E7%9B%AE-vue%E6%89%93%E5%8C%85%E9%97%AE%E9%A2%98/">项目-vue打包问题</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2021/01/19/%E9%A1%B9%E7%9B%AE-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/" class="archive-article-date">
-        <time datetime="2021-01-19T04:49:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-19</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2021/01/19/%E9%A1%B9%E7%9B%AE-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/">项目-服务器配置过程</a>
-	
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
-    
-    <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/archives/2021/page/7/">Prev</a><a class="page-number" href="/archives/2021/">1</a><span class="space">&hellip;</span><a class="page-number" href="/archives/2021/page/6/">6</a><a class="page-number" href="/archives/2021/page/7/">7</a><span class="page-number current">8</span><a class="page-number" href="/archives/2021/page/9/">9</a><a class="page-number" href="/archives/2021/page/10/">10</a><a class="page-number" href="/archives/2021/page/11/">11</a><a class="extend next" rel="next" href="/archives/2021/page/9/">Next</a>
-    </nav>
-  
 
 
           </div>
@@ -751,8 +497,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false,
