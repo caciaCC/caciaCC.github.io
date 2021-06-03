@@ -18,7 +18,7 @@
 <meta property="og:description" content="5.20Q:从go语言学到了什么? A:①一门语言是不可能做到完美不缺的。有优点就必须有缺点,只有牺牲一部分,才能把另外一部分做的更好。比如go的高性能,就是因为go从语言级别支持并发,通过轻量级协程 Goroutine 来实现程序并发运行。也就是设计的时候将goroutine设置的很轻量(上下文切换代价小,内存占用少)。但是另外一方面,因为goroutine非显示可控,所以容易导致内存泄漏的问题">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-03T03:04:47.000Z">
-<meta property="article:modified_time" content="2021-06-03T10:12:35.129Z">
+<meta property="article:modified_time" content="2021-06-03T13:07:35.173Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
@@ -299,6 +299,8 @@
     <h2 id="5-20"><a href="#5-20" class="headerlink" title="5.20"></a>5.20</h2><p>Q:从go语言学到了什么?</p>
 <p>A:<br>①一门语言是不可能做到完美不缺的。有优点就必须有缺点,只有牺牲一部分,<br>才能把另外一部分做的更好。比如go的高性能,就是因为go从语言级别支持并发,<br>通过轻量级协程 Goroutine 来实现程序并发运行。也就是设计的时候将goroutine设置<br>的很轻量(上下文切换代价小,内存占用少)。但是另外一方面,因为goroutine非显示可控,<br>所以容易导致内存泄漏的问题。</p>
 <p>②对于错误处理,有错误一定要处理,并且按照错误的不同做不同的处理。</p>
+<a id="more"></a>
+
 <p>Q:go与java有什么区别?</p>
 <p>go与java相比十分简洁。go语言是类c语言,不是面向对象的编程语言,go语言特性很少，go语言没有泛型,没有继承,没有运算符重载,没有异常,没有线程局部变量,只有最基本的map和slice数据结构,并且生态没有java好,而且对于大业务不好维护。</p>
 <p>但另一方面,go语言本身稳定,保证向后兼容,而java只是大部分时候支持向后兼容。</p>

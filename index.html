@@ -280,102 +280,9 @@
     <h2 id="1-1-计算机网络出现的背景"><a href="#1-1-计算机网络出现的背景" class="headerlink" title="1.1 计算机网络出现的背景"></a>1.1 计算机网络出现的背景</h2><h3 id="1-1-2-从独立模式到网络互联模式"><a href="#1-1-2-从独立模式到网络互联模式" class="headerlink" title="1.1.2 从独立模式到网络互联模式"></a>1.1.2 从独立模式到网络互联模式</h3><p>计算机网络,根据其规模可分为WAN(广域网)和LAN(局域网)。</p>
 <h2 id="1-2-计算机与网络发展的7个阶段"><a href="#1-2-计算机与网络发展的7个阶段" class="headerlink" title="1.2 计算机与网络发展的7个阶段"></a>1.2 计算机与网络发展的7个阶段</h2><h2 id="1-3-协议"><a href="#1-3-协议" class="headerlink" title="1.3 协议"></a>1.3 协议</h2><h3 id="1-3-1-随处可见的协议"><a href="#1-3-1-随处可见的协议" class="headerlink" title="1.3.1 随处可见的协议"></a>1.3.1 随处可见的协议</h3><p>TCP/IP就是IP、TCP、HTTP、ICMP、TELNET等协议的集合。</p>
 <h3 id="1-3-2-协议的必要性"><a href="#1-3-2-协议的必要性" class="headerlink" title="1.3.2 协议的必要性"></a>1.3.2 协议的必要性</h3><p>协议就是计算机与计算机之间通过网络实现通信时事先达成的一种”约定”。使得不同厂商、不同CPU、不同操作系统的通信成为可能。</p>
-<h3 id="1-3-5-分组交换协议"><a href="#1-3-5-分组交换协议" class="headerlink" title="1.3.5 分组交换协议"></a>1.3.5 分组交换协议</h3><p>分组交换是指将大数据分割成一个个叫做包的较小单位进行传输的方法。</p>
-<h2 id="1-4-协议由谁制定"><a href="#1-4-协议由谁制定" class="headerlink" title="1.4 协议由谁制定"></a>1.4 协议由谁制定</h2><h3 id="1-4-2-协议的标准化"><a href="#1-4-2-协议的标准化" class="headerlink" title="1.4.2 协议的标准化"></a>1.4.2 协议的标准化</h3><p>ISO制定了一个国际标准OSI,对通信系统进行了标准化。</p>
-<p>TCP/IP并非ISO所制定的某种国际标准。而是由IETF所建议的、致力于推进其标准化作业的一种协议。</p>
-<p>TCP/IP作为互联网之上的一种标准,也作为业界标准,俨然已成为全世界广泛应用的通信协议。</p>
-<h2 id="1-5-协议分层与OSI参考模型"><a href="#1-5-协议分层与OSI参考模型" class="headerlink" title="1.5 协议分层与OSI参考模型"></a>1.5 协议分层与OSI参考模型</h2><h3 id="1-5-1-协议的分层"><a href="#1-5-1-协议的分层" class="headerlink" title="1.5.1 协议的分层"></a>1.5.1 协议的分层</h3><p>OSI模型将通信协议中必要的功能分成了7层。</p>
-<p>在OSI模型中,每个分层都接收由下一层所提供的特定服务,并且负责为自己的上一层提供特定的服务。</p>
-<p>上下层之间进行交互时所遵循的约定叫做”接口”。同一层之间交互所遵循的约定叫做”协议”。</p>
-<p>分层的优点:扩展性强,比较灵活。每个分层的变化不会影响整个系统。</p>
-<p>分层的缺点:过分模块化、使处理变得过于沉重和每个模块要实现相似的处理逻辑。</p>
-<h3 id="1-5-3-OSI参考模型"><a href="#1-5-3-OSI参考模型" class="headerlink" title="1.5.3 OSI参考模型"></a>1.5.3 OSI参考模型</h3><p>OSI参考模型只是一个模型,它只是对各层的作用做了一些粗略的定义,并没有对协议和接口进行详细的定义。</p>
-<h3 id="1-5-4-OSI参考模型中各个分层的作用"><a href="#1-5-4-OSI参考模型中各个分层的作用" class="headerlink" title="1.5.4 OSI参考模型中各个分层的作用"></a>1.5.4 OSI参考模型中各个分层的作用</h3><p>1.应用层:为应用程序提供服务并规定应用程序中通信相关的细节。包括文件传输、电子邮件、远程登录(虚拟终端)等协议。</p>
-<p>2.表示层:将应用处理的信息转换为适合网络传输的格式,它主要负责数据格式的转换。</p>
-<p>3.会话层:负责建立和断开通信连接。</p>
-<p>4.传输层:可靠传输的作用。只在通信双方节点上进行处理,而无需在路由器进行处理。</p>
-<p>5.网络层:将数据传输到目标地址。这一层主要负责寻址和路由选择。</p>
-<p>6.数据链路层:负责物理上互联的、节点之间的通信传输。</p>
-<p>7.物理层:负责01比特流的互换。</p>
-<h2 id="1-6-OSI参考模型通信处理举例"><a href="#1-6-OSI参考模型通信处理举例" class="headerlink" title="1.6 OSI参考模型通信处理举例"></a>1.6 OSI参考模型通信处理举例</h2><h2 id="1-7-传输方式的分类"><a href="#1-7-传输方式的分类" class="headerlink" title="1.7 传输方式的分类"></a>1.7 传输方式的分类</h2><h3 id="1-7-1-面向有连接和面向无连接"><a href="#1-7-1-面向有连接和面向无连接" class="headerlink" title="1.7.1 面向有连接和面向无连接"></a>1.7.1 面向有连接和面向无连接</h3><p>面向有连接,在发送数据之前,需要在收发主机之间建立一条通信线路。</p>
-<p>面向无连接则不要求建立和断开连接。</p>
-<p>因此,在面向无连接的通信中,不需要确认对端是否存在。</p>
-<h3 id="1-7-2-电路交换和分组交换"><a href="#1-7-2-电路交换和分组交换" class="headerlink" title="1.7.2 电路交换和分组交换"></a>1.7.2 电路交换和分组交换</h3><p>网络通信方式大致分为电路交换和分组交换。</p>
-<p>TCP/IP采用的是分组交换。</p>
-<p>电路交换:发送数据时,需要通过交换机和目标主机建立通信电路。一台计算机在收发时会独占整个电路。</p>
-<p>电路交换机与电路交换机之间有两条电路。</p>
-<p>分组交换:将发送的数据分成多个数据包,按照一定顺序排列后再分别发送。</p>
-<p>路由器与路由器之间一般只有一条通信线路。路由器的缓存饱和或溢出时,可能会发生分组数据丢失、无法发送到对端的情况。</p>
-<h3 id="1-7-3-根据接收端数目分类"><a href="#1-7-3-根据接收端数目分类" class="headerlink" title="1.7.3 根据接收端数目分类"></a>1.7.3 根据接收端数目分类</h3><p>单播:1对1</p>
-<p>广播:1对多</p>
-<p>多播:1对多。比如电视会议。</p>
-<p>任播:多选一。比如DNS根域名解析服务器。</p>
-<h2 id="1-8-地址"><a href="#1-8-地址" class="headerlink" title="1.8 地址"></a>1.8 地址</h2><h3 id="1-8-1-地址的唯一性"><a href="#1-8-1-地址的唯一性" class="headerlink" title="1.8.1 地址的唯一性"></a>1.8.1 地址的唯一性</h3><h3 id="1-8-2-地址的层次性"><a href="#1-8-2-地址的层次性" class="headerlink" title="1.8.2 地址的层次性"></a>1.8.2 地址的层次性</h3><p>正是有了这种层次分类才能更加快速地定位某一个地址。</p>
-<p>MAC地址和IP地址都具有唯一性,但是只有IP地址具有层次性。</p>
-<h2 id="1-9-网络的构成要素"><a href="#1-9-网络的构成要素" class="headerlink" title="1.9 网络的构成要素"></a>1.9 网络的构成要素</h2><h3 id="1-9-1-通信媒介与数据链路"><a href="#1-9-1-通信媒介与数据链路" class="headerlink" title="1.9.1 通信媒介与数据链路"></a>1.9.1 通信媒介与数据链路</h3><p>两个设备之间数据流动的物理速度叫做传输速率。单位为bps(Bits Per Second)。</p>
-<p>传输速率又称为带宽。</p>
-<p>带宽越大网络传输能力就越强。</p>
-<p>主机之间的实际传输速率叫做吞吐量。其单位也为bps。</p>
-<h3 id="1-9-2-网卡"><a href="#1-9-2-网卡" class="headerlink" title="1.9.2 网卡"></a>1.9.2 网卡</h3><p>网卡也称为网络接口卡,网络适配器,LAN卡。</p>
-<h3 id="1-9-3-中继器"><a href="#1-9-3-中继器" class="headerlink" title="1.9.3 中继器"></a>1.9.3 中继器</h3><p>集线器可看成多端口中继器。</p>
-<h3 id="1-9-4-网桥-2层交换机"><a href="#1-9-4-网桥-2层交换机" class="headerlink" title="1.9.4 网桥/2层交换机"></a>1.9.4 网桥/2层交换机</h3><p><code>交换机内部有一张MAC地址与网线接口的映射表。</code></p>
-<p><code>当MAC地址表找不到指定的MAC地址会怎么样?</code></p>
-<p><code>交换机无法判断应该把包转发到哪个端口,只能把包转发到除了源端口之外的所有端口上,无论在设备连接在哪个端口上都能接收到这个包。</code></p>
-<h3 id="1-9-5-路由器-3层交换机"><a href="#1-9-5-路由器-3层交换机" class="headerlink" title="1.9.5 路由器/3层交换机"></a>1.9.5 路由器/3层交换机</h3><p>网络层面上连接两个网络,并对分组报文进行转发的设备。</p>
-<p><code>路由器内部有一张路由选择表。</code></p>
-<p><code>几个重要的字段是目标地址、子网掩码和网关。</code></p>
-<p><code>流程是:   用目标地址和子网掩码做&amp;运算,与对应条目的目标地址看是否匹配。 若匹配则转发给网关IP,若网关为空则就直接接收。若不匹配则选择默认路由(子网掩码是0.0.0.0)进行转发。</code></p>
-<h3 id="1-9-6-4-7层交换机"><a href="#1-9-6-4-7层交换机" class="headerlink" title="1.9.6 4-7层交换机"></a>1.9.6 4-7层交换机</h3><p>负责处理OSI模型中传输层至应用层的数据。</p>
-<h3 id="1-9-7-网关"><a href="#1-9-7-网关" class="headerlink" title="1.9.7 网关"></a>1.9.7 网关</h3><p>负责将从传输层到应用层的数据进行转换和转发的设备。</p>
-<h2 id="1-10-现代网络实态"><a href="#1-10-现代网络实态" class="headerlink" title="1.10 现代网络实态"></a>1.10 现代网络实态</h2><h1 id="第二章-TCP-IP基础知识"><a href="#第二章-TCP-IP基础知识" class="headerlink" title="第二章 TCP/IP基础知识"></a>第二章 TCP/IP基础知识</h1><h2 id="2-1-TCP-IP出现的背景及其历史"><a href="#2-1-TCP-IP出现的背景及其历史" class="headerlink" title="2.1 TCP/IP出现的背景及其历史"></a>2.1 TCP/IP出现的背景及其历史</h2><h2 id="2-2-TCP-IP的标准化"><a href="#2-2-TCP-IP的标准化" class="headerlink" title="2.2 TCP/IP的标准化"></a>2.2 TCP/IP的标准化</h2><h3 id="2-2-1-TCP-IP的具体含义"><a href="#2-2-1-TCP-IP的具体含义" class="headerlink" title="2.2.1 TCP/IP的具体含义"></a>2.2.1 TCP/IP的具体含义</h3><p>TCP/IP只是利用IP进行通信时所必须用到的协议群的统称。</p>
-<h2 id="2-3-互联网基础知识"><a href="#2-3-互联网基础知识" class="headerlink" title="2.3 互联网基础知识"></a>2.3 互联网基础知识</h2><h3 id="2-3-3-互联网的结构"><a href="#2-3-3-互联网的结构" class="headerlink" title="2.3.3 互联网的结构"></a>2.3.3 互联网的结构</h3><p>互联网中的每个网络都是由骨干网和末端网组成的。</p>
-<h2 id="2-4-TCP-IP协议分层模型"><a href="#2-4-TCP-IP协议分层模型" class="headerlink" title="2.4 TCP/IP协议分层模型"></a>2.4 TCP/IP协议分层模型</h2><h3 id="2-4-1-TCP-IP与OSI参考模型"><a href="#2-4-1-TCP-IP与OSI参考模型" class="headerlink" title="2.4.1 TCP/IP与OSI参考模型"></a>2.4.1 TCP/IP与OSI参考模型</h3><p>OSI参考模型更注重通信协议必要的功能是什么,TCP/IP更强调在计算机中实现协议应该开发哪种程序。</p>
-<h3 id="2-4-2-硬件-物理层"><a href="#2-4-2-硬件-物理层" class="headerlink" title="2.4.2 硬件(物理层)"></a>2.4.2 硬件(物理层)</h3><p>TCP/IP的最底层是负责数据传输的硬件。</p>
-<h3 id="2-4-3-网络接口层-数据链路层"><a href="#2-4-3-网络接口层-数据链路层" class="headerlink" title="2.4.3 网络接口层(数据链路层)"></a>2.4.3 网络接口层(数据链路层)</h3><p>网络接口层利用以太网的数据链路层进行通信,因此属于接口层。</p>
-<h3 id="2-4-4-互联网层-网络层"><a href="#2-4-4-互联网层-网络层" class="headerlink" title="2.4.4 互联网层(网络层)"></a>2.4.4 互联网层(网络层)</h3><p>IP:IP虽然也是分组交换的一种协议,但是它不具有重发机制。</p>
-<p>ICMP:无法到达对端地址,发送一个异常通知。</p>
-<p>ARP: IP地址解析出MAC地址。</p>
-<h3 id="2-4-5-传输层"><a href="#2-4-5-传输层" class="headerlink" title="2.4.5 传输层"></a>2.4.5 传输层</h3><p>TCP:不利于在视频会议等场景使用。</p>
-<p>UDP:常用于分组数据较少或多播、广播通信以及视频通信等多媒体领域。</p>
-<h3 id="2-4-6-应用层"><a href="#2-4-6-应用层" class="headerlink" title="2.4.6 应用层"></a>2.4.6 应用层</h3><p>TCP/IP应用一般采用客户端-服务器模型。</p>
-<p>WWW:是应用层协议,而HTML属于表示层协议。</p>
-<p>电子邮件:使用SMTP协议,MIME属于表示层。</p>
-<p>文件传输:使用FTP协议,使用二进制或文本方式。</p>
-<p>远程登录:常用TELNET和SSH两种协议。</p>
-<p>网络管理:采用SNMP协议。</p>
-<h2 id="2-5-TCP-IP分层模型与通信示例"><a href="#2-5-TCP-IP分层模型与通信示例" class="headerlink" title="2.5 TCP/IP分层模型与通信示例"></a>2.5 TCP/IP分层模型与通信示例</h2><h3 id="2-5-1-数据包首部"><a href="#2-5-1-数据包首部" class="headerlink" title="2.5.1 数据包首部"></a>2.5.1 数据包首部</h3><p>包可以说是全能性术语。帧表示数据链路层包的单位。而数据包是IP层和UDP等网络层以上的分层中包的单位。段则表示TCP数据流中的信息。消息是指应用协议中数据的单位。</p>
-<h3 id="2-5-2-发送数据包"><a href="#2-5-2-发送数据包" class="headerlink" title="2.5.2 发送数据包"></a>2.5.2 发送数据包</h3><p>1.应用层处理 </p>
-<p>2.TCP模块的处理</p>
-<p>TCP首部包括源端口号、目标端口号、序号、确认号、紧急指针、选项、窗口、数据偏移和检验和等。</p>
-<p>3.IP模块的处理 </p>
-<p>IP首部包括源IP、目标IP、标识、偏移量、协议、TTL、版本、首部长度等。</p>
-<p>IP包生成后,参考路由控制表决定接受该IP包的路由或主机。</p>
-<p>如果不知道接收端的MAC地址,可使用ARP协议查找。</p>
-<p>4.网络接口的处理</p>
-<p>给其附加上以太网首部(发送端MAC地址、接收端MAC地址以及标识以太网类型的以太网数据的协议)。</p>
-<h3 id="2-5-3-经过数据链路的包"><a href="#2-5-3-经过数据链路的包" class="headerlink" title="2.5.3 经过数据链路的包"></a>2.5.3 经过数据链路的包</h3><p>注意,以太网层附加的有以太网首部和以太网包尾。</p>
-<h3 id="2-5-4-数据包接收处理"><a href="#2-5-4-数据包接收处理" class="headerlink" title="2.5.4 数据包接收处理"></a>2.5.4 数据包接收处理</h3><p>5.网络接口的处理 </p>
-<p>主机收到以太网包以后,首先从以太网的包首部查找MAC地址判断是否是发送给自己的包,不是则丢弃。</p>
-<p>如果是发送给自己的包,则查找以太网协议所传来的数据类型。如IP包则交付给IP,ARP包则交给ARP处理。</p>
-<p>6.IP模块的处理</p>
-<p>对于有路由器的情况下,接收端地址往往不是自己的地址,此时需要借助路由控制表,在调查应该送到的主机或路由器之后再转发数据。</p>
-<p>7.TCP模块的处理</p>
-<p>首先会计算一个校验和,判断数据是否被破坏。</p>
-<p>数据接收完毕后,接收端则发送一个”确认回执”给发送端。</p>
-<p>数据完整识别后,交付给由端口号识别的应用程序。</p>
-<p>8.应用程序的处理</p>
-<p>接收端应用程序会直接接受发送端发送的数据。</p>
-<hr>
-<p>由于移动电话、智能手机、平板电脑等进行分组数据通信,故装入电池开机时,已设置好具体IP地址。</p>
-<h1 id="第三章-数据链路"><a href="#第三章-数据链路" class="headerlink" title="第三章 数据链路"></a>第三章 数据链路</h1><h2 id="3-1-数据链路的作用"><a href="#3-1-数据链路的作用" class="headerlink" title="3.1 数据链路的作用"></a>3.1 数据链路的作用</h2><p>数据链路可被视为网络传输的最小单位。</p>
-<h2 id="3-2-数据链路相关技术"><a href="#3-2-数据链路相关技术" class="headerlink" title="3.2 数据链路相关技术"></a>3.2 数据链路相关技术</h2><h3 id="3-2-1-MAC地址"><a href="#3-2-1-MAC地址" class="headerlink" title="3.2.1 MAC地址"></a>3.2.1 MAC地址</h3><p>MAC地址长48比特。在使用网卡(NIC)的情况下,MAC地址一般会被烧入到ROM中。任何一个网卡的MAC地址都是唯一的。</p>
-<p>即使MAC地址相同,只要不是同属一个数据链路就不会出现问题。</p>
-<h3 id="3-2-4-根据MAC地址转发"><a href="#3-2-4-根据MAC地址转发" class="headerlink" title="3.2.4 根据MAC地址转发"></a>3.2.4 根据MAC地址转发</h3><p>以太网交换机是持有多个端口的网桥。它们根据数据链路层每个帧的目标MAC地址,决定从哪个网络接口转发,用于记录发送接口的表,叫做转发表。</p>
-<h2 id="3-3-以太网"><a href="#3-3-以太网" class="headerlink" title="3.3 以太网"></a>3.3 以太网</h2><h3 id="3-3-4-以太网帧格式"><a href="#3-3-4-以太网帧格式" class="headerlink" title="3.3.4 以太网帧格式"></a>3.3.4 以太网帧格式</h3><p>前导码+以太网首部+…+以太网尾部 </p>
-<h2 id="3-4-无线通信"><a href="#3-4-无线通信" class="headerlink" title="3.4 无线通信"></a>3.4 无线通信</h2><h2 id="3-5-PPP"><a href="#3-5-PPP" class="headerlink" title="3.5 PPP"></a>3.5 PPP</h2><h3 id="3-5-1-PPP定义"><a href="#3-5-1-PPP定义" class="headerlink" title="3.5.1 PPP定义"></a>3.5.1 PPP定义</h3><p>PPP是指点到点、一对一连接计算机的协议。</p>
-<p>PPP可以使用电话线、ISDN、专线、ATM线路、ADSL、有线电视等。</p>
-<h2 id="3-6-其他数据链路"><a href="#3-6-其他数据链路" class="headerlink" title="3.6 其他数据链路"></a>3.6 其他数据链路</h2><h3 id="3-6-1-ATM"><a href="#3-6-1-ATM" class="headerlink" title="3.6.1 ATM"></a>3.6.1 ATM</h3><p>ATM是一种面向连接的数据链路。</p>
-<h2 id="3-7-公共网络"><a href="#3-7-公共网络" class="headerlink" title="3.7 公共网络"></a>3.7 公共网络</h2><h1 id="第四章-IP协议"><a href="#第四章-IP协议" class="headerlink" title="第四章 IP协议"></a>第四章 IP协议</h1>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/06/03/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E5%9B%BE%E8%A7%A3TCP-IP%E5%AD%A6%E4%B9%A0/#more">more >></a>
+    
     
 
     
@@ -469,43 +376,9 @@
     <h2 id="5-20"><a href="#5-20" class="headerlink" title="5.20"></a>5.20</h2><p>Q:从go语言学到了什么?</p>
 <p>A:<br>①一门语言是不可能做到完美不缺的。有优点就必须有缺点,只有牺牲一部分,<br>才能把另外一部分做的更好。比如go的高性能,就是因为go从语言级别支持并发,<br>通过轻量级协程 Goroutine 来实现程序并发运行。也就是设计的时候将goroutine设置<br>的很轻量(上下文切换代价小,内存占用少)。但是另外一方面,因为goroutine非显示可控,<br>所以容易导致内存泄漏的问题。</p>
 <p>②对于错误处理,有错误一定要处理,并且按照错误的不同做不同的处理。</p>
-<p>Q:go与java有什么区别?</p>
-<p>go与java相比十分简洁。go语言是类c语言,不是面向对象的编程语言,go语言特性很少，go语言没有泛型,没有继承,没有运算符重载,没有异常,没有线程局部变量,只有最基本的map和slice数据结构,并且生态没有java好,而且对于大业务不好维护。</p>
-<p>但另一方面,go语言本身稳定,保证向后兼容,而java只是大部分时候支持向后兼容。</p>
-<p>go语言的类型系统也比较简单,安全性更好,性能更好。</p>
-<p>go中聚合类型需要的空间和内存更少,并且因为其CSP并发特性,go语言创建一个goroutine的代价很小,能达到百万级别的goroutine。</p>
-<p>go语言标准库很丰富,特别是网络协议相关的,简化了程序逻辑。</p>
-<p>Q:go的堆怎么实现?</p>
-<p>A:<br>①先看container/heap,接口是这样定义的。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Interface <span class="keyword">interface</span> &#123;  </span><br><span class="line">    sort.Interface  </span><br><span class="line">    Push(x <span class="keyword">interface</span>&#123;&#125;) <span class="comment">// add x as element Len()  </span></span><br><span class="line">    Pop() <span class="keyword">interface</span>&#123;&#125;   <span class="comment">// remove and return element Len() - 1.  </span></span><br><span class="line">&#125;  </span><br></pre></td></tr></table></figure>
-<p>②于是需要实现<code>sort.Interface</code>的三个方法和其他两个方法。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> Interface <span class="keyword">interface</span> &#123;</span><br><span class="line">Len() </span><br><span class="line">intLess(i, j <span class="keyword">int</span>) <span class="keyword">bool</span> <span class="comment">// i, j are indices of sequence elements</span></span><br><span class="line">Swap(i, j <span class="keyword">int</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>③具体实现:<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/top-k-frequent-words/solution/692godui-pai-xu-shi-xian-by-cacia-qlmq/">https://leetcode-cn.com/problems/top-k-frequent-words/solution/692godui-pai-xu-shi-xian-by-cacia-qlmq/</a></p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">type</span> word <span class="keyword">struct</span> &#123;</span><br><span class="line">    name <span class="keyword">string</span></span><br><span class="line">    freq  <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">type</span> Stu []word</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Stu)</span> <span class="title">Len</span><span class="params">()</span> <span class="title">int</span></span> &#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">len</span>(*t) <span class="comment">//</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Stu)</span> <span class="title">Less</span><span class="params">(i, j <span class="keyword">int</span>)</span> <span class="title">bool</span></span> &#123;</span><br><span class="line">    <span class="keyword">if</span> (*t)[i].freq == (*t)[j].freq &#123;</span><br><span class="line">        <span class="keyword">return</span> (*t)[i].name &lt; (*t)[j].name</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span>  (*t)[i].freq &gt; (*t)[j].freq</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Stu)</span> <span class="title">Swap</span><span class="params">(i, j <span class="keyword">int</span>)</span></span> &#123;</span><br><span class="line">    (*t)[i], (*t)[j] = (*t)[j], (*t)[i]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Stu)</span> <span class="title">Push</span><span class="params">(x <span class="keyword">interface</span>&#123;&#125;)</span></span> &#123;</span><br><span class="line">    *t = <span class="built_in">append</span>(*t, x.(word))</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(t *Stu)</span> <span class="title">Pop</span><span class="params">()</span> <span class="title">interface</span></span>&#123;&#125; &#123;</span><br><span class="line">    n := <span class="built_in">len</span>(*t)</span><br><span class="line">    x := (*t)[n<span class="number">-1</span>]</span><br><span class="line">    *t = (*t)[:n<span class="number">-1</span>]</span><br><span class="line">    <span class="keyword">return</span> x</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">topKFrequent</span><span class="params">(words []<span class="keyword">string</span>, k <span class="keyword">int</span>)</span> []<span class="title">string</span></span> &#123;</span><br><span class="line">    hp := &amp;Stu&#123;&#125;</span><br><span class="line">    heap.Init(hp)</span><br><span class="line">    mp := <span class="built_in">make</span>(<span class="keyword">map</span>[<span class="keyword">string</span>]<span class="keyword">int</span>)</span><br><span class="line">    <span class="keyword">for</span> i := <span class="number">0</span>; i &lt; <span class="built_in">len</span>(words); i ++&#123;</span><br><span class="line">        mp[words[i]] ++</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span> k,v := <span class="keyword">range</span> mp&#123;</span><br><span class="line">        tmp := word&#123;k,v&#125;</span><br><span class="line">        heap.Push(hp, tmp)</span><br><span class="line">    &#125;</span><br><span class="line">    ans := <span class="built_in">make</span>([]<span class="keyword">string</span>,<span class="number">0</span>)</span><br><span class="line">    <span class="keyword">for</span> k &gt; <span class="number">0</span>&#123;</span><br><span class="line">        tmp := (*hp)[<span class="number">0</span>].name</span><br><span class="line">        heap.Pop(hp)</span><br><span class="line">        ans = <span class="built_in">append</span>(ans, tmp)</span><br><span class="line">        k --</span><br><span class="line">        fmt.Println(tmp)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>④注意:创建出结构体(或数组)的指针后记得进行初始化操作,即heap.Init(ptr)。</p>
-<h2 id="5-21"><a href="#5-21" class="headerlink" title="5.21"></a>5.21</h2><p>1.用字符串做校验可能导致出错。应该用request提供的原始方式做参数解析什么的,而不是用字符串截断,自带的原生类型来做。<br>对的，后面你会用到很多成熟的框架，框架里面做这些事更简单。</p>
-<p>2.应该给对应不好理解的const写上注释<br>不光是const，函数、方法、枚举，如果不能通过命名来清晰表达，就加注释吧</p>
-<p>3.应该是/xxx而不是/,对应路径。<br>接口要和接口功能对应，接口名应该清晰表达接口功能</p>
-<p>4.一个大函数中如果包含多个有明确界限个功能,应拆分为多个小函数。</p>
-<p>5.err一定有对应的处理。</p>
-<p>6.const变量应按照标准放在全局变量位置,而不放在函数里。</p>
-<h2 id="5-24"><a href="#5-24" class="headerlink" title="5.24"></a>5.24</h2><p>Q:有一个程序是把结果输出到os.Stdout，然后另外一个程序是对os.Stdin进行处理。于是可以把第一个程序的输出重定向到第二个程序的输入。那如果要把两个程序合成一个程序咋弄?</p>
-<p>A:可以用channel。 </p>
-<p>Q:方法的receiver用指针还是非指针,怎么判断?</p>
-<p>A:指针才能真正修改结构体中的变量,而非指针无法做到。</p>
-<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> main</span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> <span class="string">&quot;fmt&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">type</span> Object <span class="keyword">struct</span> &#123;</span><br><span class="line">	x <span class="keyword">int</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="comment">//func (o *Object) modifyX()&#123;</span></span><br><span class="line"><span class="comment">//	o.x = 9999</span></span><br><span class="line"><span class="comment">//&#125;</span></span><br><span class="line"><span class="comment">//2</span></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="params">(o Object)</span> <span class="title">modifyX</span><span class="params">()</span></span>&#123;</span><br><span class="line">	o.x = <span class="number">9999</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">func</span> <span class="title">main</span><span class="params">()</span></span> &#123;</span><br><span class="line">	obj := Object&#123;<span class="number">0</span>&#125;</span><br><span class="line">	obj.modifyX()</span><br><span class="line">	fmt.Println(obj.x)</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>Q:为什么handler不需要传给ListenAndServe函数,而只需要传入一个nil?</p>
-<p>A:为了方便,net/http包提供了一个全局的ServerMux实例DefaultServerMux和包级别的http.Handle和http.Func函数。现在,为了使用DefaultServeMux作为服务器的主handler,我们不需要将它传给ListenAndServe函数;nil值就可以工作。</p>
-<h2 id="6-3"><a href="#6-3" class="headerlink" title="6.3"></a>6.3</h2><p>1.err怎么处理,根据err的不同进行处理,①会导致程序无法向下进行,则将err返回上层逻辑统一处理,②直接处理,一般不用panic,会导致程序崩溃。</p>
-<p>err的处理跟java的异常是一样的，结合业务情况，有一些err需要方法内部处理，有一些需要向上抛，比如最终通过errcode的方式吐给client，需要注意的是有些逻辑发生err会导致接下来的业务流程没法走，就应该及时处理了。</p>
-<p>2.避免重复查询数据库。</p>
-<p>3.数据库对于相关查询建立索引。</p>
-<p>4.将业务逻辑要进行单元测试的部分进行拆分然后进行测试。</p>
-<p>5.var ctx = context.Background()使用错误? 看下是咋用的。</p>
-<p>ctx的生命周期应该是一个请求,而不是整个服务,每一个请求都有自己的上下文。</p>
-<p>6.token不应该被使用,该业务场景下不应用到token。</p>
-<p>Q:sqlmock的原理是什么?</p>
-
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/06/03/go%E5%AD%A6%E4%B9%A0-%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/#more">more >></a>
+    
     
 
     
@@ -1143,6 +1016,12 @@
   
   <div class="article-entry" itemprop="articleBody">
     
+    <h1 id="第一章-浏览器生成信息"><a href="#第一章-浏览器生成信息" class="headerlink" title="第一章 浏览器生成信息"></a>第一章 浏览器生成信息</h1><p>(1) 生成HTTP请求信息</p>
+<p>(2) 向DNS服务器查询Web服务器的IP地址</p>
+<p>(3) 全世界DNS服务器的大接力</p>
+<p>(4) 委托协议栈发送消息</p>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/04/06/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E7%BD%91%E7%BB%9C%E6%98%AF%E6%80%8E%E6%A0%B7%E8%BF%9E%E6%8E%A5%E7%9A%84%E5%AD%A6%E4%B9%A0/#more">more >></a>
     
     
 
