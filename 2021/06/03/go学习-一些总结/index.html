@@ -18,7 +18,7 @@
 <meta property="og:description" content="5.20Q:从go语言学到了什么? A:①一门语言是不可能做到完美不缺的。有优点就必须有缺点,只有牺牲一部分,才能把另外一部分做的更好。比如go的高性能,就是因为go从语言级别支持并发,通过轻量级协程 Goroutine 来实现程序并发运行。也就是设计的时候将goroutine设置的很轻量(上下文切换代价小,内存占用少)。但是另外一方面,因为goroutine非显示可控,所以容易导致内存泄漏的问题">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-03T03:04:47.000Z">
-<meta property="article:modified_time" content="2021-06-03T13:07:35.173Z">
+<meta property="article:modified_time" content="2021-06-04T11:42:59.138Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="go">
 <meta name="twitter:card" content="summary">
@@ -276,7 +276,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">1.5k字</span>
+      <span class="post-count">1.8k字</span>
     </span>
   </span>
 
@@ -285,7 +285,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">6分</span>
+      <span class="post-count">7分</span>
     </span>
   </span>
 </div>
@@ -333,10 +333,22 @@
 <p>2.避免重复查询数据库。</p>
 <p>3.数据库对于相关查询建立索引。</p>
 <p>4.将业务逻辑要进行单元测试的部分进行拆分然后进行测试。</p>
-<p>5.var ctx = context.Background()使用错误? 看下是咋用的。</p>
+<p>5.var ctx = context.Background()的使用不正确? 是咋用的?</p>
 <p>ctx的生命周期应该是一个请求,而不是整个服务,每一个请求都有自己的上下文。</p>
+<p>POST请求里面如果有函数要使用context,应该是以入参的形式来使用自己的context,而不是使用全局的context,GET请求也一样。</p>
+<p>用的时候，一般一个ctx的生命周期就是处理一个请求，包括这一个请求里面可能衍生出的协程。</p>
 <p>6.token不应该被使用,该业务场景下不应用到token。</p>
 <p>Q:sqlmock的原理是什么?</p>
+<p>A:…</p>
+<p>Q:如果每写一句就进行错误处理,相对于真正的业务逻辑,错误处理反而更多,有没有什么办法可以解决这个问题吗?</p>
+<p>A:没有，这个也是go的一个不足。</p>
+<h2 id="6-4"><a href="#6-4" class="headerlink" title="6.4"></a>6.4</h2><p>1.关于err错误处理。</p>
+<figure class="highlight go"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> err := WaitForServer(url); err != <span class="literal">nil</span> &#123;</span><br><span class="line">fmt.Fprintf(os.Stderr, <span class="string">&quot;Site is down: %v\n&quot;</span>, err)</span><br><span class="line">os.Exit(<span class="number">1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这种在if里面的写法会更加简洁。</p>
+<p>2.go的优势?劣势?秋招选择go吗?</p>
+<p>go的优势主要在于开发效率高(相比于c系语言),性能好,部署方便,极方便的高并发特性,语言层面支持。包括docker,k8s等都是go写的,web方面也有beego,gin这样的框架。</p>
+<p>缺点主要集中在:语言特性(不支持泛型,反射效率低),生态不完善,相比于java没有好用的库。但都在解决中。</p>
+<p>秋招找工作,不要把go当成唯一主力语言。如果工作要写go,或者面试被问到愿不愿意写go,可以写。  </p>
 
     
 
