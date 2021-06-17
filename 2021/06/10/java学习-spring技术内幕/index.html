@@ -18,7 +18,7 @@
 <meta property="og:description" content="第一章 Spring的设计理念和整体架构1.3 Spring的整体架构Spring基本组成模块。 Spring IoC。定义了IoC容器的最基本接口beanfactory,也提供了一系列这个接口的实现,如xmlbeanfactory就是一个最基本的beanfactory,从名字上可以看到,它能够支持通过xml文件配置的bean定义信息。还包括ioc容器对外围设备的支持,包括Resource访问资源">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-10T03:21:08.000Z">
-<meta property="article:modified_time" content="2021-06-11T02:54:02.380Z">
+<meta property="article:modified_time" content="2021-06-17T11:40:24.737Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
@@ -276,7 +276,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">479字</span>
+      <span class="post-count">3k字</span>
     </span>
   </span>
 
@@ -285,7 +285,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">11分</span>
     </span>
   </span>
 </div>
@@ -311,8 +311,75 @@
 <h3 id="2-1-2-Spring-IoC的应用场景"><a href="#2-1-2-Spring-IoC的应用场景" class="headerlink" title="2.1.2 Spring IoC的应用场景"></a>2.1.2 Spring IoC的应用场景</h3><p>注入的实现方式:接口注入(Type 1 IoC)、setter注入(Type 2 IoC)、构造器注入(Type 3 IoC)是主要的注入方式。</p>
 <h2 id="2-2-IoC容器系列的设计与实现-BeanFactory和ApplicationContext"><a href="#2-2-IoC容器系列的设计与实现-BeanFactory和ApplicationContext" class="headerlink" title="2.2 IoC容器系列的设计与实现:BeanFactory和ApplicationContext"></a>2.2 IoC容器系列的设计与实现:BeanFactory和ApplicationContext</h2><p>一个是实现BeanFactory接口的简单容器系列,这系列容器只实现了容器的最基本功能;另一个是ApplicationContext应用上下文,它作为容器的高级形态而存在。应用上下文在简单容器的基础上,增加了许多面向框架的特性,同时对应用环境做了很多适配。</p>
 <h3 id="2-2-1-Spring的IoC容器系列"><a href="#2-2-1-Spring的IoC容器系列" class="headerlink" title="2.2.1 Spring的IoC容器系列"></a>2.2.1 Spring的IoC容器系列</h3><p>BeanFactory定义了水桶的基本功能,比如至少能装水,有个提手等。</p>
-<p>对IoC容器来说,</p>
-
+<p>对IoC容器来说,BeanDefinition就是对依赖反转模式中管理的对象依赖关系的数据抽象,也是容器实现依赖反转功能的核心数据结,依赖反转功能都是围绕对BeanDefinition的处理来完成的。这些BeanDefinition就像是容器里装的水。</p>
+<h3 id="2-2-2-Spring-IoC容器的设计"><a href="#2-2-2-Spring-IoC容器的设计" class="headerlink" title="2.2.2 Spring IoC容器的设计"></a>2.2.2 Spring IoC容器的设计</h3><p>BeanFactory的应用场景:用户使用容器时,可以使用转义符”&amp;”来得到FactoryBean本身,用于区分通过容器来获取FactoryBean产生的对象和获取FactoryBean本身。</p>
+<p>在spring中,所有的Bean都是由BeanFactory来进行管理的。但对FactoryBean而言,这个bean并不是简单的Bean,而是一个能产生或者修饰对象生成的工厂bean。</p>
+<p><code>BeanFactory容器的设计原理。</code></p>
+<p>XmlBeanFactory是一个与XML相关的BeanFactory,也就是说可以读取以XML文件方式定义的BeanDefinition的IoC容器。</p>
+<p>在XMLBeanFactory中,初始化了一个XmlBeanDefinitionReader对象,使用该对象进行XML信息处理。</p>
+<p>构建XMLBeanFactory需要传入Resource资源,对XmlBeanDefinitionReader对象的初始化,以及使用这个对象来完成对loadBeanDefinition的调用,就是这个调用启动从Resource中载入BeanDefinitions的过程,loadBeanDefinition同样也是IoC容器初始化的重要过程。</p>
+<p>使用IOC容器的步骤:</p>
+<p>1.创建IoC配置文件的抽象资源,这个抽象资源包括了BeanDefinition的定义信息。</p>
+<p>2.创建一个BeanFactory。</p>
+<p>3.创建一个载入BeanDefinition的Reader,比如XmlBeanDefinitionReader。</p>
+<p>4.从定义好的位置读入配置信息,具体解析过程由Reader完成。</p>
+<p>5.然后完成Bean的载入和注册,IoC容器即建立起来了,可以使用了。</p>
+<p><code>ApplicationContext容器的设计原理。</code></p>
+<p>以FileSystemXmlApplicationContext实现为例。</p>
+<p>FileSystemXmlApplicationContext的getResourceByPath方法可以得到FileSystemResource的资源定位。</p>
+<h2 id="2-3-IoC容器的初始化过程"><a href="#2-3-IoC容器的初始化过程" class="headerlink" title="2.3 IoC容器的初始化过程"></a>2.3 IoC容器的初始化过程</h2><p>第一个过程是Resource定位过程。这个Resource定位指的是BeanDefinition的资源定位,它由ResourceLoader通过统一的Resource接口来完成,这个Resource对各种形式的BeanDefinition的使用都提供了统一接口。</p>
+<p>第二个过程是BeanDefinition的载入。这个载入过程是把用户定义好的Bean表示成IoC容器内部的数据结构,而这个容器内部的数据结构就是BeanDefinition。</p>
+<p>第三个过程是向IoC容器注册BeanDefinition的过程。这个过程是通过调用BeanDefinitionRegistry接口的实现来完成的。将BeanDefinition注册到一个HashMap中,IoC容器通过这个HashMap来持有BeanDefinition的数据。</p>
+<p>Bean定义的载入和依赖注入是两个独立的过程。依赖注入一般是发生在应用第一次通过getBean向容器索取Bean的时候。例外情况是预实例化lazyinit。</p>
+<h3 id="2-3-1-BeanDefinition的Resource定位"><a href="#2-3-1-BeanDefinition的Resource定位" class="headerlink" title="2.3.1 BeanDefinition的Resource定位"></a>2.3.1 BeanDefinition的Resource定位</h3><p>refreshBeanFactory(loadBeanDefinition(new ResourceLoader-&gt;getResource))</p>
+<p>在定位完成后,为BeanDefinition的载入创建了I/O操作的条件,但是具体的数据还没有开始读入。而只是完成了对Resource的定位。</p>
+<h3 id="2-3-2-BeanDefinition的载入和解析"><a href="#2-3-2-BeanDefinition的载入和解析" class="headerlink" title="2.3.2 BeanDefinition的载入和解析"></a>2.3.2 BeanDefinition的载入和解析</h3><p>载入过程相当于把定义的BeanDefinition在IoC容器中转化为一个Spring内部的数据结构的过程。</p>
+<p>refresh(postProcessBeanFactory-&gt;invokeBeanFactoryPostProcessors-&gt;registerBeanPostProcessors)</p>
+<p>refreshBeanFactory(createBeanFactory-&gt;loadBeanDefinition(new BeanDefinitionReader-&gt;loadBeanDefinition<code>reader</code>(loadBeanDefinition(doLoadBeanDefinition(registerBeanDefinition(new BeanDefinitionDocumentReader(ParserDelegate)-&gt;registerBeanDefinition))))))</p>
+<p>现在,再IoC容器中存在的还只是一些静态的配置信息,要发挥作用,还需完成注册。</p>
+<h3 id="2-3-3-BeanDefinition在IoC容器中的注册"><a href="#2-3-3-BeanDefinition在IoC容器中的注册" class="headerlink" title="2.3.3 BeanDefinition在IoC容器中的注册"></a>2.3.3 BeanDefinition在IoC容器中的注册</h3><p>registerBeanDefinition(syn(map){map.put(beanName,beanDefinition)})</p>
+<h2 id="2-4-IoC容器的依赖注入"><a href="#2-4-IoC容器的依赖注入" class="headerlink" title="2.4 IoC容器的依赖注入"></a>2.4 IoC容器的依赖注入</h2><p>getBean(doGetBean(beanName-&gt;getBeanDefinition-&gt;createBean(doCreateBean(s:清除同名bean-&gt;<code>1</code>createBeanInstance-&gt;<code>2</code>populateBean-&gt;<code>3</code>inintialBean))))</p>
+<p>createBeanInstance(工厂/CGLIB(instantiateBean(instantiate(new Enhancer-&gt;enhancer.create())))/构造函数)</p>
+<p>populateBean(autowire-&gt;applyPropertyValues<code>对属性进行注入</code>(new BeanDefinitionValueResolver-&gt;BeanDefinitionValueResolver()-&gt;setPropertyValues))</p>
+<p>BeanDefinitionValueResolver(resolveValueIfNecessary-&gt;其他resolve)</p>
+<p>setPropertyValues(new PropertyTokenHolder<code>设置tokens的索引和keys</code>-&gt;getPropertyValue-&gt;Array注入-&gt;List注入-&gt;Map注入-&gt;非集合类注入-&gt;set方法注入)</p>
+<p>在Bean创建和对象依赖注入的过程中,需要依据BeanDefinition中的信息来递归完成依赖注入。一个递归是在上下文体系中查找需要的bean和创建bean的递归调用;另一个递归是依赖注入时,通过递归调用容器的getBean方法,得到当前bean的依赖Bean,同时也触发对依赖Bean的创建和注入。</p>
+<p>这样,根据依赖关系,一层一层地完成Bean的创建和注入,直到最后完成当前Bean的创建。有了这个顶层Bean的创建和对它的属性依赖注入的完成,意味着当前Bean相关的整个依赖链的注入也完成了。</p>
+<h2 id="2-5-容器其他特性的设计与实现"><a href="#2-5-容器其他特性的设计与实现" class="headerlink" title="2.5 容器其他特性的设计与实现"></a>2.5 容器其他特性的设计与实现</h2><h3 id="2-5-1-ApplicationContext和Bean的初始化及摧毁"><a href="#2-5-1-ApplicationContext和Bean的初始化及摧毁" class="headerlink" title="2.5.1 ApplicationContext和Bean的初始化及摧毁"></a>2.5.1 ApplicationContext和Bean的初始化及摧毁</h3><p>prepareBeanFactory(addPropertyEditorRegister-&gt;addBeanPostProcessor)-&gt;doClose(destoryBean-&gt;closeBeanFactory)</p>
+<p>inintialBean(调用aware接口实现-&gt;invokeInitMethods(invokeCustomInitMethod(initMethod.invoke)))</p>
+<p>destoryBean(postProcessBeforeDestruction-&gt;invokeCustomDestoryDestoryMethod)</p>
+<h3 id="2-5-2-lazy-init属性和预实例化"><a href="#2-5-2-lazy-init属性和预实例化" class="headerlink" title="2.5.2 lazy-init属性和预实例化"></a>2.5.2 lazy-init属性和预实例化</h3><h3 id="2-5-3-FactoryBean的实现"><a href="#2-5-3-FactoryBean的实现" class="headerlink" title="2.5.3 FactoryBean的实现"></a>2.5.3 FactoryBean的实现</h3><h3 id="2-5-4-BeanPostProcessor的实现"><a href="#2-5-4-BeanPostProcessor的实现" class="headerlink" title="2.5.4 BeanPostProcessor的实现"></a>2.5.4 BeanPostProcessor的实现</h3><p>BeanPostProcessor是一个接口类,它由两个接口方法,一个是postProcessBeforeInitialization,在Bean的初始化前提供回调入口;一个是postProcessAfterInitialization,在Bean的初始化后提供回调入口,这两个回调函数的触发都是和容器管理bean的生命周期相关的。</p>
+<p>doCreateBean(…-&gt;populateBean-&gt;postProcessBeforeInitialization-&gt;initializeBean(applyBeanPostProcessorsBeforeInitialization-&gt;…)-&gt;postProcessAfterInitialization)</p>
+<p>这两个Bean后置处理器定义的接口方法,一前一后,围绕着Bean定义的init-method方法调用,与IoC容器对Bean的管理有机结合起来了。</p>
+<h3 id="2-5-5-autowiring-自动依赖装配-的实现"><a href="#2-5-5-autowiring-自动依赖装配-的实现" class="headerlink" title="2.5.5 autowiring(自动依赖装配)的实现"></a>2.5.5 autowiring(自动依赖装配)的实现</h3><h3 id="2-5-6-Bean的依赖检查"><a href="#2-5-6-Bean的依赖检查" class="headerlink" title="2.5.6 Bean的依赖检查"></a>2.5.6 Bean的依赖检查</h3><h3 id="2-5-7-Bean对IoC容器的感知"><a href="#2-5-7-Bean对IoC容器的感知" class="headerlink" title="2.5.7 Bean对IoC容器的感知"></a>2.5.7 Bean对IoC容器的感知</h3><p>在Bean中直接对IoC容器进行操作,就需要在Bean中设计对容器的感知。这需要通过特定的aware接口来完成。</p>
+<h2 id="2-6小结"><a href="#2-6小结" class="headerlink" title="2.6小结"></a>2.6小结</h2><h1 id="第3章-Spring-AOP的实现"><a href="#第3章-Spring-AOP的实现" class="headerlink" title="第3章 Spring AOP的实现"></a>第3章 Spring AOP的实现</h1><h2 id="3-1-Spring-AOP概述"><a href="#3-1-Spring-AOP概述" class="headerlink" title="3.1 Spring AOP概述"></a>3.1 Spring AOP概述</h2><h3 id="3-1-1-AOP概念回顾"><a href="#3-1-1-AOP概念回顾" class="headerlink" title="3.1.1 AOP概念回顾"></a>3.1.1 AOP概念回顾</h3><h3 id="3-1-2-Advice通知"><a href="#3-1-2-Advice通知" class="headerlink" title="3.1.2 Advice通知"></a>3.1.2 Advice通知</h3><h3 id="3-1-3-Pointcut切点"><a href="#3-1-3-Pointcut切点" class="headerlink" title="3.1.3 Pointcut切点"></a>3.1.3 Pointcut切点</h3><h3 id="3-1-4-Advisor通知器"><a href="#3-1-4-Advisor通知器" class="headerlink" title="3.1.4 Advisor通知器"></a>3.1.4 Advisor通知器</h3><h2 id="3-2-Spring-AOP的设计与实现"><a href="#3-2-Spring-AOP的设计与实现" class="headerlink" title="3.2 Spring AOP的设计与实现"></a>3.2 Spring AOP的设计与实现</h2><h3 id="3-2-1-JVM的动态代理特性"><a href="#3-2-1-JVM的动态代理特性" class="headerlink" title="3.2.1 JVM的动态代理特性"></a>3.2.1 JVM的动态代理特性</h3><p>Proxy模式:生成一个接口和目标对象一致的代理对象Proxy,对目标对象的request的调用,往往会被代理对象拦截,通过这种拦截,会调用preOperations()和afterOperations(),而目标对象对这些处理不知情,这就是Proxy模式。</p>
+<p>使用时,需要为Proxy对象写一个回调函数来加入额外动作,即实现InvokeHandler的invoke方法。</p>
+<h3 id="3-2-2-Spring-AOP的设计分析"><a href="#3-2-2-Spring-AOP的设计分析" class="headerlink" title="3.2.2 Spring AOP的设计分析"></a>3.2.2 Spring AOP的设计分析</h3><h3 id="3-2-3-Spring-AOP的应用场景"><a href="#3-2-3-Spring-AOP的应用场景" class="headerlink" title="3.2.3 Spring AOP的应用场景"></a>3.2.3 Spring AOP的应用场景</h3><p>可以通过AOP实现应用程序中的日志功能。</p>
+<p>除此之外,还可以实现____</p>
+<h2 id="3-3-建立AopProxy代理对象"><a href="#3-3-建立AopProxy代理对象" class="headerlink" title="3.3 建立AopProxy代理对象"></a>3.3 建立AopProxy代理对象</h2><h3 id="3-3-1-设计原理"><a href="#3-3-1-设计原理" class="headerlink" title="3.3.1 设计原理"></a>3.3.1 设计原理</h3><h3 id="3-3-2-编写ProxyFactoryBean"><a href="#3-3-2-编写ProxyFactoryBean" class="headerlink" title="3.3.2 编写ProxyFactoryBean"></a>3.3.2 编写ProxyFactoryBean</h3><p>ProxyFactoryBean的配置和使用。</p>
+<p>1.定义使用的通知器,这个通知器应该作为一个Bean来定义。</p>
+<p>2.定义ProxyFactoryBean,把它作为另一个Bean来定义,它是封装AOP功能的主要类。</p>
+<p>3.定义target属性,作为target属性注入的Bean,是需要用AOP通知中的切面应用来增强的对象,也就是前面提到的base对象。</p>
+<h3 id="3-3-3-ProxyFactoryBean生成AopProxy代理对象"><a href="#3-3-3-ProxyFactoryBean生成AopProxy代理对象" class="headerlink" title="3.3.3 ProxyFactoryBean生成AopProxy代理对象"></a>3.3.3 ProxyFactoryBean生成AopProxy代理对象</h3><p>ProxyFactoryBean的AOP实现需要依赖JDK或者CGLIB提供的Proxy特性。</p>
+<p>getObject(initializeAdvisorChain初始化通知链(获取advice-&gt;addAdvisorOnChainCreation)-&gt;getSingletonInstance)</p>
+<p>getSingleInstance(setInterface-&gt;getProxy(createAopProxy))</p>
+<p>createAopProxy(getAopProxyFactory.createAopProxy(this))</p>
+<p>createAopProxy(this-&gt;JdkDynamicAopProxy||CglibProxyFactory.createCglibProxy)</p>
+<p>在AopProxy代理对象的生成过程中,首先要从AdvisedSupport对象中取得配置的目标对象,这个目标对象是实现AOP功能所必需的,道理很简单,AOP完成的是切面应用对目标对象的增强,皮之不存,毛将焉附,目标对象就是皮,而AOP就是毛。</p>
+<h3 id="3-3-4-JDK生成AopProxy代理对象"><a href="#3-3-4-JDK生成AopProxy代理对象" class="headerlink" title="3.3.4 JDK生成AopProxy代理对象"></a>3.3.4 JDK生成AopProxy代理对象</h3><p>getProxy(Proxy.newProxyInstance(类装载器,代理接口,实现InvocationHandler的对象))</p>
+<h3 id="3-3-5-CGLIB生成AopProxy代理对象"><a href="#3-3-5-CGLIB生成AopProxy代理对象" class="headerlink" title="3.3.5 CGLIB生成AopProxy代理对象"></a>3.3.5 CGLIB生成AopProxy代理对象</h3><p>getProxy(createEnhancer-&gt;设置enhancer对象-&gt;proxy=enhancer.create()生成代理对象)</p>
+<p>ProxyFactoryBean的getObject方法得到的对象就不是一个普通的Java对象了,而是一个AopProxy代理对象。在ProxyFactoryBean中配置的target目标对象,这时已经不会让应用调用其方法实现,而是作为AOP实现的一部分。对target目标对象的方法调用会首先被AopProxy代理对象拦截,对于不同的AopProxy代理对象生成方式,会使用不同的拦截回调函数。</p>
+<h2 id="3-4-Spring-AOP拦截器调用的实现"><a href="#3-4-Spring-AOP拦截器调用的实现" class="headerlink" title="3.4 Spring AOP拦截器调用的实现"></a>3.4 Spring AOP拦截器调用的实现</h2><h3 id="3-4-1-设计原理"><a href="#3-4-1-设计原理" class="headerlink" title="3.4.1 设计原理"></a>3.4.1 设计原理</h3><h3 id="3-4-2-JdkDynamicAopProxy的invoke拦截"><a href="#3-4-2-JdkDynamicAopProxy的invoke拦截" class="headerlink" title="3.4.2 JdkDynamicAopProxy的invoke拦截"></a>3.4.2 JdkDynamicAopProxy的invoke拦截</h3><p>Proxy.newInstance(classLoader,proxiedInterface,this~~invoke())</p>
+<p>invoke(getTarget找到目标对象-&gt;getInterceptorsAndDynamicInterceptorAdvice获取定义号的拦截器链-&gt;new ReflectiveMethodInvocation调用拦截器-&gt;invokeJoinpointUsingReflection调用target的对应方法)</p>
+<h3 id="3-4-3-Cglib2AopProxy的intercept拦截"><a href="#3-4-3-Cglib2AopProxy的intercept拦截" class="headerlink" title="3.4.3 Cglib2AopProxy的intercept拦截"></a>3.4.3 Cglib2AopProxy的intercept拦截</h3><p>intercept(getTarget-&gt;this.advised.getInterceptorsAndDynamicInterceptionAdvice取得配置好的AOP通知-&gt;new CglibMethodInvocation通过CglibMethodInvocation来启动advice通知-&gt;methodProxy.invoke调用target的对应方法)</p>
+<h3 id="3-4-4-目标对象方法的调用"><a href="#3-4-4-目标对象方法的调用" class="headerlink" title="3.4.4 目标对象方法的调用"></a>3.4.4 目标对象方法的调用</h3><p>invokeJoinpointUsingReflection(method.invoke)</p>
+<h3 id="3-4-5-AOP拦截器链的调用"><a href="#3-4-5-AOP拦截器链的调用" class="headerlink" title="3.4.5 AOP拦截器链的调用"></a>3.4.5 AOP拦截器链的调用</h3><p>proceed()</p>
+<p>在运行拦截器的拦截方法之前,需对代理对象完成一个匹配判断,通过这个匹配判断来决定拦截器是否满足切面增强的要求。</p>
+<p>proceed方法中,先进行判断,如果已经运行到拦截器链的末尾,就直接调用目标对象的实现方法,否则,沿着拦截器链继续进行,得到下一个拦截器,通过这个拦截器进行matches判断,判断是否是适用于横切增强的场合,如果是,从拦截器中得到通知,并启动拦截器的invoke方法进行切面增强。在这个过程结束之后,会迭代调用proceed方法,直到拦截器链中的拦截器都完成以上的拦截过程为止。</p>
+<h3 id="3-4-6-配置通知器"><a href="#3-4-6-配置通知器" class="headerlink" title="3.4.6 配置通知器"></a>3.4.6 配置通知器</h3><p>getInterceptorsAndDynamicInterceptionAdvice(get(cacheKey)获取缓存-getInterceptorsAndDynamicInterceptionAdvice(new ArrayList-&gt;new AdvisorAdapterRegistry-&gt;getInterceptor-&gt;(判断是否符号要求后)addAll将通知加入))</p>
+<h3 id="3-4-7-Advice通知的实现"><a href="#3-4-7-Advice通知的实现" class="headerlink" title="3.4.7 Advice通知的实现"></a>3.4.7 Advice通知的实现</h3><h2 id="3-5-Spring-AOP的高级特性"><a href="#3-5-Spring-AOP的高级特性" class="headerlink" title="3.5 Spring AOP的高级特性"></a>3.5 Spring AOP的高级特性</h2><p>Spring的TargetSource接口特性,从一个对象池或对象工厂中获得目标对象等。</p>
+<p>HotSwappableTargetSource使用户可以以线程安全的方式切换目标对象,提供所谓的热交换功能。</p>
+<h2 id="3-6-小结"><a href="#3-6-小结" class="headerlink" title="3.6 小结"></a>3.6 小结</h2>
     
 
     
@@ -398,6 +465,15 @@
 
 
 <nav id="article-nav">
+  
+    <a href="/2021/06/17/%E7%AE%97%E6%B3%95-2021%E5%B9%B46%E6%9C%8817%E6%97%A5vivo%E6%8F%90%E5%89%8D%E6%89%B9%E7%AC%94%E8%AF%95/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          算法-2021年6月17日vivo提前批笔试
+        
+      </div>
+    </a>
   
   
     <a href="/2021/06/10/%E9%A1%B9%E7%9B%AE-shell%E5%AD%A6%E4%B9%A0/" id="article-nav-older" class="article-nav-link-wrap">
