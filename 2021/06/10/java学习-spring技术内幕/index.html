@@ -18,7 +18,7 @@
 <meta property="og:description" content="第一章 Spring的设计理念和整体架构1.3 Spring的整体架构Spring基本组成模块。 Spring IoC。定义了IoC容器的最基本接口beanfactory,也提供了一系列这个接口的实现,如xmlbeanfactory就是一个最基本的beanfactory,从名字上可以看到,它能够支持通过xml文件配置的bean定义信息。还包括ioc容器对外围设备的支持,包括Resource访问资源">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-10T03:21:08.000Z">
-<meta property="article:modified_time" content="2021-06-17T11:40:24.737Z">
+<meta property="article:modified_time" content="2021-06-20T08:57:51.451Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
@@ -276,7 +276,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">3k字</span>
+      <span class="post-count">4.2k字</span>
     </span>
   </span>
 
@@ -285,7 +285,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">11分</span>
+      <span class="post-count">15分</span>
     </span>
   </span>
 </div>
@@ -379,7 +379,28 @@
 <h3 id="3-4-6-配置通知器"><a href="#3-4-6-配置通知器" class="headerlink" title="3.4.6 配置通知器"></a>3.4.6 配置通知器</h3><p>getInterceptorsAndDynamicInterceptionAdvice(get(cacheKey)获取缓存-getInterceptorsAndDynamicInterceptionAdvice(new ArrayList-&gt;new AdvisorAdapterRegistry-&gt;getInterceptor-&gt;(判断是否符号要求后)addAll将通知加入))</p>
 <h3 id="3-4-7-Advice通知的实现"><a href="#3-4-7-Advice通知的实现" class="headerlink" title="3.4.7 Advice通知的实现"></a>3.4.7 Advice通知的实现</h3><h2 id="3-5-Spring-AOP的高级特性"><a href="#3-5-Spring-AOP的高级特性" class="headerlink" title="3.5 Spring AOP的高级特性"></a>3.5 Spring AOP的高级特性</h2><p>Spring的TargetSource接口特性,从一个对象池或对象工厂中获得目标对象等。</p>
 <p>HotSwappableTargetSource使用户可以以线程安全的方式切换目标对象,提供所谓的热交换功能。</p>
-<h2 id="3-6-小结"><a href="#3-6-小结" class="headerlink" title="3.6 小结"></a>3.6 小结</h2>
+<h2 id="3-6-小结"><a href="#3-6-小结" class="headerlink" title="3.6 小结"></a>3.6 小结</h2><h1 id="第四章-Spring-MVC与Web环境"><a href="#第四章-Spring-MVC与Web环境" class="headerlink" title="第四章 Spring MVC与Web环境"></a>第四章 Spring MVC与Web环境</h1><h2 id="4-1-Spring-MVC概述"><a href="#4-1-Spring-MVC概述" class="headerlink" title="4.1 Spring MVC概述"></a>4.1 Spring MVC概述</h2><h2 id="4-2-Web环境中的Spring-MVC"><a href="#4-2-Web环境中的Spring-MVC" class="headerlink" title="4.2 Web环境中的Spring MVC"></a>4.2 Web环境中的Spring MVC</h2><p>web.xml是应用的部署描述文件。在web.xml中常常看到与Spring相关的描述。</p>
+<p>首先定义了一个Servlet对象,它是Spring MVC的DispatcherServlet。这个DispatcherServlet是MVC中很重要的一个类,起着分发请求的作用。</p>
+<p>在部署描述中,DispatcherServlet定义了对应的URL映射,这些URL映射为这个Servlet指定了需要处理的HTTP请求。</p>
+<p>作为Spring MVC的启动类,ContextLoaderListener被定义为一个监听器,这个监听器是与Web服务器的生命周期相关联的,由ContextLoaderListener监听器负责完成IoC容器在Web环境的启动工作。</p>
+<h2 id="4-3-上下文在Web容器中的启动"><a href="#4-3-上下文在Web容器中的启动" class="headerlink" title="4.3 上下文在Web容器中的启动"></a>4.3 上下文在Web容器中的启动</h2><h3 id="4-3-1-IoC容器的基本过程"><a href="#4-3-1-IoC容器的基本过程" class="headerlink" title="4.3.1 IoC容器的基本过程"></a>4.3.1 IoC容器的基本过程</h3><h1 id="第五章-数据库操作组件的实现"><a href="#第五章-数据库操作组件的实现" class="headerlink" title="第五章 数据库操作组件的实现"></a>第五章 数据库操作组件的实现</h1><h1 id="第六章-Spring事务处理的实现"><a href="#第六章-Spring事务处理的实现" class="headerlink" title="第六章 Spring事务处理的实现"></a>第六章 Spring事务处理的实现</h1><h2 id="6-1-Spring与事务处理"><a href="#6-1-Spring与事务处理" class="headerlink" title="6.1 Spring与事务处理"></a>6.1 Spring与事务处理</h2><p>Spring借助IoC容器的强大配置能力,为应用提供了声明式的事务划分方式。</p>
+<h2 id="6-2-Spring事务处理的设计概览"><a href="#6-2-Spring事务处理的设计概览" class="headerlink" title="6.2 Spring事务处理的设计概览"></a>6.2 Spring事务处理的设计概览</h2><p>在Spring事务处理中,可以通过设计一个TransactionProxyFactoryBean来使用AOP功能,通过这个TransactionProxyFactoryBean可以生成Proxy代理对象,在这个代理对象中,通过TransactionInterceptor来完成对代理对象的拦截,正是这些AOP的拦截功能,将事务处理的功能编织进来。在Spring事务处理中,在实现声明式事务处理时,这是AOP和IoC模块集成的部分。对于具体的事务处理实现,比如事务的生成、提交、回滚、挂起等,由于不同的底层数据库有不同的支持方式,因此,在Spring事务处理中,对主要的事务实现做了一个抽象和适配。</p>
+<h2 id="6-3-Spring事务处理的应用场景"><a href="#6-3-Spring事务处理的应用场景" class="headerlink" title="6.3 Spring事务处理的应用场景"></a>6.3 Spring事务处理的应用场景</h2><p>一方面,通过声明式事务处理,将事务处理的过程和业务代码分离出来。</p>
+<p>另一方面,应用在选择数据源时可能会采用不同的方案,当以Spring作为平台时,Spring在应用和具体数据源之间,搭建一个中间平台,通过这个中间平台,解耦应用和具体数据源之间的绑定,并且,Spring为常用的数据源的事务处理支持提供了一系列的TransactionManager。</p>
+<h2 id="6-4-Spring声明式事务处理"><a href="#6-4-Spring声明式事务处理" class="headerlink" title="6.4 Spring声明式事务处理"></a>6.4 Spring声明式事务处理</h2><h3 id="6-4-1-设计原理与基本过程"><a href="#6-4-1-设计原理与基本过程" class="headerlink" title="6.4.1 设计原理与基本过程"></a>6.4.1 设计原理与基本过程</h3><h3 id="6-4-2-实现分析"><a href="#6-4-2-实现分析" class="headerlink" title="6.4.2 实现分析"></a>6.4.2 实现分析</h3><h2 id="6-5-Spring事务处理的设计与实现"><a href="#6-5-Spring事务处理的设计与实现" class="headerlink" title="6.5 Spring事务处理的设计与实现"></a>6.5 Spring事务处理的设计与实现</h2><h3 id="6-5-1-Spring事务处理的编程式使用"><a href="#6-5-1-Spring事务处理的编程式使用" class="headerlink" title="6.5.1 Spring事务处理的编程式使用"></a>6.5.1 Spring事务处理的编程式使用</h3><p>在编程式使用事务处理的过程中,利用DefaultTransactionDefinition对象来持有事务处理属性。同时,在创建事务的过程中得到一个TransactionStatus对象,然后通过直接调用transaction的commit()和rollback()方法来完成事务处理。</p>
+<h3 id="6-5-2-事务的创建"><a href="#6-5-2-事务的创建" class="headerlink" title="6.5.2 事务的创建"></a>6.5.2 事务的创建</h3><p>createTransactionIfNecessary(getTransactionAttributeSource读取事务方法调用的事务配置属性-&gt;getTransaction创建事务同时返回TransactionStatus来记录当前事务的状态-&gt;prepareTransactionInfo(newTransactionStatus设置TransactionStatus-&gt;bindToThread绑定线程)封装成TransactionInfo)</p>
+<p>getTransaction(检查-&gt;doBegin()创建事务的调用-&gt;return newTransactionStatus返回事务执行情况)</p>
+<p>事务创建的结果是生成一个TransactionStatus对象,通过这个对象来保存事务处理需要的基本信息,这个对象与前面提到的TransactionInfo对象联系起来,TransactionStatus是TransactionInfo的一个属性,然后会把TransactionInfo保存在ThreadLocal对象里,这样当前线程可以通过ThreadLocal对象取得TransactionInfo,以及与这个事务对应的TransactionStatus对象,从而把事务的处理信息与调用事务方法的当前线程绑定起来。</p>
+<p>newTransactionStatus(如果是新事务,那么将事务属性存放到当前线程中-&gt;return 利用DefaultTransactionStatus结果记录返回)</p>
+<p>新事务的创建比较好理解,这里需要根据事务属性配置进行创建。所谓创建,首先是把创建工作交给具体的事务处理器来完成,比如DataSourceTransactionManager,把创建的事务对象在TransactionStatus中保存下来,然后将其他的事务属性和线程ThreadLocal变量进行绑定。</p>
+<p>相对于创建全新事务的另一种情况是:在创建当前事务时,线程中已经有事务存在了。这时候使用handleExistingTransaction进行处理。</p>
+<p>handleExistingTransaction(分情况处理…)</p>
+<h3 id="6-5-3-事务的挂起"><a href="#6-5-3-事务的挂起" class="headerlink" title="6.5.3 事务的挂起"></a>6.5.3 事务的挂起</h3><p>事务的挂起涉及线程与事务处理信息的保存。</p>
+<p>suspend(doSuspend交给具体事务处理器去完成-&gt;保存线程处理相关信息,重置ThreadLocal)</p>
+<h3 id="6-5-4-事务的提交"><a href="#6-5-4-事务的提交" class="headerlink" title="6.5.4 事务的提交"></a>6.5.4 事务的提交</h3><p>commitTransactionAfterReturning(commit交给具体事务处理器去完成)</p>
+<p>commit(processRollBack如果发生回滚处理回滚-&gt;processCommit处理提交(prepareForcommit具体事务处理器去完成-&gt;doCommit具体事务提交交给事务处理器))</p>
+<h3 id="6-5-5-事务的回滚"><a href="#6-5-5-事务的回滚" class="headerlink" title="6.5.5 事务的回滚"></a>6.5.5 事务的回滚</h3><p>processRollBack(分情况…-&gt;1.doRollback回滚当前2.前一个处理回滚3.嵌套事务的回滚处理)</p>
+<h2 id="6-6-Spring事务处理器的设计与实现"><a href="#6-6-Spring事务处理器的设计与实现" class="headerlink" title="6.6 Spring事务处理器的设计与实现"></a>6.6 Spring事务处理器的设计与实现</h2><h3 id="6-6-1-Spring事务处理的应用场景"><a href="#6-6-1-Spring事务处理的应用场景" class="headerlink" title="6.6.1 Spring事务处理的应用场景"></a>6.6.1 Spring事务处理的应用场景</h3>
     
 
     
