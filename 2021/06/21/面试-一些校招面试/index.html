@@ -10,15 +10,15 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="vivo-java提前批一面1.自我介绍。 2.innodb你了解多少?查询的复杂度是怎么样的?复杂度和层数有关吗? 3.redis基本数据结构有哪些?redis中hash插入一条数据怎么写? 4.TCP&#x2F;IP的上层协议有哪些?TCP的三次握手和四次挥手说一说?怎么自己实现一个TCP&#x2F;IP的应用层协议? 5.你说你知道ssh,那linux的查看线程的命令了解吗?打开文件的命令呢?怎么保存退出? 6">
+  <meta name="description" content="vivo-java提前批一面1.自我介绍。 2.innodb你了解多少?查询的复杂度是怎么样的?复杂度和层数有关吗?查询优化有哪些情况说一说? 3.redis基本数据结构有哪些?redis中hash插入一条数据怎么写? 4.TCP&#x2F;IP的上层协议有哪些?TCP的三次握手和四次挥手说一说?怎么自己实现一个TCP&#x2F;IP的应用层协议? 5.你说你知道ssh,那linux的查看线程的命令了解吗?怎么查看线">
 <meta property="og:type" content="article">
 <meta property="og:title" content="面试-一些校招面试">
 <meta property="og:url" content="http://caciacc.top/2021/06/21/%E9%9D%A2%E8%AF%95-%E4%B8%80%E4%BA%9B%E6%A0%A1%E6%8B%9B%E9%9D%A2%E8%AF%95/index.html">
 <meta property="og:site_name" content="caciaCC的博客">
-<meta property="og:description" content="vivo-java提前批一面1.自我介绍。 2.innodb你了解多少?查询的复杂度是怎么样的?复杂度和层数有关吗? 3.redis基本数据结构有哪些?redis中hash插入一条数据怎么写? 4.TCP&#x2F;IP的上层协议有哪些?TCP的三次握手和四次挥手说一说?怎么自己实现一个TCP&#x2F;IP的应用层协议? 5.你说你知道ssh,那linux的查看线程的命令了解吗?打开文件的命令呢?怎么保存退出? 6">
+<meta property="og:description" content="vivo-java提前批一面1.自我介绍。 2.innodb你了解多少?查询的复杂度是怎么样的?复杂度和层数有关吗?查询优化有哪些情况说一说? 3.redis基本数据结构有哪些?redis中hash插入一条数据怎么写? 4.TCP&#x2F;IP的上层协议有哪些?TCP的三次握手和四次挥手说一说?怎么自己实现一个TCP&#x2F;IP的应用层协议? 5.你说你知道ssh,那linux的查看线程的命令了解吗?怎么查看线">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-06-21T07:41:57.000Z">
-<meta property="article:modified_time" content="2021-06-21T07:56:38.788Z">
+<meta property="article:modified_time" content="2021-06-21T15:13:46.149Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -276,7 +276,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">195字</span>
+      <span class="post-count">246字</span>
     </span>
   </span>
 
@@ -297,12 +297,12 @@
   <div class="article-entry" itemprop="articleBody">
     
     <h2 id="vivo-java提前批"><a href="#vivo-java提前批" class="headerlink" title="vivo-java提前批"></a>vivo-java提前批</h2><h3 id="一面"><a href="#一面" class="headerlink" title="一面"></a>一面</h3><p>1.自我介绍。</p>
-<p>2.innodb你了解多少?查询的复杂度是怎么样的?复杂度和层数有关吗?</p>
+<p>2.innodb你了解多少?查询的复杂度是怎么样的?复杂度和层数有关吗?查询优化有哪些情况说一说?</p>
 <p>3.redis基本数据结构有哪些?redis中hash插入一条数据怎么写?</p>
 <p>4.TCP/IP的上层协议有哪些?TCP的三次握手和四次挥手说一说?怎么自己实现一个TCP/IP的应用层协议?</p>
-<p>5.你说你知道ssh,那linux的查看线程的命令了解吗?打开文件的命令呢?怎么保存退出?</p>
-<p>6.java的基本组成是什么?servlet了解吗?DispatcherServlet说一说吧?hashmap说一说?concurrenthashMap和hashmap的最大区别是什么?concurrenthashmap怎么实现线程安全的?</p>
-<p>7.一共25匹马,5条跑道,找出最快的3匹。</p>
+<p>5.你说你知道ssh,那linux的查看线程的命令了解吗?怎么查看线程占用资源情况?打开文件的命令呢?怎么保存退出?</p>
+<p>6.java的基本组成是什么?servlet了解吗?DispatcherServlet说一说吧?DispatcherServlet的内部原理你了解吗?hashmap说一说?你说的成环情况详细说一说?concurrenthashMap和hashmap的最大区别是什么?concurrenthashmap怎么实现线程安全的?</p>
+<p>7.一共25匹马,5条跑道,找出最快的3匹,求最少次数。</p>
 
     
 
@@ -389,6 +389,15 @@
 
 
 <nav id="article-nav">
+  
+    <a href="/2021/06/22/%E8%AE%B0%E5%BD%95-2021%E5%B9%B43%E6%9C%88%E8%87%B36%E6%9C%88%E6%80%BB%E7%BB%93/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          记录-2021年3月至6月总结
+        
+      </div>
+    </a>
   
   
     <a href="/2021/06/20/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC246%E5%9C%BA/" id="article-nav-older" class="article-nav-link-wrap">
