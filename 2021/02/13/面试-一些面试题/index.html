@@ -101,6 +101,8 @@
 				
 			
 				
+					<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">true</a>
+				
 			
 				
 			
@@ -1356,6 +1358,8 @@ volatile标记的变量不会被编译器优化；synchronized标记的变量可
       
     
       
+      
+      
     
       
     
@@ -1365,9 +1369,11 @@ volatile标记的变量不会被编译器优化；synchronized标记的变量可
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章(tag)</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章(tag)</a></li>
       
         
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">true</a></li>
       
         
       
@@ -1548,6 +1554,24 @@ volatile标记的变量不会被编译器优化；synchronized标记的变量可
     	</section>
     
 
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="/" target="_blank" 
+                class="search-title" >
+                
+                  <i class="icon-link icon"></i>
+                
+                url
+              </a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
     
 
     

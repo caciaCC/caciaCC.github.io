@@ -98,6 +98,8 @@
 				
 			
 				
+					<a q-on="click: openSlider(e, 'friends')" href="javascript:void(0)">true</a>
+				
 			
 				
 			
@@ -515,6 +517,8 @@
       
     
       
+      
+      
     
       
     
@@ -524,9 +528,11 @@
     
     
       
-      <li style="width: 100%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章(tag)</a></li>
+      <li style="width: 50%" q-on="click: openSlider(e, 'innerArchive')"><a href="javascript:void(0)" q-class="active:innerArchive">所有文章(tag)</a></li>
       
         
+      
+      <li style="width: 50%" q-on="click: openSlider(e, 'friends')"><a href="javascript:void(0)" q-class="active:friends">true</a></li>
       
         
       
@@ -707,6 +713,24 @@
     	</section>
     
 
+    
+    	<section class="tools-section tools-section-friends" q-show="friends">
+  		
+        <ul class="search-ul">
+          
+            <li class="search-li">
+              <a href="/" target="_blank" 
+                class="search-title" >
+                
+                  <i class="icon-link icon"></i>
+                
+                url
+              </a>
+            </li>
+          
+        </ul>
+  		
+    	</section>
     
 
     
