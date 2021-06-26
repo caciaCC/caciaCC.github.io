@@ -248,6 +248,483 @@
             
 
   
+    <article id="post-算法-2021年3月6日阿里笔试算法题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/03/07/%E7%AE%97%E6%B3%95-2021%E5%B9%B43%E6%9C%886%E6%97%A5%E9%98%BF%E9%87%8C%E7%AC%94%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98/">算法-2021年3月6日阿里笔试算法题</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/03/07/%E7%AE%97%E6%B3%95-2021%E5%B9%B43%E6%9C%886%E6%97%A5%E9%98%BF%E9%87%8C%E7%AC%94%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98/" class="archive-article-date">
+        <time datetime="2021-03-07T07:15:35.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-07</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <hr>
+<p>百度了一下,发现两道都是leetcode原题?</p>
+<p>1.<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/number-of-ways-to-paint-n-3-grid/">https://leetcode-cn.com/problems/number-of-ways-to-paint-n-3-grid/</a></p>
+<p>2.<a target="_blank" rel="noopener" href="https://leetcode-cn.com/problems/bus-routes/">https://leetcode-cn.com/problems/bus-routes/</a></p>
+<p>第一题找规律DP,找到2x+2y,2x+3y的规律大概20分钟,然后写了10分钟,没忘记用long long,直接过了。</p>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/03/07/%E7%AE%97%E6%B3%95-2021%E5%B9%B43%E6%9C%886%E6%97%A5%E9%98%BF%E9%87%8C%E7%AC%94%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/03/07/%E7%AE%97%E6%B3%95-2021%E5%B9%B43%E6%9C%886%E6%97%A5%E9%98%BF%E9%87%8C%E7%AC%94%E8%AF%95%E7%AE%97%E6%B3%95%E9%A2%98/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <article id="post-算法-leetcode-周赛第231场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/03/07/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC231%E5%9C%BA/">算法-leetcode-周赛第231场</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/03/07/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC231%E5%9C%BA/" class="archive-article-date">
+        <time datetime="2021-03-07T05:51:06.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-07</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>1.ans等于连续1形成的序列个数。</p>
+<p>我的写法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool checkOnesSegment(string s) &#123;</span><br><span class="line">        int cnt &#x3D; 0, n &#x3D; s.size(), ans &#x3D; 0;</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">            if(s[i]&#x3D;&#x3D;&#39;1&#39;)&#123;</span><br><span class="line">                ans++;</span><br><span class="line">                int j &#x3D; i;</span><br><span class="line">                while(j&lt;n&amp;&amp;s[j] &#x3D;&#x3D;&#39;1&#39;) j++;</span><br><span class="line">                if(j &#x3D;&#x3D; n) break;</span><br><span class="line">                i &#x3D; j - 1;</span><br><span class="line">            &#125; </span><br><span class="line">        &#125;</span><br><span class="line">        return ans &lt;&#x3D; 1;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>大佬的写法:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    bool checkOnesSegment(string s) &#123;</span><br><span class="line">        int i &#x3D; 0, j &#x3D; s.size() - 1;</span><br><span class="line">        while (i &lt;&#x3D; j &amp;&amp; s[i] &#x3D;&#x3D; &#39;0&#39;) i ++ ;</span><br><span class="line">        while (i &lt;&#x3D; j &amp;&amp; s[j] &#x3D;&#x3D; &#39;0&#39;) j -- ;</span><br><span class="line">        for (int k &#x3D; i; k &lt;&#x3D; j; k ++ )</span><br><span class="line">            if (s[k] &#x3D;&#x3D; &#39;0&#39;) return false;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/03/07/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC231%E5%9C%BA/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/03/07/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC231%E5%9C%BA/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <article id="post-算法-leetcode-双周赛第47场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/03/06/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC47%E5%9C%BA/">算法-leetcode-双周赛第47场</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/03/06/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC47%E5%9C%BA/" class="archive-article-date">
+        <time datetime="2021-03-06T15:29:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-06</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>1.模拟即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    int loc, ans;</span><br><span class="line">    int nearestValidPoint(int x, int y, vector&lt;vector&lt;int&gt;&gt;&amp; points) &#123;</span><br><span class="line">        ans &#x3D; INT_MAX;</span><br><span class="line">        int n &#x3D; points.size();</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">            int u &#x3D; points[i][0], v &#x3D; points[i][1];</span><br><span class="line">            &#x2F;&#x2F; if(u &#x3D;&#x3D; x &amp;&amp; v &#x3D;&#x3D; y) continue;</span><br><span class="line">            if(u !&#x3D; x &amp;&amp; v !&#x3D; y) continue;</span><br><span class="line">            int val &#x3D; abs(u - x) + abs(v - y);</span><br><span class="line">            if(val &lt; ans)&#123;</span><br><span class="line">                ans &#x3D; val;</span><br><span class="line">                loc &#x3D; i;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        if(ans &#x3D;&#x3D; INT_MAX) return -1;</span><br><span class="line">        return loc;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/03/06/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC47%E5%9C%BA/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/03/06/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC47%E5%9C%BA/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <article id="post-面试-一次模拟面试-八" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/03/06/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%85%AB/">面试-一次模拟面试-八</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/03/06/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%85%AB/" class="archive-article-date">
+        <time datetime="2021-03-06T12:14:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-06</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>1.static和全局变量分别存放在哪里？方法区存放的内容</p>
+<p>如果是值类型的就直接存放在方法区，引用类型就存指针在方法区吧。<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_29164081/article/details/114067566">https://blog.csdn.net/weixin_29164081/article/details/114067566</a></p>
+<p>方法区：被JVM加载的类信息;常量;静态变量;即时编译后的代码</p>
+<p>新建变量存放在堆里面。（永久代？）</p>
+<p>2.tcp粘包问题（基本了解）怎么解决粘包?</p>
+<p>TCP接收端只收到一个数据包,<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/panchanggui/p/9518735.html">https://www.cnblogs.com/panchanggui/p/9518735.html</a></p>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/03/06/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%85%AB/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/03/06/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%85%AB/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <article id="post-算法-leetcode算法专题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/03/04/%E7%AE%97%E6%B3%95-leetcode%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/">算法-leetcode算法专题</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/03/04/%E7%AE%97%E6%B3%95-leetcode%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/" class="archive-article-date">
+        <time datetime="2021-03-04T11:26:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-04</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="单调栈"><a href="#单调栈" class="headerlink" title="单调栈"></a>单调栈</h2><h3 id="思想"><a href="#思想" class="headerlink" title="思想"></a>思想</h3><p>本质上是动态维护一个单调递增或单调递减的栈结构。</p>
+<h3 id="适用"><a href="#适用" class="headerlink" title="适用"></a>适用</h3><p>适用于解决求每个数左右距离最近的最大数(最小值)的值或下标,能做到O(n)的时间复杂度。</p>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/03/04/%E7%AE%97%E6%B3%95-leetcode%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/03/04/%E7%AE%97%E6%B3%95-leetcode%E7%AE%97%E6%B3%95%E4%B8%93%E9%A2%98/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
     <article id="post-面试-字节后端电商实习一、二、三面" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -728,490 +1205,9 @@
 
 
   
-    <article id="post-java学习-spring相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/23/java%E5%AD%A6%E4%B9%A0-spring%E7%9B%B8%E5%85%B3/">Java学习-Spring相关</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/23/java%E5%AD%A6%E4%B9%A0-spring%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-        <time datetime="2021-02-23T14:47:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="02-spring-框架概述"><a href="#02-spring-框架概述" class="headerlink" title="02 spring 框架概述"></a>02 spring 框架概述</h2><p>1.Spring是轻量级的开源的JavaEE框架。</p>
-<p>2.Spring可以解决企业开发的复杂性</p>
-<p>3.Spring有两个核心部分:IOC和AOP<br> (1)IOC:控制反转,把创建对象过程交给Spring进行管理<br> (2)Aop:面向切面,不修改源代码进行功能增强</p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/02/23/java%E5%AD%A6%E4%B9%A0-spring%E7%9B%B8%E5%85%B3/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/23/java%E5%AD%A6%E4%B9%A0-spring%E7%9B%B8%E5%85%B3/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-面试-一次模拟面试-五" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/21/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%BA%94/">面试-一次模拟面试-五</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/21/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%BA%94/" class="archive-article-date">
-        <time datetime="2021-02-21T05:03:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-21</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <hr>
-<p>自我介绍</p>
-<p>1.数据库的事务是什么(不太了解)。事务的四大特性。</p>
-<p>2.事务是如何实现的?(不太了解)</p>
-<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/ffdsj/p/12266539.html">https://www.cnblogs.com/ffdsj/p/12266539.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://bbs.csdn.net/topics/350032671">https://bbs.csdn.net/topics/350032671</a></p>
-<p>3.OSI参考模型。(不太了解) OSI 和 TCP/IP 区别</p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/02/21/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%BA%94/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/21/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E4%BA%94/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-算法-leetcode-周赛第229场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/21/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC229%E5%9C%BA/">算法-leetcode-周赛第229场</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/21/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC229%E5%9C%BA/" class="archive-article-date">
-        <time datetime="2021-02-21T02:12:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-21</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>第一题。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string mergeAlternately(string word1, string word2) &#123;</span><br><span class="line">        string ans;</span><br><span class="line">        int n &#x3D; word1.size(), m &#x3D; word2.size();</span><br><span class="line">        if(n &gt; m)&#123;</span><br><span class="line">            for(int i &#x3D; 0; i &lt; m; i ++)&#123;</span><br><span class="line">                ans +&#x3D; word1[i];</span><br><span class="line">                ans +&#x3D; word2[i];</span><br><span class="line">            &#125;</span><br><span class="line">            ans +&#x3D; word1.substr(m);</span><br><span class="line">        &#125;else &#123;</span><br><span class="line">            for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">                ans +&#x3D; word1[i];</span><br><span class="line">                ans +&#x3D; word2[i];</span><br><span class="line">            &#125;</span><br><span class="line">            ans +&#x3D; word2.substr(n);</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/02/21/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC229%E5%9C%BA/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/21/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC229%E5%9C%BA/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-算法-leetcode-双周赛第46场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/20/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC46%E5%9C%BA/">算法-leetcode-双周赛第46场</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/20/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC46%E5%9C%BA/" class="archive-article-date">
-        <time datetime="2021-02-20T15:56:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-20</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>第一题。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line">class Solution &#123;</span><br><span class="line">public:</span><br><span class="line">    string ans;</span><br><span class="line">    int maxlen;</span><br><span class="line">    bool check(string s, int l, int r)&#123;</span><br><span class="line">        int b1[200] &#x3D; &#123;0&#125;,b2[200] &#x3D; &#123;0&#125;;</span><br><span class="line">        for(int i &#x3D; l; i &lt;&#x3D; r; i ++)&#123;</span><br><span class="line">            if(s[i]&gt;&#x3D;&#39;a&#39;&amp;&amp;s[i]&lt;&#x3D;&#39;z&#39;) b1[s[i]]++;</span><br><span class="line">            else b2[s[i]-&#39;A&#39;+&#39;a&#39;]++;</span><br><span class="line">        &#125;</span><br><span class="line">        for(int i &#x3D; &#39;a&#39;; i &lt;&#x3D; &#39;z&#39;; i ++)&#123;</span><br><span class="line">            if(b1[i])&#123;</span><br><span class="line">                if(!b2[i]) return false;</span><br><span class="line">            &#125;else &#123;</span><br><span class="line">                if(b2[i]) return false;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return true;</span><br><span class="line">    &#125;</span><br><span class="line">    string longestNiceSubstring(string s) &#123;</span><br><span class="line">        int n &#x3D; s.size();</span><br><span class="line">        for(int i &#x3D; 0; i &lt; n; i ++)&#123;</span><br><span class="line">            for(int j &#x3D; i; j &lt; n; j ++)&#123;</span><br><span class="line">                if(check(s,i,j))&#123;</span><br><span class="line">                    int len &#x3D; j - i + 1;</span><br><span class="line">                    if(len &gt; maxlen)&#123;</span><br><span class="line">                        maxlen &#x3D; len;</span><br><span class="line">                        ans &#x3D; s.substr(i,len);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        return ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/02/20/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC46%E5%9C%BA/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/20/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC46%E5%9C%BA/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-面试-一次模拟面试-四" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/02/19/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%9B%9B/">面试-一次模拟面试-四</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/02/19/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%9B%9B/" class="archive-article-date">
-        <time datetime="2021-02-19T06:30:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-02-19</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <hr>
-<p>专业: 金融 自学计算机 acm集训 大三学工程 </p>
-<p>1.Object类的方法?clone方法的解释。wait和notify是否能用在除同步块外其他地方,为什么?HashMap的equals是比较什么相等?Object类中finalize是如何作用的?</p>
-<p><a target="_blank" rel="noopener" href="https://leokongwq.github.io/2017/02/24/java-why-wait-notify-called-in-synchronized-block.html">https://leokongwq.github.io/2017/02/24/java-why-wait-notify-called-in-synchronized-block.html</a></p>
-<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42145871/article/details/81950949?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control">https://blog.csdn.net/qq_42145871/article/details/81950949?utm_medium=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control&amp;depth_1-utm_source=distribute.pc_relevant_t0.none-task-blog-BlogCommendFromMachineLearnPai2-1.control</a></p>
-<p>2.HTTP响应报文状态码。(了解)</p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/02/19/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%9B%9B/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">面试</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/02/19/%E9%9D%A2%E8%AF%95-%E4%B8%80%E6%AC%A1%E6%A8%A1%E6%8B%9F%E9%9D%A2%E8%AF%95-%E5%9B%9B/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/4/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/9/">9</a><a class="extend next" rel="next" href="/page/6/">Next</a>
+      <a class="extend prev" rel="prev" href="/page/4/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><span class="space">&hellip;</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/6/">Next</a>
     </nav>
   
 
@@ -1324,6 +1320,10 @@
             <input type="checkbox" q-on="click:toggleTag(e)" q-attr="checked:showTags">
           </label>
           <ul class="article-tag-list" q-show="showTags">
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">go</a>
+              </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">collection</a>
