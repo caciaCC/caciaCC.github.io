@@ -1988,7 +1988,7 @@
 <p>生产者和消费者模式是通过一个容器来解决生产者和消费者的强耦合问题。生产者和消费者彼此之间不直接通信，而是通过阻塞队列来进行通信，所以生产者生产完数据之后不用等待消费者处理，直接扔给阻塞队列，消费者不找生产者要数据，而是直接从阻塞队列里取，<code>阻塞队列就相当于一个缓冲区，平衡了生产者和消费者的处理能力</code>。</p>
 <p>这个阻塞队列就是用来给生产者和消费者解耦的。<code>纵观大多数设计模式，都会找一个第三者出来进行解耦</code>，如工厂模式的第三者是工厂类，模板模式的第三者是模板类。在学习一些设计模式的过程中，先找到这个模式的第三者，能帮助我们快速熟悉一个设计模式。</p>
 <h4 id="11-1-1-生产者消费者模式实战"><a href="#11-1-1-生产者消费者模式实战" class="headerlink" title="11.1.1 生产者消费者模式实战"></a>11.1.1 生产者消费者模式实战</h4><p>我和同事一起利用业余时间开发的Yuna工具中使用了生产者和消费者模式。我先介绍下Yuna<br>工具，在阿里巴巴很多同事都喜欢通过邮件分享技术文章，因为通过邮件分享很方便，大家在网上看到好的技术文章，执行复制→粘贴→发送就完成了一次分享，但是我发现技术文章不能沉淀下来，新来的同事看不到以前分享的技术文章，大家也很难找到以前分享过的技术文章。为了解决这个问题，我们开发了一个Yuna工具。</p>
-<p>我们申请了一个专门用来收集分享邮件的邮箱，比如<a href="mailto:&#x73;&#x68;&#97;&#114;&#101;&#64;&#97;&#x6c;&#105;&#x62;&#97;&#98;&#97;&#x2e;&#x63;&#x6f;&#109;">&#x73;&#x68;&#97;&#114;&#101;&#64;&#97;&#x6c;&#105;&#x62;&#97;&#98;&#97;&#x2e;&#x63;&#x6f;&#109;</a>，大家将分享的文章发送到这个邮箱，让大家每次都抄送到这个邮箱肯定很麻烦，所以我们的做法是将这个邮箱地址放在部门邮件列表里，所以分享的同事只需要和以前一样向整个部门分享文章就行。Yuna工具通过读取邮件服务器里该邮箱的邮件，把所有分享的邮件下载下来，包括邮件的附<br>件、图片和邮件回复。因为我们可能会从这个邮箱里下载到一些非分享的文章，所以我们要求分享的邮件标题必须带有一个关键字，比如“内贸技术分享”。下载完邮件之后，通过confluence的Web Service接口，把文章插入到confluence里，这样新同事就可以在confluence里看以前分享<br>过的文章了，并且Yuna工具还可以自动把文章进行分类和归档。</p>
+<p>我们申请了一个专门用来收集分享邮件的邮箱，比如<a href="mailto:&#x73;&#x68;&#97;&#114;&#x65;&#x40;&#x61;&#108;&#105;&#98;&#x61;&#98;&#x61;&#x2e;&#99;&#111;&#109;">&#x73;&#x68;&#97;&#114;&#x65;&#x40;&#x61;&#108;&#105;&#98;&#x61;&#98;&#x61;&#x2e;&#99;&#111;&#109;</a>，大家将分享的文章发送到这个邮箱，让大家每次都抄送到这个邮箱肯定很麻烦，所以我们的做法是将这个邮箱地址放在部门邮件列表里，所以分享的同事只需要和以前一样向整个部门分享文章就行。Yuna工具通过读取邮件服务器里该邮箱的邮件，把所有分享的邮件下载下来，包括邮件的附<br>件、图片和邮件回复。因为我们可能会从这个邮箱里下载到一些非分享的文章，所以我们要求分享的邮件标题必须带有一个关键字，比如“内贸技术分享”。下载完邮件之后，通过confluence的Web Service接口，把文章插入到confluence里，这样新同事就可以在confluence里看以前分享<br>过的文章了，并且Yuna工具还可以自动把文章进行分类和归档。</p>
 <p>为了快速上线该功能，当时我们花了3天业余时间快速开发了Yuna 1.0版本。在1.0版本中并没有使用生产者消费模式，而是使用单线程来处理，因为当时只需要处理我们一个部门的邮件，所以单线程明显够用，整个过程是串行执行的。在一个线程里，程序先抽取全部的邮件，转化为文章对象，然后添加全部的文章，最后删除抽取过的邮件。代码如下。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">extract</span><span class="params">()</span> </span>&#123;</span><br><span class="line">logger.debug(<span class="string">&quot;开始&quot;</span> + getExtractorName() + <span class="string">&quot;。。&quot;</span>);</span><br><span class="line"><span class="comment">// 抽取邮件</span></span><br><span class="line">List&lt;Article&gt; articles = extractEmail();</span><br><span class="line"><span class="comment">// 添加文章</span></span><br><span class="line"><span class="keyword">for</span> (Article article : articles) &#123;</span><br><span class="line">addArticleOrComment(article);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 清空邮件</span></span><br><span class="line">cleanEmail();</span><br><span class="line">logger.debug(<span class="string">&quot;完成&quot;</span> + getExtractorName() + <span class="string">&quot;。。&quot;</span>);&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 <p>Yuna工具在推广后，越来越多的部门使用这个工具，处理的时间越来越慢，Yuna是每隔5分钟进行一次抽取的，而当邮件多的时候一次处理可能就花了几分钟，于是我在Yuna 2.0版本里使用了生产者消费者模式来处理邮件，首先生产者线程按一定的规则去邮件系统里抽取邮件，然后存放在阻塞队列里，消费者从阻塞队列里取出文章后插入到conflunce里。代码如下。</p>
@@ -2313,10 +2313,6 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">go</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">collection</a>
               </li>
              
@@ -2362,10 +2358,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">计算机基础-操作系统知识</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">计算机基础-计算机网络知识</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -2421,11 +2413,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">计算机基础-计算机网络知识</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">线程</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">计算机网络</a>
+                <a href="javascript:void(0)" class="js-tag color3">go</a>
               </li>
             
             <div class="clearfix"></div>
