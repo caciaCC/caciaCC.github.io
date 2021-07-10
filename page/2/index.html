@@ -248,6 +248,98 @@
             
 
   
+    <article id="post-Go学习-基于Go语言构建企业级的RESTful——API服务" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/05/16/Go%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E4%BA%8EGo%E8%AF%AD%E8%A8%80%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%9A%84RESTful%E2%80%94%E2%80%94API%E6%9C%8D%E5%8A%A1/">Go学习-基于Go语言构建企业级的RESTful——API服务</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/05/16/Go%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E4%BA%8EGo%E8%AF%AD%E8%A8%80%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%9A%84RESTful%E2%80%94%E2%80%94API%E6%9C%8D%E5%8A%A1/" class="archive-article-date">
+        <time datetime="2021-05-16T08:21:34.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-05-16</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="0-实现的API功能"><a href="#0-实现的API功能" class="headerlink" title="0 实现的API功能"></a>0 实现的API功能</h2><p>通过实现一个账号系统，来演示如何构建一个真实的 API 服务器，构建方法和技术是根据多年的大型 API 服务器开发经验不断优化沉淀而成。通过实战展示了API 构建过程中各个流程<code>（准备 -&gt; 设计 -&gt; 开发 -&gt; 测试 -&gt; 部署）</code>的实现方法。</p>
+<h2 id="1-RESTful-API-介绍"><a href="#1-RESTful-API-介绍" class="headerlink" title="1 RESTful API 介绍"></a>1 RESTful API 介绍</h2><h3 id="什么是API"><a href="#什么是API" class="headerlink" title="什么是API"></a>什么是API</h3><p>API（Application Programming Interface，应用程序编程接口）是一些预先定义的函数或者接口，目的是提供应用程序与开发人员基于某软件或硬件得以访问一组例程的能力，而又<code>无须访问源码，或理解内部工作机制的细节</code>。</p>
+<p>要实现一个 API 服务器，首先要考虑两个方面：API 风格和媒体类型。Go 语言中常用的 API 风格是 <code>RPC</code> 和 <code>REST</code>，常用的媒体类型是 JSON、XML 和 Protobuf。在 Go API 开发中常用的组合是 <code>gRPC + Protobuf</code> 和 <code>REST + JSON</code>。</p>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/05/16/Go%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E4%BA%8EGo%E8%AF%AD%E8%A8%80%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%9A%84RESTful%E2%80%94%E2%80%94API%E6%9C%8D%E5%8A%A1/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">go</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/05/16/Go%E5%AD%A6%E4%B9%A0-%E5%9F%BA%E4%BA%8EGo%E8%AF%AD%E8%A8%80%E6%9E%84%E5%BB%BA%E4%BC%81%E4%B8%9A%E7%BA%A7%E7%9A%84RESTful%E2%80%94%E2%80%94API%E6%9C%8D%E5%8A%A1/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
     <article id="post-Go学习-MIT6-824" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1056,102 +1148,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021/04/02/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-Linux%E9%AB%98%E6%80%A7%E8%83%BD%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%BC%96%E7%A8%8B%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-java学习-大型网站技术架构" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/">Java学习-大型网站技术架构学习</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/" class="archive-article-date">
-        <time datetime="2021-03-31T02:13:46.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-31</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="大型网站架构演化"><a href="#大型网站架构演化" class="headerlink" title="大型网站架构演化"></a>大型网站架构演化</h1><h2 id="1-1大型网站软件系统的特点"><a href="#1-1大型网站软件系统的特点" class="headerlink" title="1.1大型网站软件系统的特点"></a>1.1大型网站软件系统的特点</h2><p>高并发、大流量</p>
-<p>高可用</p>
-<p>海量数据</p>
-<p>用户分布广泛,网络情况复杂</p>
-<p>安全环境恶劣</p>
-<p>需求快速变更,发布频繁</p>
-<p>渐进式发展</p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/">展开全文 >></a>
     </p>
     
 
