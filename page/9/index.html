@@ -248,6 +248,101 @@
             
 
   
+    <article id="post-算法-codeforce-102-div2-edu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/01/14/%E7%AE%97%E6%B3%95-codeforce-102-div2-edu/">算法-codeforce-102-div2-edu</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/01/14/%E7%AE%97%E6%B3%95-codeforce-102-div2-edu/" class="archive-article-date">
+        <time datetime="2021-01-14T14:43:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-14</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>A题。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">3e5</span>+<span class="number">10</span>, M = <span class="number">1e5</span>+<span class="number">10</span>,INF = <span class="number">0x3f3f3f3f</span>,inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">pair</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;PII;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">pair</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;pii;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,d;</span><br><span class="line"><span class="keyword">int</span> a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; d;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++) <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">   sort(a+<span class="number">1</span>,a+<span class="number">1</span>+n);</span><br><span class="line">   <span class="keyword">if</span>(a[n]&lt;=d)&#123;<span class="built_in">puts</span>(<span class="string">&quot;yes&quot;</span>);<span class="keyword">return</span>;&#125;</span><br><span class="line">   <span class="keyword">int</span> ache = a[<span class="number">1</span>] + a[<span class="number">2</span>];</span><br><span class="line">   <span class="keyword">if</span>(ache&lt;=d) <span class="built_in">puts</span>(<span class="string">&quot;yes&quot;</span>);</span><br><span class="line">   <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">&quot;no&quot;</span>);</span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="keyword">int</span> t; <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">         <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        init();</span><br><span class="line">        solve();</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/01/14/%E7%AE%97%E6%B3%95-codeforce-102-div2-edu/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">codeforce</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/01/14/%E7%AE%97%E6%B3%95-codeforce-102-div2-edu/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
     <article id="post-java学习-collection相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -1118,107 +1213,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021/01/12/mysql%E5%AD%A6%E4%B9%A0-%E4%B8%80%E4%BA%9B%E7%9F%A5%E8%AF%86%E7%82%B9/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-计算机基础-计算机网络知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/">计算机基础-计算机网络知识</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><strong>协议相关(5层、7层、4层）</strong></p>
-<p>●五层协议（中和OSI和TCP/IP的优点）(内含七层协议)</p>
-<p>名词解释：</p>
-<p>包：表示数据的单位,是全能性术语。</p>
-<p><strong>分组（packet ）</strong> ：因特网中传送的数据单元。由首部 header 和数据段组成。分组又称为包，首部可称为包头。</p>
-<p><strong>分组交换</strong>： 采用存储转发技术，表示把一个报文（要发送的整块数据）分为几个分组后再进行传送。 在发送报文之前，先把较长的报文划分成为一个个更小的等长数据段。在每个数据端的前面加上一些由必要的控制信息组成的首部后，就构成了一个分组。</p>
-<p><strong>存储转发（store and forward ）</strong> ：路由器收到一个分组，先存储下来，再检查其首部，查找转发表，按照首部中的目的地址，找到合适的接口转发出去。</p>
-<p>计算机基础-计算机网络知识采用的通信方式是客户-服务器方式（C/S 方式）和对等连接方式（P2P 方式）。</p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机基础</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">计算机基础-计算机网络知识</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C%E7%9F%A5%E8%AF%86/">展开全文 >></a>
     </p>
     
 

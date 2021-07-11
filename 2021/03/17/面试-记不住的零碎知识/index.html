@@ -39,7 +39,7 @@
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/23.jpg">
 <meta property="og:image" content="http://caciacc.top/2021/03/17/%E9%9D%A2%E8%AF%95-%E8%AE%B0%E4%B8%8D%E4%BD%8F%E7%9A%84%E9%9B%B6%E7%A2%8E%E7%9F%A5%E8%AF%86/24.jpg">
 <meta property="article:published_time" content="2021-03-17T11:22:43.000Z">
-<meta property="article:modified_time" content="2021-04-08T12:27:18.314Z">
+<meta property="article:modified_time" content="2021-07-11T11:37:08.207Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="面试">
 <meta name="twitter:card" content="summary">
@@ -298,7 +298,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">18.1k字</span>
+      <span class="post-count">19.9k字</span>
     </span>
   </span>
 
@@ -307,7 +307,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">67分</span>
+      <span class="post-count">73分</span>
     </span>
   </span>
 </div>
@@ -965,6 +965,94 @@
 <p>此外，由于它的设计，任何不平衡都会在三次旋转之内解决。</p>
 <p>在插入和删除操作上，AVL 树每次插入删除会进行大量的平衡度计<br>算，红黑树是牺牲了严格的高度平衡的优越条件为代价，它只要求部分地达到平衡要求，结合变色，降低了对旋转的要求，从而提高了性能。红黑树能够以 O(log2 n)的时间复杂度进行搜索、插入、删除操作。</p>
 <p>115.什么是倒排索引?</p>
+<p>116.MVCC 底层实现 undo 版本链?</p>
+<p>每次对 记录 进行改动，都会生成一条 undo日志 记录，把旧值相关信息放入日志，就相当于 该记录的旧版本，每条 undo日志都有一个 roll_pointer 属性（INSERT操作对应的 undo日志没有该属性，因为该记录并没有更早的版本），那么所有的版本都会被roll_pointer属性连接成一个链表，我们把这个链表称之为版本链，版本链的头节点就是当前记录最新的值。另外，每个版本中还包含 生成该版本时对应的事务ID。</p>
+<p>MVCC（Multi-Version Concurrency Control ，多版本并发控制）指的就是在使用 读提交、可重复读 这两种隔离级别的事务，在执行普通的 select 操作时访问记录的版本链的过程。</p>
+<p>对于不同的隔离级别，需要判断版本链中的版本，哪个是当前事务可见的，所以在事务进行快照读操作时 会生产数据库系统当前的一个快照 ：读视图Read View。</p>
+<p>读提交、可重复读 这两个隔离级别的一个很大不同就是生成 ReadView 的时机不同，读提交 在每一次进行普通 select 操作前都会生成一个 ReadView，而 可重复读 只在第一次进行普通 select 操作前生成一个 ReadView，之后的查询操作都重复使用这个ReadView。</p>
+<p>ReadView 里维护了 生成该 ReadView 的事务的ID、当前系统中活跃的 读写事务的 事务ID 列表、最小事务ID、系统应该分配给下一个事务的 ID 值。遍历版本链，根据版本 ID 与 ReadView 维护的四个变量比较，可知 select 返回的结果集。</p>
+<p>117.怎么保证消息只被消费一次?</p>
+<p>1.保证消息不丢失。</p>
+<p>1.1 在消息生产的过程中投递失败</p>
+<p>1.2 在消息队列中持久化失败</p>
+<p>1.3 在消费的过程中存在消息丢失</p>
+<p>2.保证消息只被消费一次。</p>
+<p>要保证消息仅被消费一次可以利用等幂性来实现。因为生产者和消费者都有可能产生重复消息，所以要在生产者和消费者两端都保证等幂性。保证生产者等幂性，在生产消息的时候，利用雪花算法给消息生成一个全局 ID，在消息系统中维护消息已 ID 映射关系，如果在映射表中已经存在相同 ID，这丢弃这条消息，虽然消息被投递了两次，但是实际上就保存了一条，避免了消息重复问题。在消费者端可以从通用层和业务层两个方面来做等幂操作，取决于我们的业务要求。在通用层面中，利用好消息生成是产生的全局唯一ID，消息被处理成功后，把这个全局 ID 存入到数据中，在处理下一条消息之前，先从数据库中查询这个全局 ID 是否存在，如果已经存在，则直接放弃该消息。</p>
+<p>重复下单和防重幂等的解决方法。</p>
+<ol>
+<li><p>数据库唯一索引</p>
+</li>
+<li><p>基于Redis实现幂等性防重</p>
+</li>
+</ol>
+<p>比如库存，定制化的针对接口开发幂等性的机制，比如说一旦库存扣减成功之后，就立马要写一条数据到redis里去，order_id_11356_stock_deduct，写入redis中，如果写入成功，就说明之前这个订单的库存扣减，没人执行过。</p>
+<p>但是如果此时有一些重试的请求过来了，调用了你的库存扣减接口，他同时也进行了库存的扣减，但是他用同样的一个key，order_id_11356_stock_deduct，写入redis中，此时会发现已经有人写过key，key已经存在了。</p>
+<p>此时你就应该直接对刚才的库存扣减逻辑做一个反向的回滚逻辑，</p>
+<p>update product_stock set stock = stock - 100，update product_stock set stock = stock + 100，反向逻辑，回滚自己，避免重复扣减库存。</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/fyql/p/12170502.html">https://www.cnblogs.com/fyql/p/12170502.html</a></p>
+<p>118.常见的设计模式?</p>
+<p>1.创建型模式:工厂模式、抽象工厂模式、单例模式。</p>
+<p>2.结构型模式:装饰器模式、代理模式。</p>
+<p>3.行为型模式:策略模式、观察者模式。</p>
+<p>119.常见的linux命令有哪些?</p>
+<ol>
+<li>chmod</li>
+</ol>
+<p>用于改变 linux 系统文件或目录的访问权限。用它控制文件或目录的访问权限。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-rw-r--r-- 1 root root 296K 11-13 06:03 log2012.log</span><br></pre></td></tr></table></figure>
+<p>第一列共有 10 个位置，第一个字符指定了文件类型。在通常意义上，一个目录也是一个文件。如果第一个字符是横线，表示是一个非目录的文件。如果是 d，表示是一个目录。从第二个字符开始到第十个 9 个字符，3 个字符一组，分别表示了 3 组用户对文件或者目录的权限。权限字符用横线代表空许可，r 代表只读，w 代表写，x 代表可执行。</p>
+<p>给 file 的属主分配读、写、执行(7)的权限，给file的所在组分配读、执行(5)的权限，给其他用户分配执行(1)的权限</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chmod 751 t.log -c（或者：chmod u&#x3D;rwx,g&#x3D;rx,o&#x3D;x t.log -c)</span><br></pre></td></tr></table></figure>
+<ol start="2">
+<li>chown</li>
+</ol>
+<p>chown 将指定文件的拥有者改为指定的用户或组，用户可以是用户名或者用户 ID；组可以是组名或者组 ID。</p>
+<ol start="3">
+<li>grep</li>
+</ol>
+<p>强大的文本搜索命令，grep(Global Regular Expression Print) 全局正则表达式搜索。</p>
+<ol start="4">
+<li>ps </li>
+</ol>
+<p>ps(process status)，用来查看当前运行的进程状态，一次性查看，如果需要动态连续结果使用 top。</p>
+<ol start="5">
+<li>top 命令</li>
+</ol>
+<p>显示当前系统正在执行的进程的相关信息，包括进程 ID、内存占用率、CPU 占用率等。</p>
+<ol start="6">
+<li>free </li>
+</ol>
+<p>显示系统内存使用情况，包括物理内存、交互区内存(swap)和内核缓冲区内存。</p>
+<ol start="7">
+<li>nc </li>
+</ol>
+<p>Linux nc命令用于设置路由器。</p>
+<p>执行本指令可设置路由器的相关参数。</p>
+<ol start="8">
+<li>ping </li>
+</ol>
+<p>Linux ping 命令用于检测主机。</p>
+<p>执行 ping 指令会使用 ICMP 传输协议，发出要求回应的信息，若远端主机的网络功能没有问题，就会回应该信息，因而得知该主机运作正常。</p>
+<ol start="9">
+<li>tcpdump </li>
+</ol>
+<p>Linux tcpdump命令用于倾倒网络传输数据。</p>
+<p>执行tcpdump指令可列出经过指定网络界面的数据包文件头，在Linux操作系统中，你必须是系统管理员。</p>
+<ol start="10">
+<li>telnet </li>
+</ol>
+<p>Linux telnet命令用于远端登入。</p>
+<p>执行telnet指令开启终端机阶段作业，并登入远端主机。</p>
+<ol start="11">
+<li>lsof </li>
+</ol>
+<p>lsof是系统管理/安全的尤伯工具。将这个工具称之为lsof真实名副其实，因为它是指“列出打开文件（lists openfiles）”。而有一点要切记，在Unix中一切（包括网络套接口）都是文件。</p>
+<ol start="12">
+<li>netstat</li>
+</ol>
+<p>Linux netstat 命令用于显示网络状态。</p>
+<p>利用 netstat 指令可让你得知整个 Linux 系统的网络情况。</p>
+<p>13. </p>
 
     
 
