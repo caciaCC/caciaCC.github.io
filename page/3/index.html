@@ -99,41 +99,6 @@
 		<nav class="header-nav">
 			<div class="social">
 				
-					
-						<a class="leetcode" target="_blank" rel="noopener" href="https://leetcode-cn.com/u/cacia/" 
-												title="力扣" ><i class="icon-leetcode"></i></a>
-					
-				
-					
-						<a class="github" target="_blank" rel="noopener" href="https://github.com/caciaCC" 
-												title="GitHub" ><i class="icon-github"></i></a>
-					
-				
-					
-						<a class="gitee" target="_blank" rel="noopener" href="https://gitee.com/a1732583038" 
-												title="码云" ><i class="icon-gitee"></i></a>
-					
-				
-					
-						<a class="zhihu" target="_blank" rel="noopener" href="https://www.zhihu.com/people/ccccc-40-47" 
-												title="知乎" ><i class="icon-zhihu"></i></a>
-					
-				
-					
-						<a class="qq" target="_blank" rel="noopener" href="https://user.qzone.qq.com/1732583038?_t_=0.5998345024025399" 
-												title="QQ" ><i class="icon-qq"></i></a>
-					
-				
-					
-						<a class="bilibili" target="_blank" rel="noopener" href="https://space.bilibili.com/13539525" 
-												title="哔哩哔哩" ><i class="icon-bilibili"></i></a>
-					
-				
-					
-						<a class="mail" target="_blank" rel="noopener" href="https://1732583038@qq.com" 
-												title="邮件联系" ><i class="icon-mail"></i></a>
-					
-				
 			</div>
 		
 		</nav>
@@ -179,41 +144,6 @@
 			<nav class="header-nav">
 				<div class="social">
 					
-						
-						<a class="leetcode" target="_blank" 
-							href="https://leetcode-cn.com/u/cacia/" title="力扣"><i class="icon-leetcode"></i></a>
-						
-					
-						
-						<a class="github" target="_blank" 
-							href="https://github.com/caciaCC" title="GitHub"><i class="icon-github"></i></a>
-						
-					
-						
-						<a class="gitee" target="_blank" 
-							href="https://gitee.com/a1732583038" title="码云"><i class="icon-gitee"></i></a>
-						
-					
-						
-						<a class="zhihu" target="_blank" 
-							href="https://www.zhihu.com/people/ccccc-40-47" title="知乎"><i class="icon-zhihu"></i></a>
-						
-					
-						
-						<a class="qq" target="_blank" 
-							href="https://user.qzone.qq.com/1732583038?_t_=0.5998345024025399" title="QQ"><i class="icon-qq"></i></a>
-						
-					
-						
-						<a class="bilibili" target="_blank" 
-							href="https://space.bilibili.com/13539525" title="哔哩哔哩"><i class="icon-bilibili"></i></a>
-						
-					
-						
-						<a class="mail" target="_blank" 
-							href="https://1732583038@qq.com" title="邮件联系"><i class="icon-mail"></i></a>
-						
-					
 				</div>
 			</nav>
 
@@ -246,6 +176,101 @@
           </div>
           <div id="js-content" class="content-ll">
             
+
+  
+    <article id="post-算法-leetcode-周赛第235场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/04/04/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC235%E5%9C%BA/">算法-leetcode-周赛第235场</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/04/04/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC235%E5%9C%BA/" class="archive-article-date">
+        <time datetime="2021-04-04T04:04:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-04-04</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>第一题。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;t;</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">truncateSentence</span><span class="params">(<span class="built_in">string</span> s, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> tmp;</span><br><span class="line">        s += <span class="string">&quot; &quot;</span>;</span><br><span class="line">        <span class="keyword">int</span> n = s.size(), cnt = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(s[i]==<span class="string">&#x27; &#x27;</span>)&#123;</span><br><span class="line">                t.push_back(tmp);</span><br><span class="line">                tmp = <span class="string">&quot;&quot;</span>;</span><br><span class="line">                cnt++;</span><br><span class="line">                <span class="keyword">if</span>(cnt == k) <span class="keyword">break</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> tmp += s[i];</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> m = t.size();</span><br><span class="line">        <span class="built_in">string</span> res;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; i ++)&#123;</span><br><span class="line">            res += t[i] + <span class="string">&quot; &quot;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        res.pop_back();</span><br><span class="line">        <span class="keyword">return</span> res;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/04/04/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC235%E5%9C%BA/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/04/04/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC235%E5%9C%BA/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
 
   
     <article id="post-算法-leetcode-双周赛第49场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
@@ -1059,96 +1084,6 @@
     
     <p class="article-more-link">
       <a class="article-more-a" href="/2021/03/24/java%E5%AD%A6%E4%B9%A0-java%E5%B9%B6%E5%8F%91%E7%BC%96%E7%A8%8B%E7%9A%84%E8%89%BA%E6%9C%AF/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-java学习-深入理解java虚拟机" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/03/23/java%E5%AD%A6%E4%B9%A0-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/">Java学习-深入理解Java虚拟机</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/03/23/java%E5%AD%A6%E4%B9%A0-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/" class="archive-article-date">
-        <time datetime="2021-03-23T07:57:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-03-23</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="第2章-Java内存区域与内存溢出异常"><a href="#第2章-Java内存区域与内存溢出异常" class="headerlink" title="第2章 Java内存区域与内存溢出异常"></a>第2章 Java内存区域与内存溢出异常</h1><h2 id="2-1概述"><a href="#2-1概述" class="headerlink" title="2.1概述"></a>2.1概述</h2><p>如果不了解虚拟机如何使用内存的,那么排错将会成为一项异常艰难的工作。</p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/03/23/java%E5%AD%A6%E4%B9%A0-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/03/23/java%E5%AD%A6%E4%B9%A0-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3java%E8%99%9A%E6%8B%9F%E6%9C%BA/">展开全文 >></a>
     </p>
     
 
