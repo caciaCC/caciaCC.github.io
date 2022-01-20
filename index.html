@@ -210,28 +210,9 @@
     <h4 id="起因"><a href="#起因" class="headerlink" title="起因"></a>起因</h4><p>今天打开google浏览器的时候，想要使用一下百度搜索。如下所示。</p>
 <p><img src="/2022/01/20/%E9%A1%B9%E7%9B%AE-%E4%B8%80%E4%B8%AA%E6%97%A0%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0/1.jpg" alt=".jpg"></p>
 <p>结果发现了一个奇怪的问题，那就是，点击”百度”图标，URL先是为一个很奇怪的网址，然后再跳转到百度，但是地址却很奇怪，URL为<code>https://www.baidu.com/?tn=40020637_6_oem_d</code>,按理说，正常访问百度，地址应该<code>https://www.baidu.com</code>才对。</p>
-<p>所以这后面这个tn到底是啥呢，我经过搜索发现，tn应该是telephone number的缩写，意思是推广号码，就是说是从哪个推广商那里引流到百度的。</p>
-<p>然后把鼠标移动到上面发现，其实链接首先到达的网站也并非是百度，而是一个不知名的网站。即<code>2143.new.favo.fengmeng.net</code>。然后再跳转到百度。</p>
-<p><code>https://www.baidu.com/?tn=02003390_2_hao_pg</code></p>
-<p><img src="/2022/01/20/%E9%A1%B9%E7%9B%AE-%E4%B8%80%E4%B8%AA%E6%97%A0%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0/2.jpg" alt=".jpg"></p>
-<p>然而实际上，除了跳转到<code>https://www.baidu.com/?tn=40020637_6_oem_dg</code>之外，我发现也会跳转到<code>https://www.baidu.com/?tn=02003390_2_hao_pg</code>和<code>https://www.baidu.com/?tn=78000241_9_hao_pg</code>等等。</p>
-<p>所以我找了个html页面状态在线测试工具<code>https://help.bj.cn/Tools/20200215/T9dd461bc6abcee38a439864d299e0e6d.html</code>。</p>
-<p>可以看到html如图所示。<br><img src="/2022/01/20/%E9%A1%B9%E7%9B%AE-%E4%B8%80%E4%B8%AA%E6%97%A0%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0/3.jpg" alt=".jpg"></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;&lt;html&gt;&lt;head&gt;&lt;meta http-equiv&#x3D;&#39;Content-Type&#39; content&#x3D;&#39;text&#x2F;html; charset&#x3D;UTF-8&#39;&gt;</span><br><span class="line">		&lt;title&gt;&lt;&#x2F;title&gt;&lt;&#x2F;head&gt;&lt;body&gt;&lt;div style&#x3D;&#39;display:none&#39;&gt;&lt;script src&#x3D;&quot;https:&#x2F;&#x2F;s19.cnzz.com&#x2F;z_stat.php?id&#x3D;1263556672&amp;web_id&#x3D;1263556672&quot; language&#x3D;&quot;JavaScript&quot;&gt;&lt;&#x2F;script&gt;&lt;&#x2F;div&gt;&lt;script&gt;location&#x3D;&#39;http:&#x2F;&#x2F;baidu.yni84.com&#x2F;new.php&#39;&lt;&#x2F;script&gt;&lt;&#x2F;body&gt;&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure>
-<p>可以看到这个页面会跳转到<code>http://baidu.yni84.com/new.php</code>。</p>
-<p>而对<code>http://baidu.yni84.com/new.php</code>发动解析，就会发现会通过<code>302</code>跳转到<code>https://www.baidu.com/?tn=21002492_28_hao_pg</code>,如图所示。</p>
-<p><img src="/2022/01/20/%E9%A1%B9%E7%9B%AE-%E4%B8%80%E4%B8%AA%E6%97%A0%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0/4.jpg" alt=".jpg"></p>
-<p>然后我搜到了知乎上有这样一个回答。<code>https://zhuanlan.zhihu.com/p/345565780</code></p>
-<p>从中可以知道从<code>https://uweb.umeng.com/v1/login.php?siteid=XXX</code>可以查询对应友盟计数器对应站点的数据。其中友盟计数器id可以在每个网页的html的script里面查到。</p>
-<p>原来，篡改书签URL是为了给这些网站增加流量，并且还可以知道哪些流量是来自收藏夹，达到分析用户目的。</p>
-<p>最后提供一下这些导流的URL。</p>
-<p><code>2143.new.favo.fengmeng.net</code>(百度)</p>
-<p><code>4209.new.favo.fengmeng.net</code>(苏宁易购)</p>
-<p><code>2951.new.favo.fengmeng.net</code>(360搜索)</p>
-<p><code>2294.new.favo.fengmeng.net</code>(淘宝)</p>
-<p><code>2147.new.favo.fengmeng.net</code>(京东)</p>
-<p><code>2145.new.favo.fengmeng.net</code>(天猫)</p>
-
+    
+    <a class="article-more-a"  style="display: none;" href="/2022/01/20/%E9%A1%B9%E7%9B%AE-%E4%B8%80%E4%B8%AA%E6%97%A0%E8%81%8A%E7%9A%84%E5%8F%91%E7%8E%B0/#more">more >></a>
+    
     
 
     
