@@ -5,7 +5,7 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://caciaCC.github.io">
+  <link rel="dns-prefetch" href="https://caciaCC.github.io">
   <title>caciaCC的博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -13,7 +13,7 @@
   <meta name="description" content="leetcode刷题+java面试点记录">
 <meta property="og:type" content="website">
 <meta property="og:title" content="caciaCC的博客">
-<meta property="og:url" content="http://caciacc.github.io/page/9/index.html">
+<meta property="og:url" content="https://caciacc.github.io/page/9/index.html">
 <meta property="og:site_name" content="caciaCC的博客">
 <meta property="og:description" content="leetcode刷题+java面试点记录">
 <meta property="og:locale" content="zh_CN">
@@ -178,7 +178,7 @@
             
 
   
-    <article id="post-算法-leetcode-周赛第224场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-算法-codeforce-698-div2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -186,7 +186,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/01/17/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC224%E5%9C%BA/">算法-leetcode-周赛第224场</a>
+	  <a class="article-title" href="/2021/01/29/%E7%AE%97%E6%B3%95-codeforce-698-div2/">算法-codeforce-698-div2</a>
 	
     </h1>
   
@@ -194,103 +194,8 @@
 
   
   
-<a href="/2021/01/17/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC224%E5%9C%BA/" class="archive-article-date">
-        <time datetime="2021-01-17T06:28:36.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-17</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>1.对于每个矩形,相同大小则增加其数量,比当前打则将数量设为1,则最大边长更新即可。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">countGoodRectangles</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; rec)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = rec.size();</span><br><span class="line">        <span class="keyword">int</span> mx = <span class="number">0</span>, num = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++)&#123;</span><br><span class="line">            <span class="keyword">int</span> l = rec[i][<span class="number">0</span>], w = rec[i][<span class="number">1</span>];</span><br><span class="line">            <span class="keyword">int</span> now = min(l,w);</span><br><span class="line">            <span class="keyword">if</span>(now &gt; mx)&#123;</span><br><span class="line">                mx = now;</span><br><span class="line">                num = <span class="number">1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span> <span class="keyword">if</span>(now == mx) num ++;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> num;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/01/17/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC224%E5%9C%BA/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/17/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC224%E5%9C%BA/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-算法-codeforce-102-div2-edu" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/01/14/%E7%AE%97%E6%B3%95-codeforce-102-div2-edu/">算法-codeforce-102-div2-edu</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/01/14/%E7%AE%97%E6%B3%95-codeforce-102-div2-edu/" class="archive-article-date">
-        <time datetime="2021-01-14T14:43:50.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-14</time>
+<a href="/2021/01/29/%E7%AE%97%E6%B3%95-codeforce-698-div2/" class="archive-article-date">
+        <time datetime="2021-01-29T10:52:19.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-29</time>
 </a>
 
   
@@ -303,9 +208,9 @@
   <div class="article-entry" itemprop="articleBody">
     
     <p>A题。</p>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">3e5</span>+<span class="number">10</span>, M = <span class="number">1e5</span>+<span class="number">10</span>,INF = <span class="number">0x3f3f3f3f</span>,inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">pair</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;PII;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">pair</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;pii;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n,d;</span><br><span class="line"><span class="keyword">int</span> a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; n &gt;&gt; d;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++) <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">   sort(a+<span class="number">1</span>,a+<span class="number">1</span>+n);</span><br><span class="line">   <span class="keyword">if</span>(a[n]&lt;=d)&#123;<span class="built_in">puts</span>(<span class="string">&quot;yes&quot;</span>);<span class="keyword">return</span>;&#125;</span><br><span class="line">   <span class="keyword">int</span> ache = a[<span class="number">1</span>] + a[<span class="number">2</span>];</span><br><span class="line">   <span class="keyword">if</span>(ache&lt;=d) <span class="built_in">puts</span>(<span class="string">&quot;yes&quot;</span>);</span><br><span class="line">   <span class="keyword">else</span> <span class="built_in">puts</span>(<span class="string">&quot;no&quot;</span>);</span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="keyword">int</span> t; <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">         <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        init();</span><br><span class="line">        solve();</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2e5</span>+<span class="number">10</span>, M = <span class="number">1e5</span>+<span class="number">10</span>,INF = <span class="number">0x3f3f3f3f</span>,inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">pair</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;PII;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">pair</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;pii;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="keyword">int</span> a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++) <span class="built_in">cin</span> &gt;&gt; a[i];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">  <span class="keyword">int</span> ans = <span class="number">0</span>, num = <span class="number">0</span>, now = <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; i ++)&#123;</span><br><span class="line">     <span class="keyword">if</span>(a[i] != now)&#123;</span><br><span class="line">        num = <span class="number">1</span>;</span><br><span class="line">        now = a[i];</span><br><span class="line">     &#125;<span class="keyword">else</span> num++;</span><br><span class="line">     ans = max(ans,num);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="built_in">cout</span> &lt;&lt; ans &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="keyword">int</span> t; <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">         <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        init();</span><br><span class="line">        solve();</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/01/14/%E7%AE%97%E6%B3%95-codeforce-102-div2-edu/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/01/29/%E7%AE%97%E6%B3%95-codeforce-698-div2/#more">more >></a>
     
     
 
@@ -336,7 +241,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/14/%E7%AE%97%E6%B3%95-codeforce-102-div2-edu/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/01/29/%E7%AE%97%E6%B3%95-codeforce-698-div2/">展开全文 >></a>
     </p>
     
 
@@ -368,7 +273,7 @@
 
 
   
-    <article id="post-java学习-collection相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-计算机基础-操作系统-一-概述" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -376,7 +281,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-collection%E7%9B%B8%E5%85%B3/">Java学习-Collection相关</a>
+	  <a class="article-title" href="/2021/01/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%B8%80-%E6%A6%82%E8%BF%B0/">计算机基础-操作系统-一-概述</a>
 	
     </h1>
   
@@ -384,8 +289,8 @@
 
   
   
-<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-collection%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
+<a href="/2021/01/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%B8%80-%E6%A6%82%E8%BF%B0/" class="archive-article-date">
+        <time datetime="2021-01-28T13:08:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-28</time>
 </a>
 
   
@@ -397,15 +302,11 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <hr>
-<p><strong>Collection相关</strong></p>
-<p>●Collection和Collections的区别</p>
-<p>Collection是集合类的上级接口，继承它的接口主要有List、Set、Queue。</p>
-<p>Collections是集合类的一个帮助类，它提供一系列静态方法实现对各种集合的搜索、排序、<strong>线程安全化（synchronizedList（传入一个）、synchronizedMap（传入一个）、synchronizedSet（传入一个）-&gt;只能通过collection创建）等优化操作。</strong></p>
-<p>●List、Map、Set三个接口存取元素时，各有什么特点？</p>
-<p>List接口元素有序，存储的是值,并且元素可以重复。           =&gt;主要实现：ArrayList、LinkedList、Vector</p>
+    <h3 id="学习资料"><a href="#学习资料" class="headerlink" title="学习资料"></a>学习资料</h3><p><a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1YE411D7nH">2019 王道考研 操作系统</a></p>
+<h2 id="1-1操作系统的概念、功能和目标"><a href="#1-1操作系统的概念、功能和目标" class="headerlink" title="1.1操作系统的概念、功能和目标"></a>1.1操作系统的概念、功能和目标</h2><h3 id="什么是操作系统"><a href="#什么是操作系统" class="headerlink" title="什么是操作系统?"></a>什么是操作系统?</h3><p>操作系统的定义:<br>操作系统是指控制和管理整个计算机的硬件和软件资源,并合理组织调度计算机的工作和资源分配,以提供给用户和其他软件方便的接口和环境,它是计算机系统的最基本的系统软件。  </p>
+<h3 id="操作系统的功能和目标"><a href="#操作系统的功能和目标" class="headerlink" title="操作系统的功能和目标"></a>操作系统的功能和目标</h3><p>1.作为系统资源的管理者。<br>  处理机管理  存储器管理 文件管理 设备管理<br>2.作为用户和计算机硬件的接口<br>  命令接口 程序接口 GUI<br>3.对硬件机器的扩展 扩展机器</p>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-collection%E7%9B%B8%E5%85%B3/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/01/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%B8%80-%E6%A6%82%E8%BF%B0/#more">more >></a>
     
     
 
@@ -422,515 +323,12 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">collection</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
         		</li>
       		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-collection%E7%9B%B8%E5%85%B3/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-java学习-java基础知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">Java学习-Java基础知识</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><span style="background-color:      #FFD700"><strong>JAVA相关</strong></span></p>
-<p>●JAVA有哪些特性？举个多态的例子。</p>
-<p>封装、抽象、多态、继承。定义一个List的引用指向其实现类，List的具体方法实现比如add取决于具体的实现类，实现类是ArrayList和LinkedList将会调用各自的add方法。</p>
-<p><span style="background-color:      #FFD700"><strong>String相关</strong></span></p>
-<span style="background-color:      #FFD700">
-
-</span>
-
-<p>●String底层实现。</p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-java学习-java框架知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E6%A1%86%E6%9E%B6%E7%9F%A5%E8%AF%86/">Java学习-Java框架知识</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E6%A1%86%E6%9E%B6%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p><span style="background-color:      #FFD700"><strong>各种层。</strong></span></p>
-<span style="background-color:      #FFD700">
-
-</span>
-
-<p>●dao层是model层吗？</p>
-<p>不是。dao层(mapper层)是数据持久化层,负责数据库操作。model层(entity)则是负责数据实体模型(实体类)。</p>
-<p>service层。存放业务逻辑处理,但不与数据库直接打交道。</p>
-<p>controller层。控制器,导入service层, 因为service中的方法是我们使用到的,controller通过接收前端传过来的参数进行业务操作,再返回一个指定的路径或者数据表。</p>
-<p><strong>SPRING相关</strong></p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E6%A1%86%E6%9E%B6%E7%9F%A5%E8%AF%86/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">框架</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E6%A1%86%E6%9E%B6%E7%9F%A5%E8%AF%86/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-java学习-java设计模式知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9F%A5%E8%AF%86/">Java学习-Java设计模式知识</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>●什么是设计模式？</p>
-<p>所谓设计模式,就是一套被反复使用的代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。</p>
-<p>设计模式在宏观上分为三大类。</p>
-<p>①创建型（对类的实例化过程的抽象）</p>
-<p>②结构型（描述如何把类或对象结合在一起形成更大的结构）</p>
-<p>③行为型（对在不同的对象之间划分责任和算法的抽象化）</p>
-<p>设计模式一共23种，具体如下。</p>
-<p>●设计模式的思想有哪些？</p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9F%A5%E8%AF%86/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-java%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9F%A5%E8%AF%86/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-nosql学习-nosql知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/01/12/nosql%E5%AD%A6%E4%B9%A0-nosql%E7%9F%A5%E8%AF%86/">NoSQL学习-NoSQL知识</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/01/12/nosql%E5%AD%A6%E4%B9%A0-nosql%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>●快照(Snapshot)： 将内存中数据持久化保存到磁盘</p>
-<p>●3V： 海量Volume 多样Variety 实时Velocity 3高:高并发 高可拓 高性能</p>
-<p>●nosql</p>
-<p><strong>NOSQL相关</strong></p>
-<p>nosql分类。</p>
-<p>1.KV型                  Redis Memached</p>
-<p>2.文档型数据库      mongoDB</p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/nosql%E5%AD%A6%E4%B9%A0-nosql%E7%9F%A5%E8%AF%86/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">nosql</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/nosql%E5%AD%A6%E4%B9%A0-nosql%E7%9F%A5%E8%AF%86/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-
-
-  
-    <article id="post-计算机基础-操作系统知识" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2021/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86/">计算机基础-操作系统知识</a>
-	
-    </h1>
-  
-
-
-  
-  
-<a href="/2021/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="计算机基础-操作系统知识"><a href="#计算机基础-操作系统知识" class="headerlink" title="计算机基础-操作系统知识"></a>计算机基础-操作系统知识</h1><p><span style="background-color:      #FFD700"><strong>Linux相关</strong></span></p>
-<span style="background-color:      #FFD700">
-
-</span>
-
-<p>●了解linux吗？</p>
-<p>●多路复用IO了解过吗？</p>
-<p>概念:</p>
-    
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">计算机基础</a>
         		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">计算机基础-操作系统知识</a>
-        		</li>
       		
 		</ul>
 	</div>
@@ -939,7 +337,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E7%9F%A5%E8%AF%86/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/01/28/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%B8%80-%E6%A6%82%E8%BF%B0/">展开全文 >></a>
     </p>
     
 
@@ -971,7 +369,7 @@
 
 
   
-    <article id="post-java学习-jvm相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-项目-一个简单图书管理系统的实现-二" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -979,7 +377,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-jvm%E7%9B%B8%E5%85%B3/">Java学习-JVM相关</a>
+	  <a class="article-title" href="/2021/01/27/%E9%A1%B9%E7%9B%AE-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9E%E7%8E%B0-%E4%BA%8C/">项目-一个简单图书管理系统的实现-二</a>
 	
     </h1>
   
@@ -987,8 +385,8 @@
 
   
   
-<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-jvm%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
+<a href="/2021/01/27/%E9%A1%B9%E7%9B%AE-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9E%E7%8E%B0-%E4%BA%8C/" class="archive-article-date">
+        <time datetime="2021-01-27T12:54:21.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-27</time>
 </a>
 
   
@@ -1000,12 +398,11 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <p><span style="background-color:      #FFD700"><strong>JVM相关</strong></span><br>●jvm的体系结构是什么？请画图说明。</p>
-<p>JVM = 类加载器 + 运行时数据区 + 本地方法接口 + 执行引擎。<br><img src="/2021/01/12/java%E5%AD%A6%E4%B9%A0-jvm%E7%9B%B8%E5%85%B3/2.png" alt="-1.png"><br><span style="background-color:      #FFD700">sun.misc.Launcher是java虚拟机的入口</span><br><span style="background-color:      #FFD700"></span></p>
-
-●讲讲jvm的第二章和第三章有哪些内容吧？
+    <h4 id="接上回"><a href="#接上回" class="headerlink" title="接上回"></a>接上回</h4><p>上回说到图书管理系统的设计,那么按理来说,这一次就应该是一些设计方面的东西了。<br>如果比较规范的来讲,应该有:<br>用例模型-&gt;领域模型-&gt;包图架构-&gt;设计类图-&gt;数据库设计<br>然后才是代码的编写。<br>而实际上,当我在写这篇的时候,整个图书管理系统已经写完了= =,可以在xx.xxx.xxx.xxx:9000上访问到。  </p>
+<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p>技术架构上,前端是vue+axios+elementUI,通过<code>RESTful API</code>向后端程序发送CRUD请求,后端程序以springboot为框架,以shiro为安全框架,并通过redis来缓存部分重复发送的请求,在上传图片功能中接入OSS云存储,并且使用springboot的AOP切面进行日志和异常日志的记录。  </p>
+<p>图书管理系统大体上分为:<br>-登录注册界面<br>-前台<br>-后台  </p>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-jvm%E7%9B%B8%E5%85%B3/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/01/27/%E9%A1%B9%E7%9B%AE-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9E%E7%8E%B0-%E4%BA%8C/#more">more >></a>
     
     
 
@@ -1026,7 +423,7 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">jvm</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
         		</li>
       		
 		</ul>
@@ -1036,7 +433,7 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-jvm%E7%9B%B8%E5%85%B3/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/01/27/%E9%A1%B9%E7%9B%AE-%E4%B8%80%E4%B8%AA%E7%AE%80%E5%8D%95%E5%9B%BE%E4%B9%A6%E7%AE%A1%E7%90%86%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%AE%9E%E7%8E%B0-%E4%BA%8C/">展开全文 >></a>
     </p>
     
 
@@ -1068,7 +465,7 @@
 
 
   
-    <article id="post-java学习-map相关" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+    <article id="post-算法-codeforce-697-div3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
@@ -1076,7 +473,7 @@
   
     <h1 itemprop="name">
 	
-	  <a class="article-title" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-map%E7%9B%B8%E5%85%B3/">Java学习-Map相关知识</a>
+	  <a class="article-title" href="/2021/01/26/%E7%AE%97%E6%B3%95-codeforce-697-div3/">算法-codeforce-697-div3</a>
 	
     </h1>
   
@@ -1084,8 +481,8 @@
 
   
   
-<a href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-map%E7%9B%B8%E5%85%B3/" class="archive-article-date">
-        <time datetime="2021-01-12T03:23:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-12</time>
+<a href="/2021/01/26/%E7%AE%97%E6%B3%95-codeforce-697-div3/" class="archive-article-date">
+        <time datetime="2021-01-25T16:02:28.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-26</time>
 </a>
 
   
@@ -1097,17 +494,10 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h3 id="Treejava学习-map相关"><a href="#Treejava学习-map相关" class="headerlink" title="Treejava学习-map相关"></a><span style="background-color: #FFD700"><span style="background-color: #FFD700"><strong>Treejava学习-map相关</strong></span></span></h3><p>●TreeMap了解吗？它的底层数据结构是？</p>
-<p>了解。TreeMap实现了SotredMap接口，是有序的集合。</p>
-<p>首先是二叉树，然后是平衡二叉树中的红黑树。具有以下特点：</p>
-<ol>
-<li>每个节点只能是红色或者黑色</li>
-<li>根节点永远是黑色的</li>
-<li>所有的叶子的子节点都是空节点，并且都是黑色的</li>
-<li>每个红色节点的两个子节点都是黑色的（不会有两个连续的红色节点）</li>
-<li>从任一个节点到其子树中每个叶子节点的路径都包含相同数量的黑色节点（叶子节点到根节点的黑色节点数量每条路径都相同）</li></ol>
+    <p>A题。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span>+<span class="number">10</span>, M = <span class="number">1e5</span>+<span class="number">10</span>,INF = <span class="number">0x3f3f3f3f</span>,inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">pair</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;PII;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">pair</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;pii;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line">ll n;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">   <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">   <span class="keyword">if</span>(n &amp; <span class="number">1</span>)&#123;</span><br><span class="line">      <span class="built_in">cout</span> &lt;&lt;<span class="string">&quot;YES&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">while</span>(!(n&amp;<span class="number">1</span>)) n /= <span class="number">2</span>;</span><br><span class="line">   <span class="keyword">if</span>(n == <span class="number">1</span>) <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;NO&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">   <span class="keyword">else</span> <span class="built_in">cout</span> &lt;&lt; <span class="string">&quot;YES&quot;</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="keyword">int</span> t; <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">         <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        init();</span><br><span class="line">        solve();</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
     
-    <a class="article-more-a"  style="display: none;" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-map%E7%9B%B8%E5%85%B3/#more">more >></a>
+    <a class="article-more-a"  style="display: none;" href="/2021/01/26/%E7%AE%97%E6%B3%95-codeforce-697-div3/#more">more >></a>
     
     
 
@@ -1124,11 +514,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">JAVA</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">map</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">codeforce</a>
         		</li>
       		
 		</ul>
@@ -1138,7 +528,574 @@
 
     
     <p class="article-more-link">
-      <a class="article-more-a" href="/2021/01/12/java%E5%AD%A6%E4%B9%A0-map%E7%9B%B8%E5%85%B3/">展开全文 >></a>
+      <a class="article-more-a" href="/2021/01/26/%E7%AE%97%E6%B3%95-codeforce-697-div3/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <article id="post-算法-leetcode-双周赛第44场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC44%E5%9C%BA/">算法-leetcode-双周赛第44场</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC44%E5%9C%BA/" class="archive-article-date">
+        <time datetime="2021-01-24T05:08:58.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>第一题。<br>相当于前缀和</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">largestAltitude</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; gain)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n = gain.size();</span><br><span class="line">        <span class="keyword">int</span> mx = <span class="number">0</span>, now = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++)&#123;</span><br><span class="line">            now += gain[i];</span><br><span class="line">            mx = max(mx,now);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> mx;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC44%E5%9C%BA/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%8F%8C%E5%91%A8%E8%B5%9B%E7%AC%AC44%E5%9C%BA/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <article id="post-算法-leetcode-周赛第225场" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/">算法-leetcode-周赛第225场</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/" class="archive-article-date">
+        <time datetime="2021-01-24T04:14:26.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-24</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>第一题<br>一个分类讨论= =。个人感觉写复杂了。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">maximumTime</span><span class="params">(<span class="built_in">string</span> ans)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(ans[<span class="number">0</span>]==<span class="string">&#x27;0&#x27;</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(ans[<span class="number">1</span>]==<span class="string">&#x27;?&#x27;</span>) ans[<span class="number">1</span>] = <span class="string">&#x27;9&#x27;</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ans[<span class="number">0</span>] == <span class="string">&#x27;1&#x27;</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(ans[<span class="number">1</span>]==<span class="string">&#x27;?&#x27;</span>) ans[<span class="number">1</span>] = <span class="string">&#x27;9&#x27;</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ans[<span class="number">0</span>] == <span class="string">&#x27;2&#x27;</span>)&#123;</span><br><span class="line">            <span class="keyword">if</span>(ans[<span class="number">1</span>]==<span class="string">&#x27;?&#x27;</span>) ans[<span class="number">1</span>] = <span class="string">&#x27;3&#x27;</span>;</span><br><span class="line">        &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="keyword">if</span>(ans[<span class="number">1</span>]==<span class="string">&#x27;?&#x27;</span>&amp;&amp;ans[<span class="number">0</span>]==<span class="string">&#x27;?&#x27;</span>) ans[<span class="number">0</span>] = <span class="string">&#x27;2&#x27;</span>,ans[<span class="number">1</span>] = <span class="string">&#x27;3&#x27;</span>;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span>(ans[<span class="number">1</span>] &gt; <span class="string">&#x27;3&#x27;</span>) ans[<span class="number">0</span>] = <span class="string">&#x27;1&#x27;</span>;</span><br><span class="line">            <span class="keyword">else</span> ans[<span class="number">0</span>] = <span class="string">&#x27;2&#x27;</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        </span><br><span class="line">         <span class="keyword">if</span>(ans[<span class="number">3</span>]!=<span class="string">&#x27;?&#x27;</span>)&#123;</span><br><span class="line">             <span class="keyword">if</span>(ans[<span class="number">4</span>] ==<span class="string">&#x27;?&#x27;</span>) ans[<span class="number">4</span>] = <span class="string">&#x27;9&#x27;</span>;</span><br><span class="line">         &#125;<span class="keyword">else</span> &#123;</span><br><span class="line">             <span class="keyword">if</span>(ans[<span class="number">4</span>]==<span class="string">&#x27;?&#x27;</span>) ans[<span class="number">3</span>] = <span class="string">&#x27;5&#x27;</span>, ans[<span class="number">4</span>] = <span class="string">&#x27;9&#x27;</span>;</span><br><span class="line">             <span class="keyword">else</span> ans[<span class="number">3</span>] = <span class="string">&#x27;5&#x27;</span>;</span><br><span class="line">         &#125;</span><br><span class="line">            </span><br><span class="line">       <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">leetcode周赛</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/01/24/%E7%AE%97%E6%B3%95-leetcode-%E5%91%A8%E8%B5%9B%E7%AC%AC225%E5%9C%BA/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <article id="post-算法-5道算法题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/01/23/%E7%AE%97%E6%B3%95-5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/">算法-5道算法题</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/01/23/%E7%AE%97%E6%B3%95-5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/" class="archive-article-date">
+        <time datetime="2021-01-23T08:58:04.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-23</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="原由"><a href="#原由" class="headerlink" title="原由"></a>原由</h4><p>今天很无聊,所以就做了几道算法题。  </p>
+<h3 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h3><p>1.给你一个字符串,中间包括三种括号。分别是大括号、中括号和小括号。让判断字符串的合法性。  </p>
+<p>其中小括号里面不能有大括号和中括号,中括号里面不能有大括号。   </p>
+<p>用栈模拟实现即可,比较简单。(只是判断逻辑写反了,debug了一会)</p>
+<p>2.给你一个数n(2^20内),然后是一个数组,n个正整数(int范围内),让找到最小的不在数组中的正整数。  </p>
+<p>这个也简单,建一个桶(2000010)即可。</p>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/01/23/%E7%AE%97%E6%B3%95-5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/01/23/%E7%AE%97%E6%B3%95-5%E9%81%93%E7%AE%97%E6%B3%95%E9%A2%98/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <article id="post-算法-codeforce-696-div2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/01/20/%E7%AE%97%E6%B3%95-codeforce-696-div2/">算法-codeforce-696-div2</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/01/20/%E7%AE%97%E6%B3%95-codeforce-696-div2/" class="archive-article-date">
+        <time datetime="2021-01-20T01:52:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-20</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>A题。<br>贪心即可。<br>A数组第一个数必为1,后面每个A[i]+B[i]!=A[i-1]+B[i-1]并且让A[i]+B[i]尽可能大也就是A[i]尽可能大即可。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">3e5</span>+<span class="number">10</span>, M = <span class="number">1e5</span>+<span class="number">10</span>,INF = <span class="number">0x3f3f3f3f</span>,inf = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">pair</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;PII;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">pair</span>&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt;pii;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="built_in">string</span> b;</span><br><span class="line"><span class="keyword">int</span> a[N];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">()</span></span>&#123;</span><br><span class="line">   <span class="built_in">cin</span> &gt;&gt; n;</span><br><span class="line">   <span class="built_in">cin</span> &gt;&gt; b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">solve</span><span class="params">()</span></span>&#123;</span><br><span class="line">    a[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i ++)&#123;</span><br><span class="line">     <span class="keyword">int</span> f = a[i<span class="number">-1</span>]+(b[i<span class="number">-1</span>]-<span class="string">&#x27;0&#x27;</span>);</span><br><span class="line">     <span class="keyword">if</span>(f==b[i]-<span class="string">&#x27;0&#x27;</span>+<span class="number">1</span>) a[i] = <span class="number">0</span>;</span><br><span class="line">     <span class="keyword">else</span> <span class="keyword">if</span>(f==b[i]-<span class="string">&#x27;0&#x27;</span>)a[i] = <span class="number">1</span>;</span><br><span class="line">     <span class="keyword">else</span> a[i] = <span class="number">1</span>;</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++) <span class="built_in">cout</span> &lt;&lt; a[i];</span><br><span class="line">   <span class="built_in">cout</span> &lt;&lt; <span class="built_in">endl</span>;</span><br><span class="line">&#125;  </span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">         <span class="keyword">int</span> t; <span class="built_in">scanf</span>(<span class="string">&quot;%d&quot;</span>,&amp;t);</span><br><span class="line">         <span class="keyword">while</span>(t--)&#123;</span><br><span class="line">        init();</span><br><span class="line">        solve();</span><br><span class="line">         &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/01/20/%E7%AE%97%E6%B3%95-codeforce-696-div2/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">算法</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">codeforce</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/01/20/%E7%AE%97%E6%B3%95-codeforce-696-div2/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <article id="post-项目-vue打包问题" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/01/19/%E9%A1%B9%E7%9B%AE-vue%E6%89%93%E5%8C%85%E9%97%AE%E9%A2%98/">项目-vue打包问题</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/01/19/%E9%A1%B9%E7%9B%AE-vue%E6%89%93%E5%8C%85%E9%97%AE%E9%A2%98/" class="archive-article-date">
+        <time datetime="2021-01-19T08:09:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-19</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="由来"><a href="#由来" class="headerlink" title="由来"></a>由来</h4><p>今天在准备将Vue前端项目打包部署的时候,执行<code>npm run dev</code>,却发现报错了。<br><img src="/2021/01/19/%E9%A1%B9%E7%9B%AE-vue%E6%89%93%E5%8C%85%E9%97%AE%E9%A2%98/0.jpg" alt="0.jpg"></p>
+<h4 id="具体解决"><a href="#具体解决" class="headerlink" title="具体解决"></a>具体解决</h4><p>参考链接<a target="_blank" rel="noopener" href="https://ask.csdn.net/questions/769679">Link</a></p>
+<p>1.打开<code>build</code>目录下的<code>webpack.prod.conf文件</code><br>2.将以下注释掉。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;&#x2F; new OptimizeCSSPlugin(&#123;</span><br><span class="line">   &#x2F;&#x2F;   cssProcessorOptions: config.build.productionSourceMap</span><br><span class="line">   &#x2F;&#x2F;     ? &#123; safe: true, map: &#123; inline: false &#125; &#125;</span><br><span class="line">   &#x2F;&#x2F;     : &#123; safe: true &#125;</span><br><span class="line">   &#x2F;&#x2F; &#125;),</span><br></pre></td></tr></table></figure>
+<p>3.OptimizeCSSPlugin是用来优化和压缩文件的。其运行不了的原因是版本不一致的问题。<br>4.于是更改版本到一致即可。</p>
+
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">vue</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/01/19/%E9%A1%B9%E7%9B%AE-vue%E6%89%93%E5%8C%85%E9%97%AE%E9%A2%98/">展开全文 >></a>
+    </p>
+    
+
+    
+    <div class="clearfix"></div>
+  </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
+
+
+  
+    <article id="post-项目-服务器配置过程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+  
+  
+    <h1 itemprop="name">
+	
+	  <a class="article-title" href="/2021/01/19/%E9%A1%B9%E7%9B%AE-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/">项目-服务器配置过程</a>
+	
+    </h1>
+  
+
+
+  
+  
+<a href="/2021/01/19/%E9%A1%B9%E7%9B%AE-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/" class="archive-article-date">
+        <time datetime="2021-01-19T04:49:09.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2021-01-19</time>
+</a>
+
+  
+  
+    
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h4 id="缘由"><a href="#缘由" class="headerlink" title="缘由"></a>缘由</h4><p>之前配置过一台免费的服务器,也在其上面部署过自己的项目,但是因为服务器过期,而自己不想续费。只能再重新购买一台服务器,并且在上面部署自己的项目。<br>于是就需要重新配置服务器。</p>
+<h3 id="过程"><a href="#过程" class="headerlink" title="过程"></a>过程</h3><p>1.开放安全组,即阿里云服务器自带的虚拟防火墙。<br>ECS控制台-更多-网络和安全组-安全组配置-配置规则<br><img src="/2021/01/19/%E9%A1%B9%E7%9B%AE-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/0.jpg" alt="0.jpg"><br>需要开放的端口有8888、888、20、21、80、443<br>2.重置服务器实例密码<br>3.重启服务器<br>4.SSH实例密码登录<br>5.<code>yum install -y wget &amp;&amp; wget -O install.sh http://download.bt.cn/install/install_6.0.sh &amp;&amp; sh install.sh</code>安装宝塔界面<br>6.截图自己的账户和密码和对应的网址<br>7.通过对应网址登录宝塔界面<br>8.配置环境(如安装配置java,安装配置nginx,安装配置tomcat等)<br>9.部署项目</p>
+    
+    <a class="article-more-a"  style="display: none;" href="/2021/01/19/%E9%A1%B9%E7%9B%AE-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/#more">more >></a>
+    
+    
+
+    
+
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">项目</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+    
+
+    
+    <p class="article-more-link">
+      <a class="article-more-a" href="/2021/01/19/%E9%A1%B9%E7%9B%AE-%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE%E8%BF%87%E7%A8%8B/">展开全文 >></a>
     </p>
     
 
@@ -1172,7 +1129,7 @@
   
   
     <nav id="page-nav">
-      <a class="extend prev" rel="prev" href="/page/8/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="extend next" rel="next" href="/page/10/">Next</a>
+      <a class="extend prev" rel="prev" href="/page/8/">Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="page-number" href="/page/8/">8</a><span class="page-number current">9</span><a class="page-number" href="/page/10/">10</a><a class="page-number" href="/page/11/">11</a><a class="page-number" href="/page/12/">12</a><a class="extend next" rel="next" href="/page/10/">Next</a>
     </nav>
   
 
@@ -1184,7 +1141,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021-2022 <a href="http://caciaCC.github.io/" target="_blank">caciaCC</a>
+    		&copy; 2021-2022 <a href="https://caciaCC.github.io/" target="_blank">caciaCC</a>
     	</div>
       	<div class="footer-right">
 			

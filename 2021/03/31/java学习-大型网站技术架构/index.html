@@ -5,7 +5,7 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://caciaCC.github.io">
+  <link rel="dns-prefetch" href="https://caciaCC.github.io">
   <title>Java学习-大型网站技术架构学习 | caciaCC的博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -13,27 +13,27 @@
   <meta name="description" content="大型网站架构演化1.1大型网站软件系统的特点高并发、大流量 高可用 海量数据 用户分布广泛,网络情况复杂 安全环境恶劣 需求快速变更,发布频繁 渐进式发展">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Java学习-大型网站技术架构学习">
-<meta property="og:url" content="http://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/index.html">
+<meta property="og:url" content="https://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/index.html">
 <meta property="og:site_name" content="caciaCC的博客">
 <meta property="og:description" content="大型网站架构演化1.1大型网站软件系统的特点高并发、大流量 高可用 海量数据 用户分布广泛,网络情况复杂 安全环境恶劣 需求快速变更,发布频繁 渐进式发展">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/1.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/2.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/3.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/4.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/5.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/6.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/7.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/8.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/9.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/10.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/11.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/1.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/2.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/3.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/4.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/5.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/6.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/7.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/8.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/9.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/10.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/11.jpg">
 <meta property="article:published_time" content="2021-03-31T02:13:46.000Z">
 <meta property="article:modified_time" content="2021-04-04T09:01:29.152Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="JAVA">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/1.jpg">
+<meta name="twitter:image" content="https://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/1.jpg">
   
     <link rel="alternative" href="/atom.xml" title="caciaCC的博客" type="application/atom+xml">
   
@@ -404,7 +404,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://caciacc.github.io/2021/03/31/java%E5%AD%A6%E4%B9%A0-%E5%A4%A7%E5%9E%8B%E7%BD%91%E7%AB%99%E6%8A%80%E6%9C%AF%E6%9E%B6%E6%9E%84/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -475,7 +475,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021-2022 <a href="http://caciaCC.github.io/" target="_blank">caciaCC</a>
+    		&copy; 2021-2022 <a href="https://caciaCC.github.io/" target="_blank">caciaCC</a>
     	</div>
       	<div class="footer-right">
 			

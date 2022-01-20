@@ -5,7 +5,7 @@
   
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <link rel="dns-prefetch" href="http://caciaCC.github.io">
+  <link rel="dns-prefetch" href="https://caciaCC.github.io">
   <title>计算机基础-操作系统-五-IO | caciaCC的博客</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -13,38 +13,38 @@
   <meta name="description" content="学习资料2019 王道考研 操作系统 I&#x2F;O设备的概念和分类什么是I&#x2F;O设备?“I&#x2F;O”就是”输入&#x2F;输出” (Input&#x2F;Output) I&#x2F;O设备就是可以将数据输入到计算机,或者可以接受计算机输出数据的外部设备,属于计算机中的硬件部件。 鼠标&#x2F;键盘–典型的输入型设备 显示器–输出型设备 移动硬盘–即可输入&#x2F;又可输出的设备 UNIX系统将外部设备抽象成一种特殊的文件,用户可以使用与文件操作相同的方">
 <meta property="og:type" content="article">
 <meta property="og:title" content="计算机基础-操作系统-五-IO">
-<meta property="og:url" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/index.html">
+<meta property="og:url" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/index.html">
 <meta property="og:site_name" content="caciaCC的博客">
 <meta property="og:description" content="学习资料2019 王道考研 操作系统 I&#x2F;O设备的概念和分类什么是I&#x2F;O设备?“I&#x2F;O”就是”输入&#x2F;输出” (Input&#x2F;Output) I&#x2F;O设备就是可以将数据输入到计算机,或者可以接受计算机输出数据的外部设备,属于计算机中的硬件部件。 鼠标&#x2F;键盘–典型的输入型设备 显示器–输出型设备 移动硬盘–即可输入&#x2F;又可输出的设备 UNIX系统将外部设备抽象成一种特殊的文件,用户可以使用与文件操作相同的方">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/0.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/1.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/2.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/3.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/4.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/5.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/6.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/7.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/8.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/9.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/10.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/11.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/12.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/13.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/14.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/15.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/16.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/17.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/18.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/19.jpg">
-<meta property="og:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/20.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/0.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/1.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/2.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/3.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/4.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/5.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/6.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/7.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/8.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/9.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/10.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/11.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/12.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/13.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/14.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/15.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/16.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/17.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/18.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/19.jpg">
+<meta property="og:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/20.jpg">
 <meta property="article:published_time" content="2021-02-08T04:28:52.000Z">
 <meta property="article:modified_time" content="2021-03-09T06:13:18.922Z">
 <meta property="article:author" content="caciaCC">
 <meta property="article:tag" content="操作系统">
 <meta property="article:tag" content="计算机基础">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/0.jpg">
+<meta name="twitter:image" content="https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/0.jpg">
   
     <link rel="alternative" href="/atom.xml" title="caciaCC的博客" type="application/atom+xml">
   
@@ -521,7 +521,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=http://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://caciacc.github.io/2021/02/08/%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%9F%BA%E7%A1%80-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-%E4%BA%94-IO/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -592,7 +592,7 @@
   <div class="outer">
     <div id="footer-info">
     	<div class="footer-left">
-    		&copy; 2021-2022 <a href="http://caciaCC.github.io/" target="_blank">caciaCC</a>
+    		&copy; 2021-2022 <a href="https://caciaCC.github.io/" target="_blank">caciaCC</a>
     	</div>
       	<div class="footer-right">
 			
